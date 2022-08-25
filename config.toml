@@ -1,3 +1,4 @@
 baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+languageCode = 'en-GB'
+title = 'The University of Sheffield ROS Courses'
+theme = 'hugo-book'
