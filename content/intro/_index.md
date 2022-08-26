@@ -1,16 +1,11 @@
 +++
-title = "Introduction"
+title = "About"
 date = 2022-08-25T13:56:48+01:00
 weight = 1
 chapter = true
-pre = "<b>X. </b>"
 +++
 
-<!-- ---
-weight: 1
-bookFlatSection: true
-title: "Introduction"
---- -->
+<!-- may not actually need this, use /content/_index.md instead?? -->
 
 ### Welcome!
 

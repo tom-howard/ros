@@ -190,9 +190,7 @@ You should currently have three terminal windows active: the first in which you 
 
     A new window should then open, displaying something similar to the following (hover over the diagram to enable colour highlighting):
 
-    <p align="center">
-      <img alt="A visualisation of all the ROS nodes active on the system and the flow of information between them" src="figures/wk01/rqt_graph.png">
-    </p>
+    ![A visualisation of all the ROS nodes active on the system and the flow of information between them](/figures/com2009/wk01/rqt_graph.png)
 
     This tool shows us that the `/turtlebot3_teleop_keyboard` and `/gazebo` nodes are communicating with one another.  The direction of the arrow tells us that the `/turtlebot3_teleop_keyboard` node is a *Publisher* and the `/gazebo` node is a *Subscriber*. The two nodes communicate via a *ROS Topic*, in this case the `/cmd_vel` topic, and on this topic the `/turtlebot3_teleop_keyboard` node publishes *messages*.
 
@@ -225,7 +223,7 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS com
 
     This confirms what we discovered earlier about the publisher(s) and subscriber(s) to the `/cmd_vel` topic.  In addition, this also tells us the topic *type*, or the *type of message* that is being published on this topic.
 
-    <!-- <a id="rosmsg" /> How to do this??-->
+    <!-- <a name="rosmsg" /> How to do this??-->
 
 1. We can use the `rosmsg` *ROS command* to provide further information about this message, or any other message that we may be interested in:
 
@@ -263,15 +261,30 @@ It is important to work in a specific filesystem location when we create and wor
 
 1. Navigate to the `catkin_ws` folder by using the Linux `cd` command. In **TERMINAL 1** enter the following:
 
-        [TERMINAL 1] $ cd ~/catkin_ws/
+    ***
+    **TERMINAL 1:**
+    ```bash
+    cd ~/catkin_ws/
+    ```
+    ***
 
 1. Inside the catkin workspace there is a directory called `src` (use the `ls` command to confirm this). All new packages need to be located in the `src` folder, so we need to be here when we use the `catkin_create_pkg` tool to create a new package. So, use the `cd` command again to navigate to the `catkin_ws/src` folder:
 
-        [TERMINAL 1] $ cd src
+    ***
+    **TERMINAL 1:**
+    ```bash
+    cd src
+    ```
+    ***
 
 1. Now, use the `catkin_create_pkg` script to create a new package called `week1_pubsub` which will have `std_msgs` and `rospy` as dependencies:
 
-        [TERMINAL 1] $ catkin_create_pkg week1_pubsub std_msgs rospy
+    ***
+    **TERMINAL 1:**
+    ```bash
+    catkin_create_pkg week1_pubsub std_msgs rospy
+    ```
+    ***
 
     ***What did the `catkin_create_pkg` tool just do?***  (Hint: there are four things and it will have told you about them!)
 
@@ -289,11 +302,17 @@ It is important to work in a specific filesystem location when we create and wor
 
 1. Before we do anything else, it's good practice to now run `CMake` on the package (using `catkin build`) to register it on our ROS system and make sure there are no errors with its definition so far:
 
-        [TERMINAL 1] $ catkin build week1_pubsub
-    
-    Finally, "re-source" your environment using the following alias:
-
-        [TERMINAL 1] $ src
+    <!-- more concise... -->
+    ***
+    **TERMINAL 1:**
+    ```bash
+    catkin build week1_pubsub
+    ```
+    Finally, "re-source" your environment using the following command:
+    ```bash
+    source ~/.bashrc
+    ```
+    ***
 
     ... and we're good to go.
 
@@ -338,9 +357,13 @@ It is important to work in a specific filesystem location when we create and wor
 
 1. Once opened, copy the code provided [here](Week-1-Publisher-Node) into the empty file and save it.
     
-    > **Note:** *It is important that you understand how this code works, so **make sure that you read [the explainer](Week-1-Publisher-Node#explainer)**!*
+{{% notice note %}}
+It's important that you understand how this code works, so **make sure that you read [the explainer](Week-1-Publisher-Node#explainer)**!
+{{% /notice %}}
     
-1. We can now run this node using the *ROS command* `rosrun`. However, because we closed everything down earlier on, the *ROS Master* is no longer active.  First then, we need to re-launch it manually using `roscore`:
+<!-- {{% notice %}} shortcode usage here means we need to manually restart the numbering -->
+
+8. We can now run this node using the *ROS command* `rosrun`. However, because we closed everything down earlier on, the *ROS Master* is no longer active.  First then, we need to re-launch it manually using `roscore`:
 
         [TERMINAL 1] $ roscore
         
@@ -417,3 +440,4 @@ You will now create another node to *subscribe* to the topic that our publisher 
 1. Finally, close down your publisher and subscriber nodes and the ROS Master by entering `Ctrl+C` in Terminals 1, 2 and 3.
 
 ## Launch Files
+

@@ -1,16 +1,10 @@
 +++
-title = "COM2009"
+title = "COM2009 Robotics"
+menuTitle = "COM2009"
 date = 2022-08-25T13:56:48+01:00
-weight = 5
+weight = 2
 chapter = true
-pre = "<b>X. </b>"
 +++
-
-<!-- ---
-weight: 2
-bookCollapseSection: true
-title: "COM2009"
---- -->
 
 ### COM2009
 
