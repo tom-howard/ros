@@ -6,6 +6,11 @@ title = 'The University of Sheffield ROS Teaching Resources'
 ### hugo-learn-theme ###
 theme = "hugo-theme-learn"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 # For search functionality
 [outputs]
   home = [ "HTML", "RSS", "JSON"]

@@ -4,9 +4,9 @@ date: 2022-08-26T11:38:07+01:00
 draft: false
 ---
 
-{{% notice info %}}
-You should be able to complete the exercises on this page within a two-hour lab session.
-{{% /notice %}}
+{{% textalign center %}}
+  *You should be able to complete the exercises on this page within a two-hour lab session*.
+{{% /textalign %}}
 
 ## Introduction
 
@@ -87,7 +87,7 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 
     If so, just type `yes` and then hit `Enter` to confirm that you want to continue.
 
-1. Once the pairing process is finished you should see a message saying  `pairing complete`, displayed in blue in the terminal. 
+1. Once the pairing process is finished you should see a message saying `pairing complete`, displayed in blue in the terminal. 
 
 1. Then, in the same terminal (**TERMINAL 1**), enter the following command:
 
@@ -566,5 +566,7 @@ Please then shut down the laptop, which you can do by clicking the battery icon 
 
 ![](/figures/laptops/ubuntu_poweroff.svg?width=10cm)
 
+{{% textalign center %}}
 **AMR31001 Lab 1 Complete!**  
 *See you again in Spring for Lab 2!*
+{{% /textalign %}}
