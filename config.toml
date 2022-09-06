@@ -1,7 +1,6 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-GB'
 title = 'The University of Sheffield ROS Teaching Resources'
-# theme = 'hugo-book'
 
 ### hugo-learn-theme ###
 theme = "hugo-theme-learn"
@@ -54,5 +53,5 @@ theme = "hugo-theme-learn"
   themeVariant = "blue"
   # # Provide a list of custom css files to load relative from the `static/` folder in the site root.
   # custom_css = ["css/foo.css", "css/bar.css"]
-  # # Change the title separator. Default to "::".
-  # titleSeparator = "-"
+  # Change the title separator. Default to "::".
+  titleSeparator = "|"
