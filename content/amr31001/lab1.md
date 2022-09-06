@@ -5,7 +5,7 @@ draft: false
 ---
 
 {{% textalign center %}}
-  *You should be able to complete the exercises on this page within a two-hour lab session*.
+*You should be able to complete the exercises on this page within a two-hour lab session*.
 {{% /textalign %}}
 
 ## Introduction
@@ -16,11 +16,11 @@ ROS is an open-source, industry-standard robot programming framework, used in a 
 
 ROS allows us to programme robots using a range of different programming languages, but we'll be using Python for these labs. In addition to this, ROS runs on top of a Linux operating system called *'Ubuntu'*, and so we'll also learn a bit about how to use this too.
 
-We'll be working with robots called *'TurtleBot3 Waffles'*, which you can find out a bit more about [on the Home page of this Wiki](Home#tb3). 
+We'll be working with robots called *'TurtleBot3 Waffles'*, which you can find out a bit more about [on the Home page of this Wiki (UPDATE)](Home#tb3). 
 
-{{% notice note %}}
-**Pre-Lab Work:** You **must** have completed the Health & Safety Assessment before you can make a start on this lab. This is available on the AMR31001 Blackboard Course Page.
-{{% /notice %}}
+{{< nicenote warning "Pre-Lab Work" >}}
+You **must** have completed the Health & Safety Assessment before you can make a start on this lab. This is available on the AMR31001 Blackboard Course Page.
+{{< /nicenote >}}
 
 ### Aims
 
@@ -163,7 +163,9 @@ roslaunch {[1] Package name} {[2] Launch file}
 
 **Part [1]** specifies the name of the *ROS package* containing the functionality that we want to execute. **Part [2]** is a file within that package that tells ROS exactly what scripts (*'nodes'*) that we want to launch.
 
-> **Post-lab Quiz:** *What were the names of the two packages that we invoked in Exercise 1?*
+{{< nicenote info "Post-lab Quiz" >}}
+What were the names of the two packages that we invoked in Exercise 1?
+{{< /nicenote >}}
 
 #### Exercise 2: Seeing the Waffle's Sensors in Action! {#ex2}
 
@@ -180,9 +182,10 @@ Our Waffles have some pretty sophisticated sensors on them, allowing them to "se
     ```
     ***
 
-    > **Post-lab Quiz:** *Notice how we are using the `rosrun` command here, instead of `roslaunch`? We use `rosrun` if we only want to launch a **single node** (like the `rqt_image_view` node) on the ROS network.* 
-
-    > **Post-lab Quiz:** *`rosrun` has [the same two-part format as `roslaunch`](#packages-and-nodes). Why did we have to type `rqt_image_view` twice?*
+    {{< nicenote info "Post-lab Quiz" >}}
+1. Notice how we're using the `rosrun` command here, instead of `roslaunch`? We use `rosrun` if we only want to launch a **single node** (like the `rqt_image_view` node) on the ROS network.
+1. `rosrun` has [the same two-part format as `roslaunch`](#packages-and-nodes). Why did we have to type `rqt_image_view` twice?
+    {{< /nicenote >}}
 
 1. A new window should open. Maximise this (if it isn't already) and then select `/camera/color/image_raw` from the dropdown menu at the top-left of the application window.
 1. Live images from the robot's camera should now be visible! Stick your face in front of the camera and see yourself appear on the laptop screen!
@@ -381,17 +384,21 @@ Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! 
 
 It can therefore only move **linearly** in the **x-axis** (*Forwards/Backwards*) and **angularly** in the **z-axis** (*Yaw*). 
 
-> **Post-lab Quiz:** *Take note of all this, there may be a question on it!*
+{{< nicenote info "Post-lab Quiz" >}}
+Take note of all this, there may be a question on it!
+{{< /nicenote >}}
 
 #### Exercise 5: Publishing Velocity Commands to the `/cmd_vel` Topic {#ex5}
 
 We will use the `rostopic` command differently now, and actually *publish* messages from the terminal to make the robot move. In order to do this we need three key bits of information:
 
-1. The *name of the topic* that we want to publish to.
-1. The *type of message* that this topic uses.
-1. The *data format* that this message type uses.
+* The *name of the topic* that we want to publish to.
+* The *type of message* that this topic uses.
+* The *data format* that this message type uses.
 
-> **Post-lab Quiz:** *We discovered all this in the previous exercise, take note of all three points.*
+{{< nicenote info "Post-lab Quiz" >}}
+We discovered all this in the previous exercise, take note of all three points.
+{{< /nicenote >}}
 
 We can then use `rostopic` with the `pub` option as follows:
 
@@ -470,11 +477,11 @@ In reality, robots need to be able to move around complex environments autonomou
     Replacing `your_name` with, well... *your name*!
     ***
 
-{{% notice note %}}
+    {{< nicenote tip >}}
 Don't use any spaces in your name, use underscores (`_`) instead!
-{{% /notice %}}
+    {{< /nicenote >}}
 
-2. Next, navigate into this directory using the `cd` (*"change directory"*) command:
+1. Next, navigate into this directory using the `cd` (*"change directory"*) command:
 
     ***
     **TERMINAL 2:**
@@ -502,17 +509,19 @@ Don't use any spaces in your name, use underscores (`_`) instead!
     ```
     ***
 
-{{% notice note %}}
+    {{< nicenote note >}}
 Don't forget to include the `.`, it's important!!
-{{% /notice %}}
+    {{< /nicenote >}}
 
-5. Once VS Code launches, open up your `move_square.py` file, which should be visible in the file explorer on the left-hand side of the VS Code window. Paste the following content into the file:
+1. Once VS Code launches, open up your `move_square.py` file, which should be visible in the file explorer on the left-hand side of the VS Code window. Paste the following content into the file:
 
 {{< include file="/python/amr31001_lab1_move_square.py" code="true" lang="python" >}}
 
 6. Now, go back to **TERMINAL 2** and run the code.
 
-    **Note:** *Make sure the robot is on the floor and has enough room to roam around before you do this!*
+    {{< nicenote note >}}
+Make sure the robot is on the floor and has enough room to roam around before you do this!
+    {{< /nicenote >}}
 
     ***
     **TERMINAL 2:**

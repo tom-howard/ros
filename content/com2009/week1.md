@@ -144,7 +144,7 @@ The attributes here have the following meaning:
 * `name`: A descriptive name that we want to give to the ROS node, which will be used to register it on the ROS Network.
 * `output`: The place where any output from the node will be printed (either *screen* where the output will be printed to our terminal window, or *log* where the output will be printed to a log file).
 
-<a name="nodes" />
+<!-- <a name="nodes" /> for some reason this made everything below this point blue!? -->
 
 *ROS Nodes* are executable programs that perform specific robot tasks and operations, such as remote (or "teleoperational") control, as we have seen in the above example. 
 
@@ -316,7 +316,7 @@ It is important to work in a specific filesystem location when we create and wor
 
     ... and we're good to go.
 
-<a name="ex6" />
+<!-- <a name="ex6" /> -->
 
 #### Exercise 6: Creating a publisher node
 
@@ -325,7 +325,7 @@ It is important to work in a specific filesystem location when we create and wor
 
         [TERMINAL 1] $ touch publisher.py
 
-    <a name="chmod" />
+    <!-- <a name="chmod" /> -->
 
 1. Because we want to be able to run (or *execute*) this script, we will need to set the correct file permissions to allow us to do so. To do this, we can use the Linux `chmod` command in the following way: `chmod +x {name of the python script}`. First though have a look at the file as it is using `ls` again, but this time with an additional option:
 
@@ -357,13 +357,16 @@ It is important to work in a specific filesystem location when we create and wor
 
 1. Once opened, copy the code provided [here](Week-1-Publisher-Node) into the empty file and save it.
     
-{{% notice note %}}
+{{< nicenote note >}}
 It's important that you understand how this code works, so **make sure that you read [the explainer](Week-1-Publisher-Node#explainer)**!
-{{% /notice %}}
-    
-<!-- {{% notice %}} shortcode usage here means we need to manually restart the numbering -->
+{{< /nicenote >}}
 
-8. We can now run this node using the *ROS command* `rosrun`. However, because we closed everything down earlier on, the *ROS Master* is no longer active.  First then, we need to re-launch it manually using `roscore`:
+
+1. something
+
+    
+
+1. We can now run this node using the *ROS command* `rosrun`. However, because we closed everything down earlier on, the *ROS Master* is no longer active.  First then, we need to re-launch it manually using `roscore`:
 
         [TERMINAL 1] $ roscore
         
