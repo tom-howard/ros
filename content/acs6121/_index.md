@@ -1,12 +1,12 @@
 +++
-title = "ACS6121"
-date = 2022-08-26T11:30:46+01:00
+menuTitle = "ACS6121"
+title = "ACS6121 Mobile Robotics and Autonomous Systems"
 weight = 5
 chapter = true
 +++
 
-### Chapter X
+### ACS6121
 
-# Some Chapter title
+# Mobile Robotics and Autonomous Systems
 
-Lorem Ipsum.
+...
