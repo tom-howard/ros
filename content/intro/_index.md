@@ -14,6 +14,6 @@ If you're here as part of one of these courses then Welcome! You can find the re
 
 The courses here are designed to teach you how to use ROS to program robots. You'll learn this using a mix of simulation-based learning and real robot hardware. Typically, we start in simulation first, and we've got [a WSL-based simulation environment that we use for this(TODO)](). Everything you'll learn will be directly applicable to real robots too though, and - on all of our courses - you'll be able to applying your new-found ROS knowledge to the real TurtleBot3 Waffle Robots that we have in The Diamond.
 
-{{% textalign center %}}
-[Read on to learn more about our robots... <i class="fas fa-solid fa-arrow-right"></i>](/intro/robots)
+{{% textalign right %}}
+[Next Page: "Introducing the Robots" <i class="fas fa-solid fa-arrow-right"></i>](/intro/robots)
 {{% /textalign %}}

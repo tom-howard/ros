@@ -4,6 +4,10 @@ title = "Introducing the Robots"
 weight = 1
 +++
 
+{{% textalign left %}}
+[<i class="fas fa-solid fa-arrow-left"></i> Previous Page: "About These Courses"](/intro/)
+{{% /textalign %}}
+
 ## The TurtleBot3 Waffle
 
 ### Turtlebot what?!
@@ -53,6 +57,6 @@ In the Diamond, we have dedicated Robot Laptops running the same OS & ROS versio
 
 To deliver the simulation-based parts of this course, we've created a custom simulation environment using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). This has been developed primarily to run on University of Sheffield Managed Desktop Computers, which run Windows 10, but it's also possible to run this on other machines too. We call this simulation environment *"WSL-ROS"*.
 
-{{% textalign center %}}
-[<i class="fas fa-solid fa-arrow-left"></i> About These Courses](/intro/) | [Acknowledgements <i class="fas fa-solid fa-arrow-right"></i>](/intro/acknowledgements)
+{{% textalign right %}}
+[Next Page: "Acknowledgements" <i class="fas fa-solid fa-arrow-right"></i>](/intro/acknowledgements)
 {{% /textalign %}}

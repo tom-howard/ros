@@ -1,13 +1,8 @@
-+++
-title = "Week 1"
-weight = 5
-+++
-
 ## Introduction
 
 ### Aims
 
-In this first week you will learn the basics of ROS and become familiar with some of the key tools and principles of this framework, which will allow you to program robots and work with ROS applications effectively.  For the most part, you will interact with ROS using the *Linux command line* and so you will also become familiar with some key Linux command line tools that will help you.  Finally, you will learn how to create some basic ROS Nodes using Python.
+In this first week you will learn the basics of ROS and become familiar with some key tools and principles of this framework, which will allow you to program robots and work with ROS applications effectively.  For the most part, you will interact with ROS using the *Linux command line* and so you will also become familiar with some key Linux command line tools that will help you.  Finally, you will learn how to create some basic ROS Nodes using Python.
 
 ### Intended Learning Outcomes
 
