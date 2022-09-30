@@ -1,6 +1,6 @@
 # ros
 
-Source code for [Tom's ROS Labs Site](https://tom-howard.github.io/ros/).   
+Source code for [the ROS Labs Website](https://tom-howard.github.io/ros/).   
 
 Tom Howard  
 Multidisciplinary Engineering Education 
