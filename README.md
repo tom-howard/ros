@@ -1,6 +1,6 @@
 # ros
 
-Home of Tom's ROS Teaching material.   
+Source code for [Tom's ROS Labs Site](https://tom-howard.github.io/ros/).   
 
 Tom Howard  
 Multidisciplinary Engineering Education 
