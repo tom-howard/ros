@@ -4,7 +4,7 @@ weight = 100
 +++
 
 {{% textalign left %}}
-[<i class="fas fa-solid fa-arrow-left"></i> Previous Page: "Acknowledgements"](/intro/acknowledgements)
+[<i class="fas fa-solid fa-arrow-left"></i> Previous Page: "Acknowledgements"](/about/acknowledgements)
 {{% /textalign %}}
 
 | Iteration | Academic Year | Details  |

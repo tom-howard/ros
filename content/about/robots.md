@@ -5,7 +5,7 @@ weight = 1
 +++
 
 {{% textalign left %}}
-[<i class="fas fa-solid fa-arrow-left"></i> Previous Page: "About These Courses"](/intro/)
+[<i class="fas fa-solid fa-arrow-left"></i> Previous Page: "About These Courses"](/about/)
 {{% /textalign %}}
 
 ## The TurtleBot3 Waffle
@@ -28,7 +28,7 @@ Here in the Diamond we have a number of *customised* TurtleBot3 Waffles specific
 
 Whether we're working in simulation or with the real thing, the ROS applications that we develop as part of the course materials here are directly transferable between the two (mostly!) 
 
-The robots that we have are in fact slightly different to the standard *TurtleBot3 WafflePi* model that you can buy directly from Robotis. We've made a few adjustments though, as shown below:
+The robots that we have are in fact slightly different to the standard *TurtleBot3 WafflePi* model that you can buy directly from Robotis. We've made a few adjustments, as shown below:
 
 ![](/figures/waffle/features.png?width=20cm)
 
@@ -51,12 +51,12 @@ Our robots run on the most up-to-date version of ROS1: [ROS Noetic Ninjemys](htt
 
 ### Laptops
 
-In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above (Ubuntu 20.04 and ROS Noetic). We use these for all of our real robot activities.
+In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above (Ubuntu 20.04 and ROS Noetic). We use these when working with the robots in the lab.
 
 ### Simulation Environment
 
 To deliver the simulation-based parts of this course, we've created a custom simulation environment using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). This has been developed primarily to run on University of Sheffield Managed Desktop Computers, which run Windows 10, but it's also possible to run this on other machines too. We call this simulation environment *"WSL-ROS"*.
 
 {{% textalign right %}}
-[Next Page: "Acknowledgements" <i class="fas fa-solid fa-arrow-right"></i>](/intro/acknowledgements)
+[Next Page: "Acknowledgements" <i class="fas fa-solid fa-arrow-right"></i>](/about/acknowledgements)
 {{% /textalign %}}
