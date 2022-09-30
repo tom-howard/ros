@@ -1,6 +1,7 @@
 +++
 title = "Changelog"
 weight = 100
+disableToc = "true"
 +++
 
 {{% textalign left %}}

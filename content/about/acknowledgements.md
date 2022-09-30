@@ -1,6 +1,7 @@
 +++
 title = "Acknowledgements"
 weight = 10
+disableToc = "true"
 +++
 
 {{% textalign left %}}

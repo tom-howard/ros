@@ -2,6 +2,7 @@
 menuTitle = "About"
 title = "About These Courses"
 weight = 1
+disableToc = "true"
 +++
 
 This is the home of some practical lab courses developed by Dr Tom Howard, a University Teacher at the University of Sheffield. The material here is designed for teaching **ROS (the Robot Operating System)**, and has been developed to support a range of **practical teaching activities** that take place in [The Diamond](https://www.sheffield.ac.uk/engineering/diamond) for a range of different undergraduate degree courses.
