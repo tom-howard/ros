@@ -15,7 +15,7 @@ theme = "hugo-theme-learn"
   home = [ "HTML", "RSS", "JSON"]
 
 [params]
-  editURL = ""
+  editURL = "https://github.com/tom-howard/ros/tree/main/content/"
   author = "Tom Howard"
   description = "Practical lab courses on ROS (the Robot Operating System). Developed by Tom Howard, for teaching activities at The University of Sheffield."
   disableInlineCopyToClipBoard = true
