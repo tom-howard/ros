@@ -1,5 +1,5 @@
 +++
-title = "COM2009 Lab Assignment #2: Team Robotics Challenge"
+title = "Lab Assignment #2: Team Robotics Challenge"
 menuTitle = "Lab Assignment #2"
 weight = 2
 chapter = true
