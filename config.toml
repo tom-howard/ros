@@ -26,4 +26,5 @@ theme = "hugo-theme-learn"
   disableNextPrev = true
   ordersectionsby = "weight"
   themeVariant = "blue"
+  # themeVariant = "mee"
   titleSeparator = "|"
