@@ -39,7 +39,7 @@ The robots have the following core hardware elements:
 
 This drive configuration allows the robots to move with the following **maximum velocities**:
 
-| Velocity Parameter | Upper Limit | Units |
+| Velocity Component | Upper Limit | Units |
 | :--- | :---: | :--- |
 | *Linear* | 0.26 | m/s |
 | *Angular* | 1.82 | rad/s |
