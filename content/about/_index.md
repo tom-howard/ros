@@ -11,7 +11,7 @@ This material was primarily designed, by Tom, for **COM2009 "Robotics"**: a seco
 
 If you're here as part of one of these courses then *welcome*! You can find the relevant course material under your module code in the Nav Bar on the left-hand side of the page. We hope that this site might also be useful for others hoping to learn ROS too though, so feel free to have a look around... we hope you find it useful!
 
-The courses here are designed to teach you how to use ROS to program robots, using a mix of simulation-based learning and real robot hardware. Typically, we start in simulation first, and we've got [a WSL-based simulation environment that we use for this(TODO)](). Everything you'll learn in simulation is directly applicable to real robots too though, and - on all of these courses - you'll be able to apply your new-found ROS knowledge to the real TurtleBot3 Waffle Robots that we have in The Diamond.
+The courses here are designed to teach you how to use ROS to program robots, using a mix of simulation-based learning and real robot hardware. Typically, we start in simulation first, and we've got [a WSL-based simulation environment that we use for this (coming soon)](). Everything you'll learn in simulation is directly applicable to real robots too though, and - on all of these courses - you'll be able to apply your new-found ROS knowledge to the real TurtleBot3 Waffle Robots that we have in The Diamond.
 
 {{% textalign right %}}
 [Next Page: "Introducing the Robots" <i class="fas fa-solid fa-arrow-right"></i>](/about/robots)
