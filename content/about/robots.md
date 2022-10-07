@@ -33,9 +33,16 @@ The robots that we have are in fact slightly different to the standard *TurtleBo
 ![](/figures/waffle/features.png?width=20cm)
 
 The robots have the following core hardware elements:
-* Independent left and right wheel motors (DYNAMIXEL XM430’s) to drive the robot using a *differential drive* configuration.
 * An OpenCR Micro-Controller Board to power and control the wheel motors, distribute power to other hardware elements and provide an interface for additional sensors.
 * An [UP Squared Single-Board Computer (SBC)](https://up-board.org/upsquared/specifications/) with an Intel Processor and 32GB of on-board eMMC storage. This board acts as the "brain" of the robot.
+* Independent left and right wheel motors (DYNAMIXEL XM430’s) to drive the robot using a *differential drive* configuration.
+
+This drive configuration allows the robots to move with the following **maximum velocities**:
+
+| Velocity Parameter | Upper Limit | Units |
+| :--- | :---: | :--- |
+| *Linear* | 0.26 | m/s |
+| *Angular* | 1.82 | rad/s |
 
 In addition to this, the robots are equipped with the following sensors:
 * A Light Detection and Ranging (or *LiDAR*) sensor, which spins continuously when the robot is in operation. This uses light in the form of laser pulses to allow the robot to measure the distance to surrounding objects, providing it with a 360&deg; view of its environment.
