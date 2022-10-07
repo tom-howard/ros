@@ -515,9 +515,51 @@ Don't forget to include the `.`, it's important!!
 
 1. Once VS Code launches, open up your `move_square.py` file, which should be visible in the file explorer on the left-hand side of the VS Code window. Paste the following content into the file:
 
-{{< include file="/python/amr31001_lab1_move_square.py" code="true" lang="python" >}}
+    ```python
+    import rospy
+    from geometry_msgs.msg import Twist
 
-6. Now, go back to **TERMINAL 2** and run the code.
+    node_name = "move_square"
+
+    movement = "fwd" # or "turn"
+    transition = True
+
+    rospy.init_node(node_name, anonymous=True)
+    rate = rospy.Rate(10) # hz
+
+    pub = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+    vel = Twist()
+
+    rospy.loginfo(f"The {node_name} node has been initialised...")
+    timestamp = rospy.get_time()
+        
+    while not rospy.is_shutdown():
+        elapsed_time = rospy.get_time() - timestamp
+        if transition:
+            timestamp = rospy.get_time()
+            transition = False
+            vel.linear.x = 0.0
+            vel.angular.z = 0.0
+            print(f"Moving to state: {movement}")
+        elif movement == "fwd":
+            if elapsed_time > 5:
+                movement = "turn"
+                transition = True
+            else:
+                vel.linear.x = 0.1
+                vel.angular.z = 0.0
+        elif movement == "turn":
+            if elapsed_time > 5:
+                movement = "fwd"
+                transition = True
+            else:
+                vel.angular.z = 0.2
+                vel.linear.x = 0.0
+        pub.publish(vel)
+        rate.sleep()
+    ```
+
+1. Now, go back to **TERMINAL 2** and run the code.
 
     {{< nicenote note >}}
 Make sure the robot is on the floor and has enough room to roam around before you do this!
