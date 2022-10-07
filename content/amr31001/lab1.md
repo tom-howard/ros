@@ -546,7 +546,7 @@ Don't forget to include the `.`, it's important!!
                 movement = "turn"
                 transition = True
             else:
-                vel.linear.x = 0.1
+                vel.linear.x = 0.05
                 vel.angular.z = 0.0
         elif movement == "turn":
             if elapsed_time > 5:
@@ -578,11 +578,13 @@ Make sure the robot is on the floor and has enough room to roam around before yo
     
     Have a look at the code to work out how much time the robot will currently spend performing each state.
     
-1. In order to achieve a *truly* square motion profile you'll need to adjust the timings, or the robot's velocity, or both. Edit the code so that the robot actually follows a square motion path!
+1. The aim here is to make the robot follow a **1m x 1m square** motion path.  In order to properly achieve this you'll need to adjust the timings, or the robot's velocity, or both. Edit the code so that the robot actually follows a **1m x 1m square motion path**!
 
 **For the experts(!):**
 
-1. How could you adapt the code further to change the motion profile? Make a copy of the code using the `cp` command:
+How could you adapt the code further to achieve some more interesting motion profiles?
+
+1. First, make a copy of the `move_square.py` code using the `cp` command:
 
     ***
     **TERMINAL 2:**
@@ -596,8 +598,8 @@ Make sure the robot is on the floor and has enough room to roam around before yo
 
     ![](/figures/amr31001/move_alt.svg)
 
-    1. **Profile (a):** The robot needs to follow a *figure-of-eight* shaped path, where a linear and angular velocity command are set simultaneously to generate circular motion. Velocities will need to be defined in order to achieve a path diameter of 1m for each of the two loops. Having set the velocities appropriately, you'll then need to work out how long it would take the robot to complete each loop, so that you can determine when the robot should have got back to its starting point. At this point you'll need to change the turn direction, so that the robot switches from anti-clockwise to clockwise turning. 
-    1. **Profile (b):** The robot needs to start and end in the same position, but move through intermediate points 1-7, in sequence, to generate the *stacked square* profile as shown. Each of the two squares must be 1m x 1m in size, so you'll need to find the right velocity and duration pairs for moving forward and turning. You'll also need to change the turn direction once the robot reaches Point 3, and then again at Point 7!
+    1. **Profile (a):** The robot needs to follow a *figure-of-eight* shaped path, where a linear and angular velocity command are set simultaneously to generate circular motion. Velocities will need to be defined in order to achieve **a path diameter of 1m** for each of the two loops. Having set the velocities appropriately, you'll then need to work out how long it would take the robot to complete each loop, so that you can determine when the robot should have got back to its starting point. At this point you'll need to change the turn direction, so that the robot switches from anti-clockwise to clockwise turning. 
+    1. **Profile (b):** The robot needs to start and end in the same position, but move through intermediate points 1-7, in sequence, to generate the *stacked square* profile as shown. Each of the two squares must be **1m x 1m in size**, so you'll need to find the right velocity and duration pairs for moving forward and turning. You'll also need to change the turn direction once the robot reaches Point 3, and then again at Point 7!
 
 ## Wrapping Up
 
@@ -619,5 +621,5 @@ Please then shut down the laptop, which you can do by clicking the battery icon 
 
 {{% textalign center %}}
 **AMR31001 Lab 1 Complete!**  
-*See you again in Spring for Lab 2!*
+*See you again next year for Lab 2!*
 {{% /textalign %}}
