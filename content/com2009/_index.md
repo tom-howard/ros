@@ -1,7 +1,7 @@
 +++
 title = "COM2009 Robotics"
 menuTitle = "COM2009"
-weight = 2
+weight = 10
 chapter = true
 +++
 

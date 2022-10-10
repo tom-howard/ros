@@ -1,7 +1,7 @@
 +++
 title = "AMR31001 Industry 4.0"
 menuTitle = "AMR31001"
-weight = 10
+weight = 100
 chapter = true
 +++
 
