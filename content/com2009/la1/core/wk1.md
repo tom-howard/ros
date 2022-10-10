@@ -2,7 +2,7 @@
 
 ### Aims
 
-In this first week you will learn the basics of ROS and become familiar with some key tools and principles of this framework, which will allow you to program robots and work with ROS applications effectively.  For the most part, you will interact with ROS using the *Linux command line* and so you will also become familiar with some key Linux command line tools that will help you.  Finally, you will learn how to create some basic ROS Nodes using Python.
+In this first week you will learn the basics of ROS and become familiar with some key tools and principles of this framework, which will allow you to program robots and work with ROS applications effectively.  For the most part, you will interact with ROS using the *Linux command line* and so you will also become familiar with some key Linux command line tools that will help you.  Finally, you will learn how to create some basic ROS Nodes using Python and get a taste of how ROS topics and messages work.
 
 ### Intended Learning Outcomes
 
@@ -25,7 +25,7 @@ By the end of this session you will be able to:
 
 #### Exercise 1: Launching a simulation and making a ROS robot move {#ex1} 
 
-1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu. This should open up a *terminal application* and an *Ubuntu terminal instance*.  We'll refer to this terminal instance as **TERMINAL 1**.
+1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu hello ([see here for detailed instructions](/wsl-ros/getting-started)). This should open up a *terminal application* and an *Ubuntu terminal instance*.  We'll refer to this terminal instance as **TERMINAL 1**.
 1. In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
         
     ***
@@ -35,13 +35,13 @@ By the end of this session you will be able to:
     ```
     ***
 
-1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (similar to the real robots that you will be working with later in this course):
+1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (similar to [our real robots](/about/robots) that you'll work with later):
 
-    ![](/figures/com2009/gz_tb3_empty_world.png?width=800px)
+    ![](/images/gazebo/tb3_empty_world.png?width=800px)
 
 1. With your Gazebo Simulation up and running, return to the terminal application and open up a new Ubuntu terminal instance (**TERMINAL 2**) by pressing the *New Tab* button: 
     
-    ![](/figures/com2009/wk01/wt_new_tab.svg)
+    ![](/images/wsl/wt_new_tab.svg)
         
     (or, alternatively, press the `Ctrl+Shift+T` keyboard shortcut).
     
@@ -58,7 +58,7 @@ By the end of this session you will be able to:
 
 **Summary:** 
 
-You have so far launched two separate ROS applications using the `roslaunch` command. `roslaunch` is one way to launch ROS programs.  As you should have observed from the above examples, we use this command in the following way:
+You have so far launched two separate ROS applications using the `roslaunch` command. `roslaunch` is one way to launch ROS programs. As you should have observed from the above examples, we use this command in the following way:
 
 ```bash
 roslaunch {package name} {launch file}
@@ -68,13 +68,17 @@ The command takes two parameters as inputs: `{package name}` is the name of the 
 
 ## ROS Packages
 
-ROS applications are organised into *packages*. ROS packages are collections of scripts, parameters and configurations relating to some common robot functionality, and ROS uses packages as a way to organise all the programs running on a robot.  **The package system is a fundamental concept in ROS and all ROS programs are organised in this way**. 
+ROS applications are organised into *packages*. Packages are basically folders containing scripts, configurations and launch files (ways to launch those scripts and configurations), all of which relate to some common robot functionality. ROS uses packages as a way to organise all the programs running on a robot. 
+
+{{% nicenote info %}}
+The package system is a fundamental concept in ROS and all ROS programs are organised in this way.
+{{% /nicenote %}} 
 
 #### Exercise 2: Exploring a ROS Package {#ex2}
 
-`roscd` is a *ROS command* that allows us to navigate to the directory of any ROS package installed on our system, without us needing to know the path to the package beforehand.
+`roscd` is a **ROS command** that allows us to navigate to the directory of any ROS package installed on our system, without us needing to know the path to the package beforehand.
 
-1. Open up a new terminal instance (**TERMINAL 3**) and use the `roscd` command to navigate to the `turtlebot3_teleop` package directory on our Linux filesystem:
+1. Open up a new terminal instance (**TERMINAL 3**) and use the `roscd` command to navigate to the `turtlebot3_teleop` package directory on the Linux filesystem:
   
     ***
     **TERMINAL 3:**
@@ -85,14 +89,17 @@ ROS applications are organised into *packages*. ROS packages are collections of 
 
     The terminal prompt should have changed to illustrate where on the filesystem the `roscd` command has just taken you:
     
-    ![](/figures/com2009/wk01/tb3_teleop_dir.svg)
+    ![](/images/ros-cli/tb3_teleop_dir.svg)
     
-1. `pwd` is a *Linux command* which tells us where the terminal is currently located in the filesystem (i.e. **P**rint **W**orking **D**irectory).  Enter this command to confirm what the terminal prompt is telling you.
+1. `pwd` is a **Linux command** which tells us the current filesystem location of our terminal.  Enter this command to confirm what the terminal prompt has told us.
     
-    We now know *where* the `turtlebot3_teleop` package is located on our machine, and we can then use more Linux commands to explore this further:
-1. `ls` is a Linux command which **lists** the contents of the current directory.  Use this to list the contents of the `turtlebot3_teleop` package directory.
+    So, now we know *where* the `turtlebot3_teleop` package is located on our machine, and we can then use more Linux commands to explore this further:
 
-1. `ls` on its own will simply list the items in the current directory, but we can use the `-F` option to find out a little more:
+1. `ls` is a **Linux command** which *lists* the contents of the current directory.  Use this to list the contents of the `turtlebot3_teleop` package directory.
+
+1. `ls` on its own will simply list the items in the current directory, try this first.
+
+1. Then, use the `-F` option to find out a little more:
     
     ***
     **TERMINAL 3:**
@@ -101,8 +108,12 @@ ROS applications are organised into *packages*. ROS packages are collections of 
     ```
     ***
     
-    You will notice that the output has now changed slightly: items followed by a `/` are folders (aka *"directories"*) and items without the `/` are files (files will often have a file extension too).  ***How many items are there in the `turtlebot3_teleop` package directory?  How many of these are directories and how many are files?***  
+    You will notice that the output has now changed slightly: items followed by a `/` are folders (aka *"directories"*) and items without the `/` are files (files will often have a file extension too).
     
+    {{% nicenote note Question %}}  
+How many items are there in the `turtlebot3_teleop` package directory?  How many of these are directories and how many are files? 
+    {{% /nicenote %}}
+
     *Launch files* for a package are typically located in a *launch* folder within the package directory.  You should have noticed a `launch` folder in the output of the `ls` command above.
 1. `cd` is a *Linux command* that allows us to **C**hange the **D**irectory that the terminal is currently located in.  Use this to navigate to the `turtlebot3_teleop` package `launch` folder and then use `ls` again to see what's in there. 
 
