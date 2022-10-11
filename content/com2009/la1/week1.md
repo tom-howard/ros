@@ -1,6 +1,6 @@
 +++
 title = "Week 1: ROS & Linux Basics"
-weight = 5
+weight = 1
 description = "In this first week you will learn the basics of ROS and become familiar with some key tools and principles of this framework, allowing you to program robots and work with ROS applications effectively."
 +++
 
@@ -26,6 +26,14 @@ By the end of this session you will be able to:
 * [Exercise 3: Visualising the ROS Network](#ex3)
 * [Exercise 4: Exploring ROS Topics and Messages](#ex4)
 * [Exercise 5: Creating your own ROS Package](#ex5)
+* [Exercise 6: Creating a publisher node](#ex6)
+* [Exercise 7: Creating a subscriber node](#ex7)
+* [Exercise 8: Creating a launch file](#ex8)
+
+### Additional Resources
+
+* [The Publisher Code (for Exercise 6)](publisher)
+* [The Subscriber Code (for Exercise 7)](subscriber)
 
 ## First Steps
 
@@ -339,7 +347,7 @@ What did the `catkin_create_pkg` tool just do? (**Hint**: there were four things
     ```bash
     catkin build week1_pubsub
     ```
-    Finally, "re-source" your environment using the following command[^source-bashrc]:
+    Finally, "re-source" your environment[^source-bashrc] using the following command:
     ```bash
     source ~/.bashrc
     ```
@@ -390,26 +398,28 @@ What did the `catkin_create_pkg` tool just do? (**Hint**: there were four things
     
     ```bash
     ls -lF
-
-    -rwxr-xr-x 1 student student 0 Jan 01 12:00 publisher.py*
     ```
     ***
 
-    We have now granted permission for the file to be e**X**ecuted too. Job done!
+    We have now granted permission for the file to be e**X**ecuted too:
     
+    ```bash
+    -rwxr-xr-x 1 student student 0 Jan 01 12:00 publisher.py*
+    ```
+
 1. We now need to open this file to edit it. As discussed on [the Getting Started page](/wsl-ros/getting-started/#vscode), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, [so follow the instructions here to get this up and running now](/wsl-ros/vscode)!
 
-1. **[Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment (TODO)]()!!**
+1. [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment (TODO)]()!!
 
 1. Using the VS Code File Explorer, navigate to your `week1_pubsub` package directory (`~/catkin_ws/src/week1_pubsub/`), locate the `publisher.py` file that you have just created in the `/week1_pubsub/src/` folder and click on the file to open it. 
 
-1. Once opened, copy [the code provided here](./publisher/) into the empty file and save it.
+1. Once opened, copy [the code provided here](publisher) into the empty file and save it.
     
     {{< nicenote note >}}
-It's important that you understand how this code works, so **make sure that you read [the explainer](Week-1-Publisher-Node#explainer)**!
+It's important that you understand how this code works, so [make sure that you read the explainer](publisher/#explainer)!
     {{< /nicenote >}}
 
-1. We can now run this node using the *ROS command* `rosrun`. However, because we closed everything down earlier on, the *ROS Master* is no longer active.  First then, we need to re-launch it manually using `roscore`:
+1. We can now run this node using the `rosrun` **ROS command**. However, because we closed everything down earlier on, the *ROS Master* is no longer active. First then, we need to re-launch it manually using `roscore`:
 
     ***
     **TERMINAL 1:**
@@ -428,17 +438,17 @@ It's important that you understand how this code works, so **make sure that you 
     [INFO] [#####]: The 'simple_publisher' node is active...
     ```
 
-    We can further verify that our publisher node is running using a number of different tools. Try the following in **TERMINAL 3**:
+    We can further verify that our publisher node is running using a number of different tools. Try running the following commands in **TERMINAL 3**:
 
-1. `$ rosnode list`: This will provide a list of all the nodes that are currently active on the system. Verify that the name of our publisher node is visible in this list.
-1. `$ rostopic list`: This will provide a list of the topics that are currently being used by nodes on the system. Verify that the name of the topic that our publisher is publishing messages to is present within this list.
+    1. `rosnode list`: This will provide a list of all the nodes that are currently active on the system. Verify that the name of our publisher node is visible in this list.
+    1. `rostopic list`: This will provide a list of the topics that are currently being used by nodes on the system. Verify that the name of the topic that our publisher is publishing messages to is present within this list.
 
 ### Using the `rostopic` command {#rostopic}
 
 So far we have used the `rostopic` ROS command with two additional arguments:
 
-* `list` to provide us with a *list* of all the topics that are active on our ROS system, and
-* `info` to provide us with *information* on a particular topic of interest.
+* `list`: to provide us with a *list* of all the topics that are active on our ROS system, and
+* `info`: to provide us with *information* on a particular topic of interest.
 
 We can use the *autocomplete functionality* of the Linux terminal to provide us with a list of *all* the available options that we can use with the `rostopic` command.  To do this you can type `rostopic` followed by a `Space` and then press the `Tab` key twice:
 
@@ -474,7 +484,7 @@ You should then be presented with a list of the available arguments for the `ros
     rostopic echo -h
     ```
 
-    From here, for instance, we can learn that if we just wanted the echo command to display a set number of messages from the `/chatter` topic we could use the `-n` option. To display the most recent two message only for example:
+    From here, for instance, we can learn that if we just wanted the echo command to display a set number of messages from the `/chatter` topic we could use the `-n` option. To display the most recent two messages only, for example:
 
     ```bash
     rostopic echo /chatter -n2
@@ -482,20 +492,98 @@ You should then be presented with a list of the available arguments for the `ros
 
 #### Exercise 7: Creating a subscriber node {#ex7}
 
-You will now create another node to *subscribe* to the topic that our publisher node is broadcasting messages to, to access the information within the topic messages.
+You will now create another node to *subscribe* to the topic that our publisher node is broadcasting messages to, to illustrate how information can be passed from one node to another, via topic messages.
 
-1. In **TERMINAL 3** use the filesystem commands that were introduced earlier (`cd`, `ls` and `roscd`) to navigate to the `src` folder of the `week1_pubsub` package that we created earlier.
-1. Use the same procedure as before to create a new empty Python file called `subscriber.py` and make it executable.
-1. Then, open the newly created `subscriber.py` file in VS Code, paste in the code provided [here](Week-1-Subscriber-Node) and save it.  *Once again, it's important that you understand how this code works, so make sure you read [the explainer](Week-1-Subscriber-Node#explainer).*
+1. In **TERMINAL 3** use the filesystem commands that were introduced earlier (`cd`, `ls` and `roscd`) to navigate to the `src` folder of your `week1_pubsub` package.
+1. Use the same procedure as before to create a new empty Python file called `subscriber.py` and remember to make it executable!
+1. Then, open the newly created `subscriber.py` file in VS Code, paste in [the code here](subscriber) and save it. Once again, it's important that you understand how this code works, so [make sure you read the explainer](subscriber/#explainer).
 
-1. Use `rosrun` (remember: `rosrun {package name} {script name}`) to run your newly created `subscriber.py` node. If your publisher and subscriber nodes are working correctly you should see an output like this:
+1. Use `rosrun` to execute your newly created `subscriber.py` node (remember: `rosrun {package name} {script name}`). If your publisher and subscriber nodes are working correctly you should see an output like this:
     
-    <p align="center">
-      <img src="figures/wk01/subscriber_output.gif">
-    </p>
+    ![](images/subscriber_output.gif)
 
 1. As before, we can find out what nodes are running on our system by using the `$ rosnode list` command. Open a new terminal window (**TERMINAL 4**), run this and see if you can identify the nodes that you have just launched.
 
 1. Finally, close down your publisher and subscriber nodes and the ROS Master by entering `Ctrl+C` in Terminals 1, 2 and 3.
 
 ## Launch Files
+
+At the beginning of this session we launched our Gazebo Simulation and the `turtlebot3_teleop_keyboard` node using *launch files* and the `roslaunch` command. This provides a means to launch multiple ROS nodes *simultaneously*, and we will demonstrate this by building a launch file for the publisher and subscriber nodes that we created in the previous exercises.
+
+#### Exercise 8: Creating a launch file {#ex8}
+
+1. In **TERMINAL 1**, use `roscd` to navigate to the *root* of your `week1_pubsub` package directory.
+1. Use the Linux `mkdir` command to **m**a**k**e a new **dir**ectory in the package root folder called `launch`:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    mkdir launch
+    ```
+    ***
+
+1. Use the `cd` command to enter the `launch` folder that you just created, then use the `touch` command (as before) to create a new empty file called `pubsub.launch`.
+1. Open this launch file in VS Code and enter the following text:
+
+    ```xml
+    <launch>
+      <node pkg={BLANK} type={BLANK} name="pub_node" output="screen">
+      </node>
+    </launch>
+    ```
+
+    {{< nicenote warning "Fill in the Blanks!" >}}
+Referring to what we learned about [the format of launch files](#package_attributes) earlier, replace each `{BLANK}` above with the correct text to launch the publisher node that you created in [Exercise 6](#ex6).
+    {{< /nicenote >}}
+
+1. Use `roslaunch` to launch this file and test it out as it is (remember: `roslaunch {package name} {launch file}`). If everything looks OK then carry on to the next step.
+1. The code that we've given you above will launch the `publisher.py` node, but not the `subscriber.py` node.  Add another `<node>` tag to your `pubsub.launch` file to launch the subscriber node as well.
+1. The publisher and subscriber nodes and the *ROS Master* can now all be launched with the `roslaunch` command and the `pubsub.launch` file that you have now created.  
+1. Launch this in **TERMINAL 1** and then use `rosnode list` in **TERMINAL 2** to check that it all works correctly.
+
+##### Summary {#roslaunch}
+
+* `roslaunch` can be used to launch multiple nodes on a robot from *one single command*.
+* It will *also* automatically launch the ROS Master (equivalent to running the `roscore` command manually) if it isn't already running (*did you notice that we didn't have to do this manually in Exercise 8, but we did when we launched our nodes individually, using `rosrun`, in Exercises 6 & 7?*)
+* In the `rospy.init(...)` functions of our `publisher.py` and `subscriber.py` Python scripts, we defined a node name and set `anonymous=True`. As a result, when we launched our nodes manually using `rosrun`, the names we defined were honoured, but were appended with a unique combination of numbers.
+* When we launched our nodes using `roslaunch` however, the node names were set according to what we had defined in the `name` field of the `<node>` tag within the launch file, and anything specified within the `rospy.init(...)` functions of our Python scripts were overwritten as a result.
+
+## Wrapping Up
+
+In this session we've learnt about some key concepts in ROS, such as Packages; Launch files; Nodes and the *Publisher-Subscriber Communication Method* using Topics and Messages.
+
+We've learnt how to use some key ROS commands:
+* `roslaunch`: to launch multiple ROS Nodes via launch files.
+* `roscd`: to navigate to installed ROS packages using a package name alone.
+* `rosnode`: to display information about active ROS Nodes.
+* `rosrun`: to run executables within a ROS package.
+* `rostopic`: to display information about *active* ROS topics.
+* `rosmsg`: to display information about *all* ROS messages that are available to use in a ROS application.
+* `roscore`: to launch the *ROS Master*: The baseline nodes and programs that are required for ROS to function.
+
+In addition to this we've also learnt how to use `catkin_create_pkg`, which is a helper script for creating ROS package templates.
+
+We have also learnt how to work in the Linux Terminal and navigate a Linux filesystem using key commands such as:
+* `pwd`: prints the path of the current working directory to show you which directory you're currently located in.
+* `ls`: lists the files in the current directory.
+* `cd`: change directory to move around the file system.
+* `mkdir`: make a new directory (`mkdir {new_folder}`).
+* `cat`: show the contents of a file.
+* `chmod`: modify file permissions (i.e. to add execute permissions to a file for all users: `chmod +x {file}`).
+* `touch`: create a file without any content.
+
+Finally, we have learnt how to create basic ROS nodes in Python to both *publish* and *subscribe* to ROS topics using standard ROS messages.
+
+### Saving your work {#backup}
+
+Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
+
+```bash
+wsl_ros backup
+```
+
+This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.  
+
+{{% textalign right %}}
+[Next: "Week 2: Odometry & Basic Navigation" <i class="fas fa-solid fa-arrow-right"></i>](../week2)
+{{% /textalign %}}
