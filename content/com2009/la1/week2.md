@@ -4,6 +4,10 @@ weight = 2
 description = "In this session you'll learn how to control a ROS robot's velocity (and thus its position), how to interpret Odometry data and implement some open-loop control nodes."
 +++
 
+{{% textalign center %}}
+*You should be able to complete the exercises on this page within a two-hour lab session*.
+{{% /textalign %}}
+
 {{% textalign left %}}
 [<i class="fas fa-solid fa-arrow-left"></i> Previous: "Week 1: ROS & Linux Basics"](../week1)
 {{% /textalign %}}

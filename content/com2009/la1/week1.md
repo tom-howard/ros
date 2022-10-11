@@ -4,6 +4,10 @@ weight = 1
 description = "In this first week you will learn the basics of ROS and become familiar with some key tools and principles of this framework, allowing you to program robots and work with ROS applications effectively."
 +++
 
+{{% textalign center %}}
+*You should be able to complete the exercises on this page within a two-hour lab session*.
+{{% /textalign %}}
+
 ## Introduction
 
 ### Aims
