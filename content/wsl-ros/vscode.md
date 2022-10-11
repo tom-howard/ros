@@ -8,7 +8,7 @@ weight = 2
 [<i class="fas fa-solid fa-arrow-left"></i> Previous Page: "Getting Started with WSL-ROS on a University Computer"](/wsl-ros/getting-started)
 {{% /textalign %}}
 
-{{% nicenote note %}}
+{{% nicenote info %}}
 On the University Managed Desktops, you should follow these steps to launch VS Code every time you need to use it!
 {{% /nicenote %}}
 
@@ -62,3 +62,7 @@ Check that you can always see this icon in the bottom left-hand corner of your V
 {{% nicenote warning %}}
 If you don't see this then [start again from the top](#the-top)!
 {{% /nicenote %}}
+
+{{% textalign right %}}
+[Next Page: "Working with ROS on your own PC" <i class="fas fa-solid fa-arrow-right"></i>](/wsl-ros/installing)
+{{% /textalign %}}
