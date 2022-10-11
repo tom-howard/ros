@@ -373,45 +373,25 @@ What did the `catkin_create_pkg` tool just do? (**Hint**: there were four things
     ```
     ***
 
-1. Because we want to be able to run (or *execute*) this script, we will need to set the correct file permissions to allow us to do so. To do this, we can use the Linux `chmod` command in the following way: `chmod +x {name of the python script}`. First though have a look at the file as it is using `ls` again, but this time with an additional option:
+1. Use `ls` to verify that the file has been created, but use the `-l` option with this, so that the command provides its output in *"a long listing format"*:
 
     ***
     **TERMINAL 1:**
     ```bash
-    ls -lF  
-    ```
-
-    Which should provide the following output: 
-    
-    ```bash
-    -rw-r--r-- 1 student student 0 Jan 01 12:00 publisher.py
+    ls -l
     ```
     ***
 
-    The first bit of the output here tells us the *file permissions*: `-rw-r--r--`.  This tells us *who* has permission to do *what* with this file and (currently) the first bit: `-rw-`, tells us that we (as the user `student`) have permission to **R**ead or **W**rite to it.
-    
-    Now run the `chmod` command:
+    This should output something similar to the following:
 
-    ***
-    **TERMINAL 1:**
-    ```bash
-    chmod +x publisher.py
+    ```txt
+    total 0
+    -rw-r--r-- 1 student student 0 MMM DD HH:MM publisher.py
     ```
 
-    And then run the `ls -lF` command again to see what has changed:
-    
-    ```bash
-    ls -lF
-    ```
-    ***
+    This confirms that the file exists, and the `0` in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.
 
-    We have now granted permission for the file to be e**X**ecuted too:
-    
-    ```bash
-    -rwxr-xr-x 1 student student 0 Jan 01 12:00 publisher.py*
-    ```
-
-1. We now need to open this file to edit it. As discussed on [the Getting Started page](/wsl-ros/getting-started/#vscode), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, [so follow the instructions here to get this up and running now](/wsl-ros/vscode)!
+1. We therefore now need to open the file and add content to it. As discussed on [the Getting Started page](/wsl-ros/getting-started/#vscode), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, [so follow the instructions here to get this up and running now](/wsl-ros/vscode)!
 
 1. [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment (TODO)]()!!
 
@@ -432,17 +412,61 @@ It's important that you understand how this code works, so [make sure that you r
     ```
     ***
 
-1. Then, in **TERMINAL 2**, use `rosrun` to execute the `publisher.py` script that you have just created by providing the relevant information to the `rosrun` command as follows: `rosrun {package name} {script name}`
+1. Then, in **TERMINAL 2**, use `rosrun` to execute the `publisher.py` script that you have just created by providing the relevant information to the `rosrun` command as follows: `rosrun {package name} {script name}`, i.e.:
 
-    <!-- TODO: do this without doing chmod first -->
+    ***
+    **TERMINAL 2:**
+    ```bash
+    rosrun week1_pubsub publisher.py
+    ```
+    ***
+
+    ... Hmmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:
+
+    ```txt
+    [rosrun] Couldn't find executable named publisher.py below /home/student/catkin_ws/src/week1_pubsub
+    [rosrun] Found the following, but they're either not files,
+    [rosrun] or not executable:
+    [rosrun]   /home/student/catkin_ws/src/week1_pubsub/src/publisher.py
+    ``` 
+
+    The clue there is the word *"executable"*. When we create a file, using `touch` it is given certain *permissions*. Run `ls -l` again (make sure your terminal is in the right location: `~/catkin_ws/src/week1pubsub/src/`), the first bit tells us about the permissions that are currently set: `-rw-r--r--`. This tells us *who* has permission to do *what* with this file and (currently) the first bit: `-rw-`, tells us that we (as the user `student`) have permission to **R**ead or **W**rite to it. There is a *third* option we can set too though, which is the *execute* permission, and we can set this using the `chmod` **Linux command**...
+
+1. Run the `chmod` command as follows:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    chmod +x publisher.py
+    ```
+    ***
+
+1. Now, run `ls -l` again to see what has changed:
+    
+    ***
+    **TERMINAL 2:**
+    ```bash
+    ls -lF
+    ```
+    ***
+
+    We have now granted permission for the file to be e**X**ecuted too:
+    
+    ```txt
+    -rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
+    ```
+
+1. OK, now use `rosrun` again to (*hopefully!*) run the `publisher.py` node (remember: `rosrun {package name} {script name}`).
     
     If you see a message in the terminal similar to the following then the node has been launched successfully:
         
-    ```bash
+    ```txt
     [INFO] [#####]: The 'simple_publisher' node is active...
     ```
 
-    We can further verify that our publisher node is running using a number of different tools. Try running the following commands in **TERMINAL 3**:
+    Phew!
+
+1. We can further verify that our publisher node is running using a number of different tools. Try running the following commands in **TERMINAL 3**:
 
     1. `rosnode list`: This will provide a list of all the nodes that are currently active on the system. Verify that the name of our publisher node is visible in this list.
     1. `rostopic list`: This will provide a list of the topics that are currently being used by nodes on the system. Verify that the name of the topic that our publisher is publishing messages to is present within this list.
