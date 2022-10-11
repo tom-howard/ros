@@ -230,6 +230,10 @@ You should currently have three terminal windows active: the first in which you 
 
 ## Publishers and Subscribers: A *ROS Communication Method* 
 
+ROS Topics are key to making things happen on a robot. Nodes can publish (*write*) and/or subscribe to (*read*) ROS Topics in order to share data around the ROS network. Data is published to topics using *ROS Messages*. We were actually publishing messages to a topic when we made the robot move using the Teleop node in the previous exercises.
+
+Let's have a look at this in a bit more detail...
+
 #### Exercise 4: Exploring ROS Topics and Messages {#ex4}
 
 We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS command*.
@@ -257,7 +261,17 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS com
 
     This confirms what we discovered earlier about the publisher(s) and subscriber(s) to the `/cmd_vel` topic.  In addition, this also tells us the topic *type*, or the *type of message* that is being published on this topic.
 
-1. We can use the `rosmsg` *ROS command* to provide further information about this message, or any other message that we may be interested in:
+    This tells us a few things:
+    
+    1. The `/turtlebot3_teleop_keyboard` node is currently publishing (i.e. writing data) to the `/cmd_vel` topic, confirming what we saw from the `rqt_graph` node before.
+    1. The `/gazebo` node is subscribing to the topic. This node is the Gazebo application that's running the simulation of the robot. The node therefore monitors (i.e. *subscribes* to) the `/cmd_vel` topic and makes the robot move in the simulator based whenever a velocity command is published.
+    1. The *type* of message used by the `/cmd_vel` topic is called: `geometry_msgs/Twist`. 
+    
+        The message type has two parts: `geometry_msgs` and `Twist`. `geometry_msgs` is the name of the ROS package that this message belongs to and `Twist` is the actual message *type*. 
+
+        We have just learnt then, that if we want to make the robot move we need to publish `Twist` messages to the `/cmd_vel` topic.
+
+1. We can use the `rosmsg` **ROS command** to provide further information about this message, or any other message that we may be interested in:
 
     ***
     **TERMINAL 4:**

@@ -333,7 +333,7 @@ Much like the `rosnode list` command, we can use `rostopic list` to list all the
     
         The message type has two parts: `geometry_msgs` and `Twist`. `geometry_msgs` is the name of the ROS package that this message belongs to and `Twist` is the actual message *type*. 
 
-        We have just learnt then, that if we want to make the robot move  we need to publish `Twist` messages to the `/cmd_vel` topic. 
+        We have just learnt then, that if we want to make the robot move we need to publish `Twist` messages to the `/cmd_vel` topic. 
 
 1. We can use the `rosmsg` command to find out more about the `Twist` message:
 
