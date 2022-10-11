@@ -393,7 +393,7 @@ What did the `catkin_create_pkg` tool just do? (**Hint**: there were four things
 
 1. We therefore now need to open the file and add content to it. As discussed on [the Getting Started page](/wsl-ros/getting-started/#vscode), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, [so follow the instructions here to get this up and running now](/wsl-ros/vscode)!
 
-1. [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment (TODO)]()!!
+1. [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment](/wsl-ros/vscode/#verify)!!
 
 1. Using the VS Code File Explorer, navigate to your `week1_pubsub` package directory (`~/catkin_ws/src/week1_pubsub/`), locate the `publisher.py` file that you have just created in the `/week1_pubsub/src/` folder and click on the file to open it. 
 
