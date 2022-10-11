@@ -264,7 +264,7 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS com
     This tells us a few things:
     
     1. The `/turtlebot3_teleop_keyboard` node is currently publishing (i.e. writing data) to the `/cmd_vel` topic, confirming what we saw from the `rqt_graph` node before.
-    1. The `/gazebo` node is subscribing to the topic. This node is the Gazebo application that's running the simulation of the robot. The node therefore monitors (i.e. *subscribes* to) the `/cmd_vel` topic and makes the robot move in the simulator based whenever a velocity command is published.
+    1. The `/gazebo` node is subscribing to the topic. This node is the Gazebo application that's running the simulation of the robot. The node therefore monitors (i.e. *subscribes* to) the `/cmd_vel` topic and makes the robot move in the simulator whenever a velocity command is published.
     1. The *type* of message used by the `/cmd_vel` topic is called: `geometry_msgs/Twist`. 
     
         The message type has two parts: `geometry_msgs` and `Twist`. `geometry_msgs` is the name of the ROS package that this message belongs to and `Twist` is the actual message *type*. 
