@@ -1,4 +1,4 @@
-#!/usr/bin/env python3                                                                         # [1]
+#!/usr/bin/env python3
 # A simple ROS subscriber node in Python
 
 import rospy                                                                                   # [2]
