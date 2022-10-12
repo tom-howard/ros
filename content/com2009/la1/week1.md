@@ -460,7 +460,7 @@ It's important that you understand how this code works, so [make sure that you r
     ***
     **TERMINAL 2:**
     ```bash
-    ls -lF
+    ls -l
     ```
     ***
 
