@@ -15,11 +15,13 @@ Replace the `{BLANK}` in the code above with the name of the topic that our [`pu
 
 ## The Code Explained {#explainer}
 
-1. First, **don't forget the shebang!**
+### Don't Forget the Shebang! {#dfts}
 
-    ```python
-    #!/usr/bin/env python3
-    ```
+First, **don't forget the shebang!**
+
+```python
+#!/usr/bin/env python3
+```
 
 1. As with our publisher node, we need to import the `rospy` client library and the `String` message type from the `std_msgs.msg` library in order to write a Python ROS Node and use the relevant ROS messages:
 

@@ -13,17 +13,19 @@ Numbers inside square brackets above refer to the numbered items in the explaine
 
 ## The Code Explained {#explainer}
 
-1. First things first, the very first line in this file looks like a comment, but it is actually a very crucial part of the script:
+### The Shebang {#shebang}
 
-    ```python
-    #!/usr/bin/env python3
-    ```
+First things first, the very first line of code looks like a comment, but it is actually a very crucial part of the script:
 
-    This is called the *Shebang*, and it tells the operating system which interpreter to use to execute the code. In our case here, it tells the operating system where to find the right *Python interpreter* that should be used to actually run the code.
+```python
+#!/usr/bin/env python3
+```
+
+This is called the *Shebang*, and it tells the operating system which interpreter to use to execute the code. In our case here, it tells the operating system where to find the right *Python interpreter* that should be used to actually run the code.
     
-    {{< nicenote tip >}}
+{{< nicenote tip >}}
 Make sure that this exists in **all** the Python nodes that you create in ROS!
-    {{< /nicenote >}}
+{{< /nicenote >}}
 
 1. Then on to the actual Python code. `rospy` is the *Python client library for ROS*, and we need to import this in order to create ROS Nodes in Python. We also need to import the `String` message type from the `std_msgs.msg` library for publishing our messages:
 
