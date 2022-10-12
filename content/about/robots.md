@@ -26,9 +26,9 @@ Here in the Diamond we have a number of *customised* TurtleBot3 Waffles specific
 
 ![](/figures/waffle/cabinet.jpg?width=12cm) 
 
-Whether we're working in simulation or with the real thing, the ROS applications that we develop as part of the course materials here are directly transferable between the two (mostly!) 
+Whether we're working in simulation or with the real thing, the ROS applications that we develop as part of the courses here are directly transferable between the two (mostly!) 
 
-The robots that we have are in fact slightly different to the standard *TurtleBot3 WafflePi* model that you can buy directly from Robotis. We've made a few adjustments, as shown below:
+The robots that we have are slightly different to the standard *TurtleBot3 WafflePi* that you can buy from Robotis. We've made a few adjustments, and the full specifications are as follows:
 
 ![](/figures/waffle/features.png?width=20cm)
 
