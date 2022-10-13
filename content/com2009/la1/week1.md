@@ -282,7 +282,7 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS com
 
     From this, we should obtain the following:
 
-    ```bash
+    ```txt
     geometry_msgs/Vector3 linear
         float64 x
         float64 y

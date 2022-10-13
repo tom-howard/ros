@@ -20,7 +20,7 @@ The TurtleBot3 Waffle developers (Robotis) have written a book on programming ro
 
 We recommend that you have a look at this book to learn more about the concepts that you are exploring in these courses.
 
-### Our Waffles
+### Our Waffles {#tb3}
 
 Here in the Diamond we have a number of *customised* TurtleBot3 Waffles specifically for teaching this course:
 
