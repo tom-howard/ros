@@ -373,6 +373,10 @@ What did the `catkin_create_pkg` tool just do? (**Hint**: there were four things
 
     ... and you're good to go.
 
+    {{< nicenote warning >}}
+You will need run `source ~/.bashrc` in any other terminals that you have open too, in order for the changes to propagate through to these as well!
+    {{< /nicenote >}}
+
 [^source-bashrc]: What does `source ~/.bashrc` do? [See here for an explanation](https://devconnected.com/source-command-on-linux-explained/#Source_to_update_your_current_shell_environment_bashrc).
 
 #### Exercise 6: Creating a publisher node {#ex6}
@@ -544,7 +548,7 @@ You will now create another node to *subscribe* to the topic that our publisher 
     
     ![](images/subscriber_output.gif)
 
-1. As before, we can find out what nodes are running on our system by using the `$ rosnode list` command. Open a new terminal window (**TERMINAL 4**), run this and see if you can identify the nodes that you have just launched.
+1. As before, we can find out what nodes are running on our system by using the `rosnode list` command. Open a new terminal window (**TERMINAL 4**), run this and see if you can identify the nodes that you have just launched.
 
 1. Finally, close down your publisher and subscriber nodes and the ROS Master by entering `Ctrl+C` in Terminals 1, 2 and 3.
 
