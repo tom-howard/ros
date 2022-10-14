@@ -2,6 +2,7 @@
 title = "Week 2: Odometry & Basic Navigation"
 weight = 2
 description = "In this session you'll learn how to control a ROS robot's velocity (and thus its position), how to interpret Odometry data and implement some open-loop control nodes."
+draft = "true"
 +++
 
 {{% textalign center %}}
