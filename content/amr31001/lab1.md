@@ -1,11 +1,9 @@
 ---
 title: "Lab 1: Mobile Robotics"
-date: 2022-08-26T11:38:07+01:00
-draft: false
 ---
 
 {{% textalign center %}}
-*You should be able to complete the exercises on this page within a two-hour lab session*.
+*You should be able to complete exercises 1-6 on this page within a two-hour lab session*.
 {{% /textalign %}}
 
 ## Introduction
@@ -19,7 +17,7 @@ ROS allows us to programme robots using a range of different programming languag
 We'll be working with robots called *'TurtleBot3 Waffles'*, which you can [find out a bit more about here](/intro/robots). 
 
 {{< nicenote warning "Pre-Lab Work" >}}
-You **must** have completed the Health & Safety Assessment before you can make a start on this lab. This is available on the AMR31001 Blackboard Course Page.
+You **must** have completed the Pre-Lab Test before you can make a start on this lab. This is available on the AMR31001 Blackboard Course Page.
 {{< /nicenote >}}
 
 ### Aims
@@ -43,6 +41,7 @@ By the end of this session you will be able to:
 * [Exercise 4: Exploring ROS Topics and Messages](#ex4)
 * [Exercise 5: Publishing Velocity Commands to the `/cmd_vel` Topic](#ex5)
 * [Exercise 6: Creating a Python node to make the robot move](#ex6)
+* [Exercise 7 (Advanced): Alternative Motion Paths](#ex7)
 
 ## The Lab
 
@@ -63,7 +62,7 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 
 1. Open up a terminal instance on the laptop, either by using the `Ctrl+Alt+T` keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
-    ![](/figures/laptops/bash_terminal_icon.svg?width=60px)
+    ![](/images/laptops/bash_terminal_icon.svg?width=60px)
         
     (we'll refer to this as **TERMINAL 1**).
     
@@ -83,7 +82,7 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 
     You *may* see a message like this early on in the pairing process:
 
-    ![](/figures/laptops/ssh_auth.svg?width=14cm)
+    ![](/images/laptops/ssh_auth.svg?width=14cm)
 
     If so, just type `yes` and then hit `Enter` to confirm that you want to continue.
 
@@ -102,7 +101,7 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 
     Any text that was in the terminal should now disappear, and a green banner should appear across the bottom of the terminal window:
     
-    ![](/figures/laptops/tmux.svg?width=14cm)
+    ![](/images/laptops/tmux.svg?width=14cm)
 
     This is a terminal instance running *on the robot*, and any commands that you enter here will be *executed on the robot* (not the laptop!)
 
@@ -138,9 +137,7 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 
 1. Follow the instructions provided in the terminal to drive the robot around using specific buttons on the keyboard:
 
-    ![](/figures/teleop_keymap.svg)
-
-    <!-- <a name="stop_teleop"> TODO -->
+    ![](/images/ros-cli/teleop_keymap.svg)
 
 1. Enter `Ctrl+C` in **TERMINAL 2** to stop the Teleop node when you've had enough fun.
     
@@ -182,9 +179,14 @@ Our Waffles have some pretty sophisticated sensors on them, allowing them to "se
     ```
     ***
 
+    Notice how we're using the `rosrun` command here, instead of `roslaunch`? We use `rosrun` if we only want to launch a **single node** (like the `rqt_image_view` node) on the ROS network. `rosrun` has a similar two-part format to `roslaunch`:
+
+    ```bash
+    rosrun {[1] Package name} {[2] Node name}
+    ```    
+     
     {{< nicenote info "Post-lab Quiz" >}}
-1. Notice how we're using the `rosrun` command here, instead of `roslaunch`? We use `rosrun` if we only want to launch a **single node** (like the `rqt_image_view` node) on the ROS network.
-1. `rosrun` has [the same two-part format as `roslaunch`](#packages-and-nodes). Why did we have to type `rqt_image_view` twice?
+Why did we have to type `rqt_image_view` twice?
     {{< /nicenote >}}
 
 1. A new window should open. Maximise this (if it isn't already) and then select `/camera/color/image_raw` from the dropdown menu at the top-left of the application window.
@@ -204,7 +206,7 @@ Our Waffles have some pretty sophisticated sensors on them, allowing them to "se
     
     This will launch an application called *RViz*, which is a handy tool that allows us to *visualise* the data from all the sensors on-board our robots. When RViz opens, you should see something similar to the following:
 
-    ![](/figures/laptops/waffle_rviz.png?width=20cm)
+    ![](/images/laptops/waffle_rviz.png?width=20cm)
 
     The strange wobbly sheet of colours in front of the robot is the live image stream from the camera with depth applied to it at the same time. The camera is able to determine how far away each image pixel is from the camera lens, and then uses that to generate this 3-dimensional representation. Nice eh!
 
@@ -229,7 +231,7 @@ The LiDAR sensor spins and performs this process continuously, so a full 360&deg
 
     A new RViz screen will open up, this time showing the robot from a top-down view, and with the LiDAR data represented by green dots instead.
 
-    ![](/figures/laptops/waffle_slam.png?width=20cm)
+    ![](/images/laptops/waffle_slam.png?width=20cm)
 
     Underneath the green dots you should notice black lines forming. ROS is using a process called *SLAM* (Simultaneous Localisation and Mapping) to generate a map of the environment, using the data from the LiDAR sensor.
 
@@ -363,7 +365,7 @@ Much like the `rosnode list` command, we can use `rostopic list` to list all the
 
 The motion of any mobile robot can be defined in terms of its three *principal axes*: `X`, `Y` and `Z`. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are defined as follows:
 
-![](/figures/tb3_axes.svg?width=20cm)
+![](/images/waffle/principal_axes.svg?width=20cm)
 
 In theory then, a robot can move *linearly* or *angularly* about any of these three axes, as shown by the arrows in the figure. That's six *Degrees of Freedom* (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. Take a look back at the `rosmsg info` output in **TERMINAL 2**. Hopefully it's a bit clearer now that these topic messages are formatted to give a ROS Programmer the ability to *ask* a robot to move in any one of its six DOFs. 
 
@@ -380,7 +382,7 @@ geometry_msgs/Vector3 angular
 
 Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! These two motors can be controlled independently, which gives it what is called a *"differential drive"* configuration, but this still only allows it to move with **two degrees of freedom** in total, as illustrated below.
 
-![](/figures/tb3_velocity.svg?width=20cm)
+![](/images/waffle/velocities.svg?width=20cm)
 
 It can therefore only move **linearly** in the **x-axis** (*Forwards/Backwards*) and **angularly** in the **z-axis** (*Yaw*). 
 
@@ -542,14 +544,14 @@ Don't forget to include the `.`, it's important!!
             vel.angular.z = 0.0
             print(f"Moving to state: {movement}")
         elif movement == "fwd":
-            if elapsed_time > 5:
+            if elapsed_time > 2:
                 movement = "turn"
                 transition = True
             else:
                 vel.linear.x = 0.05
                 vel.angular.z = 0.0
         elif movement == "turn":
-            if elapsed_time > 5:
+            if elapsed_time > 4:
                 movement = "fwd"
                 transition = True
             else:
@@ -576,11 +578,13 @@ Make sure the robot is on the floor and has enough room to roam around before yo
     
 1. As the name may suggest, the aim here is to make the robot follow a square motion path. What you may have observed when you actually ran the code is that the robot doesn't actually do that! We're using a time-based approach to make the robot switch between two different states continuously: *moving forwards* and *turning on the spot*.
     
-    Have a look at the code to work out how much time the robot will currently spend performing each state.
+    Have a look at the code to work out how much time the robot will currently spend in each state.
     
-1. The aim here is to make the robot follow a **1m x 1m square** motion path.  In order to properly achieve this you'll need to adjust the timings, or the robot's velocity, or both. Edit the code so that the robot actually follows a **1m x 1m square motion path**!
+1. The aim here is to make the robot follow a **0.5m x 0.5m square** motion path.  In order to properly achieve this you'll need to adjust the timings, or the robot's velocity, or both. Edit the code so that the robot actually follows a **0.5m x 0.5m square motion path**!
 
-**For the experts(!):**
+#### Exercise 7 (Advanced): Alternative Motion Paths {#ex7}
+
+*If you have time, why don't you have a go at this now...*
 
 How could you adapt the code further to achieve some more interesting motion profiles?
 
@@ -596,7 +600,7 @@ How could you adapt the code further to achieve some more interesting motion pro
 
 1. See if you can modify the `move_another_way.py` code to achieve either of the more complex motion profiles illustrated below.
 
-    ![](/figures/amr31001/move_alt.svg)
+    ![](/images/amr31001/move_alt.svg)
 
     1. **Profile (a):** The robot needs to follow a *figure-of-eight* shaped path, where a linear and angular velocity command are set simultaneously to generate circular motion. Velocities will need to be defined in order to achieve **a path diameter of 1m** for each of the two loops. Having set the velocities appropriately, you'll then need to work out how long it would take the robot to complete each loop, so that you can determine when the robot should have got back to its starting point. At this point you'll need to change the turn direction, so that the robot switches from anti-clockwise to clockwise turning. 
     1. **Profile (b):** The robot needs to start and end in the same position, but move through intermediate points 1-7, in sequence, to generate the *stacked square* profile as shown. Each of the two squares must be **1m x 1m in size**, so you'll need to find the right velocity and duration pairs for moving forward and turning. You'll also need to change the turn direction once the robot reaches Point 3, and then again at Point 7!
@@ -617,7 +621,7 @@ You'll need to enter `y` and then hit `Enter` to confirm this.
 
 Please then shut down the laptop, which you can do by clicking the battery icon in the top right of the desktop and selecting the "Power Off / Log Out" option in the drop-down menu.
 
-![](/figures/laptops/ubuntu_poweroff.svg?width=10cm)
+![](/images/laptops/ubuntu_poweroff.svg?width=10cm)
 
 {{% textalign center %}}
 **AMR31001 Lab 1 Complete!**  
