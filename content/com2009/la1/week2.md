@@ -55,10 +55,52 @@ wsl_ros restore
 ```
 ***
 
-### Downloading some ROS Packages for this Course
+### Downloading our ROS Packages for this Course
 
-GIT CLONE COM2009
+We've put together a few ROS packages of our own, that you'll use throughout this course. These all live inside [the COM2009 GitHub Repo](https://github.com/tom-howard/COM2009), and we need to download this into the WSL-ROS environment now, before going any further.
 
+1. In **TERMINAL 1**, navigate to the `catkin_ws/src/` directory using the `cd` command:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    cd ~/catkin_ws/src/
+    ```
+    ***
+
+1. Then, clone the COM2009 repo from GitHub:
+
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    git clone https://github.com/tom-howard/COM2009.git
+    ```
+    ***
+
+1. Once this is done, we need to run `catkin build` to compile everything:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    catkin build
+    ```
+    ***
+
+1. And finally, we need to re-source our `.bashrc` file:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    source ~/.bashrc
+    ```
+    ***
+
+    {{< nicenote warning "Remember" >}}
+If you have any other terminal instances open, then you'll need run `source ~/.bashrc` in these too, in order for the changes made by `catkin build` to propagate through to these as well!
+    {{< /nicenote >}}
+
+That's it for now, we'll start using some of the packages that we've just installed a bit later on...
 
 ### Launching the Robot Simulation
 
@@ -90,13 +132,13 @@ The motion (i.e. the velocity) of any mobile robot can be defined in terms of *t
 
 In theory then, a robot can move linearly or angularly about *any* of these three axes, as shown by the arrows in the figure. That's six *Degrees of Freedom* (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. 
 
-You should hopefully recall from the ["Introducing the Robots" page](/about/robots/#tb3) that our TurtleBot3 Waffles only have two motors though, so they don't actually have six DOFs! These two motors can be controlled independently, which provides a *"differential drive"* configuration, and which ultimately provides it with a total of **two degrees of freedom** in total, as illustrated below.
+You should hopefully recall from the ["Introducing the Robots" page](/about/robots/#tb3) that our TurtleBot3 Waffles only have two motors though, so they don't actually have six DOFs! These two motors can be controlled independently, which is known as a *"differential drive"* configuration, and ultimately provides it with a total of **two degrees of freedom** in total, as illustrated below.
 
 ![](/figures/tb3_velocity.svg?width=20cm)
 
-It can therefore only move **linearly** in the **x-axis** (*Forwards/Backwards*) and **angularly** in the **z-axis** (*Yaw*).
+It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*) and **angularly** in the **z**-axis (*Yaw*).
 
-It's also worth noting that our TurtleBot3 Waffle robots have **maximum velocity limits**, which were also defined in the ["Introducing the Robots" page](/about/robots/#tb3).
+It's also worth noting (while we're on the subject of motion!) that our TurtleBot3 Waffles have **maximum velocity limits**, which were also defined in the ["Introducing the Robots" page](/about/robots/#tb3).
 
 {{% nicenote note "Question" %}}
 What are the maximum velocity limits of our robots?
@@ -129,7 +171,7 @@ geometry_msgs/Vector3 angular
     float64 z
 ```
 
-There are six parameters that we can assign values to here: `linear.x`, `linear.y`, `linear.z`; and `angular.x`, `angular.y`, `angular.z`. These are the robot's six degrees of freedom, relating to its three principal axes, as we discussed above. These topic messages are therefore formatted to give a ROS Programmer the ability to *ask* a robot to move in any one of its six DOFs. 
+There are **six** parameters that we can assign values to here: `linear.x`, `linear.y`, `linear.z`; and `angular.x`, `angular.y`, `angular.z`. These relate to a robot's *six degrees of freedom* (about its three principal axes), as we discussed above. These topic messages are therefore formatted to give a ROS Programmer the ability to *ask* a robot to move in any one of its six DOFs. 
 
 ```txt
 geometry_msgs/Vector3 linear
@@ -142,13 +184,13 @@ geometry_msgs/Vector3 angular
   float64 z  <-- "Yaw"
 ```
 
-As we also learnt above though, our TurtleBots can only actually move with **linear** velocity in the **x**-axis and **angular** velocity in the **z**-axis. As a result, only velocity commands issued to the `linear.x` (Forwards/Backwards) or `angular.z` ("Yaw") parts of this message will have any effect.
+As we also learnt above though, our TurtleBots can only actually move with **linear** velocity in the **x**-axis and **angular** velocity in the **z**-axis. As a result then, only velocity commands issued to the `linear.x` (Forwards/Backwards) or `angular.z` (Yaw) parts of this message will have any effect.
 
 ## Robot Odometry
 
-#### Exercise 1: Exploring Odometry Data {#ex1}
+Another topic that should have appeared when you ran `rostopic list` earlier is `/odom`. This topic contains *Odometry data*, which is also essential for robot navigation and is a basic feedback signal, allowing a robot to approximate its location.
 
-Another topic that should have appeared when you ran `rostopic list` above is `/odom`. This topic contains *Odometry data*, which is also essential for robot navigation and is a basic feedback signal, allowing a robot to approximate its location.
+#### Exercise 1: Exploring Odometry Data {#ex1}
 
 1. In **TERMINAL 2** use the `rostopic echo` command to display the odometry data currently being published by our simulated robot:
 
@@ -186,31 +228,50 @@ What do you think `twist` and `pose` are actually telling us?
 
 1. Press `S` in **TERMINAL 3** to halt the robot (but leave the `turtlebot3_teleop_keyboard` node running).  Then, press `Ctrl+C` in **TERMINAL 2** to shut down the `rostopic echo` process. 
 
-1. Next, with the robot stationary, use `rosrun` to run a Python node that we have created to help illustrate what odometry data actually represents in terms of the robot's potion and orientation in its environment: 
+1. Let's look at the `pose` part of the `Odometry` message in more detail now. With the robot stationary, use `rosrun` to run a Python node that we have created to help illustrate how this relates to the robot's position and orientation in its environment: 
 
-        [TERMINAL 2] $ rosrun com2009_examples robot_odometry.py
+    ***
+    **TERMINAL 2:**
+    ```bash
+    rosrun tuos_ros_examples robot_pose.py
+    ```
+    ***
         
-1. Now (using the keyboard teleop node in **TERMINAL 3**), drive your robot around again, keeping an eye on the outputs that are being printed by the `robot_odometry.py` node in **TERMINAL 2** as you do so.
+1. Now (using the `turtlebot3_teleop_key` node in **TERMINAL 3**), drive your robot around again, keeping an eye on the outputs that are being printed by the `robot_pose.py` node in **TERMINAL 2** as you do so.
 
-    The output of the `robot_odometry.py` node shows you how the robot's odometry is changing in real-time as you move the robot around. The `"initial"` column tells us the robot's odometry (its position and orientation) when the node was first launched, and the `"current"` column show us what it currently is. The `"delta"` column then simply shows the difference between the two.  ***Which odometry parameters haven't changed, and is this what you would expect (considering the robot's principal axes [as illustrated above](#fig_principal_axes))?***
+    The output of the `robot_pose.py` node shows you how the robot's *position* and *orientation* (i.e. *"pose"*) are changing in real-time as you move the robot around. The `"initial"` column tells us the robot's pose when the node was first launched, and the `"current"` column show us what its pose currently is. The `"delta"` column then shows the difference between the two.
+    
+    {{< nicenote note "Question" >}}
+Which pose parameters *haven't* changed, and is this what you would expect (considering [the robot's principal axes, as illustrated above](#principal-axes))?
+    {{< /nicenote >}}
 
-1. Press `Ctrl+C` in **TERMINAL 2** and **TERMINAL 3**, to stop the `robot_odometry.py` and `turtlebot3_teleop` nodes.  Then, close down **TERMINAL 3** so that only one Windows Terminal application remains open with 2 active tabs: **TERMINAL 1** and **TERMINAL 2**.
+1. Press `Ctrl+C` in **TERMINAL 2** and **TERMINAL 3**, to stop the `robot_pose.py` and `turtlebot3_teleop` nodes.  Then, close down **TERMINAL 3** so that only one Windows Terminal application remains open with 2 active tabs: **TERMINAL 1** and **TERMINAL 2**.
 
-<a name="odometry" />
-
-### What is Odometry?
+### What is Odometry? {#odometry}
 
 We can learn more about Odometry data by using the `rostopic info` command:
 
-    $ rostopic info /odom
+***
+**TERMINAL 2:**
+```bash
+rostopic info /odom
+```
+***
 
-This provides information about the *type* of message used on this topic:
+This provides information about the *type* of message used by this topic:
 
-    Type: nav_msgs/Odometry  
+```txt
+Type: nav_msgs/Odometry  
+```
 
 We can find out more about this using the `rosmsg info` command:
 
-    rosmsg info nav_msgs/Odometry
+***
+**TERMINAL 2:**
+```bash
+rosmsg info nav_msgs/Odometry
+```
+***
 
 Which tells us that the `nav_msgs/Odometry` message contains four *base* elements:
 
@@ -219,15 +280,17 @@ Which tells us that the `nav_msgs/Odometry` message contains four *base* element
 1. pose
 1. twist
 
-**pose** tells us the *position* and *orientation* of the robot relative to an arbitrary reference point (typically where the robot was when it was turned on). The pose is determined from:
+#### Pose
 
-* Data from the Inertial Measurement Unit (IMU) onboard the OpenCR board,
+**Pose** tells us the *position* and *orientation* of the robot relative to an arbitrary reference point (typically where the robot was when it was turned on). The pose is determined from:
+
+* Data from the Inertial Measurement Unit (IMU) on the OpenCR board,
 * Data from both the left and right wheel encoders,
 * An *estimation* of the distance travelled by the robot from its pre-defined reference point (using dead-reckoning).
 
 *Position* data is important for determining the movement of our robot, and from this we can estimate its location in 3-dimensional space.
 
-*Orientation* is expressed in units of [Quaternions](https://en.wikipedia.org/wiki/Quaternion), and needs to be converted into angles (in degrees) about the principal axes. Fortunately, there are functions within the ROS `tf` library to do that for us, which we can use in any Python node as follows:
+<a name="euler_angs"></a>*Orientation* is expressed in units of [Quaternions](https://en.wikipedia.org/wiki/Quaternion), and needs to be converted into Euler angles (in radians) about the principal axes. Fortunately, there are functions within the ROS `tf` library to do that for us, which we can use in any Python node as follows:
 
 ```python
 from tf.transformations import euler_from_quaternion
@@ -237,47 +300,105 @@ from tf.transformations import euler_from_quaternion
                      'sxyz')
 ```
 
-Our TurtleBot3 robot can only move in a 2D plane and so, actually, its pose can be fully represented by <code>(x,y,&#952;<sub>z</sub>)</code>, where `x` and `y` are the 2D coordinates of the robot in the `X-Y` plane, and <code>&#952;<sub>z</sub></code> is the angle of the robot about the `z` (*yaw*) axis.  **You should have noticed this in the exercise above, where the `linear_z`, `theta_x` and `theta_y` values in the `delta` column should all have read `0.000` (or changed very little)**.
+Our TurtleBot3 can only move in a 2D plane and so, actually, its pose can be fully represented by 3 parameters: <code>(x,y,&theta;<sub>z</sub>)</code>, where `x` and `y` are the 2D coordinates of the robot in the `X-Y` plane, and <code>&theta;<sub>z</sub></code> is the angle of the robot about the `z` (*yaw*) axis.
 
-**twist** tells us the current linear and angular velocities of the robot, and this data comes directly from the wheel encoders.
+{{< nicenote note "Question" >}}
+In the previous exercise, did you notice how the `linear_z`, `theta_x` and `theta_y` values in the `delta` column all remained at `0.000`, even when the robot was moving around?
+{{< /nicenote >}}
 
-All of this data is defined in terms of the principal axes, as illustrated in [the figure above](#fig_principal_axes).
+#### Twist
 
-<a name="ex2" />
+**Twist** tells us the current linear and angular velocities of the robot, and this data comes directly from the wheel encoders.
 
-#### Exercise 2: Creating a Python node to process Odometry data
+Once again, all of this data is defined in terms of the principal axes, as illustrated in [the figure above](#fig_principal_axes).
 
-In the previous session you learnt how to create a package and build simple nodes in Python to publish and subscribe to messages on a topic.
+#### Exercise 2: Creating a Python node to process Odometry data {#ex2}
 
-1. Create a package [in the same way as last week](Week-1#ex5), this time called `week2_navigation`, which depends on the `rospy`, `nav_msgs` and `geometry_msgs` libraries. Use the `catkin_create_pkg` tool as you did last week. Remember to ensure that you are located in the `~/catkin_ws/src/` directory before you do this though:
+In the previous session you learnt how to create a package and build simple nodes in Python to publish and subscribe to messages on a topic. In this exercise you will build a new subscriber node, much like you did in the previous session, but this one will subscribe to the `/odom` topic that we've been talking about above. You'll also create a new package called `week2_navigation` for this node to live in!
 
-        [TERMINAL 2] $ cd ~/catkin_ws/src/
-        [TERMINAL 2] $ catkin_create_pkg ...
+1. Create a package [in the same way as last week](../week1/#ex5), this time called `week2_navigation`, which depends on the `rospy`, `nav_msgs` and `geometry_msgs` libraries. Use the `catkin_create_pkg` tool as you did last week. Remember to ensure that you are located in the `~/catkin_ws/src/` directory before you do this though:
+     
+    <!-- a fill in the blank here! -->
+    
+    ***
+    **TERMINAL 2:**
+    ```bash
+    cd ~/catkin_ws/src/
+    ```
+    Then:
+    ```bash
+    catkin_create_pkg ...
+    ```
+    ***
 
 1. Run `catkin build` on this:
 
-        [TERMINAL 2] $ catkin build week2_navigation
-
-    and then re-source your environment by entering:
-
-        [TERMINAL 2] $ src
+    ***
+    **TERMINAL 2:**
+    ```bash
+    catkin build week2_navigation
+    ```
+    and then re-source your environment:
+    ```bash
+    source ~/.bashrc
+    ```
+    ***
 
 1. Navigate to the `src` folder within your `week2_navigation` package using the Linux `cd` command.
-1. The `subscriber.py` code that you used last week can be used as a template for creating your odometry subscriber. First, create a new file in your `week2_navigation` package `src` folder (`~/catkin_ws/src/week2_navigation/src`) called `odom_subscriber.py`:
+1. The subscriber that we will build here will be structured in much the same way as [the subscriber that we built last time](../week1/subscriber). The difference now though is that this one will subscribe to the `/odom` topic (instead of `"chatter"`), and its callback function will therefore receive `Odometry` type messages (instead of `String`), so we'll have to deal with those a bit differently. We've created a template for this to help you to get started. Download this into the `src` directory of your new `week2_navigation` package now:
+    
+    ***
+    **TERMINAL 2:**
 
-        [TERMINAL 2] $ touch odom_subscriber.py
+    1. Step 1: navigate to the `src` directory of your `week2_navigation` package:
+        ```bash
+        cd ~/catkin_ws/src/week2_navigation/src/
+        ```
+    1. Then download the template code from GitHub:
+        ```bash
+        wget -O odom_subscriber.py https://raw.githubusercontent.com/tom-howard/COM2009/main/tuos_ros_examples/src/odom_subscriber_template.py
+        ```
+    1. Finally, make this executable using `chmod`:
+        ```bash
+        chmod +x odom_subscriber.py
+        ```
+    ***
 
-1. [In the same way as last week](Week-1#chmod), make this file executable using the Linux `chmod` command.
-1. In the VS Code File Explorer navigate to the `~/catkin_ws/src/week2_navigation/src` folder and open the `odom_subscriber.py` file that you have just created. Then, copy the [subscriber code from last week](Week-1-Subscriber-Node).
+1. Run this as it is to see what happens to begin with:
 
-1. Now, edit the code to *subscribe to* and *print out* odometry data to the terminal:
-    * You will need to make sure that you are importing the correct message type at the start of your code so that you can work with the Odometry data. In the Week 1 Subscriber we were working with a `String` type message from the `std_msgs` package, whereas this time we need to use an `Odometry` message from the `nav_msgs` package instead. If you need help, have a look at [this explainer](Week-2-Odometry-Explained). 
-    * Your Python node should convert the raw odometry data to a <code>(x,y,&#952;<sub>z</sub>)</code> format using the `euler_from_quaternion` function from the `tf.transformations` library (remember that <code>&#952;<sub>z</sub></code> is the same as *Yaw*).  If you aren't sure how to do this, why not have a look at the source code for the `robot_odometry.py` node from the `com2009_examples` package that you used in the [previous exercise](#ex1).  Remember that you can find out where this package is located by using the `roscd` command.
-    * You should aim for the output of your node to look something like this: 
+    ***
+    **TERMINAL 2:**
+    ```bash
+    rosrun week2_navigation odom_subscriber.py
+    ```
+    ***
 
-        <p align="center">
-          <img src="figures/wk02/week2_odom_subscriber.gif">
-        </p>
+    ... Hmmm, something not quite right again? You may have seen the following error:
+
+    ```txt
+    /usr/bin/env: ‘python3\r’: No such file or directory
+    ```
+
+    The clue here is the `python3\r` (specifically the `\r` bit). This is a *Windows line ending*... Text files (including things like Python scripts) created on Windows use different line endings (i.e. the characters that signify the end of each line of text) to those created on Linux. Windows uses a "carriage return" *and* a "line feed" (`\r\n`) at the end of each line, but Linux uses just a "line feed" (`\n`)[^source]. Because we're working within a Linux environment here (Ubuntu), we must make sure we're using Linux line endings at all times! We can change this easily from inside VS Code... 
+    
+    [^source]: Adapted from: https://www.cs.toronto.edu/~krueger/csc209h/tut/line-endings.html
+
+    1. In the VS Code File Explorer navigate to the `~/catkin_ws/src/week2_navigation/src` folder and open the `odom_subscriber.py` file.
+    1. In the blue bar along the bottom of the VS Code screen (towards the bottom right-hand corner) you should see the text `CRLF`. Click on this and a menu should then appear at the top of the screen with the text `"Select End of Line Sequence"`.
+    1. Select the `LF` option in this menu, then save the file.
+
+    ![](/images/vscode/switch_line_ending.png?width=800px) 
+
+1. OK, the file should run now, so launch it (using `rosrun` again) and see what it does.
+
+1. Have a think about what's different between this and [the subscriber from last time](../week1/subscriber)...
+    
+    In the Week 1 Subscriber we were working with a `String` type message from the `std_msgs` package, whereas this time we're using an `Odometry` message from the `nav_msgs` package instead - notice how the imports and the callback function have changed as a result of this.
+
+1. You need to add some additional code to the callback function now: 
+    1. The node needs to print the robot's real-time odometry data to the terminal in the form: <code>(x,y,&#952;<sub>z</sub>)</code>.
+    1. The format of the message has already been structured for you, but you need to add in the relevant variables that represent the correct elements of the robot's real-time pose.
+    1. You'll need to use the `euler_from_quaternion` function from the `tf.transformations` library to convert the raw orientation values from Quaternions into Radians. If you need a hint, why not have a look back [at this bit from earlier](#euler_angs), or at the source code for the `robot_pose.py` node that we launched from the `tuos_ros_examples` package in the [previous exercise](#ex1). 
 
 1. Launch your node using `rosrun` and observe how the output (the formatted odometry data) changes whilst you move the robot around again using the `turtlebot3_teleop` node in a new terminal instance (**TERMINAL 3**).
 1. Stop your `odom_subscriber.py` node in **TERMINAL 2** and the `turtlebot3_teleop` node in **TERMINAL 3** by entering `Ctrl+C` in each of the terminals.
