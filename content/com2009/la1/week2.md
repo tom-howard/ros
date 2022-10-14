@@ -1,7 +1,7 @@
-+++
-title = "Week 2: Odometry & Basic Navigation"
-weight = 2
-description = "In this session you'll learn how to control a ROS robot's velocity (and thus its position), how to interpret Odometry data and implement some open-loop control nodes."
++++  
+title = "Week 2: Odometry & Basic Navigation"  
+weight = 2  
+description = "In this session you'll learn how to control a ROS robot's velocity (and thus its position), how to interpret Odometry data and implement some open-loop control nodes."  
 +++
 
 {{% textalign center %}}
@@ -32,11 +32,6 @@ By the end of this session you will be able to:
 * [Exercise 2: Creating a Python node to process Odometry data](#ex2)
 * [Exercise 3: Moving a Robot with `rostopic` in the Terminal](#ex3)
 * [Exercise 4: Creating a Python node to make the robot move](#ex4)
-
-### Additional Resources
-
-* [ROS Odometry Messages Explained]()
-* [A `Twist` Message Usage Example]()
 
 ## Getting Started
 
@@ -126,7 +121,7 @@ Two types of *Velocity Command* can be issued to any ROS Robot to make it move (
 
 ### Principal Axes {#principal-axes}
 
-The motion (i.e. the velocity) of any mobile robot can be defined in terms of *three* principal axes: `X`, `Y` and `Z`. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are defined as follows:
+The motion (i.e. the velocity) of any mobile robot can be defined in terms of *three* principal axes: `X`, `Y` and `Z`. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are as follows:
 
 ![](/images/waffle/principal_axes.svg?width=20cm)
 
@@ -160,33 +155,29 @@ The topic you identified[^cmd_vel] should use a message of the `geometry_msgs/Tw
 
 You should now be looking at a message format that looks like this: 
 
-```txt
-geometry_msgs/Vector3 linear
-    float64 x
-    float64 y
-    float64 z
-geometry_msgs/Vector3 angular
-    float64 x
-    float64 y
-    float64 z
-```
+    geometry_msgs/Vector3 linear
+      float64 x
+      float64 y
+      float64 z
+    geometry_msgs/Vector3 angular
+      float64 x
+      float64 y
+      float64 z
 
 There are **six** parameters that we can assign values to here: `linear.x`, `linear.y`, `linear.z`; and `angular.x`, `angular.y`, `angular.z`. These relate to a robot's *six degrees of freedom* (about its three principal axes), as we discussed above. These topic messages are therefore formatted to give a ROS Programmer the ability to *ask* a robot to move in any one of its six DOFs. 
 
-```txt
-geometry_msgs/Vector3 linear
-  float64 x  <-- Forwards (or Backwards)
-  float64 y  <-- Left (or Right)
-  float64 z  <-- Up (or Down)
-geometry_msgs/Vector3 angular
-  float64 x  <-- "Roll"
-  float64 y  <-- "Pitch"
-  float64 z  <-- "Yaw"
-```
+    geometry_msgs/Vector3 linear
+      float64 x  <-- Forwards (or Backwards)
+      float64 y  <-- Left (or Right)
+      float64 z  <-- Up (or Down)
+    geometry_msgs/Vector3 angular
+      float64 x  <-- Roll
+      float64 y  <-- Pitch
+      float64 z  <-- Yaw
 
 As we also learnt above though, our TurtleBots can only actually move with **linear** velocity in the **x**-axis and **angular** velocity in the **z**-axis. As a result then, only velocity commands issued to the `linear.x` (Forwards/Backwards) or `angular.z` (Yaw) parts of this message will have any effect.
 
-## Robot Odometry
+### Robot Odometry
 
 Another topic that should have appeared when you ran `rostopic list` earlier is `/odom`. This topic contains *Odometry data*, which is also essential for robot navigation and is a basic feedback signal, allowing a robot to approximate its location.
 
@@ -260,9 +251,7 @@ rostopic info /odom
 
 This provides information about the *type* of message used by this topic:
 
-```txt
-Type: nav_msgs/Odometry  
-```
+    Type: nav_msgs/Odometry  
 
 We can find out more about this using the `rosmsg info` command:
 
@@ -310,7 +299,7 @@ In the previous exercise, did you notice how the `linear_z`, `theta_x` and `thet
 
 **Twist** tells us the current linear and angular velocities of the robot, and this data comes directly from the wheel encoders.
 
-Once again, all of this data is defined in terms of the principal axes, as illustrated in [the figure above](#fig_principal_axes).
+Once again, all of this data is defined in terms of the principal axes, as illustrated in [the figure above](#principal-axes).
 
 #### Exercise 2: Creating a Python node to process Odometry data {#ex2}
 
@@ -318,8 +307,6 @@ In the previous session you learnt how to create a package and build simple node
 
 1. Create a package [in the same way as last week](../week1/#ex5), this time called `week2_navigation`, which depends on the `rospy`, `nav_msgs` and `geometry_msgs` libraries. Use the `catkin_create_pkg` tool as you did last week. Remember to ensure that you are located in the `~/catkin_ws/src/` directory before you do this though:
      
-    <!-- a fill in the blank here! -->
-    
     ***
     **TERMINAL 2:**
     ```bash
@@ -327,9 +314,13 @@ In the previous session you learnt how to create a package and build simple node
     ```
     Then:
     ```bash
-    catkin_create_pkg ...
+    catkin_create_pkg {BLANK}
     ```
     ***
+
+    {{< nicenote warning "Fill in the Blank!">}}
+Recall how we used the `catkin_create_pkg` tool [last week](../week1/#ex5), but adapt this now for the `week2_navigation` package, as detailed above.
+    {{< /nicenote >}}
 
 1. Run `catkin build` on this:
 
@@ -344,7 +335,6 @@ In the previous session you learnt how to create a package and build simple node
     ```
     ***
 
-1. Navigate to the `src` folder within your `week2_navigation` package using the Linux `cd` command.
 1. The subscriber that we will build here will be structured in much the same way as [the subscriber that we built last time](../week1/subscriber). The difference now though is that this one will subscribe to the `/odom` topic (instead of `"chatter"`), and its callback function will therefore receive `Odometry` type messages (instead of `String`), so we'll have to deal with those a bit differently. We've created a template for this to help you to get started. Download this into the `src` directory of your new `week2_navigation` package now:
     
     ***
@@ -413,7 +403,9 @@ Make sure that you've stopped the `turtlebot3_teleop` node running in **TERMINAL
 
 <a name="rostopic_pub"></a>We can use the `rostopic pub` command to *publish* data to a topic from a terminal by using the command in the following way:
 
-    rostopic pub {topic_name} {message_type} {data}
+```bash
+rostopic pub {topic_name} {message_type} {data}
+```
 
 As we discovered earlier, the `/cmd_vel` topic is expecting *linear* and *angular* data, each with an `x`, `y` and `z` component. We can get further help with formatting this message by using the autocomplete functionality within the terminal. *Type* the following into **TERMINAL 3** hitting the `Space` and `Tab` keys on your keyboard where indicated:
 
@@ -535,18 +527,23 @@ Use these pointers when working on your `move_circle.py` node!
 
 In this session you have learnt how to control the velocity and position of a robot from both the command-line (using ROS command-line tools) and from ROS Nodes by publishing correctly formatted messages to the `/cmd_vel` topic.  
 
-You have also learnt about *Odometry*, which is published by our robot to the `/odom` topic.  The odometry data tells us the current linear and angular velocities of our robot in relation to its 3 principal axes.  In addition to this though, it also tells us where in physical space our robot is located and oriented, which is determined based on *dead-reckoning*.  You will learn a bit more about dead-reckoning in your lectures.
+You have also learnt about *Odometry*, which is published by our robot to the `/odom` topic.  The odometry data tells us the current linear and angular velocities of our robot in relation to its 3 principal axes.  In addition to this though, it also tells us where in physical space our robot is located and oriented, which is determined based on *dead-reckoning*.  We'll talk more about dead-reckoning later on in the COM2009 lecture course, but for now though consider the following (based on what we've covered in this lab session): 
+* If odometry is derived from dead-reckoning, what information (sensor/actuator data) is used to do this?
+* Do you see any potential limitations of this?
+* Can a control method that uses odometry as a feedback signal be considered *closed-loop control?* 
 
-Consider the following: 
-* **How is dead-reckoning implemented, and what information is needed to do this?**
-* **What might the implications be for a robot that implements odometry-based navigation?**
-* **Can a control method that uses this as a feedback signal be considered an implementation of closed-loop control?** 
+We'll explore this a little more next week, but you might want to consider reading Chapter 11.1.3 ("Pose of Robot") in the ROS Robot Programming eBook that we mentioned [here](/about/robots/#ebook).
 
-We'll explore this a little more next week, but you might want to consider reading Chapter 11.1.3 ("Pose of Robot") in the ROS Robot Programming eBook that we mentioned [here](Home#tb3_ebook).
+### Saving your work {#backup}
 
-### Saving your work
+Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
 
-Remember, the work you have done in this WSL-ROS environment today **will not be preserved** for future sessions or across different University machines automatically!  To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
+```bash
+wsl_ros backup
+```
 
-    $ wsl_ros backup
+This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.  
 
+{{% textalign right %}}
+[Next: "Week 3: Advanced Navigation & SLAM" <i class="fas fa-solid fa-arrow-right"></i>](../week3)
+{{% /textalign %}}
