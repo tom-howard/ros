@@ -2,7 +2,6 @@
 title = "Week 2: Odometry & Basic Navigation"
 weight = 2
 description = "In this session you'll learn how to control a ROS robot's velocity (and thus its position), how to interpret Odometry data and implement some open-loop control nodes."
-draft = "true"
 +++
 
 {{% textalign center %}}
@@ -129,13 +128,13 @@ Two types of *Velocity Command* can be issued to any ROS Robot to make it move (
 
 The motion (i.e. the velocity) of any mobile robot can be defined in terms of *three* principal axes: `X`, `Y` and `Z`. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are defined as follows:
 
-![](/figures/tb3_axes.svg?width=20cm)
+![](/images/waffle/principal_axes.svg?width=20cm)
 
 In theory then, a robot can move linearly or angularly about *any* of these three axes, as shown by the arrows in the figure. That's six *Degrees of Freedom* (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. 
 
 You should hopefully recall from the ["Introducing the Robots" page](/about/robots/#tb3) that our TurtleBot3 Waffles only have two motors though, so they don't actually have six DOFs! These two motors can be controlled independently, which is known as a *"differential drive"* configuration, and ultimately provides it with a total of **two degrees of freedom** in total, as illustrated below.
 
-![](/figures/tb3_velocity.svg?width=20cm)
+![](/images/waffle/velocities.svg?width=20cm)
 
 It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*) and **angularly** in the **z**-axis (*Yaw*).
 
@@ -406,25 +405,27 @@ In the previous session you learnt how to create a package and build simple node
 
 ## Basic Navigation: Open-loop Velocity Control
 
-<a name="ex3" />
+#### Exercise 3: Moving a Robot with `rostopic` in the Terminal {#ex3}
 
-#### Exercise 3: Moving a Robot with `rostopic` in the Terminal
+{{% nicenote note %}}
+Make sure that you've stopped the `turtlebot3_teleop` node running in **TERMINAL 3** (by entering `Ctrl+C`) before starting this exercise.
+{{% /nicenote %}}
 
-> **Note:** *Make sure that you have stopped the `turtlebot3_teleop` node running in **TERMINAL 3** (by entering `Ctrl+C`) before starting this exercise.*
-
-<a name="rostopic_pub" />
-
-We can use the `rostopic pub` command to *publish* data to a topic from a terminal by using the command in the following way:
+<a name="rostopic_pub"></a>We can use the `rostopic pub` command to *publish* data to a topic from a terminal by using the command in the following way:
 
     rostopic pub {topic_name} {message_type} {data}
 
-As we discovered earlier, the `/cmd_vel` topic is expecting *linear* and *angular* data, each with an `x`, `y` and `z` component. We can get further help with formatting this message by using the autocomplete functionality within the terminal. *Type* the following into **TERMINAL 3** (copying and pasting won't work):
+As we discovered earlier, the `/cmd_vel` topic is expecting *linear* and *angular* data, each with an `x`, `y` and `z` component. We can get further help with formatting this message by using the autocomplete functionality within the terminal. *Type* the following into **TERMINAL 3** hitting the `Space` and `Tab` keys on your keyboard where indicated:
 
-    [TERMINAL 3] rostopic pub /cmd_vel geometry_msgs/Twist[SPACE][TAB]
+***
+**TERMINAL 3:**
+```bash
+rostopic pub /cmd_vel geometry_msgs/Twist[SPACE][TAB]
+```
 
 The full message should then be presented to us:
 
-    $ rostopic pub /cmd_vel geometry_msgs/Twist "linear:
+    rostopic pub /cmd_vel geometry_msgs/Twist "linear:
       x: 0.0
       y: 0.0
       z: 0.0
@@ -433,16 +434,16 @@ The full message should then be presented to us:
       y: 0.0
       z: 0.0"
 
+***
+
 1. Scroll back through the message using the &larr; key on your keyboard and then edit the values of the various parameters, as appropriate. First, define some values that would make the robot *rotate on the spot*.  **Make a note of the command that you used**.
 1. Enter `Ctrl+C` in **TERMINAL 3** to stop the message from being published.
 1. Next, enter a command in **TERMINAL 3** to make the robot *move in a circle*.  **Again, make a note of the command that you used**.
 1. Enter `Ctrl+C` in **TERMINAL 3** to again stop the message from being published.
-1. Finally, enter a command to *stop* the TurtleBot **and make a note of this too**.
+1. Finally, enter a command to *stop* the TurtleBot3 **and make a note of this too**.
 1. Enter `Ctrl+C` in **TERMINAL 3** to stop this final message from being published.
 
-<a name="ex4" />
-
-#### Exercise 4: Creating a Python node to make the robot move
+#### Exercise 4: Creating a Python node to make the robot move {#ex4}
 
 You will now create another node to control the motion of your TurtleBot3 by publishing messages to the `/cmd_vel` topic. You created a publisher node in Week 1, and you can use this as a starting point.
 
@@ -453,18 +454,82 @@ You will now create another node to control the motion of your TurtleBot3 by pub
     If you aren't located here then navigate to this directory using `cd`.
 1. Create a new file called `move_circle.py`:
 
-        [TERMINAL 2] $ touch move_circle.py
-
+    ***
+    **TERMINAL 2:**
+    ```bash
+    touch move_circle.py
+    ```
     ... and make this file executable using the `chmod` command.
-1. Open up this file in VS Code, then copy and paste the contents of [the publisher node from last week](Week-1-Publisher-Node) into the new `move_circle.py` file to get you started. Then edit the code to achieve the following:
+    ***
+
+1. Open up this file in VS Code, then copy and paste the contents of [the publisher node from last week](../week1/publisher) into the new `move_circle.py` file to get you started. Then edit the code to achieve the following:
     * Make your TurtleBot3 move in a circle with a path radius of approximately 0.5m.
-    * The Python node needs to publish `Twist` messages to the `/cmd_vel` topic in order to make the TurtleBot move. Have a look at [this usage example](Week-2-Twist-Example).
-    * Remember (as mentioned [earlier](#tb3_max_vels)) that for our robot, the maximum linear velocity (`linear.x`) is 0.26 m/s, and the maximum angular velocity (`angular.z`) is 1.82 rad/s. 
+    * Your Python node needs to publish `Twist` messages to the `/cmd_vel` topic in order to make the TurtleBot3 move. [See below for further detail on this](#twist-py).
+    * Remember that our robots have a maximum linear velocity (`linear.x`) of 0.26 m/s, and a maximum angular velocity (`angular.z`) of 1.82 rad/s. 
     * Make sure that you code your `shutdownhook()` correctly so that the robot stops moving when the node is shutdown (via `Ctrl+C` in the terminal that launched it).
 
-**Advanced features:**
+**Advanced feature:**
 
-1. Create a launch file to launch this *and* your `odom_subscriber.py` node simultaneously with a single `roslaunch` command. Refer to the launch file that you created [last week](Week-1#ex8) for a reminder on how to do this.
+1. Create a launch file to launch this *and* your `odom_subscriber.py` node simultaneously with a single `roslaunch` command. Refer to the launch file that you created [last week](../week1/#ex8) for a reminder on how to do this.
+
+### Publishing `Twist` messages in Python {#twist-py}
+
+From [last week's publisher exercise](../week1/#ex6), we know how to publish a `String` type message to a topic in Python, but how do we apply the same principles to a `Twist` message (on the `/cmd_vel` topic)? Let's have a look at this... 
+
+First, you need to import the `rospy` library, as well as the `Twist` message type from the `geometry_msgs` library:
+
+```python
+import rospy
+from geometry_msgs.msg import Twist
+```
+
+Then, create an instance of a `rospy.Publisher()` and assign it to an object called `pub`. When we create the object we tell the `Publisher()` method which topic we want to publish this message to (via the first input argument), and also that we will be publishing a message of the `Twist` type (the second input argument):
+
+```python
+pub = rospy.Publisher({topic name}, Twist, queue_size=10) # a queue size of 10 usually works!
+```
+
+Then we need to create a `Twist()` message instance and assign it to an object (which we'll call `vel_cmd`):
+
+```python
+vel_cmd = Twist()
+```
+
+We know from earlier that the `geometry_msgs/Twist` message has the format:
+
+    geometry_msgs/Vector3 linear
+      float64 x
+      float64 y
+      float64 z
+    geometry_msgs/Vector3 angular
+      float64 x
+      float64 y
+      float64 z
+
+We also know, that only velocity commands issued to the following two parameters will actually have any effect on the velocity of our robot:
+
+    geometry_msgs/Vector3 linear
+      float64 x
+
+...and:
+
+    geometry_msgs/Vector3 angular
+      float64 z
+
+As such, we set appropriate velocity values to these attributes of the `Twist()` message (assigned to `vel_cmd`):
+
+```python
+vel_cmd.linear.x = 0.0 # m/s
+vel_cmd.angular.z = 0.0 # rad/s
+```
+
+We can then publish this to the relevant topic on the ROS network by supplying it to the `rospy.Publisher().publish()` method (which we instantiated as `pub` earlier):
+
+```python
+pub.publish(vel_cmd)
+```
+
+Use these pointers when working on your `move_circle.py` node!
 
 ## Wrapping Up
 
@@ -485,8 +550,3 @@ Remember, the work you have done in this WSL-ROS environment today **will not be
 
     $ wsl_ros backup
 
-<p align="center">
-  <strong>Navigating This Wiki:</strong><br />
-  <a href="Week-1">&#8592; Week 1: ROS and Linux Basics <strong>[Previous]</strong></a> |
-  <a href="Week-3"><strong>[Next]</strong> Week 3: Advanced Navigation and SLAM &#8594;</a>
-</p>
