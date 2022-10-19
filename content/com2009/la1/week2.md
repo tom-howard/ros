@@ -363,10 +363,10 @@ Recall how we used the `catkin_create_pkg` tool [last week](../week1/#ex5), but 
     ```
     ***
 
-    ... Hmmm, something not quite right again? You may have seen the following error:
+    ... Hmmm, something's wrong here isn't it!? You may have seen the following error:
 
     ```txt
-    /usr/bin/env: ‘python3\r’: No such file or directory
+    /usr/bin/env: ‘python3\r’: Permission denied
     ```
 
     The clue here is the `python3\r` (specifically the `\r` bit). This is a *Windows line ending*... Text files (including things like Python scripts) created on Windows use different line endings (i.e. the characters that signify the end of each line of text) to those created on Linux. Windows uses a "carriage return" *and* a "line feed" (`\r\n`) at the end of each line, but Linux uses just a "line feed" (`\n`)[^source]. Because we're working within a Linux environment here (Ubuntu), we must make sure we're using Linux line endings at all times! We can change this easily from inside VS Code... 
