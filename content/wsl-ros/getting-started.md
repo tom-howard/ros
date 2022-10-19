@@ -90,7 +90,7 @@ As discussed above, [the WSL-ROS Environment that you created earlier](#first-ru
 Any work that you do within WSL-ROS **will not be preserved** between sessions or across different University machines automatically!
 {{% /nicenote %}}
 
-At the beginning of each practical session (or any other time you want to work in WSL-ROS) you'll need to re-install the environment from the OS image. You **must** therefore make sure that you [back up your work to your University U: Drive (TODO)]() every time you finish working in the environment, so that you can then restore it the next time you return (we'll remind you about this at the start and end of every practical session, just in case you forget). 
+At the beginning of each practical session (or any other time you want to work in WSL-ROS) you'll need to re-install the environment from the OS image. You **must** therefore make sure that you [back up your work to your University U: Drive](##backup-restore) every time you finish working in the environment, so that you can then restore it the next time you return (we'll remind you about this at the start and end of every practical session, just in case you forget). 
 
 The WSL-ROS Environment *will*, however, be preserved for a limited time if you happen to log in to the *same* University machine within a few hours. If this is the case, then on launching WSL-ROS you will be presented with the following message:
 
