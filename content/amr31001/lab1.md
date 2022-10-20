@@ -439,7 +439,7 @@ In any case, the message that we need to publish will end up being quite long be
 1. Then, you can scroll back through the message and edit any of the `linear`/`angular` `x`/`y`/`z` values as appropriate. Do this by pressing the &larr; key on your keyboard, deleting a `0.0` where appropriate and replacing it with a value of your choosing. In its final format, a message might (for example) look like this:
     
     ```bash
-    $ rostopic pub /cmd_vel geometry_msgs/Twist "linear:
+    rostopic pub /cmd_vel geometry_msgs/Twist "linear:
       x: 0.0
       y: 101.1
       z: 0.0
@@ -521,9 +521,9 @@ Don't forget to include the `.`, it's important!!
     import rospy
     from geometry_msgs.msg import Twist
 
-    node_name = "move_square"
+    node_name = "move_waffle"
 
-    movement = "fwd" # or "turn"
+    movement = "state1" # "state2, state3 etc..."
     transition = True
 
     rospy.init_node(node_name, anonymous=True)
@@ -543,16 +543,16 @@ Don't forget to include the `.`, it's important!!
             vel.linear.x = 0.0
             vel.angular.z = 0.0
             print(f"Moving to state: {movement}")
-        elif movement == "fwd":
+        elif movement == "state1":
             if elapsed_time > 2:
-                movement = "turn"
+                movement = "state2"
                 transition = True
             else:
                 vel.linear.x = 0.05
                 vel.angular.z = 0.0
-        elif movement == "turn":
+        elif movement == "state2":
             if elapsed_time > 4:
-                movement = "fwd"
+                movement = "state1"
                 transition = True
             else:
                 vel.angular.z = 0.2
@@ -593,12 +593,12 @@ How could you adapt the code further to achieve some more interesting motion pro
     ***
     **TERMINAL 2:**
     ```bash
-    cp move_square.py move_another_way.py
+    cp move_square.py move_alt.py
     ```
-    Which will create a new version of the file called `move_another_way.py`
+    Which will create a new version of the file called `move_alt.py`
     ***
 
-1. See if you can modify the `move_another_way.py` code to achieve either of the more complex motion profiles illustrated below.
+1. See if you can modify the `move_alt.py` code to achieve either of the more complex motion profiles illustrated below.
 
     ![](move_alt.png)
 
