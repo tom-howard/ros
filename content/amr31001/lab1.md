@@ -56,9 +56,9 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 1. First, identify the robot that you have been provided with. Robots are named as follows:
 
     ```txt
-    dia-waffle[NUM]
+    dia-waffleNUM
     ```
-    ... where `[NUM]` is a unique *'Robot Number'* (a number between 1 and 50). Check the label printed on top of the robot to find out which one you have!
+    ... where `NUM` is a unique *'Robot Number'* (a number between 1 and 50). Check the label printed on top of the robot to find out which one you have!
 
 1. Open up a terminal instance on the laptop, either by using the `Ctrl+Alt+T` keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
@@ -72,9 +72,9 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
     
     **TERMINAL 1:**
     ```bash
-    waffle [NUM] pair
+    waffle NUM pair
     ```
-    Replacing `[NUM]` (**including** the square brackets) with the number of the robot that you have been provided with.
+    Replacing `NUM` with the number of the robot that you have been provided with.
     
     ***
 
@@ -93,9 +93,9 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
     ***
     **TERMINAL 1:**
     ```bash
-    waffle [NUM] term
+    waffle NUM term
     ```
-    (again, replacing `[NUM]` with the number of *your* robot).
+    (again, replacing `NUM` with the number of *your* robot).
     
     ***
 
@@ -612,9 +612,9 @@ Before you leave, please shut down your robot! Enter the following command in **
 ***
 **TERMINAL 2:**
 ```bash
-waffle [NUM] off
+waffle NUM off
 ```
-... again, replacing `[NUM]` with the number of the robot that you have been working with today.
+... again, replacing `NUM` with the number of the robot that you have been working with today.
 ***
 
 You'll need to enter `y` and then hit `Enter` to confirm this.
