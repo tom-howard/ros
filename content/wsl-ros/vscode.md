@@ -1,5 +1,5 @@
 +++  
-title = "Launching VS Code in WSL-ROS"  
+title = "Launching Visual Studio Code in WSL-ROS"  
 menuTitle = "Launching VS Code"  
 weight = 2  
 +++
