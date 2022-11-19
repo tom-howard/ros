@@ -4,7 +4,9 @@ weight = 4
 description = "Here, you'll learn how ROS Services can be used in combination with the standard publisher/subscriber principles that you already know about, to control a robot more effectively for certain operations."  
 +++
 
-<p align="center"><em>You should be able to complete <strong>most</strong> of the exercises on this page within a two-hour lab session, but you might wish to spend a bit more time on the final exercise.</em></p>
+{{% textalign center %}}
+*You should be able to complete **most** of the exercises on this page within a two-hour lab session, but you might wish to spend a bit more time on the final exercise.*
+{{% /textalign %}}
 
 {{% textalign left %}}
 [<i class="fas fa-solid fa-arrow-left"></i> Previous: "Week 3: Advanced Navigation & SLAM"](../week3)
