@@ -2,7 +2,7 @@
 menuTitle = "Week 6: Vision"
 title = "Cameras, Machine Vision & OpenCV"  
 weight = 6  
-description = ""  
+description = "This one isn't ready yet!"  
 +++
 
 {{% textalign center %}}
