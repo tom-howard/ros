@@ -36,8 +36,8 @@ By the end of this session you will be able to:
 
 ### Additional Resources
 
-* [The Action Client Code (for Exercise 2)](Week-5-Action-Client)
-* [The Preemptive Action Client Code (for Exercise 3)](Week-5-Preemptive-Action-Client)
+* [The Action Client Code (for Exercise 2)](action_client)
+* [The Preemptive Action Client Code (for Exercise 3)](preemptive_action_client)
 
 ## Getting Started
 
@@ -170,7 +170,7 @@ This is a bit like sending a **Request** to a ROS Service Server, like we did in
     * **sweep_angle** is the angle (in degrees) that the robot will rotate on the spot
     * **image_count** is the number of images it will capture from its front-facing camera while it is rotating
 1. Once you have decided on some values, hit `Enter` to actually publish the message and *call* the action server.
-    ***Keep an eye on all four terminal instances.  What do you notice happening in each of them?***
+    **Keep an eye on all four terminal instances. What do you notice happening in each of them?**
 1. Now, in **WT(B)**:
     1. Cancel the `rostopic pub` command by entering `Ctrl+C`
     1. Once the action had completed, a message should have been published in **WT(D)** (a *"result"*), informing you of the filesystem location where the action server has stored the images that have just been captured by the robot:
@@ -194,7 +194,7 @@ This is a bit like sending a **Request** to a ROS Service Server, like we did in
         ```
         ***
 
-1. To finish off, open another tab in the **WT(A)** terminal instance (**WT(A) TERMINAL 3**) and launch the *Gazebo client* to view the simulation that has, until now, been running headless:
+1. Finally, open another tab in the **WT(A)** terminal instance (**WT(A) TERMINAL 3**) and launch the *Gazebo client* to view the simulation that has, until now, been running headless:
 
     ***
     **WT(A) TERMINAL 3:**
@@ -203,14 +203,15 @@ This is a bit like sending a **Request** to a ROS Service Server, like we did in
     ```
     ***
 
-1. The actual simulated environment should now be revealed!! To finish off, close down all the active processes (of which there are now many!):
+1. The actual simulated environment should now be revealed!! To finish off, close down *some* active ROS processes and Windows Terminal instances that we've just been working with:
     1. Close down the `eog` window and the **WT(B)** Windows Terminal instance.
     1. Stop the `rostopic echo` commands that are running in **WT(C)** and **WT(D)** by entering `Ctrl+C` in each of them and then close each of these Windows Terminal instances too.
-    1. Enter `Ctrl+C` in **WT(A) TERMINAL 3** to stop the Gazebo GUI, but keep the terminal tab open, and leave the processes running in **WT(A) TERMINAL 2** and **1** for now (the Action Server and the headless Gazebo processes).
+    1. Enter `Ctrl+C` in **WT(A) TERMINAL 3** to stop the Gazebo GUI, but keep the terminal tab open. 
+    1. Leave the processes running in **WT(A) TERMINAL 2** and **1** for now (the Action Server and the headless Gazebo processes).
 
 #### Summary:
 
-Phew, that was a long one! Essentially, what we did here is launched an action server and then called it from the command-line using `rostopic pub`. Hopefully, while the action server was performing the task that we had requested, you also noticed that it was providing us with some *real-time feedback* on how it was getting on (in **WT(C)**). In the same way as a ROS Service, it should also have provided us with a *result* (in **WT(D)**), once the action had been completed.  *Feedback* is one of the key features that differentiates a ROS Action from a ROS Service, but there are other interesting features too, and we'll explore these in more detail now.
+Phew, that was a long one! Essentially, what we did here is launched an action server and then called it from the command-line using `rostopic pub`. Hopefully, while the action server was performing the task that we had requested, you also noticed that it was providing us with some *real-time feedback* on how it was getting on (in **WT(C)**). In the same way as a ROS Service, it should also have provided us with a **result** (in **WT(D)**), once the action had been completed.  **Feedback** is one of the key features that differentiates a ROS Action from a ROS Service, but there are other interesting features too, and we'll explore these in more detail now.
 
 ## What is a ROS Action?
 
@@ -233,8 +234,6 @@ The other thing to note is that - where we used the `rosservice` command to inte
 1. `rostopic echo`: to view the messages being published by a given action server.
 1. `rostopic pub`: to call an action from the command-line. 
 
-![](action_msgs.png)
-
 ### The Format of Action Messages
 
 Like Services, Action Messages have multiple parts to them, and we need to know what format these action messages take in order to be able to call them. We don't have a tool like `rossrv` to do this for Actions though, instead we have to use `rosmsg`, or look for the message definition inside the *Action Message Package*.
@@ -256,7 +255,7 @@ rostopic list
 
 Every ROS Action has both a **cancel** and **status** message associated with them. These are standardised, so the format of these two messages will always be the same, regardless of the type of Action Server we use. We won't worry about these too much for now, but we'll make use of them in some ROS Nodes that we'll build in a short while.
 
-The **feedback**, **goal** and **result** messages are defined specifically for any given action server though, and so we need to know about the format of all of these before we attempt to make a call to the action server.
+The **feedback**, **goal** and **result** messages will be different for any given action server though, and so we need to know about the format of all of these before we attempt to make a call to the action server.
 
 We can run `rostopic info` on any of these to find out more about them...
 
@@ -368,9 +367,11 @@ You'll learn how we use this information to develop Python Action Server & Clien
 
 ### Concurrent Activity
 
-An Action Server provides ***feedback*** messages at regular intervals whilst performing an action and working towards its ***goal***.  This is one way that an Action Client can monitor the progress of the action that it has requested.  Another way it can do this is by monitoring the ***status*** of an action.  Both of these features enable *concurrency*, allowing an action client to work on other things whilst waiting for the requested behaviour to be completed by the action server.
+An Action Server provides **feedback** messages at regular intervals whilst performing an action and working towards its **goal**.  This is one way that an Action Client can monitor the progress of the action that it has requested.  Another way it can do this is by monitoring the **status** of an action.  Both of these features enable *concurrency*, allowing an action client to work on other things whilst waiting for the requested behaviour to be completed by the action server.
 
-#### Exercise 2: Building a Python Action Client Node with concurrency {#ex2}
+![](action_msgs.png)
+
+#### Exercise 2: Building a Python Action Client Node with Concurrency {#ex2}
 
 1. You should only have one Windows Terminal application instance open now, with three WSL-ROS terminal tabs in it. **TERMINAL 3** should already be idle (i.e. not running any commands), and (if you haven't done so already) enter `Ctrl+C` in **TERMINAL 1** and **TERMINAL 2** to stop the headless Gazebo simulation processes and the Camera Sweep Action Server respectively. 
 1. In **TERMINAL 1** create a new package called `week5_actions` using the `catkin_create_pkg` tool [as you have done previously](../week4/#ex1). This time, define `rospy`, `actionlib` and `tuos_ros_msgs` as dependencies.
@@ -403,7 +404,7 @@ Make sure you're in your `~/catkin_ws/src/` folder when you run the `catkin_crea
     roslaunch tuos_ros_simulations mystery_world.launch gui:=true camera_search:=true
     ```
     
-    ... which will launch the Gazebo simulation in GUI mode this time, as well as the `camera_sweep_action_server` too.
+    ... which will launch the Gazebo simulation in GUI mode this time, as well as the `/camera_sweep_action_server` too.
 
     ***
 
@@ -468,26 +469,26 @@ Actions are extremely useful for controlling robotic tasks or processes that mig
 You'll need to set some values for the goal parameters again!
     {{< /nicenote >}}
 
-**Advanced Feature:**
+1. We can also cancel a goal conditionally, which may also be useful if, say, too much time has elapsed since the call was made, or the caller has been made aware of something else that has happened in the meantime (perhaps we're running out of storage space on the robot and can't save any more images!) This is all achieved using the `cancel_goal()` method.
 
-We can also cancel a goal conditionally, which may also be useful if, say, too much time has elapsed since the call was made, or the caller has been made aware of something else that has happened in the meantime (perhaps we're running out of storage space on the robot and can't save any more images!) This is all achieved using the `cancel_goal()` method.
-
-* Have a go now at introducing a conditional call to the `cancel_goal()` method once a total of **5 images** have been captured.
-* You could do this inside the `feedback_callback()` class method.
-* You could use the `captured_images` attribute from the `CameraSweepFeedback` message to trigger this.
+    * Have a go now at introducing a conditional call to the `cancel_goal()` method once a total of **5 images** have been captured.
+    * You could do this inside the `feedback_callback()` class method.
+    * You could use the `captured_images` attribute from the `CameraSweepFeedback` message to trigger this.
 
 ### A Summary of ROS Actions
 
 ROS Actions work a lot like ROS Services, but they have the following key differences:
-1. **They are asynchronous**: a client can do other things while it waits for an action to complete.
-1. **They can be cancelled** (or *preempted*): If something is taking too long, or if something else has happened, then an Action Client can cancel an Action whenever it needs to.
-1. **They provide feedback**: so that a client can monitor what is happening and act accordingly (i.e. preempt an action, if necessary).
+1. They are **asynchronous**: a client can do other things while it waits for an action to complete.
+1. They can be **cancelled** (or *preempted*): If something is taking too long, or if something else has happened, then an Action Client can cancel an Action whenever it needs to.
+1. They provide **feedback**: so that a client can monitor what is happening and act accordingly (i.e. preempt an action, if necessary).
+
+![](action_msgs.png)
 
 This mechanism is therefore useful for robotic operations that may take a long time to execute, or where intervention might be necessary.
 
 ## Creating Action Servers in Python {#cam_swp_act_srv}
 
-{{% nicenote note %}}
+{{% nicenote info "Important" %}}
 Cancel *all* active processes that you may have running before moving on.
 {{% /nicenote %}}
 
@@ -584,45 +585,40 @@ You are now going to construct your own Action Server and Client nodes to implem
 
 **Step 1: Launch a simulation**
 
-As you develop your action server/client nodes for this exercise there are two simulated environments that you might wish to use. The first is similar to the *mystery world* that we were working in earlier, and the second is a bit more challenging! Use either of the two commands below in **TERMINAL 1** to launch whichever environment you prefer: 
+There's a simulation environment that you can use as you're developing your action server/client nodes for this exercise. Launch the simulation in **TERMINAL 1**, with the following `roslaunch` command: 
 
 ***
 **TERMINAL 1:**
-```bash
-roslaunch turtlebot3_gazebo turtlebot3_stage_2.launch
-```
-
-Or:
 ```bash
 roslaunch turtlebot3_gazebo turtlebot3_stage_4.launch
 ```
 ***
 
-**Step 2: Building the Action Server**
+**Step 2: Build the Action Server**
 
-In **TERMINAL 2** navigate to the `src` folder of your `week5_actions` package, create a Python script called `search_server.py`, and make it executable.
+1. In **TERMINAL 2** navigate to the `src` folder of your `week5_actions` package, create a Python script called `search_server.py`, and make it executable.
 
-The job of the Action Server node is as follows:
+1. The job of the Action Server node is as follows:
 
-1. The action server should make the robot move forwards until it detects an obstacle up ahead.
-1. Similarly to the *Service* Server that you created last week, your *Action* Server here should be configured to accept two **goal** parameters:
-    1. The speed (in m/s) at which the robot should move forwards when the action server is called. Consider doing some error checking on this to make sure a velocity request is less than the maximum speed that the robot's wheel motors can actually achieve (0.26 m/s)!
-    1. The distance (in meters) at which the robot should stop ahead of any objects or boundary walls that it has detected in front of it. To do this you'll need to subscribe to the `/scan` topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of `LaserScan` data points (within the `ranges` array) to make the collision avoidance effective (recall the [LaserScan callback example](../week4/scan_callback) and also have a look at the `Tb3LaserScan` class within the `tuos_ros_examples/tb3.py` module that might help you with this).
-1. Whilst your server performs its task it should provide the following **feedback** to the Action Caller:
-    1. The distance travelled (in meters) since the current action was initiated.
+    * The action server should make the robot move forwards until it detects an obstacle up ahead.
+    * Similarly to the *Service* Server that you created last week, your *Action* Server here should be configured to accept two **goal** parameters:
+        1. The speed (in m/s) at which the robot should move forwards when the action server is called. Consider doing some error checking on this to make sure a velocity request is less than the maximum speed that the robot can actually achieve (0.26 m/s)!
+        1. The distance (in meters) at which the robot should stop ahead of any objects or boundary walls that are in front of it. To do this you'll need to subscribe to the `/scan` topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of `LaserScan` data points (within the `ranges` array) to make the collision avoidance effective (recall the [LaserScan callback example](../week4/scan_callback) and also have a look at the `Tb3LaserScan` class within the `tuos_ros_examples/tb3.py` module that might help you with this).
+    * Whilst your server performs its task it should provide the following **feedback** to the Action Caller:
+        1. The distance travelled (in meters) since the current action was initiated.
 
-        To do this you'll need to subscribe to the `/odom` topic. Remember that there's a `Tb3Odometry` class within [the `tuos_ros_examples/tb3.py` module](#tb3_module) that might help you with obtaining this data.
-        
-        Remember also that your robot's orientation shouldn't change over the course of a single action call, only its `linear.x` and `linear.y` positions should vary.  Bear in mind however that the robot won't necessarily be moving along the `X` or `Y` axis, so you will need to consider the total distance travelled in the `X-Y` plane.  You should have done this in the [Week 3 `move_square` exercise](../week3/#ex1), so refer to this if you need a reminder.
+            To do this you'll need to subscribe to the `/odom` topic. Remember that there's a `Tb3Odometry` class within [the `tuos_ros_examples/tb3.py` module](#tb3_module) that might help you with obtaining this data.
+            
+            Remember also that your robot's orientation shouldn't change over the course of a single action call, only its `linear.x` and `linear.y` positions should vary.  Bear in mind however that the robot won't necessarily be moving along the `X` or `Y` axis, so you will need to consider the total distance travelled in the `X-Y` plane.  You should have done this in the [Week 3 `move_square` exercise](../week3/#ex1), so refer to this if you need a reminder.
 
-1. Finally, on completion of the action, your server should provide the following **result**:
-    1. The *total* distance travelled (in meters) over the course of the action.
-    1. The distance to the nearest obstacle up ahead, as detected by the LiDAR sensor (this should be the same, or very close to, the distance that was provided by the Action Client in the **goal**).
-    1. The angle at which the nearest obstacle is situated in front of the robot.
+    * Finally, on completion of the action, your server should provide the following *three* **result** parameters:
+        1. The *total* distance travelled (in meters) over the course of the action.
+        1. The distance to the obstacle that made the robot stop (this should match, or very close to, the distance that was provided by the Action Client in the **goal**).
+        1. The angle (in degrees) at which this obstacle is located in front of the robot (`Tb3LaserScan` class within the `tuos_ros_examples/tb3.py` module, which may already provide this).
 
-1. An action message has been created for you for this exercise, available in the `tuos_ros_msgs` package, called `Search.action`.  Navigate to the `action` folder of the `tuos_ros_msgs` package directory to find out everything you need to know about this action message in order to develop your Action Server (and Client) nodes appropriately (or use `rosmsg info ...` in the terminal).
+1. An action message has been created for you to use for this exercise: `tuos_ros_msgs/Search.action`.  Navigate to the `action` folder of the `tuos_ros_msgs` package directory (or use `rosmsg info ...` in the terminal) to find out everything you need to know about this action message in order to develop your Action Server (and Client) nodes appropriately.
 
-1. We've put together some template code to help you with this, as shown below. For further guidance though, you should also refer to the [Camera Sweep Action Server](#cam_swp_act_srv) that we talked about above, as the techniques that are used by this node will be similar to what you'll need to do for this exercise.
+1. We've put together some template code to help you with this, as shown below. For further guidance though, you should also refer to the code for `/camera_sweep_action_server` node, which [we talked about earlier](#cam_swp_act_srv): a lot of the techniques used by `/camera_sweep_action_server` node will be similar to what you'll need to do in this exercise.
 
     ```python
     #! /usr/bin/env python3
@@ -646,7 +642,7 @@ The job of the Action Server node is as follows:
         result = SearchResult()
 
         def __init__(self):
-            ## TODO: create a "simple action server" and start it...
+            ## TODO: create a "simple action server" with a callback function, and start it...
             self.actionserver = actionlib.SimpleActionServer(...)
             
 
@@ -659,16 +655,17 @@ The job of the Action Server node is as follows:
 
             rospy.loginfo("The 'Search Action Server' is active...")
         
+        # The action's "callback function":
         def action_server_launcher(self, goal: SearchGoal):
             rate = rospy.Rate(10)
 
             ## TODO: Implement some checks on the "goal" input parameter(s)
             success = True
-            if goal.fwd_velocity ...
+            if goal...
 
 
-
-
+                success = False
+                
 
             if not success:
                 ## TODO: abort the action server if an invalid goal has been requested...
@@ -677,21 +674,25 @@ The job of the Action Server node is as follows:
                 
                 return
 
-            ## TODO: Print a message to indicate that the request was valid
+            ## TODO: Print a message to indicate that the requested goal was valid
             print(f"...")
 
-            # Get the robot's current odometry from the Tb3Odometry() object:
+            # Get the robot's current odometry from the Tb3Odometry() class:
             self.posx0 = self.tb3_odom.posx
             self.posy0 = self.tb3_odom.posy
-            # Get information about objects up ahead from the Tb3LaserScan() object:
+            # Get information about objects up ahead from the Tb3LaserScan() class:
             self.closest_object = self.tb3_lidar.min_distance
             self.closest_object_location = self.tb3_lidar.closest_object_position
             
-            ## TODO: set the robot velocity (as specified by a "goal" parameter)...
+            ## TODO: set the robot's forward velocity (as specified in the "goal")...
             self.vel_controller...
             
-            while self.tb3_lidar.min_distance > goal.approach_distance:
-                # Get new LaserScan data:
+            ## TODO: establish a conditional statement so that the  
+            ## while loop continues as long as the distance to the closest object
+            ## ahead of the robot is always greater than the "approach distance"
+            ## (as specified in the "goal")...
+            while {something} > {something_else}:
+                # update LaserScan data:
                 self.closest_object = self.tb3_lidar.min_distance
                 self.closest_object_location = self.tb3_lidar.closest_object_position
                 
@@ -700,7 +701,7 @@ The job of the Action Server node is as follows:
                 
                 # check if there has been a request to cancel the action mid-way through:
                 if self.actionserver.is_preempt_requested():
-                    ## TODO: take appropriate action if the action server is preempted:
+                    ## TODO: take appropriate action if the action is cancelled (peempted)...
                     
                     
 
@@ -738,9 +739,9 @@ The job of the Action Server node is as follows:
     ```
 
     {{< nicenote warning "Important" >}}
-The template above uses the `tb3.py` module from the `tuos_ros_examples` package, which contains various helper functions to make the robot move and to get data (a.k.a. *subscribe*) to some key topics that will be useful for the task at hand. To use this, you'll need to copy the module across to your own `week5_actions/src` folder so that your `search_server.py` node can import it. In **TERMINAL 2** you should already be located in the `src` folder of your `week5_actions` package so, from there, copy the `.py` file as follows:
+The template above uses the `tb3.py` module from the `tuos_ros_examples` package, which contains various helper functions to make the robot move and to read data (a.k.a. *subscribe*) from some key topics that will be useful for the task at hand. To use this, you'll need to copy the module across to your own `week5_actions/src` folder so that your `search_server.py` node can import it. In **TERMINAL 2**, copy the `.py` file as follows:
 ```bash
-cp ~/catkin_ws/src/COM2009/tuos_ros_examples/src/tb3.py ./
+cp ~/catkin_ws/src/COM2009/tuos_ros_examples/src/tb3.py ~/catkin_ws/src/week5_actions/src/
 ```
     {{< /nicenote >}}
 
@@ -753,15 +754,16 @@ cp ~/catkin_ws/src/COM2009/tuos_ros_examples/src/tb3.py ./
     ```
     ***
 
-**Step 3: Building the Action Client**
+**Step 3: Build the Action Client**
 
-In **TERMINAL 3** navigate to the `src` folder of your `week5_actions` package, create a Python script called `search_client.py`, and make it executable.
+1. In **TERMINAL 3** navigate to the `src` folder of your `week5_actions` package, create a Python script called `search_client.py`, and make it executable.
 
-The job of the Action Client node is as follows:
+1. The job of the Action Client node is as follows:
 
-1. The client needs to issue a correctly formatted goal to the server.
-1. The client should be programmed to monitor the feedback data from the Server.  If it detects from this that the robot has travelled a distance greater than 2 meters without coming into contact with an obstacle, then it should cancel the current action call using the `cancel_goal()` `actionlib` method.
-1. Use the techniques that we used in the Client node from [Exercise 3](#ex3) as a guide to help you with this. There's also a code template below to help you get started.
+    * The client needs to issue a correctly formatted **goal** to the server.
+    * The client should be programmed to monitor the **feedback** data from the Server.  If it detects (from the feedback) that the robot has travelled a distance *greater than 2 meters* without detecting an obstacle, then it should cancel the current action call using the `cancel_goal()` `actionlib` method.
+
+1. Use the techniques that we used in the Client node from [Exercise 3](#ex3) as a guide to help you with this. There's also a code template below to help you get started:
 
     ```python
     #! /usr/bin/env python3
@@ -789,7 +791,8 @@ The job of the Action Client node is as follows:
             rospy.init_node("search_action_client")
             self.rate = rospy.Rate(1)
             
-            ## TODO: setup a "simple action client" and wait for the server to be available...
+            ## TODO: setup a "simple action client" with a callback function
+            ## and wait for the server to be available...
             self.client = ...
 
 
@@ -804,6 +807,10 @@ The job of the Action Client node is as follows:
                 
                 
                 rospy.logwarn("Goal Cancelled...")
+            
+            ## TODO: Print the result here...
+
+
                             
         def main_loop(self):
             ## TODO: assign values to all goal parameters
@@ -814,7 +821,7 @@ The job of the Action Client node is as follows:
             
             while self.client.get_state() < 2:
                 ## TODO: Construct an if statement and cancel the goal if the 
-                ## distance travelled exceeds a threshold...
+                ## distance travelled exceeds 2 meters...
                 if self.distance ...
                     
                     
@@ -826,11 +833,7 @@ The job of the Action Client node is as follows:
             self.action_complete = True
 
     if __name__ == '__main__':
-        node = SearchActionClient()
-        try:
-            node.main_loop()
-        except rospy.ROSInterruptException:
-            pass
+        ## TODO: Instantiate the node and call the main_loop() method from it...
 
     ```
 
@@ -843,9 +846,9 @@ The job of the Action Client node is as follows:
     ```
     ***
 
-    If all is good, then this client node should call the action server and make the robot move forwards until it reaches a certain distance from an obstacle up ahead, at which point the robot will stop, and your client node will stop too. Once this happens, reorient your robot (using the `turtlebot3_teleop` node) and launch the client node again to make sure that it is robustly stopping in front of obstacles repeatedly, and when approaching them from a range of different angles. 
+    If all is good, then this client node should call the action server, which will - in turn - make the robot move forwards until it reaches a certain distance from an obstacle up ahead, at which point the robot will stop, and your client node will stop too. Once this happens, reorient your robot (using the `turtlebot3_teleop` node) and launch the client node again to make sure that it is robustly stopping in front of obstacles repeatedly, and when approaching them from a range of different angles. 
 
-{{% nicenote note %}}
+{{% nicenote info "Important" %}}
 Make sure that your preemption functionality works correctly too, so that the robot never moves any further than 2 meters during a given action call!
 {{% /nicenote %}} 
 
@@ -853,32 +856,61 @@ Make sure that your preemption functionality works correctly too, so that the ro
 
 Want to do more with the ROS skills that you have now developed?! Consider the following advanced exercises that you could try out now that you know how to use ROS Actions!
 
-> **Note:** *We know that you have done a lot this week already, and these are really just suggestions for more advanced things that you may want to explore in your own time, or to help with the further work that you will do on the COM2009 course.*
+{{% nicenote note %}}
+We know that you have done a lot this week already, and these are really just suggestions for more advanced things that you may want to explore in your own time, or to help with the further work that you will do in Lab Assignment #2...
+{{% /nicenote %}}
 
 #### Advanced Exercise 1: Implementing a Search strategy {#adv_ex1}
 
 What you developed in [the previous exercise](#ex4) could be used as the basis for an effective robot search strategy.  Up to now, your Action Client node should have the capability to call your `Search.action` server to make the robot move forwards by 2 meters, or until it reaches an obstacle (whichever occurs first), but you could enhance this further:
-* Between action calls, the client could make the robot turn on the spot to face a different direction and then issue a further action call to make the robot move forwards in this new direction until an object is detected again.
-* The turning process could be done at random, or it could be informed by the ***result*** of the last action call, i.e.: if (on completion) the server has informed the client that it detected an object at an angle of, say, 10&deg; *anti-clockwise* from the front of the robot, then the client might then decide to turn the robot *clockwise* in an attempt to turn away from the object before issuing its next action call to make the robot move forwards again.
-* Repeating this process over and over again, the robot would (somewhat randomly) travel around its environment safely, stopping before it crashes into any obstacles and reorienting itself every time it stops moving forwards, which is effectively an implementation of a basic robot search strategy! (Imagine SLAM was running during this process - your robot could be building up a map of its environment in the background as it slowly explored every part of it!)
+* Between action calls, your *client* node could make the robot turn on the spot to face a different direction and then issue a further action call to make the robot move forwards once again.
+* The turning process could be done at random, or it could be informed by the **result** of the last action call, i.e.: if (on completion) the server has informed the client that it detected an object at an angle of, say, 10&deg; *anti-clockwise* from the front of the robot, then the client might then decide to turn the robot *clockwise* in an attempt to turn away from the object before issuing its next action call to make the robot move forwards again.
+* By programming your client node to repeat this process over and over again, the robot would (somewhat randomly) travel around its environment safely, stopping before it crashes into any obstacles and reorienting itself every time it stops moving forwards. *This is effectively an implementation of a basic robotic search strategy!* 
+
+    {{< nicenote tip "Enhancing this further..." >}}
+Imagine SLAM was running at the same time too... your robot could be building up a map of its environment in the background as it slowly explored every part of it!
+    {{< /nicenote >}}
 
 #### Advanced Exercise 2: Autonomous Navigation using waypoint markers {#adv_ex2}
 
-In the Week 3 session you used [SLAM to construct a map of an environment](Week-3#ex3) and then [issued navigation requests to the `move_base` action server (via the command-line)](Week-3#ex4) to make your robot move to a zone marker, based on coordinates that you had established beforehand. Now that you know [how to build Action Client Nodes in Python](#ex2) you could return to your `week2_navigation` package and build a new node that makes the robot move sequentially between each zone marker programmatically.
-* Your node could cycle through the coordinates of all four of the zone markers (or "waypoints") that you established whilst [using SLAM to build a map of the environment](Week-3#ex3).
-* Your node could monitor the status of the `move_base_simple` action call to know when the robot has reached a zone marker, so that it knows when to issue a further action call to move to the next.
-* You could refer to [the launch file that you created in the Week 3 session](Week-3#launch_file) to launch all the Navigation processes that need to be running in order to enable and configure the ROS Navigation Stack appropriately for the TurtleBot3 robot.
+In the Week 3 session you used SLAM to construct a map of an environment ([Exercise 3](../week3/#ex3)) and then issued navigation requests to the `move_base` action server, via the command-line, ([Exercise 4](../week3/#ex4)) to make your robot move to a zone marker, based on coordinates that you had established beforehand. Now that you know how to build Action Client Nodes in Python you could return to your `week2_navigation` package and build a new node that makes the robot move sequentially between each zone marker programmatically.
+* Your node could cycle through the coordinates of all four of the zone markers (or "waypoints") that you established whilst using SLAM to build a map of the environment ([as per Exercise 3](../week3/#ex3)).
+* Your node could monitor the status of the `move_base_simple` action call to know when the robot has reached a zone marker, so that it knows when to issue a further action call to move on to the next one.
+* You could refer to [the launch file that you created in the Week 3 session](../week3/#launch_file) to launch all the Navigation processes that need to be running in order to enable and configure the ROS Navigation Stack appropriately for the TurtleBot3 robot.
 
 ## Wrapping Up
 
-In this week's session you have learnt how ROS Actions work and why they are useful.  You have learnt how to develop Action Client Nodes in Python which can perform other tasks concurrently to the action they have requested, and can also cancel the requested action as required.  You have learnt how to use standard ROS tools to interrogate the topic messages used by an action server, allowing you to build clients to call them, and to also allow you to build standalone action servers yourself using bespoke Action messages.  Finally, you have harnessed this communication method to implement a behaviour that could be used as the basis for a genuine robotic search strategy. 
+In this session you've learnt:
+* How ROS Actions work and why they might be useful.
+* How to develop Action Client Nodes in Python which can perform other tasks *concurrently* to the action they have requested, and which can also *cancel* the requested action, if required.
+* How to use standard ROS tools to interrogate the topic messages used by an action server, allowing you to build clients to call them, and to also allow you to build standalone action servers yourself using bespoke Action messages.
+* How to harness this communication method to implement a behaviour that could be used as the basis for a genuine robotic *search strategy*. 
 
 ### Topics, Services or Actions: *Which to Choose?*
 
-You should now have developed a good understanding of the three communication methods that are available within ROS to facilitate communication between ROS Nodes.  Through this course you have gained practical experience in using all three of these, but you may still be wondering how to select the appropriate one for a certain robot task... 
+You should now have developed a good understanding of the three communication methods that are available within ROS to facilitate communication between ROS Nodes:
 
-[This page on the ROS.org website](https://wiki.ros.org/ROS/Patterns/Communication#Communication_via_Topics_vs_Services_vs_X) summarises all of this very nicely (and briefly), so you should have a read through this to make sure you know what's what.  In summary though:
+1. Topic-based messaging.
+1. ROS Services.
+1. ROS Actions.
+
+Through this course you've now gained some practical experience using all three of these, but you may still be wondering how to select the appropriate one for a certain robot task... 
+
+[This ROS.org webpage](https://wiki.ros.org/ROS/Patterns/Communication#Communication_via_Topics_vs_Services_vs_X) summarises all of this very nicely (and briefly), so you should have a read through this to make sure you know what's what. In summary though:
 * **Topics**: Are most appropriate for broadcasting continuous data-streams such as sensor data and robot state information, and for publishing data that is likely to be required by a range of Nodes across a ROS network.
 * **Services**: Are most appropriate for very short procedures like *quick* calculations (inverse kinematics etc.) and performing short discrete actions that are unlikely to go wrong or will not need intervention (e.g. turning on a warning LED when a battery is low).
 * **Actions**: Are most appropriate for longer running tasks (like moving a robot), for longer processing calculations (processing the data from a camera stream) or for operations where we *might* need to change our mind and do something different or cancel an invoked behaviour part way through.
     
+### Saving your work {#backup}
+
+Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
+
+```bash
+wsl_ros backup
+```
+
+This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.
+
+{{% textalign right %}}
+[Next: "Week 6: Vision" <i class="fas fa-solid fa-arrow-right"></i>](../week6)
+{{% /textalign %}}
