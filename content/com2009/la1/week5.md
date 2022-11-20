@@ -4,10 +4,6 @@ weight = 5
 description = "Building on what you learnt about ROS Services last week, we'll now look at ROS Actions, which work similarly, but with key differences."  
 +++
 
-<!-- TODO:
-- provide a template for search_server.py and search_client.py
- -->
-
 {{% textalign left %}}
 [<i class="fas fa-solid fa-arrow-left"></i> Previous: "Week 4: ROS Services"](../week4)
 {{% /textalign %}}
@@ -912,5 +908,5 @@ wsl_ros backup
 This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.
 
 {{% textalign right %}}
-[Next: "Week 6: Vision" <i class="fas fa-solid fa-arrow-right"></i>](../week6)
+[Next: "Week 6: Cameras, Machine Vision & OpenCV" <i class="fas fa-solid fa-arrow-right"></i>](../week6)
 {{% /textalign %}}
