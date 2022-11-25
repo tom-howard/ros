@@ -8,6 +8,16 @@ description = "Building on what you learnt about ROS Services last week, we'll n
 [<i class="fas fa-solid fa-arrow-left"></i> Previous: "Week 4: ROS Services"](../week4)
 {{% /textalign %}}
 
+{{% nicenote warning "Note to GTAs..." %}}
+**Make sure you update the COM2009 repo before starting on this!**  
+Run the following command in a terminal now:
+
+```bash
+cd ~/catkin_ws/src/COM2009 && git pull
+```
+{{% /nicenote %}}
+
+
 ## Introduction
 
 ## Aims
