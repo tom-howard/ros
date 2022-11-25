@@ -5,7 +5,7 @@ hidden = "true"
 
 ## The Code
 
-Copy **all** the code below into your `subscriber.py` file. Numbers inside square brackets in the code refer to the numbered items in [the explainer below](#explainer)... *make sure you read this to understand how it all works!*
+Copy **all** the code below into your `subscriber.py` file and then also read [the explainer below](#explainer)... *make sure you read this to understand how it all works!*
 
 {{< include file="subscriber.py" code="true" lang="python" >}}
 

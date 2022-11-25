@@ -9,8 +9,6 @@ Copy **all** the code below into your `publisher.py` file.  Then, review [the ex
 
 {{< include file="publisher.py" code="true" lang="python" >}}
 
-Numbers inside square brackets above refer to the numbered items in the explainer below.
-
 ## The Code Explained {#explainer}
 
 ### The Shebang {#shebang}
