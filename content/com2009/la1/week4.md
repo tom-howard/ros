@@ -40,7 +40,7 @@ By the end of this session you will be able to:
 
 * [The Service Server Code (for Exercise 1)](move_server)
 * [The Service Client Code (for Exercise 2)](move_client)
-* [Creating a `/scan` Callback Function](Week-4-Scan-Callback-Function)
+* [Creating a `/scan` Callback Function](scan_callback)
 
 ## Getting Started
 
