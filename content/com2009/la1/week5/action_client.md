@@ -18,7 +18,7 @@ Which attribute of the `feedback_data` object tells us how many images have been
 
 #### The Code Explained {#explainer}
 
-[DFTS, of course](../week1/subscriber/#dfts)!
+[DFTS, of course](../../week1/subscriber/#dfts)!
 
 As you know by now, in order to develop ROS nodes using Python we need to use the `rospy` library.  If we want to work with ROS Actions, we also need to import `actionlib`. We know that the `/camera_sweep_action_server` uses `CameraSweepAction` messages from the `tuos_ros_msgs` package, so we import the full message definition: `CameraSweepAction` as well as the `Goal` message (which we use to actually make a call to the server). 
 
