@@ -10,7 +10,7 @@ Copy **all** the code below into your `preemptive_action_client.py` file and the
 {{< include file="preemptive_action_client.py" code="true" lang="python" >}}
 
 {{< nicenote warning "Fill in the Blank!" >}}
-We have contained all our code inside a nice Python Class now, but how do we actually instantiate it and invoke the Action Call? (We've been doing this from [the very beginning](../week1/publisher), and the process is very much the same here!)
+We have contained all our code inside a nice Python Class now, but how do we actually instantiate it and invoke the Action Call? (We've been doing this from [the very beginning](../../week1/publisher), and the process is very much the same here!)
 {{< /nicenote >}}
 
 #### The Code Explained {#explainer}
