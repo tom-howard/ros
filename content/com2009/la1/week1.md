@@ -63,7 +63,7 @@ By the end of this session you will be able to:
         
     (or, alternatively, press the `Ctrl+Shift+T` keyboard shortcut).
     
-1. In the new terminal instance enter the following command:
+1. In the new terminal instance enter the following command:<a name="teleop"></a>
 
     ***
     **TERMINAL 2:**
