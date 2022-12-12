@@ -17,7 +17,6 @@ cd ~/catkin_ws/src/COM2009 && git pull
 ```
 {{% /nicenote %}}
 
-
 ## Introduction
 
 ### Aims
