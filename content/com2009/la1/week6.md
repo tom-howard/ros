@@ -133,7 +133,7 @@ Now, run `rosmsg info` on this message type to find out exactly what information
     uint8[] data
 
 {{% nicenote note "Questions" %}}
-1. What *type* of message is used on this topic, and which *package* is this message derived from?**
+1. What *type* of message is used on this topic, and which *package* is this message derived from?
 1. Using `rostopic echo` and the information about the topic message (as shown above) determine the *size* of the images that our robot's camera will capture (i.e. its *dimensions*, in pixels).  It will be quite important to know this when we start manipulating these camera images later on. 
 1. Finally, considering the list above again, which part of the message do you think contains the *actual image data*?
 {{% /nicenote %}}
@@ -239,7 +239,7 @@ We're going to modify the `object_detection.py` node now to:
 1. Run the node again.  
     
     {{< nicenote tip "Remember" >}}
-Images are only saved once you *close down the corresponding pop-up window*.  Make sure you close all of these pop-up windows down after viewing them to ensure that your images are saved to the filesystem and the node completes all of its tasks successfully (i.e. don't just minimise them).
+Images are only saved once you **close down the corresponding pop-up window**.  Make sure you close all of these pop-up windows down after viewing them to ensure that your images are saved to the filesystem and the node completes all of its tasks successfully (i.e. don't just minimise them).
     {{< /nicenote >}}
 
     The code that you have just added here has created a new image object called `cropped_img`, from a subset of the original by specifying a desired `crop_height` and `crop_width` relative to the original image dimensions.  Additionally, we have also specified *where* in the original image (in terms of pixel coordinates) we want this subset to start, using `crop_y0` and `crop_z0`. This process is illustrated in the figure below:
