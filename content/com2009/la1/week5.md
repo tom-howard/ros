@@ -20,7 +20,7 @@ cd ~/catkin_ws/src/COM2009 && git pull
 
 ## Introduction
 
-## Aims
+### Aims
 
 This week you will learn about a third (and final) communication method available within ROS: *Actions*.  Actions are essentially an advanced version of ROS Services, and you will learn about exactly how these two differ and why you might choose to employ an action over a service for certain robotic tasks. 
 
