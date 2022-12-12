@@ -205,7 +205,7 @@ This node will capture an image and display it in a pop-up window. The image **w
 
 What you may have noticed from the terminal output when you ran the `object_detection.py` node is that the robot's camera captures images at a native size of 1080x1920 pixels (you should already know this from interrogating the `/camera/rgb/image_raw/width` and `/height` messages using `rostopic echo` earlier, right?!).  That's over 2 million pixels in total in a single image (2,073,600 pixels per image, to be exact), each pixel having a blue, green and red value associated with it - so that's a lot of data in a single image file! 
 
-{{% nicenote info %}}
+{{% nicenote note "Question" %}}
 The size of the image file (in bytes) was actually printed to the terminal when you ran the `object_detection.py` node. Did you notice how big it was exactly?
 {{% /nicenote %}}
 
