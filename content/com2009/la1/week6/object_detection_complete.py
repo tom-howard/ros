@@ -13,7 +13,7 @@ rospy.init_node(node_name)
 print(f"Launched the '{node_name}' node. Currently waiting for an image...")
 rate = rospy.Rate(5)
 
-base_image_path = Path.home().joinpath("/myrosdata/week6_images")
+base_image_path = Path.home().joinpath("myrosdata/week6_images")
 base_image_path.mkdir(parents=True, exist_ok=True)
 
 cvbridge_interface = CvBridge()
