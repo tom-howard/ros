@@ -196,7 +196,7 @@ One common job that we often want a robot to perform is *object detection*, and 
 1. Copy [the code here](object_detection), save the file, then review [the code explainer](object_detection/#explainer) so that you understand how this node works and what should happen when you run it.
 1. Run the node using `rosrun`.
 
-    {{< nicenote note >}}
+    {{< nicenote warning >}}
 This node will capture an image and display it in a pop-up window. Once you've viewed the image in this pop-up window **MAKE SURE YOU CLOSE THE POP-UP WINDOW DOWN** so that the node can complete its execution!
     {{< /nicenote >}}
 
