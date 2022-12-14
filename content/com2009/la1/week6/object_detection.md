@@ -44,7 +44,7 @@ Before we do anything else (do I really need to say it by now?!)... [DFTS](../..
 1. Then, we define a filesystem location that we'll use to save images to. We know that there's a directory in the home directory of the WSL-ROS filesystem called "myrosdata", so we can use Pathlib's `Path.home().joinpath(...)` to define it (without necessary needing to know the name of the home directory itself). Then, we use the Pathlib `Path.mkdir()` method to create this directory, if it doesn't exist already.
 
     ```python
-    base_image_path = Path.home().joinpath("/myrosdata/week6_images")
+    base_image_path = Path.home().joinpath("myrosdata/week6_images/")
     base_image_path.mkdir(parents=True, exist_ok=True)
     ```
 
@@ -125,13 +125,15 @@ Before we do anything else (do I really need to say it by now?!)... [DFTS](../..
     def show_and_save_image(img, img_name):
         full_image_path = base_image_path.joinpath(f"{img_name}.jpg")
 
+        print("Opening the image in a new window...")
         cv2.imshow(img_name, img)
-        cv2.waitKey(0)
-
+        print(f"Saving the image to '{full_image_path}'...")
         cv2.imwrite(str(full_image_path), img)
         print(f"Saved an image to '{full_image_path}'\n"
             f"image dims = {img.shape[0]}x{img.shape[1]}px\n"
             f"file size = {full_image_path.stat().st_size} bytes")
+        print("Please close down the image pop-up window to continue...")
+        cv2.waitKey(0)
     ```
 
     Essentially, what we are doing here is:
@@ -143,6 +145,6 @@ Before we do anything else (do I really need to say it by now?!)... [DFTS](../..
     1. We then use the `cv2.imshow()` function to display the actual image in a pop-up window:
         1. The image data is passed into the function via the `img` argument,
         1. We need to give the pop-up window a name, so in this case we are using the `img_name` argument that has also been passed into the function.
-    1. Next, we're using the `cv2.waitKey()` function.  We're supplying a value of `0` here, which tells this function to wait indefinitely before allowing the rest of our code to execute.  If we had supplied a value here (say: `1`) then the function would simply wait 1 millisecond and then close the pop-up window down.  In our case however, we want some time to actually look at the image and then close the window down ourselves, manually.  Once we do this, the `cv2.waitKey()` function allows the execution of our code to continue...
-    1. Then we are using the `cv2.imwrite()` function to save the image to a `.jpg` file.  We're supplying the `full_image_path` that was created above, and also the actual image data (`img`) so that the function knows what image we want to save.
-    1. And to finish off, we're printing a message to the terminal to inform us of (a) where the image has been saved to, (b) how big the image was (in terms of its pixel dimensions) and (c) how big the image *file* is (in bytes).
+    1. Next, we are using the `cv2.imwrite()` function to save the image to a `.jpg` file.  We're supplying the `full_image_path` that was created above, and also the actual image data (`img`) so that the function knows what image we want to save.
+    1. Then, we're printing a message to the terminal to inform us of (a) where the image has been saved to, (b) how big the image was (in terms of its pixel dimensions) and (c) how big the image *file* is (in bytes).
+    1. And to finish off, we're using the `cv2.waitKey()` function.  We're supplying a value of `0` here, which tells this function to wait indefinitely before allowing our `show_and_save_image()` function to end. If we had supplied a value here (say: `1`) then the function would simply wait 1 millisecond and then close the pop-up window down. In our case however, we want some time to actually look at the image and then close the window down ourselves, manually. Once the window has been closed, the execution of our code is able to continue...

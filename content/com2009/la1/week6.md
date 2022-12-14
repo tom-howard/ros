@@ -196,9 +196,8 @@ One common job that we often want a robot to perform is *object detection*, and 
 1. Copy [the code here](object_detection), save the file, then review [the code explainer](object_detection/#explainer) so that you understand how this node works and what should happen when you run it.
 1. Run the node using `rosrun`.
 
-    {{< nicenote warning >}}
-**MAKE SURE YOU CLOSE THE POP-UP WINDOW!**  
-This node will capture an image and display it in a pop-up window. The image **won't** be saved to the filesystem until you close the pop-up window!
+    {{< nicenote note >}}
+This node will capture an image and display it in a pop-up window. Once you've viewed the image in this pop-up window **MAKE SURE YOU CLOSE THE POP-UP WINDOW DOWN** so that the node can complete its execution!
     {{< /nicenote >}}
 
 1. As you should know from reading the explainer, the node has just obtained an image and saved it to a location on the filesystem.  Navigate to this filesystem location and view the image using `eog`.
@@ -239,7 +238,7 @@ We're going to modify the `object_detection.py` node now to:
 1. Run the node again.  
     
     {{< nicenote tip "Remember" >}}
-Images are only saved once you **close down the corresponding pop-up window**.  Make sure you close all of these pop-up windows down after viewing them to ensure that your images are saved to the filesystem and the node completes all of its tasks successfully (i.e. don't just minimise them).
+Make sure you close all of these pop-up windows down after viewing them to ensure that **all** your images are saved to the filesystem and the node completes all of its tasks successfully.
     {{< /nicenote >}}
 
     The code that you have just added here has created a new image object called `cropped_img`, from a subset of the original by specifying a desired `crop_height` and `crop_width` relative to the original image dimensions.  Additionally, we have also specified *where* in the original image (in terms of pixel coordinates) we want this subset to start, using `crop_y0` and `crop_z0`. This process is illustrated in the figure below:

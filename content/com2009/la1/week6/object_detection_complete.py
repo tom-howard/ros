@@ -23,13 +23,15 @@ waiting_for_image = True
 def show_and_save_image(img, img_name):
     full_image_path = base_image_path.joinpath(f"{img_name}.jpg")
 
+    print("Opening the image in a new window...")
     cv2.imshow(img_name, img)
-    cv2.waitKey(0)
-
+    print(f"Saving the image to '{full_image_path}'...")
     cv2.imwrite(str(full_image_path), img)
     print(f"Saved an image to '{full_image_path}'\n"
         f"image dims = {img.shape[0]}x{img.shape[1]}px\n"
         f"file size = {full_image_path.stat().st_size} bytes")
+    print("Please close down the image pop-up window to continue...")
+    cv2.waitKey(0)
 
 def camera_cb(img_data):
     global waiting_for_image  
