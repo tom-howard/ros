@@ -1,6 +1,7 @@
----
+---  
 title: "Lab 1: Mobile Robotics"
----
+weight: 1
+---  
 
 {{% textalign center %}}
 *You should be able to complete exercises 1-6 on this page within a two-hour lab session*.
