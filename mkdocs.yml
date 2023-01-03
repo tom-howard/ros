@@ -1,0 +1,36 @@
+site_name: "Robotics in the Diamond: ROS"
+theme:
+  name: material
+  font:
+    text: Source Sans Pro
+    code: Source Code Pro
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  logo: assets/tuos.png
+  favicon: assets/favicon.png
+
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+
+# extra_css:
+#   - stylesheets/extras.css
