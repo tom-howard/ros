@@ -1,0 +1,19 @@
+{#-
+    Adapted from: 
+    https://github.com/squidfunk/mkdocs-material/blob/master/material/partials/copyright.html
+  -#}
+  <div class="md-copyright">
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />
+    Content by <a href="">Dr Tom Howard</a>
+    {% if config.copyright %}
+      <div class="md-copyright__highlight">
+        {{ config.copyright }}
+      </div>
+    {% endif %}
+    {% if not config.extra.generator == false %}
+      Made with
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        Material for MkDocs
+      </a>
+    {% endif %}
+  </div>
