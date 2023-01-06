@@ -35,6 +35,7 @@ theme:
     - navigation.footer
     - toc.follow
     - content.code.copy
+    - content.code.annotate
   
 copyright: Copyright &copy; 2023 The University of Sheffield
 repo_url: https://github.com/tom-howard/ros
@@ -45,13 +46,18 @@ plugins:
     - awesome-pages
 
 markdown_extensions:
+  - admonition
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.details
   - pymdownx.superfences
   - toc:
       permalink: true
+  - attr_list
+  - md_in_html
+  - footnotes
 
 # extra_css:
 #   - stylesheets/extras.css
