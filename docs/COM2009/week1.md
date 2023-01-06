@@ -15,7 +15,8 @@ In this first week you will learn the basics of ROS and become familiar with som
 
 ### Intended Learning Outcomes
 
-By the end of this session you will be able to:
+By the end of this session you will be able to:  
+
 1. Control a TurtleBot3 Robot, in simulation, using ROS.
 1. Launch ROS applications using `roslaunch` and `rosrun`.
 1. Interrogate running ROS applications using key ROS command line tools.

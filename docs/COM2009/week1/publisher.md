@@ -34,7 +34,7 @@ Copy **all** the code below into your `publisher.py` file and *review the annota
 10. This is used to shut down a ROS node effectively:
 
     1. First, we create a `ctrl_c` variable within the parent class and initialise it to `False`.
-    1. Then, we use the `rospy.on_shutdown()` method to register a `shutdownhook` function. This will be called when rospy detects that the node has been asked to stop (i.e. by a user entering `Ctrl+C` in the terminal, for example). **This function must take no arguments**.
+    1. Then, we use the `rospy.on_shutdown()` method to register a shutdown *hook* (in this case a function called `shutdownhook`). This will be called when rospy detects that the node has been asked to stop (i.e. by a user entering `Ctrl+C` in the terminal, for example). **The shutdown hook function must take no arguments**.
 
 11. Finally, we issue a message to indicate that our node is active (this will appear in the terminal that we run the node in):
 
