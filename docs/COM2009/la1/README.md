@@ -5,4 +5,4 @@ weight = 1
 disableToc = "true"
 +++
 
-{{% children description="true" depth="1" %}}
+## An intro to Lab Assignment #1
