@@ -317,7 +317,7 @@ Much like the `rosnode list` command, we can use `rostopic list` to list all the
     ```
     ***
 
-    This should provide an output similar to the following:
+    This should provide an output similar to the following: 
     
     ```txt
     Type: geometry_msgs/Twist
@@ -328,7 +328,7 @@ Much like the `rosnode list` command, we can use `rostopic list` to list all the
      * /turtlebot3_core (http://dia-waffle[NUM]:#####/)
     ```
 
-    This tells us a few things:
+    This tells us a few things: <a name="rostopic_info_explained"></a>
     
     1. The `/cmd_vel` topic currently has no publishers (i.e. no other nodes are currently writing data to this topic).
     1. The `/turtlebot3_core` node is subscribing to the topic. The `/turtlebot3_core` node turns motor commands into actual wheel motion, so it monitors the topic (i.e. *subscribes* to it) to see when a velocity command is published to it.
