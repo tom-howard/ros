@@ -43,10 +43,10 @@ By the end of this session you will be able to:
 
 ### Quick Links
 
-* [Exercise 1: ](#ex1)
-* [Exercise 2: ](#ex2)
-* [Exercise 3: ](#ex3)
-* [Exercise 4: ](#ex4)
+* [Exercise 1: Exploring Odometry Data](#ex1)
+* [Exercise 2: Odometry-based Navigation](#ex2)
+* [Exercise 3: Wall following](#ex3)
+* [Exercise 4: SLAM and Navigation](#ex4)
 
 ## The Lab
 
@@ -248,6 +248,15 @@ What does all this mean? We discussed this [last time (in relation to the `/cmd_
 
     As you're doing this, look at how the `position` and `orientation` data is changing in **TERMINAL 1**, in real-time!
 
+    {{< nicenote info "Post-lab Quiz" >}}
+Which position and orientation values change (by a significant amount) when:
+1. The robot turns on the spot (i.e. only an *angular* velocity is applied)?
+1. The robot moves forwards (i.e. only a *linear* velocity is applied)?
+1. The robot moves in a circle (i.e. both a linear *and* angular velocity are applied simultaneously)?
+
+**Make a note of these: they may feature in the post-lab quiz!**
+    {{< /nicenote >}}
+
 1. When you've seen enough enter `Ctrl+C` in **TERMINAL 2** to stop the `turtlebot3_teleop_keyboard` node. Then, enter `Ctrl+C` in **TERMINAL 1** as well, which will stop the live stream of Odometery messages from being displayed.
 
 ##### Summary
@@ -362,14 +371,107 @@ Consider how the turn angle is monitored and updated whist turning (`current_yaw
 
 ### The LiDAR Sensor
 
+As you'll know, the black spinning device on the top of your robot is a *LiDAR Sensor*. As discussed previously, this sensor uses laser pulses to measure the distance to nearby objects. The sensor spins continuously so that it can fire these laser pulses through a full 360&deg; arc, and generate a full 2-dimensional map of the robot's surroundings.
 
+This data is published to a ROS Topic called `/scan`. Use the same methods that you used in [Exercise 1](#ex1) to find out what message type is used by this ROS Topic.
+
+{{< nicenote info "Post-lab Quiz" >}}
+Make a note of this, there'll be a post-lab quiz question on it!
+{{< /nicenote >}}
+
+Launch RViz, so that we can see the data coming from this sensor in real-time:
+
+***
+**TERMINAL 1:**
+```bash
+roslaunch tuos_tb3_tools rviz.launch
+```
+***
+
+FIGURE
+
+The red dots illustrate the LiDAR data. Hold your hand out to the robot and see if you can see it being detected by the sensor... a cluster of red dots should form on the screen in the location of your hand. Move your hand around and watch the cluster of dots move accordingly. Move your hand closer and farther away from the robot and observe how the red dots also move towards or away from the robot on the screen. 
+
+This data is really useful and (as we observed during the previous lab session) it allows us to build up 2-dimensional maps of an environment with considerable accuracy. This is, of course, a very valuable skill for a robot to have if we want it to be able to navigate autonomously, and we'll explore this further later on. For now though, we'll look at how we can use the LiDAR data ourselves to build Nodes that make the robot detect and follow walls!
 
 #### Exercise 3: Wall following {#ex3}
 
+1. In VS Code, click on the `ex3.py` file in the File Explorer to display it in the editor.
 
+1. Have a look through the code and see if you can work out what's going on. Here's a few points to start with:
 
+    1. Velocity control is handled in the same way as in the previous exercise:
 
-#### Exercise 3: SLAM and Navigation
+        1. `motion.move_at_velocity(linear = x, angular = y)` to make the robot move at a linear velocity of `x` (m/s) and/or an angular velocity of `y` (rad/s).
+        1. `motion.stop()` to make the robot stop moving.
+    
+    1. The data from the LiDAR sensor has been preprocessed and encapsulated in an additional class from the `waffle` module. This functionality is instantiated on line 13:
+
+        ```python
+        lidar = waffle.Lidar()
+        ```
+
+        This class splits up the distance measurements from the LiDAR sensor into a number of different subsets, the data within each subset (as shown in the figure below) is then averaged, so a single distance reading can be obtained, to represent distinct zones around the robot's body. 
+
+        FIGURE
+
+        We can then access the distance measurement (in meters) from each of the above zones as follows:
+
+        1. `lidar.distance.front` to obtain the average distance of any object(s) in front of the robot (within the frontal zone).
+        1. `lidar.distance.l1` to obtain the average distance of any object(s) located within zone L1.
+        1. `lidar.distance.r1` to obtain the average distance of any object(s) located within zone R1.
+        1. and so on...
+    
+    1. The code has been developed to detect a wall on the robot's *left-hand side*.
+        1. We use distance measurements from LiDAR zones L3 and L4 to determine the *straightness* of the wall (as observed by the robot).
+        1. This *straightness* is determined by taking the distance between the two distance measurements L3 and L4, via a parameter called `wall_rate`:
+
+            ```python
+            wall_rate = lidar.distance.l3 - lidar.distance.l4
+            ```
+        1. We can use this parameter to determine how parallel the robot is to the wall:
+
+        FIGURE
+        
+        1. As such, we want to keep with value as close as possible to zero at all times, in order to for the robot to maintain alignment with the wall, and therefore follow it.   
+
+1. Run the node, as it is, from **TERMINAL 1**:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    rosrun amr31001 ex3.py
+    ```
+    ***
+
+    When you do this, you'll notice that the robot doesn't do anything, but the following data is presented:
+    
+    1. The distance measurements from each of the LiDAR zones.
+    1. The current value of the `wall_rate` parameter, i.e. how well aligned the robot currently is to a wall on its left-hand side.
+    1. The decision that has been made by the `if` statement on the appropriate action to take, given the current value of `wall_rate`.
+
+1. **What you need to do**:
+
+    1. First, place the robot on the floor with a wall on its left-hand side
+    1. Manually vary the alignment of the robot with the wall and observe how the information that is being printed to the terminal changes as you do so.
+        * The node will determine whether it thinks it should turn right or left in order to maintain alignment with the wall. Verify that it is making the correct decision.
+    1. Currently, all velocity parameters inside the `while` loop are set to zero.
+        * You'll need to set a constant linear velocity, so that the robot is always moving forwards. Set this now, where the code currently reads:
+
+            ```python
+            lin_vel = 0.0
+            ```
+        
+        * The *angular* velocity of the robot will need to be adjusted conditionally, in order to ensure that the value of `wall_rate` is kept as low as possible at all times. Adjust the value of `ang_vel` in each of the `if` statement blocks so that this is achieved, and your robot successfully follows the wall as a result.
+    1. Hopefully, by following the steps above, you will get to the point where you can make the robot follow a wall reasonably well, as long as the wall remains reasonably straight! Consider what would happen however if the robot were faced with either of the following situations:
+
+        FIGURE
+
+        You may have already observed this during your testing... how could you adapt the code so that such situations are accommodated? 
+
+    1. Finally, think about how you could adapt this algorithm to make the robot follow a wall on its right-hand side instead.  
+
+#### Exercise 4: SLAM and Navigation {#ex4}
 
 
 
