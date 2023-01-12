@@ -9,10 +9,12 @@ In Lab 1 we explored how ROS works and how to bring a robot to life. Let's quick
 
 **ROS Nodes**
 
-* Are executable programs that perform specific robot tasks and operations.
+* Are executable programs (Python, C++ scripts) that perform specific robot tasks and operations.
 * Typically, there'll be many ROS Nodes running on a robot simultaneously in order to make it work.
 * We can create our own Nodes on top of what's already running, to add extra functionality.
 * You may recall that we created our own ROS Node in Python, to make our TurtleBot3 Waffle follow a square motion path.
+
+FIGURE
 
 **Topics and Messages**
 
@@ -27,7 +29,7 @@ In Lab 1 we explored how ROS works and how to bring a robot to life. Let's quick
 
 We used a time-based method to control the motion of our robot in order to get it to generate a square motion path. This type of control is *open-loop*: we hoped that the robot had moved (or turned) by the about that was required, but had no *feedback* to tell us whether this had actually been achieved.
 
-In this lab we'll look at how this can be improved, making use of some of our robot's on-board sensors to tell us where the robot is or what it can see in its environment, in order to achieve a goal more reliably and be able to better adapt to changes and uncertainty in the environment.
+In this lab we'll look at how this can be improved, making use of some of our robot's on-board sensors to tell us where the robot is or what it can see in its environment, in order to complete a task more reliably and be able to better adapt to changes and uncertainty in the environment.
 
 ### Aims
 
@@ -57,13 +59,10 @@ To start with, you'll need to download a ROS package to the Robot Laptop that yo
 1. Open up a terminal instance on the laptop, either by using the `Ctrl+Alt+T` keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
     ![](/images/laptops/bash_terminal_icon.svg?width=60px)
-        
-    (we'll refer to this as **TERMINAL 1**).
 
-1. In **TERMINAL 1**, run the following commands in order:
+1. In the terminal, run the following commands in order:
 
     ***
-    **TERMINAL 1:**
 
     1. `wget -O build.sh ###`
 
@@ -77,18 +76,13 @@ To start with, you'll need to download a ROS package to the Robot Laptop that yo
 
 Much the same as last time, you'll now need to get ROS up and running on your robot. 
 
-1. First, identify the number of the robot that you have been provided with. Robots are named as follows:
+1. First, identify the number of the robot that you have been provided with.
 
-    ```txt
-    dia-waffleNUM
-    ```
-    ... where `NUM` is a unique *'Robot Number'* (a number between 1 and 50).
+    Robots are named: `dia-waffleNUM`, where `NUM` is a unique *'Robot Number'* (a number between 1 and 50).
 
-1. In **TERMINAL 1** type the following command to *pair* the laptop and robot:
+1. In the terminal, type the following command to *pair* the laptop and robot:
 
     ***
-    
-    **TERMINAL 1:**
     ```bash
     waffle NUM pair
     ```
@@ -96,9 +90,13 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
     
     ***
 
-1. Enter the password for the robot when requested (we'll tell you what this is in the lab).
+1. Enter the password for the robot when requested (if you can't remember what this is from last time then ask a member of the teaching team!)
 
-    You *may* see a message like this early on in the pairing process:
+    {{< nicenote note "Remember" >}}
+You won't see anything change on the screen when you are entering the password. This is normal, just keep typing!!
+    {{< /nicenote >}}
+
+1. You *may* see a message like this early on in the pairing process:
 
     ![](/images/laptops/ssh_auth.svg?width=14cm)
 
@@ -106,10 +104,9 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
 
 1. Once the pairing process is finished you should see a message saying `pairing complete`, displayed in blue in the terminal. 
 
-1. Then, in the same terminal (**TERMINAL 1**), enter the following command:
+1. In the same terminal, enter the following command:
 
     ***
-    **TERMINAL 1:**
     ```bash
     waffle NUM term
     ```
@@ -117,7 +114,7 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
     
     ***
 
-    Any text that was in the terminal should now disappear, and a green banner should appear across the bottom of the terminal window:
+    A green banner should appear across the bottom of the terminal window:
     
     ![](/images/laptops/tmux.svg?width=14cm)
 
@@ -126,7 +123,6 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
 1. Now, launch ROS on the robot by entering the following command:
 
     ***
-    **TERMINAL 1:**
     ```bash
     roslaunch tuos_tb3_tools ros.launch
     ```
@@ -140,22 +136,235 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
 
     ROS is now up and running, and you're ready to go!
 
-    You can close down this terminal instance now.
+1. Close down this terminal instance. If you see the following message, just click XXX.
 
-### Odometry System (explainer)
+FIGURE
 
-Discuss all the sensors on board the robot that can be used to inform control...
+### Odometry
 
+First, let's look at our robot's *odometry* system, and what this is useful for.
 
+> Odometry is the use of data from motion sensors to estimate change in position over time. It is used in robotics by some legged or wheeled robots to estimate their position relative to a starting location. [Wikipedia[^wiki]]
 
-#### Exercise 1: Odometry-based Turning
+[^wiki]: https://en.wikipedia.org/wiki/Odometry
 
-Demonstrate how to use odometry to control the turn angle, then ask the students to do the same for forward velocity...
+Our robot can keep track of its position (and orientation) as it moves around. It does this using data from two sources:
 
+1. Wheel encoders: Our robot has two wheels, each is equipped with an encoder that measures the number of rotations that the wheel makes. 
+1. An Inertial Measurement Unit (IMU): Using accelerometers, gyroscopes and compasses, the IMU can monitor the linear and angular velocity of the robot, and which direction it is heading, at all times.
+
+This data is published to a ROS Topic called `/odom`. 
+
+#### Exercise 1: Exploring Odometry Data {#ex1}
+
+In the previous lab, we used some ROS commands to identify and interrogate active topics on the ROS network, let's give that another go now.
+
+1. Open up a new terminal instance on the laptop (by pressing `Ctrl+Alt+T`, or clicking the Terminal App desktop icon, as you did before). We’ll call this one **TERMINAL 1**.
+
+1. As you may recall from last time, we can use the `rostopic` command to *list* all the topics that are currently active on the network. Enter the following in **TERMINAL 1**:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    rostopic list
+    ```
+    ***
+
+    A large list of items should appear on the screen. Can you spot the `/odom` topic?
+    
+1. Let's find out more about this using the `rostopic info` command.
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    rostopic info /odom
+    ```
+    ***
+
+    This should provide the following output:
+    
+    ```txt
+    Type: nav_msgs/Odometry
+
+    Publishers:
+      * /turtlebot3_core (http://dia-waffleNUM:#####/)
+
+    Subscribers: None
+    ```
+
+    {{< nicenote info "Post-lab Quiz" >}}
+What does all this mean? We discussed this [last time (in relation to the `/cmd_vel` topic)](../lab1/#rostopic_info_explained), and you may want to have a look back at this to refresh your memory! 
+    {{< /nicenote >}}
+
+    One of the key thing that this does tell us is that the `/odom` topic transmits data using a `nav_msgs/Odometry` message. All topics use standard message types to pass information around the ROS network. This is so that any node on the ROS network knows how to deal with the data, if it needs to. `nav_msgs/Odometry` is one of these standard message types. 
+    
+1. We can use the `rosmsg` command to find out more about this:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    rosmsg info nav_msgs/Odometry
+    ```
+    ***
+
+    You'll see a lot of confusing information there, but try to look for where it says `geometry_msgs/Pose pose`: 
+
+    ```txt
+    geometry_msgs/Pose pose
+      geometry_msgs/Point position
+        float64 x
+        float64 y
+        float64 z
+      geometry_msgs/Quaternion orientation
+        float64 x
+        float64 y
+        float64 z
+        float64 w
+    ```
+
+    Here's where we'll find information about the robot's position and orientation (aka *"Pose"*) in the environment. Let's have a look at this data in real time...
+
+1. We can look at the live data being streamed across the `/odom` topic, using the `rostopic echo` command. We know that this topic uses `nav_msgs/Odometry` type messages, and we know which part of these messages we are interested in (`geometry_msgs/Pose pose`)
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    rostopic echo /odom/pose/pose
+    ```
+    ***
+
+1. Now, let's drive the robot around a bit and see how this data changes as we do so. Open up a new terminal instance by pressing `Ctrl+Alt+T`, or clicking the Terminal App desktop icon, as you did before. We'll call this one **TERMINAL 2**.
+
+1. Remember that node that we used last time, that allowed us to control the motion of the robot, using different buttons on the keyboard? Let's launch that again now:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    ```
+    ***
+
+1. Follow the instructions provided in the terminal to drive the robot around:
+
+    As you're doing this, look at how the `position` and `orientation` data is changing in **TERMINAL 1**, in real-time!
+
+1. When you've seen enough enter `Ctrl+C` in **TERMINAL 2** to stop the `turtlebot3_teleop_keyboard` node. Then, enter `Ctrl+C` in **TERMINAL 1** as well, which will stop the live stream of Odometery messages from being displayed.
+
+##### Summary
+
+**Pose** is a combination of a robot's *position* and *orientation* in its environment.
+
+**Position** tells us the location (in meters) of the robot in its environment. Wherever the robot was when it was turned on is the reference point, and so the distance values that we observed in the exercise above were all quoted relative to this initial position.
+
+You should have noticed that (as the robot moved around) the `x` and `y` terms changed, but the `z` term should have remained at zero. This is because the `X-Y` plane is the floor, and any change in `z` position would mean that the robot was floating or flying above the floor! 
+
+**Orientation**
+
+This tells us where the robot is pointing in its environment, expressed in units of *Quaternions*; a four-term orientation system. Don't worry too much about this though, we'll convert this to Euler angles (in degrees/radians) for you, to make them a bit easier to work with for the following exercise.
+
+FIGURE
+
+#### Exercise 2: Odometry-based Navigation {#ex2}
+
+Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that [last time](../lab1/#ex6) you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (tuning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path. 
+
+In theory though, we can do all this with odometry instead, so let's have a go at that now...
+
+1. Open up the `amr31001` ROS package that you downloaded earlier into VS Code using the following command in **TERMINAL 1**:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    code ~/catkin_ws/src/amr31001
+    ```
+    ***
+
+1. In VS Code, navigate to the `src` directory in the File Explorer on the left-hand side, and click on the `ex2.py` file to display it in the editor.
+
+1. Have a look through the code and see if you can work out what's going on. There are a few things to be aware of:
+
+    1. Motion control is handled by an external Python module called `waffle`, which is imported on line 4:
+
+        ```python
+        import waffle
+        ```
+
+        and instantiated on line 16:
+
+        ```python
+        motion = waffle.Motion()
+        ```
+
+        In the main part of the code, this can then be used to control the velocity of the robot, using the following methods:
+
+        1. `motion.move_at_velocity(linear = x, angular = y)` to make the robot move at a linear velocity of `x` (m/s) and/or an angular velocity of `y` (rad/s).
+        1. `motion.stop()` to make the robot stop moving.
+    
+    1. Subscribing to the `/odom` topic and the processing of the `nav_msgs/Odometry` data is also handled by the `waffle` module, so you don't have to worry about it! This functionality is instantiated on line 17:
+
+        ```python
+        pose = waffle.Pose()
+        ```
+
+        So all that you have to do in order to access the robot's odometry data in the main part of the code is call the appropriate attribute:
+
+        1. `pose.posx` to obtain the robot's current position (in meters) in the `X` axis.
+        1. `pose.posy` to obtain the robot's current position (in meters) in the `Y` axis.
+        1. `pose.yaw` to obtain the robot's current orientation (in degrees) about the `Z` axis.
+
+1. Run the code in **TERMINAL 1** and observe what happens:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    rosrun amr31001 ex2.py
+    ```
+    ***
+
+    The robot should start turning on the spot, and you should see some interesting information being printed to the terminal. After it has turned by 45&deg;, the robot should stop momentarily and then carry on turning again.
+
+1. Stop the Node by entering `Ctrl+C` in **TERMINAL 1**.
+
+1. **What you need to do**:
+
+    * In the `while()` loop there is an `if` statement with a condition that handles the tuning process: 
+    
+        ```python
+        elif movement == "turn":
+        ```
+        Within this, look at how the robot's yaw angle is being monitored and updated as it turns. Then, look at how the turn angle is being controlled. See if you can adapt this to make the robot turn in 90&deg; steps instead.
+
+    * Ultimately, after the robot has turned by 90&deg; it needs to then move forwards by 0.5m, in order to achieve a 0.5x0.5m square motion path.
+        
+        Moving forwards is handled by an additional condition within the `if` statement:
+        
+        ```python
+        elif movement == "move_fwd":
+        ```
+        See if you can adapt the code within this block to make the robot move forwards by the required amount (0.5 meters) in between each turn. 
+        
+        {{< nicenote note "Hint" >}}
+Consider how the turn angle is monitored and updated whist turning (`current_yaw`), and take a similar approach with the linear displacement (`current_distance`). Bear in mind that you'll need to consider the *euclidean distance*, which you'll need to calculate based on the robot's position in both the `x` and `y` axis.
+        {{< /nicenote >}}
+                
+        FIGURE 
+
+    * Every time you need to test the code, you can re-run it using the same `rosrun` command as before:
+
+        ***
+        **TERMINAL 1:**
+        ```bash
+        rosrun amr31001 ex2.py
+        ```
+        ***
+
+        ... and you can stop it at any time by entering `Ctrl+C` in the terminal.
 
 ### The LiDAR Sensor
 
-#### Exercise 2: Wall detection
+
+
+#### Exercise 3: Wall following {#ex3}
 
 
 
