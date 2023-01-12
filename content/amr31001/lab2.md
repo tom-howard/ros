@@ -417,23 +417,21 @@ This data is really useful and (as we observed during the previous lab session) 
 
         We can then access the distance measurement (in meters) from each of the above zones as follows:
 
-        1. `lidar.distance.front` to obtain the average distance of any object(s) in front of the robot (within the frontal zone).
-        1. `lidar.distance.l1` to obtain the average distance of any object(s) located within zone L1.
-        1. `lidar.distance.r1` to obtain the average distance of any object(s) located within zone R1.
-        1. and so on...
+        1. `lidar.distance.front` to obtain the average distance to any object(s) in front of the robot (within the frontal zone).
+        1. `lidar.distance.l1` to obtain the average distance to any object(s) located within zone L1.
+        1. `lidar.distance.r1` to obtain the average distance to any object(s) located within zone R1.  
+            and so on...
     
     1. The code has been developed to detect a wall on the robot's *left-hand side*.
-        1. We use distance measurements from LiDAR zones L3 and L4 to determine the *straightness* of the wall (as observed by the robot).
-        1. This *straightness* is determined by taking the distance between the two distance measurements L3 and L4, via a parameter called `wall_rate`:
+        1. We use distance measurements from LiDAR zones L3 and L4 to determine the alignment of the robot to the wall.
+        1. This is determined by calculating the difference between the distance measurements from these two zones:
 
             ```python
             wall_rate = lidar.distance.l3 - lidar.distance.l4
             ```
-        1. We can use this parameter to determine how parallel the robot is to the wall:
+        1. As such, we want to keep with value as close as possible to zero at all times, in order to for the robot to maintain alignment with the wall, and therefore follow it.
 
-        FIGURE
-        
-        1. As such, we want to keep with value as close as possible to zero at all times, in order to for the robot to maintain alignment with the wall, and therefore follow it.   
+            FIGURE   
 
 1. Run the node, as it is, from **TERMINAL 1**:
 
@@ -444,7 +442,7 @@ This data is really useful and (as we observed during the previous lab session) 
     ```
     ***
 
-    When you do this, you'll notice that the robot doesn't do anything, but the following data is presented:
+    When you do this, you'll notice that the robot doesn't do anything, but the following data is presented in the terminal:
     
     1. The distance measurements from each of the LiDAR zones.
     1. The current value of the `wall_rate` parameter, i.e. how well aligned the robot currently is to a wall on its left-hand side.
