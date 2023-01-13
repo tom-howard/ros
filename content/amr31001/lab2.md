@@ -46,7 +46,7 @@ By the end of this session you will be able to:
 * [Exercise 1: Exploring Odometry Data](#ex1)
 * [Exercise 2: Odometry-based Navigation](#ex2)
 * [Exercise 3: Wall following](#ex3)
-* [Exercise 4: SLAM and Navigation](#ex4)
+* [Exercise 4: SLAM and Autonomous Navigation](#ex4)
 
 ## The Lab
 
@@ -144,20 +144,20 @@ FIGURE
 
 First, let's look at our robot's *odometry* system, and what this is useful for.
 
-> Odometry is the use of data from motion sensors to estimate change in position over time. It is used in robotics by some legged or wheeled robots to estimate their position relative to a starting location. [Wikipedia[^wiki]]
+> Odometry is the use of data from motion sensors to estimate change in position over time. It is used in robotics by some legged or wheeled robots to estimate their position relative to a starting location. [^wiki]
 
 [^wiki]: https://en.wikipedia.org/wiki/Odometry
 
 Our robot can keep track of its position (and orientation) as it moves around. It does this using data from two sources:
 
-1. Wheel encoders: Our robot has two wheels, each is equipped with an encoder that measures the number of rotations that the wheel makes. 
-1. An Inertial Measurement Unit (IMU): Using accelerometers, gyroscopes and compasses, the IMU can monitor the linear and angular velocity of the robot, and which direction it is heading, at all times.
+1. **Wheel encoders**: Our robot has two wheels, each is equipped with an encoder that measures the number of rotations that the wheel makes. 
+1. An **Inertial Measurement Unit (IMU)**: Using accelerometers, gyroscopes and compasses, the IMU can monitor the linear and angular velocity of the robot, and which direction it is heading, at all times.
 
 This data is published to a ROS Topic called `/odom`. 
 
 #### Exercise 1: Exploring Odometry Data {#ex1}
 
-In the previous lab, we used some ROS commands to identify and interrogate active topics on the ROS network, let's give that another go now.
+In the previous lab we used some ROS commands to identify and interrogate active topics on the ROS network, let's give that another go now, but on the `/odom` topic this time.
 
 1. Open up a new terminal instance on the laptop (by pressing `Ctrl+Alt+T`, or clicking the Terminal App desktop icon, as you did before). We’ll call this one **TERMINAL 1**.
 
@@ -196,7 +196,7 @@ In the previous lab, we used some ROS commands to identify and interrogate activ
 What does all this mean? We discussed this [last time (in relation to the `/cmd_vel` topic)](../lab1/#rostopic_info_explained), and you may want to have a look back at this to refresh your memory! 
     {{< /nicenote >}}
 
-    One of the key thing that this does tell us is that the `/odom` topic transmits data using a `nav_msgs/Odometry` message. All topics use standard message types to pass information around the ROS network. This is so that any node on the ROS network knows how to deal with the data, if it needs to. `nav_msgs/Odometry` is one of these standard message types. 
+    One of the key things that this does tell us is that the `/odom` topic transmits data using a `nav_msgs/Odometry` message. All topics use standard message types to pass information around the ROS network. This is so that any node on the ROS network knows how to deal with the data, if it needs to. `nav_msgs/Odometry` is one of these standard message types. 
     
 1. We can use the `rosmsg` command to find out more about this:
 
@@ -207,7 +207,7 @@ What does all this mean? We discussed this [last time (in relation to the `/cmd_
     ```
     ***
 
-    You'll see a lot of confusing information there, but try to look for where it says `geometry_msgs/Pose pose`: 
+    You'll see a lot of information there, but try to find the line that reads `geometry_msgs/Pose pose`: 
 
     ```txt
     geometry_msgs/Pose pose
@@ -254,7 +254,7 @@ Which position and orientation values change (by a significant amount) when:
 1. The robot moves forwards (i.e. only a *linear* velocity is applied)?
 1. The robot moves in a circle (i.e. both a linear *and* angular velocity are applied simultaneously)?
 
-**Make a note of these: they may feature in the post-lab quiz!**
+**Make a note of the answers to these questions, as they may feature in the post-lab quiz!**
     {{< /nicenote >}}
 
 1. When you've seen enough enter `Ctrl+C` in **TERMINAL 2** to stop the `turtlebot3_teleop_keyboard` node. Then, enter `Ctrl+C` in **TERMINAL 1** as well, which will stop the live stream of Odometery messages from being displayed.
@@ -267,9 +267,7 @@ Which position and orientation values change (by a significant amount) when:
 
 You should have noticed that (as the robot moved around) the `x` and `y` terms changed, but the `z` term should have remained at zero. This is because the `X-Y` plane is the floor, and any change in `z` position would mean that the robot was floating or flying above the floor! 
 
-**Orientation**
-
-This tells us where the robot is pointing in its environment, expressed in units of *Quaternions*; a four-term orientation system. Don't worry too much about this though, we'll convert this to Euler angles (in degrees/radians) for you, to make them a bit easier to work with for the following exercise.
+**Orientation** tells us where the robot is pointing in its environment, expressed in units of *Quaternions*; a four-term orientation system. Don't worry too much about this though, we'll convert this to Euler angles (in degrees/radians) for you, to make them a bit easier to work with for the following exercise.
 
 FIGURE
 
@@ -336,14 +334,14 @@ In theory though, we can do all this with odometry instead, so let's have a go a
 
 1. **What you need to do**:
 
-    * In the `while()` loop there is an `if` statement with a condition that handles the tuning process: 
+    1. In the `while()` loop there is an `if` statement with a condition that handles the tuning process: 
     
         ```python
         elif movement == "turn":
         ```
         Within this, look at how the robot's yaw angle is being monitored and updated as it turns. Then, look at how the turn angle is being controlled. See if you can adapt this to make the robot turn in 90&deg; steps instead.
 
-    * Ultimately, after the robot has turned by 90&deg; it needs to then move forwards by 0.5m, in order to achieve a 0.5x0.5m square motion path.
+    1. Ultimately, after the robot has turned by 90&deg; it needs to then move forwards by 0.5m, in order to achieve a 0.5x0.5m square motion path.
         
         Moving forwards is handled by an additional condition within the `if` statement:
         
@@ -358,7 +356,7 @@ Consider how the turn angle is monitored and updated whist turning (`current_yaw
                 
         FIGURE 
 
-    * Every time you need to test the code, you can re-run it using the same `rosrun` command as before:
+    1. Every time you need to test the code, you can re-run it using the same `rosrun` command as before:
 
         ***
         **TERMINAL 1:**
@@ -390,9 +388,11 @@ roslaunch tuos_tb3_tools rviz.launch
 
 FIGURE
 
-The red dots illustrate the LiDAR data. Hold your hand out to the robot and see if you can see it being detected by the sensor... a cluster of red dots should form on the screen in the location of your hand. Move your hand around and watch the cluster of dots move accordingly. Move your hand closer and farther away from the robot and observe how the red dots also move towards or away from the robot on the screen. 
+The red dots illustrate the LiDAR data. Hold your hand out to the robot and see if you can see it being detected by the sensor... a cluster of red dots should form on the screen to indicate where your hand is located in relation to the robot. Move your hand around and watch the cluster of dots move accordingly. Move your hand closer and farther away from the robot and observe how the red dots also move towards or away from the robot on the screen. 
 
 This data is really useful and (as we observed during the previous lab session) it allows us to build up 2-dimensional maps of an environment with considerable accuracy. This is, of course, a very valuable skill for a robot to have if we want it to be able to navigate autonomously, and we'll explore this further later on. For now though, we'll look at how we can use the LiDAR data ourselves to build Nodes that make the robot detect and follow walls!
+
+Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**. 
 
 #### Exercise 3: Wall following {#ex3}
 
@@ -411,25 +411,25 @@ This data is really useful and (as we observed during the previous lab session) 
         lidar = waffle.Lidar()
         ```
 
-        This class splits up the distance measurements from the LiDAR sensor into a number of different subsets, the data within each subset (as shown in the figure below) is then averaged, so a single distance reading can be obtained, to represent distinct zones around the robot's body. 
+        This class splits up data from the LiDAR sensor into a number of different segments to focus on a number of distinct zones around the robot's body (to make the data a bit easier to deal with). For each of the segments (as shown in the figure below) a single distance value can be obtained, which represents the average distance to any object(s) within that particular angular zone.
 
         FIGURE
 
-        We can then access the distance measurement (in meters) from each of the above zones as follows:
+        IN the code, we can obtain the distance measurement (in meters) from each of the above zones as follows:
 
         1. `lidar.distance.front` to obtain the average distance to any object(s) in front of the robot (within the frontal zone).
-        1. `lidar.distance.l1` to obtain the average distance to any object(s) located within zone L1.
-        1. `lidar.distance.r1` to obtain the average distance to any object(s) located within zone R1.  
+        1. `lidar.distance.l1` to obtain the average distance to any object(s) located within LiDAR zone L1.
+        1. `lidar.distance.r1` to obtain the average distance to any object(s) located within LiDAR zone R1.  
             and so on...
     
-    1. The code has been developed to detect a wall on the robot's *left-hand side*.
-        1. We use distance measurements from LiDAR zones L3 and L4 to determine the alignment of the robot to the wall.
-        1. This is determined by calculating the difference between the distance measurements from these two zones:
+    1. The code template has been developed to detect a wall on the robot's *left-hand side*.
+        1. We use distance measurements from LiDAR zones L3 and L4 to determine the alignment of the robot to a left-hand wall.
+        1. This is determined by calculating the difference between the distance measurements reported from these two zones:
 
             ```python
             wall_rate = lidar.distance.l3 - lidar.distance.l4
             ```
-        1. As such, we want to keep with value as close as possible to zero at all times, in order to for the robot to maintain alignment with the wall, and therefore follow it.
+        1. If this value is large, then it means that the robot and the wall are *not* well aligned. If this value is low (or zero) it means that the robot and the wall are almost parallel to one another. We therefore want to keep this value as small as possible at all times in order for the robot to follow the wall effectively and avoid crashing into or driving away from it!
 
             FIGURE   
 
@@ -442,25 +442,29 @@ This data is really useful and (as we observed during the previous lab session) 
     ```
     ***
 
-    When you do this, you'll notice that the robot doesn't do anything, but the following data is presented in the terminal:
+    When you do this, you'll notice that the robot doesn't move at all (yet!), but the following data appears in the terminal:
     
     1. The distance measurements from each of the LiDAR zones.
     1. The current value of the `wall_rate` parameter, i.e. how well aligned the robot currently is to a wall on its left-hand side.
-    1. The decision that has been made by the `if` statement on the appropriate action to take, given the current value of `wall_rate`.
+    1. The decision that has been made by the `if` statement on the appropriate action that should be taken, given the current value of `wall_rate`.
 
 1. **What you need to do**:
 
     1. First, place the robot on the floor with a wall on its left-hand side
-    1. Manually vary the alignment of the robot with the wall and observe how the information that is being printed to the terminal changes as you do so.
-        * The node will determine whether it thinks it should turn right or left in order to maintain alignment with the wall. Verify that it is making the correct decision.
+    1. Manually vary the alignment of the robot and the wall and observe how the information that is being printed to the terminal changes as you do so.
+        
+        {{< nicenote note "Question" >}}
+The node will tell you if it thinks the robot needs to turn right or left in order to improve its current alignment with the wall. Is it making the correct decision?
+        {{< /nicenote >}}
+
     1. Currently, all velocity parameters inside the `while` loop are set to zero.
-        * You'll need to set a constant linear velocity, so that the robot is always moving forwards. Set this now, where the code currently reads:
+        * You'll need to set a constant *linear* velocity, so that the robot is always moving forwards. Set an appropriate value for this now, by editing the line that currently reads:
 
             ```python
             lin_vel = 0.0
             ```
         
-        * The *angular* velocity of the robot will need to be adjusted conditionally, in order to ensure that the value of `wall_rate` is kept as low as possible at all times. Adjust the value of `ang_vel` in each of the `if` statement blocks so that this is achieved, and your robot successfully follows the wall as a result.
+        * The *angular* velocity of the robot will need to be adjusted conditionally, in order to ensure that the value of `wall_rate` is kept as low as possible at all times. Adjust the value of `ang_vel` in each of the `if` statement blocks so that this is achieved under each of the three possible scenarios.
     1. Hopefully, by following the steps above, you will get to the point where you can make the robot follow a wall reasonably well, as long as the wall remains reasonably straight! Consider what would happen however if the robot were faced with either of the following situations:
 
         FIGURE
@@ -469,13 +473,149 @@ This data is really useful and (as we observed during the previous lab session) 
 
     1. Finally, think about how you could adapt this algorithm to make the robot follow a wall on its right-hand side instead.  
 
+### SLAM and Autonomous Navigation
+
+We've played around with the data from both the LiDAR sensor and the robot's Odometry System now, so hopefully you now understand what these two systems can tell us about our robot and its environment, and how this information is very valuable for robotic applications.
+
+To illustrate this further, we'll now have a look at two extremely useful tools that are build into ROS, and that use the data from these two sensors alone to achieve powerful results!
+
+**Simultaneous Localisation and Mapping (SLAM)**
+
+As you now know, the LiDAR sensor gives us a full 360&deg; view of our robot's environment. As the robot moves around it starts to observe different features in the environment, or perhaps the same features that it has already seen, but at a different perspective. Using the LiDAR data in combination with our robots *Pose* and *Velocity* (as provided by the Odometry System), we can actually build up a comprehensive 2-dimensional map of an environment and keep track of where our robot is actually located within that map, at the same time. This is a process called **SLAM**, and you may remember that we had a go at this in the previous lab session.
+
+**Navigation**
+
+Having built a complete map (using SLAM) our robot then knows exactly what its environment looks like, and it can then use the map to work out how to get from one place to another on its own! 
+
+In the next exercise, we'll have a go at this: first we need to build a map, then we can use that map to implement *autonomous navigation*!
+
 #### Exercise 4: SLAM and Navigation {#ex4}
 
+**Step 1: Mapping**
 
+1. Make sure none of your code from the previous exercise is still running now, **TERMINAL 1** should be idle, ready to accept some new instructions!
 
+1. Place your robot in the enclosure that we have created in the lab. 
 
+1. Then, in **TERMINAL 1**, run the following command:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    roslaunch amr31001 ex4_slam.launch
+    ```
+    ***
+
+    An RViz screen will open up showing the robot from a top-down view, with the LiDAR data represented by green dots.
+
+    ![](slam1.png)
+
+    SLAM is already working, and you should notice black lines forming underneath the green LiDAR dots to indicate the regions that SLAM has already determined as static and which therefore represent boundaries in the environment.
+
+1. In **TERMINAL 2** launch the `turtlebot3_teleop_keyboard` node again, to drive the robot around:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    ```
+    ***
+
+1. Drive the robot around until SLAM has built up a complete map of the entire arena.
+
+    ![](slam23.png)
+
+1. Once you're happy with this, stop the `turtlebot3_teleop_keyboard` node by hitting `Ctrl+C` in **TERMINAL 2**. You can also stop SLAM now too, so head back to **TERMINAL 1** and enter `Ctrl+C` to stop this too.
+
+1. While you were doing the above, a map file was being constantly updated and saved to the laptop's filesystem. Have a quick look at this now to make sure that the map that you have built is indeed a good representation of the environment:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    eog ~/catkin_ws/src/amr31001/maps/my_map.pgm
+    ```
+    ***
+
+    If the map looks like the actual arena then you're good to move on, but if not then you may need to repeat the above steps again to give it another go.
+
+**Step 2: Navigating Autonomously**
+
+Using the map that you've just created you should now be able to make your robot navigate around the real environment!
+
+1. Launch the navigation processes in **TERMINAL 1** by entering the following command:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    roslaunch amr31001 ex4_nav.launch
+    ```
+    ***
+
+    RViz should then open up again, once again with a top-down view of the robot, but this time with the map that you generated earlier displayed underneath it (in black).  
+
+1. To begin with, the robot needs to know *roughly* where it is within this map, and we can tell it this by performing a manual *"2D Pose Estimation"*.  
+
+    1. Press the "2D Pose Estimate" button at the top of the RViz screen.  
+    1. The map should be visible (in black) in the background underneath all the live LiDAR Data (displayed in green), but the two are probably not lined up properly. Move the cursor to the approximate point on the background map at which the robot is actually located.  
+    1. Press and hold the left mouse button and a large green arrow will appear.  
+    1. Whilst still holding down the left mouse button, rotate the green arrow to set the robot's *orientation* within the map.  
+    1. Let go of the left mouse button to set the pose estimation. If done correctly, the real-time LiDAR data should nicely overlap the background map after doing this:
+    
+        ![](nav12.png)
+
+        ... if not, then have another go!
+
+1. We then need to give the robot a chance to determine its pose more accurately. The navigation processes that are running in the background are currently generating what's called a *"localisation particle cloud"*, which is displayed as lots of tiny green arrows surrounding the robot in RViz. The scatter of these green arrows indicates the level of certainty the robot currently has about its *true* pose (position and orientation) within the environment: a *large* scatter indicates a high level of *uncertainty*, and we need to improve this before we can make the robot navigate around autonomously.
+
+    We can improve this by simply driving the robot around the environment a bit, so that it gets the opportunity to see different walls and obstacles from different perspectives. In the background, the navigation algorithms will be comparing the real time LiDAR data with the background map that was generated earlier, and when the two things line up well, the robot becomes more certain about its pose in the environment.
+
+    Once again, launch the `turtlebot_teleop_keyboard` node in **TERMINAL 2**, and drive the robot around a bit:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    ```
+    ***
+
+    As you're doing this, watch how the scatter in the localisation particle cloud reduces, and the small green arrows begin to converge underneath the robot.
+
+    ![](nav3.png)
+
+1. Now, click the "2D Nav Goal" button:  
+    1. Move the cursor to the location that you want the robot to move to on the map. 
+    1. Click and hold the left mouse button and a large green arrow will appear again to indicate that the *position* goal has been set.  
+    1. Whilst still holding the left mouse button, rotate the green arrow around to set the desired *orientation* goal.  
+    1. Release the mouse button to set the goal...
+    
+        The robot will then try its best to navigate to the destination autonomously!
+
+<!-- 
 ### The Camera
 
-#### Exercise 4: Object Tracking with PID??
+#### Exercise 5: Object Tracking with PID {#ex5}
 
-(maybe a simulation-based exercise, to make life easier?)
+(maybe a simulation-based exercise, if required?) -->
+
+
+## Wrapping Up
+
+Before you leave, please turn off your robot! Enter the following command in **TERMINAL 1** to do so:
+
+***
+**TERMINAL 1:**
+```bash
+waffle NUM off
+```
+... again, replacing `NUM` with the number of the robot that you have been working with today.
+***
+
+You'll need to enter `y` and then hit `Enter` to confirm this.
+
+Please then shut down the laptop, which you can do by clicking the battery icon in the top right of the desktop and selecting the "Power Off / Log Out" option in the drop-down menu.
+
+![](/images/laptops/ubuntu_poweroff.svg?width=10cm)
+
+{{% textalign center %}}
+**AMR31001 Lab 2 Complete!**  
+{{% /textalign %}}
