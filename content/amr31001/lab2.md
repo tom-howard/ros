@@ -14,7 +14,7 @@ In Lab 1 we explored how ROS works and how to bring a robot to life. Let's quick
 * We can create our own Nodes on top of what's already running, to add extra functionality.
 * You may recall that we created our own ROS Node in Python, to make our TurtleBot3 Waffle follow a square motion path.
 
-FIGURE
+FIGURE: ros network map
 
 **Topics and Messages**
 
@@ -136,9 +136,9 @@ You won't see anything change on the screen when you are entering the password. 
 
     ROS is now up and running, and you're ready to go!
 
-1. Close down this terminal instance. If you see the following message, just click XXX.
+1. Close down this terminal instance. If you see the following message, just click "Close Terminal."
 
-FIGURE
+    ![](/images/laptops/term_confirm_close.png?width=15cm)
 
 ### Odometry
 
@@ -269,7 +269,7 @@ You should have noticed that (as the robot moved around) the `x` and `y` terms c
 
 **Orientation** tells us where the robot is pointing in its environment, expressed in units of *Quaternions*; a four-term orientation system. Don't worry too much about this though, we'll convert this to Euler angles (in degrees/radians) for you, to make them a bit easier to work with for the following exercise.
 
-FIGURE
+![](/images/waffle/pose.png?width=15cm)
 
 #### Exercise 2: Odometry-based Navigation {#ex2}
 
@@ -352,9 +352,10 @@ In theory though, we can do all this with odometry instead, so let's have a go a
         
         {{< nicenote note "Hint" >}}
 Consider how the turn angle is monitored and updated whist turning (`current_yaw`), and take a similar approach with the linear displacement (`current_distance`). Bear in mind that you'll need to consider the *euclidean distance*, which you'll need to calculate based on the robot's position in both the `x` and `y` axis.
+        
+![](euclidean_distance.png?width=10cm)
+        
         {{< /nicenote >}}
-                
-        FIGURE 
 
     1. Every time you need to test the code, you can re-run it using the same `rosrun` command as before:
 
@@ -386,7 +387,7 @@ roslaunch tuos_tb3_tools rviz.launch
 ```
 ***
 
-FIGURE
+![](/images/waffle/rviz_vs_arena.png?width=25cm)
 
 The red dots illustrate the LiDAR data. Hold your hand out to the robot and see if you can see it being detected by the sensor... a cluster of red dots should form on the screen to indicate where your hand is located in relation to the robot. Move your hand around and watch the cluster of dots move accordingly. Move your hand closer and farther away from the robot and observe how the red dots also move towards or away from the robot on the screen. 
 
@@ -411,11 +412,11 @@ Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**.
         lidar = waffle.Lidar()
         ```
 
-        This class splits up data from the LiDAR sensor into a number of different segments to focus on a number of distinct zones around the robot's body (to make the data a bit easier to deal with). For each of the segments (as shown in the figure below) a single distance value can be obtained, which represents the average distance to any object(s) within that particular angular zone.
+        This class splits up data from the LiDAR sensor into a number of different segments to focus on a number of distinct zones around the robot's body (to make the data a bit easier to deal with). For each of the segments (as shown in the figure below) a single distance value can be obtained, which represents the average distance to any object(s) within that particular angular zone:
 
-        FIGURE
+        ![](lidar_segments.png?width=10cm)
 
-        IN the code, we can obtain the distance measurement (in meters) from each of the above zones as follows:
+        In the code, we can obtain the distance measurement (in meters) from each of the above zones as follows:
 
         1. `lidar.distance.front` to obtain the average distance to any object(s) in front of the robot (within the frontal zone).
         1. `lidar.distance.l1` to obtain the average distance to any object(s) located within LiDAR zone L1.
@@ -429,9 +430,9 @@ Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**.
             ```python
             wall_rate = lidar.distance.l3 - lidar.distance.l4
             ```
-        1. If this value is large, then it means that the robot and the wall are *not* well aligned. If this value is low (or zero) it means that the robot and the wall are almost parallel to one another. We therefore want to keep this value as small as possible at all times in order for the robot to follow the wall effectively and avoid crashing into or driving away from it!
+        1. If this value is close to zero, then the robot and the wall are well aligned. If not, then the robot is at an angle to the wall, and it needs to adjust its angular velocity in order to correct for this:
 
-            FIGURE   
+            ![](wall_rate.png?width=20cm)  
 
 1. Run the node, as it is, from **TERMINAL 1**:
 
@@ -467,9 +468,13 @@ The node will tell you if it thinks the robot needs to turn right or left in ord
         * The *angular* velocity of the robot will need to be adjusted conditionally, in order to ensure that the value of `wall_rate` is kept as low as possible at all times. Adjust the value of `ang_vel` in each of the `if` statement blocks so that this is achieved under each of the three possible scenarios.
     1. Hopefully, by following the steps above, you will get to the point where you can make the robot follow a wall reasonably well, as long as the wall remains reasonably straight! Consider what would happen however if the robot were faced with either of the following situations:
 
-        FIGURE
+        ![](limitations.png?width=15cm)
 
-        You may have already observed this during your testing... how could you adapt the code so that such situations are accommodated? 
+        You may have already observed this during your testing... how could you adapt the code so that such situations can be achieved?
+
+        {{< nicenote info "Hint" >}}
+You may need to consider the distance measurements from some other LiDAR zones!
+        {{< /nicenote >}}
 
     1. Finally, think about how you could adapt this algorithm to make the robot follow a wall on its right-hand side instead.  
 
