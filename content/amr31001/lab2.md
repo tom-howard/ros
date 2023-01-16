@@ -14,16 +14,18 @@ In Lab 1 we explored how ROS works and how to bring a robot to life. Let's quick
 * We can create our own Nodes on top of what's already running, to add extra functionality.
 * You may recall that we created our own ROS Node in Python, to make our TurtleBot3 Waffle follow a square motion path.
 
-FIGURE: ros network map
+![](ros_network.png?width=10cm)
 
 **Topics and Messages**
 
-* All the ROS Nodes running on a network can communicate and pass data between one another using a Publisher/Subscriber based Communication Principle.
+* All the ROS Nodes running on a network can communicate and pass data between one another using a Publisher/Subscriber-based Communication Principle.
 * ROS Topics are key to this - they are essentially the communication channels (or the plumbing) on which all data is passed around between the nodes.
 * Different topics communicate different types of information.
 * Any Node can publish (*write*) and/or subscribe to (*read*) any ROS Topic in order to pass information around or make things happen.
 * One of the key ROS Topics that we worked with last time was `/cmd_vel`, which is a topic that communicates velocity commands to make a robot move.
 * We published `Twist` messages to this (both via the command line, and in Python) to make our TurtleBot3 Waffle move.
+
+![](ros_comms.png?width=10cm)
 
 **Open-Loop Control**
 
