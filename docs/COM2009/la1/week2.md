@@ -1,22 +1,15 @@
-+++  
-title = "Week 2: Odometry & Basic Navigation"  
-weight = 2  
-description = "In this session you'll learn how to control a ROS robot's velocity (and thus its position), how to interpret Odometry data and implement some open-loop control nodes."  
-+++
+---  
+title: "Week 2: Odometry & Basic Navigation"  
+subtitle: In this session you'll learn how to control a ROS robot's velocity (and thus its position), how to interpret Odometry data and implement some open-loop control nodes.  
+---
 
-{{% textalign center %}}
-*You should be able to complete the exercises on this page within a two-hour lab session*.
-{{% /textalign %}}
-
-{{% textalign left %}}
-[<i class="fas fa-solid fa-arrow-left"></i> Previous: "Week 1: ROS & Linux Basics"](../week1)
-{{% /textalign %}}
+<p align="center"><em>You should be able to complete the exercises on this page within a two-hour lab session.</em></p>
 
 ## Introduction
 
 ### Aims
 
-This week you will learn how to control a ROS robot's *position* and *velocity* from both the command line and through ROS Nodes. You will also learn how to interpret data that allows us to monitor a robot's position in its physical environment.  The things you will learn here form the basis for all robot navigation in ROS, from simple open-loop methods to more advanced closed-loop control (which you will learn more about next week).
+This week you will learn how to control a ROS robot's **position** and **velocity** from both the command line and through ROS Nodes. You will also learn how to interpret the data that allows us to monitor a robot's position in its physical environment.  The things you will learn here form the basis for all robot navigation in ROS, from simple open-loop methods to more advanced closed-loop control (which you will learn more about next week).
 
 ### Intended Learning Outcomes
 
@@ -35,26 +28,30 @@ By the end of this session you will be able to:
 
 ## Getting Started
 
-1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu. As you will now know, this may take a couple of minutes, but once it's ready this will open up the Windows Terminal and an *Ubuntu terminal instance* (which we'll refer to as **TERMINAL 1**).
+### Step 1: Launch WSL-ROS  
+If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu. As you will now know, this may take a couple of minutes, but once it's ready this will open up the Windows Terminal and an *Ubuntu terminal instance* (which we'll refer to as **TERMINAL 1**).
 
-1. It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](/wsl-ros/vscode/).
+### Step 2: Restore your work  
+Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers.  [At the end of the previous session](../week1/#backup) you should have run the `wsl_ros` tool to back up your home directory to your University U: Drive. Once WSL-ROS is up and running, you should be prompted to restore this:
 
-### Restoring your Environment
+<figure markdown>
+  ![](/images/wsl/restore_prompt.png){width="600"}
+</figure>
 
-Remember that any work that you do within this WSL-ROS Environment will not be preserved between sessions or across different University computers.  [At the end of the previous session](../week1/#backup) you should have run the `wsl_ros` tool to back up your home directory to your University U: Drive. Restore this now before you start on this Week 2 session by running the following command in **TERMINAL 1**:
+Enter `Y` to restore your work from last time. You can also restore your work at any time using the following command:
 
-***
-**TERMINAL 1:**
 ```bash
 wsl_ros restore
 ```
-***
 
-### Downloading our ROS Packages for this Course
+### Step 3: Launch VS Code**  
+It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](/wsl-ros/vscode/).
+
+### Step 4: Download the COM2009 ROS Packages
 
 We've put together a few ROS packages of our own, that you'll use throughout this course. These all live inside [the COM2009 GitHub Repo](https://github.com/tom-howard/COM2009), and we need to download this into the WSL-ROS environment now, before going any further.
 
-1. In **TERMINAL 1**, navigate to the `catkin_ws/src/` directory using the `cd` command:
+1. In **TERMINAL 1**, navigate to the Catkin Workspace `src` directory using the `cd` command:
 
     ***
     **TERMINAL 1:**
@@ -91,13 +88,12 @@ We've put together a few ROS packages of our own, that you'll use throughout thi
     ```
     ***
 
-    {{< nicenote warning "Remember" >}}
-If you have any other terminal instances open, then you'll need run `source ~/.bashrc` in these too, in order for the changes made by `catkin build` to propagate through to these as well!
-    {{< /nicenote >}}
-
+    !!! warning "Remember"
+        If you have any other terminal instances open, then you'll need run `source ~/.bashrc` in these too, in order for the changes made by `catkin build` to propagate through to these as well!
+    
 That's it for now, we'll start using some of the packages that we've just installed a bit later on...
 
-### Launching the Robot Simulation
+### Step 5: Launch the Robot Simulation
 
 In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
         
@@ -110,7 +106,9 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 
 A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle in empty space:
 
-![](/images/gazebo/tb3_empty_world.png?width=800px)
+<figure markdown>
+  ![](/images/gazebo/tb3_empty_world.png?width=800px)
+</figure>
 
 ## Position and Velocity
 
@@ -123,13 +121,17 @@ Two types of *Velocity Command* can be issued to any ROS Robot to make it move (
 
 The motion (i.e. the velocity) of any mobile robot can be defined in terms of *three* principal axes: `X`, `Y` and `Z`. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are as follows:
 
-![](/images/waffle/principal_axes.svg?width=20cm)
+<figure markdown>
+  ![](/images/waffle/principal_axes.svg?width=20cm)
+</figure>
 
 In theory then, a robot can move linearly or angularly about *any* of these three axes, as shown by the arrows in the figure. That's six *Degrees of Freedom* (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. 
 
 You should hopefully recall from the ["Introducing the Robots" page](/about/robots/#tb3) that our TurtleBot3 Waffles only have two motors though, so they don't actually have six DOFs! These two motors can be controlled independently, which is known as a *"differential drive"* configuration, and ultimately provides it with a total of **two degrees of freedom** in total, as illustrated below.
 
-![](/images/waffle/velocities.svg?width=20cm)
+<figure markdown>
+  ![](/images/waffle/velocities.svg?width=20cm)
+</figure>
 
 It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*) and **angularly** in the **z**-axis (*Yaw*).
 

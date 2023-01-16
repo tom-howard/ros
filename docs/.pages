@@ -1,3 +1,4 @@
 nav:
-  - "About": index.md
+  - "About": about
+  - "WSL-ROS": wsl-ros
   - "COM2009": com2009

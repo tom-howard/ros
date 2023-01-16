@@ -1,8 +1,7 @@
-+++
-title = "Lab Assignment #1: An Introduction to ROS"
-menuTitle = "Lab Assignment #1"
-weight = 1
-disableToc = "true"
-+++
+---
+title: "COM2009 Lab Assignment #1: An Introduction to ROS"
+--- 
 
-## An intro to Lab Assignment #1
+# COM2009 Lab Assignment #1
+
+An Introduction to ROS
