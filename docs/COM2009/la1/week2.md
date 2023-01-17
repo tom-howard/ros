@@ -14,6 +14,7 @@ This week you will learn how to control a ROS robot's **position** and **velocit
 ### Intended Learning Outcomes
 
 By the end of this session you will be able to:
+
 1. Interpret the Odometry data published by a ROS Robot and identify the parts of these messages that are relevant to a 2-wheeled differential drive robot (such as the TurtleBot3).
 1. Develop Python nodes to obtain Odometry messages from an active ROS network and *translate* them to provide useful information about a robot's *pose* in a convenient, human-readable way.
 1. Implement *open-loop velocity control* of a robot using ROS command-line tools.
@@ -44,12 +45,12 @@ Enter `Y` to restore your work from last time. You can also restore your work at
 wsl_ros restore
 ```
 
-### Step 3: Launch VS Code**  
+### Step 3: Launch VS Code  
 It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](/wsl-ros/vscode/).
 
-### Step 4: Download the COM2009 ROS Packages
+### Step 4: Download our ROS Packages
 
-We've put together a few ROS packages of our own, that you'll use throughout this course. These all live inside [the COM2009 GitHub Repo](https://github.com/tom-howard/COM2009), and we need to download this into the WSL-ROS environment now, before going any further.
+We've put together a few ROS packages of our own, that you'll use throughout this course. These all live inside ["the COM2009 GitHub Repo"](https://github.com/tom-howard/COM2009), and we need to download this into the WSL-ROS environment now, before going any further.
 
 1. In **TERMINAL 1**, navigate to the Catkin Workspace `src` directory using the `cd` command:
 
@@ -95,7 +96,7 @@ That's it for now, we'll start using some of the packages that we've just instal
 
 ### Step 5: Launch the Robot Simulation
 
-In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
+In **TERMINAL 1** enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
         
 ***
 **TERMINAL 1:**
@@ -109,6 +110,8 @@ A Gazebo simulation window should open and within this you should see a TurtleBo
 <figure markdown>
   ![](/images/gazebo/tb3_empty_world.png?width=800px)
 </figure>
+
+<p align="center"><strong><em>You're all set up and ready to go!</em></strong></p>
 
 ## Position and Velocity
 
@@ -135,20 +138,18 @@ You should hopefully recall from the ["Introducing the Robots" page](/about/robo
 
 It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*) and **angularly** in the **z**-axis (*Yaw*).
 
-It's also worth noting (while we're on the subject of motion!) that our TurtleBot3 Waffles have **maximum velocity limits**, which were also defined in the ["Introducing the Robots" page](/about/robots/#tb3).
+It's also worth noting (while we're on the subject of motion) that our TurtleBot3 Waffles have **maximum velocity limits**, which were also defined in the ["Introducing the Robots" page](/about/robots/#tb3).
 
-{{% nicenote note "Question" %}}
-What are the maximum velocity limits of our robots?
-{{% /nicenote %}}
+!!! note "Question"
+    What are the maximum velocity limits of our robots?
 
 ### ROS Velocity Commands
 
 In the previous session you learnt how to [list all the topics that are currently active on a ROS system](../week1/#rostopic). Open up a new terminal instance now (**TERMINAL 2**) and use what you learnt previously to *list* all the topics that are active on the ROS network now, as a result of launching the Gazebo simulation earlier.
 
-{{% nicenote note "Question" %}}
-1. Which topic in the list do you think could be used to control the velocity of the robot?
-2. Use the `rostopic info` command on the topic to find out more about it.
-{{% /nicenote %}}
+!!! note "Questions"
+    1. Which topic in the list do you think could be used to control the velocity of the robot?
+    2. Use the `rostopic info` command on the topic to find out more about it.
 
 The topic you identified[^cmd_vel] should use a message of the `geometry_msgs/Twist` type. You'll have to send messages of this type to this topic in order to make the robot move. Use the `rosmsg` command ([as you did in Exercise 4 last week](../week1/#ex4)) to find out more about the format of this message[^rosmsg_info].
 
@@ -196,10 +197,9 @@ Another topic that should have appeared when you ran `rostopic list` earlier is 
 
     Expand the terminal window as necessary so that you can see the whole topic message (it starts with `header` and ends with `---`).
     
-    {{< nicenote note "Question" >}}
-What does the `-c` option in the command above actually do?
-    {{< /nicenote >}}
-
+    !!! note "Question"
+        What does the `-c` option in the command above actually do?
+    
 1. Now, you need to launch a new Windows Terminal instance so that you can view it side-by-side with **TERMINAL 2**. To do this, press the "New Tab" button whilst pressing the `Shift` key. We'll call this one **TERMINAL 3**. Arrange both windows side-by-side, so you can see what's happening in both, simultaneously.
 
 1. In **TERMINAL 3** launch the `turtlebot3_teleop_keyboard` node [as you did last week](../week1/#ex1):
@@ -215,11 +215,10 @@ What does the `-c` option in the command above actually do?
 1. Now press the `S` key to halt the robot, then press `W` a couple of times to make the robot drive forwards.  How does the `twist` part of the message now correspond to the `linear vel` setting in **TERMINAL 3**?
 1. Now press `D` a couple of times and your robot should start to move in a circle.  What linear and angular velocities are you requesting in **TERMINAL 3**, and how are these represented in the `twist` part of the `/odom` message?  What about the `pose` part of the message?  How is this data changing as your robot moves in a circular path.
     
-    {{< nicenote note "Question" >}}
-What do you think `twist` and `pose` are actually telling us?
-    {{< /nicenote >}}
-
-1. Press `S` in **TERMINAL 3** to halt the robot (but leave the `turtlebot3_teleop_keyboard` node running).  Then, press `Ctrl+C` in **TERMINAL 2** to shut down the `rostopic echo` process. 
+    !!! note "Question"
+        What do you think `twist` and `pose` are actually telling us?
+    
+1. Press `S` in **TERMINAL 3** to stop the robot (but leave the `turtlebot3_teleop_keyboard` node running).  Then, press `Ctrl+C` in **TERMINAL 2** to shut down the `rostopic echo` process. 
 
 1. Let's look at the `pose` part of the `Odometry` message in more detail now. With the robot stationary, use `rosrun` to run a Python node that we have created to help illustrate how this relates to the robot's position and orientation in its environment: 
 
@@ -234,10 +233,9 @@ What do you think `twist` and `pose` are actually telling us?
 
     The output of the `robot_pose.py` node shows you how the robot's *position* and *orientation* (i.e. *"pose"*) are changing in real-time as you move the robot around. The `"initial"` column tells us the robot's pose when the node was first launched, and the `"current"` column show us what its pose currently is. The `"delta"` column then shows the difference between the two.
     
-    {{< nicenote note "Question" >}}
-Which pose parameters *haven't* changed, and is this what you would expect (considering [the robot's principal axes, as illustrated above](#principal-axes))?
-    {{< /nicenote >}}
-
+    !!! note "Question"
+        Which pose parameters *haven't* changed, and is this what you would expect (considering [the robot's principal axes, as illustrated above](#principal-axes))?
+    
 1. Press `Ctrl+C` in **TERMINAL 2** and **TERMINAL 3**, to stop the `robot_pose.py` and `turtlebot3_teleop` nodes.  Then, close down **TERMINAL 3** so that only one Windows Terminal application remains open with 2 active tabs: **TERMINAL 1** and **TERMINAL 2**.
 
 ### What is Odometry? {#odometry}
@@ -293,9 +291,8 @@ from tf.transformations import euler_from_quaternion
 
 Our TurtleBot3 can only move in a 2D plane and so, actually, its pose can be fully represented by 3 parameters: <code>(x,y,&theta;<sub>z</sub>)</code>, where `x` and `y` are the 2D coordinates of the robot in the `X-Y` plane, and <code>&theta;<sub>z</sub></code> is the angle of the robot about the `z` (*yaw*) axis.
 
-{{< nicenote note "Question" >}}
-In the previous exercise, did you notice how the `linear_z`, `theta_x` and `theta_y` values in the `delta` column all remained at `0.000`, even when the robot was moving around?
-{{< /nicenote >}}
+!!! note "Question"
+    In the previous exercise, did you notice how the `linear_z`, `theta_x` and `theta_y` values in the `delta` column all remained at `0.000`, even when the robot was moving around?
 
 #### Twist
 
@@ -320,10 +317,9 @@ In the previous session you learnt how to create a package and build simple node
     ```
     ***
 
-    {{< nicenote warning "Fill in the Blank!">}}
-Recall how we used the `catkin_create_pkg` tool [last week](../week1/#ex5), but adapt this now for the `week2_navigation` package, as detailed above.
-    {{< /nicenote >}}
-
+    !!! warning "Fill in the Blank!"
+        Recall how we used the `catkin_create_pkg` tool [last week](../week1/#ex5), but adapt this now for the `week2_navigation` package, as detailed above.
+    
 1. Run `catkin build` on this:
 
     ***
@@ -371,7 +367,9 @@ Recall how we used the `catkin_create_pkg` tool [last week](../week1/#ex5), but 
     /usr/bin/env: ‘python3\r’: Permission denied
     ```
 
-    The clue here is the `python3\r` (specifically the `\r` bit). This is a *Windows line ending*... Text files (including things like Python scripts) created on Windows use different line endings (i.e. the characters that signify the end of each line of text) to those created on Linux. Windows uses a "carriage return" *and* a "line feed" (`\r\n`) at the end of each line, but Linux uses just a "line feed" (`\n`)[^source]. Because we're working within a Linux environment here (Ubuntu), we must make sure we're using Linux line endings at all times! We can change this easily from inside VS Code... 
+    The clue here is the `python3\r` (specifically the `\r` bit). This is a *Windows line ending*... 
+    
+    Text files (including things like Python scripts) created on Windows use different line endings (i.e. the characters that signify the end of each line of text) to those created on Linux. Windows uses a "carriage return" *and* a "line feed" (`\r\n`) at the end of each line, but Linux uses just a "line feed" (`\n`)[^source]. Because we're working within a Linux environment here (Ubuntu), we must make sure we're using Linux line endings at all times! We can change this easily from inside VS Code... 
     
     [^source]: Adapted from: https://www.cs.toronto.edu/~krueger/csc209h/tut/line-endings.html
 
@@ -399,9 +397,8 @@ Recall how we used the `catkin_create_pkg` tool [last week](../week1/#ex5), but 
 
 #### Exercise 3: Moving a Robot with `rostopic` in the Terminal {#ex3}
 
-{{% nicenote note %}}
-Make sure that you've stopped the `turtlebot3_teleop` node running in **TERMINAL 3** (by entering `Ctrl+C`) before starting this exercise.
-{{% /nicenote %}}
+!!! warning
+    Make sure that you've stopped the `turtlebot3_teleop` node running in **TERMINAL 3** (by entering `Ctrl+C`) before starting this exercise.
 
 <a name="rostopic_pub"></a>We can use the `rostopic pub` command to *publish* data to a topic from a terminal by using the command in the following way:
 
@@ -446,6 +443,7 @@ You will now create another node to control the motion of your TurtleBot3 by pub
         /home/student/catkin_ws/src/week2_navigation/src  
 
     If you aren't located here then navigate to this directory using `cd`.
+
 1. Create a new file called `move_circle.py`:
 
     ***
@@ -530,6 +528,7 @@ Use these pointers when working on your `move_circle.py` node!
 In this session you have learnt how to control the velocity and position of a robot from both the command-line (using ROS command-line tools) and from ROS Nodes by publishing correctly formatted messages to the `/cmd_vel` topic.  
 
 You have also learnt about *Odometry*, which is published by our robot to the `/odom` topic.  The odometry data tells us the current linear and angular velocities of our robot in relation to its 3 principal axes.  In addition to this though, it also tells us where in physical space our robot is located and oriented, which is determined based on *dead-reckoning*.  We'll talk more about dead-reckoning later on in the COM2009 lecture course, but for now though consider the following (based on what we've covered in this lab session): 
+
 * If odometry is derived from dead-reckoning, what information (sensor/actuator data) is used to do this?
 * Do you see any potential limitations of this?
 * Can a control method that uses odometry as a feedback signal be considered *closed-loop control?* 
@@ -545,7 +544,3 @@ wsl_ros backup
 ```
 
 This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.  
-
-{{% textalign right %}}
-[Next: "Week 3: Advanced Navigation & SLAM" <i class="fas fa-solid fa-arrow-right"></i>](../week3)
-{{% /textalign %}}

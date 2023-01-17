@@ -16,4 +16,4 @@ WSL-ROS is now being installed from the custom OS image, which may take a couple
 
 This is an *Ubuntu Terminal Instance*, giving us access to the Ubuntu 20.04 operating system that we have just installed. This is the **WSL-ROS Environment**!
 
-<p align="center"><strong><em>You're all set up and ready to go!</em></strong><p>
+<p align="center"><strong><em>You're all set up and ready to go!</em></strong></p>
