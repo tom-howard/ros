@@ -184,7 +184,7 @@ As we also learnt above though, our TurtleBots can only actually move with **lin
 
 Another topic that should have appeared when you ran `rostopic list` earlier is `/odom`. This topic contains *Odometry data*, which is also essential for robot navigation and is a basic feedback signal, allowing a robot to approximate its location.
 
-#### Exercise 1: Exploring Odometry Data {#ex1}
+#### :material-pen: Exercise 1: Exploring Odometry Data {#ex1}
 
 1. In **TERMINAL 2** use the `rostopic echo` command to display the odometry data currently being published by our simulated robot:
 
@@ -300,7 +300,7 @@ Our TurtleBot3 can only move in a 2D plane and so, actually, its pose can be ful
 
 Once again, all of this data is defined in terms of the principal axes, as illustrated in [the figure above](#principal-axes).
 
-#### Exercise 2: Creating a Python node to process Odometry data {#ex2}
+#### :material-pen: Exercise 2: Creating a Python node to process Odometry data {#ex2}
 
 In the previous session you learnt how to create a package and build simple nodes in Python to publish and subscribe to messages on a topic. In this exercise you will build a new subscriber node, much like you did in the previous session, but this one will subscribe to the `/odom` topic that we've been talking about above. You'll also create a new package called `week2_navigation` for this node to live in!
 
@@ -395,7 +395,7 @@ In the previous session you learnt how to create a package and build simple node
 
 ## Basic Navigation: Open-loop Velocity Control
 
-#### Exercise 3: Moving a Robot with `rostopic` in the Terminal {#ex3}
+#### :material-pen: Exercise 3: Moving a Robot with `rostopic` in the Terminal {#ex3}
 
 !!! warning
     Make sure that you've stopped the `turtlebot3_teleop` node running in **TERMINAL 3** (by entering `Ctrl+C`) before starting this exercise.
@@ -434,7 +434,7 @@ The full message should then be presented to us:
 1. Finally, enter a command to *stop* the TurtleBot3 **and make a note of this too**.
 1. Enter `Ctrl+C` in **TERMINAL 3** to stop this final message from being published.
 
-#### Exercise 4: Creating a Python node to make the robot move {#ex4}
+#### :material-pen: Exercise 4: Creating a Python node to make the robot move {#ex4}
 
 You will now create another node to control the motion of your TurtleBot3 by publishing messages to the `/cmd_vel` topic. You created a publisher node in Week 1, and you can use this as a starting point.
 

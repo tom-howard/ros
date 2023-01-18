@@ -39,7 +39,7 @@ By the end of this session you will be able to:
 
 ## First Steps
 
-#### Exercise 1: Launching a simulation and making a ROS robot move {#ex1}
+#### :material-pen: Exercise 1: Launching a simulation and making a ROS robot move {#ex1}
 
 1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu hello ([see here for detailed instructions](/wsl-ros/getting-started)). This should open up a *terminal application* and an *Ubuntu terminal instance*.  We'll refer to this terminal instance as **TERMINAL 1**.
 1. In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
@@ -93,7 +93,7 @@ ROS applications are organised into *packages*. Packages are basically folders c
 !!! info  
     The package system is a fundamental concept in ROS and all ROS programs are organised in this way.
 
-#### Exercise 2: Exploring a ROS Package {#ex2}
+#### :material-pen: Exercise 2: Exploring a ROS Package {#ex2}
 
 `roscd` is a **ROS command** that allows us to navigate to the directory of any ROS package installed on our system, without us needing to know the path to the package beforehand.
 
@@ -192,7 +192,7 @@ A ROS Robot might have hundreds of individual nodes running simultaneously to ca
 
 You can use the `rosnode` **ROS command** to view all the nodes that are currently active on a ROS Network.
 
-#### Exercise 3: Visualising the ROS Network {#ex3}
+#### :material-pen: Exercise 3: Visualising the ROS Network {#ex3}
 
 You should currently have three terminal windows active: the first in which you launched the Gazebo simulation (**TERMINAL 1**), the second with your `turtlebot3_teleop_key` node active (**TERMINAL 2**), and the third where you explored the contents of the `turtlebot3_teleop` package directory (**TERMINAL 3**).  **TERMINAL 3** should now be idle.
 
@@ -236,7 +236,7 @@ ROS Topics are key to making things happen on a robot. Nodes can publish (*write
 
 Let's have a look at this in a bit more detail...
 
-#### Exercise 4: Exploring ROS Topics and Messages {#ex4}
+#### :material-pen: Exercise 4: Exploring ROS Topics and Messages {#ex4}
 
 We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS command*.
 
@@ -299,7 +299,7 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS com
 
 1. To finish, shut down any active terminal processes by entering `Ctrl+C` in any that still have processes running (Terminals **1**, **2** and **3**). The associated Gazebo and rqt_graph windows should close as a result of this too.
 
-#### Exercise 5: Creating your own ROS Package {#ex5}
+#### :material-pen: Exercise 5: Creating your own ROS Package {#ex5}
 
 In a minute or two you will create some simple publisher and subscriber nodes in Python and send messages between them. As we learnt earlier though, ROS applications must be created within packages, and so we need to create a package first in order to start creating our own ROS nodes. 
 
@@ -379,7 +379,7 @@ Or:
     
 [^source-bashrc]: What does `source ~/.bashrc` do? [See here for an explanation](https://devconnected.com/source-command-on-linux-explained/#Source_to_update_your_current_shell_environment_bashrc).
 
-#### Exercise 6: Creating a publisher node {#ex6}
+#### :material-pen: Exercise 6: Creating a publisher node {#ex6}
 
 1. Within your `week1_pubsub` package directory, navigate to the `src` folder using the `cd` command.
 1. `touch` is a **Linux command** that we can use to create an empty file. Use this to create an empty file called `publisher.py`, which we will add content to shortly:
@@ -539,7 +539,7 @@ You should then be presented with a list of the available arguments for the `ros
     rostopic echo /chatter -n2
     ```
 
-#### Exercise 7: Creating a subscriber node {#ex7}
+#### :material-pen: Exercise 7: Creating a subscriber node {#ex7}
 
 You will now create another node to *subscribe* to the topic that our publisher node is broadcasting messages to, to illustrate how information can be passed from one node to another, via topic messages.
 
@@ -561,7 +561,7 @@ You will now create another node to *subscribe* to the topic that our publisher 
 
 At the beginning of this session we launched our Gazebo Simulation and the `turtlebot3_teleop_keyboard` node using *launch files* and the `roslaunch` command. This provides a means to launch multiple ROS nodes *simultaneously*, and we will demonstrate this by building a launch file for the publisher and subscriber nodes that we created in the previous exercises.
 
-#### Exercise 8: Creating a launch file {#ex8}
+#### :material-pen: Exercise 8: Creating a launch file {#ex8}
 
 1. In **TERMINAL 1**, use `roscd` to navigate to the *root* of your `week1_pubsub` package directory.
 1. Use the Linux `mkdir` command to **m**a**k**e a new **dir**ectory in the package root folder called `launch`:
