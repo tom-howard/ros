@@ -551,7 +551,7 @@ You will now create another node to *subscribe* to the topic that our publisher 
 1. Use `rosrun` to execute your newly created `subscriber.py` node (remember: `rosrun {package name} {script name}`). If your publisher and subscriber nodes are working correctly you should see an output like this:
     
     <figure markdown>
-      ![](images/subscriber_output.gif)
+      ![](week1/subscriber_output.gif)
     </figure>
 
 1. As before, we can find out what nodes are running on our system by using the `rosnode list` command. Open a new terminal window (**TERMINAL 4**), run this and see if you can identify the nodes that you have just launched.

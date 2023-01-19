@@ -1,7 +1,8 @@
-+++  
-title = "A LaserScan Callback Function"  
-hidden = "true"
-+++
+---  
+title: A LaserScan Callback Function
+---
+
+# A LaserScan Callback Function
 
 Based on what you have learnt throughout this course so far, you should now be able to set up a subscriber within your code to subscribe to the `/scan` topic:
 
@@ -17,12 +18,11 @@ from sensor_msgs.msg import LaserScan
 
 You could then develop a callback function (called `callback()` in this case) using the approach illustrated below. 
 
-{{< nicenote note >}}
-This example requires the `numpy` Python library, which you'll need to import at the start of your code in the following way:
-```python
-import numpy as np
-```
-{{< /nicenote >}}
+!!! note
+    This example requires the `numpy` Python library, which you'll need to import at the start of your code in the following way:
+    ```python
+    import numpy as np
+    ```
 
 The `callback()` could then be developed to obtain (for instance) a 40&deg; arc of `LaserScan` data ahead of the robot:
 
@@ -42,7 +42,9 @@ The distance to the closest object in front of our robot is then available throu
 
 What we're doing here is illustrated in the figure below:
 
-![](../scandata.png)
+<figure markdown>
+  ![](scandata.png)
+</figure>
 
 Let's talk through it too:
 
@@ -64,6 +66,7 @@ Let's talk through it too:
     ```python
     self.min_distance = front_arc.min()
     ```
+
 1. Optionally, we can also determine the angular position of the closest object up ahead too...
     1. Create another `numpy` array to represent the angles (in degrees) associated with each of the data-points in the `front_arc` array above:
         ```python
@@ -73,3 +76,7 @@ Let's talk through it too:
         ```python
         self.object_angle = arc_angles[np.argmin(front_arc)]
         ``` 
+
+<p align="center">
+  <a href="../../week4#ex4_ret">&#8592; Back to Week 4 - Exercise 4</a>
+</p>

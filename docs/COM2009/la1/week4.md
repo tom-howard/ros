@@ -1,16 +1,10 @@
-+++  
-title = "Week 4: ROS Services"  
-weight = 4  
-description = "Here, you'll learn how ROS Services can be used in combination with the standard publisher/subscriber principles that you already know about, to control a robot more effectively for certain operations."  
-+++
+---  
+title: "Week 4: ROS Services"  
+subtitle: "Here, you'll learn how ROS Services can be used in combination with the standard publisher/subscriber principles that you already know about, to control a robot more effectively for certain operations."  
+---
 
-{{% textalign center %}}
-*You should be able to complete **most** of the exercises on this page within a two-hour lab session, but you might wish to spend a bit more time on the final exercise.*
-{{% /textalign %}}
-
-{{% textalign left %}}
-[<i class="fas fa-solid fa-arrow-left"></i> Previous: "Week 3: Advanced Navigation & SLAM"](../week3)
-{{% /textalign %}}
+!!! info
+    You should be able to complete **most** of the exercises on this page within a two-hour lab session, but you might need to spend a bit more time on the final exercise.
 
 ## Introduction
 
@@ -48,14 +42,9 @@ By the end of this session you will be able to:
 Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the *Windows Terminal* app should launch with an *Ubuntu terminal instance* ready to go (**TERMINAL 1**).
 
 **Step 2: Restore your work**  
-Restore your work from last time by running the restore script in **TERMINAL 1** now:
+When prompted (in **TERMINAL 1**), enter `Y` to restore your work from last time[^1].
 
-***
-**TERMINAL 1:**
-```bash
-wsl_ros restore
-```
-***
+[^1]: Remember: you can also use the `wsl_ros restore` command at any time.
 
 **Step 3: Launch VS Code**  
 Follow [these steps](/wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
@@ -70,40 +59,49 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 ```
 ...and then wait for the Gazebo window to open:
 
-![](/images/gazebo/tb3_empty_world.png?width=800px)
+<figure markdown>
+  ![](/images/gazebo/tb3_empty_world.png){width=800px}
+</figure>
 
-{{% nicenote tip "Remember" %}}
-You can also use the `tb3_empty_world` command-line alias to launch the simulation, rather than using that long `roslaunch` command!
-{{% /nicenote %}}
+??? tip "Remember"
+    You can also use the `tb3_empty_world` command-line alias to launch the simulation, rather than using that long `roslaunch` command!
 
 ## An Introduction to Services
 
 So far, we've learnt about ROS *topics* and *messages*, and how individual nodes can access data on a robot by simply *subscribing* to topics that are being published by any other node on the system.  In addition to this, we also learnt how any node can *publish* messages to any topic: this essentially broadcasts the data contained in the message across the ROS Network, making it available to any other node on the network that may wish to access it.
 
 Another way to pass data between ROS Nodes is by using *Services*.  These are different to messages in that *"Service calls"* (that is, the process of requesting a service) occur *only* between one node and another:
+
 1. One node (a Service *Client*) sends a **Request** to another node.
 1. Another node (a Service *Server*) processes that request, performs an action and then sends back a **Response**.
 
-![The difference between topic-based messaging and the ROS Service protocol](topic_vs_service.png)
+<figure markdown>
+  ![The difference between topic-based messaging and the ROS Service protocol](week4/topic_vs_service.png)
+</figure>
 
 Services are *Synchronous* (or *sequential*): When a ROS node sends a request to a service (as a Service *Client*) it can't do anything else until the service has been completed and the Service *Server* has sent a response back. This can be useful for a variety of reasons:
+
 * **Discrete, short-duration actions:**
+
     * A robot might need to do something before it can move on to something else, i.e.: it needs to see something before it can move towards it.
     * High definition cameras generate large amounts of data and consume battery power, so you may wish to turn a camera on for a specific amount of time (e.g. until an image has been captured) and then turn it off again.
+
 * **Computations**: Remember that ROS is *network-based* so you might want to offload some computations to a remote computer or a different device on a robot, e.g.:
+    
     * A client might send some data and then wait for another process (the server) to process it and send back the result.
 
 It's also worth noting that any number of ROS Client nodes can call a service, but you can only have a *single* Server providing that particular service at any one time.
 
-![](service_clients.png)
+<figure markdown>
+  ![](week4/service_clients.png)
+</figure>
 
-{{% nicenote note "Questions" %}}
-Can you think of any other scenarios where this type of communication protocol might be useful?
-{{% /nicenote %}}
+!!! note "Questions"
+    Can you think of any other scenarios where this type of communication protocol might be useful?
 
 You'll explore how all this works in the next two exercises, where you will create service *Server* and *Client* nodes in Python, launch them from the command-line and observe the outcomes.
 
-#### Exercise 1: Creating a Service *Server* in Python and calling it from the command-line {#ex1}
+#### :material-pen: Exercise 1: Creating a Service *Server* in Python and calling it from the command-line {#ex1}
 
 To start with, let's set up a service and learn how to make a call to it from the command-line to give you an idea of how this all works and why it might be useful.
 
@@ -143,10 +141,9 @@ To start with, let's set up a service and learn how to make a call to it from th
         source ~/.bashrc
         ```
 
-        {{< nicenote tip >}}
-We're having to do this `source ~/.bashrc` thing a lot aren't we?! We've created a handy alias for it... use `src` instead!
-        {{< /nicenote >}}
-
+        ??? tip
+            We're having to do this `source ~/.bashrc` thing a lot aren't we?! We've created a handy alias for it... use `src` instead!
+        
         ***
             
 1. Then, navigate to your package `src` folder that should have been created by `catkin_create_pkg`:
@@ -159,12 +156,11 @@ We're having to do this `source ~/.bashrc` thing a lot aren't we?! We've created
     ***
 
 1. Create a file called `move_server.py` (using `touch`) and set this to be executable (using `chmod`).        
-1. Then, open the file in VS Code, copy and paste [this code template](move_server) and then save it.
+1. Then, open the file in VS Code, copy and paste [this code](move_server) and then save it. <a name="ex1_ret"></a>
     
-    {{< nicenote note >}}
-It's important that you understand how the code above works so that you know how to build your own service *Servers* in Python. Make sure you read [the explainer](move_server#explainer) below the code.
-    {{< /nicenote >}}
-
+    !!! note
+        It's really important that you understand how the code above works, so that you know how to build your own service *Servers* in Python. Make sure you read the code annotations thoroughly.
+    
 1. Return to the terminal window and launch the node using `rosrun`:
 
     ***
@@ -252,11 +248,12 @@ It's important that you understand how the code above works so that you know how
 **Summary:**
 
 You have just created a node in Python to launch a service. This node acted as a *Server*: sitting idle and waiting, indefinitely, for its service to be called. We then issued the call to the service via the command-line, which then prompted our Service Server to carry out the tasks that we had defined within the Python code, namely:
+
 1. Start a timer.
 1. Issue a velocity command to the robot to make it move forwards.
 1. Wait for 5 seconds.
 1. Issue a velocity command to make the robot stop.
-1. Prepare a Service ***Response*** and issue this to the terminal in which we called the service (**TERMINAL 3**).
+1. Prepare a Service **Response** and issue this to the terminal in which we called the service (**TERMINAL 3**).
 
 ### Using `rossrv` {#rossrv}
 
@@ -302,22 +299,24 @@ As you can see from above, service messages have two parts to them, separated by
 ```txt
 bool request_signal     <-- Request
 ---
-bool response_signal    <-- Response (Part 1)
-string response_message <-- Response (Part 2)
+bool response_signal    <-- Response (Parameter 1/2)
+string response_message <-- Response (Parameter 2/2)
 ```
 
 In order to *Call* a service, we need to provide data to it in the format specified in the **Request** section of the message. A service *Server* (like the [Python node we created above](move_server#code)) will then send data back to the caller in the format specified in the **Response** section of the message.
 
 The `tuos_ros_msgs/SetBool` service message that we're working with here has a **one** request parameter:
+
 1. A *boolean* input called `request_signal`  
     ...which is the only thing we need to send to the Service Server in order to call the service.
 
 There are then **two** response parameters:
+
 1. A *boolean* flag called `response_signal`
 1. A text *string* called `response_message`  
     ...both of these will be returned to the client, by the server, once the Service has completed.
 
-#### Exercise 2: Creating a Python Service *Client* Node {#ex2}
+#### :material-pen: Exercise 2: Creating a Python Service *Client* Node {#ex2}
 
 As well as calling a service from the command-line we can also build Python nodes to do the same thing (i.e. we can build Python Service *Client* Nodes). In this exercise you will learn how this is done.
 
@@ -331,11 +330,10 @@ As well as calling a service from the command-line we can also build Python node
     ***
     
 1. Create a new file called `move_client.py` and make sure that this is executable.
-1. Launch the file in VS Code, copy and paste [this code](move_client) and then save the file.
+1. Launch the file in VS Code, copy and paste [this code](move_client) and then save the file. <a name="ex2_ret"></a>
     
-    {{< nicenote note >}} 
-Once again, be sure to read [the explainer](move_client#explainer) below the code, and make sure that you understand how this Python Service Client Node works too!
-    {{< /nicenote >}}
+    !!! note
+        Once again, be sure to read the code annotations, and make sure that you understand how this Python Service Client Node works too!
 
 1. Return to **TERMINAL 3** and launch the node using `rosrun`:
 
@@ -348,7 +346,7 @@ Once again, be sure to read [the explainer](move_client#explainer) below the cod
         
     The response should be exactly the same as observed in Exercise 1.
 
-#### Exercise 3: Making and calling your own Service {#ex3}
+#### :material-pen: Exercise 3: Making and calling your own Service {#ex3}
 
 In this exercise you will create your own service Server to make the Waffle perform a specific movement for a given amount of time and then stop.
 
@@ -386,16 +384,15 @@ The Server should make the robot perform the desired action for a duration that 
         ```
         ***
 
-1. Launch your new `timed_move_server.py` file in VS Code and modify it as follows:
+1. Open the new `timed_move_server.py` file in VS Code and modify it as follows:
     1. Change the imports to utilise the correct service message type (`tuos_ros_msgs/TimedMovement`).
     1. Modify the `rospy.Service` call to use the `TimedMovement` service message type.
     1. Develop the `callback_function()` to:
-        1. Process the **two** parameters that will be provided to your server via the `service_request` input argument.  
+        1. Process the **two** parameters that will be provided to the server via the `service_request` input argument.  
 
-            {{< nicenote tip "Remember" >}}
-You can use `rossrv info ...` to find out what these two parameters are called, and their data types.
-            {{< /nicenote >}}
-
+            !!! tip "Remember"
+                You can use `rossrv info ...` to find out what these two parameters are called, and their data types.
+            
         1. Make the robot perform the correct action.
         1. Return a correctly formatted service response message to the service caller.
 1. Launch your server node using `rosrun` from **TERMINAL 2** and *call* the service from the command-line using the `rosservice call` command in **TERMINAL 3**, [as you did earlier](#cl_call).
@@ -404,11 +401,11 @@ You can use `rossrv info ...` to find out what these two parameters are called, 
 
 You should now hopefully understand how to use the ROS Service architecture and understand why, and in what context, it might be useful to use this type of communication method in a robot application.
 
-{{< nicenote tip "Remember" >}}
-Services are **synchronous** and are useful for one-off, quick actions; or for offloading jobs or computations that might need to be done before something else can happen.  (Think of it as a transaction that you might make in a shop: You hand over some money, and in return you get a chocolate bar, for example!)
-{{< /nicenote >}}
+!!! tip "Remember"
+    Services are **synchronous** and are useful for one-off, quick actions; or for offloading jobs or computations that might need to be done before something else can happen.  (Think of it as a transaction that you might make in a shop: You hand over some money, and in return you get a chocolate bar, for example!)
 
 Over the last four sessions we've learnt how to use a range of key ROS tools, and hopefully you're starting to understand how ROS works and how you might approach a robot programming task using this framework. In the final exercise of this session you'll consolidate some of the things that you've done so far:
+
 * How to publish and subscribe to topics.
 * How to make a robot move.
 * How to interpret Laser Displacement Data from the LiDAR sensor.
@@ -421,17 +418,23 @@ In order to carry out the last exercise you'll also need to be able to manipulat
 
 In the Gazebo simulation window, use the "Box" tool in the top toolbar to place a box in front of the robot:
 
-![](/images/gazebo/box.png?width=800px)
+<figure markdown>
+  ![](/images/gazebo/box.png){width=700px}
+</figure>
 
 Use the "Scale Mode" button to resize the box and use the "Translation Mode" button to reposition it.
 
-![](/images/gazebo/toolbar_buttons.png)
+<figure markdown>
+  ![](/images/gazebo/toolbar_buttons.png)
+</figure>
 
 Once you are happy with this, right-click on the object and select "Delete" to remove it from the world. 
 
-![](/images/gazebo/delete.png)
+<figure markdown>
+  ![](/images/gazebo/delete.png)
+</figure>
 
-#### Exercise 4: Approaching an object using a Service and closed-loop control {#ex4}
+#### :material-pen: Exercise 4: Approaching an object using a Service and closed-loop control {#ex4}
 
 For this exercise you need to build another Python *Server* node which must perform the following tasks:
 
@@ -441,11 +444,10 @@ For this exercise you need to build another Python *Server* node which must perf
     1. The speed (in m/s) at which to approach the object.
     1. The distance (in meters) at which the robot must stop in front of it.
 1. A service message called `tuos_ros_msgs/Approach` is available for you to use for this exercise. Use this to build your service server. Remember, you can find out more about this message using `rossrv info`.
-1. We haven't really done much work with the LiDAR data published to the `/scan` topic yet, so you might want to consider [this suggested approach](scan_callback) for building a `/scan` callback function.
+1. We haven't really done much work with the LiDAR data published to the `/scan` topic yet, so you might want to consider [this suggested approach](scan_callback) for building a `/scan` callback function. <a name="ex4_ret"></a>
 
-{{% nicenote tip %}}
-You should use a class structure in your Python code here. Consider the design of the [subscriber node from Week 1](../week1/subscriber) or the [`move_square` node from Week 3](../week3/move_square) to give you an idea of how to approach this.
-{{% /nicenote %}}
+    !!! tip
+        You should use a class structure in your Python code here. Start off with the [subscriber node from Week 1](../week1/subscriber) and add code to this to build the functionality required for this exercise.
 
 ## Wrapping Up
 
@@ -456,6 +458,7 @@ In this session you have learnt about ROS Services and why they might be useful 
 * This is useful for controlling *quick*, *short-duration* tasks or for *offloading computations* (which could perhaps also be considered *decision making*).
 
 Having completed this week's exercises, you should now be able to:
+
 * Create and execute Python Service *Servers*.
 * Create and execute Python Service *Callers*, as well as call services from the command-line.
 * Implement these principles with a range of different service message types to perform a number of different robot tasks.
@@ -475,7 +478,3 @@ wsl_ros backup
 ```
 
 This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.
-
-{{% textalign right %}}
-[Next: "Week 5: ROS Actions" <i class="fas fa-solid fa-arrow-right"></i>](../week5)
-{{% /textalign %}}

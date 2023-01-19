@@ -354,7 +354,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     A new window should launch containing the map you have just created with SLAM and the `map_saver` node: 
     
     <figure markdown>
-      ![](slam_map.png)
+      ![](week3/slam_map.png)
     </figure>
 
     White regions represent the area that your robot has determined is open space and that it can freely move within.  Black regions, on the other hand, represent boundaries or objects that have been detected.  Any grey area on the map represents regions that remain unexplored, or that were inaccessible to the robot.
@@ -367,7 +367,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     
 1. Close the image using the `x` button on the right-hand-side of the *eog* window.
 
-##### Summary of SLAM:
+**Summary of SLAM:**
 
 See how easy it was to map an environment in the previous exercise? This works just as well on a real robot in a real environment too (see [this video demonstration that we put together a while back](https://digitalmedia.sheffield.ac.uk/media/An%20Introduction%20to%20ROS%20and%20the%20TurtleBot3%20Waffle/1_32z1rqhk)). 
 
@@ -434,7 +434,7 @@ As mentioned above, the map that you created in the previous exercise can now be
 1. RViz and Gazebo should be launched, both windows looking something like this:
 
     <figure markdown>
-      ![](navigation_launch.png)
+      ![](week3/navigation_launch.png)
     </figure>
 
     !!! note "Question"
@@ -526,13 +526,15 @@ As mentioned above, the map that you created in the previous exercise can now be
 
 1. Once you're happy, hit `Enter` and watch the robot move on its own to the location that you specified!
 
-    ![](nav_to_b.gif?width=1000px)
+    <figure markdown>
+      ![](week3/nav_to_b.gif){width=700px}
+    </figure>
 
     Notice how the green particle cloud arrows very quickly converge around the robot as it moves around? This is because the robot is becoming more certain of it's pose (its position and orientation) within the environment as it compares the boundaries its LiDAR sensor can actually see with the boundaries marked out in the map that you supplied to it.
 
 1. Have a go at requesting more goals by issuing further commands in the terminal (using `rostopic pub`) to make the robot move between each of the four zone markers.
 
-##### Summary:
+**Summary:**
 
 We have just made a robot move by issuing navigation goal requests to an *Action Server* on our ROS Network. You will learn more about ROS Actions in [Week 5](../week5), where you will start to understand how this communication method actually works. You will also learn how to create *Action Client Nodes* in Python, so that - in theory - everything that you have been doing on the command-line in this exercise could be done programmatically instead.
 
