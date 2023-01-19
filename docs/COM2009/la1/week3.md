@@ -1,16 +1,10 @@
-+++  
-title = "Week 3: Advanced Navigation & SLAM"  
-weight = 3  
-description = "Implement odometry-based velocity control to make a robot follow a pre-defined motion path. Explore the LiDAR sensor, how the data form this device can be of huge benefit for robotics applications, and see this in practice by leveraging the autonomous navigation (and mapping) tools within ROS."  
-+++
+---  
+title: "Week 3: Advanced Navigation & SLAM"  
+subtitle: Implement odometry-based velocity control to make a robot follow a pre-defined motion path. Explore the LiDAR sensor, how the data form this device can be of huge benefit for robotics applications, and see this in practice by leveraging the autonomous navigation (and mapping) tools within ROS.
+---
 
-{{% textalign center %}}
-*You should be able to complete the exercises on this page within a two-hour lab session*.
-{{% /textalign %}}
-
-{{% textalign left %}}
-[<i class="fas fa-solid fa-arrow-left"></i> Previous: "Week 2: Odometry & Basic Navigation"](../week2)
-{{% /textalign %}}
+!!! info
+    You should be able to complete Exercises 2, 3, & 4 on this page within a two-hour lab session, but you may want to spend a bit more time on Exercise 1.
 
 ## Introduction
 
@@ -21,6 +15,7 @@ This week you will implement *closed-loop velocity control* and create a ROS nod
 ### Intended Learning Outcomes
 
 By the end of this session you will be able to:
+
 1. Combine both publisher *&* subscriber communication methods (that you have so far dealt with in isolation) into a single Python node to implement closed-loop (odometry-based) velocity control of a robot.
 1. Explain the limitations of Odometry-based motion control methods. 
 1. Interpret the data that is published to the `/scan` topic and use existing ROS tools to visualise this.
@@ -41,22 +36,25 @@ By the end of this session you will be able to:
 
 ## Getting Started
 
-1. Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the *Windows Terminal* app should launch with an *Ubuntu terminal instance* ready to go (**TERMINAL 1**).
-1. Also launch VS Code now by [following the steps here to launch it correctly within the WSL-ROS environment](/wsl-ros/vscode).
+**Step 1: Launch WSL-ROS**  
+Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the *Windows Terminal* app should launch with an *Ubuntu terminal instance* ready to go (**TERMINAL 1**).
 
-### Restoring your Environment
+**Step 2: Restore your work**  
+Remember that any work that you do in WSL-ROS will not be preserved between sessions or across different University computers. You should have used the `wsl_ros` tool at the end of the previous session to back up your home directory to your University U: Drive. If so, then you should now be prompted to restore it:
 
-Remember that any work that you do in WSL-ROS will not be preserved between sessions or across different University computers. You should have run the `wsl_ros` tool at the end of the previous session to back up your home directory to your University U: Drive. Restore this now before you go any further by running the following command in **TERMINAL 1**:
+<figure markdown>
+  ![](/images/wsl/restore_prompt.png){width="600"}
+</figure>
 
-***
-**TERMINAL 1:**
-```bash
-wsl_ros restore
-```
-***
+Enter `Y` to restore your work now.
 
-### Launching the Robot Simulation
+??? tip
+    You can also use the `wsl_ros restore` command to restore your work at any other time.
 
+**Step 3: Launch VS Code**  
+Also launch VS Code now by [following the steps here to launch it correctly within the WSL-ROS environment](/wsl-ros/vscode).
+
+**Step 4: Launch the Robot Simulation** 
 You should know exactly how to do this now but, just to re-iterate, enter the following into **TERMINAL 1**:
         
 ***
@@ -70,27 +68,29 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 
 ![](/images/gazebo/tb3_empty_world.png?width=800px)
 
-{{% nicenote tip %}}
-Getting bored with entering that long command to launch the simulation? You could use the `tb3_empty_world` alias instead!
-{{% /nicenote %}}
+??? tip
+    Getting bored with entering that long command to launch the simulation? You could use a command *alias* instead:
+
+    ```bash
+    tb3_empty_world
+    ```
 
 ## Odometry-based Navigation
 
 In the previous session you created [a Python node to make your robot move using *open-loop control*](../week2/#ex4). To achieve this you published velocity commands to the `/cmd_vel` topic to make the robot follow a circular motion path.
 
-{{% nicenote note "Questions" %}}
-* How do you know if your robot actually achieved the motion path that you were hoping for?
-* In a real-world environment, what external factors might result in your robot *not* achieving its desired trajectory?
-{{% /nicenote %}}
+!!! note "Questions"
+    * How do you know if your robot actually achieved the motion path that you were hoping for?
+    * In a real-world environment, what external factors might result in your robot *not* achieving its desired trajectory?
 
-Last week you also learnt about [Robot Odometry](../week2/#odometry), which is used by the robot to keep track of its *position* and *orientation* in the environment.  This is determined by a process called *"dead-reckoning"*, which is only really an approximation, but it's a fairly good one in any case, and we can use this as a feedback signal to understand if our robot is moving in the way that we expect it to.  We can therefore build on the techniques that we used in the `move_circle.py` node from last time, and now also build in the ability to *subscribe* to a topic too. In this case, we'll be subscribing to the `/odom` topic that we worked with a bit (in isolation) last time, and use this to provide us with a feedback signal to allow us to implement some basic *closed-loop control*.
+Last week you also learnt about [Robot Odometry](../week2/#odometry), which is used by the robot to keep track of its **position** and **orientation** (aka **Pose**) in the environment.  This is determined by a process called *"dead-reckoning,"* which is only really an approximation, but it's a fairly good one in any case, and we can use this as a feedback signal to understand if our robot is moving in the way that we expect it to.  We can therefore build on the techniques that we used in the `move_circle.py` node from last time, and now also build in the ability to *subscribe* to a topic too. In this case, we'll be subscribing to the `/odom` topic that we worked with a bit (in isolation) last time, and use this to provide us with a feedback signal to allow us to implement some basic *closed-loop control*.
 
-#### Exercise 1: Make your robot follow a Square motion path {#ex1}
+#### :material-pen: Exercise 1: Make your robot follow a Square motion path {#ex1}
 
-1. Launch a new terminal instance (**TERMINAL 2**) and, from there, navigate to the `week2_navigation` package that you created last time.
-    {{< nicenote tip "Hint" >}}
-You can use the `roscd` command for this!
-    {{< /nicenote >}}
+1. Launch a new terminal instance (**TERMINAL 2**) and, from there, navigate to the `week2_navigation` package that you created last time[^roscd].
+    
+    [^roscd]: Hint: You can use the `roscd` command for this!
+    
 1. Navigate to the package `src` directory and use the Linux `touch` command to create a new file called `move_square.py`:
     
     ***
@@ -113,15 +113,14 @@ You can use the `roscd` command for this!
 1. [There's a template here to help you with this exercise](move_square). Copy and paste the template code into your new `move_square.py` file to get you started.
 1. Run the code as it is to see what happens...
 
-    {{< nicenote warning "Fill in the Blank!" >}}
-Something not quite working as expected? We may have missed out [something very crucial](../week1/subscriber/#dfts) on **the very first line** of the code template, can you work out what it is?!
-    {{< /nicenote >}}
+    !!! warning "Fill in the Blank!"
+        Something not quite working as expected? We may have missed out [something very crucial](../week1/subscriber/#dfts) on **the very first line** of the code template, can you work out what it is?!
 
-1. Fill in the blank as required and then adapt the code to make your robot follow a **square motion path** of **0.5m x 0.5m** dimensions:
+1. Fill in the blank as required and then adapt the code to make your robot follow a **square motion path** of **1m x 1m** dimensions:
     * The robot's odometry will tell you how much the robot has moved and/or rotated, and so you should use this information to achieve the desired motion path. 
     * Your Python node will therefore need to *subscribe* to the `/odom` topic as well as *publish* to `/cmd_vel`.
 
-##### Advanced features:
+**Advanced features:**
 
 1. Adapt the node further to make the robot automatically stop once it has performed two complete loops.
 1. Create a launch file to launch this *and* the `odom_subscriber.py` node from last time simultaneously!
@@ -132,7 +131,7 @@ After following a square motion path a few times, your robot *should* return to 
 
 Odometry is really important for robot navigation, but it can be subject to drift and accumulated error over time. You may have observed this in the previous exercise, but you would most certainly notice it if you were to do the same on a real robot. Fortunately, we have another sensor on-board our robot which provides even richer information about the environment, and we can use this to supplement the odometry information and enhance the robot's navigation capabilities.
 
-#### Exercise 2: Using RViz to Visualise Robot Data {#ex2}
+#### :material-pen: Exercise 2: Using RViz to Visualise Robot Data {#ex2}
 
 <a name="rviz"></a>We're going to place the robot in a more interesting environment now, so you'll need to make sure that you close down the Gazebo simulation that is currently running.  The best way to do this is to go to **TERMINAL 1** and enter `Ctrl+C`.  It may take a bit of time, but the Gazebo window will close down after 30 seconds or so. You should also stop your `move_square.py` node, if that's still running too. 
 
@@ -233,18 +232,16 @@ $ rostopic echo /scan/angle_increment -n1
 
 Notice how we were able to access *specific variables* within the `/scan` message using `rostopic echo` here, rather than simply printing the whole thing?
 
-{{% nicenote note "Questions" %}}
-* What does the `-n1` option do, and why is it appropriate to use this here?
-* What do these values represent? (Compare them with [the figure above](#fig_lidar))
-{{% /nicenote %}}
+!!! note "Questions"
+    * What does the `-n1` option do, and why is it appropriate to use this here?
+    * What do these values represent? (Compare them with [the figure above](#fig_lidar))
 
 The `ranges` array contains 360 values in total, i.e. a distance measurement at every 1&deg; (an `angle_increment` of 0.0175 radians) around the robot. The first value in the `ranges` array (`ranges[0]`) is the distance to the nearest object directly in front of the robot (i.e. at &theta; = 0 radians, or `angle_min`). The last value in the `ranges` array (`ranges[359]`) is the distance to the nearest object at 359&deg; (i.e. &theta; = 6.283 radians, or `angle_max`) from the front of the robot. If, for example, we were to obtain the 65th value in the `ranges` array, that is: `ranges[65]`, we know that this would represent the distance to the nearest object at an angle of 65&deg; (1.138 radians) from the front of the robot (anti-clockwise), as shown in [the figure](#fig_lidar).
 
 The `LaserScan` message also contains the parameters `range_min` and `range_max`, which represent the *minimum* and *maximum* distance (in meters) that the LiDAR sensor can detect, respectively. You can use the `rostopic echo` command to report these directly too.  
 
-{{% nicenote note "Question" %}}
-What *is* the maximum and minimum range of the LiDAR sensor? Use [the same technique as we used above](#echo_scan_variables) to find out.
-{{% /nicenote %}}
+!!! note "Question"
+    What *is* the maximum and minimum range of the LiDAR sensor? Use [the same technique as we used above](#echo_scan_variables) to find out.
 
 Finally, use the `rostopic echo` command again to display the `ranges` portion of the `LaserScan` topic message.  Don't use the `-n1` option now, so that you can see the data changing, in the terminal, in real-time, but use the `-c` option to clear the screen after every message to make things a bit clearer.  You might also need to maximise the terminal window so that you can see the full content of the array (all 360 values!) The array is quite big, but is bound by square brackets `[]` to denote the start and end, and there should be a `---` at the end of each message too, to help you confirm that you are viewing the entire thing.
 
@@ -258,7 +255,7 @@ Stop the `rostopic echo` command from running in the terminal window by entering
 
 In combination, the data from the LiDAR sensor and the robot's odometry (the robot *pose* specifically) are really powerful, and allow some very useful conclusions to be made about the its environment.  One of the key applications of this data is *"Simultaneous Localisation and Mapping"*, or *SLAM*.  This is a tool that is built into ROS, allowing a robot to build up a map of its environment and locate itself within that map at the same time!  You will now learn how easy it is to leverage this in ROS.
 
-#### Exercise 3: Building a map of an environment with SLAM {#ex3}
+#### :material-pen: Exercise 3: Building a map of an environment with SLAM {#ex3}
 
 1. Close down all ROS processes that are running now by entering `Ctrl+C` in each terminal:
     1. The Gazebo processes in **TERMINAL 1**.
@@ -288,7 +285,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
 
     This will launch RViz again, and you should be able to see a model of your TurtleBot3 from a top-down view, this time with green dots representing the real-time LiDAR data. The SLAM tools will already have begun processing this data to start building a map of the boundaries that are currently visible to your robot based on its position in the environment.
 
-1. In **TERMINAL 3** launch the `turtlebot3_teleop` node (you should know how to do this by now).  Re-arrange and re-size your windows so that you can see Gazebo, RViz *and* the `turtlebot3_teleop` terminal instance all at the same time:
+1. In **TERMINAL 3** launch the `turtlebot3_teleop` node ([you should know how to do this by now](../week2/#teleop)).  Re-arrange and re-size your windows so that you can see Gazebo, RViz *and* the `turtlebot3_teleop` terminal instance all at the same time:
     
     ![](/images/wsl/window_arrangement.png)
 
@@ -345,7 +342,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     Replacing `{map name}` with a name of your choosing. 
     ***
 
-    This will create two files: a `{map name}.pgm` and a `{map name}.yaml` file, both of which contain data related to the map that you have just created.  The `.pgm` file contains an *Occupancy Grid Map (OGM)*, which is used for *autonomous navigation* in ROS.  Have a look at the map by launching it in an *Image Viewer Application* called `eog`:
+    This will create two files: a `{map name}.pgm` and a `{map name}.yaml` file, both of which contain data related to the map that you have just created.  The `.pgm` file contains an *Occupancy Grid Map (OGM)*, which is used for *autonomous navigation* in ROS.  Have a look at the map by launching it in an Image Viewer Application called `eog`:
     
     ***
     **TERMINAL 3:**
@@ -356,17 +353,18 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
 
     A new window should launch containing the map you have just created with SLAM and the `map_saver` node: 
     
-    ![](slam_map.png)
-    
+    <figure markdown>
+      ![](slam_map.png)
+    </figure>
+
     White regions represent the area that your robot has determined is open space and that it can freely move within.  Black regions, on the other hand, represent boundaries or objects that have been detected.  Any grey area on the map represents regions that remain unexplored, or that were inaccessible to the robot.
     
 1. Compare the map generated by SLAM to the real simulated environment. In a simulated environment this process should be pretty accurate, and the map should represent the simulated environment very well (unless you didn't allow your robot to travel around and see the whole thing!)  In a real environment this is often not the case.  
 
-    {{< nicenote note "Questions" >}}
-* How accurately did your robot map the environment?
-* What might impact this when working in a real-world environment?
-    {{< /nicenote >}}
-
+    !!! note "Questions"
+        * How accurately did your robot map the environment?
+        * What might impact this when working in a real-world environment?
+    
 1. Close the image using the `x` button on the right-hand-side of the *eog* window.
 
 ##### Summary of SLAM:
@@ -379,7 +377,7 @@ This illustrates the power of ROS: having access to tools such as SLAM, which ar
 
 As mentioned above, the map that you created in the previous exercise can now be used by ROS to autonomously navigate the mapped area.  We'll explore this now.
 
-#### Exercise 4: Navigating an Environment Autonomously {#ex4}
+#### :material-pen: Exercise 4: Navigating an Environment Autonomously {#ex4}
 
 1. Close down all ROS processes again now so that nothing is running (but leave all three terminal windows open).
 1. In order to perform autonomous navigation we now need to activate a number of ROS libraries, our simulated environment and *also* specify some custom parameters, such as the location of our map file. The easiest way to do all of this in one go is to create a launch file. 
@@ -406,48 +404,7 @@ As mentioned above, the map that you created in the previous exercise can now be
 1. Open up this file in VS Code and copy and paste the following content: <a name="launch_file"></a>
 
     ```xml
-    <!-- Adapted from the Robotis "turtlebot3_navigation" package: 
-    https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_navigation/launch/turtlebot3_navigation.launch
-    -->
-    <launch>
-      <include file="$(find tuos_ros_simulations)/launch/nav_world.launch" />
-
-      <!-- To be modified -->
-      <arg name="map_file" default=" $(find week2_navigation)/maps/{map name}.yaml"/>
-      <arg name="initial_pose_x" default="0.0"/>
-      <arg name="initial_pose_y" default="0.0"/>
-      
-      <!-- Other arguments -->
-      <arg name="initial_pose_a" default="0.0"/>
-      <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
-      <arg name="move_forward_only" default="false"/>
-
-      <!-- Turtlebot3 Bringup -->
-      <include file="$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch">
-        <arg name="model" value="$(arg model)" />
-      </include>
-
-      <!-- Map server -->
-      <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
-
-      <!-- AMCL -->
-      <include file="$(find turtlebot3_navigation)/launch/amcl.launch">
-        <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
-        <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
-        <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
-      </include>
-
-      <!-- move_base -->
-      <include file="$(find turtlebot3_navigation)/launch/move_base.launch">
-        <arg name="model" value="$(arg model)" />
-        <arg name="move_forward_only" value="$(arg move_forward_only)"/>
-      </include>
-
-      <!-- rviz -->
-      <node pkg="rviz" type="rviz" name="rviz" required="true"
-        args="-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz"/>
-
-    </launch>
+    --8<-- "code/nav.launch"
     ```
 
 1. Edit the default values in the `To be modified` section:
@@ -459,7 +416,7 @@ As mentioned above, the map that you created in the previous exercise can now be
     <arg name="initial_pose_y" default="0.0"/>
     ```
 
-    1. Change `{map name}` to the name of *your map file* as created in the previous exercise.
+    1. Change `{map name}` to the name of *your map file* as created in the previous exercise (remove the `{}`s!).
     1. Change the `initial_pose_x` and `initial_pose_y` default values. Current these are both set to `"0.0"`, but they need to be set to match the coordinates of the start zone of the `tuos_ros_simulations/nav_world` environment (we may have given you a clue about these in the table earlier!) 
 
 1. Once you've made these changes, save the file and then launch it:
@@ -471,23 +428,28 @@ As mentioned above, the map that you created in the previous exercise can now be
     ```
     ***
 
-    {{< nicenote warning "Fill in the Blank!" >}}
-Which ROS command do we use to execute launch files?
-    {{< /nicenote >}}
-
+    !!! warning "Fill in the Blank!"
+        Which ROS command do we use to execute launch files?
+    
 1. RViz and Gazebo should be launched, both windows looking something like this:
 
-    ![](navigation_launch.png)
+    <figure markdown>
+      ![](navigation_launch.png)
+    </figure>
 
-    {{< nicenote note "Question" >}}
-How many nodes were actually launched on our ROS Network by executing this launch file?
-    {{< /nicenote >}}
+    !!! note "Question"
+        How many nodes were actually launched on our ROS Network by executing this launch file?
+    
+    As shown in the figure, in RViz you should see the map that you generated with SLAM earlier.
 
-    As shown in the figure, in RViz you should see the map that you generated with SLAM earlier. There should be a "heatmap" surrounding your robot and a lot of green arrows scattered all over the place. The green arrows represent the *localisation particle cloud*, and the fact that these are all scattered across quite a wide area at the moment indicates that there is currently a great deal of uncertainty about the actual robot pose within the environment. Once we start moving around, this will improve and the arrows will start to converge more closely around the robot. This is actually called a *"costmap"*, and it illustrates what the robot perceives of its environment: blue regions representing safe space that it can move around in; red regions representing areas where it could collide with an obstacle.
+    * There should be a "heatmap" surrounding your robot and a lot of green arrows scattered all over the place. 
+    * The green arrows represent the *localisation particle cloud*, and the fact that these are all scattered across quite a wide area at the moment indicates that there is currently a great deal of uncertainty about the actual robot pose within the environment. Once we start moving around, this will improve and the arrows will start to converge more closely around the robot. 
+        
+        This is actually called a *"costmap"*, and it illustrates what the robot perceives of its environment: blue regions representing safe space that it can move around in; red regions representing areas where it could collide with an obstacle.
 
-    Finally, the green dots illustrate the real-time `LaserScan` data coming from the LiDAR sensor, as we saw earlier. This should be nicely overlaid on top of the boundaries in our map.
+    * Finally, the green dots illustrate the real-time `LaserScan` data coming from the LiDAR sensor, as we saw earlier. This should be nicely overlaid on top of the boundaries in our map.
 
-1. To send a navigation goal to our robot we need to issue a request to the *move_base action server*. We will cover ROS actions later in this course, but for now, all you really need to know is that we can send a navigation *goal* by publishing a message to a topic on the ROS network. In **TERMINAL 2** run `rostopic list` and filter this to show only topics related to `/move_base`:
+1. To send a navigation goal to our robot we need to issue a request to the *move_base action server*. We will cover *ROS Actions* later in this course, but for now, all you really need to know is that we can send a navigation *goal* by publishing a message to a topic on the ROS network. In **TERMINAL 2** run `rostopic list` and filter this to show only topics related to `/move_base`:
 
     ***
     **TERMINAL 2:**
@@ -520,10 +482,9 @@ How many nodes were actually launched on our ROS Network by executing this launc
     ```
     ***
 
-    {{< nicenote note "Question" >}}
-What type of message does this topic use, and which ROS package does it live within?
-    {{< /nicenote >}}
-
+    !!! note "Question"
+        What type of message does this topic use, and which ROS package does it live within?
+    
 1. Run another command now to find out what the structure of this message is (you did this earlier for the `LaserScan` messages published to the `/scan` topic).
 
 1. Knowing all this information now, we can use the `rostopic pub` command to issue a navigation goal to our robot, via the `/move_base_simple/goal` topic. This command works exactly the same way as it did when we [published messages to the `/cmd_vel` topic last week](../week2/#rostopic_pub) (when we made the robot move at a velocity of our choosing).
@@ -586,13 +547,15 @@ As you have observed in this exercise, in order to use ROS navigation tools to m
 
 ## Further Reading
 
-The [ROS Robot Programming eBook that we have mentioned previously](/about/robots/#ebook) goes into more detail on how SLAM and the autonomous navigation tools that you have just implemented actually work.  There is information in here on how these tools have been configured to work with the TurtleBot3 robots specifically.  We therefore *highly recommend* that you download this book and have a read of it.  You should read through Chapters 11.3 ("SLAM Application") and 11.4 ("SLAM Theory") in particular, and pay particular attention to the following:
+The [ROS Robot Programming eBook that we have mentioned previously](/about/robots/#ebook) goes into more detail on how SLAM and the autonomous navigation tools that you have just implemented actually work.  There is information in here on how these tools have been configured to work with the TurtleBot3 robots specifically.  We therefore *highly recommend* that you download this book and have a read of it.  You should read through Chapters 11.3 ("SLAM Application") and 11.4 ("SLAM Theory") in particular, and pay particular attention to the following:  
+
 * What information is required for SLAM? One of these bits of information may be new to you: how does this relate to *Odometry*, which you *do* know about? (See Section 11.3.4)
 * Which nodes are active in the SLAM process and what do they do?  What topics are published and what type of messages do they use?  How does the information flow between the node network?
 * Which SLAM method did we use? What parameters had to be configured for our TurtleBot3 Waffle specifically, and what do all these parameters actually do?
 * What are the *5 steps* in the iterative process of pose estimation? 
 
 We would also recommend you read Chapter 11.7 ("Navigation Theory") too, which should allow you to then answer the following:
+
 * What is the algorithm that is used to perform pose estimation?
 * What process is used for trajectory planning? 
 * How many nodes do we need to launch to activate the full navigation functionality on our ROS Network? (We asked you this earlier, and the best way to determine it might be to do it experimentally, i.e.: using the `rosnode` command-line tool perhaps?)!
@@ -600,6 +563,7 @@ We would also recommend you read Chapter 11.7 ("Navigation Theory") too, which s
 ## Wrapping Up
 
 This week you have learnt how to develop an odometry-based controller to make your robot follow a square motion path.  You will likely have observed some degree of error in this which, as you already know, could be due to the fact that Odometry data is determined by dead-reckoning and is therefore subject to drift and error.  Consider how other factors may impact the accuracy of control too:
+
 * How might the rate at which the odometry data is sampled play a role?
 * How quickly can your robot receive new velocity commands, and how quickly can it respond?
 
@@ -618,7 +582,3 @@ wsl_ros backup
 ```
 
 This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.
-
-{{% textalign right %}}
-[Next: "Week 4: ROS Services" <i class="fas fa-solid fa-arrow-right"></i>](../week4)
-{{% /textalign %}}

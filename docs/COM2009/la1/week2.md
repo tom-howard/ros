@@ -3,8 +3,9 @@ title: "Week 2: Odometry & Basic Navigation"
 subtitle: In this session you'll learn how to control a ROS robot's velocity (and thus its position), how to interpret Odometry data and implement some open-loop control nodes.  
 ---
 
-<p align="center"><em>You should be able to complete the exercises on this page within a two-hour lab session.</em></p>
-
+!!! info
+    You should be able to complete the exercises on this page within a two-hour lab session.
+    
 ## Introduction
 
 ### Aims
@@ -202,7 +203,7 @@ Another topic that should have appeared when you ran `rostopic list` earlier is 
     
 1. Now, you need to launch a new Windows Terminal instance so that you can view it side-by-side with **TERMINAL 2**. To do this, press the "New Tab" button whilst pressing the `Shift` key. We'll call this one **TERMINAL 3**. Arrange both windows side-by-side, so you can see what's happening in both, simultaneously.
 
-1. In **TERMINAL 3** launch the `turtlebot3_teleop_keyboard` node [as you did last week](../week1/#ex1):
+1. In **TERMINAL 3** launch the `turtlebot3_teleop_keyboard` node [as you did last week](../week1/#ex1): <a name="teleop"></a>
 
     ***
     **TERMINAL 3:**

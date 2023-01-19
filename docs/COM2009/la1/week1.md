@@ -3,7 +3,8 @@ title: "Week 1: ROS & Linux Basics"
 subtitle: In this first week you will learn the basics of ROS and become familiar with some key tools and principles of this framework, allowing you to program robots and work with ROS applications effectively. 
 ---
 
-<p align="center"><em>You should be able to complete the exercises on this page within a two-hour lab session.</em></p>
+!!! info 
+    You should be able to complete the exercises on this page within a two-hour lab session.
 
 ## Introduction
 

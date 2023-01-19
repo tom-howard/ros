@@ -1,15 +1,14 @@
-+++  
-title = "Week 3 'move_square' Python Template"  
-hidden = "true"
-+++
+---  
+title: "Week 3 'move_square' Python Template"  
+---
 
-## A combined publisher-subscriber node to achieve odometry-based control
+**A combined publisher-subscriber node to achieve odometry-based control...**
 
-Below you will find a template Python script to show you how you can both publish to `/cmd_vel` and subscribe to `/odom` in the same node.  This will help you build a *closed-loop* controller to make your robot follow a **square motion path** of size: **0.5m x 0.5m**. 
+Below you will find a template Python script to show you how you can both publish to `/cmd_vel` and subscribe to `/odom` in the same node.  This will help you build a *closed-loop* controller to make your robot follow a **square motion path** of size: **1m x 1m**. 
 
 You can publish velocity commands to `/cmd_vel` to make the robot move, monitor the robot's *position* and *orientation* in real-time, determine when the desired movement has been completed, and then update the velocity commands accordingly.  
 
-### Suggested Approach
+## Suggested Approach
 
 Moving in a square can be achieved by switching between two different movement states sequentially: *Moving forwards* and *turning* on the spot. At the start of each movement step we can read the robot's current odometry, and then use this as a reference to compare to, and to tell us when the robot's position/orientation has changed by the required amount, e.g.:
 
@@ -21,9 +20,11 @@ Moving in a square can be achieved by switching between two different movement s
 1. **Stop** turning.
 1. Repeat.  
 
-{{< include file="move_square.py" code="true" lang="python" >}}
+```python title="move_square.py"
+--8<-- "code/move_square.py"
+```
 
-### Alternative Approach: Waypoint Tracking
+## Alternative Approach: Waypoint Tracking
 
 A square motion path can be fully defined by the co-ordinates of its four corners, and we can make the robot move to each of these corners one-by-one, using its odometry system to monitor its real-time position, and adapting linear and angular velocities accordingly.
 
