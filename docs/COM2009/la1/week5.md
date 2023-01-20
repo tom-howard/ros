@@ -4,7 +4,7 @@ subtitle: Building on what you learnt about ROS Services last week, we'll now lo
 ---
 
 !!! info
-    timings...
+    You should be able to complete Exercises 1, 2 & 3 on this page within a two-hour lab session, but you'll need to spend a bit more time on Exercise 4. There are also some *advanced exercises* that you might want to have a look at in your own time too...
 
 
 ## Introduction
@@ -41,14 +41,9 @@ By the end of this session you will be able to:
 Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the *Windows Terminal* app should launch with an *Ubuntu terminal instance* ready to go (**TERMINAL 1**).
 
 **Step 2: Restore your work**  
-Restore your work from last time by running the restore script in **TERMINAL 1** now:
+When prompted (in **TERMINAL 1**), enter `Y` to restore your work from the previous sessions[^1].
 
-***
-**TERMINAL 1:**
-```bash
-wsl_ros restore
-```
-***
+[^1]: Remember: you can also use the `wsl_ros restore` command, to restore your work at any time.
 
 **Step 3: Launch VS Code**  
 Follow [these steps](/wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
@@ -57,7 +52,7 @@ Follow [these steps](/wsl-ros/vscode) to launch VS Code correctly within the WSL
 
 Before we talk about what actions actually are, we're going to dive straight in and see one in *action* (excuse the pun). As you may remember from the Week 3 session, you actually used a ROS Action to make your robot navigate autonomously in [Exercise 4](../week3/#ex4), by calling an action server from the command-line. We will do a similar thing now, in a different context, and this time we'll also look at what's going on in a bit more detail.
 
-#### Exercise 1: Launching an Action Server and calling it from the command-line {#ex1}
+#### :material-pen: Exercise 1: Launching an Action Server and calling it from the command-line {#ex1}
 
 We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a *mystery environment* now, and we're going to do this by launching Gazebo *headless* i.e. Gazebo will be running behind the scenes, but there'll be no Graphical User Interface (GUI) to show us what the environment actually looks like.  Then, we'll use an *action server* to make our robot scan the environment and take pictures for us, to reveal its surroundings!
 
@@ -103,7 +98,7 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
 
     A ROS action therefore has *five* messages associated with it. We'll talk about these in a bit more detail later on, but for now, all we need to know is that in order to *call* an action, we need to send the action server a **Goal** (which you may remember doing in [Week 3](../week3/#ex4)).
 
-    !!! info "Comparison to ROS Services"
+    ??? info "Comparison to ROS Services"
         This is a bit like sending a **Request** to a ROS Service Server, like we did in the previous session.
     
 1. ROS Actions use *topic messages* (unlike ROS Services, which use dedicated *service messages*). We can therefore tap into the ROS network and observe the messages being published to these in exactly the same way as we have done in previous weeks using `rostopic echo`. In order to monitor some of these messages now, we'll launch a couple more instances of the Windows Terminal, so that we can view a few things simultaneously:
@@ -226,6 +221,7 @@ Recall the five messages associated with the action server [from the exercise ab
 The top item there hints at the most important feature of ROS Actions: they can be cancelled (or *"preempted"*), which we'll learn more about later.  
 
 The other thing to note is that - where we used the `rosservice` command to interrogate the ROS Services that were active on our ROS network previously - Actions use ROS Topics, so we use `rostopic` commands to interrogate action servers:<a name="rostopic_for_actions"></a>
+
 1. `rostopic list`: to identify the action servers that are available on the network.
 1. `rostopic echo`: to view the messages being published by a given action server.
 1. `rostopic pub`: to call an action from the command-line. 
@@ -303,7 +299,7 @@ int32 image_count
 ```
 ***
 
-!!! info
+??? info "Further Info"
     `rosmsg info tuos_ros_msgs/CameraSweepActionGoal` will work as well, but we get a lot of other information in the output that we're not all that interested in. Give it a go and see the difference, if you want to!
 
 In order to call this action server, we need to send a **goal**, and `rosmsg info` has just told us that there are **two** goal parameters that we must provide:
@@ -363,9 +359,11 @@ You'll learn how we use this information to develop Python Action Server & Clien
 
 An Action Server provides **feedback** messages at regular intervals whilst performing an action and working towards its **goal**.  This is one way that an Action Client can monitor the progress of the action that it has requested.  Another way it can do this is by monitoring the **status** of an action.  Both of these features enable *concurrency*, allowing an action client to work on other things whilst waiting for the requested behaviour to be completed by the action server.
 
-![](week5/action_msgs.png)
+<figure markdown>
+  ![](week5/action_msgs.png)
+</figure>
 
-#### Exercise 2: Building a Python Action Client Node with Concurrency {#ex2}
+#### :material-pen: Exercise 2: Building a Python Action Client Node with Concurrency {#ex2}
 
 1. You should only have one Windows Terminal application instance open now, with three WSL-ROS terminal tabs in it. **TERMINAL 3** should already be idle (i.e. not running any commands), and (if you haven't done so already) enter `Ctrl+C` in **TERMINAL 1** and **TERMINAL 2** to stop the headless Gazebo simulation processes and the Camera Sweep Action Server respectively. 
 1. In **TERMINAL 1** create a new package called `week5_actions` using the `catkin_create_pkg` tool [as you have done previously](../week4/#ex1). This time, define `rospy`, `actionlib` and `tuos_ros_msgs` as dependencies.
@@ -388,7 +386,7 @@ An Action Server provides **feedback** messages at regular intervals whilst perf
     ***
 
 1. Navigate to the `src` folder of this package, create a file called `action_client.py` (using `touch`) and set this to be executable (using `chmod`).        
-1. Review [the code provided here](action_client), and the annotations, then copy and paste the code into your newly created `action_client.py` file.
+1. Review [the code provided here](action_client), and the annotations, then copy and paste the code into your newly created `action_client.py` file. <a name="ex2_ret"></a>
 1. Then, in **TERMINAL 2**, execute the same launch file as before but this time with a couple of additional arguments:
 
     ***
@@ -451,10 +449,11 @@ An Action Server provides **feedback** messages at regular intervals whilst perf
 
 Actions are extremely useful for controlling robotic tasks or processes that might take a while to complete, but what if something goes wrong, or if we just change our mind and want to stop an action before the goal has been reached? The ability to *preempt* an action is one of the things that makes them so useful.
 
-#### Exercise 3: Building a Preemptive Python Action Client Node {#ex3}
+#### :material-pen: Exercise 3: Building a Preemptive Python Action Client Node {#ex3}
 
 1. In **TERMINAL 1** you should still be located within the `src` folder of your `week5_actions` package. If not, then go back there now! Create a new file called `preemptive_action_client.py` and make this executable.
-1. Have a look at the code [here](preemptive_action_client), then copy and paste it into the `preemptive_action_client.py` node that you have just created.
+1. Have a look at the code [here](preemptive_action_client), then copy and paste it into the `preemptive_action_client.py` node that you have just created.<a name="ex3_ret"></a>
+
     Here, we've built an action client that will cancel the call to the action server if we enter `Ctrl+C` into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at [the explainer](preemptive_action_client/#explainer) and make sure that you understand how it all works.
 1. Run this using `rosrun`, let the server take a couple of images and then enter `Ctrl+C` to observe the goal cancelling in action.
 
@@ -569,7 +568,7 @@ Don't worry too much about all the content associated with obtaining and manipul
             self.robot_controller.stop()
         ```
 
-#### Exercise 4: Developing an "Obstacle Avoidance" behaviour using an Action Server {#ex4}
+#### :material-pen: Exercise 4: Developing an "Obstacle Avoidance" behaviour using an Action Server {#ex4}
 
 Knowing what you now do about ROS Actions, do you think the Service Server/Client systems that we developed last week were actually appropriate use cases for ROS Services?  Probably not!  In fact, *Action* Server/Client methods would have probably been more appropriate! 
 
@@ -653,7 +652,7 @@ Want to do more with the ROS skills that you have now developed?! Consider the f
 !!! note
     We know that you have done a lot this week already, and these are really just suggestions for more advanced things that you may want to explore in your own time, or to help with the further work that you will do in Lab Assignment #2...
 
-#### Advanced Exercise 1: Implementing a Search strategy {#adv_ex1}
+#### :material-pen: Advanced Exercise 1: Implementing a Search strategy {#adv_ex1}
 
 What you developed in [the previous exercise](#ex4) could be used as the basis for an effective robot search strategy.  Up to now, your Action Client node should have the capability to call your `Search.action` server to make the robot move forwards by 2 meters, or until it reaches an obstacle (whichever occurs first), but you could enhance this further:
 
@@ -664,7 +663,7 @@ What you developed in [the previous exercise](#ex4) could be used as the basis f
     !!! tip "Enhancing this further..."
         Imagine SLAM was running at the same time too... your robot could be building up a map of its environment in the background as it slowly explored every part of it!
 
-#### Advanced Exercise 2: Autonomous Navigation using waypoint markers {#adv_ex2}
+#### :material-pen: Advanced Exercise 2: Autonomous Navigation using waypoint markers {#adv_ex2}
 
 In the Week 3 session you used SLAM to construct a map of an environment ([Exercise 3](../week3/#ex3)) and then issued navigation requests to the `move_base` action server, via the command-line, ([Exercise 4](../week3/#ex4)) to make your robot move to a zone marker, based on coordinates that you had established beforehand. Now that you know how to build Action Client Nodes in Python you could return to your `week2_navigation` package and build a new node that makes the robot move sequentially between each zone marker programmatically.
 

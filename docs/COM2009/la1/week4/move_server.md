@@ -2,7 +2,7 @@
 title: "Week 4 Move Service-Server Python Example"  
 ---
 
-#### The Code {#code}
+# Week 4 Move Service-Server Python Example
 
 Copy **all** the code below into your `move_server.py` file and review the annotations to understand how it all works.
 
