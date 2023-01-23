@@ -1,19 +1,17 @@
-{#-
-    Adapted from: 
-    https://github.com/squidfunk/mkdocs-material/blob/master/material/partials/copyright.html
-  -#}
+{#- custom footer -#}
   <div class="md-copyright">
-    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />
-    Content by <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Dr Tom Howard</a>
-    {% if config.copyright %}
-      <div class="md-copyright__highlight">
-        {{ config.copyright }}
-      </div>
-    {% endif %}
-    {% if not config.extra.generator == false %}
-      Made with
+    Content by 
+      <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">
+          Dr Tom Howard
+      </a><br />
+    Copyright &copy; 2023 The University of Sheffield 
+    (License: 
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/"
+      target="_blank" rel="noopener">
+        CC BY-NC
+      </a>)<br />
+    This site was made with
       <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
         Material for MkDocs
       </a>
-    {% endif %}
-  </div>
+  </div> 
