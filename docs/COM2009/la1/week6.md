@@ -1,13 +1,10 @@
-+++  
-menuTitle = "Week 6: Vision"
-title = "Cameras, Machine Vision & OpenCV"  
-weight = 6  
-description = "Here we'll look at how to build ROS nodes that work with images from on-board camera, we'll look at techniques to detect features within these images that can then be used to inform robot decision-making."  
-+++
+---
+title: "Week 6: Cameras, Machine Vision & OpenCV"  
+subtitle: Here we'll look at how to build ROS nodes that work with images from on-board camera, we'll look at techniques to detect features within these images that can then be used to inform robot decision-making.
+---
 
-{{% textalign left %}}
-[<i class="fas fa-solid fa-arrow-left"></i> Previous: "Week 5: ROS Actions"](../week5)
-{{% /textalign %}}
+!!! info 
+    You should be able to complete all the exercises on this page within a two-hour lab session.
 
 ## Introduction
 
@@ -18,6 +15,7 @@ This week we are *finally* going to make use of our TurtleBot3's camera, and loo
 ### Intended Learning Outcomes
 
 By the end of this session you will be able to:
+
 1. Use a range of ROS tools to interrogate camera image topics on a ROS Network and view the images being streamed to them.
 1. Use the computer vision library *OpenCV* with ROS, to obtain camera images and process them in real-time.  
 1. Apply filtering processes to isolate objects of interest within an image.
@@ -50,17 +48,7 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from last time
 **Step 3: Launch VS Code**  
 Follow [these steps](/wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
 
-**Step 4: Make sure [the COM2009 repo](https://github.com/tom-howard/COM2009) is up-to-date!**  
-Run the following command in **TERMINAL 1** now:
-
-***
-**TERMINAL 1:**
-```bash
-cd ~/catkin_ws/src/COM2009 && git pull
-```
-***
-
-**Step 5: Launch the Robot Simulation**  
+**Step 4: Launch the Robot Simulation**  
 In this session we'll start by working with the *mystery world* environment from last week. In **TERMINAL 1**, use the following `roslaunch` command to load it:
 
 ***
@@ -70,7 +58,9 @@ roslaunch tuos_ros_simulations coloured_pillars.launch
 ```
 ...and then wait for the Gazebo window to open:
 
-![](/images/gazebo/coloured_pillars.png?width=800px)
+<figure markdown>
+  ![](../../images/gazebo/coloured_pillars.png){width=800px}
+</figure>
 
 ## Working with Cameras and Images in ROS
 
@@ -132,11 +122,10 @@ Now, run `rosmsg info` on this message type to find out exactly what information
     uint32 step
     uint8[] data
 
-{{% nicenote note "Questions" %}}
-1. What *type* of message is used on this topic, and which *package* is this message derived from?
-1. Using `rostopic echo` and the information about the topic message (as shown above) determine the *size* of the images that our robot's camera will capture (i.e. its *dimensions*, in pixels).  It will be quite important to know this when we start manipulating these camera images later on. 
-1. Finally, considering the list above again, which part of the message do you think contains the *actual image data*?
-{{% /nicenote %}}
+!!! note "Questions"
+    1. What *type* of message is used on this topic, and which *package* is this message derived from?
+    1. Using `rostopic echo` and the information about the topic message (as shown above) determine the *size* of the images that our robot's camera will capture (i.e. its *dimensions*, in pixels).  It will be quite important to know this when we start manipulating these camera images later on. 
+    1. Finally, considering the list above again, which part of the message do you think contains the *actual image data*?
 
 ### Visualising Camera Streams {#viz}
 
@@ -153,7 +142,9 @@ roslaunch turtlebot3_gazebo turtlebot3_gazebo_rviz.launch
 
 Once RViz launches, find the camera item in the left-hand panel and tick the checkbox next to it. This should open up a camera panel with a live stream of the images being obtained from the robot's camera!  The nice thing about this is that the real-time LiDAR data will also be overlaid on top of the images too!
 
-![](/images/rviz/camera_stream.png?width=800px)
+<figure markdown>
+  ![](../../images/rviz/camera_stream.png){width=800px}
+</figure>
 
 Close down RViz by entering `Ctrl+C` in **TERMINAL 2**.  
 
@@ -168,7 +159,9 @@ Another tool we can use to view camera data-streams is the `rqt_image_view` node
     ```bash
     rosrun rqt_image_view rqt_image_view
     ```
-    ![](/images/rqt/img_view.png)
+    <figure markdown>
+      ![](../../images/rqt/img_view.png)
+    </figure>
 
     This is a nice tool that allows us to easily view images that are being published to any camera topic on the ROS network. Another useful feature is the ability to save these images (as `.jpg` files) to the filesystem: See the "Save as image" button highlighted in the figure above.  This might be useful later on in this week's session.
 
@@ -191,22 +184,20 @@ One common job that we often want a robot to perform is *object detection*, and 
 **Step 1**
 
 1. First create a new package in your `catkin_ws/src` directory called `week6_vision` with `rospy`, `cv_bridge`, `sensor_msgs` and `geometry_msgs` as dependencies.
-1. Then, run `catkin build` on the package and then re-source your environment (as you'll have done so many times by now!)
+1. Then, run `catkin build` on the package and then re-source your environment (as you've done so many times by now!)
 1. In the `src` folder of the package you have just created, create a new Python file called `object_detection.py`. *What else do we need to do to this file before we can run it?* **Do it now!**
-1. Copy [the code here](object_detection), save the file, then review [the code explainer](object_detection/#explainer) so that you understand how this node works and what should happen when you run it.
+1. Copy [the code here](object_detection), save the file, then read the annotations so that you understand how this node works and what should happen when you run it. <a name="ex2_ret"></a>
 1. Run the node using `rosrun`.
 
-    {{< nicenote warning >}}
-This node will capture an image and display it in a pop-up window. Once you've viewed the image in this pop-up window **MAKE SURE YOU CLOSE THE POP-UP WINDOW DOWN** so that the node can complete its execution!
-    {{< /nicenote >}}
-
+    !!! warning
+        This node will capture an image and display it in a pop-up window. Once you've viewed the image in this pop-up window **MAKE SURE YOU CLOSE THE POP-UP WINDOW DOWN** so that the node can complete its execution!
+    
 1. As you should know from reading the explainer, the node has just obtained an image and saved it to a location on the filesystem.  Navigate to this filesystem location and view the image using `eog`.
 
 What you may have noticed from the terminal output when you ran the `object_detection.py` node is that the robot's camera captures images at a native size of 1080x1920 pixels (you should already know this from interrogating the `/camera/rgb/image_raw/width` and `/height` messages using `rostopic echo` earlier, right?!).  That's over 2 million pixels in total in a single image (2,073,600 pixels per image, to be exact), each pixel having a blue, green and red value associated with it - so that's a lot of data in a single image file! 
 
-{{% nicenote note "Question" %}}
-The size of the image file (in bytes) was actually printed to the terminal when you ran the `object_detection.py` node. Did you notice how big it was exactly?
-{{% /nicenote %}}
+!!! note "Question"
+    The size of the image file (in bytes) was actually printed to the terminal when you ran the `object_detection.py` node. Did you notice how big it was exactly?
 
 Processing an image of this size is therefore hard work for a robot: any analysis we do will be slow and any raw images that we capture will occupy a considerable amount of storage space. The next step then is to reduce this down by cropping the image to a more manageable size.
 
@@ -237,22 +228,28 @@ We're going to modify the `object_detection.py` node now to:
 
 1. Run the node again.  
     
-    {{< nicenote tip "Remember" >}}
-Make sure you close all of these pop-up windows down after viewing them to ensure that **all** your images are saved to the filesystem and the node completes all of its tasks successfully.
-    {{< /nicenote >}}
-
+    !!! tip "Remember"
+        Make sure you close all of these pop-up windows down after viewing them to ensure that **all** your images are saved to the filesystem and the node completes all of its tasks successfully.
+    
     The code that you have just added here has created a new image object called `cropped_img`, from a subset of the original by specifying a desired `crop_height` and `crop_width` relative to the original image dimensions.  Additionally, we have also specified *where* in the original image (in terms of pixel coordinates) we want this subset to start, using `crop_y0` and `crop_z0`. This process is illustrated in the figure below:
 
-    ![](od1_cropping.png)
+    <figure markdown>
+      ![](week6/od1_cropping.png)
+    </figure>
     
     <a name="img_cropping" ></a>The original image (`cv_img`) is cropped using a process called *"slicing"*:
 
     ```python
-    cropped_img = cv_img[crop_z0:crop_z0+crop_height, crop_y0:crop_y0+crop_width]
+    cropped_img = cv_img[
+        crop_z0:crop_z0+crop_height,
+        crop_y0:crop_y0+crop_width
+        ]
     ```
     This may seem quite confusing, but hopefully the figure below illustrates what's going on here:
 
-    ![](img_slicing.png)
+    <figure markdown>
+      ![](week6/img_slicing.png)
+    </figure>
 
 **Step 3**
 
@@ -260,10 +257,10 @@ As discussed above, an image is essentially a series of pixels each with a blue,
 
 This process is called *masking* and, to achieve this, we need to set some colour thresholds. This can be difficult to do in a standard Blue-Green-Red (BGR) or Red-Green-Blue (RGB) colour space, and you can see a good example of this in [this article from RealPython.com](https://realpython.com/python-opencv-color-spaces/).  We will apply some steps discussed in this article to convert our cropped image into a [Hue-Saturation-Value (HSV)](https://en.wikipedia.org/wiki/HSL_and_HSV) colour space instead, which makes the process of colour masking a bit easier.
 
-1. First, analyse the *Hue* and *Saturation* values of the cropped image. To do this, first navigate to the "myrosdata/week6_images" direcory, where the raw image has been saved:
+1. First, analyse the *Hue* and *Saturation* values of the cropped image. To do this, first navigate to the "myrosdata/week6_images" directory, where the raw image has been saved:
 
     ***
-    **TEMRINAL 2:**
+    **TERMINAL 2:**
     ```bash
     cd ~/myrosdata/week6_images
     ```
@@ -277,11 +274,15 @@ This process is called *masking* and, to achieve this, we need to set some colou
 
 1. The node should produce a scatter plot, illustrating the Hue and Saturation values of each of the pixels in the image. Each data point in the plot represents a single image pixel and each is coloured to match its RGB value:
 
-    ![](od2_hs_scatter.png)
+    <figure markdown>
+      ![](week6/od2_hs_scatter.png)
+    </figure>
 
 1. You should see from the image that all the pixels related to the coloured pillar that we want to detect are clustered together.  We can use this information to specify a range of Hue and Saturation values that can be used to mask our image: filtering out any colours that sit outside this range and thus allowing us to isolate the pillar itself. The pixels also have a *Value* (or *"Brightness"*), which isn't shown in this plot. As a rule of thumb, a range of brightness values between 100 and 255 generally works quite well.
 
-    ![](od3_hs_thresholds.png)
+    <figure markdown>
+      ![](week6/od3_hs_thresholds.png)
+    </figure>
 
     In this case then, we select upper and lower HSV thresholds as follows:
 
@@ -311,11 +312,14 @@ This process is called *masking* and, to achieve this, we need to set some colou
 
 1. Now, run the node again. *Three* images should be generated and saved now.  As shown in the figure below, the third image should simply be a black and white representation of the cropped image, where the white regions should indicate the areas of the image where pixel values fall within the HSV range specified earlier.  Notice (from the text printed to the terminal) that the cropped image and the image mask have the same dimensions, but the image mask file has a significantly smaller file size.  While the mask contains the same *number* of pixels, these pixels only have a value of `1` or `0`, whereas - in the cropped image of the same pixel size - each pixel has a Red, Green and Blue value: each ranging between `0` and `255`, which represents significantly more data.
 
-    ![](od4_masking.png)
+    <figure markdown>
+      ![](week6/od4_masking.png)
+    </figure>
 
 **Step 4** <a name="bitwise_and"></a>
 
 Finally, we can apply this mask to the cropped image, generating a final version of it where only pixels marked as `True` in the mask retain their RGB values, and the rest are simply removed.  [As discussed earlier](#bw_and), we use a *Bitwise AND* operation to do this and, once again, OpenCV has a built-in function to do this: `cv2.bitwise_and()`.
+
 1. Locate the following line in your `object_detection.py` node:
 
     ```python
@@ -329,22 +333,25 @@ Finally, we can apply this mask to the cropped image, generating a final version
 
     show_and_save_image(filtered_img, img_name = "step4_filtered_image")
     ```
+
 1. Run this node again, and a fourth image should also be generated now, this time showing the cropped image taken from the robot's camera, but only containing data related to coloured pillar, with all other background image data removed (and rendered black):
 
-    ![](od5_filtering.png)
+    <figure markdown>
+      ![](week6/od5_filtering.png)
+    </figure>
 
 ### Image Moments
 
 You have now successfully isolated an object of interest within your robot's field of vision, but perhaps we want to make our robot move towards it, or - conversely - make our robot navigate around it and avoid crashing into it!  We therefore *also* need to know the *position* of the object in relation to the robot's viewpoint, and we can do this using *image moments*.
 
 The work we have just done above led to us obtaining what is referred to as a *colour blob*.  OpenCV also has built-in tools to allow us to calculate the *centroid* of a colour blob like this, allowing us to determine where exactly within an image the object of interest is located (in terms of pixels).  This is done using the principle of *image moments*: essentially statistical parameters related to an image, telling us how a collection of pixels (i.e. the blob of colour that we have just isolated) are distributed within it.  [You can read more about Image Moments here](https://theailearner.com/tag/image-moments-opencv-python/) and - from this - we can learn that the central coordinates of a colour blob can be obtained by considering some key moments of the *image mask* that we obtained from thresholding earlier:
+
 * <code>M<sub>00</sub></code>: the sum of all non-zero pixels in the image mask (i.e. the size of the colour blob, in pixels)
 * <code>M<sub>10</sub></code>: the sum of all the non-zero pixels in the horizontal (y) axis, weighted by *row* number
 * <code>M<sub>01</sub></code>: the sum of all the non-zero pixels in the vertical (z) axis, weighted by *column* number
 
-{{% nicenote info "Remember" %}}
-We refer to the *horizontal* as the *y-axis* and the *vertical* as the *z-axis* here, to match the terminology that we have used previously to define [our robot's principal axes](../week2/#principal-axes).
-{{% /nicenote %}}
+!!! info "Remember"
+    We refer to the *horizontal* as the *y-axis* and the *vertical* as the *z-axis* here, to match the terminology that we have used previously to define [our robot's principal axes](../week2/#principal-axes).
 
 We don't really need to worry about the derivation of these moments too much though.  OpenCV has a built-in `moments()` function that we can use to obtain this information from an image mask (such as the one that we generated earlier):
 
@@ -357,9 +364,11 @@ So, using this we can obtain the `y` and `z` coordinates of the blob centroid qu
 
 Notice, that we are adding a very small number to the <code>M<sub>00</sub></code> moment here to make sure that the divisor in the above equations is never zero and thus ensuring that we never get caught out by any "divide-by-zero" errors. *When might this be the case?*
 
-![](od6_centroid.png)
+<figure markdown>
+  ![](week6/od6_centroid.png)
+</figure>
 
-Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: `cv2.circle()`.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in [a complete worked example of the `object_detection.py` node](object_detection_complete) from the previous exercise. 
+Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: `cv2.circle()`.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in [a complete worked example of the `object_detection.py` node](object_detection_complete) from the previous exercise. <a name="ex2b_ret"></a>
 
 In our case, we can't actually change the position of our robot in the z axis, so the `cz` centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate `cy` to understand where a feature is located *horizontally* in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We'll look at this in a bit more detail now.
 
@@ -427,7 +436,7 @@ OK, time for something a bit more interesting now: *line following*!
 
 1. Then, perform the necessary steps to create a new empty Python file called `line_follower.py` and prepare it for execution.
 1. Once that's done open up the empty file in VS Code.
-1. Then, have a look at [the template Python code for this exercise](line_follower), and be sure to read [the explainer](line_follower/#explainer) too.
+1. Then, have a look at [the template Python code for this exercise](line_follower), and be sure to read the annotations too. <a name="ex4_ret"></a>
 1. Copy and paste this into your empty `line_follower.py` file and save it.
 1. Now, in **TERMINAL 1** run a new simulation:
 
@@ -439,7 +448,9 @@ OK, time for something a bit more interesting now: *line following*!
     
     Your robot should be launched into an environment with a coloured track painted on the floor:
 
-    ![](line_following.png?width=800px)
+    <figure markdown>
+      ![](week6/line_following.png){width=800px}
+    </figure>
 
 1. In **TERMINAL 2**, run the `line_follower.py` node as it is (using `rosrun`) and see what happens... Not very impressive eh?!  That's where *you* come in!  There are a few issues with this that you will need to address:
     * **Image Cropping:** You might want to have a look at the cropping that is currently being performed to hone in on a particular region of the robot's viewpoint... does this look optimal?  Could it be improved?

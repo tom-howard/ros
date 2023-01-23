@@ -38,7 +38,7 @@ theme:
     - content.code.copy
     - content.code.annotate
   
-copyright: Copyright &copy; 2023 The University of Sheffield
+# copyright: Copyright &copy; 2023 The University of Sheffield
 repo_url: https://github.com/tom-howard/ros
 repo_name: tom-howard/ros
 

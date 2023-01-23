@@ -4,7 +4,7 @@ subtitle: In this first week you will learn the basics of ROS and become familia
 ---
 
 !!! info 
-    You should be able to complete the exercises on this page within a two-hour lab session.
+    You should be able to complete all the exercises on this page within a two-hour lab session.
 
 ## Introduction
 

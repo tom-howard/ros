@@ -7,7 +7,7 @@ from sensor_msgs.msg import Image
 
 from tb3 import Tb3Move
 
-class LineFollower(object):
+class LineFollower(object): # (1)!
     def __init__(self):
         node_name = "line_follower"
         rospy.init_node(node_name, anonymous=True)
@@ -31,7 +31,7 @@ class LineFollower(object):
         except CvBridgeError as e:
             print(e)
             
-        _, width, _ = cv_img.shape
+        _, width, _ = cv_img.shape # (2)!
         crop_width = 500
         crop_height = 40
         crop_x = int((width / 2) - (crop_width / 2))
@@ -45,23 +45,23 @@ class LineFollower(object):
         res = cv2.bitwise_and(cropped_img, cropped_img, mask = mask)
 
         m = cv2.moments(mask)
-        cy = m['m10'] / (m['m00'] + 1e-5)
+        cy = m['m10'] / (m['m00'] + 1e-5) # (3)!
         cz = m['m01'] / (m['m00'] + 1e-5)
                 
         cv2.circle(res, (int(cy), int(cz)), 10, (255, 0, 0), 2)
         cv2.imshow("filtered image", res)
         cv2.waitKey(1)
                 
-        y_error = cy - (width / 2)
+        y_error = cy - (width / 2) # (4)!
         
         kp = 1.0 / 50.0
 
-        fwd_vel = 0.1
-        ang_vel = kp * y_error
+        fwd_vel = 0.1 # (5)!
+        ang_vel = kp * y_error # (6)!
         
         print(f"Y-error = {y_error:.3f} pixels, ang_vel = {ang_vel:.3f} rad/s")
         self.robot_controller.set_move_cmd(fwd_vel, ang_vel)
-        self.robot_controller.{BLANK}    # publish the velocity command
+        self.robot_controller.{BLANK} # (7)!
 
     def main(self):
         while not self.ctrl_c:
