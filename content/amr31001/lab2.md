@@ -41,7 +41,11 @@ In this lab, we'll build some ROS Nodes (in Python) that incorporate data from s
 
 By the end of this session you will be able to:
 
-1. 
+1. Interpret the data from a ROS Robot's Odometry System and understand what this tells you about a Robot's position and orientation within its environment.
+1. Use feedback from a robot's odometry system to *control* its position in an environment.
+1. Use data from a Robot's LiDAR sensor to make a robot follow a wall.
+1. Generate a map of an environment, using SLAM.
+1. Make a robot navigate an environment *autonomously*, using ROS navigation tools.
 
 ### Quick Links
 
@@ -66,7 +70,7 @@ To start with, you'll need to download a ROS package to the Robot Laptop that yo
 
     ***
 
-    1. `wget -O build.sh ###`
+    1. `wget -O build.sh https://raw.githubusercontent.com/tom-howard/amr31001/main/scripts/build.sh
 
     1. `chmod +x build.sh`
 
@@ -92,17 +96,17 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
     
     ***
 
-1. Enter the password for the robot when requested (if you can't remember what this is from last time then ask a member of the teaching team!)
-
-    {{< nicenote note "Remember" >}}
-You won't see anything change on the screen when you are entering the password. This is normal, just keep typing!!
-    {{< /nicenote >}}
-
 1. You *may* see a message like this early on in the pairing process:
 
     ![](/images/laptops/ssh_auth.svg?width=14cm)
 
     If so, just type `yes` and then hit `Enter` to confirm that you want to continue.
+
+1. Enter the password for the robot when requested (if you can't remember what this is from last time then ask a member of the teaching team!)
+
+    {{< nicenote note "Remember" >}}
+You won't see anything change on the screen when you are entering the password. This is normal, just keep typing!!
+    {{< /nicenote >}}
 
 1. Once the pairing process is finished you should see a message saying `pairing complete`, displayed in blue in the terminal. 
 
@@ -150,7 +154,7 @@ First, let's look at our robot's *odometry* system, and what this is useful for.
 
 [^wiki]: https://en.wikipedia.org/wiki/Odometry
 
-Our robot can keep track of its position (and orientation) as it moves around. It does this using data from two sources:
+Our robot can therefore keep track of its position (and orientation) as it moves around. It does this using data from two sources:
 
 1. **Wheel encoders**: Our robot has two wheels, each is equipped with an encoder that measures the number of rotations that the wheel makes. 
 1. An **Inertial Measurement Unit (IMU)**: Using accelerometers, gyroscopes and compasses, the IMU can monitor the linear and angular velocity of the robot, and which direction it is heading, at all times.
@@ -237,7 +241,7 @@ What does all this mean? We discussed this [last time (in relation to the `/cmd_
 
 1. Now, let's drive the robot around a bit and see how this data changes as we do so. Open up a new terminal instance by pressing `Ctrl+Alt+T`, or clicking the Terminal App desktop icon, as you did before. We'll call this one **TERMINAL 2**.
 
-1. Remember that node that we used last time, that allowed us to control the motion of the robot, using different buttons on the keyboard? Let's launch that again now:
+1. Remember that node that we used last time that allowed us to control the motion of the robot using different buttons on the keyboard? Let's launch that again now:
 
     ***
     **TERMINAL 2:**
@@ -336,7 +340,7 @@ In theory though, we can do all this with odometry instead, so let's have a go a
 
 1. **What you need to do**:
 
-    1. In the `while()` loop there is an `if` statement with a condition that handles the tuning process: 
+    1. In the `while()` loop there is an `if` statement with a condition that handles the turning process: 
     
         ```python
         elif movement == "turn":
