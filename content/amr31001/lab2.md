@@ -68,6 +68,10 @@ To start with, you'll need to download a ROS package to the Robot Laptop that yo
 
 1. In the terminal, run the following commands in order:
 
+    {{< nicenote tip >}}
+To **paste** the following commands into the terminal use `Ctrl+Shift+V`
+    {{< /nicenote >}}
+
     ***
 
     1. `wget -O build.sh https://raw.githubusercontent.com/tom-howard/amr31001/main/scripts/build.sh`
