@@ -70,7 +70,7 @@ To start with, you'll need to download a ROS package to the Robot Laptop that yo
 
     ***
 
-    1. `wget -O build.sh https://raw.githubusercontent.com/tom-howard/amr31001/main/scripts/build.sh
+    1. `wget -O build.sh https://raw.githubusercontent.com/tom-howard/amr31001/main/scripts/build.sh`
 
     1. `chmod +x build.sh`
 
