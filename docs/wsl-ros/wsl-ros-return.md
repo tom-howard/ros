@@ -9,7 +9,9 @@ At the beginning of each practical session (or any other time you want to work i
 
 The WSL-ROS Environment *will*, however, be preserved for a limited time if you happen to log in to the *same* University machine within a few hours. If this is the case, then on launching WSL-ROS you will be presented with the following message:
 
-![](/images/wsl/resume.png?width=700)
+<figure markdown>
+  ![](../images/wsl/resume.png?width=700)
+</figure>
 
 Enter `Y` to continue where you left things previously, or `N` to start from a fresh installation.
 

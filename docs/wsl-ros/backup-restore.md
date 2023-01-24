@@ -18,7 +18,7 @@ wsl_ros restore
 To make things a little easier, on launching WSL-ROS, the system will check to see if a backup file already exists from a previous session. If it does, then the system will ask you if you want to restore it straight away:
 
 <figure markdown>
-  ![](../images/wsl/restore_prompt.png)#
+  ![](../images/wsl/restore_prompt.png)
 </figure>
 
 Enter `Y` to restore your data from this backup file, or `N` to leave the backup file alone and work from fresh (none of your previous work will be restored). 

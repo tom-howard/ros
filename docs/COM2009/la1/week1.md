@@ -42,7 +42,7 @@ By the end of this session you will be able to:
 
 #### :material-pen: Exercise 1: Launching a simulation and making a ROS robot move {#ex1}
 
-1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu hello ([see here for detailed instructions](/wsl-ros/getting-started)). This should open up a *terminal application* and an *Ubuntu terminal instance*.  We'll refer to this terminal instance as **TERMINAL 1**.
+1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu ([see here for detailed instructions](../../../wsl-ros/first-run)). This should open up a *terminal application* and an *Ubuntu terminal instance*.  We'll refer to this terminal instance as **TERMINAL 1**.
 1. In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
         
     ***
@@ -52,7 +52,7 @@ By the end of this session you will be able to:
     ```    
     ***
 
-1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (similar to [our real robots](/about/robots) that you'll work with later):
+1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (similar to [our real robots](../../../about/robots) that you'll work with later):
 
     <figure markdown>
       ![](../../images/gazebo/tb3_empty_world.png){width=800}
