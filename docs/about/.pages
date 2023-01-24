@@ -1,0 +1,6 @@
+nav:
+  - "About": README.md
+  - "The Robots": robots.md
+  - "Acknowledgements": acknowledgements.md
+  - "License": license.md 
+  - "Version History": changelog.md
