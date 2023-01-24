@@ -46,7 +46,7 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from last time
 [^1]: You can also use the `wsl_ros restore` command.
 
 **Step 3: Launch VS Code**  
-Follow [these steps](/wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
+Follow [these steps](../../../wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
 
 **Step 4: Launch the Robot Simulation**  
 In this session we'll start by working with the *mystery world* environment from last week. In **TERMINAL 1**, use the following `roslaunch` command to load it:

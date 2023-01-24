@@ -46,7 +46,7 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from the previ
 [^1]: Remember: you can also use the `wsl_ros restore` command, to restore your work at any time.
 
 **Step 3: Launch VS Code**  
-Follow [these steps](/wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
+Follow [these steps](../../../wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
 
 ## Calling an Action Server
 
@@ -366,6 +366,7 @@ An Action Server provides **feedback** messages at regular intervals whilst perf
 #### :material-pen: Exercise 2: Building a Python Action Client Node with Concurrency {#ex2}
 
 1. You should only have one Windows Terminal application instance open now, with three WSL-ROS terminal tabs in it. **TERMINAL 3** should already be idle (i.e. not running any commands), and (if you haven't done so already) enter `Ctrl+C` in **TERMINAL 1** and **TERMINAL 2** to stop the headless Gazebo simulation processes and the Camera Sweep Action Server respectively. 
+
 1. In **TERMINAL 1** create a new package called `week5_actions` using the `catkin_create_pkg` tool [as you have done previously](../week4/#ex1). This time, define `rospy`, `actionlib` and `tuos_ros_msgs` as dependencies.
     
     !!! tip "Remember"
@@ -454,7 +455,7 @@ Actions are extremely useful for controlling robotic tasks or processes that mig
 1. In **TERMINAL 1** you should still be located within the `src` folder of your `week5_actions` package. If not, then go back there now! Create a new file called `preemptive_action_client.py` and make this executable.
 1. Have a look at the code [here](preemptive_action_client), then copy and paste it into the `preemptive_action_client.py` node that you have just created.<a name="ex3_ret"></a>
 
-    Here, we've built an action client that will cancel the call to the action server if we enter `Ctrl+C` into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at [the explainer](preemptive_action_client/#explainer) and make sure that you understand how it all works.
+    Here, we've built an action client that will cancel the call to the action server if we enter `Ctrl+C` into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at [the code annotations](preemptive_action_client) and make sure that you understand how it all works.
 1. Run this using `rosrun`, let the server take a couple of images and then enter `Ctrl+C` to observe the goal cancelling in action.
 
     !!! note
@@ -469,6 +470,7 @@ Actions are extremely useful for controlling robotic tasks or processes that mig
 ### A Summary of ROS Actions
 
 ROS Actions work a lot like ROS Services, but they have the following key differences:
+
 1. They are **asynchronous**: a client can do other things while it waits for an action to complete.
 1. They can be **cancelled** (or *preempted*): If something is taking too long, or if something else has happened, then an Action Client can cancel an Action whenever it needs to.
 1. They provide **feedback**: so that a client can monitor what is happening and act accordingly (i.e. preempt an action, if necessary).

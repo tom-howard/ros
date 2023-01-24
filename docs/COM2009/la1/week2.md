@@ -37,7 +37,7 @@ If you haven't done so already, launch your WSL-ROS environment by running the W
 Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers.  [At the end of the previous session](../week1/#backup) you should have run the `wsl_ros` tool to back up your home directory to your University U: Drive. Once WSL-ROS is up and running, you should be prompted to restore this:
 
 <figure markdown>
-  ![](/images/wsl/restore_prompt.png){width="600"}
+  ![](../../images/wsl/restore_prompt.png){width=600}
 </figure>
 
 Enter `Y` to restore your work from last time. You can also restore your work at any time using the following command:
@@ -47,7 +47,7 @@ wsl_ros restore
 ```
 
 ### Step 3: Launch VS Code  
-It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](/wsl-ros/vscode/).
+It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](../../../wsl-ros/vscode/).
 
 ### Step 4: Download our ROS Packages
 
@@ -109,7 +109,7 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle in empty space:
 
 <figure markdown>
-  ![](/images/gazebo/tb3_empty_world.png?width=800px)
+  ![](../../images/gazebo/tb3_empty_world.png){width=800}
 </figure>
 
 <p align="center"><strong><em>You're all set up and ready to go!</em></strong></p>
@@ -126,20 +126,20 @@ Two types of *Velocity Command* can be issued to any ROS Robot to make it move (
 The motion (i.e. the velocity) of any mobile robot can be defined in terms of *three* principal axes: `X`, `Y` and `Z`. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are as follows:
 
 <figure markdown>
-  ![](/images/waffle/principal_axes.svg?width=20cm)
+  ![](../../images/waffle/principal_axes.svg?width=20cm)
 </figure>
 
 In theory then, a robot can move linearly or angularly about *any* of these three axes, as shown by the arrows in the figure. That's six *Degrees of Freedom* (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. 
 
-You should hopefully recall from the ["Introducing the Robots" page](/about/robots/#tb3) that our TurtleBot3 Waffles only have two motors though, so they don't actually have six DOFs! These two motors can be controlled independently, which is known as a *"differential drive"* configuration, and ultimately provides it with a total of **two degrees of freedom** in total, as illustrated below.
+You should hopefully recall from the ["Introducing the Robots" page](../../../about/robots/#tb3) that our TurtleBot3 Waffles only have two motors though, so they don't actually have six DOFs! These two motors can be controlled independently, which is known as a *"differential drive"* configuration, and ultimately provides it with a total of **two degrees of freedom** in total, as illustrated below.
 
 <figure markdown>
-  ![](/images/waffle/velocities.svg?width=20cm)
+  ![](../../images/waffle/velocities.svg?width=20cm)
 </figure>
 
 It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*) and **angularly** in the **z**-axis (*Yaw*).
 
-It's also worth noting (while we're on the subject of motion) that our TurtleBot3 Waffles have **maximum velocity limits**, which were also defined in the ["Introducing the Robots" page](/about/robots/#tb3).
+It's also worth noting (while we're on the subject of motion) that our TurtleBot3 Waffles have **maximum velocity limits**, which were also defined on the ["Robots" page](../../../about/robots/#tb3).
 
 !!! note "Question"
     What are the maximum velocity limits of our robots?
@@ -378,7 +378,9 @@ In the previous session you learnt how to create a package and build simple node
     1. In the blue bar along the bottom of the VS Code screen (towards the bottom right-hand corner) you should see the text `CRLF`. Click on this and a menu should then appear at the top of the screen with the text `"Select End of Line Sequence"`.
     1. Select the `LF` option in this menu, then save the file.
 
-    ![](/images/vscode/switch_line_ending.png?width=800px) 
+    <figure markdown>
+      ![](../../images/vscode/switch_line_ending.png?width=800px)
+    </figure> 
 
 1. OK, the file should run now, so launch it (using `rosrun` again) and see what it does.
 
@@ -534,7 +536,7 @@ You have also learnt about *Odometry*, which is published by our robot to the `/
 * Do you see any potential limitations of this?
 * Can a control method that uses odometry as a feedback signal be considered *closed-loop control?* 
 
-We'll explore this a little more next week, but you might want to consider reading Chapter 11.1.3 ("Pose of Robot") in the ROS Robot Programming eBook that we mentioned [here](/about/robots/#ebook).
+We'll explore this a little more next week, but you might want to consider reading Chapter 11.1.3 ("Pose of Robot") in the ROS Robot Programming eBook that we mentioned [here](../../../about/robots/#ebook).
 
 ### Saving your work {#backup}
 

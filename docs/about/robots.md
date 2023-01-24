@@ -19,7 +19,7 @@ We recommend that you have a look at this book to learn more about the concepts 
 Here in the Diamond we have a number of *customised* TurtleBot3 Waffles specifically for teaching this course:
 
 <figure markdown>
-  ![](/images/waffle/cabinet.jpg){width=500px} 
+  ![](../images/waffle/cabinet.jpg){width=500px} 
 </figure>
 
 Whether we're working in simulation or with the real thing, the ROS applications that we develop as part of the courses here are directly transferable between the two (mostly!) 
@@ -27,22 +27,28 @@ Whether we're working in simulation or with the real thing, the ROS applications
 The robots that we have are slightly different to the standard *TurtleBot3 WafflePi* that you can buy from Robotis. We've made a few adjustments, and the full specifications are as follows:
 
 <figure markdown>
-  ![](/images/waffle/features.png){width=800px}
+  ![](../images/waffle/features.png){width=800px}
 </figure>
 
 The robots have the following core hardware elements:
+
 * An OpenCR Micro-Controller Board to power and control the wheel motors, distribute power to other hardware elements and provide an interface for additional sensors.
 * An [UP Squared Single-Board Computer (SBC)](https://up-board.org/upsquared/specifications/) with an Intel Processor and 32GB of on-board eMMC storage. This board acts as the "brain" of the robot.
 * Independent left and right wheel motors (DYNAMIXEL XM430’s) to drive the robot using a *differential drive* configuration.
 
 This drive configuration allows the robots to move with the following **maximum velocities**:
 
+<center>
+
 | Velocity Component | Upper Limit | Units |
 | :--- | :---: | :--- |
 | *Linear* | 0.26 | m/s |
 | *Angular* | 1.82 | rad/s |
 
+</center>
+
 In addition to this, the robots are equipped with the following sensors:
+
 * A Light Detection and Ranging (or *LiDAR*) sensor, which spins continuously when the robot is in operation. This uses light in the form of laser pulses to allow the robot to measure the distance to surrounding objects, providing it with a 360&deg; view of its environment.
 * An [Intel RealSense D435 Camera](https://www.intelrealsense.com/depth-camera-d435/) with left and right imaging sensors, allowing depth sensing as well as standard image capture.
 * A 9-Axis Inertial Measurement Unit (or *IMU*) on-board the OpenCR Micro Controller board, which uses an accelerometer, gyroscope and magnetometer to measure the robot's specific force, acceleration and orientation. 

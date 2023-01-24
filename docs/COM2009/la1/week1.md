@@ -55,13 +55,13 @@ By the end of this session you will be able to:
 1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (similar to [our real robots](/about/robots) that you'll work with later):
 
     <figure markdown>
-      ![](/images/gazebo/tb3_empty_world.png){width="800"}
+      ![](../../images/gazebo/tb3_empty_world.png){width=800}
     </figure>
 
 1. With your Gazebo Simulation up and running, return to the terminal application and open up a new Ubuntu terminal instance (**TERMINAL 2**) by pressing the *New Tab* button: 
     
     <figure markdown>
-      ![](/images/wsl/wt_new_tab.svg)
+      ![](../../images/wsl/wt_new_tab.svg)
     </figure>
 
     (or, alternatively, press the `Ctrl+Shift+T` keyboard shortcut).
@@ -110,7 +110,7 @@ ROS applications are organised into *packages*. Packages are basically folders c
     The terminal prompt should have changed to illustrate where on the filesystem the `roscd` command has just taken you:
     
     <figure markdown>
-      ![](/images/ros-cli/tb3_teleop_dir.svg)
+      ![](../../images/ros-cli/tb3_teleop_dir.svg)
     </figure>
 
 1. `pwd` is a **Linux command** which tells us the current filesystem location of our terminal.  Enter this command to confirm what the terminal prompt has told us.
@@ -169,6 +169,7 @@ Within that, we also have (amongst other things) a `<node>` tag which tells ROS 
 ```
 
 The attributes here have the following meaning:
+
 * `pkg`: The name of the *ROS package* containing the functionality that we want to launch.
 * `type`: The full name of the script (i.e. *ROS Node*) that we want to execute within that package (including the file extension, if it has one).
 * `name`: A descriptive name that we want to give to the ROS node, which will be used to register it on the ROS Network.
@@ -227,7 +228,9 @@ You should currently have three terminal windows active: the first in which you 
 
     A new window should then open, displaying something similar to the following (hover over the diagram to enable colour highlighting):
 
-    ![A visualisation of all the ROS nodes active on the system and the flow of information between them](/images/rqt/graph.png)
+    <figure markdown>
+      ![A visualisation of all the ROS nodes active on the system and the flow of information between them](../../images/rqt/graph.png)
+    </figure>
 
     This tool shows us that the `/turtlebot3_teleop_keyboard` and `/gazebo` nodes are communicating with one another. The direction of the arrow tells us that the `/turtlebot3_teleop_keyboard` node is a *Publisher* and the `/gazebo` node is a *Subscriber*. The two nodes communicate via a **ROS Topic**, in this case the `/cmd_vel` topic, and on this topic the `/turtlebot3_teleop_keyboard` node publishes **messages**.
 
@@ -410,9 +413,10 @@ Or:
 
     This confirms that the file exists, and the `0` in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.
 
-1. We therefore now need to open the file and add content to it. As discussed on [the Getting Started page](/wsl-ros/getting-started/#vscode), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, [so follow the instructions here to get this up and running now](/wsl-ros/vscode)!
+1. We therefore now need to open the file and add content to it. As discussed in [the WSL-ROS Section](../../../wsl-ros/), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, [so follow the instructions here to get this up and running now](../../../wsl-ros/vscode)!
 
-1. [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment](/wsl-ros/vscode/#verify)!!
+    !!! warning
+        [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment](../../../wsl-ros/vscode/#verify)!!
 
 1. Using the VS Code File Explorer, navigate to your `week1_pubsub` package directory (`~/catkin_ws/src/week1_pubsub/`), locate the `publisher.py` file that you have just created in the `/week1_pubsub/src/` folder and click on the file to open it. 
 
@@ -509,7 +513,7 @@ You should then be presented with a list of the available arguments for the `ros
 <!-- TODO: a gif instead of static image! -->
 
 <figure markdown>
-  ![](/images/ros-cli/rostopic_autocomplete.png)
+  ![](../../images/ros-cli/rostopic_autocomplete.png)
 </figure>
 
 * `rostopic hz {topic name}` provides information on the frequency (in Hz) at which messages are being published to a topic:

@@ -43,7 +43,7 @@ Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows S
 Remember that any work that you do in WSL-ROS will not be preserved between sessions or across different University computers. You should have used the `wsl_ros` tool at the end of the previous session to back up your home directory to your University U: Drive. If so, then you should now be prompted to restore it:
 
 <figure markdown>
-  ![](/images/wsl/restore_prompt.png){width="600"}
+  ![](../../images/wsl/restore_prompt.png){width="600"}
 </figure>
 
 Enter `Y` to restore your work now.
@@ -52,7 +52,7 @@ Enter `Y` to restore your work now.
     You can also use the `wsl_ros restore` command to restore your work at any other time.
 
 **Step 3: Launch VS Code**  
-Also launch VS Code now by [following the steps here to launch it correctly within the WSL-ROS environment](/wsl-ros/vscode).
+Also launch VS Code now by [following the steps here to launch it correctly within the WSL-ROS environment](../../../wsl-ros/vscode).
 
 **Step 4: Launch the Robot Simulation** 
 You should know exactly how to do this now but, just to re-iterate, enter the following into **TERMINAL 1**:
@@ -66,7 +66,9 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 
 ...which will launch a Gazebo simulation of a TurtleBot3 Waffle in an empty world:
 
-![](/images/gazebo/tb3_empty_world.png?width=800px)
+<figure markdown>
+  ![](../../images/gazebo/tb3_empty_world.png?width=800px)
+</figure>
 
 ??? tip
     Getting bored with entering that long command to launch the simulation? You could use a command *alias* instead:
@@ -146,7 +148,9 @@ Odometry is really important for robot navigation, but it can be subject to drif
 
     A new Gazebo simulation should now be launched with a TurtleBot3 Waffle in a new environment:
 
-    ![](/images/gazebo/tb3_world.png?width=800px)
+    <figure markdown>
+      ![](../../images/gazebo/tb3_world.png?width=800px)
+    </figure>
 
 1. In **TERMINAL 2**, enter the following:
 
@@ -159,7 +163,9 @@ Odometry is really important for robot navigation, but it can be subject to drif
     
     On running the command a new window should open:
 
-    ![](/images/rviz/tb3.png?width=800px)
+    <figure markdown>
+      ![](../../images/rviz/tb3.png?width=800px)
+    </figure>
 
     This is *RViz*, which is a ROS tool that allows us to *visualise* the data being measured by a robot in real-time. The red dots scattered around the robot represent *laser displacement data* which is measured by the LiDAR sensor located on the top of the robot.  This data allows the robot to measure the distance to any obstacles in its immediate surroundings. The LiDAR sensor spins continuously, sending out laser pulses as it does so. These laser pulses then bounce off any objects and are reflected back to the sensor. Distance can then be determined based on the time it takes for the pulses to complete the full journey (from the sensor, to the object, and back again), by a process called *"time of flight"*. Because the LiDAR sensor spins and performs this process continuously, a full 360&deg; scan of the environment can be generated.  In this case (because we are working in simulation here) the data represents the objects surrounding the robot in its *simulated environment*, so you should notice that the red dots produce an outline that resembles the objects in the world that is being simulated in Gazebo (or partially at least).
     
@@ -213,7 +219,9 @@ The `LaserScan` message is a standardised ROS message (from the `sensor_msgs` pa
 
 <a name="fig_lidar"></a>Consider a simplified example here, taken from a TurtleBot3 robot in a much smaller, fully enclosed environment.  In this case, the displacement data from the `ranges` array is represented by green squares:
 
-![](/images/rviz/lidar_illustrated.png?width=800px)
+<figure markdown>
+  ![](../../images/rviz/lidar_illustrated.png?width=800px)
+</figure>
 
 <a name="echo_scan_variables"></a>As illustrated in the figure, we can associate each data-point within the `ranges` array to an *angular position* by using the `angle_min`, `angle_max` and `angle_increment` values that are also provided within the `LaserScan` message.  We can use the `rostopic echo` command to drill down into these elements of the message specifically and find out what their values are:
 
@@ -272,7 +280,9 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
 
     The environment that launches should look like this:
 
-    ![](/images/gazebo/nav_world.png?width=800px)
+    <figure markdown>
+      ![](../../images/gazebo/nav_world.png?width=800px)
+    </figure>
 
 1. Now we will launch SLAM to start building a map of this environment. In **TERMINAL 2**, launch SLAM as follows:
         
@@ -287,11 +297,15 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
 
 1. In **TERMINAL 3** launch the `turtlebot3_teleop` node ([you should know how to do this by now](../week2/#teleop)).  Re-arrange and re-size your windows so that you can see Gazebo, RViz *and* the `turtlebot3_teleop` terminal instance all at the same time:
     
-    ![](/images/wsl/window_arrangement.png)
+    <figure markdown>
+      ![](../../images/wsl/window_arrangement.png)
+    </figure>
 
 1. Drive the robot around the arena slowly, using the `turtlebot3_teleop` node, and observe the map being updated in the RViz window as you do so. Drive the robot around until a full map of the environment has been generated.
     
-    ![](/images/rviz/slam.png)
+    <figure markdown>
+      ![](../../images/rviz/slam.png)
+    </figure>
 
 1. As you're doing this you need to *also* determine the centre coordinates of the four circles (A, B, C & D) that are printed on the arena floor. Drive your robot into each of these circular zones and stop the robot inside them. As you should remember from last time, we can determine the position (and orientation) of a robot in its environment from its *odometery*, as published to the `/odom` topic. In [Exercise 2 last time](../week2/#ex2) you built an odometry subscriber node, so you could launch this now, in **TERMINAL 4**, and use this to inform you of your robot's `x` and `y` position in the environment when located within each of the zone markers:
 
@@ -304,6 +318,8 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
 
     <a name="goal_coords"></a>Record the zone marker coordinates in a table such as the one below (you'll need this information for the next exercise).
 
+    <center>
+
     | Zone | X Position (m) | Y Position (m) |
     | :---: | :---: | :---: |
     | START | 0.5   | -0.04 |
@@ -311,6 +327,8 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     | B     |       |       |
     | C     |       |       |
     | D     |       |       |
+
+    </center>
 
 1. Once you have obtained all this data, and you're happy that your robot has built a complete map of the environment, you then need to save this map for later use. We do this using a ROS `map_server` package.  First, stop the robot by pressing `S` in **TERMINAL 3** and then enter `Ctrl+C` to shut down the `turtlebot3_teleop` node.
 1. Then, remaining in **TERMINAL 3**, navigate to the root of your `week2_navigation` package directory and create a new folder in it called `maps`:

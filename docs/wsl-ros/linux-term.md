@@ -2,7 +2,9 @@
 
 As explained earlier, you'll be working extensively with the Linux Terminal throughout this lab course. An *idle* WSL-ROS terminal instance will look like this:
 
-![](/images/wsl/linux_terminal.png)
+<figure markdown>
+  ![](../images/wsl/linux_terminal.png)
+</figure>
 
 Here, the presence of the `$` symbol indicates that the terminal is ready to accept a command. Text before the `$` symbol has two parts separated by the `:` symbol:
 

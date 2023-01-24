@@ -1,17 +1,16 @@
 site_name: "Robotics in the Diamond: ROS"
+site_url: https://tom-howard.github.io/ros/
 theme:
   name: material
   custom_dir: overrides
-  icon:
-    repo: fontawesome/brands/github
+  # icon:
+  #   repo: fontawesome/brands/github
   font:
     text: Source Sans Pro
     code: Source Code Pro
   palette:
     # Palette toggle for light mode
     - scheme: default
-      primary: deep purple
-      accent: cyan
       toggle:
         icon: material/brightness-7 
         name: Switch to dark mode
@@ -39,8 +38,8 @@ theme:
     - content.code.annotate
   
 # copyright: Copyright &copy; 2023 The University of Sheffield
-repo_url: https://github.com/tom-howard/ros
-repo_name: tom-howard/ros
+# repo_url: https://github.com/tom-howard/ros
+# repo_name: tom-howard/ros
 
 plugins:
     - search
@@ -63,5 +62,5 @@ markdown_extensions:
   - md_in_html
   - footnotes
 
-# extra_css:
-#   - stylesheets/extras.css
+extra_css:
+  - stylesheets/extra.css

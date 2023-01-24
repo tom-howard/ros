@@ -47,7 +47,7 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from last time
 [^1]: Remember: you can also use the `wsl_ros restore` command at any time.
 
 **Step 3: Launch VS Code**  
-Follow [these steps](/wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
+Follow [these steps](../../../wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
 
 **Step 4: Launch the Robot Simulation**  
 From **TERMINAL 1**, launch the TurtleBot3 Waffle *"Empty World"* simulation:
@@ -60,7 +60,7 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
 ...and then wait for the Gazebo window to open:
 
 <figure markdown>
-  ![](/images/gazebo/tb3_empty_world.png){width=800px}
+  ![](../../images/gazebo/tb3_empty_world.png){width=800px}
 </figure>
 
 ??? tip "Remember"
@@ -419,19 +419,19 @@ In order to carry out the last exercise you'll also need to be able to manipulat
 In the Gazebo simulation window, use the "Box" tool in the top toolbar to place a box in front of the robot:
 
 <figure markdown>
-  ![](/images/gazebo/box.png){width=700px}
+  ![](../../images/gazebo/box.png){width=700px}
 </figure>
 
 Use the "Scale Mode" button to resize the box and use the "Translation Mode" button to reposition it.
 
 <figure markdown>
-  ![](/images/gazebo/toolbar_buttons.png)
+  ![](../../images/gazebo/toolbar_buttons.png)
 </figure>
 
 Once you are happy with this, right-click on the object and select "Delete" to remove it from the world. 
 
 <figure markdown>
-  ![](/images/gazebo/delete.png)
+  ![](../../images/gazebo/delete.png)
 </figure>
 
 #### :material-pen: Exercise 4: Approaching an object using a Service and closed-loop control {#ex4}
