@@ -567,7 +567,7 @@ As you have observed in this exercise, in order to use ROS navigation tools to m
 
 ## Further Reading
 
-The [ROS Robot Programming eBook that we have mentioned previously](/about/robots/#ebook) goes into more detail on how SLAM and the autonomous navigation tools that you have just implemented actually work.  There is information in here on how these tools have been configured to work with the TurtleBot3 robots specifically.  We therefore *highly recommend* that you download this book and have a read of it.  You should read through Chapters 11.3 ("SLAM Application") and 11.4 ("SLAM Theory") in particular, and pay particular attention to the following:  
+The [ROS Robot Programming eBook that we have mentioned previously](../../../about/robots/#ebook) goes into more detail on how SLAM and the autonomous navigation tools that you have just implemented actually work.  There is information in here on how these tools have been configured to work with the TurtleBot3 robots specifically.  We therefore *highly recommend* that you download this book and have a read of it.  You should read through Chapters 11.3 ("SLAM Application") and 11.4 ("SLAM Theory") in particular, and pay particular attention to the following:  
 
 * What information is required for SLAM? One of these bits of information may be new to you: how does this relate to *Odometry*, which you *do* know about? (See Section 11.3.4)
 * Which nodes are active in the SLAM process and what do they do?  What topics are published and what type of messages do they use?  How does the information flow between the node network?

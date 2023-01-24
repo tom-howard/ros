@@ -198,7 +198,7 @@ You can use the `rosnode` **ROS command** to view all the nodes that are current
 
 You should currently have three terminal windows active: the first in which you launched the Gazebo simulation (**TERMINAL 1**), the second with your `turtlebot3_teleop_key` node active (**TERMINAL 2**), and the third where you explored the contents of the `turtlebot3_teleop` package directory (**TERMINAL 3**).  **TERMINAL 3** should now be idle.
 
-1. In **TERMINAL 3** enter `cd ~` to go back to your home directory ([remember that `~` is an alias for your home directory](/wsl-ros/getting-started/#linux-term)).
+1. In **TERMINAL 3** enter `cd ~` to go back to your home directory ([remember that `~` is an alias for your home directory](../../../wsl-ros/linux-term)).
 1. Use the following command to have a look at which nodes are currently active on the network:
 
     ***
