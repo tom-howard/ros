@@ -1,3 +1,0 @@
-simulkation-based
-odometry
-Odometry
