@@ -32,7 +32,7 @@ In Lab 1 we explored how ROS works and how to bring a robot to life. Let's quick
 
 **Open-Loop Control**
 
-We used a time-based method to control the motion of our robot in order to get it to generate a square motion path. This type of control is *open-loop*: we hoped that the robot had moved (or turned) by the about that was required, but had no *feedback* to tell us whether this had actually been achieved.
+We used a time-based method to control the motion of our robot in order to get it to generate a square motion path. This type of control is *open-loop*: we hoped that the robot had moved (or turned) by the amount that was required, but had no *feedback* to tell us whether this had actually been achieved.
 
 In this lab we'll look at how this can be improved, making use of some of our robot's on-board sensors to tell us where the robot is or what it can see in its environment, in order to complete a task more reliably and be able to better adapt to changes and uncertainty in the environment.
 
@@ -63,7 +63,7 @@ By the end of this session you will be able to:
 
 #### Downloading the AMR31001 ROS Package
 
-To start with, you'll need to download a ROS package to the Robot Laptop that you are working on today. This package contains all the resources that you'll need for the lab exercises.
+To start with, you'll need to download [a ROS package](https://github.com/tom-howard/amr31001) to the Robot Laptop that you are working on today. This package contains all the resources that you'll need for the lab exercises.
 
 1. Open up a terminal instance on the laptop, either by using the `Ctrl+Alt+T` keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
@@ -359,6 +359,7 @@ In theory though, we can do all this with odometry instead, so let's have a go a
         ```python
         elif movement == "turn":
         ```
+        
         Within this, look at how the robot's yaw angle is being monitored and updated as it turns. Then, look at how the turn angle is being controlled. See if you can adapt this to make the robot turn in 90&deg; steps instead.
 
     1. Ultimately, after the robot has turned by 90&deg; it needs to then move forwards by 0.5m, in order to achieve a 0.5x0.5m square motion path.
@@ -368,7 +369,7 @@ In theory though, we can do all this with odometry instead, so let's have a go a
         ```python
         elif movement == "move_fwd":
         ```
-        See if you can adapt the code within this block to make the robot move forwards by the required amount (0.5 meters) in between each turn. 
+        See if you can adapt the code within this block to make the robot move forwards by the required amount (0.5 meters) in between each turn. <a name="the_hint"></a>
         
         ??? note "Hint"
             Consider how the turn angle is monitored and updated whist turning (`current_yaw`), and take a similar approach with the linear displacement (`current_distance`). Bear in mind that you'll need to consider the *euclidean distance*, which you'll need to calculate based on the robot's position in both the `x` and `y` axis.
@@ -377,7 +378,11 @@ In theory though, we can do all this with odometry instead, so let's have a go a
               ![](./lab2/euclidean_distance.png){width=500px}
             </figure>
 
-    1. Every time you need to test the code, you can re-run it using the same `rosrun` command as before:
+    1. **Make sure that you've saved any changes to the code (in VS Code) before trying to test it out on the robot!**
+    
+        Do this by using the `Ctrl+S` keyboard shortcut, or going to `File > Save` from the menu at the top of the screen.
+    
+    1. Once you've saved it, you can re-run the code at any time by using the same `rosrun` command as before:
 
         ***
         **TERMINAL 1:**
@@ -387,6 +392,24 @@ In theory though, we can do all this with odometry instead, so let's have a go a
         ***
 
         ... and you can stop it at any time by entering `Ctrl+C` in the terminal.
+
+    !!! tip "Python Tips"
+
+        You'll need to do a bit of maths here (see [the "Hint" above](#the_hint)). Here's how to implement a couple of mathematical functions in Python:
+
+        1. **Power of X**: Use `**` to raise a number to the power of another number (i.e. <code>2<sup>3</sup></code>):
+
+            ```py
+            >>> 2**3
+            8
+            ``` 
+
+        1. **Square Root**: To calculate the square root of a number use the `sqrt()` function:
+
+            ```py
+            >>> sqrt(4)
+            2.0 
+            ```
 
 ### The LiDAR Sensor
 
