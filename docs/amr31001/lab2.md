@@ -107,7 +107,7 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
 1. You *may* see a message like this early on in the pairing process:
 
     <figure markdown>
-      ![](../images/laptops/ssh_auth.svg){width=800px}
+      ![](../images/laptops/ssh_auth.svg){width=600px}
     </figure>
 
     If so, just type `yes` and then hit `Enter` to confirm that you want to continue.
@@ -156,7 +156,7 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
 1. Close down this terminal instance. If you see the following message, just click "Close Terminal."
 
     <figure markdown>
-      ![](../images/laptops/term_confirm_close.png){width=800px}
+      ![](../images/laptops/term_confirm_close.png){width=600px}
     </figure>
 
 ### Odometry
@@ -397,7 +397,7 @@ In theory though, we can do all this with odometry instead, so let's have a go a
 
         You'll need to do a bit of maths here (see [the "Hint" above](#the_hint)). Here's how to implement a couple of mathematical functions in Python:
 
-        1. **Power of X**: Use `**` to raise a number to the power of another number (i.e. <code>2<sup>3</sup></code>):
+        1. **To the power of...**: Use `**` to raise a number to the power of another number (i.e. <code>2<sup>3</sup></code>):
 
             ```py
             >>> 2**3
@@ -430,7 +430,7 @@ roslaunch tuos_tb3_tools rviz.launch
 ***
 
 <figure markdown>
-  ![](../images/waffle/rviz_vs_arena.png?width=25cm)
+  ![](../images/waffle/rviz_vs_arena.png){width=800px}
 </figure>
 
 The red dots illustrate the LiDAR data. Hold your hand out to the robot and see if you can see it being detected by the sensor... a cluster of red dots should form on the screen to indicate where your hand is located in relation to the robot. Move your hand around and watch the cluster of dots move accordingly. Move your hand closer and farther away from the robot and observe how the red dots also move towards or away from the robot on the screen. 
@@ -521,8 +521,35 @@ Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**.
 
         You may have already observed this during your testing... how could you adapt the code so that such situations can be achieved?
 
-        ??? info "Hint"
-            You may need to consider the distance measurements from some other LiDAR zones!
+        ??? info "Hints"
+            
+            1. You may need to consider the distance measurements from some other LiDAR zones!
+            1. The `ex3.py` template that was provided to you uses an `if` statement with three different cases:
+                
+                ```python
+                if ...:
+
+                elif ...:
+
+                else:
+
+                ```
+
+                You may need to add in some further cases to this to accommodate the additional situations discussed above, e.g.:
+
+                ```python
+                if ...:
+
+                elif ...:
+                
+                elif ...:
+                
+                elif ...:
+                
+                else:
+                
+                ```
+
         
     1. Finally, think about how you could adapt this algorithm to make the robot follow a wall on its right-hand side instead.  
 
