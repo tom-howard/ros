@@ -1,7 +1,5 @@
 ---
 title: AMR31001 Industry 4.0
-hide:
-  - toc
 ---
 
 # Industry 4.0
