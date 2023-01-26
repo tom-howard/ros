@@ -1,3 +1,4 @@
 nav:
+  - "AMR31001": README.md
   - "Lab 1: Mobile Robotics": lab1.md
   - "Lab 2: Feedback Control": lab2.md
