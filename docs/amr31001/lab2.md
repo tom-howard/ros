@@ -77,13 +77,15 @@ To start with, you'll need to download [a ROS package](https://github.com/tom-ho
         To **paste** the following commands into the terminal use `Ctrl+Shift+V`
     
     ***
-
-    1. `wget -O build.sh https://raw.githubusercontent.com/tom-howard/amr31001/main/scripts/build.sh`
-
-    1. `chmod +x build.sh`
-
-    1. `./build.sh`
-
+    ```bash
+    wget -O build.sh https://raw.githubusercontent.com/tom-howard/amr31001/main/scripts/build.sh
+    ```
+    ```bash
+    chmod +x build.sh
+    ```
+    ```bash
+    ./build.sh
+    ```
     ***
 
 #### Launching ROS
