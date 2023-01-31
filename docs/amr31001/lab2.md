@@ -174,7 +174,7 @@ Our robot can therefore keep track of its position (and orientation) as it moves
 
 This data is published to a ROS Topic called `/odom`. 
 
-#### Exercise 1: Exploring Odometry Data {#ex1}
+#### :material-pen: Exercise 1: Exploring Odometry Data {#ex1}
 
 In the previous lab we used some ROS commands to identify and interrogate active topics on the ROS network, let's give that another go now, but on the `/odom` topic this time.
 
@@ -291,7 +291,7 @@ You should have noticed that (as the robot moved around) the `x` and `y` terms c
   ![](../images/waffle/pose.png?width=15cm)
 </figure>
 
-#### Exercise 2: Odometry-based Navigation {#ex2}
+#### :material-pen: Exercise 2: Odometry-based Navigation {#ex2}
 
 Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that [last time](../lab1/#ex6) you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (tuning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path. 
 
@@ -439,7 +439,7 @@ This data is really useful and (as we observed during the previous lab session) 
 
 Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**. 
 
-#### Exercise 3: Wall following {#ex3}
+#### :material-pen: Exercise 3: Wall following {#ex3}
 
 1. In VS Code, click on the `ex3.py` file in the File Explorer to display it in the editor.
 
@@ -569,7 +569,7 @@ Having built a complete map (using SLAM) our robot then knows exactly what its e
 
 In the next exercise, we'll have a go at this: first we need to build a map, then we can use that map to implement *autonomous navigation*!
 
-#### Exercise 4: SLAM and Navigation {#ex4}
+#### :material-pen: Exercise 4: SLAM and Navigation {#ex4}
 
 **Step 1: Mapping**
 

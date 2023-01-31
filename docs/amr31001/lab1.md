@@ -48,7 +48,7 @@ By the end of this session you will be able to:
 
 Before you do anything, you'll need to get your robot up and running, and make sure ROS is launched.
 
-#### Exercise 1: Launching ROS and Making the Robot Move {#ex1}
+#### :material-pen: Exercise 1: Launching ROS and Making the Robot Move {#ex1}
 
 You should have already been provided with a Robot and a Laptop (in fact, you're probably already reading this on the laptop!) 
 
@@ -170,7 +170,7 @@ roslaunch {[1] Package name} {[2] Launch file}
 !!! info "Post-lab Quiz"
     What were the names of the two packages that we invoked in Exercise 1?
 
-#### Exercise 2: Seeing the Waffle's Sensors in Action! {#ex2}
+#### :material-pen: Exercise 2: Seeing the Waffle's Sensors in Action! {#ex2}
 
 Our Waffles have some pretty sophisticated sensors on them, allowing them to "see" the world around them. We won't really make much use of these during this lab, but this next exercise will allow you to see how the data from these devices could be used to help our robots do some very advanced things (with some clever programming, of course!)
 
@@ -263,7 +263,7 @@ We've now used both `roslaunch` and `rosrun` to launch ROS applications. These a
 
 Using `rosrun` and `roslaunch`, as we have done so far, it's easy to end up with a whole load of different processes or *ROS Nodes* running on the network, some of which we will interact with, but others may just be running in the background. It is often useful to know exactly what *is* running on the ROS network, and there are a number of ways to do this.
 
-#### Exercise 3: Visualising the ROS Network {#ex3}
+#### :material-pen: Exercise 3: Visualising the ROS Network {#ex3}
 
 1. There shouldn't be anything running in **TERMINAL 2** now, so return to this terminal and use the `rosnode` command to *list* the nodes that are currently running on the robot:
 
@@ -299,7 +299,7 @@ ROS Topics are key to making things happen on a robot. Nodes can publish (*write
 
 Let's have a look at this in a bit more detail...
 
-#### Exercise 4: Exploring ROS Topics and Messages {#ex4}
+#### :material-pen: Exercise 4: Exploring ROS Topics and Messages {#ex4}
 
 Much like the `rosnode list` command, we can use `rostopic list` to list all the *topics* that are currently active on the network.
 
@@ -402,7 +402,7 @@ It can therefore only move **linearly** in the **x-axis** (*Forwards/Backwards*)
 !!! info "Post-lab Quiz"
     Take note of all this, there may be a question on it!
 
-#### Exercise 5: Publishing Velocity Commands to the `/cmd_vel` Topic {#ex5}
+#### :material-pen: Exercise 5: Publishing Velocity Commands to the `/cmd_vel` Topic {#ex5}
 
 We will use the `rostopic` command differently now, and actually *publish* messages from the terminal to make the robot move. In order to do this we need three key bits of information:
 
@@ -474,7 +474,7 @@ In any case, the message that we need to publish will end up being quite long be
 
 1. Enter `Ctrl+C` in **TERMINAL 2** to stop the robot.
 
-#### Exercise 6: Creating a Python node to make the robot move {#ex6}
+#### :material-pen: Exercise 6: Creating a Python node to make the robot move {#ex6}
 
 Hopefully you can see now that, in order to make a robot move, it's simply a case of publishing the right ROS Message (`Twist`) to the right ROS Topic (`/cmd_vel`). Earlier on in the lab we used the Keyboard Teleop node to drive the robot around, a bit like a remote control car. In the background here all that was really happening was that the Teleop node was converting our keyboard button presses into velocity commands and publishing these to the `/cmd_vel` topic. In the previous exercise we looked at this in more detail by actually formatting the raw `Twist` messages ourselves, and publishing these to `/cmd_vel`, directly from the command-line. This approach was very manual though, and there's a limit to what we can really achieve by working in this way (circular and straight line motion is about it!)
 
@@ -550,7 +550,7 @@ In reality, robots need to be able to move around complex environments autonomou
     
 1. The aim here is to make the robot follow a **0.5m x 0.5m square** motion path.  In order to properly achieve this you'll need to adjust the timings, or the robot's velocity, or both. Edit the code so that the robot actually follows a **0.5m x 0.5m square motion path**!
 
-#### Exercise 7 (Advanced): Alternative Motion Paths {#ex7}
+#### :material-pen: Exercise 7 (Advanced): Alternative Motion Paths {#ex7}
 
 *If you have time, why don't you have a go at this now...*
 
