@@ -1,0 +1,7 @@
+nav: 
+  - "Launch Files (Advanced)": README.md
+  - "Launching Other Launch Files": launching-launch-files.md
+  - "ROSlaunch Command-line Arguments": roslaunch-clas.md
+  - "Building Command-line Interfaces (CLIs) for Python Nodes": python-clis.md
+  - "Passing Command-line Arguments to Python Nodes via ROSlaunch": cla-to-node.md
+  - "Using the ROSlaunch Python API": roslaunch-api.md
