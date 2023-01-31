@@ -36,7 +36,7 @@ The robots have the following core hardware elements:
 * An [UP Squared Single-Board Computer (SBC)](https://up-board.org/upsquared/specifications/) with an Intel Processor and 32GB of on-board eMMC storage. This board acts as the "brain" of the robot.
 * Independent left and right wheel motors (DYNAMIXEL XM430’s) to drive the robot using a *differential drive* configuration.
 
-This drive configuration allows the robots to move with the following **maximum velocities**:
+This drive configuration allows the robots to move with the following **maximum velocities**: <a name="max_vels"></a>
 
 <center>
 
@@ -62,7 +62,7 @@ Our robots run on the most up-to-date version of ROS1: [ROS Noetic Ninjemys](htt
 
 ### Laptops
 
-In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above (Ubuntu 20.04 and ROS Noetic). We use these when working with the robots in the lab.
+In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above (Ubuntu 20.04 and ROS Noetic). We use these when working with the robots in the lab. [See here for more details](../../waffles/laptops). 
 
 ### Simulation Environment
 

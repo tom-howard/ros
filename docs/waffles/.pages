@@ -1,0 +1,8 @@
+nav:
+  - "The Waffles": README.md
+  - "Introduction": intro.md
+  - "Launching ROS": launching-ros.md
+  - "Getting Started (Initial Exercises)": exercises.md
+  - "Fact-Finding Missions!": fact-finding.md
+  - "Safe Shutdown": shutdown.md
+  

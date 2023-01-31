@@ -122,6 +122,8 @@ Now, run `rosmsg info` on this message type to find out exactly what information
     uint32 step
     uint8[] data
 
+<a name="cam_img_questions"></a>
+
 !!! note "Questions"
     1. What *type* of message is used on this topic, and which *package* is this message derived from?
     1. Using `rostopic echo` and the information about the topic message (as shown above) determine the *size* of the images that our robot's camera will capture (i.e. its *dimensions*, in pixels).  It will be quite important to know this when we start manipulating these camera images later on. 

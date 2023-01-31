@@ -246,7 +246,7 @@ Notice how we were able to access *specific variables* within the `/scan` messag
 
 The `ranges` array contains 360 values in total, i.e. a distance measurement at every 1&deg; (an `angle_increment` of 0.0175 radians) around the robot. The first value in the `ranges` array (`ranges[0]`) is the distance to the nearest object directly in front of the robot (i.e. at &theta; = 0 radians, or `angle_min`). The last value in the `ranges` array (`ranges[359]`) is the distance to the nearest object at 359&deg; (i.e. &theta; = 6.283 radians, or `angle_max`) from the front of the robot. If, for example, we were to obtain the 65th value in the `ranges` array, that is: `ranges[65]`, we know that this would represent the distance to the nearest object at an angle of 65&deg; (1.138 radians) from the front of the robot (anti-clockwise), as shown in [the figure](#fig_lidar).
 
-The `LaserScan` message also contains the parameters `range_min` and `range_max`, which represent the *minimum* and *maximum* distance (in meters) that the LiDAR sensor can detect, respectively. You can use the `rostopic echo` command to report these directly too.  
+<a name="range_max_min"></a>The `LaserScan` message also contains the parameters `range_min` and `range_max`, which represent the *minimum* and *maximum* distance (in meters) that the LiDAR sensor can detect, respectively. You can use the `rostopic echo` command to report these directly too.  
 
 !!! note "Question"
     What *is* the maximum and minimum range of the LiDAR sensor? Use [the same technique as we used above](#echo_scan_variables) to find out.
