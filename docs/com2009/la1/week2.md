@@ -49,9 +49,9 @@ wsl_ros restore
 ### Step 3: Launch VS Code  
 It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](../../../wsl-ros/vscode/).
 
-### Step 4: Download our ROS Packages
+### Step 4: Download The Course Repo
 
-We've put together a few ROS packages of our own, that you'll use throughout this course. These all live inside ["the COM2009 GitHub Repo"](https://github.com/tom-howard/COM2009), and we need to download this into the WSL-ROS environment now, before going any further.
+We've put together a few ROS packages of our own that you'll use throughout this course. These all live inside [the COM2009 Course Repo](https://github.com/tom-howard/COM2009) on GitHub, and you'll need to download this into the WSL-ROS environment now, before going any further.
 
 1. In **TERMINAL 1**, navigate to the Catkin Workspace `src` directory using the `cd` command:
 
@@ -62,7 +62,7 @@ We've put together a few ROS packages of our own, that you'll use throughout thi
     ```
     ***
 
-1. Then, clone the COM2009 repo from GitHub:
+1. Then, clone the Course Repo from GitHub:
 
 
     ***
