@@ -8,7 +8,7 @@ As you should know, the Waffles are powered by [a Single Board Computer (SBC)](.
 
 Therefore, once you've finished working with a robot during a lab session, follow the steps below to shut it down.
 
-1. From any terminal instance running on your robotics laptop, enter the following:
+1. Open a **new** terminal instance on the laptop (`Ctrl+Alt+T`), and enter the following:
 
     ***
     ```bash
