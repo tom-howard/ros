@@ -6,9 +6,9 @@ theme:
   custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
-  font: 
-    text: Source Sans Pro
-    code: Source Code Pro
+  font: false
+    # text: Source Sans Pro
+    # code: Source Code Pro
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -65,11 +65,11 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
-extra:
-  consent:
-    title: Cookie consent
-    description: 
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
+# extra:
+#   consent:
+#     title: Cookie consent
+#     description: 
+#       We use cookies to recognize your repeated visits and preferences, as well
+#       as to measure the effectiveness of our documentation and whether users
+#       find what they're searching for. With your consent, you're helping us to
+#       make our documentation better.
