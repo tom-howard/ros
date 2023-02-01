@@ -1,6 +1,6 @@
 ---  
 title: "Week 3: Advanced Navigation & SLAM"  
-subtitle: Implement odometry-based velocity control to make a robot follow a pre-defined motion path. Explore the LiDAR sensor, how the data form this device can be of huge benefit for robotics applications, and see this in practice by leveraging the autonomous navigation (and mapping) tools within ROS.
+description: Implement odometry-based velocity control to make a robot follow a pre-defined motion path. Explore the LiDAR sensor, how the data form this device can be of huge benefit for robotics applications, and see this in practice by leveraging the autonomous navigation (and mapping) tools within ROS.
 ---
 
 !!! info

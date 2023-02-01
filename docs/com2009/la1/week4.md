@@ -1,6 +1,6 @@
 ---  
 title: "Week 4: ROS Services"  
-subtitle: "Here, you'll learn how ROS Services can be used in combination with the standard publisher/subscriber principles that you already know about, to control a robot more effectively for certain operations."  
+description: "Here, you'll learn how ROS Services can be used in combination with the standard publisher/subscriber principles that you already know about, to control a robot more effectively for certain operations."  
 ---
 
 !!! info

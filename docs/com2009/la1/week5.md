@@ -1,6 +1,6 @@
 ---  
 title: "Week 5: ROS Actions"  
-subtitle: Building on what you learnt about ROS Services last week, we'll now look at ROS Actions, which work similarly, but with key differences.
+description: Building on what you learnt about ROS Services last week, we'll now look at ROS Actions, which work similarly, but with key differences.
 ---
 
 !!! info

@@ -1,6 +1,6 @@
 ---
 title: "Week 6: Cameras, Machine Vision & OpenCV"  
-subtitle: Here we'll look at how to build ROS nodes that work with images from on-board camera, we'll look at techniques to detect features within these images that can then be used to inform robot decision-making.
+description: Here we'll look at how to build ROS nodes that work with images from on-board camera, we'll look at techniques to detect features within these images that can then be used to inform robot decision-making.
 ---
 
 !!! info 
