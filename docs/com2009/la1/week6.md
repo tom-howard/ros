@@ -206,6 +206,7 @@ Processing an image of this size is therefore hard work for a robot: any analysi
 **Step 2**
 
 We're going to modify the `object_detection.py` node now to:
+
 * Capture a new image in its native size
 * Crop it down to focus in on a particular area of interest
 * Save both of the images (the cropped one should be much smaller than the original).
