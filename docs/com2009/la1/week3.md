@@ -337,6 +337,8 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     **TERMINAL 3:**
     ```bash
     roscd week2_navigation
+    ```
+    ```bash
     mkdir maps
     ```
     ***
@@ -405,6 +407,8 @@ As mentioned above, the map that you created in the previous exercise can now be
     **TERMINAL 1:**
     ```bash
     roscd week2_navigation
+    ```
+    ```bash
     mkdir launch
     ```
     ***
@@ -415,6 +419,8 @@ As mentioned above, the map that you created in the previous exercise can now be
     **TERMINAL 1:**
     ```bash
     cd launch/
+    ```
+    ```bash
     touch navigation.launch
     ```
     ***
