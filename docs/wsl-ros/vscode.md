@@ -15,7 +15,7 @@ title: "Launching Visual Studio Code in WSL-ROS"
       ![](../images/vscode/win_menu.png)
     </figure>
 
-1. You should have already [installed the "Remote - WSL" extension](../configure-vscode). If so, then a green icon should be visible in the bottom left-hand corner of the application window:
+1. You should have already [installed the "WSL" extension](../configure-vscode). If so, then a green icon should be visible in the bottom left-hand corner of the application window:
 
     <figure markdown>
       ![](../images/vscode/remote_wsl_installed.png){width=600}
@@ -62,7 +62,7 @@ title: "Launching Visual Studio Code in WSL-ROS"
       ![](../images/vscode/wsl_filesystem.png){width=600}
     </figure>
 
-## Always make sure that the "WSL - Remote" extension is enabled!! {#verify}
+## Always make sure that the "WSL" extension is enabled!! {#verify}
 
 Check that you can always see this icon in the bottom left-hand corner of your VS Code screen:
 

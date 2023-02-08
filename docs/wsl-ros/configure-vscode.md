@@ -21,7 +21,7 @@
       ![](../images/vscode/extensions_icon.png){width=600}
     </figure>
 
-1. In the search bar (where is says "Search Extensions in Marketplace") type `"remote"`, find the "Remote - WSL" extension in the list and then click the blue "Install" button next to it:
+1. In the search bar (where is says "Search Extensions in Marketplace") type `"wsl"`, find the "WSL" extension in the list and then click the blue "Install" button next to it:
 
     <figure markdown>
       ![](../images/vscode/install_remote_wsl.png){width=600}
