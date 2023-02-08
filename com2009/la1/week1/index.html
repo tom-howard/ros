@@ -1,0 +1,2511 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="In this first week you will learn the basics of ROS and become familiar with some key tools and principles of this framework, allowing you to program robots and work with ROS applications effectively.">
+      
+      
+      
+        <link rel="canonical" href="https://tom-howard.github.io/ros/com2009/la1/week1/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../week2/">
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
+    
+    
+      
+        <title>Week 1: ROS & Linux Basics - Robotics in the Diamond: ROS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+      
+  <img src="../../../assets/tuos.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Robotics in the Diamond: ROS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 1: ROS & Linux Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tom-howard/ros" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tom-howard/ros
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../wsl-ros/" class="md-tabs__link">
+        WSL-ROS
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        COM2009
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../amr31001/" class="md-tabs__link">
+        AMR31001
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://lincaolab.github.io/acs6121/" class="md-tabs__link">
+      ACS6121
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../waffles/" class="md-tabs__link">
+        The Waffles
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://github.com/tom-howard/COM2009" class="md-tabs__link">
+      The Course Repo (GitHub)
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+      
+  <img src="../../../assets/tuos.png" alt="logo">
+
+    </a>
+    Robotics in the Diamond: ROS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tom-howard/ros" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tom-howard/ros
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../about/">About</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/robots/" class="md-nav__link">
+        The Robots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        Version History
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../wsl-ros/">WSL-ROS</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          WSL-ROS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/first-run/" class="md-nav__link">
+        Launching for the First Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/configure-vscode/" class="md-nav__link">
+        Configuring Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/linux-term/" class="md-nav__link">
+        A Quick Introduction to the Linux Terminal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/wsl-ros-return/" class="md-nav__link">
+        Re-Launching WSL-ROS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/backup-restore/" class="md-nav__link">
+        Backing-Up (and Restoring) your Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/rdp/" class="md-nav__link">
+        Remote Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/wt-settings/" class="md-nav__link">
+        Windows Terminal Settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/vscode/" class="md-nav__link">
+        Launching VS Code (in WSL-ROS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/installing/" class="md-nav__link">
+        Installing ROS on Your Own PC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">COM2009</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          COM2009
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Lab Assignment #1</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Assignment #1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Week 1: ROS & Linux Basics
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Week 1: ROS & Linux Basics
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims" class="md-nav__link">
+    Aims
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intended-learning-outcomes" class="md-nav__link">
+    Intended Learning Outcomes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    Quick Links
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    Additional Resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-steps" class="md-nav__link">
+    First Steps
+  </a>
+  
+    <nav class="md-nav" aria-label="First Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex1" class="md-nav__link">
+     Exercise 1: Launching a simulation and making a ROS robot move
+  </a>
+  
+    <nav class="md-nav" aria-label=" Exercise 1: Launching a simulation and making a ROS robot move">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros-packages" class="md-nav__link">
+    ROS Packages
+  </a>
+  
+    <nav class="md-nav" aria-label="ROS Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex2" class="md-nav__link">
+     Exercise 2: Exploring a ROS Package
+  </a>
+  
+    <nav class="md-nav" aria-label=" Exercise 2: Exploring a ROS Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package_attributes" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nodes" class="md-nav__link">
+    ROS Nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ros-network" class="md-nav__link">
+    The ROS Network
+  </a>
+  
+    <nav class="md-nav" aria-label="The ROS Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex3" class="md-nav__link">
+     Exercise 3: Visualising the ROS Network
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishers-and-subscribers-a-ros-communication-method" class="md-nav__link">
+    Publishers and Subscribers: A ROS Communication Method
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishers and Subscribers: A ROS Communication Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex4" class="md-nav__link">
+     Exercise 4: Exploring ROS Topics and Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex5" class="md-nav__link">
+     Exercise 5: Creating your own ROS Package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex6" class="md-nav__link">
+     Exercise 6: Creating a publisher node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rostopic" class="md-nav__link">
+    Using the rostopic command
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the rostopic command">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex7" class="md-nav__link">
+     Exercise 7: Creating a subscriber node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-files" class="md-nav__link">
+    Launch Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex8" class="md-nav__link">
+     Exercise 8: Creating a launch file
+  </a>
+  
+    <nav class="md-nav" aria-label=" Exercise 8: Creating a launch file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roslaunch" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    Wrapping Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    Saving your work
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week2/" class="md-nav__link">
+        Week 2: Odometry & Basic Navigation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week3/" class="md-nav__link">
+        Week 3: Advanced Navigation & SLAM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week4/" class="md-nav__link">
+        Week 4: ROS Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week5/" class="md-nav__link">
+        Week 5: ROS Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week6/" class="md-nav__link">
+        Week 6: Cameras, Machine Vision & OpenCV
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../la2/">Lab Assignment #2</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Assignment #2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../extras/">Launch Files (Advanced)</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Launch Files (Advanced)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/launching-launch-files/" class="md-nav__link">
+        Launching Other Launch Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/roslaunch-clas/" class="md-nav__link">
+        ROSlaunch Command-line Arguments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/python-clis/" class="md-nav__link">
+        Building Command-line Interfaces (CLIs) for Python Nodes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/cla-to-node/" class="md-nav__link">
+        Passing Command-line Arguments to Python Nodes via ROSlaunch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/roslaunch-api/" class="md-nav__link">
+        Using the ROSlaunch Python API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../amr31001/">AMR31001</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          AMR31001
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../amr31001/lab1/" class="md-nav__link">
+        Lab 1: Mobile Robotics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../amr31001/lab2/" class="md-nav__link">
+        Lab 2: Feedback Control
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://lincaolab.github.io/acs6121/" class="md-nav__link">
+        ACS6121
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../waffles/">The Waffles</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          The Waffles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/launching-ros/" class="md-nav__link">
+        Launching ROS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/exercises/" class="md-nav__link">
+        Getting Started (Initial Exercises)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/fact-finding/" class="md-nav__link">
+        Fact-Finding Missions!
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/shutdown/" class="md-nav__link">
+        Safe Shutdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/tom-howard/COM2009" class="md-nav__link">
+        The Course Repo (GitHub)
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims" class="md-nav__link">
+    Aims
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intended-learning-outcomes" class="md-nav__link">
+    Intended Learning Outcomes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    Quick Links
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    Additional Resources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-steps" class="md-nav__link">
+    First Steps
+  </a>
+  
+    <nav class="md-nav" aria-label="First Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex1" class="md-nav__link">
+     Exercise 1: Launching a simulation and making a ROS robot move
+  </a>
+  
+    <nav class="md-nav" aria-label=" Exercise 1: Launching a simulation and making a ROS robot move">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros-packages" class="md-nav__link">
+    ROS Packages
+  </a>
+  
+    <nav class="md-nav" aria-label="ROS Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex2" class="md-nav__link">
+     Exercise 2: Exploring a ROS Package
+  </a>
+  
+    <nav class="md-nav" aria-label=" Exercise 2: Exploring a ROS Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package_attributes" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nodes" class="md-nav__link">
+    ROS Nodes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-ros-network" class="md-nav__link">
+    The ROS Network
+  </a>
+  
+    <nav class="md-nav" aria-label="The ROS Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex3" class="md-nav__link">
+     Exercise 3: Visualising the ROS Network
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishers-and-subscribers-a-ros-communication-method" class="md-nav__link">
+    Publishers and Subscribers: A ROS Communication Method
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishers and Subscribers: A ROS Communication Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex4" class="md-nav__link">
+     Exercise 4: Exploring ROS Topics and Messages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex5" class="md-nav__link">
+     Exercise 5: Creating your own ROS Package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex6" class="md-nav__link">
+     Exercise 6: Creating a publisher node
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rostopic" class="md-nav__link">
+    Using the rostopic command
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the rostopic command">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex7" class="md-nav__link">
+     Exercise 7: Creating a subscriber node
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-files" class="md-nav__link">
+    Launch Files
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex8" class="md-nav__link">
+     Exercise 8: Creating a launch file
+  </a>
+  
+    <nav class="md-nav" aria-label=" Exercise 8: Creating a launch file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#roslaunch" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    Wrapping Up
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    Saving your work
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/tom-howard/ros/edit/main/docs/com2009/la1/week1.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/tom-howard/ros/raw/main/docs/com2009/la1/week1.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+
+  <h1>Week 1: ROS & Linux Basics</h1>
+
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>You should be able to complete all the exercises on this page within a two-hour lab session.</p>
+</div>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<h3 id="aims">Aims<a class="headerlink" href="#aims" title="Permanent link">&para;</a></h3>
+<p>In this first week you will learn the basics of ROS and become familiar with some key tools and principles of this framework, which will allow you to program robots and work with ROS applications effectively.  For the most part, you will interact with ROS using the <em>Linux command line</em> and so you will also become familiar with some key Linux command line tools that will help you.  Finally, you will learn how to create some basic ROS Nodes using Python and get a taste of how ROS topics and messages work.</p>
+<h3 id="intended-learning-outcomes">Intended Learning Outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permanent link">&para;</a></h3>
+<p>By the end of this session you will be able to:  </p>
+<ol>
+<li>Control a TurtleBot3 Robot, in simulation, using ROS.</li>
+<li>Launch ROS applications using <code>roslaunch</code> and <code>rosrun</code>.</li>
+<li>Interrogate running ROS applications using key ROS command line tools.</li>
+<li>Create a ROS package comprised of multiple nodes and program these nodes (in Python) to communicate with one another using ROS Communication Methods.</li>
+<li>Navigate a Linux filesystem and learn how to do various filesystem operations from within a Linux Terminal.</li>
+</ol>
+<h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#ex1">Exercise 1: Launching a simulation and making a ROS robot move</a></li>
+<li><a href="#ex2">Exercise 2: Exploring a ROS Package</a></li>
+<li><a href="#ex3">Exercise 3: Visualising the ROS Network</a></li>
+<li><a href="#ex4">Exercise 4: Exploring ROS Topics and Messages</a></li>
+<li><a href="#ex5">Exercise 5: Creating your own ROS Package</a></li>
+<li><a href="#ex6">Exercise 6: Creating a publisher node</a></li>
+<li><a href="#ex7">Exercise 7: Creating a subscriber node</a></li>
+<li><a href="#ex8">Exercise 8: Creating a launch file</a></li>
+</ul>
+<h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="publisher">The Publisher Code (for Exercise 6)</a></li>
+<li><a href="subscriber">The Subscriber Code (for Exercise 7)</a></li>
+</ul>
+<h2 id="first-steps">First Steps<a class="headerlink" href="#first-steps" title="Permanent link">&para;</a></h2>
+<h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 1: Launching a simulation and making a ROS robot move<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (<a href="../../../wsl-ros/first-run">see here for detailed instructions</a>). This should open up a <em>terminal application</em> and an <em>Ubuntu terminal instance</em>.  We'll refer to this terminal instance as <strong>TERMINAL 1</strong>.</li>
+<li>
+<p>In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  </p>
+<hr />
+<p><strong>TERMINAL 1:</strong> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_empty_world.launch
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (similar to <a href="../../../about/robots">our real robots</a> that you'll work with later):</p>
+<p><figure markdown>
+  <img alt="" src="../../../images/gazebo/tb3_empty_world.png" width="800" />
+</figure></p>
+</li>
+<li>
+<p>With your Gazebo Simulation up and running, return to the terminal application and open up a new Ubuntu terminal instance (<strong>TERMINAL 2</strong>) by pressing the <em>New Tab</em> button: </p>
+<p><figure markdown>
+  <img alt="" src="../../../images/wsl/wt_new_tab.svg" />
+</figure></p>
+<p>(or, alternatively, press the <code>Ctrl+Shift+T</code> keyboard shortcut).</p>
+</li>
+<li>
+<p>In the new terminal instance enter the following command:<a name="teleop"></a></p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roslaunch<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key.launch
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Follow the instructions provided in the terminal to drive the robot around in its simulated environment.</p>
+</li>
+</ol>
+<h5 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h5>
+<p>You have so far launched two separate ROS applications using the <code>roslaunch</code> command. <code>roslaunch</code> is one way to launch ROS programs. As you should have observed from the above examples, we use this command in the following way:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roslaunch<span class="w"> </span><span class="o">{</span>package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{</span>launch<span class="w"> </span>file<span class="o">}</span>
+</code></pre></div>
+<p>The command takes two parameters as inputs: <code>{package name}</code> is the name of the <em>ROS package</em> that contains the functionality that we want to execute and <code>{launch file}</code> is a file within that package that tells ROS exactly what functionality within the package we want to launch.</p>
+<h2 id="ros-packages">ROS Packages<a class="headerlink" href="#ros-packages" title="Permanent link">&para;</a></h2>
+<p>ROS applications are organised into <em>packages</em>. Packages are basically folders containing scripts, configurations and launch files (ways to launch those scripts and configurations), all of which relate to some common robot functionality. ROS uses packages as a way to organise all the programs running on a robot. </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The package system is a fundamental concept in ROS and all ROS programs are organised in this way.</p>
+</div>
+<h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 2: Exploring a ROS Package<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
+<p><code>roscd</code> is a <strong>ROS command</strong> that allows us to navigate to the directory of any ROS package installed on our system, without us needing to know the path to the package beforehand.</p>
+<ol>
+<li>
+<p>Open up a new terminal instance (<strong>TERMINAL 3</strong>) and use the <code>roscd</code> command to navigate to the <code>turtlebot3_teleop</code> package directory on the Linux filesystem:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>roscd<span class="w"> </span>turtlebot3_teleop
+</code></pre></div></p>
+<hr />
+<p>The terminal prompt should have changed to illustrate where on the filesystem the <code>roscd</code> command has just taken you:</p>
+<p><figure markdown>
+  <img alt="" src="../../../images/ros-cli/tb3_teleop_dir.svg" />
+</figure></p>
+</li>
+<li>
+<p><code>pwd</code> is a <strong>Linux command</strong> which tells us the current filesystem location of our terminal.  Enter this command to confirm what the terminal prompt has told us.</p>
+<p>So, now we know <em>where</em> the <code>turtlebot3_teleop</code> package is located on our machine, and we can then use more Linux commands to explore this further:</p>
+</li>
+<li>
+<p><code>ls</code> is a <strong>Linux command</strong> which <em>lists</em> the contents of the current directory.  Use this to list the contents of the <code>turtlebot3_teleop</code> package directory.</p>
+</li>
+<li>
+<p><code>ls</code> on its own will simply list the items in the current directory, try this first.</p>
+</li>
+<li>
+<p>Then, use the <code>-F</code> option to find out a little more:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ls<span class="w"> </span>-F
+</code></pre></div></p>
+<hr />
+<p>You will notice that the output has now changed slightly: items followed by a <code>/</code> are folders (aka <em>"directories"</em>) and items without the <code>/</code> are files (files will often have a file extension too).</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>How many items were there in the <code>turtlebot3_teleop</code> package directory?</li>
+<li>How many of these were directories and how many were files? </li>
+</ol>
+</div>
+<p><em>Launch files</em> for a package are typically located in a <em>launch</em> folder within the package directory. <em>Did you notice a <code>launch</code> folder in the output of the <code>ls</code> command above?</em></p>
+</li>
+<li>
+<p><code>cd</code> is a <strong>Linux command</strong> that allows us to <strong>C</strong>hange the <strong>D</strong>irectory that the terminal is currently located in. Use this to navigate into the <code>turtlebot3_teleop</code> package <code>launch</code> folder and then use <code>ls</code> again to see what's in there. </p>
+<p>In this folder you should see the <code>turtlebot3_teleop_key.launch</code> file that we executed with the <code>roslaunch</code> command in <a href="#ex1">Exercise 1</a>.  We will now have a look at the contents of this file...</p>
+</li>
+<li>
+<p><code>cat</code> is a <strong>Linux command</strong> that we can use to display the contents of a file in the terminal.  Use this to display the contents of the <code>turtlebot3_teleop_key.launch</code> file.</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cat<span class="w"> </span>turtlebot3_teleop_key.launch
+</code></pre></div></p>
+<hr />
+</li>
+</ol>
+<h5 id="package_attributes">Summary<a class="headerlink" href="#package_attributes" title="Permanent link">&para;</a></h5>
+<p>From the output of <code>cat</code> in the step above you should have noticed that the contents of a launch file are contained within a <code>&lt;launch&gt;</code> tag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">&lt;launch&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>...<span class="w"> </span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">&lt;/launch&gt;</span>
+</code></pre></div>
+<p>Within that, we also have (amongst other things) a <code>&lt;node&gt;</code> tag which tells ROS exactly what scripts (<em>"executables"</em>) to launch <em>and</em> how to launch them:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlebot3_teleop&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;turtlebot3_teleop_key&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;turtlebot3_teleop_keyboard&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">&lt;/node&gt;</span>
+</code></pre></div>
+<p>The attributes here have the following meaning:</p>
+<ul>
+<li><code>pkg</code>: The name of the <em>ROS package</em> containing the functionality that we want to launch.</li>
+<li><code>type</code>: The full name of the script (i.e. <em>ROS Node</em>) that we want to execute within that package (including the file extension, if it has one).</li>
+<li><code>name</code>: A descriptive name that we want to give to the ROS node, which will be used to register it on the ROS Network.</li>
+<li><code>output</code>: The place where any output from the node will be printed (either <em>screen</em> where the output will be printed to our terminal window, or <em>log</em> where the output will be printed to a log file).</li>
+</ul>
+<h2 id="nodes">ROS Nodes<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h2>
+<p>ROS <em>Nodes</em> are executable programs that perform specific robot tasks and operations, such as remote (or "teleoperational") control, as we saw in the earlier example. </p>
+<p>The packages that we will create throughout this course will contain nodes, launch files and other things too, and we'll explore this a little more shortly.</p>
+<p>The <code>turtlebot3_teleop</code> package that we have just interrogated here however is fairly minimal and only contains launch files... the nodes are actually located elsewhere, in a directory called <code>/opt/ros/noetic/lib/turtlebot3_teleop/</code> (this is just the way things are organised for pre-installed packages).</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ol>
+<li>What is the name of the node that is launched by the <code>turtlebot3_teleop_key.launch</code> file?</li>
+<li>See if you can find this in <code>/opt/ros/noetic/lib/turtlebot3_teleop/</code>.</li>
+<li>Use the Linux/ROS command line tools that you have learnt about so far to interrogate the file...</li>
+</ol>
+</div>
+<p>A ROS Robot might have hundreds of individual nodes running simultaneously to carry out all its necessary operations and actions. Each node runs independently, but uses <em>ROS communication methods</em> to communicate and share data with the other nodes on the ROS Network.</p>
+<h2 id="the-ros-network">The ROS Network<a class="headerlink" href="#the-ros-network" title="Permanent link">&para;</a></h2>
+<p>You can use the <code>rosnode</code> <strong>ROS command</strong> to view all the nodes that are currently active on a ROS Network.</p>
+<h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 3: Visualising the ROS Network<a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
+<p>You should currently have three terminal windows active: the first in which you launched the Gazebo simulation (<strong>TERMINAL 1</strong>), the second with your <code>turtlebot3_teleop_key</code> node active (<strong>TERMINAL 2</strong>), and the third where you explored the contents of the <code>turtlebot3_teleop</code> package directory (<strong>TERMINAL 3</strong>).  <strong>TERMINAL 3</strong> should now be idle.</p>
+<ol>
+<li>In <strong>TERMINAL 3</strong> enter <code>cd ~</code> to go back to your home directory (<a href="../../../wsl-ros/linux-term">remember that <code>~</code> is an alias for your home directory</a>).</li>
+<li>
+<p>Use the following command to have a look at which nodes are currently active on the network:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>rosnode<span class="w"> </span>list
+</code></pre></div></p>
+<hr />
+<p>Only a handful of nodes should be listed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>/gazebo
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>/gazebo_gui
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>/rosout
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>/turtlebot3_teleop_keyboard
+</code></pre></div>
+</li>
+<li>
+<p>We can visualise the connections between the active nodes by using the <code>rqt_graph</code> node within the <code>rqt_graph</code> package. We can use <code>rosrun</code> to launch this node directly (you might get some error messages, but don't worry about them):</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>rosrun<span class="w"> </span>rqt_graph<span class="w"> </span>rqt_graph
+</code></pre></div></p>
+<hr />
+<p>A new window should then open, displaying something similar to the following (hover over the diagram to enable colour highlighting):</p>
+<p><figure markdown>
+  <img alt="A visualisation of all the ROS nodes active on the system and the flow of information between them" src="../../../images/rqt/graph.png" />
+</figure></p>
+<p>This tool shows us that the <code>/turtlebot3_teleop_keyboard</code> and <code>/gazebo</code> nodes are communicating with one another. The direction of the arrow tells us that the <code>/turtlebot3_teleop_keyboard</code> node is a <em>Publisher</em> and the <code>/gazebo</code> node is a <em>Subscriber</em>. The two nodes communicate via a <strong>ROS Topic</strong>, in this case the <code>/cmd_vel</code> topic, and on this topic the <code>/turtlebot3_teleop_keyboard</code> node publishes <strong>messages</strong>.</p>
+</li>
+</ol>
+<h2 id="publishers-and-subscribers-a-ros-communication-method">Publishers and Subscribers: A <em>ROS Communication Method</em><a class="headerlink" href="#publishers-and-subscribers-a-ros-communication-method" title="Permanent link">&para;</a></h2>
+<p>ROS Topics are key to making things happen on a robot. Nodes can publish (<em>write</em>) and/or subscribe to (<em>read</em>) ROS Topics in order to share data around the ROS network. Data is published to topics using <em>ROS Messages</em>. We were actually publishing messages to a topic when we made the robot move using the Teleop node in the previous exercises.</p>
+<p>Let's have a look at this in a bit more detail...</p>
+<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 4: Exploring ROS Topics and Messages<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
+<p>We can find out more about the <code>/cmd_vel</code> topic by using the <code>rostopic</code> <em>ROS command</em>.</p>
+<ol>
+<li>
+<p>In a new terminal instance (<strong>TERMINAL 4</strong>) type the following:</p>
+<hr />
+<p><strong>TERMINAL 4:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/cmd_vel
+</code></pre></div></p>
+<hr />
+<p>This should provide an output similar to the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Type:<span class="w"> </span>geometry_msgs/Twist
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Publishers:
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span>*<span class="w"> </span>/turtlebot3_teleop_keyboard<span class="w"> </span><span class="o">(</span>http://localhost:#####/<span class="o">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>Subscribers:
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span>*<span class="w"> </span>/gazebo<span class="w"> </span><span class="o">(</span>http://localhost:#####/<span class="o">)</span>
+</code></pre></div>
+<p>This confirms what we discovered earlier about the publisher(s) and subscriber(s) to the <code>/cmd_vel</code> topic.  In addition, this also tells us the topic <em>type</em>, or the <em>type of message</em> that is being published on this topic.</p>
+<p>This tells us a few things:</p>
+<ol>
+<li>The <code>/turtlebot3_teleop_keyboard</code> node is currently publishing (i.e. writing data) to the <code>/cmd_vel</code> topic, confirming what we saw from the <code>rqt_graph</code> node before.</li>
+<li>The <code>/gazebo</code> node is subscribing to the topic. This node is the Gazebo application that's running the simulation of the robot. The node therefore monitors (i.e. <em>subscribes</em> to) the <code>/cmd_vel</code> topic and makes the robot move in the simulator whenever a velocity command is published.</li>
+<li>
+<p>The <em>type</em> of message used by the <code>/cmd_vel</code> topic is called: <code>geometry_msgs/Twist</code>. </p>
+<p>The message type has two parts: <code>geometry_msgs</code> and <code>Twist</code>. <code>geometry_msgs</code> is the name of the ROS package that this message belongs to and <code>Twist</code> is the actual message <em>type</em>. </p>
+<p>We have just learnt then, that if we want to make the robot move we need to publish <code>Twist</code> messages to the <code>/cmd_vel</code> topic.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>We can use the <code>rosmsg</code> <strong>ROS command</strong> to provide further information about this message, or any other message that we may be interested in:</p>
+<hr />
+<p><strong>TERMINAL 4:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>geometry_msgs/Twist
+</code></pre></div></p>
+<hr />
+<p>From this, we should obtain the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>geometry_msgs/Vector3 linear
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    float64 x
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    float64 y
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    float64 z
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>geometry_msgs/Vector3 angular
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>    float64 x
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    float64 y
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    float64 z
+</code></pre></div>
+<p>We'll learn more about what this means next week.</p>
+</li>
+<li>
+<p>To finish, shut down any active terminal processes by entering <code>Ctrl+C</code> in any that still have processes running (Terminals <strong>1</strong>, <strong>2</strong> and <strong>3</strong>). The associated Gazebo and rqt_graph windows should close as a result of this too.</p>
+</li>
+</ol>
+<h4 id="ex5"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 5: Creating your own ROS Package<a class="headerlink" href="#ex5" title="Permanent link">&para;</a></h4>
+<p>In a minute or two you will create some simple publisher and subscriber nodes in Python and send messages between them. As we learnt earlier though, ROS applications must be created within packages, and so we need to create a package first in order to start creating our own ROS nodes. </p>
+<p>ROS provides a tool to create a new ROS package and ensure that all the essential elements are present: <code>catkin_create_pkg</code>.</p>
+<p>It's important to work in a specific filesystem location when we create and work on our own ROS packages, so that ROS can access and build everything appropriately. These spaces are called <em>"Catkin Workspaces"</em> and one has already been created in the WSL-ROS environment, called <code>catkin_ws</code><sup id="fnref:why_catkin"><a class="footnote-ref" href="#fn:why_catkin">1</a></sup>:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>/home/student/catkin_ws/
+</code></pre></div>
+Or:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>~/catkin_ws/
+</code></pre></div></p>
+<ol>
+<li>
+<p>Navigate to the <code>catkin_ws</code> folder by using the Linux <code>cd</code> command. In <strong>TERMINAL 1</strong> enter the following:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Inside the catkin workspace there is a directory called <code>src</code> (use the <code>ls</code> command to confirm this). All new packages need to be located in the <code>src</code> folder, so we need to be here when we use the <code>catkin_create_pkg</code> tool to create a new package. So, use the <code>cd</code> command again to navigate to the <code>catkin_ws/src</code> folder:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>src
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Now, use the <code>catkin_create_pkg</code> script to create a new package called <code>week1_pubsub</code>, and define <code>std_msgs</code> and <code>rospy</code> as dependencies:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>catkin_create_pkg<span class="w"> </span>week1_pubsub<span class="w"> </span>std_msgs<span class="w"> </span>rospy
+</code></pre></div></p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>What did the <code>catkin_create_pkg</code> tool just do? (<strong>Hint</strong>: there were <em>four</em> things, and it will have told you about them!)</p>
+</div>
+</li>
+<li>
+<p>Navigate into this new package directory and use <code>ls</code> to list the content that has been created by the <code>catkin_create_pkg</code> tool.</p>
+<p>Catkin packages are typically organised in the following way, and have a few essential features that <strong>must</strong> be present in order for the package to be valid:</p>
+<div class="highlight"><pre><span></span><code>package_folder/    -- All packages must be self-contained within their own root folder [essential]
+|-launch/          -- A folder for launch files (optional)
+|-src/             -- A folder for source files (python scripts etc)
+|-CMakeLists.txt   -- Rules for compiling the package [essential]
+`-package.xml      -- Information about the package [essential]
+</code></pre></div>
+<p>You will have noticed that the <code>catkin_create_pkg</code> tool made sure that the essential features of a Catkin Package were created when we asked it to build the <code>week1_pubsub</code> package above.</p>
+</li>
+<li>
+<p>Before we do anything else, it's good practice to now run <code>CMake</code> on the package (using <code>catkin build</code>) to register it on our ROS system and make sure there are no errors with its definition so far:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>week1_pubsub
+</code></pre></div>
+Finally, "re-source" your environment<sup id="fnref:source-bashrc"><a class="footnote-ref" href="#fn:source-bashrc">2</a></sup> using the following command:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div></p>
+<hr />
+<p>... and you're good to go.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You will need run <code class="highlight"><span class="nb">source</span><span class="w"> </span>~/.bashrc</code> in any other terminals that you have open too, in order for the changes to propagate through to these as well!</p>
+</div>
+</li>
+</ol>
+<h4 id="ex6"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 6: Creating a publisher node<a class="headerlink" href="#ex6" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Within your <code>week1_pubsub</code> package directory, navigate to the <code>src</code> folder using the <code>cd</code> command.</li>
+<li>
+<p><code>touch</code> is a <strong>Linux command</strong> that we can use to create an empty file. Use this to create an empty file called <code>publisher.py</code>, which we will add content to shortly:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>touch<span class="w"> </span>publisher.py
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Use <code>ls</code> to verify that the file has been created, but use the <code>-l</code> option with this, so that the command provides its output in <em>"a long listing format"</em>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ls<span class="w"> </span>-l
+</code></pre></div></p>
+<hr />
+<p>This should output something similar to the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>total 0
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>-rw-r--r-- 1 student student 0 MMM DD HH:MM publisher.py
+</code></pre></div>
+<p>This confirms that the file exists, and the <code>0</code> in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.</p>
+</li>
+<li>
+<p>We therefore now need to open the file and add content to it. As discussed in <a href="../../../wsl-ros/">the WSL-ROS Section</a>, we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, <a href="../../../wsl-ros/vscode">so follow the instructions here to get this up and running now</a>!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><a href="../../../wsl-ros/vscode/#verify">Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment</a>!!</p>
+</div>
+</li>
+<li>
+<p>Using the VS Code File Explorer, navigate to your <code>week1_pubsub</code> package directory (<code>~/catkin_ws/src/week1_pubsub/</code>), locate the <code>publisher.py</code> file that you have just created in the <code>/week1_pubsub/src/</code> folder and click on the file to open it. </p>
+</li>
+<li>
+<p>Once opened, copy <a href="publisher">the code provided here</a> into the empty file and save it. <a name="ex6_ret"></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It's important that you understand how this code works, so make sure that you <strong>read the annotations</strong>!</p>
+</div>
+</li>
+<li>
+<p>We can now run this node using the <code>rosrun</code> <strong>ROS command</strong>. However, because we closed everything down earlier on, the <em>ROS Master</em> is no longer active. First then, we need to re-launch it manually using <code>roscore</code>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>roscore
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Then, in <strong>TERMINAL 2</strong>, use <code>rosrun</code> to execute the <code>publisher.py</code> script that you have just created by providing the relevant information to the <code>rosrun</code> command as follows: <code>rosrun {package name} {script name}</code>, i.e.:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>rosrun<span class="w"> </span>week1_pubsub<span class="w"> </span>publisher.py
+</code></pre></div></p>
+<hr />
+<p>... Hmmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>[rosrun] Couldn&#39;t find executable named publisher.py below /home/student/catkin_ws/src/week1_pubsub
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>[rosrun] Found the following, but they&#39;re either not files,
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>[rosrun] or not executable:
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>[rosrun]   /home/student/catkin_ws/src/week1_pubsub/src/publisher.py
+</code></pre></div>
+<p>The clue there is the word <em>"executable"</em>. When we create a file, using <code>touch</code> it is given certain <em>permissions</em>. Run <code>ls -l</code> again (making sure that your terminal is in the right location: <code>~/catkin_ws/src/week1_pubsub/src/</code>).</p>
+<p>The first bit tells us about the permissions that are currently set: <code>-rw-r--r--</code>. This tells us <em>who</em> has permission to do <em>what</em> with this file and (currently) the first bit: <code>-rw-</code>, tells us that we (as the user <code>student</code>) have permission to <strong>R</strong>ead or <strong>W</strong>rite to it. There is a <em>third</em> option we can set too though, which is the <em>execute</em> permission, and we can set this using the <code>chmod</code> <strong>Linux command</strong>...</p>
+</li>
+<li>
+<p>Run the <code>chmod</code> command as follows:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>publisher.py
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Now, run <code>ls -l</code> again to see what has changed:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ls<span class="w"> </span>-l
+</code></pre></div></p>
+<hr />
+<p>We have now granted permission for the file to be e<strong>X</strong>ecuted too:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>-rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
+</code></pre></div>
+</li>
+<li>
+<p>OK, now use <code>rosrun</code> again to (<em>hopefully!</em>) run the <code>publisher.py</code> node (remember: <code>rosrun {package name} {script name}</code>).</p>
+<p>If you see a message in the terminal similar to the following then the node has been launched successfully:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>[INFO] [#####]: The &#39;simple_publisher&#39; node is active...
+</code></pre></div>
+<p>Phew!</p>
+</li>
+<li>
+<p>We can further verify that our publisher node is running using a number of different tools. Try running the following commands in <strong>TERMINAL 3</strong>:</p>
+<ol>
+<li><code>rosnode list</code>: This will provide a list of all the nodes that are currently active on the system. Verify that the name of our publisher node is visible in this list.</li>
+<li><code>rostopic list</code>: This will provide a list of the topics that are currently being used by nodes on the system. Verify that the name of the topic that our publisher is publishing messages to is present within this list.</li>
+</ol>
+</li>
+</ol>
+<h3 id="rostopic">Using the <code>rostopic</code> command<a class="headerlink" href="#rostopic" title="Permanent link">&para;</a></h3>
+<p>So far we have used the <code>rostopic</code> ROS command with two additional arguments:</p>
+<ul>
+<li><code>list</code>: to provide us with a <em>list</em> of all the topics that are active on our ROS system, and</li>
+<li><code>info</code>: to provide us with <em>information</em> on a particular topic of interest.</li>
+</ul>
+<p>We can use the <em>autocomplete functionality</em> of the Linux terminal to provide us with a list of <em>all</em> the available options that we can use with the <code>rostopic</code> command.  To do this you can type <code>rostopic</code> followed by a <code>Space</code> and then press the <code>Tab</code> key twice:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>rostopic<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
+</code></pre></div>
+<p>You should then be presented with a list of the available arguments for the <code>rostopic</code> command:</p>
+<!-- TODO: a gif instead of static image! -->
+
+<figure>
+<p><img alt="" src="../../../images/ros-cli/rostopic_autocomplete.png" /></p>
+</figure>
+<ul>
+<li>
+<p><code>rostopic hz {topic name}</code> provides information on the frequency (in Hz) at which messages are being published to a topic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>rostopic<span class="w"> </span>hz<span class="w"> </span>/chatter
+</code></pre></div>
+<p>This should tell us that our publisher node is publishing messages to the <code>/chatter</code> topic at (or close to) 10 Hz, which is exactly what we ask for in the <code>publisher.py</code> file (in the <code>__init__</code> part of our <code>Publisher</code> class). Press <code>Ctrl+C</code> to stop this command.</p>
+</li>
+<li>
+<p><code>rostopic echo {topic name}</code> shows the messages being published to a topic:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/chatter
+</code></pre></div>
+<p>This will provide a live stream of the messages that our <code>publisher.py</code> node is publishing to the <code>/chatter</code> topic. Press <code>Ctrl+C</code> to stop this.</p>
+</li>
+<li>
+<p>We can see some additional options for this command by viewing the help documentation:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-h
+</code></pre></div>
+<p>From here, for instance, we can learn that if we just wanted the echo command to display a set number of messages from the <code>/chatter</code> topic we could use the <code>-n</code> option. To display the most recent two messages only, for example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/chatter<span class="w"> </span>-n2
+</code></pre></div>
+</li>
+</ul>
+<h4 id="ex7"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 7: Creating a subscriber node<a class="headerlink" href="#ex7" title="Permanent link">&para;</a></h4>
+<p>You will now create another node to <em>subscribe</em> to the topic that our publisher node is broadcasting messages to, to illustrate how information can be passed from one node to another, via topic messages.</p>
+<ol>
+<li>In <strong>TERMINAL 3</strong> use the filesystem commands that were introduced earlier (<code>cd</code>, <code>ls</code> and <code>roscd</code>) to navigate to the <code>src</code> folder of your <code>week1_pubsub</code> package.</li>
+<li>Use the same procedure as before to create a new empty Python file called <code>subscriber.py</code> and remember to make it executable! <a name="ex7_ret"></a></li>
+<li>
+<p>Then, open the newly created <code>subscriber.py</code> file in VS Code, paste in <a href="subscriber">the code here</a> and save it. Once again, it's important that you understand how this code works, so <strong>make sure you read the code annotations</strong>! </p>
+</li>
+<li>
+<p>Use <code>rosrun</code> to execute your newly created <code>subscriber.py</code> node (remember: <code>rosrun {package name} {script name}</code>). If your publisher and subscriber nodes are working correctly you should see an output like this:</p>
+<p><figure markdown>
+  <img alt="" src="subscriber_output.gif" />
+</figure></p>
+</li>
+<li>
+<p>As before, we can find out what nodes are running on our system by using the <code>rosnode list</code> command. Open a new terminal window (<strong>TERMINAL 4</strong>), run this and see if you can identify the nodes that you have just launched.</p>
+</li>
+<li>
+<p>Finally, close down your publisher and subscriber nodes and the ROS Master by entering <code>Ctrl+C</code> in Terminals 1, 2 and 3.</p>
+</li>
+</ol>
+<h2 id="launch-files">Launch Files<a class="headerlink" href="#launch-files" title="Permanent link">&para;</a></h2>
+<p>At the beginning of this session we launched our Gazebo Simulation and the <code>turtlebot3_teleop_keyboard</code> node using <em>launch files</em> and the <code>roslaunch</code> command. This provides a means to launch multiple ROS nodes <em>simultaneously</em>, and we will demonstrate this by building a launch file for the publisher and subscriber nodes that we created in the previous exercises.</p>
+<h4 id="ex8"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 8: Creating a launch file<a class="headerlink" href="#ex8" title="Permanent link">&para;</a></h4>
+<ol>
+<li>In <strong>TERMINAL 1</strong>, use <code>roscd</code> to navigate to the <em>root</em> of your <code>week1_pubsub</code> package directory.</li>
+<li>
+<p>Use the Linux <code>mkdir</code> command to <strong>m</strong>a<strong>k</strong>e a new <strong>dir</strong>ectory in the package root folder called <code>launch</code>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>mkdir<span class="w"> </span>launch
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Use the <code>cd</code> command to enter the <code>launch</code> folder that you just created, then use the <code>touch</code> command (as before) to create a new empty file called <code>pubsub.launch</code>.</p>
+</li>
+<li>
+<p>Open this launch file in VS Code and enter the following text:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nt">&lt;launch&gt;</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">{BLANK}</span><span class="w"> </span><span class="na">type=</span><span class="s">{BLANK}</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pub_node&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">  </span><span class="nt">&lt;/node&gt;</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="nt">&lt;/launch&gt;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Fill in the Blanks!</p>
+<p>Referring to what we learned about <a href="#package_attributes">the format of launch files</a> earlier, replace each <code>{BLANK}</code> above with the correct text to launch the publisher node that you created in <a href="#ex6">Exercise 6</a>.</p>
+</div>
+</li>
+<li>
+<p>Use <code>roslaunch</code> to launch this file and test it out as it is (remember: <code>roslaunch {package name} {launch file}</code>). If everything looks OK then carry on to the next step.</p>
+</li>
+<li>The code that we've given you above will launch the <code>publisher.py</code> node, but not the <code>subscriber.py</code> node.  Add another <code>&lt;node&gt;</code> tag to your <code>pubsub.launch</code> file to launch the subscriber node as well.</li>
+<li>The publisher and subscriber nodes and the <em>ROS Master</em> can now all be launched with the <code>roslaunch</code> command and the <code>pubsub.launch</code> file that you have now created.  </li>
+<li>Launch this in <strong>TERMINAL 1</strong> and then use <code>rosnode list</code> in <strong>TERMINAL 2</strong> to check that it all works correctly.</li>
+</ol>
+<h5 id="roslaunch">Summary<a class="headerlink" href="#roslaunch" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>roslaunch</code> can be used to launch multiple nodes on a robot from <em>one single command</em>.</li>
+<li>It will <em>also</em> automatically launch the ROS Master (equivalent to running the <code>roscore</code> command manually) if it isn't already running (<em>did you notice that we didn't have to do this manually in Exercise 8, but we did when we launched our nodes individually, using <code>rosrun</code>, in Exercises 6 &amp; 7?</em>)</li>
+<li>In the <code>rospy.init(...)</code> functions of our <code>publisher.py</code> and <code>subscriber.py</code> Python scripts, we defined a node name and set <code>anonymous=True</code>. As a result, when we launched our nodes manually using <code>rosrun</code>, the names we defined were honoured, but were appended with a unique combination of numbers.</li>
+<li>When we launched our nodes using <code>roslaunch</code> however, the node names were set according to what we had defined in the <code>name</code> field of the <code>&lt;node&gt;</code> tag within the launch file, and anything specified within the <code>rospy.init(...)</code> functions of our Python scripts were overwritten as a result.</li>
+</ul>
+<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<p>In this session we've learnt about some key concepts in ROS, such as Packages; Launch files; Nodes and the <em>Publisher-Subscriber Communication Method</em> using Topics and Messages.</p>
+<p>We've learnt how to use some key ROS commands:  </p>
+<ul>
+<li><code>roslaunch</code>: to launch multiple ROS Nodes via launch files.</li>
+<li><code>roscd</code>: to navigate to installed ROS packages using a package name alone.</li>
+<li><code>rosnode</code>: to display information about active ROS Nodes.</li>
+<li><code>rosrun</code>: to run executables within a ROS package.</li>
+<li><code>rostopic</code>: to display information about <em>active</em> ROS topics.</li>
+<li><code>rosmsg</code>: to display information about <em>all</em> ROS messages that are available to use in a ROS application.</li>
+<li><code>roscore</code>: to launch the <em>ROS Master</em>: The baseline nodes and programs that are required for ROS to function.</li>
+</ul>
+<p>In addition to this we've also learnt how to use <code>catkin_create_pkg</code>, which is a helper script for creating ROS package templates.</p>
+<p>We have also learnt how to work in the Linux Terminal and navigate a Linux filesystem using key commands such as:</p>
+<ul>
+<li><code>pwd</code>: prints the path of the current working directory to show you which directory you're currently located in.</li>
+<li><code>ls</code>: lists the files in the current directory.</li>
+<li><code>cd</code>: change directory to move around the file system.</li>
+<li><code>mkdir</code>: make a new directory (<code>mkdir {new_folder}</code>).</li>
+<li><code>cat</code>: show the contents of a file.</li>
+<li><code>chmod</code>: modify file permissions (i.e. to add execute permissions to a file for all users: <code>chmod +x {file}</code>).</li>
+<li><code>touch</code>: create a file without any content.</li>
+</ul>
+<p>Finally, we have learnt how to create basic ROS nodes in Python to both <em>publish</em> and <em>subscribe</em> to ROS topics using standard ROS messages.</p>
+<h3 id="backup">Saving your work<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<p>Remember, the work you have done in the WSL-ROS environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>wsl_ros<span class="w"> </span>backup
+</code></pre></div>
+<p>This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.  </p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:why_catkin">
+<p>"The name catkin comes from the tail-shaped flower cluster found on willow trees -- a reference to Willow Garage where catkin was created." (According to <a href="http://wiki.ros.org/catkin/conceptual_overview#Overview">ROS.org</a>)&#160;<a class="footnote-backref" href="#fnref:why_catkin" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:source-bashrc">
+<p>What does <code>source ~/.bashrc</code> do? <a href="https://devconnected.com/source-command-on-linux-explained/#Source_to_update_your_current_shell_environment_bashrc">See here for an explanation</a>.&#160;<a class="footnote-backref" href="#fnref:source-bashrc" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-08T13:46:57+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-08</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-08T13:46:57+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-08</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: COM2009 Lab Assignment #1" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Previous
+                </span>
+                COM2009 Lab Assignment #1
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../week2/" class="md-footer__link md-footer__link--next" aria-label="Next: Week 2: Odometry &amp; Basic Navigation" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                Week 2: Odometry & Basic Navigation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+    Content by 
+      <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">
+          Dr Tom Howard
+      </a><br />
+    Copyright &copy; 2023 The University of Sheffield 
+    (License: 
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/"
+      target="_blank" rel="noopener">
+        CC BY-NC
+      </a>)<br />
+    This site was made with
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        Material for MkDocs
+      </a>
+  </div> 
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6df46069.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2436 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Practical ROS Courses in The Diamond at The University of Sheffield.">
+      
+      
+      
+        <link rel="canonical" href="https://tom-howard.github.io/ros/amr31001/lab2/">
+      
+      
+        <link rel="prev" href="../lab1/">
+      
+      
+        <link rel="next" href="../../waffles/">
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
+    
+    
+      
+        <title>Lab 2: Feedback Control - Robotics in the Diamond: ROS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+      
+  <img src="../../assets/tuos.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Robotics in the Diamond: ROS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab 2: Feedback Control
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tom-howard/ros" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tom-howard/ros
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        About
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../wsl-ros/" class="md-tabs__link">
+        WSL-ROS
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../com2009/" class="md-tabs__link">
+        COM2009
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        AMR31001
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://lincaolab.github.io/acs6121/" class="md-tabs__link">
+      ACS6121
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../waffles/" class="md-tabs__link">
+        The Waffles
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="https://github.com/tom-howard/COM2009" class="md-tabs__link">
+      The Course Repo (GitHub)
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+      
+  <img src="../../assets/tuos.png" alt="logo">
+
+    </a>
+    Robotics in the Diamond: ROS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tom-howard/ros" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tom-howard/ros
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../about/">About</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          About
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/robots/" class="md-nav__link">
+        The Robots
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/license/" class="md-nav__link">
+        License
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/changelog/" class="md-nav__link">
+        Version History
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../wsl-ros/">WSL-ROS</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          WSL-ROS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/first-run/" class="md-nav__link">
+        Launching for the First Time
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/configure-vscode/" class="md-nav__link">
+        Configuring Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/linux-term/" class="md-nav__link">
+        A Quick Introduction to the Linux Terminal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/wsl-ros-return/" class="md-nav__link">
+        Re-Launching WSL-ROS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/backup-restore/" class="md-nav__link">
+        Backing-Up (and Restoring) your Data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/rdp/" class="md-nav__link">
+        Remote Access
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/wt-settings/" class="md-nav__link">
+        Windows Terminal Settings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/vscode/" class="md-nav__link">
+        Launching VS Code (in WSL-ROS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wsl-ros/installing/" class="md-nav__link">
+        Installing ROS on Your Own PC
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../com2009/">COM2009</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          COM2009
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../com2009/la1/">Lab Assignment #1</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Assignment #1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/la1/week1/" class="md-nav__link">
+        Week 1: ROS & Linux Basics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/la1/week2/" class="md-nav__link">
+        Week 2: Odometry & Basic Navigation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/la1/week3/" class="md-nav__link">
+        Week 3: Advanced Navigation & SLAM
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/la1/week4/" class="md-nav__link">
+        Week 4: ROS Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/la1/week5/" class="md-nav__link">
+        Week 5: ROS Actions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/la1/week6/" class="md-nav__link">
+        Week 6: Cameras, Machine Vision & OpenCV
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../com2009/la2/">Lab Assignment #2</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Assignment #2
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../com2009/extras/">Launch Files (Advanced)</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Launch Files (Advanced)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/extras/launching-launch-files/" class="md-nav__link">
+        Launching Other Launch Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/extras/roslaunch-clas/" class="md-nav__link">
+        ROSlaunch Command-line Arguments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/extras/python-clis/" class="md-nav__link">
+        Building Command-line Interfaces (CLIs) for Python Nodes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/extras/cla-to-node/" class="md-nav__link">
+        Passing Command-line Arguments to Python Nodes via ROSlaunch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/extras/roslaunch-api/" class="md-nav__link">
+        Using the ROSlaunch Python API
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">AMR31001</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          AMR31001
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        Lab 1: Mobile Robotics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab 2: Feedback Control
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lab 2: Feedback Control
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims" class="md-nav__link">
+    Aims
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intended-learning-outcomes" class="md-nav__link">
+    Intended Learning Outcomes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    Quick Links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lab" class="md-nav__link">
+    The Lab
+  </a>
+  
+    <nav class="md-nav" aria-label="The Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-the-amr31001-ros-package" class="md-nav__link">
+    Downloading the AMR31001 ROS Package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-ros" class="md-nav__link">
+    Launching ROS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#odometry" class="md-nav__link">
+    Odometry
+  </a>
+  
+    <nav class="md-nav" aria-label="Odometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex1" class="md-nav__link">
+     Exercise 1: Exploring Odometry Data
+  </a>
+  
+    <nav class="md-nav" aria-label=" Exercise 1: Exploring Odometry Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex2" class="md-nav__link">
+     Exercise 2: Odometry-based Navigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-lidar-sensor" class="md-nav__link">
+    The LiDAR Sensor
+  </a>
+  
+    <nav class="md-nav" aria-label="The LiDAR Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex3" class="md-nav__link">
+     Exercise 3: Wall following
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slam-and-autonomous-navigation" class="md-nav__link">
+    SLAM and Autonomous Navigation
+  </a>
+  
+    <nav class="md-nav" aria-label="SLAM and Autonomous Navigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex4" class="md-nav__link">
+     Exercise 4: SLAM and Navigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    Wrapping Up
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://lincaolab.github.io/acs6121/" class="md-nav__link">
+        ACS6121
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../waffles/">The Waffles</a>
+          
+            <label for="__nav_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          The Waffles
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../waffles/intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../waffles/launching-ros/" class="md-nav__link">
+        Launching ROS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../waffles/exercises/" class="md-nav__link">
+        Getting Started (Initial Exercises)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../waffles/fact-finding/" class="md-nav__link">
+        Fact-Finding Missions!
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../waffles/shutdown/" class="md-nav__link">
+        Safe Shutdown
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/tom-howard/COM2009" class="md-nav__link">
+        The Course Repo (GitHub)
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims" class="md-nav__link">
+    Aims
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intended-learning-outcomes" class="md-nav__link">
+    Intended Learning Outcomes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    Quick Links
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lab" class="md-nav__link">
+    The Lab
+  </a>
+  
+    <nav class="md-nav" aria-label="The Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloading-the-amr31001-ros-package" class="md-nav__link">
+    Downloading the AMR31001 ROS Package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#launching-ros" class="md-nav__link">
+    Launching ROS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#odometry" class="md-nav__link">
+    Odometry
+  </a>
+  
+    <nav class="md-nav" aria-label="Odometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex1" class="md-nav__link">
+     Exercise 1: Exploring Odometry Data
+  </a>
+  
+    <nav class="md-nav" aria-label=" Exercise 1: Exploring Odometry Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex2" class="md-nav__link">
+     Exercise 2: Odometry-based Navigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-lidar-sensor" class="md-nav__link">
+    The LiDAR Sensor
+  </a>
+  
+    <nav class="md-nav" aria-label="The LiDAR Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex3" class="md-nav__link">
+     Exercise 3: Wall following
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slam-and-autonomous-navigation" class="md-nav__link">
+    SLAM and Autonomous Navigation
+  </a>
+  
+    <nav class="md-nav" aria-label="SLAM and Autonomous Navigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex4" class="md-nav__link">
+     Exercise 4: SLAM and Navigation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    Wrapping Up
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/tom-howard/ros/edit/main/docs/amr31001/lab2.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/tom-howard/ros/raw/main/docs/amr31001/lab2.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+
+  <h1>Lab 2: Feedback Control</h1>
+
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>In Lab 1 we explored how ROS works and how to bring a robot to life. Let's quickly recap the key points:</p>
+<p><strong>ROS Nodes</strong></p>
+<ul>
+<li>Are executable programs (Python, C++ scripts) that perform specific robot tasks and operations.</li>
+<li>Typically, there'll be many ROS Nodes running on a robot simultaneously in order to make it work.</li>
+<li>We can create our own Nodes on top of what's already running, to add extra functionality.</li>
+<li>You may recall that we created our own ROS Node in Python, to make our TurtleBot3 Waffle follow a square motion path.</li>
+</ul>
+<figure>
+<p><img alt="" src="ros_network.png" width="500px" /></p>
+</figure>
+<p><strong>Topics and Messages</strong></p>
+<ul>
+<li>All the ROS Nodes running on a network can communicate and pass data between one another using a Publisher/Subscriber-based Communication Principle.</li>
+<li>ROS Topics are key to this - they are essentially the communication channels (or the plumbing) on which all data is passed around between the nodes.</li>
+<li>Different topics communicate different types of information.</li>
+<li>Any Node can publish (<em>write</em>) and/or subscribe to (<em>read</em>) any ROS Topic in order to pass information around or make things happen.</li>
+<li>One of the key ROS Topics that we worked with last time was <code>/cmd_vel</code>, which is a topic that communicates velocity commands to make a robot move.</li>
+<li>We published <code>Twist</code> messages to this (both via the command line, and in Python) to make our TurtleBot3 Waffle move.</li>
+</ul>
+<figure>
+<p><img alt="" src="ros_comms.png" width="500px" /></p>
+</figure>
+<p><strong>Open-Loop Control</strong></p>
+<p>We used a time-based method to control the motion of our robot in order to get it to generate a square motion path. This type of control is <em>open-loop</em>: we hoped that the robot had moved (or turned) by the amount that was required, but had no <em>feedback</em> to tell us whether this had actually been achieved.</p>
+<p>In this lab we'll look at how this can be improved, making use of some of our robot's on-board sensors to tell us where the robot is or what it can see in its environment, in order to complete a task more reliably and be able to better adapt to changes and uncertainty in the environment.</p>
+<h3 id="aims">Aims<a class="headerlink" href="#aims" title="Permanent link">&para;</a></h3>
+<p>In this lab, we'll build some ROS Nodes (in Python) that incorporate data from some of our robot's sensors. This sensor data is published to specific topics on the ROS Network, and we can build ROS Nodes to <em>subscribe</em> to these. We'll see how the data from these sensors can be used as <em>feedback</em> to inform decision-making, thus allowing us to implement some different forms of <em>closed-loop control</em>, making our robot more autonomous.</p>
+<h3 id="intended-learning-outcomes">Intended Learning Outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permanent link">&para;</a></h3>
+<p>By the end of this session you will be able to:</p>
+<ol>
+<li>Interpret the data from a ROS Robot's Odometry System and understand what this tells you about a Robot's position and orientation within its environment.</li>
+<li>Use feedback from a robot's odometry system to <em>control</em> its position in an environment.</li>
+<li>Use data from a Robot's LiDAR sensor to make a robot follow a wall.</li>
+<li>Generate a map of an environment, using SLAM.</li>
+<li>Make a robot navigate an environment <em>autonomously</em>, using ROS navigation tools.</li>
+</ol>
+<h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#ex1">Exercise 1: Exploring Odometry Data</a></li>
+<li><a href="#ex2">Exercise 2: Odometry-based Navigation</a></li>
+<li><a href="#ex3">Exercise 3: Wall following</a></li>
+<li><a href="#ex4">Exercise 4: SLAM and Autonomous Navigation</a></li>
+</ul>
+<h2 id="the-lab">The Lab<a class="headerlink" href="#the-lab" title="Permanent link">&para;</a></h2>
+<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
+<h4 id="downloading-the-amr31001-ros-package">Downloading the AMR31001 ROS Package<a class="headerlink" href="#downloading-the-amr31001-ros-package" title="Permanent link">&para;</a></h4>
+<p>To start with, you'll need to download <a href="https://github.com/tom-howard/amr31001">a ROS package</a> to the Robot Laptop that you are working on today. This package contains all the resources that you'll need for the lab exercises.</p>
+<ol>
+<li>
+<p>Open up a terminal instance on the laptop, either by using the <code>Ctrl+Alt+T</code> keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:</p>
+<p><figure markdown>
+  <img alt="" src="../../images/laptops/bash_terminal_icon.svg" width="60px" />
+</figure></p>
+</li>
+<li>
+<p>In the terminal, run the following commands in order:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To <strong>paste</strong> the following commands into the terminal use <code>Ctrl+Shift+V</code></p>
+</div>
+<hr />
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>-O<span class="w"> </span>build.sh<span class="w"> </span>https://raw.githubusercontent.com/tom-howard/amr31001/main/scripts/build.sh
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>build.sh
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./build.sh
+</code></pre></div></p>
+<hr />
+</li>
+</ol>
+<h4 id="launching-ros">Launching ROS<a class="headerlink" href="#launching-ros" title="Permanent link">&para;</a></h4>
+<p>Much the same as last time, you'll now need to get ROS up and running on your robot. </p>
+<ol>
+<li>
+<p>First, identify the number of the robot that you have been provided with.</p>
+<p>Robots are named: <code>dia-waffleNUM</code>, where <code>NUM</code> is a unique <em>'Robot Number'</em> (a number between 1 and 50).</p>
+</li>
+<li>
+<p>In the terminal, type the following command to <em>pair</em> the laptop and robot:</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>waffle<span class="w"> </span>NUM<span class="w"> </span>pair
+</code></pre></div>
+Replacing <code>NUM</code> with the number of the robot that you have been provided with.</p>
+<hr />
+</li>
+<li>
+<p>You <em>may</em> see a message like this early on in the pairing process:</p>
+<p><figure markdown>
+  <img alt="" src="../../images/laptops/ssh_auth.svg" width="600px" />
+</figure></p>
+<p>If so, just type <code>yes</code> and then hit <code>Enter</code> to confirm that you want to continue.</p>
+</li>
+<li>
+<p>Enter the password for the robot when requested (if you can't remember what this is from last time then ask a member of the teaching team!)</p>
+<div class="admonition note">
+<p class="admonition-title">Remember</p>
+<p>You won't see anything change on the screen when you are entering the password. This is normal, just keep typing!!</p>
+</div>
+</li>
+<li>
+<p>Once the pairing process is finished you should see a message saying <code>pairing complete</code>, displayed in blue in the terminal. </p>
+</li>
+<li>
+<p>In the same terminal, enter the following command:</p>
+<hr />
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>waffle<span class="w"> </span>NUM<span class="w"> </span>term
+</code></pre></div>
+(again, replacing <code>NUM</code> with the number of <em>your</em> robot).</p>
+<hr />
+<p>A green banner should appear across the bottom of the terminal window:</p>
+<p><figure markdown>
+  <img alt="" src="../../images/laptops/tmux.svg" width="700px" />
+</figure></p>
+<p>Remember, this is a terminal instance running <em>on the robot</em>, and any commands that you enter here will be <em>executed on the robot</em> (not the laptop!)</p>
+</li>
+<li>
+<p>Now, launch ROS on the robot by entering the following command:</p>
+<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>ros.launch
+</code></pre></div>
+<hr />
+<p>After a short while, you should see a message like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[INFO] [#####] Calibration End  
+</code></pre></div>
+<p>ROS is now up and running, and you're ready to go!</p>
+</li>
+<li>
+<p>Close down this terminal instance. If you see the following message, just click "Close Terminal."</p>
+<p><figure markdown>
+  <img alt="" src="../../images/laptops/term_confirm_close.png" width="600px" />
+</figure></p>
+</li>
+</ol>
+<h3 id="odometry">Odometry<a class="headerlink" href="#odometry" title="Permanent link">&para;</a></h3>
+<p>First, let's look at our robot's <em>odometry</em> system, and what this is useful for.</p>
+<blockquote>
+<p>Odometry is the use of data from motion sensors to estimate change in position over time. It is used in robotics by some legged or wheeled robots to estimate their position relative to a starting location. <sup id="fnref:wiki"><a class="footnote-ref" href="#fn:wiki">1</a></sup></p>
+</blockquote>
+<p>Our robot can therefore keep track of its position (and orientation) as it moves around. It does this using data from two sources:</p>
+<ol>
+<li><strong>Wheel encoders</strong>: Our robot has two wheels, each is equipped with an encoder that measures the number of rotations that the wheel makes. </li>
+<li>An <strong>Inertial Measurement Unit (IMU)</strong>: Using accelerometers, gyroscopes and compasses, the IMU can monitor the linear and angular velocity of the robot, and which direction it is heading, at all times.</li>
+</ol>
+<p>This data is published to a ROS Topic called <code>/odom</code>. </p>
+<h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 1: Exploring Odometry Data<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
+<p>In the previous lab we used some ROS commands to identify and interrogate active topics on the ROS network, let's give that another go now, but on the <code>/odom</code> topic this time.</p>
+<ol>
+<li>
+<p>Open up a new terminal instance on the laptop (by pressing <code>Ctrl+Alt+T</code>, or clicking the Terminal App desktop icon, as you did before). We’ll call this one <strong>TERMINAL 1</strong>.</p>
+</li>
+<li>
+<p>As you may recall from last time, we can use the <code>rostopic</code> command to <em>list</em> all the topics that are currently active on the network. Enter the following in <strong>TERMINAL 1</strong>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>rostopic<span class="w"> </span>list
+</code></pre></div></p>
+<hr />
+<p>A large list of items should appear on the screen. Can you spot the <code>/odom</code> topic?</p>
+</li>
+<li>
+<p>Let's find out more about this using the <code>rostopic info</code> command.</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/odom
+</code></pre></div></p>
+<hr />
+<p>This should provide the following output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Type: nav_msgs/Odometry
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Publishers:
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  * /turtlebot3_core (http://dia-waffleNUM:#####/)
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>Subscribers: None
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Post-lab Quiz</p>
+<p>What does all this mean? We discussed this <a href="../lab1/#rostopic_info_explained">last time (in relation to the <code>/cmd_vel</code> topic)</a>, and you may want to have a look back at this to refresh your memory! </p>
+</div>
+<p>One of the key things that this does tell us is that the <code>/odom</code> topic transmits data using a <code>nav_msgs/Odometry</code> message. All topics use standard message types to pass information around the ROS network. This is so that any node on the ROS network knows how to deal with the data, if it needs to. <code>nav_msgs/Odometry</code> is one of these standard message types. </p>
+</li>
+<li>
+<p>We can use the <code>rosmsg</code> command to find out more about this:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>nav_msgs/Odometry
+</code></pre></div></p>
+<hr />
+<p>You'll see a lot of information there, but try to find the line that reads <code>geometry_msgs/Pose pose</code>: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>geometry_msgs/Pose pose
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  geometry_msgs/Point position
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    float64 x
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    float64 y
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    float64 z
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  geometry_msgs/Quaternion orientation
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    float64 x
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>    float64 y
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    float64 z
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    float64 w
+</code></pre></div>
+<p>Here's where we'll find information about the robot's position and orientation (aka <em>"Pose"</em>) in the environment. Let's have a look at this data in real time...</p>
+</li>
+<li>
+<p>We can look at the live data being streamed across the <code>/odom</code> topic, using the <code>rostopic echo</code> command. We know that this topic uses <code>nav_msgs/Odometry</code> type messages, and we know which part of these messages we are interested in (<code>geometry_msgs/Pose pose</code>)</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/odom/pose/pose
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Now, let's drive the robot around a bit and see how this data changes as we do so. Open up a new terminal instance by pressing <code>Ctrl+Alt+T</code>, or clicking the Terminal App desktop icon, as you did before. We'll call this one <strong>TERMINAL 2</strong>.</p>
+</li>
+<li>
+<p>Remember that node that we used last time that allowed us to control the motion of the robot using different buttons on the keyboard? Let's launch that again now:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>roslaunch<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key.launch
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Follow the instructions provided in the terminal to drive the robot around:</p>
+<p>As you're doing this, look at how the <code>position</code> and <code>orientation</code> data is changing in <strong>TERMINAL 1</strong>, in real-time!</p>
+<div class="admonition info">
+<p class="admonition-title">Post-lab Quiz</p>
+<p>Which position and orientation values change (by a significant amount) when:</p>
+<ol>
+<li>The robot turns on the spot (i.e. only an <em>angular</em> velocity is applied)?</li>
+<li>The robot moves forwards (i.e. only a <em>linear</em> velocity is applied)?</li>
+<li>The robot moves in a circle (i.e. both a linear <em>and</em> angular velocity are applied simultaneously)?</li>
+</ol>
+<p><strong>Make a note of the answers to these questions, as they may feature in the post-lab quiz!</strong></p>
+</div>
+</li>
+<li>
+<p>When you've seen enough enter <code>Ctrl+C</code> in <strong>TERMINAL 2</strong> to stop the <code>turtlebot3_teleop_keyboard</code> node. Then, enter <code>Ctrl+C</code> in <strong>TERMINAL 1</strong> as well, which will stop the live stream of Odometery messages from being displayed.</p>
+</li>
+</ol>
+<h5 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h5>
+<p><strong>Pose</strong> is a combination of a robot's <em>position</em> and <em>orientation</em> in its environment.</p>
+<p><strong>Position</strong> tells us the location (in meters) of the robot in its environment. Wherever the robot was when it was turned on is the reference point, and so the distance values that we observed in the exercise above were all quoted relative to this initial position.</p>
+<p>You should have noticed that (as the robot moved around) the <code>x</code> and <code>y</code> terms changed, but the <code>z</code> term should have remained at zero. This is because the <code>X-Y</code> plane is the floor, and any change in <code>z</code> position would mean that the robot was floating or flying above the floor! </p>
+<p><strong>Orientation</strong> tells us where the robot is pointing in its environment, expressed in units of <em>Quaternions</em>; a four-term orientation system. Don't worry too much about this though, we'll convert this to Euler angles (in degrees/radians) for you, to make them a bit easier to work with for the following exercise.</p>
+<figure>
+<p><img alt="" src="../../images/waffle/pose.png?width=15cm" /></p>
+</figure>
+<h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 2: Odometry-based Navigation<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
+<p>Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that <a href="../lab1/#ex6">last time</a> you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (tuning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path. </p>
+<p>In theory though, we can do all this with odometry instead, so let's have a go at that now...</p>
+<ol>
+<li>
+<p>Open up the <code>amr31001</code> ROS package that you downloaded earlier into VS Code using the following command in <strong>TERMINAL 1</strong>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>code<span class="w"> </span>~/catkin_ws/src/amr31001
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>In VS Code, navigate to the <code>src</code> directory in the File Explorer on the left-hand side, and click on the <code>ex2.py</code> file to display it in the editor.</p>
+</li>
+<li>
+<p>Have a look through the code and see if you can work out what's going on. There are a few things to be aware of:</p>
+<ol>
+<li>
+<p>Motion control is handled by an external Python module called <code>waffle</code>, which is imported on line 4:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">import</span> <span class="nn">waffle</span>
+</code></pre></div>
+<p>and instantiated on line 16:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">motion</span> <span class="o">=</span> <span class="n">waffle</span><span class="o">.</span><span class="n">Motion</span><span class="p">()</span>
+</code></pre></div>
+<p>In the main part of the code, this can then be used to control the velocity of the robot, using the following methods:</p>
+<ol>
+<li><code>motion.move_at_velocity(linear = x, angular = y)</code> to make the robot move at a linear velocity of <code>x</code> (m/s) and/or an angular velocity of <code>y</code> (rad/s).</li>
+<li><code>motion.stop()</code> to make the robot stop moving.</li>
+</ol>
+</li>
+<li>
+<p>Subscribing to the <code>/odom</code> topic and the processing of the <code>nav_msgs/Odometry</code> data is also handled by the <code>waffle</code> module, so you don't have to worry about it! This functionality is instantiated on line 17:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">pose</span> <span class="o">=</span> <span class="n">waffle</span><span class="o">.</span><span class="n">Pose</span><span class="p">()</span>
+</code></pre></div>
+<p>So all that you have to do in order to access the robot's odometry data in the main part of the code is call the appropriate attribute:</p>
+<ol>
+<li><code>pose.posx</code> to obtain the robot's current position (in meters) in the <code>X</code> axis.</li>
+<li><code>pose.posy</code> to obtain the robot's current position (in meters) in the <code>Y</code> axis.</li>
+<li><code>pose.yaw</code> to obtain the robot's current orientation (in degrees) about the <code>Z</code> axis.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Run the code in <strong>TERMINAL 1</strong> and observe what happens:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>rosrun<span class="w"> </span>amr31001<span class="w"> </span>ex2.py
+</code></pre></div></p>
+<hr />
+<p>The robot should start turning on the spot, and you should see some interesting information being printed to the terminal. After it has turned by 45&deg;, the robot should stop momentarily and then carry on turning again.</p>
+</li>
+<li>
+<p>Stop the Node by entering <code>Ctrl+C</code> in <strong>TERMINAL 1</strong>.</p>
+</li>
+<li>
+<p><strong>What you need to do</strong>:</p>
+<ol>
+<li>
+<p>In the <code>while()</code> loop there is an <code>if</code> statement with a condition that handles the turning process: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;turn&quot;</span><span class="p">:</span>
+</code></pre></div>
+<p>Within this, look at how the robot's yaw angle is being monitored and updated as it turns. Then, look at how the turn angle is being controlled. See if you can adapt this to make the robot turn in 90&deg; steps instead.</p>
+</li>
+<li>
+<p>Ultimately, after the robot has turned by 90&deg; it needs to then move forwards by 0.5m, in order to achieve a 0.5x0.5m square motion path.</p>
+<p>Moving forwards is handled by an additional condition within the <code>if</code> statement:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;move_fwd&quot;</span><span class="p">:</span>
+</code></pre></div>
+See if you can adapt the code within this block to make the robot move forwards by the required amount (0.5 meters) in between each turn. <a name="the_hint"></a></p>
+<details class="note">
+<summary>Hint</summary>
+<p>Consider how the turn angle is monitored and updated whist turning (<code>current_yaw</code>), and take a similar approach with the linear displacement (<code>current_distance</code>). Bear in mind that you'll need to consider the <em>euclidean distance</em>, which you'll need to calculate based on the robot's position in both the <code>x</code> and <code>y</code> axis.</p>
+<p><figure markdown>
+  <img alt="" src="euclidean_distance.png" width="500px" />
+</figure></p>
+</details>
+</li>
+<li>
+<p><strong>Make sure that you've saved any changes to the code (in VS Code) before trying to test it out on the robot!</strong></p>
+<p>Do this by using the <code>Ctrl+S</code> keyboard shortcut, or going to <code>File &gt; Save</code> from the menu at the top of the screen.</p>
+</li>
+<li>
+<p>Once you've saved it, you can re-run the code at any time by using the same <code>rosrun</code> command as before:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>rosrun<span class="w"> </span>amr31001<span class="w"> </span>ex2.py
+</code></pre></div></p>
+<hr />
+<p>... and you can stop it at any time by entering <code>Ctrl+C</code> in the terminal.</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Python Tips</p>
+<p>You'll need to do a bit of maths here (see <a href="#the_hint">the "Hint" above</a>). Here's how to implement a couple of mathematical functions in Python:</p>
+<ol>
+<li>
+<p><strong>To the power of...</strong>: Use <code>**</code> to raise a number to the power of another number (i.e. <code>2<sup>3</sup></code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="mi">8</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Square Root</strong>: To calculate the square root of a number use the <code>sqrt()</code> function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="mf">2.0</span> 
+</code></pre></div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+<h3 id="the-lidar-sensor">The LiDAR Sensor<a class="headerlink" href="#the-lidar-sensor" title="Permanent link">&para;</a></h3>
+<p>As you'll know, the black spinning device on the top of your robot is a <em>LiDAR Sensor</em>. As discussed previously, this sensor uses laser pulses to measure the distance to nearby objects. The sensor spins continuously so that it can fire these laser pulses through a full 360&deg; arc, and generate a full 2-dimensional map of the robot's surroundings.</p>
+<p>This data is published to a ROS Topic called <code>/scan</code>. Use the same methods that you used in <a href="#ex1">Exercise 1</a> to find out what message type is used by this ROS Topic.</p>
+<div class="admonition info">
+<p class="admonition-title">Post-lab Quiz</p>
+<p>Make a note of this, there'll be a post-lab quiz question on it!</p>
+</div>
+<p>Launch RViz, so that we can see the data coming from this sensor in real-time:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>rviz.launch
+</code></pre></div></p>
+<hr />
+<figure>
+<p><img alt="" src="../../images/waffle/rviz_vs_arena.png" width="800px" /></p>
+</figure>
+<p>The red dots illustrate the LiDAR data. Hold your hand out to the robot and see if you can see it being detected by the sensor... a cluster of red dots should form on the screen to indicate where your hand is located in relation to the robot. Move your hand around and watch the cluster of dots move accordingly. Move your hand closer and farther away from the robot and observe how the red dots also move towards or away from the robot on the screen. </p>
+<p>This data is really useful and (as we observed during the previous lab session) it allows us to build up 2-dimensional maps of an environment with considerable accuracy. This is, of course, a very valuable skill for a robot to have if we want it to be able to navigate autonomously, and we'll explore this further later on. For now though, we'll look at how we can use the LiDAR data ourselves to build Nodes that make the robot detect and follow walls!</p>
+<p>Once you're done, close down RViz by hitting <code>Ctrl+C</code> in <strong>TERMINAL 1</strong>. </p>
+<h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 3: Wall following<a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>In VS Code, click on the <code>ex3.py</code> file in the File Explorer to display it in the editor.</p>
+</li>
+<li>
+<p>Have a look through the code and see if you can work out what's going on. Here's a few points to start with:</p>
+<ol>
+<li>
+<p>Velocity control is handled in the same way as in the previous exercise:</p>
+<ol>
+<li><code>motion.move_at_velocity(linear = x, angular = y)</code> to make the robot move at a linear velocity of <code>x</code> (m/s) and/or an angular velocity of <code>y</code> (rad/s).</li>
+<li><code>motion.stop()</code> to make the robot stop moving.</li>
+</ol>
+</li>
+<li>
+<p>The data from the LiDAR sensor has been preprocessed and encapsulated in an additional class from the <code>waffle</code> module. This functionality is instantiated on line 13:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">lidar</span> <span class="o">=</span> <span class="n">waffle</span><span class="o">.</span><span class="n">Lidar</span><span class="p">()</span>
+</code></pre></div>
+<p>This class splits up data from the LiDAR sensor into a number of different segments to focus on a number of distinct zones around the robot's body (to make the data a bit easier to deal with). For each of the segments (as shown in the figure below) a single distance value can be obtained, which represents the average distance to any object(s) within that particular angular zone:</p>
+<p><figure markdown>
+  <img alt="" src="lidar_segments.png" width="500px" />
+</figure></p>
+<p>In the code, we can obtain the distance measurement (in meters) from each of the above zones as follows:</p>
+<ol>
+<li><code>lidar.distance.front</code> to obtain the average distance to any object(s) in front of the robot (within the frontal zone).</li>
+<li><code>lidar.distance.l1</code> to obtain the average distance to any object(s) located within LiDAR zone L1.</li>
+<li><code>lidar.distance.r1</code> to obtain the average distance to any object(s) located within LiDAR zone R1.<br />
+    and so on...</li>
+</ol>
+</li>
+<li>
+<p>The code template has been developed to detect a wall on the robot's <em>left-hand side</em>.</p>
+<ol>
+<li>We use distance measurements from LiDAR zones L3 and L4 to determine the alignment of the robot to a left-hand wall.</li>
+<li>
+<p>This is determined by calculating the difference between the distance measurements reported from these two zones:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">wall_rate</span> <span class="o">=</span> <span class="n">lidar</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">l3</span> <span class="o">-</span> <span class="n">lidar</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">l4</span>
+</code></pre></div>
+        1. If this value is close to zero, then the robot and the wall are well aligned. If not, then the robot is at an angle to the wall, and it needs to adjust its angular velocity in order to correct for this:</p>
+<p><figure markdown>
+  <img alt="" src="wall_rate.png?width=20cm" />
+</figure>  </p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Run the node, as it is, from <strong>TERMINAL 1</strong>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>rosrun<span class="w"> </span>amr31001<span class="w"> </span>ex3.py
+</code></pre></div></p>
+<hr />
+<p>When you do this, you'll notice that the robot doesn't move at all (yet!), but the following data appears in the terminal:</p>
+<ol>
+<li>The distance measurements from each of the LiDAR zones.</li>
+<li>The current value of the <code>wall_rate</code> parameter, i.e. how well aligned the robot currently is to a wall on its left-hand side.</li>
+<li>The decision that has been made by the <code>if</code> statement on the appropriate action that should be taken, given the current value of <code>wall_rate</code>.</li>
+</ol>
+</li>
+<li>
+<p><strong>What you need to do</strong>:</p>
+<ol>
+<li>First, place the robot on the floor with a wall on its left-hand side</li>
+<li>
+<p>Manually vary the alignment of the robot and the wall and observe how the information that is being printed to the terminal changes as you do so.</p>
+<div class="admonition note">
+<p class="admonition-title">Question</p>
+<p>The node will tell you if it thinks the robot needs to turn right or left in order to improve its current alignment with the wall. Is it making the correct decision?</p>
+</div>
+</li>
+<li>
+<p>Currently, all velocity parameters inside the <code>while</code> loop are set to zero.</p>
+<ul>
+<li>
+<p>You'll need to set a constant <em>linear</em> velocity, so that the robot is always moving forwards. Set an appropriate value for this now, by editing the line that currently reads:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">lin_vel</span> <span class="o">=</span> <span class="mf">0.0</span>
+</code></pre></div>
+</li>
+<li>
+<p>The <em>angular</em> velocity of the robot will need to be adjusted conditionally, in order to ensure that the value of <code>wall_rate</code> is kept as low as possible at all times. Adjust the value of <code>ang_vel</code> in each of the <code>if</code> statement blocks so that this is achieved under each of the three possible scenarios.</p>
+<ol>
+<li>Hopefully, by following the steps above, you will get to the point where you can make the robot follow a wall reasonably well, as long as the wall remains reasonably straight! Consider what would happen however if the robot were faced with either of the following situations:</li>
+</ol>
+</li>
+</ul>
+<p><figure markdown>
+  <img alt="" src="limitations.png?width=15cm" />
+</figure></p>
+<p>You may have already observed this during your testing... how could you adapt the code so that such situations can be achieved?</p>
+<details class="info">
+<summary>Hints</summary>
+<ol>
+<li>You may need to consider the distance measurements from some other LiDAR zones!</li>
+<li>
+<p>The <code>ex3.py</code> template that was provided to you uses an <code>if</code> statement with three different cases:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">if</span> <span class="o">...</span><span class="p">:</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="k">elif</span> <span class="o">...</span><span class="p">:</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="k">else</span><span class="p">:</span>
+</code></pre></div>
+<p>You may need to add in some further cases to this to accommodate the additional situations discussed above, e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">if</span> <span class="o">...</span><span class="p">:</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="k">elif</span> <span class="o">...</span><span class="p">:</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="k">elif</span> <span class="o">...</span><span class="p">:</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="k">elif</span> <span class="o">...</span><span class="p">:</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="k">else</span><span class="p">:</span>
+</code></pre></div>
+</li>
+</ol>
+</details>
+</li>
+<li>
+<p>Finally, think about how you could adapt this algorithm to make the robot follow a wall on its right-hand side instead.  </p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="slam-and-autonomous-navigation">SLAM and Autonomous Navigation<a class="headerlink" href="#slam-and-autonomous-navigation" title="Permanent link">&para;</a></h3>
+<p>We've played around with the data from both the LiDAR sensor and the robot's Odometry System now, so hopefully you now understand what these two systems can tell us about our robot and its environment, and how this information is very valuable for robotic applications.</p>
+<p>To illustrate this further, we'll now have a look at two extremely useful tools that are build into ROS, and that use the data from these two sensors alone to achieve powerful results!</p>
+<p><strong>Simultaneous Localisation and Mapping (SLAM)</strong></p>
+<p>As you now know, the LiDAR sensor gives us a full 360&deg; view of our robot's environment. As the robot moves around it starts to observe different features in the environment, or perhaps the same features that it has already seen, but at a different perspective. Using the LiDAR data in combination with our robots <em>Pose</em> and <em>Velocity</em> (as provided by the Odometry System), we can actually build up a comprehensive 2-dimensional map of an environment and keep track of where our robot is actually located within that map, at the same time. This is a process called <strong>SLAM</strong>, and you may remember that we had a go at this in the previous lab session.</p>
+<p><strong>Navigation</strong></p>
+<p>Having built a complete map (using SLAM) our robot then knows exactly what its environment looks like, and it can then use the map to work out how to get from one place to another on its own! </p>
+<p>In the next exercise, we'll have a go at this: first we need to build a map, then we can use that map to implement <em>autonomous navigation</em>!</p>
+<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 4: SLAM and Navigation<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
+<p><strong>Step 1: Mapping</strong></p>
+<ol>
+<li>
+<p>Make sure none of your code from the previous exercise is still running now, <strong>TERMINAL 1</strong> should be idle, ready to accept some new instructions!</p>
+</li>
+<li>
+<p>Place your robot in the enclosure that we have created in the lab. </p>
+</li>
+<li>
+<p>Then, in <strong>TERMINAL 1</strong>, run the following command:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>roslaunch<span class="w"> </span>amr31001<span class="w"> </span>ex4_slam.launch
+</code></pre></div></p>
+<hr />
+<p>An RViz screen will open up showing the robot from a top-down view, with the LiDAR data represented by green dots.</p>
+<p><figure markdown>
+  <img alt="" src="slam1.png" />
+</figure></p>
+<p>SLAM is already working, and you should notice black lines forming underneath the green LiDAR dots to indicate the regions that SLAM has already determined as static and which therefore represent boundaries in the environment.</p>
+</li>
+<li>
+<p>In <strong>TERMINAL 2</strong> launch the <code>turtlebot3_teleop_keyboard</code> node again, to drive the robot around:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>roslaunch<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key.launch
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Drive the robot around until SLAM has built up a complete map of the entire arena.</p>
+<p><figure markdown>
+  <img alt="" src="slam23.png" />
+</figure></p>
+</li>
+<li>
+<p>Once you're happy with this, stop the <code>turtlebot3_teleop_keyboard</code> node by hitting <code>Ctrl+C</code> in <strong>TERMINAL 2</strong>. You can also stop SLAM now too, so head back to <strong>TERMINAL 1</strong> and enter <code>Ctrl+C</code> to stop this too.</p>
+</li>
+<li>
+<p>While you were doing the above, a map file was being constantly updated and saved to the laptop's filesystem. Have a quick look at this now to make sure that the map that you have built is indeed a good representation of the environment:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>eog<span class="w"> </span>~/catkin_ws/src/amr31001/maps/my_map.pgm
+</code></pre></div></p>
+<hr />
+<p>If the map looks like the actual arena then you're good to move on, but if not then you may need to repeat the above steps again to give it another go.</p>
+</li>
+</ol>
+<p><strong>Step 2: Navigating Autonomously</strong></p>
+<p>Using the map that you've just created you should now be able to make your robot navigate around the real environment!</p>
+<ol>
+<li>
+<p>Launch the navigation processes in <strong>TERMINAL 1</strong> by entering the following command:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>roslaunch<span class="w"> </span>amr31001<span class="w"> </span>ex4_nav.launch
+</code></pre></div></p>
+<hr />
+<p>RViz should then open up again, once again with a top-down view of the robot, but this time with the map that you generated earlier displayed underneath it (in black).  </p>
+</li>
+<li>
+<p>To begin with, the robot needs to know <em>roughly</em> where it is within this map, and we can tell it this by performing a manual <em>"2D Pose Estimation"</em>.  </p>
+<ol>
+<li>Press the "2D Pose Estimate" button at the top of the RViz screen.  </li>
+<li>The map should be visible (in black) in the background underneath all the live LiDAR Data (displayed in green), but the two are probably not lined up properly. Move the cursor to the approximate point on the background map at which the robot is actually located.  </li>
+<li>Press and hold the left mouse button and a large green arrow will appear.  </li>
+<li>Whilst still holding down the left mouse button, rotate the green arrow to set the robot's <em>orientation</em> within the map.  </li>
+<li>
+<p>Let go of the left mouse button to set the pose estimation. If done correctly, the real-time LiDAR data should nicely overlap the background map after doing this:</p>
+<p><figure markdown>
+  <img alt="" src="nav12.png" />
+</figure></p>
+<p>... if not, then have another go!</p>
+</li>
+</ol>
+</li>
+<li>
+<p>We then need to give the robot a chance to determine its pose more accurately. The navigation processes that are running in the background are currently generating what's called a <em>"localisation particle cloud"</em>, which is displayed as lots of tiny green arrows surrounding the robot in RViz. The scatter of these green arrows indicates the level of certainty the robot currently has about its <em>true</em> pose (position and orientation) within the environment: a <em>large</em> scatter indicates a high level of <em>uncertainty</em>, and we need to improve this before we can make the robot navigate around autonomously.</p>
+<p>We can improve this by simply driving the robot around the environment a bit, so that it gets the opportunity to see different walls and obstacles from different perspectives. In the background, the navigation algorithms will be comparing the real time LiDAR data with the background map that was generated earlier, and when the two things line up well, the robot becomes more certain about its pose in the environment.</p>
+<p>Once again, launch the <code>turtlebot_teleop_keyboard</code> node in <strong>TERMINAL 2</strong>, and drive the robot around a bit:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>roslaunch<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key.launch
+</code></pre></div></p>
+<hr />
+<p>As you're doing this, watch how the scatter in the localisation particle cloud reduces, and the small green arrows begin to converge underneath the robot.</p>
+<p><figure markdown>
+  <img alt="" src="nav3.png" />
+</figure></p>
+</li>
+<li>
+<p>Now, click the "2D Nav Goal" button:  </p>
+<ol>
+<li>Move the cursor to the location that you want the robot to move to on the map. </li>
+<li>Click and hold the left mouse button and a large green arrow will appear again to indicate that the <em>position</em> goal has been set.  </li>
+<li>Whilst still holding the left mouse button, rotate the green arrow around to set the desired <em>orientation</em> goal.  </li>
+<li>
+<p>Release the mouse button to set the goal...</p>
+<p>The robot will then try its best to navigate to the destination autonomously!</p>
+</li>
+</ol>
+</li>
+</ol>
+<!-- 
+### The Camera
+
+#### Exercise 5: Object Tracking with PID {#ex5}
+
+(maybe a simulation-based exercise, if required?) -->
+
+<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<p>Before you leave, please turn off your robot! Enter the following command in <strong>TERMINAL 1</strong> to do so:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>waffle<span class="w"> </span>NUM<span class="w"> </span>off
+</code></pre></div>
+... again, replacing <code>NUM</code> with the number of the robot that you have been working with today.</p>
+<hr />
+<p>You'll need to enter <code>y</code> and then hit <code>Enter</code> to confirm this.</p>
+<p>Please then shut down the laptop, which you can do by clicking the battery icon in the top right of the desktop and selecting the "Power Off / Log Out" option in the drop-down menu.</p>
+<figure>
+<p><img alt="" src="../../images/laptops/ubuntu_poweroff.svg?width=10cm" /></p>
+</figure>
+<p><center></p>
+<p><strong>AMR31001 Lab 2 Complete!</strong>  </p>
+<p></center></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:wiki">
+<p>https://en.wikipedia.org/wiki/Odometry&#160;<a class="footnote-backref" href="#fnref:wiki" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-08T13:46:57+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-08</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-08T13:46:57+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-08</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../lab1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lab 1: Mobile Robotics" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Previous
+                </span>
+                Lab 1: Mobile Robotics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../waffles/" class="md-footer__link md-footer__link--next" aria-label="Next: The Waffles" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                The Waffles
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+    Content by 
+      <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">
+          Dr Tom Howard
+      </a><br />
+    Copyright &copy; 2023 The University of Sheffield 
+    (License: 
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/"
+      target="_blank" rel="noopener">
+        CC BY-NC
+      </a>)<br />
+    This site was made with
+      <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+        Material for MkDocs
+      </a>
+  </div> 
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6df46069.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>
