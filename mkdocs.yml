@@ -36,14 +36,21 @@ theme:
     - toc.follow
     - content.code.copy
     - content.code.annotate
+    - content.action.edit
+    - content.action.view
   
 # copyright: Copyright &copy; 2023 The University of Sheffield
 repo_url: https://github.com/tom-howard/ros
 repo_name: tom-howard/ros
+edit_uri: ./edit/main/docs
 
 plugins:
-    - search
-    - awesome-pages
+  - search
+  - awesome-pages
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+
 
 markdown_extensions:
   - admonition
