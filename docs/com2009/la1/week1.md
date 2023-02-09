@@ -425,6 +425,10 @@ Or:
     !!! note
         It's important that you understand how this code works, so make sure that you **read the annotations**!
     
+1. **Make sure that you've saved the `publisher.py` file (in VS Code) before trying to run it!**
+    
+    Do this by using the `Ctrl+S` keyboard shortcut, or going to `File > Save` from the menu at the top of the VS Code screen.
+
 1. We can now run this node using the `rosrun` **ROS command**. However, because we closed everything down earlier on, the *ROS Master* is no longer active. First then, we need to re-launch it manually using `roscore`:
 
     ***
