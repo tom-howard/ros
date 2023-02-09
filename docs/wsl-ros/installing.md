@@ -4,12 +4,6 @@ title: "Installing ROS on your own PC"
 
 We've set up the WSL-ROS environment specifically for these ROS Courses, to ensure that you have all the right packages and tools available to you. Of course, this requires you to work on a University Managed Computer and - naturally - you may want to be able to work through this course material (and explore further) on your own device instead.
 
-## Quick Links
-
-* [Installing ROS and Course Dependencies on Ubuntu 20.04](#install-ros)
-* [Installing on Windows using WSL](#wsl)
-    * [Running Graphical Applications in WSL on Windows 10](#running-graphical-applications-in-wsl-on-windows-10)
-
 ## Installing ROS and Course Dependencies on Ubuntu 20.04 {#install-ros}
 
 If you already have Ubuntu 20.04 running on a machine then follow the steps below to install ROS and all the additional packages required for these ROS Courses:
