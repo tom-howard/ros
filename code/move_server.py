@@ -7,9 +7,10 @@ from tuos_ros_msgs.srv import SetBool, SetBoolResponse # (2)!
 service_name = "move_service"
 
 pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1) # (3)!
-vel = Twist()
 
 def callback_function(service_request): # (4)!
+
+    vel = Twist()
 
     service_response = SetBoolResponse() # (5)!
 
