@@ -89,20 +89,6 @@ class Square:
         self.pub.publish(Twist())
         self.ctrl_c = True
 
-    def print_stuff(self, a_message):
-        # a function to print information to the terminal (use as you wish)
-        # Example usage:
-        # print the message that has been passed in to the method via the "a_message" input:
-        print(a_message)
-        # you could use this to print the current velocity command:
-        print(
-            f"current velocity: lin.x = {self.vel.linear.x:.1f}, ang.z = {self.vel.angular.z:.1f}"
-        )
-        # you could also print the current odometry to the terminal here, if you wanted to:
-        print(
-            f"current odometry: x = {self.x:.3f}, y = {self.y:.3f}, theta_z = {self.theta_z:.3f}"
-        )
-
     def main_loop(self):
         while not self.ctrl_c:
             # here is where your code would go to control the motion of your
@@ -111,13 +97,8 @@ class Square:
 
             # publish whatever velocity command has been set in your code above:
             self.pub.publish(self.vel)
-            # call a function which prints some information to the terminal:
-            self.print_stuff(
-                "this is a message that has been passed to the 'print_stuff()' method"
-            )
             # maintain the loop rate @ 10 hz
             self.rate.sleep()
-
 
 if __name__ == "__main__":
     node = Square()
