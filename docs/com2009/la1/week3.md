@@ -112,7 +112,7 @@ Last week you also learnt about [Robot Odometry](../week2/#odometry), which is u
     ***
 
 1. Use the VS Code File Explorer to navigate to this `move_square.py` file and open it up, ready for editing.
-1. [There's a template here to help you with this exercise](move_square). Copy and paste the template code into your new `move_square.py` file to get you started.
+1. [There's a template here to help you with this exercise](move_square). Copy and paste the template code into your new `move_square.py` file to get you started. <a name="ex1_ret"></a>
 1. Run the code as it is to see what happens...
 
     !!! warning "Fill in the Blank!"

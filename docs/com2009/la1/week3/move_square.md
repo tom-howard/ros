@@ -29,3 +29,7 @@ Moving in a square can be achieved by switching between two different movement s
 A square motion path can be fully defined by the co-ordinates of its four corners, and we can make the robot move to each of these corners one-by-one, using its odometry system to monitor its real-time position, and adapting linear and angular velocities accordingly.
 
 This is slightly more complicated, and you might want to wait until you have a bit more experience with ROS before tackling it this way (we'll also cover this in the COM2009 lecture course).
+
+<p align="center">
+  <a href="../../week3#ex1_ret">&#8592; Back to Week 3 - Exercise 1</a>
+</p>
