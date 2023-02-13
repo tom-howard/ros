@@ -12,8 +12,7 @@ from tf.transformations import euler_from_quaternion
 # import some useful mathematical operations (and pi), which you may find useful:
 from math import sqrt, pow, pi
 
-
-class Square:
+class Square():
     def callback_function(self, topic_data: Odometry):
         # obtain relevant topic data: pose (position and orientation):
         pose = topic_data.pose.pose
