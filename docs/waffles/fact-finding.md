@@ -42,7 +42,7 @@ When you stop the `rostopic pub` command what happens to the robot, and how does
 !!! question 
     Having answered the questions above, what implications might this have for any ROS nodes that you create to control the velocity of a *real* robot? 
 
-#### Mission 2: The Camera Image Topic
+#### Mission 2: The Camera Image Topic {#mission2}
 
 In [Week 6](../../com2009/la1/week6) you worked extensively with the robot's camera and its images, which were published to the `/camera/rgb/image_raw` topic.
 

@@ -1,5 +1,5 @@
 nav: 
-  - "Launch Files (Advanced)": README.md
+  - "Launch Files": README.md
   - "Launching Other Launch Files": launching-launch-files.md
   - "ROSlaunch Command-line Arguments": roslaunch-clas.md
   - "Building Command-line Interfaces (CLIs) for Python Nodes": python-clis.md

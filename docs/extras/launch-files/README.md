@@ -1,5 +1,5 @@
 ---  
-title: Launch Files (Advanced Features)  
+title: Launch Files  
 ---  
 
 ## Overview

@@ -50,7 +50,7 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
-
+      enabled: false
 
 markdown_extensions:
   - admonition
@@ -68,6 +68,11 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - footnotes
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - pymdownx.keys
 
 extra_css:
   - stylesheets/extra.css

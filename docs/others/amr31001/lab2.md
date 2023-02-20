@@ -68,7 +68,7 @@ To start with, you'll need to download [a ROS package](https://github.com/tom-ho
 1. Open up a terminal instance on the laptop, either by using the `Ctrl+Alt+T` keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
     <figure markdown>
-      ![](../images/laptops/bash_terminal_icon.svg){width=60px}
+      ![](../../images/laptops/bash_terminal_icon.svg){width=60px}
     </figure>
 
 1. In the terminal, run the following commands in order:
@@ -109,7 +109,7 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
 1. You *may* see a message like this early on in the pairing process:
 
     <figure markdown>
-      ![](../images/laptops/ssh_auth.svg){width=600px}
+      ![](../../images/laptops/ssh_auth.svg){width=600px}
     </figure>
 
     If so, just type `yes` and then hit `Enter` to confirm that you want to continue.
@@ -134,7 +134,7 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
     A green banner should appear across the bottom of the terminal window:
     
     <figure markdown>
-      ![](../images/laptops/tmux.svg){width=700px}
+      ![](../../images/laptops/tmux.svg){width=700px}
     </figure>
 
     Remember, this is a terminal instance running *on the robot*, and any commands that you enter here will be *executed on the robot* (not the laptop!)
@@ -158,7 +158,7 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
 1. Close down this terminal instance. If you see the following message, just click "Close Terminal."
 
     <figure markdown>
-      ![](../images/laptops/term_confirm_close.png){width=600px}
+      ![](../../images/laptops/term_confirm_close.png){width=600px}
     </figure>
 
 ### Odometry
@@ -290,7 +290,7 @@ You should have noticed that (as the robot moved around) the `x` and `y` terms c
 **Orientation** tells us where the robot is pointing in its environment, expressed in units of *Quaternions*; a four-term orientation system. Don't worry too much about this though, we'll convert this to Euler angles (in degrees/radians) for you, to make them a bit easier to work with for the following exercise.
 
 <figure markdown>
-  ![](../images/waffle/pose.png?width=15cm)
+  ![](../../images/waffle/pose.png?width=15cm)
 </figure>
 
 #### :material-pen: Exercise 2: Odometry-based Navigation {#ex2}
@@ -432,7 +432,7 @@ roslaunch tuos_tb3_tools rviz.launch
 ***
 
 <figure markdown>
-  ![](../images/waffle/rviz_vs_arena.png){width=800px}
+  ![](../../images/waffle/rviz_vs_arena.png){width=800px}
 </figure>
 
 The red dots illustrate the LiDAR data. Hold your hand out to the robot and see if you can see it being detected by the sensor... a cluster of red dots should form on the screen to indicate where your hand is located in relation to the robot. Move your hand around and watch the cluster of dots move accordingly. Move your hand closer and farther away from the robot and observe how the red dots also move towards or away from the robot on the screen. 
@@ -705,7 +705,7 @@ You'll need to enter `y` and then hit `Enter` to confirm this.
 Please then shut down the laptop, which you can do by clicking the battery icon in the top right of the desktop and selecting the "Power Off / Log Out" option in the drop-down menu.
 
 <figure markdown>
-  ![](../images/laptops/ubuntu_poweroff.svg?width=10cm)
+  ![](../../images/laptops/ubuntu_poweroff.svg?width=10cm)
 </figure>
 
 <center>

@@ -412,7 +412,7 @@ Over the last four sessions we've learnt how to use a range of key ROS tools, an
 * How to invoke an action using a ROS Service.
 * How to develop ROS Nodes in Python, and how to use the Python Class Structure.
 
-## Manipulating the Environment in Gazebo
+## Manipulating the Environment in Gazebo {#sim-env-mods}
 
 In order to carry out the last exercise you'll also need to be able to manipulate the robot's simulated environment using some basic tools in Gazebo. First, make sure that there are no active processes running in **TERMINALS 2** or **3**, but leave the Gazebo simulation in **TERMINAL 1** running.
 
