@@ -97,7 +97,7 @@ Git will automatically set your name and email address using the WSL-ROS usernam
 
 1. Uncomment the `name = ...` and `email = ...` lines by removing the `#` at the start of each of these lines in the file. Then, change `TUoS Student` and `student@#####.shefuniad.shef.ac.uk` to match your own personal identity.
 
-1. Once done, press `Ctrl`+`X` to exit Nano. Before it closes, you'll be asked if you want to save the changes that you have made, so enter `Y` to confirm this and then press `Enter` to confirm that you want to keep the same `/home/student/.gitconfig` file name (to overwrite the original content).
+1. Once done, press ++ctrl+x++ to exit Nano. Before it closes, you'll be asked if you want to save the changes that you have made, so enter ++y++ to confirm this and then press ++enter++ to confirm that you want to keep the same `/home/student/.gitconfig` file name (to overwrite the original content).
 
 1. Finally, don't forget to run `wsl_ros backup` to save these changes to your external WSL-ROS backup file, so that they will always be restored whenever you run `wsl_ros restore` in a fresh WSL-ROS instance. 
 
@@ -168,6 +168,8 @@ These instructions are taken from [this GitHub Docs page](https://docs.github.co
       <figcaption>From [docs.github.com](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git)</figcaption>
     </figure>
 
+    Call this repository `com2009_team{}` to match the ROS package that you've just created.
+
 1. Head back to the WSL-ROS terminal instance that you used to create your ROS package in the previous section. This should still be located in the root of your new package directory, but just to be sure, you can run: 
 
     ```bash
@@ -221,7 +223,10 @@ These instructions are taken from [this GitHub Docs page](https://docs.github.co
     git push origin main
     ```
 
-Done!
+    You'll then be asked to enter your GitHub username, followed by a password. **This password is not your GitHub account password**!  
+
+    !!! warning
+        **Your GitHub account password won't work here!** You'll need to [generate a personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) and use this instead!
 
 ### 3.4. Transferring Your Package from WSL-ROS to a Robot Laptop {#laptop}
 
