@@ -275,4 +275,11 @@ As you'll know by now, some Lab Assignment #2 Tasks will be assessed using real 
 1. Everyone **must** complete a health and safety quiz (on Blackboard) before you (or your team) work with the real robots for the first time. Head to Blackboard and do this now, if you haven't already.
 1. Each team has been assigned a specific robot (there's a list on Blackboard). When you're ready, speak to a member of the teaching team who will provide you with the robot that has been assigned to you.
 1. Work through each and every page of [the "Waffles" section of this site](../../../waffles), in order!
-1. Make sure you have a go at the [Initial Exercises](../../../waffles/exercises), which will help to get you started. Then, move onto the [Fact-Finding Missions](../../../waffles/fact-finding): there are 5 of these in total, and **it's really important that you complete them all**.  
+
+    Make sure you have a go at the [Initial Exercises](../../../waffles/exercises), which will help to get you started. Then, move onto the [Fact-Finding Missions](../../../waffles/fact-finding): there are 5 of these in total, and **it's really important that you complete them all**.  
+
+<center>
+
+**Setup complete, now on to the assignment tasks...**
+
+</center>
