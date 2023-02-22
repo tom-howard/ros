@@ -89,19 +89,45 @@ roslaunch com2009_simulations task1.launch
 
 This task will be assessed by the teaching team before the further submission deadlines in Week 12. If things don't work then we'll let you know what happened, so that you can try to resolve things for the further assignment submissions.
 
-There are **20 marks** available for this task in total, awarded based on the criteria outlined in the table below. For Criteria B and C, you will be awarded the full marks for fulfilling the requirements completely. You'll be deducted one mark per requirement that is not met, to a minimum of 0 marks for each criterion (i.e. you can't be awarded a negative mark). 
+There are **20 marks** available for this task in total, awarded based on the criteria outlined below.
+
+### Criterion A: A deployable ROS package
+ 
+**Marks:** 10/20 
+
+You will be awarded full marks here if you submit a ROS package containing a launch file [as specified above](#launch), you submit your package according to the [Key Submission Requirements](../overview/#key-requirements) and your package can successfully be deployed on one of the robotics laptops. If **any** of these requirements are not met then you will be awarded zero marks for the entire task, gulp!
+
+### Criterion B: Figure-of-eight
+
+**Marks:** 5/20
 
 <center>
 
-| Criteria | Marks | Details |
-| :--- | :---: | :--- |
-| **A**: A deployable ROS package | 10/20 | You will be awarded full marks here if you submit a ROS package containing a launch file [as specified above](#launch), you submit your package according to the [Key Submission Requirements](../overview/#key-requirements) and your package can successfully be deployed on one of the robotics laptops. If **any** of these requirements are not met then you will be awarded zero marks for the entire task, gulp! |
-| **B**: Figure-of-eight | 5/20 | Your robot must follow the correct motion path in the correct order ([as illustrated above](#fig-eight)). It should take 60 seconds to do this (:material-plus-minus:5 seconds) and should stop once the motion path has been completed. |
-| **C**: Odometry messages | 5/20 | The messages printed to the terminal should be formatted [as detailed above](#msg-format). The data that is presented should be plausible and quoted in the correct units. Messages should be printed at the correct rate of 1Hz. The robot must be moving in order for these marks to be awarded! |
+| Criteria | Details | Marks|
+| :--- | :--- | :--- |
+| **B.1**: Direction of travel | The robot must move anticlockwise for the first loop ("Loop 1") and then clockwise for the second ("Loop 2"). | 1 |
+| **B.2**: Loop 1 | The loop must be ~1 m in diameter, centered about the red beacon. | 1 |
+| **B.3**: Loop 2 | The loop must be ~1 m in diameter, centered about the blue beacon. | 1 |
+| **B.4**: Stopping | Once the robot completes its figure of eight, it must stop with both wheels **within 10 cm** of the start line. | 1 |
+| **B.5**: Timing | The robot must complete the full figure of eight and stop in 55-65 seconds. | 1 |
 
 </center>
 
-If you *do* receive zero marks on the first attempt then you'll have an opportunity to resubmit this before the end of Week 12, giving you a second chance to get things right and obtain some marks here. Any resubmissions will not be eligible for any marks for Criterion A on the second attempt though, so your team will only be able to achieve a maximum mark of 10/20 in such cases.
+### Criterion C: Odometry messages
+
+**Marks:** 5/20
+
+<center>
+
+| Criteria | Details | Marks|
+| :--- | :--- | :--- |
+| **C.1**: Rate | Messages should be printed to the terminal at **a rate of 1 Hz**. | 1 |
+| **C.2**: Format | The messages printed to the terminal should be formatted **exactly** [as detailed above](#msg-format). | 1 |
+| **C.3**: Data | Each message value (`x`, `y` and `yaw`) should be plausible, that is: they each correspond to the actual pose of the robot, based on a zero point at the start/finish point ([as illustrated above](#fig-eight)). In addition, each value must be quoted in the correct units (meters or degrees, as appropriate). | 3 |
+
+</center>
+
+If your package is not deployable on the first submission then you'll have an opportunity to resubmit this before the end of Week 12, giving you a second chance to get things right and obtain some marks here. Any resubmissions will not be eligible for any marks for Criterion A on the second attempt though, so your team will only be able to achieve a maximum mark of 10/20 in such cases.
 
 !!! warning 
     We will be offering a resubmission opportunity **for this task only**. Resubmission of any further tasks **won't** be possible!
