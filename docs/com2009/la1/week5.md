@@ -444,6 +444,7 @@ An Action Server provides **feedback** messages at regular intervals whilst perf
         i += 1
         rate.sleep()
     ```
+
 1. Run the `concurrent_action_client.py` node and see what happens this time.  Essentially, we know that we can carry on doing other things as long as the status code is less than 2 (either `PENDING` or `ACTIVE`), otherwise either our goal has been achieved, or something else has happened...
 
 ### Cancelling (or *Preempting*) an Action {#preemptive_client}
@@ -456,6 +457,7 @@ Actions are extremely useful for controlling robotic tasks or processes that mig
 1. Have a look at the code [here](preemptive_action_client), then copy and paste it into the `preemptive_action_client.py` node that you have just created.<a name="ex3_ret"></a>
 
     Here, we've built an action client that will cancel the call to the action server if we enter `Ctrl+C` into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at [the code annotations](preemptive_action_client) and make sure that you understand how it all works.
+
 1. Run this using `rosrun`, let the server take a couple of images and then enter `Ctrl+C` to observe the goal cancelling in action.
 
     !!! note
@@ -464,7 +466,6 @@ Actions are extremely useful for controlling robotic tasks or processes that mig
 1. We can also cancel a goal conditionally, which may also be useful if, say, too much time has elapsed since the call was made, or the caller has been made aware of something else that has happened in the meantime (perhaps we're running out of storage space on the robot and can't save any more images!) This is all achieved using the `cancel_goal()` method.
 
     * Have a go now at introducing a conditional call to the `cancel_goal()` method once a total of **5 images** have been captured.
-    * You could do this inside the `feedback_callback()` class method.
     * You could use the `captured_images` attribute from the `CameraSweepFeedback` message to trigger this.
 
 ### A Summary of ROS Actions
