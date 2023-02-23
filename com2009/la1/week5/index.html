@@ -2409,7 +2409,7 @@ Then:
 </code></pre></div>
 <p>We can set up our action client to monitor these status codes in a <code>while</code> loop, and then perform other operations inside this loop until the action has completed (or has been stopped for another reason).
 1. To do this, replace the <code>client.wait_for_result()</code> line in the <code>concurrent_action_client.py</code> file with the following code:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;While we&#39;re waiting, let&#39;s do our seven-times tables...&quot;</span><span class="p">)</span>
 <a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="k">while</span> <span class="n">client</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
@@ -2418,7 +2418,9 @@ Then:
 <a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 <a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>    <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 </code></pre></div>
-1. Run the <code>concurrent_action_client.py</code> node and see what happens this time.  Essentially, we know that we can carry on doing other things as long as the status code is less than 2 (either <code>PENDING</code> or <code>ACTIVE</code>), otherwise either our goal has been achieved, or something else has happened...</p>
+</li>
+<li>
+<p>Run the <code>concurrent_action_client.py</code> node and see what happens this time.  Essentially, we know that we can carry on doing other things as long as the status code is less than 2 (either <code>PENDING</code> or <code>ACTIVE</code>), otherwise either our goal has been achieved, or something else has happened...</p>
 </li>
 </ol>
 <h3 id="preemptive_client">Cancelling (or <em>Preempting</em>) an Action<a class="headerlink" href="#preemptive_client" title="Permanent link">&para;</a></h3>
@@ -2428,8 +2430,10 @@ Then:
 <li>In <strong>TERMINAL 1</strong> you should still be located within the <code>src</code> folder of your <code>week5_actions</code> package. If not, then go back there now! Create a new file called <code>preemptive_action_client.py</code> and make this executable.</li>
 <li>
 <p>Have a look at the code <a href="preemptive_action_client">here</a>, then copy and paste it into the <code>preemptive_action_client.py</code> node that you have just created.<a name="ex3_ret"></a></p>
-<p>Here, we've built an action client that will cancel the call to the action server if we enter <code>Ctrl+C</code> into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at <a href="preemptive_action_client">the code annotations</a> and make sure that you understand how it all works.
-1. Run this using <code>rosrun</code>, let the server take a couple of images and then enter <code>Ctrl+C</code> to observe the goal cancelling in action.</p>
+<p>Here, we've built an action client that will cancel the call to the action server if we enter <code>Ctrl+C</code> into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at <a href="preemptive_action_client">the code annotations</a> and make sure that you understand how it all works.</p>
+</li>
+<li>
+<p>Run this using <code>rosrun</code>, let the server take a couple of images and then enter <code>Ctrl+C</code> to observe the goal cancelling in action.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You'll need to set some values for the goal parameters again!</p>
@@ -2439,7 +2443,6 @@ Then:
 <p>We can also cancel a goal conditionally, which may also be useful if, say, too much time has elapsed since the call was made, or the caller has been made aware of something else that has happened in the meantime (perhaps we're running out of storage space on the robot and can't save any more images!) This is all achieved using the <code>cancel_goal()</code> method.</p>
 <ul>
 <li>Have a go now at introducing a conditional call to the <code>cancel_goal()</code> method once a total of <strong>5 images</strong> have been captured.</li>
-<li>You could do this inside the <code>feedback_callback()</code> class method.</li>
 <li>You could use the <code>captured_images</code> attribute from the <code>CameraSweepFeedback</code> message to trigger this.</li>
 </ul>
 </li>
@@ -2690,7 +2693,7 @@ Then:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-01T14:31:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-23T16:26:10+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-23</span>
       
         <br>
         Created:
