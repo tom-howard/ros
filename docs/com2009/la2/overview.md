@@ -10,11 +10,11 @@ There are **five tasks** in total that you must complete for Lab Assignment #2. 
 
 | Task | Details | Marks | Assessment Format |
 | :---: | :---   | :---: | :--- |
-| 1 | A deployable ROS Package | 20/100 | Real Robots |
-| 2 | Obstacle Avoidance | 15/100 | Simulation |
-| 3 | Maze Navigation | 15/100 | Simulation |
-| 4 | Detection, Search & Beaconing | 15/100 | Simulation |
-| 5 | Obstacle Real-World Exploration | 35/100 | Real Robots | 
+| 1 | [A deployable ROS Package](../task1) | 20/100 | Real Robots |
+| 2 | [Obstacle Avoidance](../task2) | 15/100 | Simulation |
+| 3 | [Maze Navigation](../task3) | 15/100 | Simulation |
+| 4 | [Detection, Search & Beaconing](../task4) | 15/100 | Simulation |
+| 5 | [Real-World Exploration](../task5) | 35/100 | Real Robots | 
 
 </center>
 
@@ -26,14 +26,14 @@ There are two submission deadlines, summarised in the table below (see Blackboar
 
 | Submission | Task(s) | Deadline | 
 | :---: | :---: | :---: |
-| A | Task 1 | Week 10 |
+| A | Task 1 | Week 9 |
 | B | Tasks 2, 3, 4 & 5 | Week 12 | 
 
 </center>
 
 For each submission, you'll need to provide a ROS package (as a `.tar` file) to a submission portal on Blackboard. 
 
-Before you get started on any of the programming tasks you should (as a team) create a single ROS package, ([as detailed here](../getting-started/#create-pkg)]. You can then add all the necessary functionality for each task as you go along. For each submission, you'll then need to create a copy of your package in its current state by creating a `.tar` archive of it, and submit this to Blackboard by the specified deadline ([the export process is explained here](../submission)). 
+Before you get started on any of the programming tasks you should (as a team) create a single ROS package (further details on the next page). You can then add all the necessary functionality for each task as you go along. For each submission, you'll then need to create a copy of your package in its current state by creating a `.tar` archive of it, and submit this to Blackboard by the specified deadline ([the export process is explained here](../submission)). 
 
 !!! note
     You should work on each task **as a team**, and you only need to make one submission per team for each task.
@@ -41,7 +41,7 @@ Before you get started on any of the programming tasks you should (as a team) cr
 ## Assessment
 
 **For simulation-based tasks**  
-Your team's submission will be assessed by the Teaching Team by extracting and running your package in the same WSL-ROS environment that you have been working with throughout Lab Assignment #1.
+Your team's submission will be assessed by extracting and running your package in the same WSL-ROS environment that you have been working with throughout Lab Assignment #1.
 
 **For real-robot-based tasks**  
 Your team's submission will be assessed by the Teaching Team by extracting and running your package on one of our robotics laptops, that you will use extensively throughout Weeks 7-12. Your submission will be used to control a real robot in the Diamond Computer Room 3 Robot Arena.
@@ -50,7 +50,7 @@ Regardless of the assessment type, you will receive a recording of the assessmen
 
 ## Launching Your Code
 
-In order to launch the necessary functionality within your package for a given task you will need to include correctly named *launch files*, `task1.launch`, `task2.launch`, etc. (specific details are provided on each task page). This will allow you to ensure that all the required functionality is executed when your submission is assessed, and also ensures that we know exactly how to launch this functionality in order to assess it. Full details of the requirements for each launch file are provided on the associated task page.
+In order to launch the necessary functionality within your package for a given task you will need to include correctly named *launch files*, `task1.launch`, `task2.launch`, etc. This will allow you to ensure that all the required functionality is executed when your submission is assessed, and also ensures that we know exactly how to launch this functionality in order to assess it. Full details of the requirements for each launch file are provided on the associated task page.
 
 !!! warning 
     It's up to **you** to ensure that your code launches as intended for a given task. If it doesn't, then you'll be awarded zero marks, so **make sure you test it all out prior to submission**! 
@@ -80,3 +80,6 @@ In order to be awarded any marks for any task outlined in the table above, you *
     (assuming you are Team 100!)
 
 1. Finally (and most importantly), your ROS package must work *"out-of-the-box"*, i.e. the Teaching Team won't be able to make any modifications or fix any errors for you! 
+
+!!! warning
+    Failure to follow these requirements could result in you being awarded **zero marks**!
