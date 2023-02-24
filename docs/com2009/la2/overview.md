@@ -14,7 +14,7 @@ There are **five tasks** in total that you must complete for Lab Assignment #2. 
 | 2 | Obstacle Avoidance | 15/100 | Simulation |
 | 3 | Maze Navigation | 15/100 | Simulation |
 | 4 | Detection, Search & Beaconing | 15/100 | Simulation |
-| 5 | Obstacle Real-World Exploration | 15/100 | Real Robots | 
+| 5 | Obstacle Real-World Exploration | 35/100 | Real Robots | 
 
 </center>
 
