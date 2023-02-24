@@ -78,7 +78,7 @@ class SearchActionServer():
             
             # check if there has been a request to cancel the action mid-way through:
             if self.actionserver.is_preempt_requested():
-                ## TODO: take appropriate action if the action is cancelled (peempted)...
+                ## TODO: take appropriate action if the action is cancelled (pre-empted)...
                 
                 
 
