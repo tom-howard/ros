@@ -214,7 +214,7 @@ Remember how you used SLAM in Week 3 to create a map of a simulated environment?
     1. The `.pgm` file can be opened in `eog` on the laptop: 
     
         ***
-        **TERMINAL 2:**
+        **TERMINAL 1:**
         ```bash
         eog {map_name}.pgm
         ```
