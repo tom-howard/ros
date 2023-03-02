@@ -19,7 +19,7 @@
         <link rel="next" href="../week6/">
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.15">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.113286f1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.402914a4.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -2071,7 +2071,15 @@
 Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the <em>Windows Terminal</em> app should launch with an <em>Ubuntu terminal instance</em> ready to go (<strong>TERMINAL 1</strong>).</p>
 <p><strong>Step 2: Restore your work</strong><br />
 When prompted (in <strong>TERMINAL 1</strong>), enter <code>Y</code> to restore your work from the previous sessions<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<p><strong>Step 3: Launch VS Code</strong><br />
+<p><strong>Step 3: Make sure you have the COM2009 Repo Installed!</strong><br />
+You should have done this back in Week 2. Check it's there by navigating to it now:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src/COM2009/
+</code></pre></div></p>
+<hr />
+<p>If this returns an error saying <code>No such file or directory</code>, then <a href="../week2/#course-repo">head back here</a> and follow the steps to install it.</p>
+<p><strong>Step 4: Launch VS Code</strong><br />
 Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code correctly within the WSL-ROS environment.</p>
 <h2 id="calling-an-action-server">Calling an Action Server<a class="headerlink" href="#calling-an-action-server" title="Permanent link">&para;</a></h2>
 <p>Before we talk about what actions actually are, we're going to dive straight in and see one in <em>action</em> (excuse the pun). As you may remember from the Week 3 session, you actually used a ROS Action to make your robot navigate autonomously in <a href="../week3/#ex4">Exercise 4</a>, by calling an action server from the command-line. We will do a similar thing now, in a different context, and this time we'll also look at what's going on in a bit more detail.</p>
@@ -2082,7 +2090,7 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <p>To launch our TurtleBot3 Waffle in the mystery environment, use the following <code>roslaunch</code> command:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>roslaunch<span class="w"> </span>tuos_ros_simulations<span class="w"> </span>mystery_world.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roslaunch<span class="w"> </span>tuos_ros_simulations<span class="w"> </span>mystery_world.launch
 </code></pre></div></p>
 <hr />
 <p>Messages in the terminal should indicate that <em>something</em> has happened, but that's about all you will see!</p>
@@ -2097,7 +2105,7 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <p>Return to the original Windows Terminal instance (the one with the Gazebo processes running, and which we'll now refer to as <strong>WT(A)</strong>), open up a new tab (<strong>WT(A) TERMINAL 2</strong>) and launch an action server that we have already prepared for you for this exercise:</p>
 <hr />
 <p><strong>WT(A) TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roslaunch<span class="w"> </span>tuos_ros_examples<span class="w"> </span>camera_sweep.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roslaunch<span class="w"> </span>tuos_ros_examples<span class="w"> </span>camera_sweep.launch
 </code></pre></div></p>
 <hr />
 </li>
@@ -2111,11 +2119,11 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 </ul>
 </div>
 <p>You should in fact notice 5 new items in that list:<a name="action_msgs"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/camera_sweep_action_server/cancel
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/camera_sweep_action_server/feedback
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>/camera_sweep_action_server/goal
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>/camera_sweep_action_server/result
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>/camera_sweep_action_server/status
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/camera_sweep_action_server/cancel
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>/camera_sweep_action_server/feedback
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>/camera_sweep_action_server/goal
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>/camera_sweep_action_server/result
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>/camera_sweep_action_server/status
 </code></pre></div>
 <p>A ROS action therefore has <em>five</em> messages associated with it. We'll talk about these in a bit more detail later on, but for now, all we need to know is that in order to <em>call</em> an action, we need to send the action server a <strong>Goal</strong> (which you may remember doing in <a href="../week3/#ex4">Week 3</a>).</p>
 <details class="info">
@@ -2138,11 +2146,11 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <p>In <strong>WT(C)</strong> run a <code>rostopic echo</code> command to <em>echo</em> the messages being published to the <code>/camera_sweep_action_server/feedback</code> topic:</p>
 <hr />
 <p><strong>WT(C):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/camera_sweep_action_server/feedback
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/camera_sweep_action_server/feedback
 </code></pre></div></p>
 <p>To begin with, you'll see the message:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>WARNING: no messages received and simulated time is active.
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Is /clock being published?
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>WARNING: no messages received and simulated time is active.
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Is /clock being published?
 </code></pre></div>
 <p>Don't worry about this.</p>
 <hr />
@@ -2154,23 +2162,23 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <p>Now, going back to <strong>WT(B)</strong>, run the <code>rostopic pub</code> command on the <code>/camera_sweep_action_server/goal</code> topic, using the autocomplete functionality in the terminal to help you format the message correctly:</p>
 <hr />
 <p><strong>WT(B):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/camera_sweep_action_server/goal<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/camera_sweep_action_server/goal<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
 </code></pre></div></p>
 <p>Which should provide you with the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rostopic pub /camera_sweep_action_server/goal tuos_ros_msgs/CameraSweepActionGoal &quot;header:
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  seq: 0
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  stamp:
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  secs: 0
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  nsecs: 0
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  frame_id: &#39;&#39;
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>goal_id:
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>  stamp:
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>  secs: 0
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>  nsecs: 0
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>  id: &#39;&#39;
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>goal:
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>  sweep_angle: 0.0
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>  image_count: 0&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>rostopic pub /camera_sweep_action_server/goal tuos_ros_msgs/CameraSweepActionGoal &quot;header:
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  seq: 0
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  stamp:
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  secs: 0
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  nsecs: 0
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  frame_id: &#39;&#39;
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>goal_id:
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  stamp:
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>  secs: 0
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  nsecs: 0
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>  id: &#39;&#39;
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>goal:
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>  sweep_angle: 0.0
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>  image_count: 0&quot;
 </code></pre></div>
 </li>
 <li>
@@ -2188,9 +2196,9 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <li>Cancel the <code>rostopic pub</code> command by entering <code>Ctrl+C</code></li>
 <li>
 <p>Once the action had completed, a message should have been published in <strong>WT(D)</strong> (a <em>"result"</em>), informing you of the filesystem location where the action server has stored the images that have just been captured by the robot:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>result:
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  image_path: &quot;~/myrosdata/action_examples/YYYYMMDD_hhmmss&quot;
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>---
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>result:
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  image_path: &quot;~/myrosdata/action_examples/YYYYMMDD_hhmmss&quot;
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>---
 </code></pre></div>
 </li>
 <li>
@@ -2201,7 +2209,7 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <p>Launch <code>eog</code> in this directory and click through all the images to reveal your robot's <em>mystery environment</em>:</p>
 <hr />
 <p><strong>WT(B):</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>eog<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>eog<span class="w"> </span>.
 </code></pre></div></p>
 <hr />
 </li>
@@ -2211,7 +2219,7 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <p>Finally, open another tab in the <strong>WT(A)</strong> terminal instance (<strong>WT(A) TERMINAL 3</strong>) and launch the <em>Gazebo client</em> to view the simulation that has, until now, been running headless:</p>
 <hr />
 <p><strong>WT(A) TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>gzclient
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>gzclient
 </code></pre></div></p>
 <hr />
 </li>
@@ -2230,11 +2238,11 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <h2 id="what-is-a-ros-action">What is a ROS Action?<a class="headerlink" href="#what-is-a-ros-action" title="Permanent link">&para;</a></h2>
 <p>As you will have observed from the above exercise, a ROS Action actually seems to work a lot like a ROS Service.  We've seen that we have a <strong>feedback</strong> message associated with an Action though, which is indeed different, but this isn't the main differentiating feature. The key difference is that when a node calls a ROS Action (i.e. an action <em>"Caller"</em> or <em>"Client"</em>), it <em>doesn't</em> need to wait until the action is complete before it can move on to something else: it can continue to do other tasks at the same time. Unlike ROS Services then, ROS Actions are <em>Asynchronous</em>, which makes them useful when implementing robotic behaviours that take a longer time to execute, and which an Action <em>Client</em> might need to be updated on throughout the process.</p>
 <p>Recall the five messages associated with the action server <a href="#action_msgs">from the exercise above</a>, the messages had the following names:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>/cancel
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>/feedback
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>/goal
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>/result
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>/status
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>/cancel
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>/feedback
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>/goal
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>/result
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>/status
 </code></pre></div>
 <p>The top item there hints at the most important feature of ROS Actions: they can be cancelled (or <em>"preempted"</em>), which we'll learn more about later.  </p>
 <p>The other thing to note is that - where we used the <code>rosservice</code> command to interrogate the ROS Services that were active on our ROS network previously - Actions use ROS Topics, so we use <code>rostopic</code> commands to interrogate action servers:<a name="rostopic_for_actions"></a></p>
@@ -2246,14 +2254,14 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <h3 id="the-format-of-action-messages">The Format of Action Messages<a class="headerlink" href="#the-format-of-action-messages" title="Permanent link">&para;</a></h3>
 <p>Like Services, Action Messages have multiple parts to them, and we need to know what format these action messages take in order to be able to call them. We don't have a tool like <code>rossrv</code> to do this for Actions though, instead we have to use <code>rosmsg</code>, or look for the message definition inside the <em>Action Message Package</em>.</p>
 <p>We ran <code>rostopic list</code> to identify our action server in the previous exercise, which told us that there was an action server running called <code>/camera_sweep_action_server</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>rostopic list
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>[some topics...]
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>/camera_sweep_action_server/cancel
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>/camera_sweep_action_server/feedback
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>/camera_sweep_action_server/goal
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>/camera_sweep_action_server/result
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>/camera_sweep_action_server/status
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>[some more topics...]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>rostopic list
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>[some topics...]
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>/camera_sweep_action_server/cancel
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>/camera_sweep_action_server/feedback
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>/camera_sweep_action_server/goal
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>/camera_sweep_action_server/result
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>/camera_sweep_action_server/status
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>[some more topics...]
 </code></pre></div>
 <h4 id="cancel-and-status">"Cancel" and "Status"<a class="headerlink" href="#cancel-and-status" title="Permanent link">&para;</a></h4>
 <p>Every ROS Action has both a <strong>cancel</strong> and <strong>status</strong> message associated with them. These are standardised, so the format of these two messages will always be the same, regardless of the type of Action Server we use. We won't worry about these too much for now, but we'll make use of them in some ROS Nodes that we'll build in a short while.</p>
@@ -2263,31 +2271,31 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <p>Let's look at the <strong>goal</strong> to start with:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/camera_sweep_action_server/goal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/camera_sweep_action_server/goal
 </code></pre></div>
 From which we obtain the usual information:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Type: tuos_ros_msgs/CameraSweepActionGoal
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>Publishers: None
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>Subscribers:
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>  * /camera_sweep_action_server (http://localhost:#####/)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Type: tuos_ros_msgs/CameraSweepActionGoal
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>Publishers: None
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>Subscribers:
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>  * /camera_sweep_action_server (http://localhost:#####/)
 </code></pre></div>
 <hr />
 <p>The <code>Type</code> field tells us that the action message belongs to the <code>tuos_ros_msgs</code> package, and we can find out more about the <code>goal</code> message by using <code>rosmsg info</code>. You'll be familiar with how this works by now:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>rosmsg info {messageType}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rosmsg info {messageType}
 </code></pre></div>
 <p>Where <code>{messageType}</code> is established from the output of the <code>rostopic info</code> command above: </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Type: tuos_ros_msgs/CameraSweepActionGoal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Type: tuos_ros_msgs/CameraSweepActionGoal
 </code></pre></div>
 <p>When working with ROS Actions and the <code>rosmsg</code> command though, we can actually drop the word "<code>Action</code>" in the message Type, so our <code>rosmsg</code> command becomes:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>tuos_ros_msgs/CameraSweepGoal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>tuos_ros_msgs/CameraSweepGoal
 </code></pre></div>
 Which will output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>float32 sweep_angle
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>int32 image_count
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>float32 sweep_angle
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>int32 image_count
 </code></pre></div>
 <hr />
 <details class="info">
@@ -2304,30 +2312,30 @@ Which will output:</p>
 <p>We know, from above, that the <code>/camera_sweep_action_server</code> messages are part of the <code>tuos_ros_msgs</code> package, so we can navigate to the package directory (using <code>roscd</code>) and look at the actual message definition. </p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>roscd<span class="w"> </span>tuos_ros_msgs/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>roscd<span class="w"> </span>tuos_ros_msgs/
 </code></pre></div></p>
 <hr />
 <p>Actions are always contained within an <code>action</code> folder inside the package directory, so we can then navigate into this folder using <code>cd</code>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>action/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">cd</span><span class="w"> </span>action/
 </code></pre></div></p>
 <hr />
 <p>Use the <code>ll</code> command again here to view all the action messages within the package. Here you should see the <code>CameraSweep.action</code> message listed. Run <code>cat</code> on this file to view the full message definition:<a name="camera_sweep_msg_params" ></a></p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>cat<span class="w"> </span>CameraSweep.action
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>cat<span class="w"> </span>CameraSweep.action
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>#goal
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>float32 sweep_angle    # the angular sweep over which to capture images (degrees)
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>int32 image_count      # the number of images to capture during the sweep
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>---
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>#result
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>string image_path      # The filesystem location of the captured images
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>---
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>#feedback
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>int32 current_image    # the number of images taken
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>float32 current_angle  # the current angular position of the robot (degrees)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>#goal
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>float32 sweep_angle    # the angular sweep over which to capture images (degrees)
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>int32 image_count      # the number of images to capture during the sweep
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>---
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>#result
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>string image_path      # The filesystem location of the captured images
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>---
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>#feedback
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>int32 current_image    # the number of images taken
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>float32 current_angle  # the current angular position of the robot (degrees)
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Questions</p>
@@ -2359,10 +2367,10 @@ Which will output:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong><br />
 First:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>week5_actions
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>week5_actions
 </code></pre></div>
 Then:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div></p>
 <hr />
 </li>
@@ -2374,7 +2382,7 @@ Then:
 <p>Then, in <strong>TERMINAL 2</strong>, execute the same launch file as before but this time with a couple of additional arguments:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>roslaunch<span class="w"> </span>tuos_ros_simulations<span class="w"> </span>mystery_world.launch<span class="w"> </span>gui:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>camera_search:<span class="o">=</span><span class="nb">true</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>roslaunch<span class="w"> </span>tuos_ros_simulations<span class="w"> </span>mystery_world.launch<span class="w"> </span>gui:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>camera_search:<span class="o">=</span><span class="nb">true</span>
 </code></pre></div></p>
 <p>... which will launch the Gazebo simulation in GUI mode this time, as well as the <code>/camera_sweep_action_server</code> too.</p>
 <hr />
@@ -2388,7 +2396,7 @@ Then:
 <p>First, create a copy of your <code>action_client.py</code> node and call it <code>concurrent_action_client.py</code> (you will need to make sure you are still in the <code>src</code> directory of your <code>week5_actions</code> package before you run this command):</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>cp<span class="w"> </span>action_client.py<span class="w"> </span>concurrent_action_client.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>cp<span class="w"> </span>action_client.py<span class="w"> </span>concurrent_action_client.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -2399,24 +2407,24 @@ Then:
 <li>Then, use <code>rosmsg info</code> (using the message type you have just identified) to tell you all the status codes that could be returned by the action server.</li>
 </ol>
 <p>You should have identified the following states, listed in the <code>status_list</code> portion of the message:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>PENDING=0
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>ACTIVE=1
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>PREEMPTED=2
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>SUCCEEDED=3
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>ABORTED=4
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>REJECTED=5
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>...
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>PENDING=0
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>ACTIVE=1
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>PREEMPTED=2
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>SUCCEEDED=3
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>ABORTED=4
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>REJECTED=5
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>...
 </code></pre></div>
 <p>We can set up our action client to monitor these status codes in a <code>while</code> loop, and then perform other operations inside this loop until the action has completed (or has been stopped for another reason).
 1. To do this, replace the <code>client.wait_for_result()</code> line in the <code>concurrent_action_client.py</code> file with the following code:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;While we&#39;re waiting, let&#39;s do our seven-times tables...&quot;</span><span class="p">)</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="k">while</span> <span class="n">client</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;STATE: Current state code is </span><span class="si">{</span><span class="n">client</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TIMES TABLES: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> times 7 is </span><span class="si">{</span><span class="n">i</span><span class="o">*</span><span class="mi">7</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>    <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;While we&#39;re waiting, let&#39;s do our seven-times tables...&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="k">while</span> <span class="n">client</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;STATE: Current state code is </span><span class="si">{</span><span class="n">client</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TIMES TABLES: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> times 7 is </span><span class="si">{</span><span class="n">i</span><span class="o">*</span><span class="mi">7</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
 </code></pre></div>
 </li>
 <li>
@@ -2464,7 +2472,7 @@ Then:
 <p>Cancel <em>all</em> active processes that you may have running before moving on.</p>
 </div>
 <p>So far we have looked at how to call an action server, but what about if we actually want to set up our own? We've been working with a pre-made action server in the previous exercises, but so far we haven't really considered how it actually works. First, let's do some detective work... We launched the Action Server using <code>roslaunch</code> in Exercise 1:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>roslaunch<span class="w"> </span>tuos_ros_examples<span class="w"> </span>camera_sweep.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>roslaunch<span class="w"> </span>tuos_ros_examples<span class="w"> </span>camera_sweep.launch
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Questions</p>
@@ -2479,60 +2487,60 @@ Then:
 <ol>
 <li>
 <p>As a starting point, consider the way in which the action server is initialised and the way a callback function is defined to encapsulate all the code that will be executed when the action is called:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span> <span class="o">=</span> <span class="n">actionlib</span><span class="o">.</span><span class="n">SimpleActionServer</span><span class="p">(</span><span class="s2">&quot;/camera_sweep_action_server&quot;</span><span class="p">,</span> 
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>    <span class="n">CameraSweepAction</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_server_launcher</span><span class="p">,</span> <span class="n">auto_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span> <span class="o">=</span> <span class="n">actionlib</span><span class="o">.</span><span class="n">SimpleActionServer</span><span class="p">(</span><span class="s2">&quot;/camera_sweep_action_server&quot;</span><span class="p">,</span> 
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="n">CameraSweepAction</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_server_launcher</span><span class="p">,</span> <span class="n">auto_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
 </li>
 <li>
 <p>Look at how a <code>/cmd_vel</code> publisher and an <code>/odom</code> subscriber are defined in external classes:<a name="tb3_module" ></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span> <span class="o">=</span> <span class="n">Tb3Move</span><span class="p">()</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_odom</span> <span class="o">=</span> <span class="n">Tb3Odometry</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span> <span class="o">=</span> <span class="n">Tb3Move</span><span class="p">()</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_odom</span> <span class="o">=</span> <span class="n">Tb3Odometry</span><span class="p">()</span>
 </code></pre></div>
 <p>These are imported (at the start of the code) from an external <code>tb3.py</code> module that also lives in the same directory as the action server itself:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="kn">from</span> <span class="nn">tb3</span> <span class="kn">import</span> <span class="n">Tb3Move</span><span class="p">,</span> <span class="n">Tb3Odometry</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="kn">from</span> <span class="nn">tb3</span> <span class="kn">import</span> <span class="n">Tb3Move</span><span class="p">,</span> <span class="n">Tb3Odometry</span>
 </code></pre></div>
 <p>We do this to simplify the process of obtaining odometry data and controlling the robot, whilst keeping the actual action server code itself more concise. Have a look at the <code>tb3.py</code> module to discover exactly how these Python classes work.</p>
 </li>
 <li>
 <p>Look inside the action server callback function to see how the camera sweep operation is performed once the action has been called:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">def</span> <span class="nf">action_server_launcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="o">...</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">def</span> <span class="nf">action_server_launcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="o">...</span>
 </code></pre></div>
 <ol>
 <li>
 <p>Consider the error checking that is performed on the <code>goal</code> input variables, and how the call to the action server is aborted should any of these goal requests be invalid:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="k">if</span> <span class="n">goal</span><span class="o">.</span><span class="n">sweep_angle</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">goal</span><span class="o">.</span><span class="n">sweep_angle</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid sweep_angle! Select a value between 1 and 180 degrees.&quot;</span><span class="p">)</span>
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>    <span class="o">...</span>
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
-<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;None [ABORTED]&quot;</span>
-<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">set_aborted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>    <span class="k">return</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="k">if</span> <span class="n">goal</span><span class="o">.</span><span class="n">sweep_angle</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">goal</span><span class="o">.</span><span class="n">sweep_angle</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid sweep_angle! Select a value between 1 and 180 degrees.&quot;</span><span class="p">)</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>    <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>    <span class="o">...</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;None [ABORTED]&quot;</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">set_aborted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>    <span class="k">return</span>
 </code></pre></div>
 </li>
 <li>
 <p>Consider how preemption is implemented in the server, and how the Action is stopped on receipt of a preempt request:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">is_preempt_requested</span><span class="p">():</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="o">...</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">is_preempt_requested</span><span class="p">():</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="o">...</span>
 </code></pre></div>
 </li>
 <li>
 <p>Also have a look at the way a <code>feedback</code> message is constructed and published by the server:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="o">.</span><span class="n">current_image</span> <span class="o">=</span> <span class="n">i</span>
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="o">.</span><span class="n">current_angle</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_odom</span><span class="o">.</span><span class="n">yaw</span><span class="p">)</span>
-<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">publish_feedback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="o">.</span><span class="n">current_image</span> <span class="o">=</span> <span class="n">i</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="o">.</span><span class="n">current_angle</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_odom</span><span class="o">.</span><span class="n">yaw</span><span class="p">)</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">publish_feedback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
 <p>Finally, consider how we tell the server that the action has been completed successfully, how the <code>result</code> message is published to the caller, and how we make the robot stop moving:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Camera sweep completed successfully.&quot;</span><span class="p">)</span>
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">set_succeeded</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
-<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Camera sweep completed successfully.&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">set_succeeded</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 </code></pre></div>
 </li>
 </ol>
@@ -2545,7 +2553,7 @@ Then:
 <p>There's a simulation environment that you can use as you're developing your action server/client nodes for this exercise. Launch the simulation in <strong>TERMINAL 1</strong>, with the following <code>roslaunch</code> command: </p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_stage_4.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_stage_4.launch
 </code></pre></div></p>
 <hr />
 <p><strong>Step 2: Build the Action Server</strong></p>
@@ -2592,7 +2600,7 @@ Then:
 <p>Whenever you're ready you can launch your action server from <strong>TERMINAL 2</strong>, using <code>rosrun</code>, as below:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>rosrun<span class="w"> </span>week5_actions<span class="w"> </span>search_server.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>rosrun<span class="w"> </span>week5_actions<span class="w"> </span>search_server.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -2616,7 +2624,7 @@ Then:
 <p>Once you have everything in place launch the action client with <code>rosrun</code> as below:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>rosrun<span class="w"> </span>week5_actions<span class="w"> </span>action_client.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>rosrun<span class="w"> </span>week5_actions<span class="w"> </span>action_client.py
 </code></pre></div></p>
 <hr />
 <p>If all is good, then this client node should call the action server, which will - in turn - make the robot move forwards until it reaches a certain distance from an obstacle up ahead, at which point the robot will stop, and your client node will stop too. Once this happens, reorient your robot (using the <code>turtlebot3_teleop</code> node) and launch the client node again to make sure that it is robustly stopping in front of obstacles repeatedly, and when approaching them from a range of different angles. </p>
@@ -2676,7 +2684,7 @@ Then:
 </ul>
 <h3 id="backup">Saving your work<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>Remember, the work you have done in the WSL-ROS environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 <p>This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.</p>
 <div class="footnote">
@@ -2693,7 +2701,7 @@ Then:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-23T16:26:10+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-23</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-02T15:57:47+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-02</span>
       
         <br>
         Created:
@@ -2792,7 +2800,7 @@ Then:
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.ce72ebac.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
