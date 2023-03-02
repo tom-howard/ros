@@ -45,7 +45,19 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from the previ
 
 [^1]: Remember: you can also use the `wsl_ros restore` command, to restore your work at any time.
 
-**Step 3: Launch VS Code**  
+**Step 3: Make sure you have the COM2009 Repo Installed!**  
+You should have done this back in Week 2. Check it's there by navigating to it now:
+
+***
+**TERMINAL 1:**
+```bash
+cd ~/catkin_ws/src/COM2009/
+```
+***
+
+If this returns an error saying `No such file or directory`, then [head back here](../week2/#course-repo) and follow the steps to install it.
+
+**Step 4: Launch VS Code**  
 Follow [these steps](../../../wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
 
 ## Calling an Action Server
