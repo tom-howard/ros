@@ -45,7 +45,7 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from the previ
 
 [^1]: Remember: you can also use the `wsl_ros restore` command, to restore your work at any time.
 
-**Step 3: Make sure you have the COM2009 Repo Installed!**  
+**Step 3: Make sure you have the COM2009 Repo installed in your Catkin Workspace!**  
 You should have done this back in Week 2. Check it's there by navigating to it now:
 
 ***
