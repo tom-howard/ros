@@ -82,7 +82,7 @@ The arena contains three start zones: A, B & C; each of a different colour, as w
 <center>
 <figure markdown>
   ![](figures/beaconing.jpg)
-  <figcaption>The beaconing arena for Task 4.</figcaption>
+  <figcaption>The "beaconing" arena for Task 4.</figcaption>
 </figure>
 </center>
 

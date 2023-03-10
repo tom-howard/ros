@@ -54,7 +54,7 @@ roslaunch com2009_simulations obstacle_avoidance.launch
 
 <figure markdown>
   ![](figures/obstacle_avoidance.jpg)
-  <figcaption>The `obstacle_avoidance` development arena.</figcaption>
+  <figcaption>The "obstacle_avoidance" development arena.</figcaption>
 </figure>
 
 !!! tip

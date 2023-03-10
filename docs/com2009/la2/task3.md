@@ -46,7 +46,7 @@ roslaunch com2009_simulations maze_nav.launch
 <center>
 <figure markdown>
   ![](figures/maze_nav.jpg)
-  <figcaption>The `maze_nav` arena for Task 3.</figcaption>
+  <figcaption>The "maze_nav" arena for Task 3.</figcaption>
 </figure>
 </center>
 
