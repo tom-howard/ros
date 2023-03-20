@@ -161,7 +161,7 @@ Git will automatically set your name and email address using the WSL-ROS usernam
 
 These instructions are taken from [this GitHub Docs page](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git). Instructions may vary if you are using other online code repositories (such as GitLab for instance), so check with your target provider.
 
-1. [Create a new repository on GitHub.com](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository), but **DON'T** initialise the new repository with a README, license, or gitignore (you can do this later, it'll cause issues if you do it at this stage).
+1. [Create a new (**private**) repository on GitHub.com](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository), but **DON'T** initialise the new repository with a README, license, or gitignore (you can do this later, it'll cause issues if you do it at this stage).
 
     <figure markdown>
       ![](https://docs.github.com/assets/cb-11427/images/help/repository/repo-create.png)
@@ -227,6 +227,8 @@ These instructions are taken from [this GitHub Docs page](https://docs.github.co
 
     !!! warning
         **Your GitHub account password won't work here!** You'll need to [generate a personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) and use this instead!
+
+1. Back on GitHub, add your team members to the repo as collaborators. All team members should then be able to pull the remote repo into their own Catkin Workspaces (`cd ~/catkin_ws/src/` & `git clone {REMOTE_URL}`), make contributions and push these back to the remote repo as required.
 
 ### 3.4. Transferring Your Package from WSL-ROS to a Robot Laptop {#laptop}
 
