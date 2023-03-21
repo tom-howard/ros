@@ -94,7 +94,7 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
 
 1. Now, return to **WT(B)** and take a look again at all the topics that are active on the ROS network.
     
-    !!! note "Questions"
+    !!! question "Questions"
         * What do you notice?
         * Anything new there now compared to when you ran the same command before?
     
@@ -361,7 +361,7 @@ int32 current_image    # the number of images taken
 float32 current_angle  # the current angular position of the robot (degrees)
 ```
 
-!!! note "Questions"
+!!! question "Questions"
     * What are the names of the **result** and **feedback** message parameters? (There are three parameters in total.)
     * What datatypes do these parameters use?
 
@@ -509,7 +509,7 @@ So far we have looked at how to call an action server, but what about if we actu
 roslaunch tuos_ros_examples camera_sweep.launch
 ```
 
-!!! note "Questions"
+!!! question "Questions"
     * What does this tell us about the *package* that the action server node belongs to?
     * Where, in the package directory, is this node likely to be located?
     * How might we find out the name of the Python node from the `camera_sweep.launch` file?

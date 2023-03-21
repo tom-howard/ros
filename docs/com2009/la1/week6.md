@@ -124,7 +124,7 @@ Now, run `rosmsg info` on this message type to find out exactly what information
 
 <a name="cam_img_questions"></a>
 
-!!! note "Questions"
+!!! question "Questions"
     1. What *type* of message is used on this topic, and which *package* is this message derived from?
     1. Using `rostopic echo` and the information about the topic message (as shown above) determine the *size* of the images that our robot's camera will capture (i.e. its *dimensions*, in pixels).  It will be quite important to know this when we start manipulating these camera images later on. 
     1. Finally, considering the list above again, which part of the message do you think contains the *actual image data*?
@@ -198,7 +198,7 @@ One common job that we often want a robot to perform is *object detection*, and 
 
 What you may have noticed from the terminal output when you ran the `object_detection.py` node is that the robot's camera captures images at a native size of 1080x1920 pixels (you should already know this from interrogating the `/camera/rgb/image_raw/width` and `/height` messages using `rostopic echo` earlier, right?!).  That's over 2 million pixels in total in a single image (2,073,600 pixels per image, to be exact), each pixel having a blue, green and red value associated with it - so that's a lot of data in a single image file! 
 
-!!! note "Question"
+!!! question
     The size of the image file (in bytes) was actually printed to the terminal when you ran the `object_detection.py` node. Did you notice how big it was exactly?
 
 Processing an image of this size is therefore hard work for a robot: any analysis we do will be slow and any raw images that we capture will occupy a considerable amount of storage space. The next step then is to reduce this down by cropping the image to a more manageable size.

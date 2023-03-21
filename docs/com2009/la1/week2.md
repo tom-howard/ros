@@ -141,14 +141,14 @@ It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*)
 
 It's also worth noting (while we're on the subject of motion) that our TurtleBot3 Waffles have **maximum velocity limits**, which were also defined on the ["Robots" page](../../../about/robots/#tb3).
 
-!!! note "Question"
+!!! question
     What are the maximum velocity limits of our robots?
 
 ### ROS Velocity Commands
 
 In the previous session you learnt how to [list all the topics that are currently active on a ROS system](../week1/#rostopic). Open up a new terminal instance now (**TERMINAL 2**) and use what you learnt previously to *list* all the topics that are active on the ROS network now, as a result of launching the Gazebo simulation earlier.
 
-!!! note "Questions"
+!!! question "Questions"
     1. Which topic in the list do you think could be used to control the velocity of the robot?
     2. Use the `rostopic info` command on the topic to find out more about it.
 
@@ -198,7 +198,7 @@ Another topic that should have appeared when you ran `rostopic list` earlier is 
 
     Expand the terminal window as necessary so that you can see the whole topic message (it starts with `header` and ends with `---`).
     
-    !!! note "Question"
+    !!! question
         What does the `-c` option in the command above actually do?
     
 1. Now, you need to launch a new Windows Terminal instance so that you can view it side-by-side with **TERMINAL 2**. To do this, press the "New Tab" button whilst pressing the `Shift` key. We'll call this one **TERMINAL 3**. Arrange both windows side-by-side, so you can see what's happening in both, simultaneously.
@@ -216,7 +216,7 @@ Another topic that should have appeared when you ran `rostopic list` earlier is 
 1. Now press the `S` key to halt the robot, then press `W` a couple of times to make the robot drive forwards.  How does the `twist` part of the message now correspond to the `linear vel` setting in **TERMINAL 3**?
 1. Now press `D` a couple of times and your robot should start to move in a circle.  What linear and angular velocities are you requesting in **TERMINAL 3**, and how are these represented in the `twist` part of the `/odom` message?  What about the `pose` part of the message?  How is this data changing as your robot moves in a circular path.
     
-    !!! note "Question"
+    !!! question
         What do you think `twist` and `pose` are actually telling us?
     
 1. Press `S` in **TERMINAL 3** to stop the robot (but leave the `turtlebot3_teleop_keyboard` node running).  Then, press `Ctrl+C` in **TERMINAL 2** to shut down the `rostopic echo` process. 
@@ -234,7 +234,7 @@ Another topic that should have appeared when you ran `rostopic list` earlier is 
 
     The output of the `robot_pose.py` node shows you how the robot's *position* and *orientation* (i.e. *"pose"*) are changing in real-time as you move the robot around. The `"initial"` column tells us the robot's pose when the node was first launched, and the `"current"` column show us what its pose currently is. The `"delta"` column then shows the difference between the two.
     
-    !!! note "Question"
+    !!! question
         Which pose parameters *haven't* changed, and is this what you would expect (considering [the robot's principal axes, as illustrated above](#principal-axes))?
     
 1. Press `Ctrl+C` in **TERMINAL 2** and **TERMINAL 3**, to stop the `robot_pose.py` and `turtlebot3_teleop` nodes.  Then, close down **TERMINAL 3** so that only one Windows Terminal application remains open with 2 active tabs: **TERMINAL 1** and **TERMINAL 2**.
@@ -292,7 +292,7 @@ from tf.transformations import euler_from_quaternion
 
 Our TurtleBot3 can only move in a 2D plane and so, actually, its pose can be fully represented by 3 parameters: <code>(x,y,&theta;<sub>z</sub>)</code>, where `x` and `y` are the 2D coordinates of the robot in the `X-Y` plane, and <code>&theta;<sub>z</sub></code> is the angle of the robot about the `z` (*yaw*) axis.
 
-!!! note "Question"
+!!! question
     In the previous exercise, did you notice how the `linear_z`, `theta_x` and `theta_y` values in the `delta` column all remained at `0.000`, even when the robot was moving around?
 
 #### Twist

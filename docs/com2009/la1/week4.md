@@ -96,7 +96,7 @@ It's also worth noting that any number of ROS Client nodes can call a service, b
   ![](week4/service_clients.png)
 </figure>
 
-!!! note "Questions"
+!!! question
     Can you think of any other scenarios where this type of communication protocol might be useful?
 
 You'll explore how all this works in the next two exercises, where you will create service *Server* and *Client* nodes in Python, launch them from the command-line and observe the outcomes.
