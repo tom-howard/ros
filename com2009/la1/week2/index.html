@@ -2107,13 +2107,13 @@
 </figure>
 <p>It can therefore only move <strong>linearly</strong> in the <strong>x</strong>-axis (<em>Forwards/Backwards</em>) and <strong>angularly</strong> in the <strong>z</strong>-axis (<em>Yaw</em>).</p>
 <p>It's also worth noting (while we're on the subject of motion) that our TurtleBot3 Waffles have <strong>maximum velocity limits</strong>, which were also defined on the <a href="../../../about/robots/#tb3">"Robots" page</a>.</p>
-<div class="admonition note">
+<div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>What are the maximum velocity limits of our robots?</p>
 </div>
 <h3 id="ros-velocity-commands">ROS Velocity Commands<a class="headerlink" href="#ros-velocity-commands" title="Permanent link">&para;</a></h3>
 <p>In the previous session you learnt how to <a href="../week1/#rostopic">list all the topics that are currently active on a ROS system</a>. Open up a new terminal instance now (<strong>TERMINAL 2</strong>) and use what you learnt previously to <em>list</em> all the topics that are active on the ROS network now, as a result of launching the Gazebo simulation earlier.</p>
-<div class="admonition note">
+<div class="admonition question">
 <p class="admonition-title">Questions</p>
 <ol>
 <li>Which topic in the list do you think could be used to control the velocity of the robot?</li>
@@ -2154,7 +2154,7 @@ geometry_msgs/Vector3 angular
 </code></pre></div></p>
 <hr />
 <p>Expand the terminal window as necessary so that you can see the whole topic message (it starts with <code>header</code> and ends with <code>---</code>).</p>
-<div class="admonition note">
+<div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>What does the <code>-c</code> option in the command above actually do?</p>
 </div>
@@ -2176,7 +2176,7 @@ geometry_msgs/Vector3 angular
 <li>Now press the <code>S</code> key to halt the robot, then press <code>W</code> a couple of times to make the robot drive forwards.  How does the <code>twist</code> part of the message now correspond to the <code>linear vel</code> setting in <strong>TERMINAL 3</strong>?</li>
 <li>
 <p>Now press <code>D</code> a couple of times and your robot should start to move in a circle.  What linear and angular velocities are you requesting in <strong>TERMINAL 3</strong>, and how are these represented in the <code>twist</code> part of the <code>/odom</code> message?  What about the <code>pose</code> part of the message?  How is this data changing as your robot moves in a circular path.</p>
-<div class="admonition note">
+<div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>What do you think <code>twist</code> and <code>pose</code> are actually telling us?</p>
 </div>
@@ -2195,7 +2195,7 @@ geometry_msgs/Vector3 angular
 <li>
 <p>Now (using the <code>turtlebot3_teleop_key</code> node in <strong>TERMINAL 3</strong>), drive your robot around again, keeping an eye on the outputs that are being printed by the <code>robot_pose.py</code> node in <strong>TERMINAL 2</strong> as you do so.</p>
 <p>The output of the <code>robot_pose.py</code> node shows you how the robot's <em>position</em> and <em>orientation</em> (i.e. <em>"pose"</em>) are changing in real-time as you move the robot around. The <code>"initial"</code> column tells us the robot's pose when the node was first launched, and the <code>"current"</code> column show us what its pose currently is. The <code>"delta"</code> column then shows the difference between the two.</p>
-<div class="admonition note">
+<div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>Which pose parameters <em>haven't</em> changed, and is this what you would expect (considering <a href="#principal-axes">the robot's principal axes, as illustrated above</a>)?</p>
 </div>
@@ -2243,7 +2243,7 @@ geometry_msgs/Vector3 angular
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>                     <span class="s1">&#39;sxyz&#39;</span><span class="p">)</span>
 </code></pre></div>
 <p>Our TurtleBot3 can only move in a 2D plane and so, actually, its pose can be fully represented by 3 parameters: <code>(x,y,&theta;<sub>z</sub>)</code>, where <code>x</code> and <code>y</code> are the 2D coordinates of the robot in the <code>X-Y</code> plane, and <code>&theta;<sub>z</sub></code> is the angle of the robot about the <code>z</code> (<em>yaw</em>) axis.</p>
-<div class="admonition note">
+<div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>In the previous exercise, did you notice how the <code>linear_z</code>, <code>theta_x</code> and <code>theta_y</code> values in the <code>delta</code> column all remained at <code>0.000</code>, even when the robot was moving around?</p>
 </div>
@@ -2474,7 +2474,7 @@ geometry_msgs/Vector3 angular
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-20T16:55:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-21T12:53:51+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-21</span>
       
         <br>
         Created:
