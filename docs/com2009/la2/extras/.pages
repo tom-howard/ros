@@ -1,0 +1,4 @@
+nav:
+  - "Additional Resources": README.md
+  - "Working with your ROS Packages on the laptops (with GitHub and SSH)": laptops.md
+  - "Exporting your ROS package for submission": submission.md

@@ -33,7 +33,7 @@ There are two submission deadlines, summarised in the table below (see Blackboar
 
 For each submission, you'll need to provide a ROS package (as a `.tar` file) to a submission portal on Blackboard. 
 
-Before you get started on any of the programming tasks you should (as a team) create a single ROS package (further details on the next page). You can then add all the necessary functionality for each task as you go along. For each submission, you'll then need to create a copy of your package in its current state by creating a `.tar` archive of it, and submit this to Blackboard by the specified deadline ([the export process is explained here](../submission)). 
+Before you get started on any of the programming tasks you should (as a team) create a single ROS package (further details on the next page). You can then add all the necessary functionality for each task as you go along. For each submission, you'll then need to create a copy of your package in its current state by creating a `.tar` archive of it, and submit this to Blackboard by the specified deadline ([the export process is explained here](../extras/submission)). 
 
 !!! note
     You should work on each task **as a team**, and you only need to make one submission per team for each task.
@@ -63,7 +63,7 @@ In order to be awarded any marks for any task outlined in the table above, you *
 
         com2009_team{}.tar
   
-    Where the `{}` is replaced with your own team number. [See here for how to create a `.tar` archive of your package](../submission).
+    Where the `{}` is replaced with your own team number. [See here for how to create a `.tar` archive of your package](../extras/submission).
   
 1. Your ROS package directory, when extracted, must follow a similar naming convention:
 

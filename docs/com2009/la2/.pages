@@ -7,4 +7,4 @@ nav:
   - "Task 3: Maze Navigation": task3.md
   - "Task 4: Detection, Search & Beaconing": task4.md
   - "Task 5: Real-World Exploration": task5.md
-  - "Exporting your ROS package for submission": submission.md
+  - "Additional Resources": extras

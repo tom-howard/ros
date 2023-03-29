@@ -12,7 +12,6 @@ There are a few things you should do now, before you start to sink your teeth in
     - [ ] [3.1. Configuring Git in WSL-ROS](#git)
     - [ ] [3.2. Creating Your Team's Lab Assignment #2 ROS package](#create-pkg)
     - [ ] [3.3. Pushing Your Package to GitHub](#github)
-    - [ ] [3.4. Transferring Your Package from WSL-ROS to a Robot Laptop](#laptop)
 - [ ] [Step 4: Getting Started with the Real Robots](#step4)
 
 ## Step 1: Launch WSL-ROS and Restore Your Work {#step1}
@@ -131,6 +130,9 @@ Git will automatically set your name and email address using the WSL-ROS usernam
     ```bash
     source ~/.bashrc
     ```
+
+    ??? tip "Pro Tip"
+        Use the `src` alias for this command on the laptops!
   
 1. Then navigate into the package directory that should have just been created:
 
@@ -230,45 +232,7 @@ These instructions are taken from [this GitHub Docs page](https://docs.github.co
 
 1. Back on GitHub, add your team members to the repo as collaborators. All team members should then be able to pull the remote repo into their own Catkin Workspaces (`cd ~/catkin_ws/src/` & `git clone {REMOTE_URL}`), make contributions and push these back to the remote repo as required (using their own GitHub account credentials and personal access tokens).
 
-### 3.4. Transferring Your Package from WSL-ROS to a Robot Laptop {#laptop}
-
-You'll need to transfer your package to a robot laptop whenever you want to work on a real robot in the real robot arena during the labs! There is a Catkin Workspace on each of the robot laptops and (much the same as in the WSL-ROS environment) your package **must** reside within this workspace on the laptop too!
-
-!!! note
-    Make sure that the laptop is connected to "eduroam" when you try to do this!
-
-1. From a terminal instance on the laptop navigate to the Catkin Workspace `src` directory:
-
-    ```bash
-    cd ~/catkin_ws/src
-    ```
-
-1. Clone your package into this directory using `git`:
-
-    ```bash
-    git clone {REMOTE_URL}
-    ```
-
-    Where `{REMOTE_URL}` is the https URL to your repo on GitHub.
-
-1. Run Catkin Build to make sure that any resources within your package that need to be compiled (custom ROS messages, etc.) are compiled onto the laptop so that they can be used locally:
-	
-    ```bash
-    catkin build com2009_team{}
-    ```
-	
-	...again, replacing the `{}` with *your* team number.
-	
-1. Then, re-source your environment:
-	
-    ```bash
-    source ~/.bashrc
-    ```
-
-    ??? tip "Pro Tip"
-        There's a `src` alias for that command on the laptops too!
-	
-Don't forget to commit and push any updates that you make to your ROS package while working on the laptop back to your remote repository!
+You'll need to copy your ROS package onto the Robot Laptops when working on the Real-Robot based tasks. There are [some additional resources here](../extras/laptops) which explain the best way to go about this. 
 
 ## Step 4: Getting Started with the Real Robots {#step4}
 
