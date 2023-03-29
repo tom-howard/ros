@@ -19,7 +19,7 @@
         <link rel="next" href="../task1/">
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.c4a75a56.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.240905d7.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -275,7 +275,7 @@
   
     <li class="md-tabs__item">
       <a href="../../../extras/launch-files/" class="md-tabs__link">
-        Additional Resources
+        ROS Extras
       </a>
     </li>
   
@@ -999,13 +999,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#laptop" class="md-nav__link">
-    3.4. Transferring Your Package from WSL-ROS to a Robot Laptop
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1102,10 +1095,76 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_9" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../extras/">Additional Resources</a>
+          
+            <label for="__nav_3_3_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3_9">
+          <span class="md-nav__icon md-icon"></span>
+          Additional Resources
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../submission/" class="md-nav__link">
+      <a href="../extras/laptops/" class="md-nav__link">
+        Working with your ROS Packages on the laptops (with GitHub and SSH)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extras/submission/" class="md-nav__link">
         Exporting your ROS package for submission
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -1277,14 +1336,14 @@
       
       
         <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-          Additional Resources
+          ROS Extras
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
-          Additional Resources
+          ROS Extras
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1638,13 +1697,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#laptop" class="md-nav__link">
-    3.4. Transferring Your Package from WSL-ROS to a Robot Laptop
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1699,7 +1751,6 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="#git">3.1. Configuring Git in WSL-ROS</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="#create-pkg">3.2. Creating Your Team's Lab Assignment #2 ROS package</a></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="#github">3.3. Pushing Your Package to GitHub</a></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="#laptop">3.4. Transferring Your Package from WSL-ROS to a Robot Laptop</a></li>
 </ul>
 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> <a href="#step4">Step 4: Getting Started with the Real Robots</a></li>
@@ -1808,6 +1859,10 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div></p>
+<details class="tip">
+<summary>Pro Tip</summary>
+<p>Use the <code>src</code> alias for this command on the laptops!</p>
+</details>
 </li>
 <li>
 <p>Then navigate into the package directory that should have just been created:</p>
@@ -1898,41 +1953,7 @@
 <p>Back on GitHub, add your team members to the repo as collaborators. All team members should then be able to pull the remote repo into their own Catkin Workspaces (<code>cd ~/catkin_ws/src/</code> &amp; <code>git clone {REMOTE_URL}</code>), make contributions and push these back to the remote repo as required (using their own GitHub account credentials and personal access tokens).</p>
 </li>
 </ol>
-<h3 id="laptop">3.4. Transferring Your Package from WSL-ROS to a Robot Laptop<a class="headerlink" href="#laptop" title="Permanent link">&para;</a></h3>
-<p>You'll need to transfer your package to a robot laptop whenever you want to work on a real robot in the real robot arena during the labs! There is a Catkin Workspace on each of the robot laptops and (much the same as in the WSL-ROS environment) your package <strong>must</strong> reside within this workspace on the laptop too!</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Make sure that the laptop is connected to "eduroam" when you try to do this!</p>
-</div>
-<ol>
-<li>
-<p>From a terminal instance on the laptop navigate to the Catkin Workspace <code>src</code> directory:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src
-</code></pre></div>
-</li>
-<li>
-<p>Clone your package into this directory using <code>git</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>git<span class="w"> </span>clone<span class="w"> </span><span class="o">{</span>REMOTE_URL<span class="o">}</span>
-</code></pre></div>
-<p>Where <code>{REMOTE_URL}</code> is the https URL to your repo on GitHub.</p>
-</li>
-<li>
-<p>Run Catkin Build to make sure that any resources within your package that need to be compiled (custom ROS messages, etc.) are compiled onto the laptop so that they can be used locally:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>com2009_team<span class="o">{}</span>
-</code></pre></div>
-<p>...again, replacing the <code>{}</code> with <em>your</em> team number.</p>
-</li>
-<li>
-<p>Then, re-source your environment:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</code></pre></div>
-<details class="tip">
-<summary>Pro Tip</summary>
-<p>There's a <code>src</code> alias for that command on the laptops too!</p>
-</details>
-</li>
-</ol>
-<p>Don't forget to commit and push any updates that you make to your ROS package while working on the laptop back to your remote repository!</p>
+<p>You'll need to copy your ROS package onto the Robot Laptops when working on the Real-Robot based tasks. There are <a href="../extras/laptops">some additional resources here</a> which explain the best way to go about this. </p>
 <h2 id="step4">Step 4: Getting Started with the Real Robots<a class="headerlink" href="#step4" title="Permanent link">&para;</a></h2>
 <p>As you'll know by now, some Lab Assignment #2 Tasks will be assessed using real robots, and you'll therefore have access to the robots for every lab session from Week 7 onwards, so that you can work on these tasks as you wish. All the details on how the robots work, how to get them up and running and start programming them can be found in the "Waffles" section of this course site. You should proceed now as follows (<strong>in your teams</strong>):</p>
 <ol>
@@ -1960,7 +1981,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-20T12:53:17+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-29T09:47:04+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-29</span>
       
         <br>
         Created:
@@ -2059,7 +2080,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.19047be9.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
