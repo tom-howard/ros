@@ -266,6 +266,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tom-howard.github.io/ros/waffles/tips/</loc>
+         <lastmod>2023-03-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tom-howard.github.io/ros/wsl-ros/</loc>
          <lastmod>2023-03-29</lastmod>
          <changefreq>daily</changefreq>
