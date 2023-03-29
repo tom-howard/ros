@@ -26,7 +26,7 @@ If you're generating an SSH key for the first time, then you can skip this step 
     ls -al ~/.ssh
     ```
 
-    This will provide you with a list of all the SSH keys on the laptop. Your team's key should have the same name as your ROS package ([if you followed the steps correctly when you created the key previously](#ssh-key-name)), and so you should see your key in the list, i.e.: `com2009_team999.pub`.
+    This will provide you with a list of all the SSH keys on the laptop. Your team's key should have the same name as your ROS package ([if you followed the steps correctly when you created the key previously](#ssh-key-name)), and so you should see your key in the list, i.e.: `com2009_team{}.pub`.
 
 1. If your key is there, then you're good to go... you may need to [Clone your ROS package onto the Laptop again](#ssh-clone) if you deleted it the last time you were working on the laptop.
 
