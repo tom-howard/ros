@@ -64,7 +64,10 @@ As for the task itself:
     BEACONING COMPLETE: The robot has now stopped.
     ```
 
-1. The robot will have a maximum of 90 seconds to complete this task.
+1. The robot will have a maximum of 90 seconds to complete this task. 
+
+    *Timing will be determined using the "Real Time" indicator in Gazebo*.
+
 1. Your team's ROS package must contain a launch file called `task4.launch`, such that the functionality that you develop for Task 4 can be launched from your package via the command:
 
     ```bash

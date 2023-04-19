@@ -133,6 +133,8 @@ Marks will be awarded based on the maximum number of rooms that your robot manag
 
 </center>
 
+*The 180-second timer will start as soon as the robot starts moving within the arena*.
+
 ### Criterion C: An "incident-free-run"
 
 **Marks**: 5/35

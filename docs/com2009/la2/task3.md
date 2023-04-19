@@ -23,7 +23,9 @@ As with Task 2, the simulated arena that your robot will be assessed in for this
 1. The robot must then autonomously navigate the maze in order to find its way to a green *"Finish Zone"* (or get as close as possible to it).
 1. The robot must do this without touching any of the arena walls: penalties will be applied for those that do (See [the table below](#marks)).
 1. The robot's progress will be measured at 10% increments throughout the maze, using distance markers printed on the arena floor (where the finish line is at 100%).
-1. The robot will have a maximum of 150 seconds to navigate the maze.
+1. The robot will have a maximum of 150 seconds to navigate the maze. 
+
+    *Timing will be determined using the "Real Time" indicator in Gazebo*.
 
     <a name="launch"></a>
 

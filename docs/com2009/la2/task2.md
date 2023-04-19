@@ -23,6 +23,9 @@ The simulated environment that your robot will need to explore for this will be 
 
 1. The robot will start in the centre of the arena (denoted "Zone 5").
 1. It must explore the environment for 90 seconds without touching any of the arena walls or the obstacles within it.
+
+    *Timing of this task will be determined using the "Real Time" indicator in Gazebo*.
+
 1. If the robot makes contact with **anything** before the time has elapsed then the attempt will be stopped.
 1. Nine equal-sized zones are marked out on the arena floor and the robot must enter as many of these as possible during the attempt.
 1. The robot must be moving for the entire duration of the task. Simply just turning on the spot for the whole time doesn't count!

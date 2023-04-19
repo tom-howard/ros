@@ -31,6 +31,9 @@ With regard to the odometry and keeping track of your robot's pose, remember wha
 1. Once complete, the robot must then turn clockwise to follow a second circular path, again of 1 m diameter ("Loop 2").
 1. After Loop 2 the robot must stop, at which point it *should* be located back at its starting point.
 1. The velocity of the robot should be set to ensure that the whole sequence takes approximately 60 seconds to complete (:material-plus-minus:5 seconds).
+
+    *The timer will start as soon as the robot starts moving*.
+
 1. The robot's current odometry data should be printed to the terminal throughout, where messages should be of the following format: <a name="msg-format"></a>
 	
         x={x} [m], y={y} [m], yaw={yaw} [degrees].
