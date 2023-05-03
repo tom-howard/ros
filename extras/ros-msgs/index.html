@@ -10,27 +10,27 @@
       
       
       
-        <link rel="canonical" href="https://tom-howard.github.io/ros/com2009/la1/week4/move_client/">
+        <link rel="canonical" href="https://tom-howard.github.io/ros/extras/ros-msgs/">
       
       
-        <link rel="prev" href="../../week3/move_square/">
+        <link rel="prev" href="../launch-files/roslaunch-api/">
       
       
-        <link rel="next" href="../move_server/">
+        <link rel="next" href="../../others/amr31001/">
       
-      <link rel="icon" href="../../../../assets/favicon.png">
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.9">
     
     
       
-        <title>Week 4 Move Service-Client Python Example - Robotics in the Diamond: ROS</title>
+        <title>Creating Your Own Custom ROS Messages - Robotics in the Diamond: ROS</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a6bdf11c.min.css">
       
       
 
@@ -40,11 +40,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../../css/timeago.css">
+      <link rel="stylesheet" href="../../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#week-4-move-service-client-python-example" class="md-skip">
+        <a href="#creating-your-own-custom-ros-messages" class="md-skip">
           Skip to content
         </a>
       
@@ -87,9 +87,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+    <a href="../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
       
-  <img src="../../../../assets/tuos.png" alt="logo">
+  <img src="../../assets/tuos.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -105,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Week 4 Move Service-Client Python Example
+              Creating Your Own Custom ROS Messages
             
           </span>
         </div>
@@ -209,7 +209,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../about/" class="md-tabs__link">
+      <a href="../../about/" class="md-tabs__link">
         About
       </a>
     </li>
@@ -225,7 +225,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../wsl-ros/" class="md-tabs__link">
+      <a href="../../wsl-ros/" class="md-tabs__link">
         WSL-ROS
       </a>
     </li>
@@ -235,15 +235,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../../" class="md-tabs__link md-tabs__link--active">
+      <a href="../../com2009/" class="md-tabs__link">
         COM2009
       </a>
     </li>
@@ -259,7 +257,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../waffles/" class="md-tabs__link">
+      <a href="../../waffles/" class="md-tabs__link">
         The Waffles
       </a>
     </li>
@@ -268,6 +266,8 @@
       
         
   
+  
+    
   
 
 
@@ -280,7 +280,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../extras/launch-files/" class="md-tabs__link">
+      <a href="../launch-files/" class="md-tabs__link md-tabs__link--active">
         ROS Extras
       </a>
     </li>
@@ -303,7 +303,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../others/amr31001/" class="md-tabs__link">
+      <a href="../../others/amr31001/" class="md-tabs__link">
         Other Courses
       </a>
     </li>
@@ -333,9 +333,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+    <a href="../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
       
-  <img src="../../../../assets/tuos.png" alt="logo">
+  <img src="../../assets/tuos.png" alt="logo">
 
     </a>
     Robotics in the Diamond: ROS
@@ -389,7 +389,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../about/">About</a>
+          <a href="../../about/">About</a>
           
             <label for="__nav_1">
               <span class="md-nav__icon md-icon"></span>
@@ -412,7 +412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/robots/" class="md-nav__link">
+      <a href="../../about/robots/" class="md-nav__link">
         The Robots
       </a>
     </li>
@@ -426,7 +426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/acknowledgements/" class="md-nav__link">
+      <a href="../../about/acknowledgements/" class="md-nav__link">
         Acknowledgements
       </a>
     </li>
@@ -440,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/license/" class="md-nav__link">
+      <a href="../../about/license/" class="md-nav__link">
         License
       </a>
     </li>
@@ -454,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/changelog/" class="md-nav__link">
+      <a href="../../about/changelog/" class="md-nav__link">
         Version History
       </a>
     </li>
@@ -512,7 +512,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../wsl-ros/">WSL-ROS</a>
+          <a href="../../wsl-ros/">WSL-ROS</a>
           
             <label for="__nav_2">
               <span class="md-nav__icon md-icon"></span>
@@ -535,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/first-run/" class="md-nav__link">
+      <a href="../../wsl-ros/first-run/" class="md-nav__link">
         Launching for the First Time
       </a>
     </li>
@@ -549,7 +549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/configure-vscode/" class="md-nav__link">
+      <a href="../../wsl-ros/configure-vscode/" class="md-nav__link">
         Configuring Visual Studio Code
       </a>
     </li>
@@ -563,7 +563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/linux-term/" class="md-nav__link">
+      <a href="../../wsl-ros/linux-term/" class="md-nav__link">
         A Quick Introduction to the Linux Terminal
       </a>
     </li>
@@ -577,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/wsl-ros-return/" class="md-nav__link">
+      <a href="../../wsl-ros/wsl-ros-return/" class="md-nav__link">
         Re-Launching WSL-ROS
       </a>
     </li>
@@ -591,7 +591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/backup-restore/" class="md-nav__link">
+      <a href="../../wsl-ros/backup-restore/" class="md-nav__link">
         Backing-Up (and Restoring) your Data
       </a>
     </li>
@@ -605,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/rdp/" class="md-nav__link">
+      <a href="../../wsl-ros/rdp/" class="md-nav__link">
         Remote Access
       </a>
     </li>
@@ -619,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/wt-settings/" class="md-nav__link">
+      <a href="../../wsl-ros/wt-settings/" class="md-nav__link">
         Windows Terminal Settings
       </a>
     </li>
@@ -633,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/vscode/" class="md-nav__link">
+      <a href="../../wsl-ros/vscode/" class="md-nav__link">
         Launching VS Code (in WSL-ROS)
       </a>
     </li>
@@ -647,7 +647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/installing/" class="md-nav__link">
+      <a href="../../wsl-ros/installing/" class="md-nav__link">
         Installing ROS on Your Own PC
       </a>
     </li>
@@ -667,16 +667,14 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
       
       
         
@@ -693,7 +691,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../">COM2009</a>
+          <a href="../../com2009/">COM2009</a>
           
             <label for="__nav_3">
               <span class="md-nav__icon md-icon"></span>
@@ -701,7 +699,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           COM2009
@@ -714,16 +712,14 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
       
       
         
@@ -748,7 +744,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../">Lab Assignment #1</a>
+          <a href="../../com2009/la1/">Lab Assignment #1</a>
           
             <label for="__nav_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -756,7 +752,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3_2">
           <span class="md-nav__icon md-icon"></span>
           Lab Assignment #1
@@ -771,7 +767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week1/" class="md-nav__link">
+      <a href="../../com2009/la1/week1/" class="md-nav__link">
         Week 1: ROS & Linux Basics
       </a>
     </li>
@@ -785,7 +781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week2/" class="md-nav__link">
+      <a href="../../com2009/la1/week2/" class="md-nav__link">
         Week 2: Odometry & Basic Navigation
       </a>
     </li>
@@ -799,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week3/" class="md-nav__link">
+      <a href="../../com2009/la1/week3/" class="md-nav__link">
         Week 3: Advanced Navigation & SLAM
       </a>
     </li>
@@ -813,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../com2009/la1/week4/" class="md-nav__link">
         Week 4: ROS Services
       </a>
     </li>
@@ -827,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week5/" class="md-nav__link">
+      <a href="../../com2009/la1/week5/" class="md-nav__link">
         Week 5: ROS Actions
       </a>
     </li>
@@ -841,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../week6/" class="md-nav__link">
+      <a href="../../com2009/la1/week6/" class="md-nav__link">
         Week 6: Cameras, Machine Vision & OpenCV
       </a>
     </li>
@@ -896,7 +892,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../la2/">Lab Assignment #2</a>
+          <a href="../../com2009/la2/">Lab Assignment #2</a>
           
             <label for="__nav_3_3">
               <span class="md-nav__icon md-icon"></span>
@@ -919,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/overview/" class="md-nav__link">
+      <a href="../../com2009/la2/overview/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -933,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/getting-started/" class="md-nav__link">
+      <a href="../../com2009/la2/getting-started/" class="md-nav__link">
         Getting Started (Week 7 Tasks)
       </a>
     </li>
@@ -947,7 +943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task1/" class="md-nav__link">
+      <a href="../../com2009/la2/task1/" class="md-nav__link">
         Task 1: Creating a Deployable ROS Package
       </a>
     </li>
@@ -961,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task2/" class="md-nav__link">
+      <a href="../../com2009/la2/task2/" class="md-nav__link">
         Task 2: Obstacle Avoidance
       </a>
     </li>
@@ -975,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task3/" class="md-nav__link">
+      <a href="../../com2009/la2/task3/" class="md-nav__link">
         Task 3: Maze Navigation
       </a>
     </li>
@@ -989,7 +985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task4/" class="md-nav__link">
+      <a href="../../com2009/la2/task4/" class="md-nav__link">
         Task 4: Detection, Search & Beaconing
       </a>
     </li>
@@ -1003,7 +999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task5/" class="md-nav__link">
+      <a href="../../com2009/la2/task5/" class="md-nav__link">
         Task 5: Real-World Exploration
       </a>
     </li>
@@ -1039,7 +1035,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../la2/extras/">Additional Resources</a>
+          <a href="../../com2009/la2/extras/">Additional Resources</a>
           
             <label for="__nav_3_3_9">
               <span class="md-nav__icon md-icon"></span>
@@ -1062,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/extras/laptops/" class="md-nav__link">
+      <a href="../../com2009/la2/extras/laptops/" class="md-nav__link">
         Working with your ROS Packages on the laptops (with GitHub and SSH)
       </a>
     </li>
@@ -1076,7 +1072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/extras/submission/" class="md-nav__link">
+      <a href="../../com2009/la2/extras/submission/" class="md-nav__link">
         Exporting your ROS package for submission
       </a>
     </li>
@@ -1142,7 +1138,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../waffles/">The Waffles</a>
+          <a href="../../waffles/">The Waffles</a>
           
             <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
@@ -1165,7 +1161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/intro/" class="md-nav__link">
+      <a href="../../waffles/intro/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -1179,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/launching-ros/" class="md-nav__link">
+      <a href="../../waffles/launching-ros/" class="md-nav__link">
         Launching ROS
       </a>
     </li>
@@ -1193,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/exercises/" class="md-nav__link">
+      <a href="../../waffles/exercises/" class="md-nav__link">
         Initial Exercises
       </a>
     </li>
@@ -1207,7 +1203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/fact-finding/" class="md-nav__link">
+      <a href="../../waffles/fact-finding/" class="md-nav__link">
         Fact-Finding Missions!
       </a>
     </li>
@@ -1221,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/shutdown/" class="md-nav__link">
+      <a href="../../waffles/shutdown/" class="md-nav__link">
         Safe Shutdown
       </a>
     </li>
@@ -1235,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/tips/" class="md-nav__link">
+      <a href="../../waffles/tips/" class="md-nav__link">
         Tips & Tricks
       </a>
     </li>
@@ -1255,14 +1251,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
         
@@ -1279,7 +1277,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           ROS Extras
@@ -1320,7 +1318,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../extras/launch-files/">Launch Files</a>
+          <a href="../launch-files/">Launch Files</a>
           
             <label for="__nav_5_1">
               <span class="md-nav__icon md-icon"></span>
@@ -1343,7 +1341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/launching-launch-files/" class="md-nav__link">
+      <a href="../launch-files/launching-launch-files/" class="md-nav__link">
         Launching Other Launch Files
       </a>
     </li>
@@ -1357,7 +1355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/roslaunch-clas/" class="md-nav__link">
+      <a href="../launch-files/roslaunch-clas/" class="md-nav__link">
         ROSlaunch Command-line Arguments
       </a>
     </li>
@@ -1371,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/python-clis/" class="md-nav__link">
+      <a href="../launch-files/python-clis/" class="md-nav__link">
         Building Command-line Interfaces (CLIs) for Python Nodes
       </a>
     </li>
@@ -1385,7 +1383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/cla-to-node/" class="md-nav__link">
+      <a href="../launch-files/cla-to-node/" class="md-nav__link">
         Passing Command-line Arguments to Python Nodes via ROSlaunch
       </a>
     </li>
@@ -1399,7 +1397,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/roslaunch-api/" class="md-nav__link">
+      <a href="../launch-files/roslaunch-api/" class="md-nav__link">
         Using the ROSlaunch Python API
       </a>
     </li>
@@ -1418,11 +1416,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../extras/ros-msgs/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Creating Your Own Custom ROS Messages
       </a>
+      
     </li>
   
 
@@ -1511,7 +1519,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../../others/amr31001/">AMR31001</a>
+          <a href="../../others/amr31001/">AMR31001</a>
           
             <label for="__nav_6_1">
               <span class="md-nav__icon md-icon"></span>
@@ -1534,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../others/amr31001/lab1/" class="md-nav__link">
+      <a href="../../others/amr31001/lab1/" class="md-nav__link">
         Lab 1: Mobile Robotics
       </a>
     </li>
@@ -1548,7 +1556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../others/amr31001/lab2/" class="md-nav__link">
+      <a href="../../others/amr31001/lab2/" class="md-nav__link">
         Lab 2: Feedback Control
       </a>
     </li>
@@ -1616,7 +1624,7 @@
                   
 
   
-    <a href="https://github.com/tom-howard/ros/edit/main/docs/com2009/la1/week4/move_client.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/ros/edit/main/docs/extras/ros-msgs.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1625,103 +1633,32 @@
     
       
     
-    <a href="https://github.com/tom-howard/ros/raw/main/docs/com2009/la1/week4/move_client.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/ros/raw/main/docs/extras/ros-msgs.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="week-4-move-service-client-python-example">Week 4 Move Service-Client Python Example<a class="headerlink" href="#week-4-move-service-client-python-example" title="Permanent link">&para;</a></h1>
-<p>Copy <strong>all</strong> the code below into your <code>move_client.py</code> file and review the annotations to understand how it all works.</p>
-<div class="admonition note">
-<p class="admonition-title">DFTS!!</p>
-<p>(Don't forget the shebang!)
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/usr/bin/env python3</span>
-</code></pre></div></p>
-</div>
-<div class="highlight"><span class="filename">move_client.py</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/usr/bin/env python3</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">rospy</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span> <span class="nn">tuos_ros_msgs.srv</span> <span class="kn">import</span> <span class="n">SetBool</span><span class="p">,</span> <span class="p">{</span><span class="n">BLANK</span><span class="p">}</span> <span class="c1"># (2)!</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">import</span> <span class="nn">sys</span> <span class="c1"># (3)!</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">service_name</span> <span class="o">=</span> <span class="s2">&quot;move_service&quot;</span> <span class="c1"># (4)!</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s2">_client&quot;</span><span class="p">)</span> <span class="c1"># (5)!</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">rospy</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="n">service_name</span><span class="p">)</span> <span class="c1"># (6)!</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">service</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ServiceProxy</span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span> <span class="n">SetBool</span><span class="p">)</span> <span class="c1"># (7)!</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">service_request</span> <span class="o">=</span> <span class="p">{</span><span class="n">BLANK</span><span class="p">}()</span> <span class="c1"># (8)!</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">service_request</span><span class="o">.</span><span class="n">request_signal</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># (9)!</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="n">service_response</span> <span class="o">=</span> <span class="n">service</span><span class="p">(</span><span class="n">service_request</span><span class="p">)</span> <span class="c1"># (10)!</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="nb">print</span><span class="p">(</span><span class="n">service_response</span><span class="p">)</span> <span class="c1"># (11)!</span>
-</code></pre></div>
-<ol>
-<li>
-<p>Again, the first step when building a Python node is to import the <code>rospy</code> library so that Python and ROS can interact. </p>
-</li>
-<li>
-<p>This service client will use the <code>SetBool</code> service message from the <code>tuos_ros_msgs</code> package, so we import the full definition of the <code>SetBool</code> Service Message, as well as <em>the portion of the message that we will need to use to actually issue a service call</em>.</p>
-</li>
-<li>
-<p>We import the Python <code>sys</code> module to do some error handling for us,  we don't need to worry about too much.</p>
-</li>
-<li>
-<p>Define the name of the service that we want to call, and assign this to a variable called <code>service_name</code> (for convenience, since we'll refer to this a couple of times). </p>
-</li>
-<li>
-<p>Initialise the client node (give it a name).</p>
-</li>
-<li>
-<p>Wait until the service that we want to call is actually running, execution of this node will not progress beyond this point until the service is detected on the ROS network (launched by the Server).</p>
-</li>
-<li>
-<p>Once it <em>is</em> running, we create a connection to it and specify the service message type that it uses (as defined above).</p>
-</li>
-<li>
-<p>Create an instance of the <code>{BLANK}</code> part of the service message, and populate this with the data that the server is expecting.</p>
-</li>
-<li>
-<p><strong>Remember:</strong> Using <code>rossrv info</code> on this service message in a terminal tells us the attribute names for both the <strong>Request</strong> and <strong>Response</strong>:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>rossrv<span class="w"> </span>info<span class="w"> </span>tuos_ros_msgs/SetBool
-</code></pre></div>
-...gives us the following:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>bool request_signal
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>---
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>bool response_signal
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>string response_message
-</code></pre></div></p>
-</li>
-<li>
-<p>Use the <code>rospy.ServiceProxy</code> instance that we created earlier (called <code>service</code>) to actually send the <code>service_request</code> message to the service and obtain a response back from the Server (once it's complete).</p>
-</li>
-<li>
-<p>To finish off, we print the response to the terminal to give the user some feedback. Job done!</p>
-</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Fill in the Blank!</p>
-<p>Consider the <code>import</code> statement for <a href="../move_server">the service <em>Server</em> that we created earlier</a>... Which part of the <code>SetBool</code> Service message was imported here? Now consider that you need to build a client to call this service... which part of the <code>SetBool</code> Service message is needed in order to <em>call</em> a service? </p>
-<p><strong>Note:</strong> the same <code>{BLANK}</code> appears in two places in the code above - <em>the answer is the same in both places!</em></p>
-</div>
-<p align="center">
-  <a href="../../week4#ex2_ret">&#8592; Back to Week 4 - Exercise 2</a>
-</p>
+<h1 id="creating-your-own-custom-ros-messages">Creating Your Own Custom ROS Messages<a class="headerlink" href="#creating-your-own-custom-ros-messages" title="Permanent link">&para;</a></h1>
+<p><em>Want to create your own ROS Topic/Service/Action Messages?</em></p>
+<p>Defining your own messages is quite straight forward, but there are a few key rules to follow, and these rules differ slightly depending on whether you are trying to create a standard <strong>topic message</strong> type, a <strong>Service</strong> message or an <strong>Action</strong>. You'll also need to make sure that the <code>CMakeLists.txt</code> and <code>package.xml</code> files within your ROS package contain the correct instructions so that the necessary source code is generated correctly when you run <code>catkin build</code> (i.e. so that you can import the messages into your Python (or C++ etc.) nodes).</p>
+<p>Below are some links to some useful external resources that explain how to create each different type of ROS message for your own specific applications:</p>
+<ul>
+<li><a href="http://wiki.ros.org/ROS/Tutorials/CreatingMsgAndSrv">Creating ROS Topic and Services Messages (<code>msg</code> and <code>srv</code>)</a></li>
+<li><a href="https://roboticsbackend.com/ros-create-custom-action/">Creating ROS Action Messages</a></li>
+</ul>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-01-24T15:40:23+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-01-24</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-03T12:53:25+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-03</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-11-11T17:42:32+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-11-11</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-03T12:53:25+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-03</span>
       
     
   </small>
@@ -1752,7 +1689,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../week3/move_square/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Week 3 &#39;move_square&#39; Python Template" rel="prev">
+          <a href="../launch-files/roslaunch-api/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Using the ROSlaunch Python API" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -1761,20 +1698,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Week 3 'move_square' Python Template
+                Using the ROSlaunch Python API
               </div>
             </div>
           </a>
         
         
           
-          <a href="../move_server/" class="md-footer__link md-footer__link--next" aria-label="Next: Week 4 Move Service-Server Python Example" rel="next">
+          <a href="../../others/amr31001/" class="md-footer__link md-footer__link--next" aria-label="Next: AMR31001" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Week 4 Move Service-Server Python Example
+                AMR31001
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1813,14 +1750,14 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
       
-        <script src="../../../../js/timeago.min.js"></script>
+        <script src="../../js/timeago.min.js"></script>
       
-        <script src="../../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
   </body>
