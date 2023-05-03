@@ -1,3 +1,4 @@
 nav:
   - "Launch Files": launch-files
+  - "Creating Your Own Custom ROS Messages": ros-msgs.md
   - "The Course Repo (GitHub)": https://github.com/tom-howard/COM2009
