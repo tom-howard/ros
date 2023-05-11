@@ -37,6 +37,9 @@ The Computer Room 3 robot arena might look something like this for the real asse
     1. The robot might not necessarily be located at the same starting point as in the simulation; it could start anywhere.
     1. Beacons will be the same shape, size and colour as those in the simulation (yellow, red, green and blue). Detecting colours is a lot harder in the real-world than it is in simulation though, so you'll need to do a lot of testing on a real robot if you want to get this working robustly (you will have access to all the beacons during the lab sessions).
 
+!!! warning 
+    The simulation is provided to get you started. Even if your code works perfectly in simulation, that doesn't mean that it will work in the real world. **Test things *thoroughly* on the real robots as much as possible!**
+
 ## Details
 
 The robot will have 3 minutes (180 seconds) in total to complete this task.
