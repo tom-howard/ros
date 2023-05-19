@@ -1668,13 +1668,17 @@
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">process</span> <span class="o">=</span> <span class="n">launch</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 </code></pre></div>
 <p>You could wrap this into one of your own ROS nodes, or even build a standalone node inside your package to call the <code>map_saver</code> node when required. Perhaps you could even wrap the last three of the above commands inside a while loop and get the node to update a map file at regular intervals (say 5 seconds?) while your robot explores its environment...</p>
+<details class="hint">
+<summary>Hint</summary>
+<p>You may need to wrap this in a loop in order for it to work reliably.</p>
+</details>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-20T16:55:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-19T11:24:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-19</span>
       
         <br>
         Created:
