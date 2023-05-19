@@ -168,8 +168,8 @@ Once again, if your robot completes the task (or the 180 seconds elapses) withou
 
 | Criteria | Details | Marks|
 | :--- | :--- | :--- |
-| D.2.a | At the end of the assessment, a map of the robot arena (or any part of it) has been generated. Two files should be generated: a `.pgm` and a `.yaml`, which must both be called `task5_map`, and these files must be located in a `maps` folder at the root of your package directory i.e. `com2009_team{}/maps/task4_map.pgm`. | 1 |
-| D.2.b | Your `com2009_team{}/maps/task4_map.pgm` map that is created during the assessment depicts at least one of the rooms in the arena. | 2 |
-| D.2.c | Your `com2009_team{}/maps/task4_map.pgm` map that is created during the assessment depicts two or more of the rooms in the arena. | 2 |   
+| D.2.a | At the end of the assessment, a map of the robot arena (or any part of it) has been generated. Two files should be generated: a `.pgm` and a `.yaml`, which must both be called `task5_map`, and these files must be located in a `maps` folder at the root of your package directory i.e. `com2009_team{}/maps/task5_map.pgm`. | 1 |
+| D.2.b | Your `com2009_team{}/maps/task5_map.pgm` map that is created during the assessment depicts at least one of the rooms in the arena. | 2 |
+| D.2.c | Your `com2009_team{}/maps/task5_map.pgm` map that is created during the assessment depicts two or more of the rooms in the arena. | 2 |   
 
 </center>
