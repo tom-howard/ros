@@ -21,3 +21,6 @@ The following is an example of a very simple ROS node that does just that. Once 
 ```
 
 You could wrap this into one of your own ROS nodes, or even build a standalone node inside your package to call the `map_saver` node when required. Perhaps you could even wrap the last three of the above commands inside a while loop and get the node to update a map file at regular intervals (say 5 seconds?) while your robot explores its environment...
+
+??? hint
+    You may need to wrap this in a loop in order for it to work reliably.
