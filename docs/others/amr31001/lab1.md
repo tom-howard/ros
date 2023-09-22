@@ -9,11 +9,11 @@ title: "Lab 1: Mobile Robotics"
 
 In this first AMR31001 *'Industry 4.0'* ROS Lab you will learn how to use ROS ([the Robot Operating System](https://www.ros.org/)) to control a robot's motion.
 
-ROS is an open-source, industry-standard robot programming framework, used in a range of applications such as agriculture, warehouse and factory automation and advanced manufacturing (the robot arms at the AMRC, for instance, are programmed and controlled using ROS!) 
+ROS is an open-source, industry-standard robot programming framework, used in a range of industries such as agriculture, warehouse and factory automation and advanced manufacturing (the robot arms at the AMRC, for instance, are programmed and controlled using ROS!) 
 
-ROS allows us to programme robots using a range of different programming languages, but we'll be using Python for these labs. In addition to this, ROS runs on top of a Linux operating system called *'Ubuntu'*, and so we'll also learn a bit about how to use this too.
+ROS allows us to programme robots using a range of different programming languages (including C++, Java, MATLAB etc.), but we'll be using Python for these labs. In addition to this, ROS runs on top of a Linux operating system called *'Ubuntu'*, and so we'll also learn a bit about how to use this too.
 
-We'll be working with robots called *'TurtleBot3 Waffles'*, which you can [find out a bit more about here](../../about/robots). 
+We'll be working with robots called *'TurtleBot3 Waffles'*, which you can [find out a bit more about here](../../../about/robots). 
 
 !!! warning "Pre-Lab Work"
     You **must** have completed the Pre-Lab Test before you can make a start on this lab. This is available on the AMR31001 Blackboard Course Page.
@@ -55,27 +55,27 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 1. First, identify the robot that you have been provided with. Robots are named as follows:
 
     ```txt
-    dia-waffleNUM
+    dia-waffleX
     ```
-    ... where `NUM` is a unique *'Robot Number'* (a number between 1 and 50). Check the label printed on top of the robot to find out which one you have!
+    ... where `X` is a unique *'Robot Number'* (a number between 1 and 50). Check the label printed on top of the robot to find out which one you have!
 
-1. Open up a terminal instance on the laptop, either by using the `Ctrl+Alt+T` keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
+1. Open up a terminal instance on the laptop, either by pressing the ++ctrl+alt+t++ buttons on your keyboard all at the same time, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
     <figure markdown>
       ![](../../images/laptops/bash_terminal_icon.svg?width=60px)
     </figure>
         
-    (we'll refer to this as **TERMINAL 1**).
+    We'll refer to this terminal as **TERMINAL 1**.
     
-1. In the terminal type the following command to *pair* the laptop and robot, so that they can work together:
+1. In **TERMINAL 1** type the following command to *pair* the laptop and robot, so that they can work together:
 
     ***
     
     **TERMINAL 1:**
     ```bash
-    waffle NUM pair
+    waffle X pair
     ```
-    Replacing `NUM` with the number of the robot that you have been provided with.
+    Replacing `X` with the number of the robot that you have been provided with.
     
     ***
 
@@ -87,7 +87,7 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
       ![](../../images/laptops/ssh_auth.svg?width=14cm)
     </figure>
 
-    If so, just type `yes` and then hit `Enter` to confirm that you want to continue.
+    If so, just type `yes` and then hit ++enter++ to confirm that you want to continue.
 
 1. Once the pairing process is finished you should see a message saying `pairing complete`, displayed in blue in the terminal. 
 
@@ -96,9 +96,9 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
     ***
     **TERMINAL 1:**
     ```bash
-    waffle NUM term
+    waffle X term
     ```
-    (again, replacing `NUM` with the number of *your* robot).
+    (again, replacing `X` with the number of *your* robot).
     
     ***
 
@@ -129,14 +129,14 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 
     You should leave **TERMINAL 1** alone now, just leave it running in the background for the rest of the lab.
 
-1. Next, open up a *new terminal instance* on the laptop (by pressing `Ctrl+Alt+T` or clicking the Terminal App desktop icon, as you did before). We'll call this one **TERMINAL 2**.
+1. Next, open up a *new terminal instance* on the laptop (by pressing ++ctrl+alt+t++ or clicking the Terminal App desktop icon, as you did before). We'll call this one **TERMINAL 2**.
 
 1. In **TERMINAL 2** enter the following command:
     
     ***
     **TERMINAL 2:**
     ```bash
-    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    rosrun turtlebot3_teleop turtlebot3_teleop_key
     ```
     ***
 
@@ -146,7 +146,7 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
       ![](../../images/ros-cli/teleop_keymap.svg)
     </figure>
 
-1. Enter `Ctrl+C` in **TERMINAL 2** to stop the Teleop node when you've had enough fun.
+1. Enter ++ctrl+c++ in **TERMINAL 2** to stop the Teleop node when you've had enough fun.
     
 ### Packages and Nodes
 
@@ -154,18 +154,26 @@ ROS applications are organised into *packages*. Packages are basically folders c
 
 *Scripts* tell the robot what to do and how to act. In ROS, these scripts are called *nodes*. *ROS Nodes* are executable programs that perform specific robot tasks and operations. These are typically written in C++ or Python, but it's possible to write ROS Nodes using other programming languages too.
 
-In Exercise 1 you actually launched a whole range of different nodes on the ROS Network (the wireless link between your robot and laptop) using just two commands: 
+In Exercise 1 you actually launched a whole range of different nodes on the ROS Network (the wireless link between your robot and laptop) using the following two commands: 
 
 1. `roslaunch tuos_tb3_tools ros.launch` (on the *robot*, in **TERMINAL 1**).
-2. `roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch` (on the *laptop*, in **TERMINAL 2**).
+2. `rosrun turtlebot3_teleop turtlebot3_teleop_key` (on the *laptop*, in **TERMINAL 2**).
 
-These are `roslaunch` commands, and they have two parts to them (after the `roslaunch` bit):
+The first of the above was a `roslaunch` command, which has the following two parts to it (after the `roslaunch` bit):
 
 ```bash
 roslaunch {[1] Package name} {[2] Launch file}
 ```
 
-**Part [1]** specifies the name of the *ROS package* containing the functionality that we want to execute. **Part [2]** is a file within that package that tells ROS exactly what scripts (*'nodes'*) that we want to launch.
+**Part [1]** specifies the name of the *ROS package* containing the functionality that we want to execute. **Part [2]** is a file within that package that tells ROS exactly what scripts (*'nodes'*) that we want to launch. We can launch multiple nodes at the same time from a single launch file.
+
+The second command was a `rosrun` command, which has a structure similar to `roslaunch`:
+
+```bash
+rosrun {[1] Package name} {[2] Node name}
+```    
+
+Here, **Part [1]** is the same as the `roslaunch` command, but **Part [2]** is slightly different: `{[2] Node name}`. Here we are directly specifying a single script that we want to execute. We therefore use `rosrun` if we only want to launch a **single node** on the ROS network (`turtlebot3_teleop_key` in this case, which is a Python script).
 
 !!! info "Post-lab Quiz"
     What were the names of the two packages that we invoked in Exercise 1?
@@ -176,7 +184,7 @@ Our Waffles have some pretty sophisticated sensors on them, allowing them to "se
 
 ##### Part 1: The Camera
 
-1. There shouldn't be anything running in **TERMINAL 2** now, after you closed down the Teleop node at the end of the previous exercise (`Ctrl+C`). Return to this terminal and launch the `rqt_image_view` node:
+1. There shouldn't be anything running in **TERMINAL 2** now, after you closed down the Teleop node at the end of the previous exercise (++ctrl+c++). Return to this terminal and launch the `rqt_image_view` node:
 
     ***
     **TERMINAL 2:**
@@ -185,20 +193,15 @@ Our Waffles have some pretty sophisticated sensors on them, allowing them to "se
     ```
     ***
 
-    Notice how we're using the `rosrun` command here, instead of `roslaunch`? We use `rosrun` if we only want to launch a **single node** (like the `rqt_image_view` node) on the ROS network. `rosrun` has a similar two-part format to `roslaunch`:
-
-    ```bash
-    rosrun {[1] Package name} {[2] Node name}
-    ```    
-     
     !!! info "Post-lab Quiz"
-        Why did we have to type `rqt_image_view` twice?
+        1. We're using `rosrun` here again, what does this mean?
+        1. Why did we have to type `rqt_image_view` twice?
     
 1. A new window should open. Maximise this (if it isn't already) and then select `/camera/color/image_raw` from the dropdown menu at the top-left of the application window.
 1. Live images from the robot's camera should now be visible! Stick your face in front of the camera and see yourself appear on the laptop screen!
 1. Close down the window once you've had enough. This should release **TERMINAL 2** so that you can enter commands in it again.
 
-    The camera on the robot is an [Intel RealSense D435](https://www.intelrealsense.com/depth-camera-d435/), and it's actually quite a clever device. Inside the unit is two separate camera sensors, giving it - effectively - both a left and right eye. The device then combines the data from both of these sensors and uses the combined information to infer depth from the images as well. Let's have a look at that in action now...
+    The camera on the robot is quite a clever device. Inside the unit is two separate image sensors, giving it - effectively - both a left and right eye. The device then combines the data from both of these sensors and uses the combined information to infer depth from the images as well. Let's have a look at that in action now...
 
 1. In **TERMINAL 2** enter the following command:
 
@@ -249,19 +252,19 @@ The LiDAR sensor spins and performs this process continuously, so a full 360&deg
     ***
     **TERMINAL 3:**
     ```bash
-    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    rosrun turtlebot3_teleop turtlebot3_teleop_key
     ```
     ***
 
 1. Drive the robot around a bit and watch how the map in RViz is updated as the robot explores new parts of the environment.
 
-1. Enter `Ctrl+C` in **TERMINAL 3** and then close down this terminal window, we won't need it anymore.
+1. Enter ++ctrl+c++ in **TERMINAL 3** and then close down this terminal window, we won't need it any more.
 
 1. Close down the RViz window, but keep **TERMINAL 2** open for the next exercise...
 
 We've now used both `roslaunch` and `rosrun` to launch ROS applications. These are both *ROS command-line tools*, and there are many others at our disposal as robotics engineers as well. 
 
-Using `rosrun` and `roslaunch`, as we have done so far, it's easy to end up with a whole load of different processes or *ROS Nodes* running on the network, some of which we will interact with, but others may just be running in the background. It is often useful to know exactly what *is* running on the ROS network, and there are a number of ways to do this.
+Using `rosrun` and `roslaunch`, as we have done so far, it's easy to end up with a lot of different processes or *ROS Nodes* running on the network, some of which we will interact with, but others may just be running in the background. It is often useful to know exactly what *is* running on the ROS network, and there are a number of ways to do this.
 
 #### :material-pen: Exercise 3: Visualising the ROS Network {#ex3}
 
@@ -333,7 +336,7 @@ Much like the `rosnode list` command, we can use `rostopic list` to list all the
     Publishers: None
 
     Subscribers:
-     * /turtlebot3_core (http://dia-waffle[NUM]:#####/)
+     * /turtlebot3_core (http://dia-waffleX:#####/)
     ```
 
     This tells us a few things: <a name="rostopic_info_explained"></a>
@@ -582,9 +585,9 @@ Before you leave, please shut down your robot! Enter the following command in **
 ***
 **TERMINAL 2:**
 ```bash
-waffle NUM off
+waffle X off
 ```
-... again, replacing `NUM` with the number of the robot that you have been working with today.
+... again, replacing `X` with the number of the robot that you have been working with today.
 ***
 
 You'll need to enter `y` and then hit `Enter` to confirm this.
@@ -598,6 +601,6 @@ Please then shut down the laptop, which you can do by clicking the battery icon 
 <center>
 
 **AMR31001 Lab 1 Complete!**  
-*See you again next year for Lab 2!*
+*See you in the new year for Lab 2!*
 
 </center>
