@@ -405,13 +405,13 @@ It can therefore only move **linearly** in the **x-axis** (*Forwards/Backwards*)
 !!! info "Post-lab Quiz"
     Take note of all this, there may be a question on it!
 
-#### :material-pen: Exercise 5: Publishing Velocity Commands to the `/cmd_vel` Topic {#ex5}
+#### :material-pen: Exercise 5: Publishing Velocity Commands to the "cmd_vel" Topic {#ex5}
 
 We will use the `rostopic` command differently now, and actually *publish* messages from the terminal to make the robot move. In order to do this we need three key bits of information:
 
-* The *name of the topic* that we want to publish to.
-* The *type of message* that this topic uses.
-* The *data format* that this message type uses.
+1. The **name of the topic** that we want to publish to.
+1. The **type of message** that this topic uses.
+1. The **data format** that this message type uses.
 
 !!! info "Post-lab Quiz"
     We discovered all this in the previous exercise, take note of all three points.
@@ -462,20 +462,22 @@ In any case, the message that we need to publish will end up being quite long be
       y: 0.0
       z: 0.0" --rate=10
     ```
+
 1. Using what you learnt above about the way your robot can actually move, change **one** of the message parameter values in order to make the robot *rotate on the spot*. Before you do this, it's worth noting the following things:
+    
     1. The unit of *linear* velocity is meters per second (m/s).
     1. The unit of *angular* velocity is radians per second (rad/s).
     1. Our TurtleBot3 robots can move with a **maximum linear velocity** of 0.26 m/s and a **maximum angular velocity** of 1.82 rad/s.
 
 1. Once you've edited the message hit `Enter` to publish this to the `/cmd_vel` topic and observe what your robot does!
       
-1. Enter `Ctrl+C` in **TERMINAL 2** to stop the `rostopic pub` process (which will make the robot stop moving too).
+1. Enter ++ctrl+c++ in **TERMINAL 2** to stop the `rostopic pub` process (which will make the robot stop moving too).
 
-1. Next, find a velocity command that makes the robot *move forwards*. (Don't forget to press `Ctrl+C` afterwards.)
+1. Next, find a velocity command that makes the robot *move forwards*. (Don't forget to press ++ctrl+c++ afterwards.)
 
 1. Finally, enter a velocity command to make the robot *move in a circle* (you may need to change two parameter values here).
 
-1. Enter `Ctrl+C` in **TERMINAL 2** to stop the robot.
+1. Enter ++ctrl+c++ in **TERMINAL 2** to stop the robot.
 
 #### :material-pen: Exercise 6: Creating a Python node to make the robot move {#ex6}
 
