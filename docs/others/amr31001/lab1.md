@@ -535,6 +535,23 @@ In reality, robots need to be able to move around complex environments autonomou
     --8<-- "code/move_square_timed.py"
     ```
 
+    1. `rospy` is the ROS client library for Python. We need this so that our Python node can interact with ROS.
+    2. [We know from earlier](#ex4) that in order to make a robot move we need to publish messages to the `/cmd_vel` topic, and that this topic uses `Twist` messages from the `geometry_msgs` package. This is how we import that message, from that package, in order to create velocity commands in Python (which we'll get to shortly...)
+    3. Before we do anything we need to initialise our node to register it on the ROS network with a name. We're calling it "move_waffle" in this case, and we're using `anonymous=True` to ensure that there are no other nodes of the same name already registered on the network.
+    4. We want our main `while` loop (when we get to that bit) to execute 10 times per second (10 Hz), so we create this `rate` object here which we'll use to control this later...
+    5. Here we are setting up a publisher to the `/cmd_vel` topic so that the node can write `Twist` messages to make the robot move.
+    6. We're instantiating a `Twist` message here and calling it `vel` (we'll assign velocity values to this in the `while` loop later on). A `Twist` message contains six different components that we can assign values to. Any idea [what these six values might represent](#velocity-control)?  
+    7. What time is it right now? (This will be useful to compare against in the while loop.)
+    8. We're entering the main `while` loop now. This `rospy.is_shutdown()` function will read `False` unless we request for the node to be stopped (by pressing ++ctrl+c++ in the terminal). Once it turns `True` the `while` loop stops.
+    9. Here we're comparing the time now to the time the last time we checked, to tell us how much time has elapsed (in seconds) since then. We'll use that information to decide what to do...  
+    10. The "transition" state is used to stop the robot (if necessary), and check the time again.
+    11. In "state1" we set velocities that will make the robot move forwards (linear-X velocity only). If the elapsed time is greater than **2 seconds** however, we move on to "state2".
+    12. In "state2" we set velocities that will make the robot turn on the spot (angular-Z velocity only). In this case, if the elapsed time is greater than **4 seconds**, we move back to "state1".
+    13. Regardless of what happens in the `if` statements above, we always publish a velocity command to the `/cmd_vel` topic here (i.e. every loop iteration).
+    14. We created a `rate` object earlier, and we use this now to make sure that each iteration of this `while` loop takes exactly the right amount of time to maintain the rate of execution that we specified earlier (10 Hz). 
+
+    Click on the + icons above in order to expand the code annotations. Read these carefully to ensure that you understand what's going on and how this code works.
+
 1. Now, go back to **TERMINAL 2** and run the code.
 
     !!! note
