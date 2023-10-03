@@ -23,15 +23,13 @@ class Publisher(): # (3)!
         print(f"Stopping the '{self.node_name}' node at: {rospy.get_time()}")
         self.ctrl_c = True
 
-    def main_loop(self):
+    def main(self):
         while not self.ctrl_c: # (13)!
             publisher_message = f"rospy time is: {rospy.get_time()}"
             self.pub.publish(publisher_message)
             self.rate.sleep()
 
 if __name__ == '__main__': # (14)!
-    publisher_instance = Publisher() # (15)!
-    try:
-        publisher_instance.main_loop() # (16)!
-    except rospy.ROSInterruptException:
-        pass
+    node = Publisher() # (15)!
+    node.main() # (16)!
+    
