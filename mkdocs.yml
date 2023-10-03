@@ -41,8 +41,7 @@ theme:
   
 copyright: >
   Copyright &copy; 2023 The University of Sheffield <br />
-  Content by <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Dr Tom Howard</a><br />
-  License: <a href"https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a><br />
+  Content by <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Dr Tom Howard</a> (License: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>)<br />
   <a href="#__consent">Change cookie settings</a>
 repo_url: https://github.com/tom-howard/ros
 repo_name: tom-howard/ros
