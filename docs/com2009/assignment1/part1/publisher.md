@@ -10,7 +10,7 @@ Copy **all** the code below into your `publisher.py` file and *review the annota
     **Don't forget the Shebang!** See [below](#shebang) for further details...
 
 ```python title="publisher.py"
---8<-- "code/publisher.py"
+--8<-- "snippets/publisher.py"
 ```
 
 1. `rospy` is the *Python client library for ROS*, and we need to import this in order to create ROS Nodes in Python.

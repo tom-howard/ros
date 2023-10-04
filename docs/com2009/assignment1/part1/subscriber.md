@@ -7,7 +7,7 @@ title: Part 1 Subscriber Node
 Copy **all** the code below into your `subscriber.py` file and (again) *make sure you read the annotations to understand how it all works!*
 
 ```python title="subscriber.py"
---8<-- "code/subscriber.py"
+--8<-- "snippets/subscriber.py"
 ```
 
 1. As with our publisher node, we need to import the `rospy` client library and the `String` message type from the `std_msgs.msg` library in order to write a Python ROS Node and use the relevant ROS messages:
