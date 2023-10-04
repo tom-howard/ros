@@ -2212,12 +2212,12 @@
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="n">topic_name</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">)</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">node_name</span><span class="si">}</span><span class="s2">&#39; node is active...&quot;</span><span class="p">)</span>
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span> <span class="c1"># (5)!</span>
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> <span class="c1"># (6)!</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">node</span> <span class="o">=</span> <span class="n">Subscriber</span><span class="p">()</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">node</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">subscriber_instance</span> <span class="o">=</span> <span class="n">Subscriber</span><span class="p">()</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">subscriber_instance</span><span class="o">.</span><span class="n">main_loop</span><span class="p">()</span>
 </code></pre></div>
 <ol>
 <li>
