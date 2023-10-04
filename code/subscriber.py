@@ -17,9 +17,9 @@ class Subscriber(): # (2)!
         self.sub = rospy.Subscriber(topic_name, String, self.callback)
         rospy.loginfo(f"The '{self.node_name}' node is active...")
 
-    def main(self):
+    def main_loop(self):
         rospy.spin() # (5)!
 
 if __name__ == '__main__': # (6)!
-    node = Subscriber()
-    node.main()
+    subscriber_instance = Subscriber()
+    subscriber_instance.main_loop()
