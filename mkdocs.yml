@@ -53,7 +53,7 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
-      enabled: false
+      enabled: true
 
 markdown_extensions:
   - admonition
