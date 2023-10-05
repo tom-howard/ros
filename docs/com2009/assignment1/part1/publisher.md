@@ -65,5 +65,5 @@ The very first line of code looks like a comment, but it is actually a very cruc
 This is called the *Shebang*, and it tells the operating system which interpreter to use to execute the code. In our case here, it tells the operating system where to find the right *Python interpreter* that should be used to actually run the code.
     
 <p align="center">
-  <a href="../../part1#ex6_ret">&#8592; Back to Part 1 - Exercise 6</a>
+  <a href="../../part1#ex5_ret">&#8592; Back to Part 1 - Exercise 5/a>
 </p>

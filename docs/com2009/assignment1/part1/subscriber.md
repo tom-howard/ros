@@ -48,5 +48,5 @@ The above code uses a Python *Class structure*.  This approach will be very usef
 ```
 
 <p align="center">
-  <a href="../../part1#ex7_ret">&#8592; Back to Part 1 - Exercise 7</a>
+  <a href="../../part1#ex6_ret">&#8592; Back to Part 1 - Exercise 6</a>
 </p>

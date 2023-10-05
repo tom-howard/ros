@@ -5,12 +5,12 @@ description: In the first part of this lab course you will learn the basics of R
 
 ## Introduction
 
-**Completion Time (approximate)**: 2 hours  
-**Exercises**: 8
+:material-pen: **Exercises**: 8  
+:material-timer: **Completion Time (approximate)**: 2 hours
 
 ### Aims
 
-In the first part of this lab course you will learn the basics of ROS and become familiar with some key tools and principles of this framework, which will allow you to program robots and work with ROS applications effectively.  For the most part, you will interact with ROS using the *Linux command line* and so you will also become familiar with some key Linux command line tools that will help you.  Finally, you will learn how to create some basic ROS Nodes using Python and get a taste of how ROS topics and messages work.
+In the first part of this lab course you will learn the basics of ROS and become familiar with some key tools and principles of the framework which will allow you to program robots and work with ROS applications effectively.  For the most part, you will interact with ROS using the *Linux command line* and so you will also become familiar with some key Linux command line tools that will help you.  Finally, you will learn how to create some basic ROS Nodes using Python and get a taste of how ROS topics and messages work.
 
 ### Intended Learning Outcomes
 
@@ -25,18 +25,18 @@ By the end of this session you will be able to:
 ### Quick Links
 
 * [Exercise 1: Launching a simulation and making a ROS robot move](#ex1)
-* [Exercise 2: Exploring a ROS Package](#ex2)
-* [Exercise 3: Visualising the ROS Network](#ex3)
-* [Exercise 4: Exploring ROS Topics and Messages](#ex4)
-* [Exercise 5: Creating your own ROS Package](#ex5)
-* [Exercise 6: Creating a publisher node](#ex6)
-* [Exercise 7: Creating a subscriber node](#ex7)
+* [Exercise 2: Visualising the ROS Network](#ex2)
+* [Exercise 3: Exploring ROS Topics and Messages](#ex3)
+* [Exercise 4: Creating your own ROS Package](#ex4)
+* [Exercise 5: Creating a publisher node](#ex5)
+* [Exercise 6: Creating a subscriber node](#ex6)
+* [Exercise 7: Exploring a ROS Package and Launch File](#ex7)
 * [Exercise 8: Creating a launch file](#ex8)
 
 ### Additional Resources
 
-* [The Publisher Code (for Exercise 6)](publisher)
-* [The Subscriber Code (for Exercise 7)](subscriber)
+* [The Publisher Code (for Exercise 5)](publisher)
+* [The Subscriber Code (for Exercise 6)](subscriber)
 
 ## First Steps
 
@@ -52,7 +52,7 @@ By the end of this session you will be able to:
     ```    
     ***
 
-1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (similar to [our real robots](../../../about/robots) that you'll work with later):
+1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (very similar to [our real robots](../../../about/robots)):
 
     <figure markdown>
       ![](../../images/gazebo/tb3_empty_world.png){width=800}
@@ -71,134 +71,70 @@ By the end of this session you will be able to:
     ***
     **TERMINAL 2:**
     ```bash
-    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    rosrun turtlebot3_teleop turtlebot3_teleop_key
     ```
     ***
 
-1. Follow the instructions provided in the terminal to drive the robot around in its simulated environment.
+1. Follow the instructions provided in the terminal to drive the robot around using specific buttons on your keyboard:
+
+    <figure markdown>
+      ![](../../images/ros-cli/teleop_keymap.svg)
+    </figure>
 
 ##### Summary
 
-You have so far launched two separate ROS applications using the `roslaunch` command. `roslaunch` is one way to launch ROS programs. As you should have observed from the above examples, we use this command in the following way:
+You have just launched a number of different applications on a ROS Network using two different ROS commands: `roslaunch` and `rosrun`: 
+
+1. `roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch`
+1. `rosrun turtlebot3_teleop turtlebot3_teleop_key`
+
+These two commands have a similar structure, but work slightly differently. 
+
+The first command you used was a `roslaunch` command, which has the following two parts to it (after the `roslaunch` bit):
 
 ```bash
-roslaunch {package name} {launch file}
+roslaunch {[1] Package name} {[2] Launch file}
 ```
 
-The command takes two parameters as inputs: `{package name}` is the name of the *ROS package* that contains the functionality that we want to execute and `{launch file}` is a file within that package that tells ROS exactly what functionality within the package we want to launch.
+**Part [1]** specifies the name of the *ROS package* containing the functionality that we want to execute. **Part [2]** is a file within that package that tells ROS exactly what scripts (*'nodes'*) that we want to launch. We can launch multiple nodes at the same time from a single launch file.
 
-## ROS Packages
+The second command was a `rosrun` command, which has a structure similar to `roslaunch`:
+
+```bash
+rosrun {[1] Package name} {[2] Node name}
+```    
+
+Here, **Part [1]** is the same as the `roslaunch` command, but **Part [2]** is slightly different: `{[2] Node name}`. Here we are directly specifying a single script that we want to execute. We therefore use `rosrun` if we only want to launch a **single node** on the ROS network (`turtlebot3_teleop_key` in this case, which is a Python script).
+
+## Packages & Nodes
+
+### ROS Packages {#packages}
 
 ROS applications are organised into *packages*. Packages are basically folders containing scripts, configurations and launch files (ways to launch those scripts and configurations), all of which relate to some common robot functionality. ROS uses packages as a way to organise all the programs running on a robot. 
 
 !!! info  
     The package system is a fundamental concept in ROS and all ROS programs are organised in this way.
 
-#### :material-pen: Exercise 2: Exploring a ROS Package {#ex2}
+You will create a number of packages throughout this course, each containing different nodes, launch files and other things too. We'll start to explore this later on in this part of the course.
 
-`roscd` is a **ROS command** that allows us to navigate to the directory of any ROS package installed on our system, without us needing to know the path to the package beforehand.
+### ROS Nodes {#nodes}
 
-1. Open up a new terminal instance (**TERMINAL 3**) and use the `roscd` command to navigate to the `turtlebot3_teleop` package directory on the Linux filesystem:
-  
-    ***
-    **TERMINAL 3:**
-    ```bash
-    roscd turtlebot3_teleop
-    ```
-    ***
+ROS *Nodes* are executable programs that perform specific robot tasks and operations. Earlier on we used `rosrun` to launch a node called `turtlebot3_teleop_key`, which allowed us to remotely control (or "teleoperate") the robot, for example. 
 
-    The terminal prompt should have changed to illustrate where on the filesystem the `roscd` command has just taken you:
-    
-    <figure markdown>
-      ![](../../images/ros-cli/tb3_teleop_dir.svg)
-    </figure>
-
-1. `pwd` is a **Linux command** which tells us the current filesystem location of our terminal.  Enter this command to confirm what the terminal prompt has told us.
-    
-    So, now we know *where* the `turtlebot3_teleop` package is located on our machine, and we can then use more Linux commands to explore this further:
-
-1. `ls` is a **Linux command** which *lists* the contents of the current directory.  Use this to list the contents of the `turtlebot3_teleop` package directory.
-
-1. `ls` on its own will simply list the items in the current directory, try this first.
-
-1. Then, use the `-F` option to find out a little more:
-    
-    ***
-    **TERMINAL 3:**
-    ```bash
-    ls -F
-    ```
-    ***
-    
-    You will notice that the output has now changed slightly: items followed by a `/` are folders (aka *"directories"*) and items without the `/` are files (files will often have a file extension too).
-    
-    !!! question "Questions" 
-        1. How many items were there in the `turtlebot3_teleop` package directory?
-        1. How many of these were directories and how many were files? 
-
-    *Launch files* for a package are typically located in a *launch* folder within the package directory. *Did you notice a `launch` folder in the output of the `ls` command above?*
-
-1. `cd` is a **Linux command** that allows us to **C**hange the **D**irectory that the terminal is currently located in. Use this to navigate into the `turtlebot3_teleop` package `launch` folder and then use `ls` again to see what's in there. 
-
-    In this folder you should see the `turtlebot3_teleop_key.launch` file that we executed with the `roslaunch` command in [Exercise 1](#ex1).  We will now have a look at the contents of this file...
-
-1. `cat` is a **Linux command** that we can use to display the contents of a file in the terminal.  Use this to display the contents of the `turtlebot3_teleop_key.launch` file.
-
-    ***
-    **TERMINAL 3:**
-    ```bash
-    cat turtlebot3_teleop_key.launch
-    ```
-    ***
-
-##### Summary {#package_attributes}
-
-From the output of `cat` in the step above you should have noticed that the contents of a launch file are contained within a `<launch>` tag:
-
-```xml
-<launch>
-  ... 
-</launch>
-```
-
-Within that, we also have (amongst other things) a `<node>` tag which tells ROS exactly what scripts (*"executables"*) to launch *and* how to launch them:
-
-```xml    
-<node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="turtlebot3_teleop_keyboard" output="screen">
-</node>
-```
-
-The attributes here have the following meaning:
-
-* `pkg`: The name of the *ROS package* containing the functionality that we want to launch.
-* `type`: The full name of the script (i.e. *ROS Node*) that we want to execute within that package (including the file extension, if it has one).
-* `name`: A descriptive name that we want to give to the ROS node, which will be used to register it on the ROS Network.
-* `output`: The place where any output from the node will be printed (either *screen* where the output will be printed to our terminal window, or *log* where the output will be printed to a log file).
-
-## ROS Nodes {#nodes}
-
-ROS *Nodes* are executable programs that perform specific robot tasks and operations, such as remote (or "teleoperational") control, as we saw in the earlier example. 
-
-The packages that we will create throughout this course will contain nodes, launch files and other things too, and we'll explore this a little more shortly.
-
-The `turtlebot3_teleop` package that we have just interrogated here however is fairly minimal and only contains launch files... the nodes are actually located elsewhere, in a directory called `/opt/ros/noetic/lib/turtlebot3_teleop/` (this is just the way things are organised for pre-installed packages).
-
-!!! question "Questions"  
-    1. What is the name of the node that is launched by the `turtlebot3_teleop_key.launch` file?
-    1. See if you can find this in `/opt/ros/noetic/lib/turtlebot3_teleop/`.
-    1. Use the Linux/ROS command line tools that you have learnt about so far to interrogate the file...
+!!! question
+    What was the name of the ROS *package* that contained the `turtlebot3_teleop_key` node? (Remember: `rosrun {[1] Package name} {[2] Node name}`)
 
 A ROS Robot might have hundreds of individual nodes running simultaneously to carry out all its necessary operations and actions. Each node runs independently, but uses *ROS communication methods* to communicate and share data with the other nodes on the ROS Network.
 
 ## The ROS Network
 
-You can use the `rosnode` **ROS command** to view all the nodes that are currently active on a ROS Network.
+We can use the `rosnode` **ROS command** to view all the nodes that are currently active on a ROS Network.
 
-#### :material-pen: Exercise 3: Visualising the ROS Network {#ex3}
+#### :material-pen: Exercise 2: Visualising the ROS Network {#ex2}
 
-You should currently have three terminal windows active: the first in which you launched the Gazebo simulation (**TERMINAL 1**), the second with your `turtlebot3_teleop_key` node active (**TERMINAL 2**), and the third where you explored the contents of the `turtlebot3_teleop` package directory (**TERMINAL 3**).  **TERMINAL 3** should now be idle.
+You should currently have two terminal windows active: the first in which you launched the Gazebo simulation (**TERMINAL 1**) and the second with your `turtlebot3_teleop_key` node active (**TERMINAL 2**).
 
-1. In **TERMINAL 3** enter `cd ~` to go back to your home directory ([remember that `~` is an alias for your home directory](../../../wsl-ros/linux-term)).
+1. Open up a new terminal instance now (**TERMINAL 3**).
 1. Use the following command to have a look at which nodes are currently active on the network:
 
     ***
@@ -217,7 +153,7 @@ You should currently have three terminal windows active: the first in which you 
     /turtlebot3_teleop_keyboard
     ```
 
-1. We can visualise the connections between the active nodes by using the `rqt_graph` node within the `rqt_graph` package. We can use `rosrun` to launch this node directly (you might get some error messages, but don't worry about them):
+1. We can visualise the connections between the active nodes by using the `rqt_graph` node within the `rqt_graph` package. We can use `rosrun` to launch this node directly (you might see some error messages when you do this, but don't worry about them):
 
     ***
     **TERMINAL 3:**
@@ -236,15 +172,15 @@ You should currently have three terminal windows active: the first in which you 
 
 ## Publishers and Subscribers: A *ROS Communication Method* 
 
-ROS Topics are key to making things happen on a robot. Nodes can publish (*write*) and/or subscribe to (*read*) ROS Topics in order to share data around the ROS network. Data is published to topics using *ROS Messages*. We were actually publishing messages to a topic when we made the robot move using the Teleop node in the previous exercises.
+ROS Topics are key to making things happen on a robot. Nodes can publish (*write*) and/or subscribe to (*read*) ROS Topics in order to share data around the ROS network. Data is published to topics using *ROS Messages*. We were actually publishing messages to a topic when we made the robot move using the `turtlebot3_teleop_key` node previously.
 
 Let's have a look at this in a bit more detail...
 
-#### :material-pen: Exercise 4: Exploring ROS Topics and Messages {#ex4}
+#### :material-pen: Exercise 3: Exploring ROS Topics and Messages {#ex3}
 
-We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS command*.
+We can find out more about the `/cmd_vel` topic by using the `rostopic` **ROS command**.
 
-1. In a new terminal instance (**TERMINAL 4**) type the following:
+1. Open up yet another new terminal instance (**TERMINAL 4**) and type the following:
 
     ***
     **TERMINAL 4:**
@@ -267,7 +203,7 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS com
 
     This confirms what we discovered earlier about the publisher(s) and subscriber(s) to the `/cmd_vel` topic.  In addition, this also tells us the topic *type*, or the *type of message* that is being published on this topic.
 
-    This tells us a few things:
+    Overall, the output above tells us the following:
     
     1. The `/turtlebot3_teleop_keyboard` node is currently publishing (i.e. writing data) to the `/cmd_vel` topic, confirming what we saw from the `rqt_graph` node before.
     1. The `/gazebo` node is subscribing to the topic. This node is the Gazebo application that's running the simulation of the robot. The node therefore monitors (i.e. *subscribes* to) the `/cmd_vel` topic and makes the robot move in the simulator whenever a velocity command is published.
@@ -290,20 +226,25 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` *ROS com
 
     ```txt
     geometry_msgs/Vector3 linear
-        float64 x
-        float64 y
-        float64 z
+      float64 x
+      float64 y
+      float64 z
     geometry_msgs/Vector3 angular
-        float64 x
-        float64 y
-        float64 z
+      float64 x
+      float64 y
+      float64 z
     ```
 
     We'll learn more about what this means in Part 2.
 
-1. To finish, shut down any active terminal processes by entering `Ctrl+C` in any that still have processes running (Terminals **1**, **2** and **3**). The associated Gazebo and rqt_graph windows should close as a result of this too.
+1. To finish, enter ++ctrl+c++ in each of the three terminals that should currently have ROS processes running (Terminals **1**, **2** and **3**). The associated Gazebo and RQT Graph windows should close as a result of this too.
 
-#### :material-pen: Exercise 5: Creating your own ROS Package {#ex5}
+!!! tip
+    Whenever you need to stop any ROS process use ++ctrl+c++ in the terminal it's running in.
+
+## Creating Your First ROS Applications
+
+#### :material-pen: Exercise 4: Creating your own ROS Package {#ex4}
 
 In a minute or two you will create some simple publisher and subscriber nodes in Python and send messages between them. As we learnt earlier though, ROS applications must be created within packages, and so we need to create a package first in order to start creating our own ROS nodes. 
 
@@ -319,9 +260,12 @@ Or:
 ~/catkin_ws/
 ```
 
+!!! note 
+    `~` is an alias for your home directory. So `cd ~/catkin_ws/` is the same as typing `cd /home/student/catkin_ws/` (in WSL-ROS, the default user is `student`).
+
 [^why_catkin]: "The name catkin comes from the tail-shaped flower cluster found on willow trees -- a reference to Willow Garage where catkin was created." (According to [ROS.org](http://wiki.ros.org/catkin/conceptual_overview#Overview)) 
 
-1. Navigate to the `catkin_ws` folder by using the Linux `cd` command. In **TERMINAL 1** enter the following:
+1. Navigate to the `catkin_ws` folder by using the Linux `cd` command (**c**hange **d**irectory). In **TERMINAL 1** enter the following:
 
     ***
     **TERMINAL 1:**
@@ -330,7 +274,7 @@ Or:
     ```
     ***
 
-1. Inside the catkin workspace there is a directory called `src` (use the `ls` command to confirm this). All new packages need to be located in the `src` folder, so we need to be here when we use the `catkin_create_pkg` tool to create a new package. So, use the `cd` command again to navigate to the `catkin_ws/src` folder:
+1. Inside the catkin workspace there is a directory called `src`. All new packages need to be located in the `src` folder, so we need to be here when we use the `catkin_create_pkg` tool to create a new package. So, use the `cd` command again to navigate into the `catkin_ws/src` folder:
 
     ***
     **TERMINAL 1:**
@@ -339,19 +283,21 @@ Or:
     ```
     ***
 
-1. Now, use the `catkin_create_pkg` script to create a new package called `part1_pubsub`, and define `std_msgs` and `rospy` as dependencies:
+1. Now, use the `catkin_create_pkg` script to create a new package called `part1_pubsub`, and define `rospy` and `std_msgs` as dependencies:
 
     ***
     **TERMINAL 1:**
     ```bash
-    catkin_create_pkg part1_pubsub std_msgs rospy
+    catkin_create_pkg part1_pubsub rospy std_msgs
     ```
     ***
 
     !!! question
         What did the `catkin_create_pkg` tool just do? (**Hint**: there were *four* things, and it will have told you about them!)
     
-1. Navigate into this new package directory and use `ls` to list the content that has been created by the `catkin_create_pkg` tool.
+1. Navigate into this new package directory.
+
+1. `ls` is a **Linux command** which *lists* the contents of the current directory. Use `ls` to list the content of the `part1_pubsub` directory, as created by the `catkin_create_pkg` tool.
 
     Catkin packages are typically organised in the following way, and have a few essential features that **must** be present in order for the package to be valid:
 
@@ -370,7 +316,11 @@ Or:
     ```bash
     catkin build part1_pubsub
     ```
-    Finally, "re-source" your environment[^source-bashrc] using the following command:
+    ***
+
+1. Finally, "re-source" your environment[^source-bashrc] using the following command:
+
+    ***
     ```bash
     source ~/.bashrc
     ```
@@ -383,7 +333,7 @@ Or:
     
 [^source-bashrc]: What does `source ~/.bashrc` do? [See here for an explanation](https://devconnected.com/source-command-on-linux-explained/#Source_to_update_your_current_shell_environment_bashrc).
 
-#### :material-pen: Exercise 6: Creating a publisher node {#ex6}
+#### :material-pen: Exercise 5: Creating a publisher node {#ex5}
 
 1. Within your `part1_pubsub` package directory, navigate to the `src` folder using the `cd` command.
 1. `touch` is a **Linux command** that we can use to create an empty file. Use this to create an empty file called `publisher.py`, which we will add content to shortly:
@@ -413,21 +363,21 @@ Or:
 
     This confirms that the file exists, and the `0` in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.
 
-1. We therefore now need to open the file and add content to it. As discussed in [the WSL-ROS Section](../../../wsl-ros/), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, [so follow the instructions here to get this up and running now](../../../wsl-ros/vscode)!
+1. We therefore now need to open the file and add content to it. As discussed in [the WSL-ROS Section](../../../wsl-ros/), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, so follow [the instructions here](../../../wsl-ros/vscode) to get this up and running now.
 
     !!! warning
         [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment](../../../wsl-ros/vscode/#verify)!!
 
 1. Using the VS Code File Explorer, navigate to your `part1_pubsub` package directory (`~/catkin_ws/src/part1_pubsub/`), locate the `publisher.py` file that you have just created in the `/part1_pubsub/src/` folder and click on the file to open it. 
 
-1. Once opened, copy [the code provided here](publisher) into the empty file and save it. <a name="ex6_ret"></a>
+1. Once opened, copy [the code provided here](publisher) into the empty file and save it. <a name="ex5_ret"></a>
     
     !!! note
         It's important that you understand how this code works, so make sure that you **read the annotations**!
     
 1. **Make sure that you've saved the `publisher.py` file (in VS Code) before trying to run it!**
     
-    Do this by using the `Ctrl+S` keyboard shortcut, or going to `File > Save` from the menu at the top of the VS Code screen.
+    Do this by using the ++ctrl+s++ keyboard shortcut, or going to `File > Save` from the menu at the top of the VS Code screen.
 
 1. We can now run this node using the `rosrun` **ROS command**. However, because we closed everything down earlier on, the *ROS Master* is no longer active. First then, we need to re-launch it manually using `roscore`:
 
@@ -438,7 +388,7 @@ Or:
     ```
     ***
 
-1. Then, in **TERMINAL 2**, use `rosrun` to execute the `publisher.py` script that you have just created by providing the relevant information to the `rosrun` command as follows: `rosrun {package name} {script name}`, i.e.:
+1. Then, in **TERMINAL 2**, use `rosrun` to execute the `publisher.py` script that you have just created by providing the relevant information to the `rosrun` command. Remember: `rosrun {package name} {script name}`, so:
 
     ***
     **TERMINAL 2:**
@@ -506,7 +456,7 @@ So far we have used the `rostopic` ROS command with two additional arguments:
 * `list`: to provide us with a *list* of all the topics that are active on our ROS system, and
 * `info`: to provide us with *information* on a particular topic of interest.
 
-We can use the *autocomplete functionality* of the Linux terminal to provide us with a list of *all* the available options that we can use with the `rostopic` command.  To do this you can type `rostopic` followed by a `Space` and then press the `Tab` key twice:
+We can use the *autocomplete functionality* of the Linux terminal to provide us with a list of *all* the available options that we can use with the `rostopic` command.  To do this you can type `rostopic` followed by a ++space++ and then press the ++tab++ key twice:
 
 ```bash
 rostopic[SPACE][TAB][TAB]
@@ -526,7 +476,7 @@ You should then be presented with a list of the available arguments for the `ros
     rostopic hz /chatter
     ```
 
-    This should tell us that our publisher node is publishing messages to the `/chatter` topic at (or close to) 10 Hz, which is exactly what we ask for in the `publisher.py` file (in the `__init__` part of our `Publisher` class). Press `Ctrl+C` to stop this command.
+    This should tell us that our publisher node is publishing messages to the `/chatter` topic at (or close to) 10 Hz, which is exactly what we ask for in the `publisher.py` file (in the `__init__` part of our `Publisher` class). Enter ++ctrl+c++ to stop this command.
 
 * `rostopic echo {topic name}` shows the messages being published to a topic:
 
@@ -534,7 +484,7 @@ You should then be presented with a list of the available arguments for the `ros
     rostopic echo /chatter
     ```
 
-    This will provide a live stream of the messages that our `publisher.py` node is publishing to the `/chatter` topic. Press `Ctrl+C` to stop this.
+    This will provide a live stream of the messages that our `publisher.py` node is publishing to the `/chatter` topic. Enter ++ctrl+c++ to stop this.
 
 * We can see some additional options for this command by viewing the help documentation:
 
@@ -548,12 +498,12 @@ You should then be presented with a list of the available arguments for the `ros
     rostopic echo /chatter -n2
     ```
 
-#### :material-pen: Exercise 7: Creating a subscriber node {#ex7}
+#### :material-pen: Exercise 6: Creating a subscriber node {#ex6}
 
 You will now create another node to *subscribe* to the topic that our publisher node is broadcasting messages to, to illustrate how information can be passed from one node to another, via topic messages.
 
 1. In **TERMINAL 3** use the filesystem commands that were introduced earlier (`cd`, `ls` and `roscd`) to navigate to the `src` folder of your `part1_pubsub` package.
-1. Use the same procedure as before to create a new empty Python file called `subscriber.py` and remember to make it executable! <a name="ex7_ret"></a>
+1. Use the same procedure as before to create a new empty Python file called `subscriber.py` and remember to make it executable! <a name="ex6_ret"></a>
 1. Then, open the newly created `subscriber.py` file in VS Code, paste in [the code here](subscriber) and save it. Once again, it's important that you understand how this code works, so **make sure you read the code annotations**! 
 
 1. Use `rosrun` to execute your newly created `subscriber.py` node (remember: `rosrun {package name} {script name}`). If your publisher and subscriber nodes are working correctly you should see an output like this:
@@ -562,13 +512,94 @@ You will now create another node to *subscribe* to the topic that our publisher 
       ![](part1/subscriber_output.gif)
     </figure>
 
-1. As before, we can find out what nodes are running on our system by using the `rosnode list` command. Open a new terminal window (**TERMINAL 4**), run this and see if you can identify the nodes that you have just launched.
+1. As before, we can find out what nodes are running on our system by using the `rosnode list` command. Run this in **TERMINAL 4** and see if you can identify the nodes that you have just launched.
 
-1. Finally, close down your publisher and subscriber nodes and the ROS Master by entering `Ctrl+C` in Terminals 1, 2 and 3.
+1. Finally, close down your publisher and subscriber nodes and the ROS Master by entering ++ctrl+c++ in Terminals 1, 2 and 3.
 
 ## Launch Files
 
-At the beginning of this session we launched our Gazebo Simulation and the `turtlebot3_teleop_keyboard` node using *launch files* and the `roslaunch` command. This provides a means to launch multiple ROS nodes *simultaneously*, and we will demonstrate this by building a launch file for the publisher and subscriber nodes that we created in the previous exercises.
+At the beginning of this session we launched the Gazebo Simulation of our robot using a *launch file* and the `roslaunch` command. This provides a means to launch multiple ROS nodes *simultaneously*, and we will demonstrate this by building a launch file for the publisher and subscriber nodes that we created in the previous exercises. Launch files must be located within a package, so first let's have a look at a package that already exists, and explore the launch file within it.
+
+#### :material-pen: Exercise 7: Exploring a ROS Package and Launch File {#ex7}
+
+We launched the `turtlebot3_teleop_key` node earlier using `rosrun`, but there's also a way to launch this using a launch file. To investigate this, we need to look inside the package within which the `turtlebot3_teleop_key` node exists.
+
+1. We launched the `turtlebot3_teleop_key` node with `rosrun` as follows: `rosrun turtlebot3_teleop turtlebot3_teleop_key`, which means that the node is located within a package called `turtlebot3_teleop`. `roscd` is a **ROS command** that allows us to navigate to the directory of any ROS package installed on our system, without us needing to know the path to the package beforehand.
+
+1. In **TERMINAL 3** use the `roscd` command to navigate to the `turtlebot3_teleop` package directory on the Linux filesystem:
+  
+    ***
+    **TERMINAL 3:**
+    ```bash
+    roscd turtlebot3_teleop
+    ```
+    ***
+
+    The terminal prompt should have changed to illustrate where on the filesystem the `roscd` command has just taken you:
+    
+    <figure markdown>
+      ![](../../images/ros-cli/tb3_teleop_dir.svg)
+    </figure>
+
+1. `pwd` is a **Linux command** which tells us the current filesystem location of our terminal. Enter this command to confirm what the terminal prompt has told us.
+    
+    So, now we know *where* the `turtlebot3_teleop` package is located on our machine, and we can then use more Linux commands to explore this further:
+
+1. Use `ls` to list the contents of the `turtlebot3_teleop` package directory. `ls` on its own will simply list the items in the current directory, try this first.
+
+1. Then, use the `-F` option to find out a little more:
+    
+    ***
+    **TERMINAL 3:**
+    ```bash
+    ls -F
+    ```
+    ***
+    
+    You will notice that the output has now changed slightly: items followed by a `/` are folders (aka *"directories"*) and items without the `/` are files (files will often have a file extension too).
+    
+    !!! question "Questions" 
+        1. How many items were there in the `turtlebot3_teleop` package directory?
+        1. How many of these were directories and how many were files? 
+
+    *Launch files* for a package should be located in a *launch* folder within the package directory. Did you notice a `launch` folder in the output of the `ls` command above?
+
+1. Use the `cd` command to navigate into the `turtlebot3_teleop` package `launch` folder and then use `ls` again to see what's in there. 
+
+    In this folder you should see a `turtlebot3_teleop_key.launch` file. We'll now have a look at the contents of this file...
+
+1. `cat` is a **Linux command** that we can use to display the contents of a file in the terminal. Use this to display the contents of the `turtlebot3_teleop_key.launch` file.
+
+    ***
+    **TERMINAL 3:**
+    ```bash
+    cat turtlebot3_teleop_key.launch
+    ```
+    ***
+
+##### Summary {#launch_attributes}
+
+From the output of `cat` in the step above you should have noticed that the contents of a launch file are contained within a `<launch>` tag:
+
+```xml
+<launch>
+  ... 
+</launch>
+```
+
+Within that, we also have (amongst other things) a `<node>` tag which tells ROS exactly what scripts (*"executables"*) to launch *and* how to launch them:
+
+```xml    
+<node pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" name="turtlebot3_teleop_keyboard" output="screen">
+</node>
+```
+
+The attributes here have the following meaning:
+
+* `pkg`: The name of the *ROS package* containing the functionality that we want to launch.
+* `type`: The full name of the script (i.e. *ROS Node*) that we want to execute within that package (including the file extension, if it has one).
+* `name`: A descriptive name that we want to give to the ROS node, which will be used to register it on the ROS Network.
+* `output`: The place where any output from the node will be printed (either *screen* where the output will be printed to our terminal window, or *log* where the output will be printed to a log file).
 
 #### :material-pen: Exercise 8: Creating a launch file {#ex8}
 
