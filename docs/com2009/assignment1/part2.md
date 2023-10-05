@@ -33,7 +33,8 @@ By the end of this session you will be able to:
 
 ### Additional Resources
 
-TODO
+* [Working with Twist Messages in Python](twist-tips)
+* [The `move_square` Template (for Exercise 5)](move_square)
 
 ## Getting Started
 
