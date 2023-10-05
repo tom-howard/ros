@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://tom-howard.github.io/ros/extras/launch-files/roslaunch-api/">
+        <link rel="canonical" href="https://tom-howard.github.io/ros/com2009/assignment1/part2/twist-tips/">
       
       
-        <link rel="prev" href="../cla-to-node/">
+        <link rel="prev" href="../move_square/">
       
       
-        <link rel="next" href="../../ros-msgs/">
+        <link rel="next" href="../../../la1/">
       
       
-      <link rel="icon" href="../../../assets/favicon.png">
+      <link rel="icon" href="../../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.3">
     
     
       
-        <title>Using the ROSlaunch Python API - Robotics in the Diamond: ROS</title>
+        <title>Working with Twist Messages in Python - Robotics in the Diamond: ROS</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.79e020e9.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.79e020e9.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a5377069.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a5377069.min.css">
       
       
 
@@ -44,11 +44,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/timeago.css">
+      <link rel="stylesheet" href="../../../../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -87,7 +87,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-the-roslaunch-python-api" class="md-skip">
+        <a href="#working-with-twist-messages-in-python" class="md-skip">
           Skip to content
         </a>
       
@@ -101,9 +101,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+    <a href="../../../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
       
-  <img src="../../../assets/tuos.png" alt="logo">
+  <img src="../../../../assets/tuos.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Using the ROSlaunch Python API
+              Working with Twist Messages in Python
             
           </span>
         </div>
@@ -226,7 +226,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../about/" class="md-tabs__link">
+        <a href="../../../../about/" class="md-tabs__link">
           
   
     
@@ -246,7 +246,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../wsl-ros/" class="md-tabs__link">
+        <a href="../../../../wsl-ros/" class="md-tabs__link">
           
   
     
@@ -262,11 +262,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../com2009/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -286,7 +288,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../waffles/" class="md-tabs__link">
+        <a href="../../../../waffles/" class="md-tabs__link">
           
   
     
@@ -302,21 +304,17 @@
         
   
   
-    
-  
   
     
     
       
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../extras/launch-files/" class="md-tabs__link">
           
   
     
@@ -345,7 +343,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../others/amr31001/" class="md-tabs__link">
+        <a href="../../../../others/amr31001/" class="md-tabs__link">
           
   
     
@@ -383,9 +381,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+    <a href="../../../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
       
-  <img src="../../../assets/tuos.png" alt="logo">
+  <img src="../../../../assets/tuos.png" alt="logo">
 
     </a>
     Robotics in the Diamond: ROS
@@ -442,7 +440,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../about/" class="md-nav__link ">
+            <a href="../../../../about/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -474,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/robots/" class="md-nav__link">
+      <a href="../../../../about/robots/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -494,7 +492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/acknowledgements/" class="md-nav__link">
+      <a href="../../../../about/acknowledgements/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -514,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/license/" class="md-nav__link">
+      <a href="../../../../about/license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -534,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../about/changelog/" class="md-nav__link">
+      <a href="../../../../about/changelog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -602,7 +600,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../wsl-ros/" class="md-nav__link ">
+            <a href="../../../../wsl-ros/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -634,7 +632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/first-run/" class="md-nav__link">
+      <a href="../../../../wsl-ros/first-run/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -654,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/configure-vscode/" class="md-nav__link">
+      <a href="../../../../wsl-ros/configure-vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -674,7 +672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/linux-term/" class="md-nav__link">
+      <a href="../../../../wsl-ros/linux-term/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -694,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/wsl-ros-return/" class="md-nav__link">
+      <a href="../../../../wsl-ros/wsl-ros-return/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -714,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/backup-restore/" class="md-nav__link">
+      <a href="../../../../wsl-ros/backup-restore/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/rdp/" class="md-nav__link">
+      <a href="../../../../wsl-ros/rdp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -754,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/wt-settings/" class="md-nav__link">
+      <a href="../../../../wsl-ros/wt-settings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -774,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/vscode/" class="md-nav__link">
+      <a href="../../../../wsl-ros/vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -794,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../wsl-ros/installing/" class="md-nav__link">
+      <a href="../../../../wsl-ros/installing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -819,6 +817,8 @@
       
   
   
+    
+  
   
     
     
@@ -840,17 +840,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../com2009/" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -867,7 +867,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             COM2009
@@ -914,7 +914,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../com2009/la1/" class="md-nav__link ">
+            <a href="../../../la1/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -946,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la1/week1/" class="md-nav__link">
+      <a href="../../../la1/week1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -966,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la1/week2/" class="md-nav__link">
+      <a href="../../../la1/week2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -986,7 +986,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la1/week3/" class="md-nav__link">
+      <a href="../../../la1/week3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1006,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la1/week4/" class="md-nav__link">
+      <a href="../../../la1/week4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1026,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la1/week5/" class="md-nav__link">
+      <a href="../../../la1/week5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1046,7 +1046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la1/week6/" class="md-nav__link">
+      <a href="../../../la1/week6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1072,6 +1072,8 @@
                 
   
   
+    
+  
   
     
     
@@ -1088,17 +1090,17 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../com2009/assignment1/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1115,7 +1117,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Lab Assignment #1 (2024)
@@ -1130,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/assignment1/part1/" class="md-nav__link">
+      <a href="../../part1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1150,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/assignment1/part2/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1214,7 +1216,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../com2009/la2/" class="md-nav__link ">
+            <a href="../../../la2/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1246,7 +1248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/overview/" class="md-nav__link">
+      <a href="../../../la2/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1266,7 +1268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/getting-started/" class="md-nav__link">
+      <a href="../../../la2/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1286,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/task1/" class="md-nav__link">
+      <a href="../../../la2/task1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1306,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/task2/" class="md-nav__link">
+      <a href="../../../la2/task2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1326,7 +1328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/task3/" class="md-nav__link">
+      <a href="../../../la2/task3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1346,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/task4/" class="md-nav__link">
+      <a href="../../../la2/task4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1366,7 +1368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/task5/" class="md-nav__link">
+      <a href="../../../la2/task5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1410,7 +1412,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../com2009/la2/extras/" class="md-nav__link ">
+            <a href="../../../la2/extras/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1442,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/extras/laptops/" class="md-nav__link">
+      <a href="../../../la2/extras/laptops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1462,7 +1464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../com2009/la2/extras/submission/" class="md-nav__link">
+      <a href="../../../la2/extras/submission/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1540,7 +1542,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../waffles/" class="md-nav__link ">
+            <a href="../../../../waffles/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1572,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../waffles/intro/" class="md-nav__link">
+      <a href="../../../../waffles/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1592,7 +1594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../waffles/launching-ros/" class="md-nav__link">
+      <a href="../../../../waffles/launching-ros/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1612,7 +1614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../waffles/exercises/" class="md-nav__link">
+      <a href="../../../../waffles/exercises/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1632,7 +1634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../waffles/fact-finding/" class="md-nav__link">
+      <a href="../../../../waffles/fact-finding/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1652,7 +1654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../waffles/shutdown/" class="md-nav__link">
+      <a href="../../../../waffles/shutdown/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1672,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../waffles/tips/" class="md-nav__link">
+      <a href="../../../../waffles/tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1697,8 +1699,6 @@
       
   
   
-    
-  
   
     
     
@@ -1716,12 +1716,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -1735,7 +1735,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             ROS Extras
@@ -1746,8 +1746,6 @@
                 
   
   
-    
-  
   
     
     
@@ -1770,17 +1768,17 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../../extras/launch-files/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1797,7 +1795,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             Launch Files
@@ -1812,7 +1810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../launching-launch-files/" class="md-nav__link">
+      <a href="../../../../extras/launch-files/launching-launch-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1832,7 +1830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../roslaunch-clas/" class="md-nav__link">
+      <a href="../../../../extras/launch-files/roslaunch-clas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1852,7 +1850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python-clis/" class="md-nav__link">
+      <a href="../../../../extras/launch-files/python-clis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1872,7 +1870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cla-to-node/" class="md-nav__link">
+      <a href="../../../../extras/launch-files/cla-to-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1890,18 +1888,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../extras/launch-files/roslaunch-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1910,7 +1899,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1930,7 +1918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ros-msgs/" class="md-nav__link">
+      <a href="../../../../extras/ros-msgs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2046,7 +2034,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../others/amr31001/" class="md-nav__link ">
+            <a href="../../../../others/amr31001/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2078,7 +2066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/amr31001/lab1/" class="md-nav__link">
+      <a href="../../../../others/amr31001/lab1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2098,7 +2086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../others/amr31001/lab2/" class="md-nav__link">
+      <a href="../../../../others/amr31001/lab2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2180,7 +2168,7 @@
                   
 
   
-    <a href="https://github.com/tom-howard/ros/edit/main/docs/extras/launch-files/roslaunch-api.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/ros/edit/main/docs/com2009/assignment1/part2/twist-tips.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -2189,54 +2177,65 @@
     
       
     
-    <a href="https://github.com/tom-howard/ros/raw/main/docs/extras/launch-files/roslaunch-api.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/ros/raw/main/docs/com2009/assignment1/part2/twist-tips.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-<h1 id="using-the-roslaunch-python-api">Using the ROSlaunch Python API<a class="headerlink" href="#using-the-roslaunch-python-api" title="Permanent link">&para;</a></h1>
-<p>The <em>ROSlaunch API</em> allows you to launch nodes (and other launch files) from inside your own nodes! <a href="http://wiki.ros.org/roslaunch/API%20Usage">The official documentation for the roslaunch API</a> is the best place to go to find out how to use this, but here's a quick example, if you're short on time. </p>
-<p>Recall <a href="../../la1/week3/#ex3">the SLAM Exercise from Week 3</a>. Here we had SLAM running in the background, while we drove our robot around a simulated environment (using the <code>turtlebot3_teleop</code> node). Once we'd generated a full map we used a <code>rosrun</code> command (in the terminal) to save a copy of this map: </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>rosrun<span class="w"> </span>map_server<span class="w"> </span>map_saver<span class="w"> </span>-f<span class="w"> </span><span class="o">{</span>map<span class="w"> </span>name<span class="o">}</span>
+<h1 id="working-with-twist-messages-in-python">Working with Twist Messages in Python<a class="headerlink" href="#working-with-twist-messages-in-python" title="Permanent link">&para;</a></h1>
+<p>From <a href="../../part1/#ex5">the Part 1 publisher exercise</a>, we know how to publish a <code>String</code> type message to a topic in Python, but how do we apply the same principles to a <code>Twist</code> message (on the <code>/cmd_vel</code> topic)? Let's have a look at this... </p>
+<p>First, you need to import the <code>rospy</code> library, as well as the <code>Twist</code> message type from the <code>geometry_msgs</code> library:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">rospy</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span>
 </code></pre></div>
-<p>Suppose we wanted to do this programmatically instead...  </p>
-<p>The following is an example of a very simple ROS node that does just that. Once the code below is executed it will launch the <code>map_saver</code> node from the <code>map_server</code> package in exactly the same way as above (but using the ROSlaunch API instead). The key difference here is that instead of <code>{map name}</code>, we need to define the full file path for the map that we want to generate.</p>
-<div class="highlight"><span class="filename">map_saver.py</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/usr/bin/env python3</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">roslaunch</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span> <span class="nn">rospy</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">map_path</span> <span class="o">=</span> <span class="s2">&quot;path/to/my_map&quot;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;map_getter&quot;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">launch</span> <span class="o">=</span> <span class="n">roslaunch</span><span class="o">.</span><span class="n">scriptapi</span><span class="o">.</span><span class="n">ROSLaunch</span><span class="p">()</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">launch</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving map at time: </span><span class="si">{</span><span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">node</span> <span class="o">=</span> <span class="n">roslaunch</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="n">package</span><span class="o">=</span><span class="s2">&quot;map_server&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>                           <span class="n">node_type</span><span class="o">=</span><span class="s2">&quot;map_saver&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>                           <span class="n">args</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;-f </span><span class="si">{</span><span class="n">map_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">process</span> <span class="o">=</span> <span class="n">launch</span><span class="o">.</span><span class="n">launch</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<p>Then, create an instance of a <code>rospy.Publisher()</code> and assign it to an object called <code>pub</code>. When we create the object we tell the <code>Publisher()</code> method which topic we want to publish this message to (via the first input argument), and also that we will be publishing a message of the <code>Twist</code> type (the second input argument):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">({</span><span class="n">topic</span> <span class="n">name</span><span class="p">},</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># a queue size of 10 usually works!</span>
 </code></pre></div>
-<p>You could wrap this into one of your own ROS nodes, or even build a standalone node inside your package to call the <code>map_saver</code> node when required. Perhaps you could even wrap the last three of the above commands inside a while loop and get the node to update a map file at regular intervals (say 5 seconds?) while your robot explores its environment...</p>
-<details class="hint">
-<summary>Hint</summary>
-<p>You may need to wrap this in a loop in order for it to work reliably.</p>
-</details>
+<p>Then we need to create a <code>Twist()</code> message instance and assign it to an object (which we'll call <code>vel_cmd</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">vel_cmd</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+</code></pre></div>
+<p>We know from earlier that the <code>geometry_msgs/Twist</code> message has the format:</p>
+<div class="highlight"><pre><span></span><code>geometry_msgs/Vector3 linear
+  float64 x
+  float64 y
+  float64 z
+geometry_msgs/Vector3 angular
+  float64 x
+  float64 y
+  float64 z
+</code></pre></div>
+<p>We also know, that only velocity commands issued to the following two parameters will actually have any effect on the velocity of our robot:</p>
+<div class="highlight"><pre><span></span><code>geometry_msgs/Vector3 linear
+  float64 x
+</code></pre></div>
+<p>...and:</p>
+<div class="highlight"><pre><span></span><code>geometry_msgs/Vector3 angular
+  float64 z
+</code></pre></div>
+<p>As such, we set appropriate velocity values to these attributes of the <code>Twist()</code> message (assigned to <code>vel_cmd</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">vel_cmd</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># m/s</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">vel_cmd</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1"># rad/s</span>
+</code></pre></div>
+<p>We can then publish this to the relevant topic on the ROS network by supplying it to the <code>rospy.Publisher().publish()</code> method (which we instantiated as <code>pub</code> earlier):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel_cmd</span><span class="p">)</span>
+</code></pre></div>
+<p>Use these pointers when working on your <code>move_circle.py</code> node!</p>
+<p align="center">
+  <a href="../../part2#ex4_ret">&#8592; Back to Part 2 - Exercise 4</a>
+</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-19T11:24:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-19</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-05T14:55:52+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-01-31T14:47:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-01-31</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-05T14:55:52+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
       
     
   </small>
@@ -2270,7 +2269,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../cla-to-node/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Passing Command-line Arguments to Python Nodes via ROSlaunch">
+          <a href="../move_square/" class="md-footer__link md-footer__link--prev" aria-label="Previous: A Move Square Python Template for Part 2">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -2280,20 +2279,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Passing Command-line Arguments to Python Nodes via ROSlaunch
+                A Move Square Python Template for Part 2
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../ros-msgs/" class="md-footer__link md-footer__link--next" aria-label="Next: Creating Your Own Custom ROS Messages">
+          <a href="../../../la1/" class="md-footer__link md-footer__link--next" aria-label="Next: COM2009 Lab Assignment #1">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Creating Your Own Custom ROS Messages
+                COM2009 Lab Assignment #1
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2406,14 +2405,14 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6eac0284.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6eac0284.min.js"></script>
       
-        <script src="../../../js/timeago.min.js"></script>
+        <script src="../../../../js/timeago.min.js"></script>
       
-        <script src="../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
   </body>
