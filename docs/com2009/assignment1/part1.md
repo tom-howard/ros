@@ -516,6 +516,12 @@ You will now create another node to *subscribe* to the topic that our publisher 
 
 1. Finally, close down your publisher and subscriber nodes and the ROS Master by entering ++ctrl+c++ in Terminals 1, 2 and 3.
 
+**Advanced**: <a name="pubsub_plus"></a> 
+
+You've now created a publisher and subscriber, both of which were able to communicate with one another over the `/chatter` topic, using the `String` *standard* ROS message type. This message is provided, by ROS, as part of the `std_msgs` package, but there are other simple message types within this package that we can use too to pass data around a ROS network too, one of which is `Float64`.
+
+* How could you adapt your publisher and subscriber nodes to use the `Float64` message type, instead of `String`?
+
 ## Launch Files
 
 At the beginning of this session we launched the Gazebo Simulation of our robot using a *launch file* and the `roslaunch` command. This provides a means to launch multiple ROS nodes *simultaneously*, and we will demonstrate this by building a launch file for the publisher and subscriber nodes that we created in the previous exercises. Launch files must be located within a package, so first let's have a look at a package that already exists, and explore the launch file within it.
@@ -576,6 +582,9 @@ We launched the `turtlebot3_teleop_key` node earlier using `rosrun`, but there's
     cat turtlebot3_teleop_key.launch
     ```
     ***
+
+!!! question
+    Knowing what you do now, how would you launch the `turtlebot_teleop_key` node using `roslaunch` (instead of `rosrun`)?
 
 ##### Summary {#launch_attributes}
 
