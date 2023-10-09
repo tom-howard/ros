@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4">
     
     
       
@@ -28,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.79e020e9.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bd3936ea.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a5377069.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -3184,6 +3184,11 @@ Or:
 <p>Finally, close down your publisher and subscriber nodes and the ROS Master by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in Terminals 1, 2 and 3.</p>
 </li>
 </ol>
+<p><strong>Advanced</strong>: <a name="pubsub_plus"></a> </p>
+<p>You've now created a publisher and subscriber, both of which were able to communicate with one another over the <code>/chatter</code> topic, using the <code>String</code> <em>standard</em> ROS message type. This message is provided, by ROS, as part of the <code>std_msgs</code> package, but there are other simple message types within this package that we can use too to pass data around a ROS network too, one of which is <code>Float64</code>.</p>
+<ul>
+<li>How could you adapt your publisher and subscriber nodes to use the <code>Float64</code> message type, instead of <code>String</code>?</li>
+</ul>
 <h2 id="launch-files">Launch Files<a class="headerlink" href="#launch-files" title="Permanent link">&para;</a></h2>
 <p>At the beginning of this session we launched the Gazebo Simulation of our robot using a <em>launch file</em> and the <code>roslaunch</code> command. This provides a means to launch multiple ROS nodes <em>simultaneously</em>, and we will demonstrate this by building a launch file for the publisher and subscriber nodes that we created in the previous exercises. Launch files must be located within a package, so first let's have a look at a package that already exists, and explore the launch file within it.</p>
 <h4 id="ex7"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 7: Exploring a ROS Package and Launch File<a class="headerlink" href="#ex7" title="Permanent link">&para;</a></h4>
@@ -3241,6 +3246,10 @@ Or:
 <hr />
 </li>
 </ol>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Knowing what you do now, how would you launch the <code>turtlebot_teleop_key</code> node using <code>roslaunch</code> (instead of <code>rosrun</code>)?</p>
+</div>
 <h5 id="launch_attributes">Summary<a class="headerlink" href="#launch_attributes" title="Permanent link">&para;</a></h5>
 <p>From the output of <code>cat</code> in the step above you should have noticed that the contents of a launch file are contained within a <code>&lt;launch&gt;</code> tag:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nt">&lt;launch&gt;</span>
@@ -3344,7 +3353,7 @@ Or:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-05T12:23:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-05</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-09T13:50:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-09</span>
       
         <br>
         Created:
@@ -3518,10 +3527,10 @@ Or:
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.6eac0284.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.94c44541.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
