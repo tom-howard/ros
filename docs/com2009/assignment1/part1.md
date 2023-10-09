@@ -633,7 +633,7 @@ The attributes here have the following meaning:
     ```
 
     !!! warning "Fill in the Blanks!"
-        Referring to what we learned about [the format of launch files](#package_attributes) earlier, replace each `{BLANK}` above with the correct text to launch the publisher node that you created in [Exercise 6](#ex6).
+        Referring to what we learned about [the format of launch files](#launch_attributes) above, replace each `{BLANK}` above with the correct text to launch the publisher node that you created in [Exercise 5](#ex5).
     
 1. Use `roslaunch` to launch this file and test it out as it is (remember: `roslaunch {package name} {launch file}`). If everything looks OK then carry on to the next step.
 1. The code that we've given you above will launch the `publisher.py` node, but not the `subscriber.py` node.  Add another `<node>` tag to your `pubsub.launch` file to launch the subscriber node as well.
