@@ -83,7 +83,7 @@ extra_css:
 extra:
   analytics:
     provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
+    property: G-1SSCKMNFPR
   consent:
     title: Cookie consent
     description: 
