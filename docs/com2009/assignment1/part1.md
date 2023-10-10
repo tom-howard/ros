@@ -83,7 +83,7 @@ By the end of this session you will be able to:
 
 ##### Summary
 
-You have just launched a number of different applications on a ROS Network using two different ROS commands: `roslaunch` and `rosrun`: 
+You have just launched a number of different applications on a ROS Network using two different ROS commands - `roslaunch` and `rosrun`: 
 
 1. `roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch`
 1. `rosrun turtlebot3_teleop turtlebot3_teleop_key`
