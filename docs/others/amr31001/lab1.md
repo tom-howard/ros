@@ -549,7 +549,13 @@ In reality, robots need to be able to move around complex environments autonomou
     12. In "state2" we set velocities that will make the robot turn on the spot (angular-Z velocity only). In this case, if the elapsed time is greater than **4 seconds**, we move back to "state1".
     13. Regardless of what happens in the `if` statements above, we always publish a velocity command to the `/cmd_vel` topic here (i.e. every loop iteration).
     14. We created a `rate` object earlier, and we use this now to make sure that each iteration of this `while` loop takes exactly the right amount of time to maintain the rate of execution that we specified earlier (10 Hz).
-    15. Some useful mathematical operators that you might find useful in your code... 
+    15. Here we're importing some mathematical operators that you *might* find useful in your code for this exercise (or the next one!) 
+
+        | Mathematical Operation | Python Implementation |
+        | :---: | :---: |
+        | $\sqrt{a+b}$ | `#!python sqrt(a+b)` |
+        | $a^{2}+(bc)^{3}$ | `#!python pow(a, 2) + pow(b*c, 3)` |
+        | $\pi r^2$ | `#!python pi * pow(r, 2)` |
 
     Click on the :material-plus-circle: icons above to expand the code annotations. Read these carefully to ensure that you understand what's going on and how this code works.
 
