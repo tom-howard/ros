@@ -3097,7 +3097,31 @@ Again, replacing <code>your_name</code> accordingly.</p>
 <li>In "state2" we set velocities that will make the robot turn on the spot (angular-Z velocity only). In this case, if the elapsed time is greater than <strong>4 seconds</strong>, we move back to "state1".</li>
 <li>Regardless of what happens in the <code>if</code> statements above, we always publish a velocity command to the <code>/cmd_vel</code> topic here (i.e. every loop iteration).</li>
 <li>We created a <code>rate</code> object earlier, and we use this now to make sure that each iteration of this <code>while</code> loop takes exactly the right amount of time to maintain the rate of execution that we specified earlier (10 Hz).</li>
-<li>Some useful mathematical operators that you might find useful in your code... </li>
+<li>
+<p>Here we're importing some mathematical operators that you <em>might</em> find useful in your code for this exercise (or the next one!) </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Mathematical Operation</th>
+<th style="text-align: center;">Python Implementation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\sqrt{a+b}\)</span></td>
+<td style="text-align: center;"><code class="highlight"><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(a^{2}+(bc)^{3}\)</span></td>
+<td style="text-align: center;"><code class="highlight"><span class="nb">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\pi r^2\)</span></td>
+<td style="text-align: center;"><code class="highlight"><span class="n">pi</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></code></td>
+</tr>
+</tbody>
+</table>
+</li>
 </ol>
 <p>Click on the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/></svg></span> icons above to expand the code annotations. Read these carefully to ensure that you understand what's going on and how this code works.</p>
 </li>
@@ -3169,7 +3193,7 @@ Which will create a new version of the file called <code>move_alt.py</code></p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-18T12:29:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-18T14:56:38+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
       
         <br>
         Created:
@@ -3351,6 +3375,12 @@ Which will create a new version of the file called <code>move_alt.py</code></p>
         <script src="../../../js/timeago.min.js"></script>
       
         <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
