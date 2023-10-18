@@ -52,12 +52,7 @@ Before you do anything, you'll need to get your robot up and running, and make s
 
 You should have already been provided with a Robot and a Laptop (in fact, you're probably already reading this on the laptop!) 
 
-1. First, identify the robot that you have been provided with. Robots are named as follows:
-
-    ```txt
-    dia-waffleX
-    ```
-    ... where `X` is a unique *'Robot Number'* (a number between 1 and 50). Check the label printed on top of the robot to find out which one you have!
+1. First, identify the robot that you have been provided with. Each of our robots are uniquely named: `dia-waffleX`, where `X` is the *'Robot Number'* (a number between 1 and 50). Check the label printed on top of the robot to find out which one you have!
 
 1. Open up a terminal instance on the laptop, either by pressing the ++ctrl+alt+t++ buttons on your keyboard all at the same time, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
@@ -72,10 +67,10 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
     ***
     
     **TERMINAL 1:**
-    ```bash
+    ``` { .bash .no-copy }
     waffle X pair
     ```
-    Replacing `X` with the number of the robot that you have been provided with.
+    **... replacing `X` with the number of the robot that you have been provided with**.
     
     ***
 
@@ -95,10 +90,10 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
 
     ***
     **TERMINAL 1:**
-    ```bash
+    ``` { .bash .no-copy }
     waffle X term
     ```
-    (again, replacing `X` with the number of *your* robot).
+    (again, replacing `X` with the number of **your** robot).
     
     ***
 
@@ -108,7 +103,7 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
       ![](../../images/laptops/tmux.svg?width=14cm)
     </figure>
 
-    This is a terminal instance running *on the robot*, and any commands that you enter here will be *executed on the robot* (not the laptop!)
+    This is a terminal instance running **on the robot**, and any commands that you enter here will be **executed on the robot** (not the laptop!)
 
 1. Now, launch ROS on the robot by entering the following command:
 
@@ -117,12 +112,17 @@ You should have already been provided with a Robot and a Laptop (in fact, you're
     ```bash
     roslaunch tuos_tb3_tools ros.launch
     ```
+
+    !!! tip
+        To paste text into a Linux terminal you'll need to use the Control + **Shift** + V keyboard keys: ++ctrl+shift+v++
+
     ***
 
     After a short while, you should see a message like this:
 
-    ```txt
-    [INFO] [#####] Calibration End  
+    ``` { .txt .no-copy }
+    [INFO] [#####] Calibration End
+    dia-waffleX is up and running!
     ```
 
     ROS is now up and running on the robot, and we're ready to go!
@@ -161,7 +161,7 @@ In Exercise 1 you actually launched a whole range of different nodes on the ROS 
 
 The first of the above was a `roslaunch` command, which has the following two parts to it (after the `roslaunch` bit):
 
-```bash
+``` { .bash .no-copy }
 roslaunch {[1] Package name} {[2] Launch file}
 ```
 
@@ -169,7 +169,7 @@ roslaunch {[1] Package name} {[2] Launch file}
 
 The second command was a `rosrun` command, which has a structure similar to `roslaunch`:
 
-```bash
+``` { .bash .no-copy }
 rosrun {[1] Package name} {[2] Node name}
 ```    
 
@@ -330,7 +330,7 @@ Much like the `rosnode list` command, we can use `rostopic list` to list all the
 
     This should provide an output similar to the following: 
     
-    ```txt
+    ``` { .txt .no-copy }
     Type: geometry_msgs/Twist
 
     Publishers: None
@@ -360,7 +360,7 @@ Much like the `rosnode list` command, we can use `rostopic list` to list all the
 
     From this, we should obtain the following:
 
-    ```txt
+    ``` { .txt .no-copy }
     geometry_msgs/Vector3 linear
       float64 x
       float64 y
@@ -383,7 +383,7 @@ The motion of any mobile robot can be defined in terms of its three *principal a
 
 In theory then, a robot can move *linearly* or *angularly* about any of these three axes, as shown by the arrows in the figure. That's six *Degrees of Freedom* (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. Take a look back at the `rosmsg info` output in **TERMINAL 2**. Hopefully it's a bit clearer now that these topic messages are formatted to give a ROS Programmer the ability to *ask* a robot to move in any one of its six DOFs. 
 
-```txt
+``` { .txt .no-copy }
 geometry_msgs/Vector3 linear
   float64 x  <-- Forwards (or Backwards)
   float64 y  <-- Left (or Right)
@@ -418,7 +418,7 @@ We will use the `rostopic` command differently now, and actually *publish* messa
 
 We can then use `rostopic` with the `pub` option as follows:
 
-```bash
+``` { .bash .no-copy }
 rostopic pub {topic_name} {message_type} {data}
 ```
 
@@ -430,15 +430,15 @@ In any case, the message that we need to publish will end up being quite long be
 
     ***
     **TERMINAL 2:**
-    ```bash
+    ``` { .bash .no-copy }
     rostopic pub /cmd_vel[Space][Tab][Tab]
     ```
     ***
 
     The full message should then be presented to us:
 
-    ```bash
-    $ rostopic pub /cmd_vel geometry_msgs/Twist "linear:
+    ``` { .bash .no-copy }
+    rostopic pub /cmd_vel geometry_msgs/Twist "linear:
       x: 0.0
       y: 0.0
       z: 0.0
@@ -452,7 +452,7 @@ In any case, the message that we need to publish will end up being quite long be
 
 1. Then, you can scroll back through the message and edit any of the `linear`/`angular` `x`/`y`/`z` values as appropriate. Do this by pressing the &larr; key on your keyboard, deleting a `0.0` where appropriate and replacing it with a value of your choosing. In its final format, a message might (for example) look like this:
     
-    ```bash
+    ``` { .bash .no-copy }
     rostopic pub /cmd_vel geometry_msgs/Twist "linear:
       x: 0.0
       y: 101.1
@@ -489,7 +489,7 @@ In reality, robots need to be able to move around complex environments autonomou
 
     ***
     **TERMINAL 2:**
-    ```bash
+    ``` { .bash .no-copy }
     mkdir -p ~/amr31001/your_name 
     ```
     Replacing `your_name` with, well... *your name*!
@@ -502,7 +502,7 @@ In reality, robots need to be able to move around complex environments autonomou
 
     ***
     **TERMINAL 2:**
-    ```bash
+    ``` { .bash .no-copy }
     cd ~/amr31001/your_name/ 
     ```
     Again, replacing `your_name` accordingly.
@@ -532,7 +532,7 @@ In reality, robots need to be able to move around complex environments autonomou
 1. Once VS Code launches, open up your `move_square.py` file, which should be visible in the file explorer on the left-hand side of the VS Code window. Paste the following content into the file:
 
     ```py title="move_square.py"
-    --8<-- "code/move_square_timed.py"
+    --8<-- "snippets/move_square_timed.py"
     ```
 
     1. `rospy` is the ROS client library for Python. We need this so that our Python node can interact with ROS.
@@ -548,9 +548,10 @@ In reality, robots need to be able to move around complex environments autonomou
     11. In "state1" we set velocities that will make the robot move forwards (linear-X velocity only). If the elapsed time is greater than **2 seconds** however, we move on to "state2".
     12. In "state2" we set velocities that will make the robot turn on the spot (angular-Z velocity only). In this case, if the elapsed time is greater than **4 seconds**, we move back to "state1".
     13. Regardless of what happens in the `if` statements above, we always publish a velocity command to the `/cmd_vel` topic here (i.e. every loop iteration).
-    14. We created a `rate` object earlier, and we use this now to make sure that each iteration of this `while` loop takes exactly the right amount of time to maintain the rate of execution that we specified earlier (10 Hz). 
+    14. We created a `rate` object earlier, and we use this now to make sure that each iteration of this `while` loop takes exactly the right amount of time to maintain the rate of execution that we specified earlier (10 Hz).
+    15. Some useful mathematical operators that you might find useful in your code... 
 
-    Click on the + icons above in order to expand the code annotations. Read these carefully to ensure that you understand what's going on and how this code works.
+    Click on the :material-plus-circle: icons above to expand the code annotations. Read these carefully to ensure that you understand what's going on and how this code works.
 
 1. Now, go back to **TERMINAL 2** and run the code.
 
@@ -603,7 +604,7 @@ Before you leave, please shut down your robot! Enter the following command in **
 
 ***
 **TERMINAL 2:**
-```bash
+``` { .bash .no-copy }
 waffle X off
 ```
 ... again, replacing `X` with the number of the robot that you have been working with today.
