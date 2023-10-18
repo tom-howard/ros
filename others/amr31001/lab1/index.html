@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.5">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6a10b989.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
@@ -2621,10 +2621,7 @@
 <p>You should have already been provided with a Robot and a Laptop (in fact, you're probably already reading this on the laptop!) </p>
 <ol>
 <li>
-<p>First, identify the robot that you have been provided with. Robots are named as follows:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dia-waffleX
-</code></pre></div>
-... where <code>X</code> is a unique <em>'Robot Number'</em> (a number between 1 and 50). Check the label printed on top of the robot to find out which one you have!</p>
+<p>First, identify the robot that you have been provided with. Each of our robots are uniquely named: <code>dia-waffleX</code>, where <code>X</code> is the <em>'Robot Number'</em> (a number between 1 and 50). Check the label printed on top of the robot to find out which one you have!</p>
 </li>
 <li>
 <p>Open up a terminal instance on the laptop, either by pressing the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span> buttons on your keyboard all at the same time, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:</p>
@@ -2637,9 +2634,9 @@
 <p>In <strong>TERMINAL 1</strong> type the following command to <em>pair</em> the laptop and robot, so that they can work together:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>waffle<span class="w"> </span>X<span class="w"> </span>pair
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>waffle<span class="w"> </span>X<span class="w"> </span>pair
 </code></pre></div>
-Replacing <code>X</code> with the number of the robot that you have been provided with.</p>
+<strong>... replacing <code>X</code> with the number of the robot that you have been provided with</strong>.</p>
 <hr />
 </li>
 <li>
@@ -2657,25 +2654,30 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>Then, in the same terminal (<strong>TERMINAL 1</strong>), enter the following command:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>waffle<span class="w"> </span>X<span class="w"> </span>term
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>waffle<span class="w"> </span>X<span class="w"> </span>term
 </code></pre></div>
-(again, replacing <code>X</code> with the number of <em>your</em> robot).</p>
+(again, replacing <code>X</code> with the number of <strong>your</strong> robot).</p>
 <hr />
 <p>Any text that was in the terminal should now disappear, and a green banner should appear across the bottom of the terminal window:</p>
 <p><figure markdown>
   <img alt="" src="../../../images/laptops/tmux.svg?width=14cm" />
 </figure></p>
-<p>This is a terminal instance running <em>on the robot</em>, and any commands that you enter here will be <em>executed on the robot</em> (not the laptop!)</p>
+<p>This is a terminal instance running <strong>on the robot</strong>, and any commands that you enter here will be <strong>executed on the robot</strong> (not the laptop!)</p>
 </li>
 <li>
 <p>Now, launch ROS on the robot by entering the following command:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>ros.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>ros.launch
 </code></pre></div></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To paste text into a Linux terminal you'll need to use the Control + <strong>Shift</strong> + V keyboard keys: <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-v">V</kbd></span></p>
+</div>
 <hr />
 <p>After a short while, you should see a message like this:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[INFO] [#####] Calibration End  
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[INFO] [#####] Calibration End
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>dia-waffleX is up and running!
 </code></pre></div>
 <p>ROS is now up and running on the robot, and we're ready to go!</p>
 <p>You should leave <strong>TERMINAL 1</strong> alone now, just leave it running in the background for the rest of the lab.</p>
@@ -2687,7 +2689,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>In <strong>TERMINAL 2</strong> enter the following command:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>rosrun<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>rosrun<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key
 </code></pre></div></p>
 <hr />
 </li>
@@ -2710,11 +2712,11 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <li><code>rosrun turtlebot3_teleop turtlebot3_teleop_key</code> (on the <em>laptop</em>, in <strong>TERMINAL 2</strong>).</li>
 </ol>
 <p>The first of the above was a <code>roslaunch</code> command, which has the following two parts to it (after the <code>roslaunch</code> bit):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>roslaunch<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Launch<span class="w"> </span>file<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>roslaunch<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Launch<span class="w"> </span>file<span class="o">}</span>
 </code></pre></div>
 <p><strong>Part [1]</strong> specifies the name of the <em>ROS package</em> containing the functionality that we want to execute. <strong>Part [2]</strong> is a file within that package that tells ROS exactly what scripts (<em>'nodes'</em>) that we want to launch. We can launch multiple nodes at the same time from a single launch file.</p>
 <p>The second command was a <code>rosrun</code> command, which has a structure similar to <code>roslaunch</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>rosrun<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Node<span class="w"> </span>name<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rosrun<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Node<span class="w"> </span>name<span class="o">}</span>
 </code></pre></div>
 <p>Here, <strong>Part [1]</strong> is the same as the <code>roslaunch</code> command, but <strong>Part [2]</strong> is slightly different: <code>{[2] Node name}</code>. Here we are directly specifying a single script that we want to execute. We therefore use <code>rosrun</code> if we only want to launch a <strong>single node</strong> on the ROS network (<code>turtlebot3_teleop_key</code> in this case, which is a Python script).</p>
 <div class="admonition info">
@@ -2729,7 +2731,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>There shouldn't be anything running in <strong>TERMINAL 2</strong> now, after you closed down the Teleop node at the end of the previous exercise (<span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span>). Return to this terminal and launch the <code>rqt_image_view</code> node:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>rosrun<span class="w"> </span>rqt_image_view<span class="w"> </span>rqt_image_view
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>rosrun<span class="w"> </span>rqt_image_view<span class="w"> </span>rqt_image_view
 </code></pre></div></p>
 <hr />
 <div class="admonition info">
@@ -2752,7 +2754,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>In <strong>TERMINAL 2</strong> enter the following command:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>rviz.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>rviz.launch
 </code></pre></div></p>
 <hr />
 <p>This will launch an application called <em>RViz</em>, which is a handy tool that allows us to <em>visualise</em> the data from all the sensors on-board our robots. When RViz opens, you should see something similar to the following:</p>
@@ -2776,7 +2778,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>Head back to <strong>TERMINAL 2</strong> and run the following command:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>roslaunch<span class="w"> </span>turtlebot3_slam<span class="w"> </span>turtlebot3_slam.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>roslaunch<span class="w"> </span>turtlebot3_slam<span class="w"> </span>turtlebot3_slam.launch
 </code></pre></div></p>
 <hr />
 <p>A new RViz screen will open up, this time showing the robot from a top-down view, and with the LiDAR data represented by green dots instead.</p>
@@ -2789,7 +2791,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>Open up a new terminal instance now, we'll call this one <strong>TERMINAL 3</strong>. Launch the Teleop node in this one, as you did earlier:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>rosrun<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>rosrun<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key
 </code></pre></div></p>
 <hr />
 </li>
@@ -2811,7 +2813,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>There shouldn't be anything running in <strong>TERMINAL 2</strong> now, so return to this terminal and use the <code>rosnode</code> command to <em>list</em> the nodes that are currently running on the robot:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>rosnode<span class="w"> </span>list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>rosnode<span class="w"> </span>list
 </code></pre></div></p>
 <hr />
 <p>You should see a list of 7 items.</p>
@@ -2820,7 +2822,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>We can visualise the connections between the active nodes by using a ROS node called <code>rqt_graph</code>. Launch this as follows:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rosrun<span class="w"> </span>rqt_graph<span class="w"> </span>rqt_graph
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>rosrun<span class="w"> </span>rqt_graph<span class="w"> </span>rqt_graph
 </code></pre></div></p>
 <hr />
 </li>
@@ -2841,7 +2843,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>Close down the <code>rqt_graph</code> window if you haven't done so already. This will release <strong>TERMINAL 2</strong> so that we can enter commands in it again. Return to this terminal window and enter the following:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>rostopic<span class="w"> </span>list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rostopic<span class="w"> </span>list
 </code></pre></div></p>
 <hr />
 <p>A much larger list of items should be printed to the terminal now. See if you can spot the <code>/cmd_vel</code> item in the list.</p>
@@ -2851,16 +2853,16 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>Let's find out more about this using the <code>rostopic info</code> command.</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/cmd_vel
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/cmd_vel
 </code></pre></div></p>
 <hr />
 <p>This should provide an output similar to the following: </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Type: geometry_msgs/Twist
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Publishers: None
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Subscribers:
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a> * /turtlebot3_core (http://dia-waffleX:#####/)
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Type: geometry_msgs/Twist
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>Publishers: None
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>Subscribers:
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a> * /turtlebot3_core (http://dia-waffleX:#####/)
 </code></pre></div>
 <p>This tells us a few things: <a name="rostopic_info_explained"></a></p>
 <ol>
@@ -2877,18 +2879,18 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>We can use the <code>rosmsg</code> command to find out more about the <code>Twist</code> message:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>geometry_msgs/Twist
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>geometry_msgs/Twist
 </code></pre></div></p>
 <hr />
 <p>From this, we should obtain the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>geometry_msgs/Vector3 linear
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  float64 x
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  float64 y
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>  float64 z
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>geometry_msgs/Vector3 angular
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>  float64 x
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>  float64 y
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>  float64 z
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>geometry_msgs/Vector3 linear
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>  float64 x
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>  float64 y
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>  float64 z
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>geometry_msgs/Vector3 angular
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>  float64 x
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>  float64 y
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>  float64 z
 </code></pre></div>
 <p>Hmmm, this looks complicated. Let's find out what it all means...</p>
 </li>
@@ -2899,14 +2901,14 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p><img alt="" src="../../../images/waffle/principal_axes.svg?width=20cm" /></p>
 </figure>
 <p>In theory then, a robot can move <em>linearly</em> or <em>angularly</em> about any of these three axes, as shown by the arrows in the figure. That's six <em>Degrees of Freedom</em> (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. Take a look back at the <code>rosmsg info</code> output in <strong>TERMINAL 2</strong>. Hopefully it's a bit clearer now that these topic messages are formatted to give a ROS Programmer the ability to <em>ask</em> a robot to move in any one of its six DOFs. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>geometry_msgs/Vector3 linear
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>  float64 x  &lt;-- Forwards (or Backwards)
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>  float64 y  &lt;-- Left (or Right)
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>  float64 z  &lt;-- Up (or Down)
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>geometry_msgs/Vector3 angular
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>  float64 x  &lt;-- &quot;Roll&quot;
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>  float64 y  &lt;-- &quot;Pitch&quot;
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>  float64 z  &lt;-- &quot;Yaw&quot;
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>geometry_msgs/Vector3 linear
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>  float64 x  &lt;-- Forwards (or Backwards)
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>  float64 y  &lt;-- Left (or Right)
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>  float64 z  &lt;-- Up (or Down)
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>geometry_msgs/Vector3 angular
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>  float64 x  &lt;-- &quot;Roll&quot;
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>  float64 y  &lt;-- &quot;Pitch&quot;
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>  float64 z  &lt;-- &quot;Yaw&quot;
 </code></pre></div>
 <p>Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! These two motors can be controlled independently, which gives it what is called a <em>"differential drive"</em> configuration, but this still only allows it to move with <strong>two degrees of freedom</strong> in total, as illustrated below.</p>
 <figure>
@@ -2929,7 +2931,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>We discovered all this in the previous exercise, take note of all three points.</p>
 </div>
 <p>We can then use <code>rostopic</code> with the <code>pub</code> option as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span><span class="o">{</span>topic_name<span class="o">}</span><span class="w"> </span><span class="o">{</span>message_type<span class="o">}</span><span class="w"> </span><span class="o">{</span>data<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span><span class="o">{</span>topic_name<span class="o">}</span><span class="w"> </span><span class="o">{</span>message_type<span class="o">}</span><span class="w"> </span><span class="o">{</span>data<span class="o">}</span>
 </code></pre></div>
 <p>As we discovered earlier, the <code>/cmd_vel</code> topic is expecting <em>linear</em> and <em>angular</em> data, each with an <code>x</code>, <code>y</code> and <code>z</code> component to represent a maximum of six DOFs. We have also established however, that our robot only actually has <em>two</em> DOFs, so a number of the <code>Twist</code> message components won't actually have any effect on our robot at all.</p>
 <p>In any case, the message that we need to publish will end up being quite long because of all the message parameters that need to be provided (regardless of how relevant they are to our own robots). Fortunately, we don't have to type the whole thing out manually though, and we can use the <em>autocomplete functionality</em> of the Linux terminal to do most of the work for us.</p>
@@ -2938,18 +2940,18 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>Enter the following into <strong>TERMINAL 2</strong> but where it says <code>[Space]</code> or <code>[Tab]</code> actually press the corresponding key on the keyboard:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/cmd_vel<span class="o">[</span>Space<span class="o">][</span>Tab<span class="o">][</span>Tab<span class="o">]</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/cmd_vel<span class="o">[</span>Space<span class="o">][</span>Tab<span class="o">][</span>Tab<span class="o">]</span>
 </code></pre></div></p>
 <hr />
 <p>The full message should then be presented to us:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>$<span class="w"> </span>rostopic<span class="w"> </span>pub<span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/Twist<span class="w"> </span><span class="s2">&quot;linear:</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="s2">  x: 0.0</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="s2">  y: 0.0</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="s2">  z: 0.0</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="s2">angular:</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="s2">  x: 0.0</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="s2">  y: 0.0</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="s2">  z: 0.0&quot;</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/Twist<span class="w"> </span><span class="s2">&quot;linear:</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="s2">  x: 0.0</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="s2">  y: 0.0</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="s2">  z: 0.0</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="s2">angular:</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="s2">  x: 0.0</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="s2">  y: 0.0</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="s2">  z: 0.0&quot;</span>
 </code></pre></div>
 </li>
 <li>
@@ -2957,14 +2959,14 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 </li>
 <li>
 <p>Then, you can scroll back through the message and edit any of the <code>linear</code>/<code>angular</code> <code>x</code>/<code>y</code>/<code>z</code> values as appropriate. Do this by pressing the &larr; key on your keyboard, deleting a <code>0.0</code> where appropriate and replacing it with a value of your choosing. In its final format, a message might (for example) look like this:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/Twist<span class="w"> </span><span class="s2">&quot;linear:</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="s2">  x: 0.0</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="s2">  y: 101.1</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="s2">  z: 0.0</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="s2">angular:</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="s2">  x: 22.8</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="s2">  y: 0.0</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="s2">  z: 0.0&quot;</span><span class="w"> </span>--rate<span class="o">=</span><span class="m">10</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/Twist<span class="w"> </span><span class="s2">&quot;linear:</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="s2">  x: 0.0</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="s2">  y: 101.1</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="s2">  z: 0.0</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="s2">angular:</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="s2">  x: 22.8</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="s2">  y: 0.0</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="s2">  z: 0.0&quot;</span><span class="w"> </span>--rate<span class="o">=</span><span class="m">10</span>
 </code></pre></div>
 </li>
 <li>
@@ -2999,7 +3001,7 @@ Replacing <code>X</code> with the number of the robot that you have been provide
 <p>First, create your own folder on the laptop to store your Python script(s) in. A folder is also known as a <em>"directory"</em>, and we can make a new one from the command-line by using the <code>mkdir</code> (<em>"make directory"</em>) command:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/amr31001/your_name<span class="w"> </span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/amr31001/your_name<span class="w"> </span>
 </code></pre></div>
 Replacing <code>your_name</code> with, well... <em>your name</em>!</p>
 <hr />
@@ -3012,7 +3014,7 @@ Replacing <code>your_name</code> with, well... <em>your name</em>!</p>
 <p>Next, navigate into this directory using the <code>cd</code> (<em>"change directory"</em>) command:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">cd</span><span class="w"> </span>~/amr31001/your_name/<span class="w"> </span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">cd</span><span class="w"> </span>~/amr31001/your_name/<span class="w"> </span>
 </code></pre></div>
 Again, replacing <code>your_name</code> accordingly.</p>
 <hr />
@@ -3021,7 +3023,7 @@ Again, replacing <code>your_name</code> accordingly.</p>
 <p>Then create a Python file called <code>move_square.py</code> using the <code>touch</code> command:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>touch<span class="w"> </span>move_square.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>touch<span class="w"> </span>move_square.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -3029,7 +3031,7 @@ Again, replacing <code>your_name</code> accordingly.</p>
 <p>Now we want to edit it, and we'll do that using <em>Visual Studio Code</em> (VS Code):</p>
 <hr />
 <p><strong>TERMINAL 2:</strong> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>code<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>code<span class="w"> </span>.
 </code></pre></div></p>
 <hr />
 <div class="admonition note">
@@ -3039,45 +3041,46 @@ Again, replacing <code>your_name</code> accordingly.</p>
 </li>
 <li>
 <p>Once VS Code launches, open up your <code>move_square.py</code> file, which should be visible in the file explorer on the left-hand side of the VS Code window. Paste the following content into the file:</p>
-<div class="highlight"><span class="filename">move_square.py</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="kn">import</span> <span class="nn">rospy</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span> <span class="c1"># (2)!</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state1&quot;</span> <span class="c1"># &quot;state2, state3 etc...&quot;</span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;move_waffle&quot;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># (3)!</span>
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># (4)!</span>
-<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
-<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># (5)!</span>
-<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="n">vel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span> <span class="c1"># (6)!</span>
-<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
-<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The node has been initialised...&quot;</span><span class="p">)</span>
-<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="n">timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span> <span class="c1"># (7)!</span>
-<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>
-<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span> <span class="c1"># (8)!</span>
-<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a>    <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timestamp</span> <span class="c1"># (9)!</span>
-<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>    <span class="k">if</span> <span class="n">transition</span><span class="p">:</span> <span class="c1"># (10)!</span>
-<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
-<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>        <span class="n">transition</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>        <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>        <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moving to state: </span><span class="si">{</span><span class="n">movement</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a>    <span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;state1&quot;</span><span class="p">:</span> <span class="c1"># (11)!</span>
-<a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a>        <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-<a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a>            <span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state2&quot;</span>
-<a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a>            <span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.05</span>
-<a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a>    <span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;state2&quot;</span><span class="p">:</span> <span class="c1"># (12)!</span>
-<a id="__codelineno-28-32" name="__codelineno-28-32" href="#__codelineno-28-32"></a>        <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
-<a id="__codelineno-28-33" name="__codelineno-28-33" href="#__codelineno-28-33"></a>            <span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state1&quot;</span>
-<a id="__codelineno-28-34" name="__codelineno-28-34" href="#__codelineno-28-34"></a>            <span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-28-35" name="__codelineno-28-35" href="#__codelineno-28-35"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-28-36" name="__codelineno-28-36" href="#__codelineno-28-36"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.2</span>
-<a id="__codelineno-28-37" name="__codelineno-28-37" href="#__codelineno-28-37"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-28-38" name="__codelineno-28-38" href="#__codelineno-28-38"></a>    <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel</span><span class="p">)</span> <span class="c1"># (13)!</span>
-<a id="__codelineno-28-39" name="__codelineno-28-39" href="#__codelineno-28-39"></a>    <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span> <span class="c1"># (14)!</span>
+<div class="highlight"><span class="filename">move_square.py</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="kn">import</span> <span class="nn">rospy</span> <span class="c1"># (1)!</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">pi</span> <span class="c1"># (15)!</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state1&quot;</span> <span class="c1"># &quot;state2, state3 etc...&quot;</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;move_waffle&quot;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># (3)!</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># (4)!</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># (5)!</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="n">vel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span> <span class="c1"># (6)!</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The node has been initialised...&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="n">timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span> <span class="c1"># (7)!</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span> <span class="c1"># (8)!</span>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>    <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timestamp</span> <span class="c1"># (9)!</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>    <span class="k">if</span> <span class="n">transition</span><span class="p">:</span> <span class="c1"># (10)!</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a>        <span class="n">transition</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>        <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>        <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moving to state: </span><span class="si">{</span><span class="n">movement</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>    <span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;state1&quot;</span><span class="p">:</span> <span class="c1"># (11)!</span>
+<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a>        <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a>            <span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state2&quot;</span>
+<a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a>            <span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.05</span>
+<a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a>    <span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;state2&quot;</span><span class="p">:</span> <span class="c1"># (12)!</span>
+<a id="__codelineno-27-33" name="__codelineno-27-33" href="#__codelineno-27-33"></a>        <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+<a id="__codelineno-27-34" name="__codelineno-27-34" href="#__codelineno-27-34"></a>            <span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state1&quot;</span>
+<a id="__codelineno-27-35" name="__codelineno-27-35" href="#__codelineno-27-35"></a>            <span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-27-36" name="__codelineno-27-36" href="#__codelineno-27-36"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-27-37" name="__codelineno-27-37" href="#__codelineno-27-37"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.2</span>
+<a id="__codelineno-27-38" name="__codelineno-27-38" href="#__codelineno-27-38"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-27-39" name="__codelineno-27-39" href="#__codelineno-27-39"></a>    <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel</span><span class="p">)</span> <span class="c1"># (13)!</span>
+<a id="__codelineno-27-40" name="__codelineno-27-40" href="#__codelineno-27-40"></a>    <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span> <span class="c1"># (14)!</span>
 </code></pre></div>
 <ol>
 <li><code>rospy</code> is the ROS client library for Python. We need this so that our Python node can interact with ROS.</li>
@@ -3093,9 +3096,10 @@ Again, replacing <code>your_name</code> accordingly.</p>
 <li>In "state1" we set velocities that will make the robot move forwards (linear-X velocity only). If the elapsed time is greater than <strong>2 seconds</strong> however, we move on to "state2".</li>
 <li>In "state2" we set velocities that will make the robot turn on the spot (angular-Z velocity only). In this case, if the elapsed time is greater than <strong>4 seconds</strong>, we move back to "state1".</li>
 <li>Regardless of what happens in the <code>if</code> statements above, we always publish a velocity command to the <code>/cmd_vel</code> topic here (i.e. every loop iteration).</li>
-<li>We created a <code>rate</code> object earlier, and we use this now to make sure that each iteration of this <code>while</code> loop takes exactly the right amount of time to maintain the rate of execution that we specified earlier (10 Hz). </li>
+<li>We created a <code>rate</code> object earlier, and we use this now to make sure that each iteration of this <code>while</code> loop takes exactly the right amount of time to maintain the rate of execution that we specified earlier (10 Hz).</li>
+<li>Some useful mathematical operators that you might find useful in your code... </li>
 </ol>
-<p>Click on the + icons above in order to expand the code annotations. Read these carefully to ensure that you understand what's going on and how this code works.</p>
+<p>Click on the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/></svg></span> icons above to expand the code annotations. Read these carefully to ensure that you understand what's going on and how this code works.</p>
 </li>
 <li>
 <p>Now, go back to <strong>TERMINAL 2</strong> and run the code.</p>
@@ -3105,7 +3109,7 @@ Again, replacing <code>your_name</code> accordingly.</p>
 </div>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>python3<span class="w"> </span>move_square.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>python3<span class="w"> </span>move_square.py
 </code></pre></div></p>
 <hr />
 <p>Observe what the robot does. When you've seen enough, enter <code>Ctrl+C</code> in <strong>TERMINAL 2</strong> to stop the node from running, which should also stop the robot from moving.</p>
@@ -3126,7 +3130,7 @@ Again, replacing <code>your_name</code> accordingly.</p>
 <p>First, make a copy of the <code>move_square.py</code> code using the <code>cp</code> command:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>cp<span class="w"> </span>move_square.py<span class="w"> </span>move_alt.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>cp<span class="w"> </span>move_square.py<span class="w"> </span>move_alt.py
 </code></pre></div>
 Which will create a new version of the file called <code>move_alt.py</code></p>
 <hr />
@@ -3146,7 +3150,7 @@ Which will create a new version of the file called <code>move_alt.py</code></p>
 <p>Before you leave, please shut down your robot! Enter the following command in <strong>TERMINAL 2</strong> to do so:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>waffle<span class="w"> </span>X<span class="w"> </span>off
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>waffle<span class="w"> </span>X<span class="w"> </span>off
 </code></pre></div>
 ... again, replacing <code>X</code> with the number of the robot that you have been working with today.</p>
 <hr />
@@ -3165,7 +3169,7 @@ Which will create a new version of the file called <code>move_alt.py</code></p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-09-26T15:57:43+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-09-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-18T12:29:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
       
         <br>
         Created:
