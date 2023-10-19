@@ -13,3 +13,7 @@ hide:
 * [Part 2: Odometry & Navigation](./part2)
 
     *In this session you'll learn about Odometry data, which informs us of a robot's position in an environment. You'll also learn how to control a ROS robot's velocity (and thus its position) using both open and closed-loop control methods.*
+
+* [Part 3: SLAM & Autonomous Navigation](./part3)
+
+    *Here you'll take your first look at the LiDAR sensor, the data that it generates, and how this can be of huge benefit for robotics applications. You'll see this in practice by leveraging the mapping and autonomous navigation tools within ROS.*
