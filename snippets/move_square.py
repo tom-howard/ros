@@ -21,7 +21,7 @@ class Square():
         self.y = pos_y
         self.theta_z = yaw
 
-        if self.first_message: # (9)!
+        if not self.first_message: # (9)!
             self.first_message = True
 
     def __init__(self):
@@ -31,7 +31,7 @@ class Square():
 
         # (11)!
         self.pub = rospy.Publisher("cmd_vel", Twist, queue_size=10)
-        self.sub = rospy.Subscriber("odom", Odometry, self.callback_function)
+        self.sub = rospy.Subscriber("odom", Odometry, self.callback)
 
         rospy.init_node(node_name, anonymous=True)
         self.rate = rospy.Rate(10)  # hz
