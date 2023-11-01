@@ -331,7 +331,7 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
     ```
     Then:
     ```bash
-    catkin_create_pkg {BLANK}
+    catkin_create_pkg part2_navigation {BLANK}
     ```
     ***
 
