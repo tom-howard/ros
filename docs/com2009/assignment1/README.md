@@ -17,3 +17,7 @@ hide:
 * [Part 3: SLAM & Autonomous Navigation](./part3)
 
     *Here you'll take your first look at the LiDAR sensor, the data that it generates, and how this can be of huge benefit for robotics applications. You'll see this in practice by leveraging the mapping and autonomous navigation tools within ROS.*
+
+* [Part 4: ROS Services](./part4)
+
+    *In this part of the course you'll learn about ROS Services, which offer an alternative way for nodes to communicate in ROS. You will see how this framework can be used to control a robot or invoke certain behaviours more effectively for certain tasks.*
