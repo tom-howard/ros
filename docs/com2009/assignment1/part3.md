@@ -3,10 +3,10 @@ title: "Part 3: SLAM & Autonomous Navigation"
 description: Explore the LiDAR sensor, the data that it generates, and how this can be of huge benefit for robotics applications. You'll see this in practice by leveraging the mapping and autonomous navigation tools within ROS.
 ---
 
+## Introduction
+
 :material-pen: **Exercises**: 3  
 :material-timer: **Estimated Completion Time**: 1 hour 30 minutes
-
-## Introduction
 
 ### Aims
 
