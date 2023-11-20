@@ -21,3 +21,7 @@ hide:
 * [Part 4: ROS Services](./part4)
 
     *In this part of the course you'll learn about ROS Services, which offer an alternative way for nodes to communicate in ROS. You will see how this framework can be used to control a robot or invoke certain behaviours more effectively for certain tasks.*
+
+* [Part 5: ROS Actions](./part5)
+
+    *Building on what you learnt about ROS Services in Part 4, here you will look at ROS Actions, which are similar to Services, but with a few key differences.*
