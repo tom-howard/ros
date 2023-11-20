@@ -1,0 +1,3742 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Building on what you learnt about ROS Services in Part 4, here you will look at ROS Actions, which are similar to Services, but with a few key differences.">
+      
+      
+      
+        <link rel="canonical" href="https://tom-howard.github.io/ros/com2009/assignment1/part5/">
+      
+      
+        <link rel="prev" href="../part4/">
+      
+      
+        <link rel="next" href="../../la2/">
+      
+      
+      <link rel="icon" href="../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
+    
+    
+      
+        <title>Part 5: ROS Actions - Robotics in the Diamond: ROS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-1SSCKMNFPR"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-1SSCKMNFPR",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-1SSCKMNFPR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>var consent;"undefined"==typeof __md_analytics||(consent=__md_get("__consent"))&&consent.analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+      
+  <img src="../../../assets/tuos.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Robotics in the Diamond: ROS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 5: ROS Actions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tom-howard/ros" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tom-howard/ros
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../about/" class="md-tabs__link">
+          
+  
+    
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../wsl-ros/" class="md-tabs__link">
+          
+  
+    
+  
+  WSL-ROS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  COM2009
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../waffles/" class="md-tabs__link">
+          
+  
+    
+  
+  The Waffles
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../extras/launch-files/" class="md-tabs__link">
+          
+  
+    
+  
+  ROS Extras
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../others/amr31001/" class="md-tabs__link">
+          
+  
+    
+  
+  Other Courses
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+      
+  <img src="../../../assets/tuos.png" alt="logo">
+
+    </a>
+    Robotics in the Diamond: ROS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tom-howard/ros" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tom-howard/ros
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../about/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            About
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/robots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Robots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Version History
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../wsl-ros/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    WSL-ROS
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            WSL-ROS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/first-run/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launching for the First Time
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/configure-vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Visual Studio Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/linux-term/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Quick Introduction to the Linux Terminal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/wsl-ros-return/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Re-Launching WSL-ROS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/backup-restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backing-Up (and Restoring) your Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/rdp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remote Access
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/wt-settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows Terminal Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launching VS Code (in WSL-ROS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wsl-ros/installing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing ROS on Your Own PC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    COM2009
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            COM2009
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../la1/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Lab Assignment #1
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lab Assignment #1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la1/week1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 1: ROS & Linux Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la1/week2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 2: Odometry & Basic Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la1/week3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 3: Advanced Navigation & SLAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la1/week4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 4: ROS Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la1/week5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 5: ROS Actions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la1/week6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 6: Cameras, Machine Vision & OpenCV
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Assignment #1: An Introduction to ROS (2024)
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment #1: An Introduction to ROS (2024)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 1: ROS & Linux Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2: Odometry & Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3: SLAM & Autonomous Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../part4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 4: ROS Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Part 5: ROS Actions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Part 5: ROS Actions
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aims
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intended-learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intended Learning Outcomes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Links
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calling-an-action-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calling an Action Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calling an Action Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex1" class="md-nav__link">
+    <span class="md-ellipsis">
+       Exercise 1: Launching an Action Server and calling it from the command-line
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-ros-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a ROS Action?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is a ROS Action?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-format-of-action-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Format of Action Messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Format of Action Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cancel-and-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Cancel" and "Status"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Goal"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goal-feedback-and-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Goal," "Feedback" and "Result"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrent-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrent Activity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrent Activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex2" class="md-nav__link">
+    <span class="md-ellipsis">
+       Exercise 2: Building a Python Action Client Node with Concurrency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preemptive_client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cancelling (or Preempting) an Action
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cancelling (or Preempting) an Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex3" class="md-nav__link">
+    <span class="md-ellipsis">
+       Exercise 3: Building a Preemptive Python Action Client Node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-summary-of-ros-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Summary of ROS Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cam_swp_act_srv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Action Servers in Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Action Servers in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex4" class="md-nav__link">
+    <span class="md-ellipsis">
+       Exercise 4: Developing an "Obstacle Avoidance" behaviour using an Action Server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some advanced exercises (if you're feeling adventurous!)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Some advanced exercises (if you're feeling adventurous!)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adv_ex1" class="md-nav__link">
+    <span class="md-ellipsis">
+       Advanced Exercise 1: Implementing a Search strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adv_ex2" class="md-nav__link">
+    <span class="md-ellipsis">
+       Advanced Exercise 2: Autonomous Navigation using waypoint markers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapping Up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topics-services-or-actions-which-to-choose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topics, Services or Actions: Which to Choose?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving your work
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../la2/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Lab Assignment #2
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Lab Assignment #2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started (Week 7 Tasks)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/task1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 1: Creating a Deployable ROS Package
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/task2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 2: Obstacle Avoidance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/task3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 3: Maze Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/task4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 4: Detection, Search & Beaconing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/task5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 5: Real-World Exploration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../la2/extras/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Additional Resources
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4_9" id="__nav_3_4_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_9">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/extras/laptops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with your ROS Packages on the laptops (with GitHub and SSH)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../la2/extras/submission/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exporting your ROS package for submission
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../waffles/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    The Waffles
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            The Waffles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/launching-ros/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launching ROS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/exercises/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Initial Exercises
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/fact-finding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fact-Finding Missions!
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/shutdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Safe Shutdown
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../waffles/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips & Tricks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    ROS Extras
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ROS Extras
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../extras/launch-files/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Launch Files
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Launch Files
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extras/launch-files/launching-launch-files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launching Other Launch Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extras/launch-files/roslaunch-clas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ROSlaunch Command-line Arguments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extras/launch-files/python-clis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Building Command-line Interfaces (CLIs) for Python Nodes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extras/launch-files/cla-to-node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passing Command-line Arguments to Python Nodes via ROSlaunch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extras/launch-files/roslaunch-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the ROSlaunch Python API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../extras/ros-msgs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Your Own Custom ROS Messages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/tom-howard/COM2009" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Course Repo (GitHub)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Other Courses
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Other Courses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../others/amr31001/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    AMR31001
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            AMR31001
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/amr31001/lab1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 1: Mobile Robotics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/amr31001/lab2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab 2: Feedback Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://lincaolab.github.io/acs6121/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ACS6121
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aims
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intended-learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intended Learning Outcomes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Links
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calling-an-action-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calling an Action Server
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Calling an Action Server">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex1" class="md-nav__link">
+    <span class="md-ellipsis">
+       Exercise 1: Launching an Action Server and calling it from the command-line
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-ros-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a ROS Action?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What is a ROS Action?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-format-of-action-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Format of Action Messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Format of Action Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cancel-and-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Cancel" and "Status"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goal" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Goal"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#goal-feedback-and-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Goal," "Feedback" and "Result"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrent-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrent Activity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Concurrent Activity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex2" class="md-nav__link">
+    <span class="md-ellipsis">
+       Exercise 2: Building a Python Action Client Node with Concurrency
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preemptive_client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cancelling (or Preempting) an Action
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cancelling (or Preempting) an Action">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex3" class="md-nav__link">
+    <span class="md-ellipsis">
+       Exercise 3: Building a Preemptive Python Action Client Node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-summary-of-ros-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Summary of ROS Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cam_swp_act_srv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Action Servers in Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Action Servers in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex4" class="md-nav__link">
+    <span class="md-ellipsis">
+       Exercise 4: Developing an "Obstacle Avoidance" behaviour using an Action Server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some advanced exercises (if you're feeling adventurous!)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Some advanced exercises (if you're feeling adventurous!)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adv_ex1" class="md-nav__link">
+    <span class="md-ellipsis">
+       Advanced Exercise 1: Implementing a Search strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adv_ex2" class="md-nav__link">
+    <span class="md-ellipsis">
+       Advanced Exercise 2: Autonomous Navigation using waypoint markers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapping Up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#topics-services-or-actions-which-to-choose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Topics, Services or Actions: Which to Choose?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Saving your work
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/tom-howard/ros/edit/main/docs/com2009/assignment1/part5.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/tom-howard/ros/raw/main/docs/com2009/assignment1/part5.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+  <h1>Part 5: ROS Actions</h1>
+
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> <strong>Exercises</strong>: 4 essential (plus 2 <em>advanced</em> exercises)<br />
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19.03 7.39 1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0 0 18c5 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61M13 14h-2V7h2v7m2-13H9v2h6V1Z"/></svg></span> <strong>Estimated Completion Time</strong>: 3 hours (for the essential exercises only)</p>
+<h3 id="aims">Aims<a class="headerlink" href="#aims" title="Permanent link">&para;</a></h3>
+<p>In this part of the course you will learn about a third (and final) communication method available within ROS: <em>Actions</em>.  Actions are essentially an advanced version of ROS Services, and you will learn about exactly how these two differ and why you might choose to employ an action over a service for certain robotic tasks. </p>
+<h3 id="intended-learning-outcomes">Intended Learning Outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permanent link">&para;</a></h3>
+<p>By the end of this session you will be able to:</p>
+<ol>
+<li>Recognise how ROS Actions differ from ROS Services and explain where this method might be useful in robot applications.</li>
+<li>Explain the structure of Action messages and identify the relevant information within them, enabling you to build Action Servers and Clients.</li>
+<li>Implement Python Action <em>Client</em> nodes that utilise <em>concurrency</em> and <em>preemption</em>.</li>
+<li>Develop Action Server &amp; Client nodes that could be used as the basis for a robotic search strategy.</li>
+</ol>
+<h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#ex1">Exercise 1: Launching an Action Server and calling it from the command-line</a></li>
+<li><a href="#ex2">Exercise 2: Building a Python Action Client Node with concurrency</a></li>
+<li><a href="#ex3">Exercise 3: Building a Preemptive Python Action Client Node</a></li>
+<li><a href="#ex4">Exercise 4: Developing an "Obstacle Avoidance" behaviour using an Action Server</a></li>
+<li><strong>Advanced (optional) exercises</strong>:<ul>
+<li><a href="#adv_ex1">Advanced Exercise 1: Implementing a Search strategy</a></li>
+<li><a href="#adv_ex2">Advanced Exercise 2: Autonomous Navigation using waypoint markers</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="action_client">The Action Client Code (for Exercise 2)</a></li>
+<li><a href="preemptive_action_client">The Preemptive Action Client Code (for Exercise 3)</a></li>
+</ul>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p><strong>Step 1: Launch WSL-ROS</strong><br />
+Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the <em>Windows Terminal</em> app should launch with an <em>Ubuntu terminal instance</em> ready to go (<strong>TERMINAL 1</strong>).</p>
+<p><strong>Step 2: Restore your work</strong><br />
+When prompted (in <strong>TERMINAL 1</strong>), enter <code>Y</code> to restore your work from the previous sessions<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p><strong>Step 3: Make sure the Course Repo installed and up to date!</strong><br />
+You should have installed this back in Part 2. Check that's the case by navigating to it now:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src/tuos_ros/
+</code></pre></div></p>
+<hr />
+<p>If this returns an error saying <code>No such file or directory</code>, then <a href="../part2/#course-repo">head back here</a> and follow the steps to install it.</p>
+<p>If it does exist, then make sure it's up-to-date by running <code>git pull</code>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src/tuos_ros/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+</code></pre></div></p>
+<hr />
+<p><strong>Step 4: Launch VS Code</strong><br />
+Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code correctly within the WSL-ROS environment.</p>
+<h2 id="calling-an-action-server">Calling an Action Server<a class="headerlink" href="#calling-an-action-server" title="Permanent link">&para;</a></h2>
+<p>Before we talk about what actions actually are, we're going to dive straight in and see one in <em>action</em> (excuse the pun). As you may remember from Part 3, you actually used a ROS Action to make your robot navigate autonomously in <a href="../part3/#ex3">Exercise 3</a>, by calling an action server from the command-line. We will do a similar thing now, in a different context, and this time we'll also look at what's going on in a bit more detail.</p>
+<h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 1: Launching an Action Server and calling it from the command-line<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
+<p>We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a <em>mystery environment</em> now, and we're going to do this by launching Gazebo <em>headless</em> i.e. Gazebo will be running behind the scenes, but there'll be no Graphical User Interface (GUI) to show us what the environment actually looks like.  Then, we'll use an <em>action server</em> to make our robot scan the environment and take pictures for us, to reveal its surroundings!</p>
+<ol>
+<li>
+<p>To launch our TurtleBot3 Waffle in the mystery environment, use the following <code>roslaunch</code> command:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>mystery_world.launch
+</code></pre></div></p>
+<hr />
+<p>Messages in the terminal should indicate that <em>something</em> has happened, but that's about all you will see!</p>
+</li>
+<li>
+<p>Next, <em>open up a new instance of the Windows Terminal Application</em> by pressing the "New Tab" button whilst pressing the <code>Shift</code> key (we'll call this <strong>WT(B)</strong>).</p>
+</li>
+<li>
+<p>In <strong>WT(B)</strong> have a look at all the topics that are currently active on the ROS network (you should know exactly how to do this by now!)<a name="action_launch"></a></p>
+</li>
+<li>
+<p>Return to the original Windows Terminal instance (the one with the Gazebo processes running, and which we'll now refer to as <strong>WT(A)</strong>), open up a new tab (<strong>WT(A) TERMINAL 2</strong>) and launch an action server that we have already prepared for you for this exercise:</p>
+<hr />
+<p><strong>WT(A) TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>roslaunch<span class="w"> </span>tuos_examples<span class="w"> </span>camera_sweep.launch
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Now, return to <strong>WT(B)</strong> and take a look again at all the topics that are active on the ROS network.</p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ul>
+<li>What do you notice?</li>
+<li>Anything new there now compared to when you ran the same command before?</li>
+</ul>
+</div>
+<p>You should in fact notice 5 new items in that list:<a name="action_msgs"></a></p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/camera_sweep_action_server/cancel
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>/camera_sweep_action_server/feedback
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>/camera_sweep_action_server/goal
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>/camera_sweep_action_server/result
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>/camera_sweep_action_server/status
+</code></pre></div>
+<p>A ROS action therefore has <em>five</em> messages associated with it. We'll talk about these in a bit more detail later on, but for now, all we need to know is that in order to <em>call</em> an action, we need to send the action server a <strong>Goal</strong> (which you may remember doing in <a href="../part3/#ex3">Part 3</a>).</p>
+<details class="info">
+<summary>Comparing with ROS Services</summary>
+<p>This is a bit like sending a <strong>Request</strong> to a ROS Service Server, like we did in the previous session.</p>
+</details>
+</li>
+<li>
+<p>ROS Actions use <em>topic messages</em> (unlike ROS Services, which use dedicated <em>service messages</em>). We can therefore tap into the ROS network and observe the messages being published to these in exactly the same way as we have done in previous parts of this course using <code>rostopic echo</code>. In order to monitor some of these messages now, we'll launch a couple more instances of the Windows Terminal, so that we can view a few things simultaneously:</p>
+<ol>
+<li>Once again, launch an additional Windows Terminal instance by pressing the "New Tab" button whilst pressing the <code>Shift</code> key (this one will be called <strong>WT(C)</strong>):</li>
+<li>Do this <em>again</em> to launch <em>another Windows Terminal instance</em>, which we'll call <strong>WT(D)</strong></li>
+<li>You should now have <em>four</em> Windows Terminal applications open! Arrange these so that they are all visible: </li>
+</ol>
+<p><figure markdown>
+  <img alt="" src="four_terms.png" width="800px" />
+</figure></p>
+</li>
+<li>
+<p>In <strong>WT(C)</strong> run a <code>rostopic echo</code> command to <em>echo</em> the messages being published to the <code>/camera_sweep_action_server/feedback</code> topic:</p>
+<hr />
+<p><strong>WT(C):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/camera_sweep_action_server/feedback
+</code></pre></div></p>
+<p>To begin with, you'll see the message:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>WARNING: no messages received and simulated time is active.
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Is /clock being published?
+</code></pre></div>
+<p>Don't worry about this.</p>
+<hr />
+</li>
+<li>
+<p>Do the same in <strong>WT(D)</strong>, but this time to echo the messages being published to the <code>/result</code> part of the action server message.</p>
+</li>
+<li>
+<p>Now, going back to <strong>WT(B)</strong>, run the <code>rostopic pub</code> command on the <code>/camera_sweep_action_server/goal</code> topic, using the autocomplete functionality in the terminal to help you format the message correctly:</p>
+<hr />
+<p><strong>WT(B):</strong>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/camera_sweep_action_server/goal<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
+</code></pre></div></p>
+<p>Which should provide you with the following:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>rostopic pub /camera_sweep_action_server/goal tuos_msgs/CameraSweepActionGoal &quot;header:
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  seq: 0
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  stamp:
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  secs: 0
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>  nsecs: 0
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  frame_id: &#39;&#39;
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>goal_id:
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  stamp:
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>  secs: 0
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>  nsecs: 0
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>  id: &#39;&#39;
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>goal:
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>  sweep_angle: 0.0
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>  image_count: 0&quot;
+</code></pre></div>
+</li>
+<li>
+<p>Edit the <code>goal</code> portion of the message by using the left arrow button on your keyboard to scroll back through the message. Modify the <code>sweep_angle</code> and <code>image_count</code> parameters:</p>
+<ul>
+<li><strong>sweep_angle</strong> is the angle (in degrees) that the robot will rotate on the spot</li>
+<li><strong>image_count</strong> is the number of images it will capture from its front-facing camera while it is rotating</li>
+</ul>
+</li>
+<li>Once you have decided on some values, hit <code>Enter</code> to actually publish the message and <em>call</em> the action server.
+    <strong>Keep an eye on all four terminal instances. What do you notice happening in each of them?</strong></li>
+<li>
+<p>Now, in <strong>WT(B)</strong>:</p>
+<ol>
+<li>Cancel the <code>rostopic pub</code> command by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span></li>
+<li>
+<p>Once the action had completed, a message should have been published in <strong>WT(D)</strong> (a <em>"result"</em>), informing you of the filesystem location where the action server has stored the images that have just been captured by the robot:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>result:
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  image_path: &quot;~/myrosdata/action_examples/YYYYMMDD_hhmmss&quot;
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>---
+</code></pre></div>
+</li>
+<li>
+<p>Navigate to this directory in <strong>WT(B)</strong> (using <code>cd</code>) and have a look at the content using <code>ll</code> (a handy alias for the <code>ls</code> command):</p>
+<p>You should see the same number of image files in there as you requested with the <code>image_count</code> parameter.</p>
+</li>
+<li>
+<p>Launch <code>eog</code> in this directory and click through all the images to reveal your robot's <em>mystery environment</em>:</p>
+<hr />
+<p><strong>WT(B):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>eog<span class="w"> </span>.
+</code></pre></div></p>
+<hr />
+</li>
+</ol>
+</li>
+<li>
+<p>Finally, open another tab in the <strong>WT(A)</strong> terminal instance (<strong>WT(A) TERMINAL 3</strong>) and launch the <em>Gazebo client</em> to view the simulation that has, until now, been running headless:</p>
+<hr />
+<p><strong>WT(A) TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>gzclient
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>The actual simulated environment should now be revealed!! To finish off, close down <em>some</em> active ROS processes and Windows Terminal instances that we've just been working with:</p>
+<ol>
+<li>Close down the <code>eog</code> window and the <strong>WT(B)</strong> Windows Terminal instance.</li>
+<li>Stop the <code>rostopic echo</code> commands that are running in <strong>WT(C)</strong> and <strong>WT(D)</strong> by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in each of them and then close each of these Windows Terminal instances too.</li>
+<li>Enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>WT(A) TERMINAL 3</strong> to stop the Gazebo GUI, but keep the terminal tab open. </li>
+<li>Leave the processes running in <strong>WT(A) TERMINAL 2</strong> and <strong>1</strong> for now (the Action Server and the headless Gazebo processes).</li>
+</ol>
+</li>
+</ol>
+<p><strong>Summary:</strong></p>
+<p>Phew, that was a long one! Essentially, what we did here is launched an action server and then called it from the command-line using <code>rostopic pub</code>. Hopefully, while the action server was performing the task that we had requested, you also noticed that it was providing us with some <em>real-time feedback</em> on how it was getting on (in <strong>WT(C)</strong>). In the same way as a ROS Service, it should also have provided us with a <strong>result</strong> (in <strong>WT(D)</strong>), once the action had been completed.  <strong>Feedback</strong> is one of the key features that differentiates a ROS Action from a ROS Service, but there are other interesting features too, and we'll explore these in more detail now.</p>
+<h2 id="what-is-a-ros-action">What is a ROS Action?<a class="headerlink" href="#what-is-a-ros-action" title="Permanent link">&para;</a></h2>
+<p>As you will have observed from the above exercise, a ROS Action actually seems to work a lot like a ROS Service.  We've seen that we have a <strong>feedback</strong> message associated with an Action though, which is indeed different, but this isn't the main differentiating feature. The key difference is that when a node calls a ROS Action (i.e. an action <em>"Caller"</em> or <em>"Client"</em>), it <em>doesn't</em> need to wait until the action is complete before it can move on to something else: it can continue to do other tasks at the same time. Unlike ROS Services then, ROS Actions are <em>Asynchronous</em>, which makes them useful when implementing robotic behaviours that take a longer time to execute, and which an Action <em>Client</em> might need to be updated on throughout the process.</p>
+<p>Recall the five messages associated with the action server <a href="#action_msgs">from the exercise above</a>, the messages had the following names:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>/cancel
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>/feedback
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>/goal
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>/result
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>/status
+</code></pre></div>
+<p>The top item there hints at the most important feature of ROS Actions: they can be cancelled (or <em>"preempted"</em>), which we'll learn more about later.  </p>
+<p>The other thing to note is that - where we used the <code>rosservice</code> command to interrogate the ROS Services that were active on our ROS network previously - Actions use ROS Topics, so we use <code>rostopic</code> commands to interrogate action servers:<a name="rostopic_for_actions"></a></p>
+<ol>
+<li><code>rostopic list</code>: to identify the action servers that are available on the network.</li>
+<li><code>rostopic echo</code>: to view the messages being published by a given action server.</li>
+<li><code>rostopic pub</code>: to call an action from the command-line. </li>
+</ol>
+<h3 id="the-format-of-action-messages">The Format of Action Messages<a class="headerlink" href="#the-format-of-action-messages" title="Permanent link">&para;</a></h3>
+<p>Like Services, Action Messages have multiple parts to them, and we need to know what format these action messages take in order to be able to call them. We don't have a tool like <code>rossrv</code> to do this for Actions though, instead we have to use <code>rosmsg</code>, or look for the message definition inside the <em>Action Message Package</em>.</p>
+<p>We ran <code>rostopic list</code> to identify our action server in the previous exercise, which told us that there was an action server running called <code>/camera_sweep_action_server</code>:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rostopic list
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>[some topics...]
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>/camera_sweep_action_server/cancel
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>/camera_sweep_action_server/feedback
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>/camera_sweep_action_server/goal
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>/camera_sweep_action_server/result
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>/camera_sweep_action_server/status
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>[some more topics...]
+</code></pre></div>
+<h4 id="cancel-and-status">"Cancel" and "Status"<a class="headerlink" href="#cancel-and-status" title="Permanent link">&para;</a></h4>
+<p>Every ROS Action has both a <strong>cancel</strong> and <strong>status</strong> message associated with them. These are standardised, so the format of these two messages will always be the same, regardless of the type of Action Server we use. We won't worry about these too much for now, but we'll make use of them in some ROS Nodes that we'll build in a short while.</p>
+<p>The <strong>feedback</strong>, <strong>goal</strong> and <strong>result</strong> messages will be different for any given action server though, and so we need to know about the format of all of these before we attempt to make a call to the action server.</p>
+<p>We can run <code>rostopic info</code> on any of these to find out more about them...</p>
+<h4 id="goal">"Goal"<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h4>
+<p>Let's look at the <strong>goal</strong> to start with:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/camera_sweep_action_server/goal
+</code></pre></div>
+From which we obtain the usual information:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Type: tuos_msgs/CameraSweepActionGoal
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>Publishers: None
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>Subscribers:
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>  * /camera_sweep_action_server (http://localhost:#####/)
+</code></pre></div>
+<hr />
+<p>The <code>Type</code> field tells us that the action message belongs to the <code>tuos_msgs</code> package, and we can find out more about the <code>goal</code> message by using <code>rosmsg info</code>. You'll be familiar with how this works by now:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>rosmsg info {messageType}
+</code></pre></div>
+<p>Where <code>{messageType}</code> is established from the output of the <code>rostopic info</code> command above: </p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Type: tuos_msgs/CameraSweepActionGoal
+</code></pre></div>
+<p>When working with ROS Actions and the <code>rosmsg</code> command though, we can actually drop the word "<code>Action</code>" in the message Type, so our <code>rosmsg</code> command becomes:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>tuos_msgs/CameraSweepGoal
+</code></pre></div>
+Which will output:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>float32 sweep_angle
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>int32 image_count
+</code></pre></div>
+<hr />
+<details class="info">
+<summary>Further Info</summary>
+<p><code>rosmsg info tuos_msgs/CameraSweepActionGoal</code> will work as well, but we get a lot of other information in the output that we're not all that interested in. Give it a go and see the difference, if you want to!</p>
+</details>
+<p>In order to call this action server, we need to send a <strong>goal</strong>, and <code>rosmsg info</code> has just told us that there are <strong>two</strong> goal parameters that we must provide:</p>
+<ol>
+<li><code>sweep_angle</code>: a 32-bit floating-point value</li>
+<li><code>image_count</code>: a 32-bit integer</li>
+</ol>
+<p>So we know more about our Action Server's <em>Goal</em> now, but there are two other parameters we still know nothing about: <em>Result</em> and <em>Feedback</em>. It's important to know about all three things in order to be able to work with the Action Server effectively, and we can use an alternative approach to interrogate all three at the same time...</p>
+<h4 id="goal-feedback-and-result">"Goal," "Feedback" and "Result"<a class="headerlink" href="#goal-feedback-and-result" title="Permanent link">&para;</a></h4>
+<p>We know, from above, that the <code>/camera_sweep_action_server</code> messages are part of the <code>tuos_msgs</code> package, so we can navigate to the package directory (using <code>roscd</code>) and look at the actual message definition. </p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>roscd<span class="w"> </span>tuos_msgs/
+</code></pre></div></p>
+<hr />
+<p>Actions are always contained within an <code>action</code> folder inside the package directory, so we can then navigate into this folder using <code>cd</code>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">cd</span><span class="w"> </span>action/
+</code></pre></div></p>
+<hr />
+<p>Use the <code>ll</code> command again here to view all the action messages within the package. Here you should see the <code>CameraSweep.action</code> message listed. Run <code>cat</code> on this file to view the full message definition:<a name="camera_sweep_msg_params" ></a></p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>cat<span class="w"> </span>CameraSweep.action
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>#goal
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>float32 sweep_angle    # the angular sweep over which to capture images (degrees)
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>int32 image_count      # the number of images to capture during the sweep
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>---
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>#result
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>string image_path      # The filesystem location of the captured images
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>---
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>#feedback
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>int32 current_image    # the number of images taken
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>float32 current_angle  # the current angular position of the robot (degrees)
+</code></pre></div></p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ul>
+<li>What are the names of the <strong>result</strong> and <strong>feedback</strong> message parameters? (There are three parameters in total.)</li>
+<li>What datatypes do these parameters use?</li>
+</ul>
+</div>
+<p>You'll learn how we use this information to develop Python Action Server &amp; Client nodes in the following exercises.</p>
+<h3 id="concurrent-activity">Concurrent Activity<a class="headerlink" href="#concurrent-activity" title="Permanent link">&para;</a></h3>
+<p>An Action Server provides <strong>feedback</strong> messages at regular intervals whilst performing an action and working towards its <strong>goal</strong>.  This is one way that an Action Client can monitor the progress of the action that it has requested.  Another way it can do this is by monitoring the <strong>status</strong> of an action.  Both of these features enable <em>concurrency</em>, allowing an action client to work on other things whilst waiting for the requested behaviour to be completed by the action server.</p>
+<figure>
+<p><img alt="" src="action_msgs.png" /></p>
+</figure>
+<h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 2: Building a Python Action Client Node with Concurrency<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>You should only have one Windows Terminal application instance open now, with three WSL-ROS terminal tabs in it. <strong>TERMINAL 3</strong> should already be idle (i.e. not running any commands), and (if you haven't done so already) enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 1</strong> and <strong>TERMINAL 2</strong> to stop the headless Gazebo simulation processes and the Camera Sweep Action Server respectively. </p>
+</li>
+<li>
+<p>In <strong>TERMINAL 1</strong> create a new package called <code>part5_actions</code> using the <code>catkin_create_pkg</code> tool <a href="../part4/#ex1">as you have done previously</a>. This time, define <code>rospy</code>, <code>actionlib</code> and <code>tuos_msgs</code> as dependencies.</p>
+<div class="admonition tip">
+<p class="admonition-title">Remember</p>
+<p>Make sure you're in your <code>~/catkin_ws/src/</code> folder when you run the <code>catkin_create_pkg</code> command!</p>
+</div>
+</li>
+<li>
+<p>Once again, run <code>catkin build</code> on this and then re-source your environment:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong><br />
+First:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>part5_actions
+</code></pre></div>
+Then:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Navigate to the <code>src</code> folder of this package, create a file called <code>action_client.py</code> (using <code>touch</code>) and set this to be executable (using <code>chmod</code>).        </p>
+</li>
+<li>
+<p>Review <a href="action_client">the code provided here</a>, and the annotations, then copy and paste the code into your newly created <code>action_client.py</code> file. <a name="ex2_ret"></a></p>
+</li>
+<li>
+<p>Then, in <strong>TERMINAL 2</strong>, execute the same launch file as before but this time with a couple of additional arguments:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>mystery_world.launch<span class="w"> </span>gui:<span class="o">=</span><span class="nb">true</span><span class="w"> </span>camera_search:<span class="o">=</span><span class="nb">true</span>
+</code></pre></div></p>
+<p>... which will launch the Gazebo simulation in GUI mode this time, as well as the <code>/camera_sweep_action_server</code> too.</p>
+<hr />
+</li>
+<li>
+<p>In <strong>TERMINAL 1</strong>, use <code>rosrun</code> to call the action server with the <code>action_client.py</code> node that you have just created...</p>
+<div class="admonition warning">
+<p class="admonition-title">Something not right?</p>
+<p>You may need to change the values that have been assigned to the goal parameters, in order for the client to successfully make a call to the server!</p>
+</div>
+<p>The node we have just created, in its current form, uses a <em>feedback callback function</em> to perform some operations while the action server is working. In this case, it simply prints the feedback data that is coming from the Action Server.  That's it though, and the <code>client.wait_for_result()</code> line still essentially just makes the client node wait until the action server has finished doing its job before it can do anything else. This still therefore looks a lot like a service, so let's modify this now to really build <em>concurrency</em> into the client node.</p>
+</li>
+<li>
+<p>First, create a copy of your <code>action_client.py</code> node and call it <code>concurrent_action_client.py</code> (you will need to make sure you are still in the <code>src</code> directory of your <code>part5_actions</code> package before you run this command):</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>cp<span class="w"> </span>action_client.py<span class="w"> </span>concurrent_action_client.py
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>We want to use the <strong>status</strong> message from the action server now, and we can find out a bit more about this as follows:</p>
+<ol>
+<li>Use <code>rostopic info camera_sweep_action_server/status</code> to find the message type.</li>
+<li>Then, use <code>rosmsg info</code> (using the message type you have just identified) to tell you all the status codes that could be returned by the action server.</li>
+</ol>
+<p>You should have identified the following states, listed in the <code>status_list</code> portion of the message:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>PENDING=0
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>ACTIVE=1
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>PREEMPTED=2
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>SUCCEEDED=3
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>ABORTED=4
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>REJECTED=5
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>...
+</code></pre></div>
+<p>We can set up our action client to monitor these status codes in a <code>while</code> loop, and then perform other operations inside this loop until the action has completed (or has been stopped for another reason).</p>
+</li>
+<li>
+<p>To do this, replace the <code>client.wait_for_result()</code> line in the <code>concurrent_action_client.py</code> file with the following code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;While we&#39;re waiting, let&#39;s do our seven-times tables...&quot;</span><span class="p">)</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="k">while</span> <span class="n">client</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;STATE: Current state code is </span><span class="si">{</span><span class="n">client</span><span class="o">.</span><span class="n">get_state</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TIMES TABLES: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> times 7 is </span><span class="si">{</span><span class="n">i</span><span class="o">*</span><span class="mi">7</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p>Run the <code>concurrent_action_client.py</code> node and see what happens this time.  Essentially, we know that we can carry on doing other things as long as the status code is less than 2 (either <code>PENDING</code> or <code>ACTIVE</code>), otherwise either our goal has been achieved, or something else has happened...</p>
+</li>
+</ol>
+<h3 id="preemptive_client">Cancelling (or <em>Preempting</em>) an Action<a class="headerlink" href="#preemptive_client" title="Permanent link">&para;</a></h3>
+<p>Actions are extremely useful for controlling robotic tasks or processes that might take a while to complete, but what if something goes wrong, or if we just change our mind and want to stop an action before the goal has been reached? The ability to <em>preempt</em> an action is one of the things that makes them so useful.</p>
+<h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 3: Building a Preemptive Python Action Client Node<a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>In <strong>TERMINAL 1</strong> you should still be located within the <code>src</code> folder of your <code>part5_actions</code> package. If not, then go back there now! Create a new file called <code>preemptive_action_client.py</code> and make this executable.</li>
+<li>
+<p>Have a look at the code <a href="preemptive_action_client">here</a>, then copy and paste it into the <code>preemptive_action_client.py</code> node that you have just created.<a name="ex3_ret"></a></p>
+<p>Here, we've built an action client that will cancel the call to the action server if we enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at <a href="preemptive_action_client">the code annotations</a> and make sure that you understand how it all works.</p>
+</li>
+<li>
+<p>Run this using <code>rosrun</code>, let the server take a couple of images and then enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to observe the goal cancelling in action.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You'll need to set some values for the goal parameters again!</p>
+</div>
+</li>
+<li>
+<p>We can also cancel a goal conditionally, which may also be useful if, say, too much time has elapsed since the call was made, or the caller has been made aware of something else that has happened in the meantime (perhaps we're running out of storage space on the robot and can't save any more images!) This is all achieved using the <code>cancel_goal()</code> method.</p>
+<ul>
+<li>Have a go now at introducing a conditional call to the <code>cancel_goal()</code> method once a total of <strong>5 images</strong> have been captured.</li>
+<li>You could use the <code>captured_images</code> attribute from the <code>CameraSweepFeedback</code> message to trigger this.</li>
+</ul>
+</li>
+</ol>
+<h3 id="a-summary-of-ros-actions">A Summary of ROS Actions<a class="headerlink" href="#a-summary-of-ros-actions" title="Permanent link">&para;</a></h3>
+<p>ROS Actions work a lot like ROS Services, but they have the following key differences:</p>
+<ol>
+<li>They are <strong>asynchronous</strong>: a client can do other things while it waits for an action to complete.</li>
+<li>They can be <strong>cancelled</strong> (or <em>preempted</em>): If something is taking too long, or if something else has happened, then an Action Client can cancel an Action whenever it needs to.</li>
+<li>They provide <strong>feedback</strong>: so that a client can monitor what is happening and act accordingly (i.e. preempt an action, if necessary).</li>
+</ol>
+<figure>
+<p><img alt="" src="action_msgs.png" /></p>
+</figure>
+<p>This mechanism is therefore useful for robotic operations that may take a long time to execute, or where intervention might be necessary.</p>
+<h2 id="cam_swp_act_srv">Creating Action Servers in Python<a class="headerlink" href="#cam_swp_act_srv" title="Permanent link">&para;</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Important</p>
+<p>Cancel <em>all</em> active processes that you may have running before moving on.</p>
+</div>
+<p>So far we have looked at how to call an action server, but what about if we actually want to set up our own? We've been working with a pre-made action server in the previous exercises, but so far we haven't really considered how it actually works. First, let's do some detective work... We launched the Action Server using <code>roslaunch</code> in Exercise 1:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>roslaunch<span class="w"> </span>tuos_examples<span class="w"> </span>camera_sweep.launch
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ul>
+<li>What does this tell us about the <em>package</em> that the action server node belongs to?</li>
+<li>Where, in the package directory, is this node likely to be located?</li>
+<li>How might we find out the name of the Python node from the <code>camera_sweep.launch</code> file?</li>
+</ul>
+</div>
+<p>Once you've identified the name and the location of the source code, open it up in VS Code and have a look through it to see how it all works.</p>
+<p>Don't worry too much about all the content associated with obtaining and manipulating camera images in there, we'll learn more about this in the next session. Instead, focus on the general overall structure of the code and the way that the action server is implemented.</p>
+<ol>
+<li>
+<p>As a starting point, consider the way in which the action server is initialised and the way a callback function is defined to encapsulate all the code that will be executed when the action is called:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span> <span class="o">=</span> <span class="n">actionlib</span><span class="o">.</span><span class="n">SimpleActionServer</span><span class="p">(</span><span class="s2">&quot;/camera_sweep_action_server&quot;</span><span class="p">,</span> 
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">CameraSweepAction</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_server_launcher</span><span class="p">,</span> <span class="n">auto_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
+</li>
+<li>
+<p>Look at how a <code>/cmd_vel</code> publisher and an <code>/odom</code> subscriber are defined in external classes:<a name="tb3_module" ></a></p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span> <span class="o">=</span> <span class="n">Tb3Move</span><span class="p">()</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_odom</span> <span class="o">=</span> <span class="n">Tb3Odometry</span><span class="p">()</span>
+</code></pre></div>
+<p>These are imported (at the start of the code) from an external <code>tb3.py</code> module that also lives in the same directory as the action server itself:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="kn">from</span> <span class="nn">tb3</span> <span class="kn">import</span> <span class="n">Tb3Move</span><span class="p">,</span> <span class="n">Tb3Odometry</span>
+</code></pre></div>
+<p>We do this to simplify the process of obtaining odometry data and controlling the robot, whilst keeping the actual action server code itself more concise. Have a look at the <code>tb3.py</code> module to discover exactly how these Python classes work.</p>
+</li>
+<li>
+<p>Look inside the action server callback function to see how the camera sweep operation is performed once the action has been called:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">def</span> <span class="nf">action_server_launcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="o">...</span>
+</code></pre></div>
+<ol>
+<li>
+<p>Consider the error checking that is performed on the <code>goal</code> input variables, and how the call to the action server is aborted should any of these goal requests be invalid:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="k">if</span> <span class="n">goal</span><span class="o">.</span><span class="n">sweep_angle</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">goal</span><span class="o">.</span><span class="n">sweep_angle</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Invalid sweep_angle! Select a value between 1 and 180 degrees.&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>    <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>    <span class="o">...</span>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;None [ABORTED]&quot;</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">set_aborted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>    <span class="k">return</span>
+</code></pre></div>
+</li>
+<li>
+<p>Consider how preemption is implemented in the server, and how the Action is stopped on receipt of a preempt request:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">is_preempt_requested</span><span class="p">():</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="o">...</span>
+</code></pre></div>
+</li>
+<li>
+<p>Also have a look at the way a <code>feedback</code> message is constructed and published by the server:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="o">.</span><span class="n">current_image</span> <span class="o">=</span> <span class="n">i</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="o">.</span><span class="n">current_angle</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">robot_odom</span><span class="o">.</span><span class="n">yaw</span><span class="p">)</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">publish_feedback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feedback</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Finally, consider how we tell the server that the action has been completed successfully, how the <code>result</code> message is published to the caller, and how we make the robot stop moving:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>    <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s2">&quot;Camera sweep completed successfully.&quot;</span><span class="p">)</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">set_succeeded</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</code></pre></div>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 4: Developing an "Obstacle Avoidance" behaviour using an Action Server<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
+<p>Knowing what you now do about ROS Actions, do you think the Service Server/Client systems that we developed in Part 4 were actually appropriate use cases for ROS Services?  Probably not!  In fact, <em>Action</em> Server/Client methods would have probably been more appropriate! </p>
+<p>You are now going to construct your own Action Server and Client nodes to implement a more effective obstacle avoidance behaviour that could form the basis of an effective search strategy. For this, you're going to need to build your own Search Server and Client.</p>
+<p><strong>Step 1: Launch a simulation</strong></p>
+<p>There's a simulation environment that you can use as you're developing your action server/client nodes for this exercise. Launch the simulation in <strong>TERMINAL 1</strong>, with the following <code>roslaunch</code> command: </p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_stage_4.launch
+</code></pre></div></p>
+<hr />
+<p><strong>Step 2: Build the Action Server</strong></p>
+<ol>
+<li>
+<p>In <strong>TERMINAL 2</strong> navigate to the <code>src</code> folder of your <code>part5_actions</code> package, create a Python script called <code>search_server.py</code>, and make it executable.</p>
+</li>
+<li>
+<p>The job of the Action Server node is as follows:</p>
+<ul>
+<li>The action server should make the robot move forwards until it detects an obstacle up ahead.</li>
+<li>Similarly to the <em>Service</em> Server that you created last part, your <em>Action</em> Server here should be configured to accept two <strong>goal</strong> parameters:<ol>
+<li>The speed (in m/s) at which the robot should move forwards when the action server is called. Consider doing some error checking on this to make sure a velocity request is less than the maximum speed that the robot can actually achieve (0.26 m/s)!</li>
+<li>The distance (in meters) at which the robot should stop ahead of any objects or boundary walls that are in front of it. To do this you'll need to subscribe to the <code>/scan</code> topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of <code>LaserScan</code> data points (within the <code>ranges</code> array) to make the collision avoidance effective (recall the <a href="../part4/scan_callback">LaserScan callback example</a> and also have a look at the <code>Tb3LaserScan</code> class within the <code>tuos_examples/tb3.py</code> module that might help you with this).</li>
+</ol>
+</li>
+<li>
+<p>Whilst your server performs its task it should provide the following <strong>feedback</strong> to the Action Caller:</p>
+<ol>
+<li>
+<p>The distance travelled (in meters) since the current action was initiated.</p>
+<p>To do this you'll need to subscribe to the <code>/odom</code> topic. Remember that there's a <code>Tb3Odometry</code> class within <a href="#tb3_module">the <code>tuos_examples/tb3.py</code> module</a> that might help you with obtaining this data.</p>
+<p>Remember also that your robot's orientation shouldn't change over the course of a single action call, only its <code>linear.x</code> and <code>linear.y</code> positions should vary.  Bear in mind however that the robot won't necessarily be moving along the <code>X</code> or <code>Y</code> axis, so you will need to consider the total distance travelled in the <code>X-Y</code> plane.  You should have done this in the <a href="../part2/#ex5">Part 2 <code>move_square</code> exercise</a>, so refer to this if you need a reminder.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Finally, on completion of the action, your server should provide the following <em>three</em> <strong>result</strong> parameters:</p>
+<ol>
+<li>The <em>total</em> distance travelled (in meters) over the course of the action.</li>
+<li>The distance to the obstacle that made the robot stop (this should match, or very close to, the distance that was provided by the Action Client in the <strong>goal</strong>).</li>
+<li>The angle (in degrees) at which this obstacle is located in front of the robot (<code>Tb3LaserScan</code> class within the <code>tuos_examples/tb3.py</code> module, which may already provide this).</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>An action message has been created for you to use for this exercise: <code>tuos_msgs/Search.action</code>.  Navigate to the <code>action</code> folder of the <code>tuos_msgs</code> package directory (or use <code>rosmsg info ...</code> in the terminal) to find out everything you need to know about this action message in order to develop your Action Server (and Client) nodes appropriately.</p>
+</li>
+<li>
+<p>We've put together <a href="search_server">some template code</a> to help you with this. For further guidance though, you should also refer to the code for <code>/camera_sweep_action_server</code> node, which <a href="#cam_swp_act_srv">we talked about earlier</a>: a lot of the techniques used by <code>/camera_sweep_action_server</code> node will be similar to what you'll need to do in this exercise. <a name="ex4_ret"></a></p>
+</li>
+<li>
+<p>Whenever you're ready you can launch your action server from <strong>TERMINAL 2</strong>, using <code>rosrun</code>, as below:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>rosrun<span class="w"> </span>part5_actions<span class="w"> </span>search_server.py
+</code></pre></div></p>
+<hr />
+</li>
+</ol>
+<p><strong>Step 3: Build the Action Client</strong></p>
+<ol>
+<li>
+<p>In <strong>TERMINAL 3</strong> navigate to the <code>src</code> folder of your <code>part5_actions</code> package, create a Python script called <code>search_client.py</code>, and make it executable.</p>
+</li>
+<li>
+<p>The job of the Action Client node is as follows:</p>
+<ul>
+<li>The client needs to issue a correctly formatted <strong>goal</strong> to the server.</li>
+<li>The client should be programmed to monitor the <strong>feedback</strong> data from the Server.  If it detects (from the feedback) that the robot has travelled a distance <em>greater than 2 meters</em> without detecting an obstacle, then it should cancel the current action call using the <code>cancel_goal()</code> <code>actionlib</code> method.</li>
+</ul>
+</li>
+<li>
+<p>Use the techniques that we used in the Client node from <a href="#ex3">Exercise 3</a> as a guide to help you with this. There's also <a href="search_client">a code template here</a> to help you get started. <a name="ex4c_ret"></a></p>
+</li>
+<li>
+<p>Once you have everything in place launch the action client with <code>rosrun</code> as below:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>rosrun<span class="w"> </span>part5_actions<span class="w"> </span>action_client.py
+</code></pre></div></p>
+<hr />
+<p>If all is good, then this client node should call the action server, which will - in turn - make the robot move forwards until it reaches a certain distance from an obstacle up ahead, at which point the robot will stop, and your client node will stop too. Once this happens, reorient your robot (using the <code>turtlebot3_teleop</code> node) and launch the client node again to make sure that it is robustly stopping in front of obstacles repeatedly, and when approaching them from a range of different angles. </p>
+<div class="admonition info">
+<p class="admonition-title">Important</p>
+<p>Make sure that your preemption functionality works correctly too, so that the robot never moves any further than 2 meters during a given action call!</p>
+</div>
+</li>
+</ol>
+<h2 id="advanced">Some advanced exercises (if you're feeling adventurous!)<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
+<p>Want to do more with the ROS skills that you have now developed?! Consider the following advanced exercises that you could try out now that you know how to use ROS Actions!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We've covered a lot already in this session, and the next exercises are really just suggestions for more advanced things that you may want to explore to push your knowledge further (it may also help with the further work that you will do in Assignment #2...)</p>
+</div>
+<h4 id="adv_ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Advanced Exercise 1: Implementing a Search strategy<a class="headerlink" href="#adv_ex1" title="Permanent link">&para;</a></h4>
+<p>What you developed in <a href="#ex4">the previous exercise</a> could be used as the basis for an effective robot search strategy.  Up to now, your Action Client node should have the capability to call your <code>Search.action</code> server to make the robot move forwards by 2 meters, or until it reaches an obstacle (whichever occurs first), but you could enhance this further:</p>
+<ul>
+<li>Between action calls, your <em>client</em> node could make the robot turn on the spot to face a different direction and then issue a further action call to make the robot move forwards once again.</li>
+<li>The turning process could be done at random, or it could be informed by the <strong>result</strong> of the last action call, i.e.: if (on completion) the server has informed the client that it detected an object at an angle of, say, 10&deg; <em>anti-clockwise</em> from the front of the robot, then the client might then decide to turn the robot <em>clockwise</em> in an attempt to turn away from the object before issuing its next action call to make the robot move forwards again.</li>
+<li>
+<p>By programming your client node to repeat this process over and over again, the robot would (somewhat randomly) travel around its environment safely, stopping before it crashes into any obstacles and reorienting itself every time it stops moving forwards. <em>This is effectively an implementation of a basic robotic search strategy!</em> </p>
+<div class="admonition tip">
+<p class="admonition-title">Enhancing this further...</p>
+<p>Imagine SLAM was running at the same time too... your robot could be building up a map of its environment in the background as it slowly explored every part of it!</p>
+</div>
+</li>
+</ul>
+<h4 id="adv_ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Advanced Exercise 2: Autonomous Navigation using waypoint markers<a class="headerlink" href="#adv_ex2" title="Permanent link">&para;</a></h4>
+<p>In Part 3 you used SLAM to construct a map of an environment (<a href="../part3/#ex2">Exercise 2</a>) and then issued navigation requests to the <code>move_base</code> action server, via the command-line, (<a href="../part3/#ex3">Exercise 3</a>) to make your robot move to a zone marker, based on coordinates that you had established beforehand. Now that you know how to build Action Client Nodes in Python you could return to your <code>part2_navigation</code> package and build a new node that makes the robot move sequentially between each zone marker programmatically.</p>
+<ul>
+<li>Your node could cycle through the coordinates of all four of the zone markers (or "waypoints") that you established whilst using SLAM to build a map of the environment (<a href="../part3/#ex2">as per Exercise 2</a>).</li>
+<li>Your node could monitor the status of the <code>move_base_simple</code> action call to know when the robot has reached a zone marker, so that it knows when to issue a further action call to move on to the next one.</li>
+<li>You could refer to <a href="../part3/#launch_file">the launch file that you created in Part 3</a> to launch all the navigation processes that need to be running in order to enable and configure the ROS Navigation Stack appropriately for the TurtleBot3 robot.</li>
+</ul>
+<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<p>In Part 5 of this course you've learnt:</p>
+<ul>
+<li>How ROS Actions work and why they might be useful.</li>
+<li>How to develop Action Client Nodes in Python which can perform other tasks <em>concurrently</em> to the action they have requested, and which can also <em>cancel</em> the requested action, if required.</li>
+<li>How to use standard ROS tools to interrogate the topic messages used by an action server, allowing you to build clients to call them, and to also allow you to build standalone action servers yourself using bespoke Action messages.</li>
+<li>How to harness this communication method to implement a behaviour that could be used as the basis for a genuine robotic <em>search strategy</em>. </li>
+</ul>
+<h3 id="topics-services-or-actions-which-to-choose">Topics, Services or Actions: <em>Which to Choose?</em><a class="headerlink" href="#topics-services-or-actions-which-to-choose" title="Permanent link">&para;</a></h3>
+<p>You should now have developed a good understanding of the three communication methods that are available within ROS to facilitate communication between ROS Nodes:</p>
+<ol>
+<li>Topic-based messaging.</li>
+<li>ROS Services.</li>
+<li>ROS Actions.</li>
+</ol>
+<p>Through this course you've gained some practical experience using all three of these, but you may still be wondering how to select the appropriate one for a certain robot task... </p>
+<p><a href="https://wiki.ros.org/ROS/Patterns/Communication#Communication_via_Topics_vs_Services_vs_X">This ROS.org webpage</a> summarises all of this very nicely (and briefly), so you should have a read through this to make sure you know what's what. In summary though:</p>
+<ul>
+<li><strong>Topics</strong>: Are most appropriate for broadcasting continuous data-streams such as sensor data and robot state information, and for publishing data that is likely to be required by a range of Nodes across a ROS network.</li>
+<li><strong>Services</strong>: Are most appropriate for very short procedures like <em>quick</em> calculations (inverse kinematics etc.) and performing short discrete actions that are unlikely to go wrong or will not need intervention (e.g. turning on a warning LED when a battery is low).</li>
+<li><strong>Actions</strong>: Are most appropriate for longer running tasks (like moving a robot), for longer processing calculations (processing the data from a camera stream) or for operations where we <em>might</em> need to change our mind and do something different or cancel an invoked behaviour part way through.</li>
+</ul>
+<h3 id="backup">Saving your work<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<p>Remember, the work you have done in the WSL-ROS environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>wsl_ros<span class="w"> </span>backup
+</code></pre></div>
+<p>This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Remember: you can also use the <code>wsl_ros restore</code> command, to restore your work at any time.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-20T13:42:29+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-11-11T17:42:32+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-11-11</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../part4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Part 4: ROS Services">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Part 4: ROS Services
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../la2/" class="md-footer__link md-footer__link--next" aria-label="Next: COM2009 Lab Assignment #2">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                COM2009 Lab Assignment #2
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2023 The University of Sheffield <br /> Content by <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Dr Tom Howard</a> (License: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>)<br /> <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to monitor the usage of these resources, and to understand how effective they are in supporting your learning. Cookies also help us to evaluate how much impact our teaching materials are making in the community. With your support, you are helping us to make our teaching resources better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
