@@ -89,7 +89,7 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
 
     Messages in the terminal should indicate that *something* has happened, but that's about all you will see!
 
-1. Next, *open up a new instance of the Windows Terminal Application* by pressing the "New Tab" button whilst pressing the `Shift` key (we'll call this **WT(B)**).
+1. Next, *open up a new instance of the Windows Terminal Application* by pressing the "New Tab" button whilst pressing the ++shift++ key (we'll call this **WT(B)**).
     
 1. In **WT(B)** have a look at all the topics that are currently active on the ROS network (you should know exactly how to do this by now!)<a name="action_launch"></a>
 
@@ -124,7 +124,7 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
         This is a bit like sending a **Request** to a ROS Service Server, like we did in the previous session.
     
 1. ROS Actions use *topic messages* (unlike ROS Services, which use dedicated *service messages*). We can therefore tap into the ROS network and observe the messages being published to these in exactly the same way as we have done in previous parts of this course using `rostopic echo`. In order to monitor some of these messages now, we'll launch a couple more instances of the Windows Terminal, so that we can view a few things simultaneously:
-    1. Once again, launch an additional Windows Terminal instance by pressing the "New Tab" button whilst pressing the `Shift` key (this one will be called **WT(C)**):
+    1. Once again, launch an additional Windows Terminal instance by pressing the "New Tab" button whilst pressing the ++shift++ key (this one will be called **WT(C)**):
     1. Do this *again* to launch *another Windows Terminal instance*, which we'll call **WT(D)**
     1. You should now have *four* Windows Terminal applications open! Arrange these so that they are all visible: 
 
