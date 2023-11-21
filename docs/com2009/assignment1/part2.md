@@ -330,7 +330,7 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
     cd ~/catkin_ws/src/
     ```
     Then:
-    ```bash
+    ``` { .bash .no-copy }
     catkin_create_pkg part2_navigation {BLANK}
     ```
     ***
@@ -381,7 +381,7 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
 
     ... Hmmm, something's wrong here isn't it!? You may have seen the following error:
 
-    ```txt
+    ``` { .txt .no-copy }
     /usr/bin/env: ‘python3\r’: Permission denied
     ```
 
@@ -422,7 +422,7 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
 
 <a name="rostopic_pub"></a>We can use the `rostopic pub` command to *publish* data to a topic from a terminal by using the command in the following way:
 
-```bash
+``` { .bash .no-copy }
 rostopic pub {topic_name} {message_type} {data}
 ```
 
@@ -430,7 +430,7 @@ As we discovered earlier, the `/cmd_vel` topic is expecting *linear* and *angula
 
 ***
 **TERMINAL 3:**
-```bash
+``` { .bash .no-copy }
 rostopic pub /cmd_vel geometry_msgs/Twist[SPACE][TAB]
 ```
 

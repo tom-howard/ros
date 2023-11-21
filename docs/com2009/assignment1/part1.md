@@ -92,7 +92,7 @@ These two commands have a similar structure, but work slightly differently.
 
 The first command you used was a `roslaunch` command, which has the following two parts to it (after the `roslaunch` bit):
 
-```bash
+``` { .bash .no-copy }
 roslaunch {[1] Package name} {[2] Launch file}
 ```
 
@@ -100,7 +100,7 @@ roslaunch {[1] Package name} {[2] Launch file}
 
 The second command was a `rosrun` command, which has a structure similar to `roslaunch`:
 
-```bash
+``` { .bash .no-copy }
 rosrun {[1] Package name} {[2] Node name}
 ```    
 
@@ -146,7 +146,7 @@ You should currently have two terminal windows active: the first in which you la
 
     Only a handful of nodes should be listed:
 
-    ```bash
+    ``` { .bash .no-copy }
     /gazebo
     /gazebo_gui
     /rosout
@@ -191,7 +191,7 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` **ROS co
 
     This should provide an output similar to the following:
     
-    ```bash
+    ``` { .bash .no-copy }
     Type: geometry_msgs/Twist
 
     Publishers:
@@ -224,7 +224,7 @@ We can find out more about the `/cmd_vel` topic by using the `rostopic` **ROS co
 
     From this, we should obtain the following:
 
-    ```txt
+    ``` { .txt .no-copy }
     geometry_msgs/Vector3 linear
       float64 x
       float64 y
@@ -252,11 +252,11 @@ ROS provides a tool to create a new ROS package and ensure that all the essentia
 
 It's important to work in a specific filesystem location when we create and work on our own ROS packages, so that ROS can access and build everything appropriately. These spaces are called *"Catkin Workspaces"* and one has already been created in the WSL-ROS environment, called `catkin_ws`[^why_catkin]:
 
-```bash
+``` { .bash .no-copy }
 /home/student/catkin_ws/
 ```
 Or:
-```bash
+``` { .bash .no-copy }
 ~/catkin_ws/
 ```
 
@@ -356,7 +356,7 @@ Or:
 
     This should output something similar to the following:
 
-    ```txt
+    ``` { .txt .no-copy }
     total 0
     -rw-r--r-- 1 student student 0 MMM DD HH:MM publisher.py
     ```
@@ -399,7 +399,7 @@ Or:
 
     ... Hmmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:
 
-    ```txt
+    ``` { .txt .no-copy }
     [rosrun] Couldn't find executable named publisher.py below /home/student/catkin_ws/src/part1_pubsub
     [rosrun] Found the following, but they're either not files,
     [rosrun] or not executable:
@@ -430,7 +430,7 @@ Or:
 
     We have now granted permission for the file to be e**X**ecuted too:
     
-    ```txt
+    ``` { .txt .no-copy }
     -rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
     ```
 
@@ -438,7 +438,7 @@ Or:
     
     If you see a message in the terminal similar to the following then the node has been launched successfully:
         
-    ```txt
+    ``` { .txt .no-copy }
     [INFO] [#####]: The 'simple_publisher' node is active...
     ```
 
@@ -458,7 +458,7 @@ So far we have used the `rostopic` ROS command with two additional arguments:
 
 We can use the *autocomplete functionality* of the Linux terminal to provide us with a list of *all* the available options that we can use with the `rostopic` command.  To do this you can type `rostopic` followed by a ++space++ and then press the ++tab++ key twice:
 
-```bash
+``` { .bash .no-copy }
 rostopic[SPACE][TAB][TAB]
 ```
 

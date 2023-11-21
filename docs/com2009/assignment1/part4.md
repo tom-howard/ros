@@ -171,7 +171,7 @@ To start with, let's set up a service and learn how to make a call to it from th
 
     You should see the message:
     
-    ```txt
+    ``` { .txt .no-copy }
     [INFO] [#####]: the 'move_service' Server is ready to be called...
     ```
     ***
@@ -187,7 +187,7 @@ To start with, let's set up a service and learn how to make a call to it from th
 
     You should see the `/move_service` service that we defined in the Python code:
 
-    ```python
+    ``` { .python .no-copy }
     service_name = "move_service"
     ```
     ***
@@ -202,7 +202,7 @@ To start with, let's set up a service and learn how to make a call to it from th
         
     Which should provide the following output:
 
-    ```txt
+    ``` { .txt .no-copy }
     Node: /move_service_server
     URI: #####
     Type: tuos_msgs/SetBool
@@ -212,7 +212,7 @@ To start with, let's set up a service and learn how to make a call to it from th
 
     You may notice that the node *name* is `/move_service_server`, as set in our Python code when we initialised the node:
     
-    ```python
+    ``` { .python .no-copy }
     rospy.init_node(f"{service_name}_server")
     ```
     
@@ -223,7 +223,7 @@ To start with, let's set up a service and learn how to make a call to it from th
 
     ***
     **TERMINAL 3:**
-    ```bash
+    ``` { .bash .no-copy }
     rosservice call /move_service[SPACE][TAB]
     ```
 
@@ -236,7 +236,7 @@ To start with, let's set up a service and learn how to make a call to it from th
 
 1. Press ++enter++ to issue this command and make a call to the service.  You should see the following response:
 
-    ```txt
+    ``` { .txt .no-copy }
     response_signal: False
     response_message: "Nothing happened, set request_signal to 'true' next time."
     ```
@@ -259,7 +259,7 @@ You have just created a node in Python to launch a service. This node acted as a
 
 In the previous exercise we used `rosservice list` to identify all the services that were *currently active* on the ROS system.  We then used `rosservice info` to find out a bit more about the service that we had launched with our Python node (which we called `/move_service`).
 
-```txt
+``` { .txt .no-copy }
 rosservice info /move_service:
 
 Node: /move_service_server
@@ -284,7 +284,7 @@ rossrv info tuos_msgs/SetBool
 ```
 ... which gives: 
 
-```txt
+``` { .txt .no-copy }
 bool request_signal
 ---
 bool response_signal
@@ -296,7 +296,7 @@ string response_message
 
 As you can see from above, service messages have two parts to them, separated by three hyphens (`---`). Above the separator is the Service **Request**, and below it is the Service **Response**:
 
-```txt
+``` { .txt .no-copy }
 bool request_signal     <-- Request
 ---
 bool response_signal    <-- Response (Parameter 1 of 2)
