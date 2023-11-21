@@ -46,7 +46,7 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from the previ
 
 [^1]: Remember: you can also use the `wsl_ros restore` command, to restore your work at any time.
 
-**Step 3: Make sure the Course Repo installed and up to date!**  
+**Step 3: Make sure [the Course Repo](https://github.com/tom-howard/tuos_ros) is installed and up to date!**  
 You should have installed this back in Part 2. Check that's the case by navigating to it now:
 
 ***
