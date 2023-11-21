@@ -2813,7 +2813,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rosrun<span class="w"> </span>part4_services<span class="w"> </span>move_server.py
 </code></pre></div></p>
 <p>You should see the message:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[INFO] [#####]: the &#39;move_service&#39; Server is ready to be called...
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[INFO] [#####]: the &#39;move_service&#39; Server is ready to be called...
 </code></pre></div>
 <hr />
 </li>
@@ -2827,7 +2827,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>rosservice<span class="w"> </span>list
 </code></pre></div></p>
 <p>You should see the <code>/move_service</code> service that we defined in the Python code:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">service_name</span> <span class="o">=</span> <span class="s2">&quot;move_service&quot;</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">service_name</span> <span class="o">=</span> <span class="s2">&quot;move_service&quot;</span>
 </code></pre></div>
 <hr />
 </li>
@@ -2838,14 +2838,14 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>rosservice<span class="w"> </span>info<span class="w"> </span>/move_service
 </code></pre></div></p>
 <p>Which should provide the following output:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Node: /move_service_server
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Node: /move_service_server
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>URI: #####
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>Type: tuos_msgs/SetBool
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>Args: request_signal
 </code></pre></div>
 <hr />
 <p>You may notice that the node <em>name</em> is <code>/move_service_server</code>, as set in our Python code when we initialised the node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s2">_server&quot;</span><span class="p">)</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">service_name</span><span class="si">}</span><span class="s2">_server&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Type</strong> tells us the <em>type of message</em> this service uses, and we'll look at this in more detail later.<br />
 <strong>Args</strong> tells us what <em>input arguments</em> we need to supply to the service in order to make a valid <em>service call</em> (or <strong>Request</strong>).<a name="cl_call"></a></p>
@@ -2854,7 +2854,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <p>We can now call this service from the command-line using the <code>rosservice</code> command again.  The autocomplete functionality in the terminal can help us format this message correctly.  Type the following text followed by a space and two tabs as illustrated:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rosservice<span class="w"> </span>call<span class="w"> </span>/move_service<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">]</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rosservice<span class="w"> </span>call<span class="w"> </span>/move_service<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">]</span>
 </code></pre></div></p>
 <p>which should autocomplete the rest of the command for us:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>rosservice<span class="w"> </span>call<span class="w"> </span>/move_service<span class="w"> </span><span class="s2">&quot;request_signal: false&quot;</span>
@@ -2863,7 +2863,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 </li>
 <li>
 <p>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to issue this command and make a call to the service.  You should see the following response:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>response_signal: False
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>response_signal: False
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>response_message: &quot;Nothing happened, set request_signal to &#39;true&#39; next time.&quot;
 </code></pre></div>
 </li>
@@ -2885,7 +2885,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 </ol>
 <h3 id="rossrv">Using <code>rossrv</code><a class="headerlink" href="#rossrv" title="Permanent link">&para;</a></h3>
 <p>In the previous exercise we used <code>rosservice list</code> to identify all the services that were <em>currently active</em> on the ROS system.  We then used <code>rosservice info</code> to find out a bit more about the service that we had launched with our Python node (which we called <code>/move_service</code>).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>rosservice info /move_service:
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>rosservice info /move_service:
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Node: /move_service_server
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>URI: #####
@@ -2905,7 +2905,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>rossrv<span class="w"> </span>info<span class="w"> </span>tuos_msgs/SetBool
 </code></pre></div>
 ... which gives: </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>bool request_signal
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>bool request_signal
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>---
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>bool response_signal
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>string response_message
@@ -2913,7 +2913,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <hr />
 <h3 id="the-format-of-a-service-message">The Format of a Service Message<a class="headerlink" href="#the-format-of-a-service-message" title="Permanent link">&para;</a></h3>
 <p>As you can see from above, service messages have two parts to them, separated by three hyphens (<code>---</code>). Above the separator is the Service <strong>Request</strong>, and below it is the Service <strong>Response</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>bool request_signal     &lt;-- Request
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>bool request_signal     &lt;-- Request
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>---
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>bool response_signal    &lt;-- Response (Parameter 1 of 2)
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>string response_message &lt;-- Response (Parameter 2 of 2)
@@ -3108,7 +3108,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-09T22:28:19+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-21T09:44:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
       
         <br>
         Created:

@@ -3002,11 +3002,11 @@
 </ol>
 <p>These two commands have a similar structure, but work slightly differently. </p>
 <p>The first command you used was a <code>roslaunch</code> command, which has the following two parts to it (after the <code>roslaunch</code> bit):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roslaunch<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Launch<span class="w"> </span>file<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roslaunch<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Launch<span class="w"> </span>file<span class="o">}</span>
 </code></pre></div>
 <p><strong>Part [1]</strong> specifies the name of the <em>ROS package</em> containing the functionality that we want to execute. <strong>Part [2]</strong> is a file within that package that tells ROS exactly what scripts (<em>'nodes'</em>) that we want to launch. We can launch multiple nodes at the same time from a single launch file.</p>
 <p>The second command was a <code>rosrun</code> command, which has a structure similar to <code>roslaunch</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>rosrun<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Node<span class="w"> </span>name<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>rosrun<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Node<span class="w"> </span>name<span class="o">}</span>
 </code></pre></div>
 <p>Here, <strong>Part [1]</strong> is the same as the <code>roslaunch</code> command, but <strong>Part [2]</strong> is slightly different: <code>{[2] Node name}</code>. Here we are directly specifying a single script that we want to execute. We therefore use <code>rosrun</code> if we only want to launch a <strong>single node</strong> on the ROS network (<code>turtlebot3_teleop_key</code> in this case, which is a Python script).</p>
 <h2 id="packages-nodes">Packages &amp; Nodes<a class="headerlink" href="#packages-nodes" title="Permanent link">&para;</a></h2>
@@ -3038,7 +3038,7 @@
 </code></pre></div></p>
 <hr />
 <p>Only a handful of nodes should be listed:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>/gazebo
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>/gazebo
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>/gazebo_gui
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>/rosout
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>/turtlebot3_teleop_keyboard
@@ -3072,7 +3072,7 @@
 </code></pre></div></p>
 <hr />
 <p>This should provide an output similar to the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Type:<span class="w"> </span>geometry_msgs/Twist
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Type:<span class="w"> </span>geometry_msgs/Twist
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Publishers:
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span>*<span class="w"> </span>/turtlebot3_teleop_keyboard<span class="w"> </span><span class="o">(</span>http://localhost:#####/<span class="o">)</span>
@@ -3100,7 +3100,7 @@
 </code></pre></div></p>
 <hr />
 <p>From this, we should obtain the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>geometry_msgs/Vector3 linear
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>geometry_msgs/Vector3 linear
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  float64 x
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  float64 y
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  float64 z
@@ -3124,10 +3124,10 @@
 <p>In a minute or two you will create some simple publisher and subscriber nodes in Python and send messages between them. As we learnt earlier though, ROS applications must be created within packages, and so we need to create a package first in order to start creating our own ROS nodes. </p>
 <p>ROS provides a tool to create a new ROS package and ensure that all the essential elements are present: <code>catkin_create_pkg</code>.</p>
 <p>It's important to work in a specific filesystem location when we create and work on our own ROS packages, so that ROS can access and build everything appropriately. These spaces are called <em>"Catkin Workspaces"</em> and one has already been created in the WSL-ROS environment, called <code>catkin_ws</code><sup id="fnref:why_catkin"><a class="footnote-ref" href="#fn:why_catkin">1</a></sup>:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>/home/student/catkin_ws/
+<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>/home/student/catkin_ws/
 </code></pre></div>
 Or:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>~/catkin_ws/
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>~/catkin_ws/
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3216,7 +3216,7 @@ Or:
 </code></pre></div></p>
 <hr />
 <p>This should output something similar to the following:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>total 0
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>total 0
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>-rw-r--r-- 1 student student 0 MMM DD HH:MM publisher.py
 </code></pre></div>
 <p>This confirms that the file exists, and the <code>0</code> in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.</p>
@@ -3258,7 +3258,7 @@ Or:
 </code></pre></div></p>
 <hr />
 <p>... Hmmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>[rosrun] Couldn&#39;t find executable named publisher.py below /home/student/catkin_ws/src/part1_pubsub
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>[rosrun] Couldn&#39;t find executable named publisher.py below /home/student/catkin_ws/src/part1_pubsub
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>[rosrun] Found the following, but they&#39;re either not files,
 <a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>[rosrun] or not executable:
 <a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>[rosrun]   /home/student/catkin_ws/src/part1_pubsub/src/publisher.py
@@ -3282,13 +3282,13 @@ Or:
 </code></pre></div></p>
 <hr />
 <p>We have now granted permission for the file to be e<strong>X</strong>ecuted too:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>-rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>-rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
 </code></pre></div>
 </li>
 <li>
 <p>OK, now use <code>rosrun</code> again to (<em>hopefully!</em>) run the <code>publisher.py</code> node (remember: <code>rosrun {package name} {script name}</code>).</p>
 <p>If you see a message in the terminal similar to the following then the node has been launched successfully:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>[INFO] [#####]: The &#39;simple_publisher&#39; node is active...
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>[INFO] [#####]: The &#39;simple_publisher&#39; node is active...
 </code></pre></div>
 <p>Phew!</p>
 </li>
@@ -3307,7 +3307,7 @@ Or:
 <li><code>info</code>: to provide us with <em>information</em> on a particular topic of interest.</li>
 </ul>
 <p>We can use the <em>autocomplete functionality</em> of the Linux terminal to provide us with a list of <em>all</em> the available options that we can use with the <code>rostopic</code> command.  To do this you can type <code>rostopic</code> followed by a <span class="keys"><kbd class="key-space">Space</kbd></span> and then press the <span class="keys"><kbd class="key-tab">Tab</kbd></span> key twice:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>rostopic<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>rostopic<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
 </code></pre></div>
 <p>You should then be presented with a list of the available arguments for the <code>rostopic</code> command:</p>
 <!-- TODO: a gif instead of static image! -->
@@ -3527,7 +3527,7 @@ Or:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-10T08:28:48+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-21T09:44:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
       
         <br>
         Created:

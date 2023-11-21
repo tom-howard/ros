@@ -2936,7 +2936,7 @@ Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code corre
 <p>Messages in the terminal should indicate that <em>something</em> has happened, but that's about all you will see!</p>
 </li>
 <li>
-<p>Next, <em>open up a new instance of the Windows Terminal Application</em> by pressing the "New Tab" button whilst pressing the <span class="keys"><kbd class="key-shift">Shift</kbd></span> key (we'll call this <strong>WT(B)</strong>).</p>
+<p>Next, <em>open up a new instance of the Windows Terminal Application</em> by pressing the "New Tab" (<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 14h-6v6h-4v-6H4v-4h6V4h4v6h6v4Z"/></svg></span>) button whilst pressing the <span class="keys"><kbd class="key-shift">Shift</kbd></span> key (we'll call this <strong>WT(B)</strong>).</p>
 </li>
 <li>
 <p>In <strong>WT(B)</strong> have a look at all the topics that are currently active on the ROS network (you should know exactly how to do this by now!)<a name="action_launch"></a></p>
@@ -3334,7 +3334,7 @@ Then:
 <ol>
 <li>
 <p>As a starting point, consider the way in which the action server is initialised and the way a callback function is defined to encapsulate all the code that will be executed when the action is called:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span> <span class="o">=</span> <span class="n">actionlib</span><span class="o">.</span><span class="n">SimpleActionServer</span><span class="p">(</span><span class="s2">&quot;/camera_sweep_action_server&quot;</span><span class="p">,</span> 
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span> <span class="o">=</span> <span class="n">actionlib</span><span class="o">.</span><span class="n">SimpleActionServer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">server_name</span><span class="p">,</span> 
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">CameraSweepAction</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_server_launcher</span><span class="p">,</span> <span class="n">auto_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">actionserver</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </code></pre></div>
@@ -3548,7 +3548,7 @@ Then:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-20T15:31:35+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-21T09:44:19+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
       
         <br>
         Created:

@@ -3151,7 +3151,7 @@ geometry_msgs/Vector3 angular
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src/
 </code></pre></div>
 Then:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>catkin_create_pkg<span class="w"> </span>part2_navigation<span class="w"> </span><span class="o">{</span>BLANK<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>catkin_create_pkg<span class="w"> </span>part2_navigation<span class="w"> </span><span class="o">{</span>BLANK<span class="o">}</span>
 </code></pre></div></p>
 <hr />
 <div class="admonition warning">
@@ -3195,7 +3195,7 @@ and then re-source your environment:
 </code></pre></div></p>
 <hr />
 <p>... Hmmm, something's wrong here isn't it!? You may have seen the following error:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>/usr/bin/env: ‘python3\r’: Permission denied
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>/usr/bin/env: ‘python3\r’: Permission denied
 </code></pre></div>
 <p>The clue here is the <code>python3\r</code> (specifically the <code>\r</code> bit). This is a <em>Windows line ending</em>... </p>
 <p>Text files (including things like Python scripts) created on Windows use different line endings (i.e. the characters that signify the end of each line of text) to those created on Linux. Windows uses a "carriage return" <em>and</em> a "line feed" (<code>\r\n</code>) at the end of each line, but Linux uses just a "line feed" (<code>\n</code>)<sup id="fnref:source"><a class="footnote-ref" href="#fn:source">3</a></sup>. Because we're working within a Linux environment here (Ubuntu), we must make sure we're using Linux line endings at all times! We can change this easily from inside VS Code... </p>
@@ -3235,12 +3235,12 @@ and then re-source your environment:
 <p>Make sure that you've stopped the <code>turtlebot3_teleop_key</code> node running in <strong>TERMINAL 3</strong> (by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span>) before starting this exercise.</p>
 </div>
 <p><a name="rostopic_pub"></a>We can use the <code>rostopic pub</code> command to <em>publish</em> data to a topic from a terminal by using the command in the following way:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span><span class="o">{</span>topic_name<span class="o">}</span><span class="w"> </span><span class="o">{</span>message_type<span class="o">}</span><span class="w"> </span><span class="o">{</span>data<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span><span class="o">{</span>topic_name<span class="o">}</span><span class="w"> </span><span class="o">{</span>message_type<span class="o">}</span><span class="w"> </span><span class="o">{</span>data<span class="o">}</span>
 </code></pre></div>
 <p>As we discovered earlier, the <code>/cmd_vel</code> topic is expecting <em>linear</em> and <em>angular</em> data, each with an <code>x</code>, <code>y</code> and <code>z</code> component. We can get further help with formatting this message by using the autocomplete functionality within the terminal. Type the following into <strong>TERMINAL 3</strong> hitting the <span class="keys"><kbd class="key-space">Space</kbd></span> and <span class="keys"><kbd class="key-tab">Tab</kbd></span> keys on your keyboard as indicated below:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/Twist<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">]</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>rostopic<span class="w"> </span>pub<span class="w"> </span>/cmd_vel<span class="w"> </span>geometry_msgs/Twist<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">]</span>
 </code></pre></div></p>
 <p>The full message should then be presented to us:</p>
 <div class="highlight"><pre><span></span><code>rostopic pub /cmd_vel geometry_msgs/Twist &quot;linear:
@@ -3443,7 +3443,7 @@ angular:
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-01T10:48:33+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-21T09:44:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
       
         <br>
         Created:
