@@ -89,7 +89,7 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
 
     Messages in the terminal should indicate that *something* has happened, but that's about all you will see!
 
-1. Next, *open up a new instance of the Windows Terminal Application* by pressing the "New Tab" button whilst pressing the ++shift++ key (we'll call this **WT(B)**).
+1. Next, *open up a new instance of the Windows Terminal Application* by pressing the "New Tab" (:material-plus-thick:) button whilst pressing the ++shift++ key (we'll call this **WT(B)**).
     
 1. In **WT(B)** have a look at all the topics that are currently active on the ROS network (you should know exactly how to do this by now!)<a name="action_launch"></a>
 
@@ -532,7 +532,7 @@ Don't worry too much about all the content associated with obtaining and manipul
 1. As a starting point, consider the way in which the action server is initialised and the way a callback function is defined to encapsulate all the code that will be executed when the action is called:
 
     ``` { .python .no-copy }
-    self.actionserver = actionlib.SimpleActionServer("/camera_sweep_action_server", 
+    self.actionserver = actionlib.SimpleActionServer(self.server_name, 
         CameraSweepAction, self.action_server_launcher, auto_start=False)
     self.actionserver.start()
     ```
