@@ -5,7 +5,7 @@ import actionlib
 
 from tuos_msgs.msg import CameraSweepAction, CameraSweepGoal, CameraSweepFeedback
 
-class preemptiveActionClient(): # (1)!
+class PreemptiveActionClient(): # (1)!
     goal = CameraSweepGoal() # (2)!
    
     def feedback_callback(self, feedback_data: CameraSweepFeedback): # (3)!
