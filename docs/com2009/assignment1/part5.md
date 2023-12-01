@@ -666,7 +666,7 @@ roslaunch turtlebot3_gazebo turtlebot3_stage_4.launch
     ***
     **TERMINAL 3:**
     ```bash
-    rosrun part5_actions action_client.py
+    rosrun part5_actions search_client.py
     ```
     ***
 
