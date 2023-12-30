@@ -99,7 +99,7 @@ This should provide the following filtered list:
 
 ***
 
-The real TurtleBot3 Waffles that we have at the university have a slightly different camera module to that used by the *simulated robots* that we are working with here.  Despite this though, the camera data on our real robots is published to topics using the same ROS message formats as used in simulation, making it fairly straight-forward to transfer nodes that we develop in simulation here onto the real robots, when the time comes[^2].
+Our *real* TurtleBot3 Waffles in the Diamond have a slightly different camera module to that used by the *simulated* robots that we are working with here.  Despite this though, the camera data on our real robots is published to topics using the same ROS message formats as used in simulation, making it fairly straight-forward to transfer nodes that we develop in simulation here onto the real robots[^2].
 
 [^2]: Camera topic names are slightly different on the real robots though, so look out for that!
 
