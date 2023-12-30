@@ -25,3 +25,7 @@ hide:
 * [Part 5: ROS Actions](./part5)
 
     *Building on what you learnt about ROS Services in Part 4, here you will look at ROS Actions, which are similar to Services, but with a few key differences.*
+
+* [Part 6: Cameras, Machine Vision & OpenCV](./part6)
+
+    *Here you'll learn how to work with images from an on-board camera. You will look at techniques to detect features within these images, and use this to inform robot decision-making.*
