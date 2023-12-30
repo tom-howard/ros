@@ -1,5 +1,4 @@
 nav:
   - "COM2009": README.md
-  - "Lab Assignment #1": la1
-  - "Assignment #1: An Introduction to ROS (2024)": assignment1
+  - "Assignment #1: An Introduction to ROS": assignment1
   - "Lab Assignment #2": la2
