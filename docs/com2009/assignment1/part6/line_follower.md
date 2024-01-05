@@ -1,39 +1,75 @@
 ---
-title: "Part 6 Line Following"  
+title: "Part 6 Line Following (Setup)"  
 ---
 
-# Part 6 Line Following
+# Part 6 Line Following (Setup)
 
-Copy **all** the code below into your `line_follower.py` file.  Then, review the annotations to understand how it all works.
+Use this code as a starting point for Part A of the Line Following exercise.
 
 ```py title="line_follower.py"
 --8<-- "snippets/line_follower.py"
 ```
 
-1. A lot of the things in here you will already be familiar with from the previous exercises, so we won't go into too much detail on all of this again.  The main thing you will notice is that we have once again built a class structure around this, which should now be familiar to you from previous weeks of this course.  
+1. **Image Cropping** 
 
-2. In this case we want our robot to follow the line that is printed on the floor. We do this by applying the same image processing steps as in the previous exercises, to isolate the colours associated with the line and calculate its location in the robot's viewpoint.
-
-3. We'll use the centroid component `cy` to determine how far the robot needs to turn in order to keep the line in the centre of its vision:
-
-4. We are implementing *proportional control* here.
-
-    ??? tip "COM2009 Students!"
-        PID control was covered by Prof Moore in Lecture 6!
+    Apply some cropping to the raw camera image (`cv_img`). 
     
-    Ideally, we want the centre of the line on the floor to be in the centre of the robot's viewpoint at all times: this is our *target position*.  The *actual position* is where the line on the floor actually is, i.e.: the `cy` centroid component.  The *position error* is then the difference between the *actual* and *target* position:
+    Crop it to around 1/5 of its original **height**, and to a **width** so that the pink line is just visible at the edge of the image. 
 
-5. The only way we can reduce this error is by changing the robot's angular velocity.  The robot always needs to travel with forward velocity, so we define a fixed value at all times to achieve this. 
-
-6. In order to correct for our *position error*, we multiply it by a proportional gain (`kp`), which will provide us with an angular velocity that *should* start to make the error reduce.
+    Call your new cropped image something like `cropped_img`. You could then use the `cv2.imshow()` method to display this in an additional pop-up window when the node is run: 
     
-    If the proportional gain is set appropriately, this should ensure that our *position error* (`y_error`) is always kept to a minimum, so that the robot follows the line!
+    ```python
+    cv2.imshow("cropped_image", cropped_img)
+    ``` 
 
-7. We then simply set these two velocities in our `robot_controller` object and then publish them to the `/cmd_vel` topic using methods from the `Tb3Move()` class. 
+1. **Colour Detection**
 
-    !!! warning "Fill in the Blank!"
-        There is a method within the `Tb3Move()` class which allows us to publish a velocity command to the `/cmd_vel` topic. What is it? (Have a look at [the `tb3.py` source code](https://github.com/tom-howard/tuos_ros/blob/main/tuos_examples/src/tb3.py) if you need a reminder).
+    Filter the cropped image by selecting appropriate HSV values so that the pink line can be isolated from the rest of the image.
+    
+    You may need to use the `tuos_examples\image_colours.py` node again to help you identify the correct Hue and Saturation value range.
+
+    Use `cv2.cvtColor()` to convert your `cropped_img` into an HSV colour representation:
+
+    ```python
+    hsv_img = cv2.cvtColor(cropped_img, cv2.COLOR_BGR2HSV)
+    ```
+
+    Use `cv2.inRange()` to create a mask with the HSV value range that you have determined:
+
+    ```python
+    line_mask = cv2.inRange(
+        hsv_img, {lower_hsv_values}, {upper_hsv_values}
+    )
+    ```
+    
+    And then use `cv2.bitwise_and()` to create a new image with the mask applied, so that the coloured line is isolated:
+
+    ```python
+    line_isolated = cv2.bitwise_and(
+        cropped_img, cropped_img, mask = line_mask
+    )
+    ``` 
+
+1. **Locating the line**
+
+    Finally, find the horizontal position of the line in the robot's viewpoint.
+    
+    Calculate the image moments of the pink colour blob that represents the line (`line_mask`) using the `cv2.moments()` method. Remember that it's the $c_{y}$ component that we're interested in here:
+    
+    $$
+    c_{y}=\dfrac{M_{10}}{M_{00}}
+    $$
+
+    Ultimately, this will provide us with the feedback signal that we can use for a **proportional controller** that we will implement in the next part of the exercise.
+
+    Once you've obtained the image moments (and `cy`), use `cv2.circle()` to mark the centroid of the line on the filtered image (`line_isolated`) with a circle.
+
+    Remember that once you've done all this you can display the filtered image of the isolated line (with the circle to denote the centroid location) using `cv2.imshow()` again:
+    
+    ```python
+    cv2.imshow("filtered line", line_isolated)
+    ```
 
 <p align="center">
-  <a href="../../part6#ex4_ret">&#8592; Back to Part 6 - Exercise 4</a>
+  <a href="../../part6#ex4a_ret">&#8592; Back to Part 6 - Exercise 4 (Part A)</a>
 </p>

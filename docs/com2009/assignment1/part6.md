@@ -185,9 +185,13 @@ Another tool we can use to view camera data-streams is the `rqt_image_view` node
 
 [OpenCV](https://opencv.org/) is a mature and powerful computer vision library designed for performing real-time image analysis, and it is therefore extremely useful for robotic applications.  The library is cross-platform and there is a Python API (`cv2`), which we'll be using to do some computer vision tasks of our own during this lab session. While we can work with OpenCV using Python straight away (via the API), the library can't directly interpret the native image format used by the ROS, so there is an *interface* that we need to use.  The interface is called [CvBridge](http://wiki.ros.org/cv_bridge), which is a *ROS package* that handles the conversion between ROS and OpenCV image formats.  We'll therefore need to use these two libraries (OpenCV and CvBridge) hand-in-hand when developing ROS nodes to perform computer vision related tasks.
 
+### Object Detection
+
+One common job that we often want a robot to perform is *object detection*, and we will illustrate how this can be achieved using OpenCV tools for *colour filtering*, to detect the coloured pillar that your robot should now be looking at.  
+
 #### :material-pen: Exercise 2: Object Detection {#ex2}
 
-One common job that we often want a robot to perform is *object detection*, and we will illustrate how this can be achieved by *colour filtering* to detect the coloured pillar that your robot should now be looking at.  In this exercise you will learn how to use OpenCV to capture images, filter them and perform other analysis to confirm the presence and location of features that we might be interested in.
+In this exercise you will learn how to use OpenCV to capture images, filter them and perform other analysis to confirm the presence and location of features that we might be interested in.
 
 **Step 1**
 
@@ -353,9 +357,9 @@ Finally, we can apply this mask to the cropped image, generating a final version
 
 ### Image Moments
 
-You have now successfully isolated an object of interest within your robot's field of vision, but perhaps we want to make our robot move towards it, or - conversely - make our robot navigate around it and avoid crashing into it!  We therefore *also* need to know the *position* of the object in relation to the robot's viewpoint, and we can do this using *image moments*.
+You have now successfully isolated an object of interest within your robot's field of vision, but perhaps we want to make our robot move towards it, or - conversely - make our robot navigate around it and avoid crashing into it!  We therefore also need to know the *position* of the object in relation to the robot's viewpoint, and we can do this using **image moments**.
 
-The work we have just done above led to us obtaining what is referred to as a *colour blob*.  OpenCV also has built-in tools to allow us to calculate the *centroid* of a colour blob like this, allowing us to determine where exactly within an image the object of interest is located (in terms of pixels).  This is done using the principle of *image moments*: essentially statistical parameters related to an image, telling us how a collection of pixels (i.e. the blob of colour that we have just isolated) are distributed within it.  [You can read more about Image Moments here](https://theailearner.com/tag/image-moments-opencv-python/) and - from this - we can learn that the central coordinates of a colour blob can be obtained by considering some key moments of the *image mask* that we obtained from thresholding earlier:
+The work we have just done above led to us obtaining what is referred to as a *colour blob*.  OpenCV also has built-in tools to allow us to calculate the *centroid* of a colour blob like this, allowing us to determine where exactly within an image the object of interest is located (in terms of pixels).  This is done using the principle of *image moments*: essentially statistical parameters related to an image, telling us how a collection of pixels (i.e. the blob of colour that we have just isolated) are distributed within it.  [You can read more about Image Moments here](https://theailearner.com/tag/image-moments-opencv-python/), which tells us that the central coordinates of a colour blob can be obtained by considering some key moments of the *image mask* that we obtained from thresholding earlier:
 
 * <code>M<sub>00</sub></code>: the sum of all non-zero pixels in the image mask (i.e. the size of the colour blob, in pixels)
 * <code>M<sub>10</sub></code>: the sum of all the non-zero pixels in the horizontal (y) axis, weighted by *row* number
@@ -377,7 +381,8 @@ cy = m['m10']/(m['m00']+1e-5)
 cz = m['m01']/(m['m00']+1e-5) 
 ```
 
-Notice, that we are adding a very small number to the <code>M<sub>00</sub></code> moment here to make sure that the divisor in the above equations is never zero and thus ensuring that we never get caught out by any "divide-by-zero" errors. *When might this be the case?*
+!!! question
+    We're adding a very small number to the <code>M<sub>00</sub></code> moment here to make sure that the divisor in the above equations is never zero and thus ensuring that we never get caught out by any "divide-by-zero" errors. Why might this be necessary?
 
 <figure markdown>
   ![](part6/od6_centroid.png)
@@ -385,7 +390,7 @@ Notice, that we are adding a very small number to the <code>M<sub>00</sub></code
 
 Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: `cv2.circle()`.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in [a complete worked example of the `object_detection.py` node](object_detection_complete) from the previous exercise. <a name="ex2b_ret"></a>
 
-In our case, we can't actually change the position of our robot in the z axis, so the `cz` centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate `cy` to understand where a feature is located *horizontally* in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We'll look at this in a bit more detail now.
+In our case, we can't actually change the position of our robot in the z axis, so the `cz` centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate `cy` to understand where a feature is located *horizontally* in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We can then use this as the basis for some real **closed-loop** control.
 
 #### :material-pen: Exercise 3: Locating image features using *Image Moments* {#ex3}
 
@@ -435,11 +440,66 @@ Inside the `tuos_examples` package there is a node that has been developed to il
         1. From the plot that is generated by the `image_colours.py` node, determine some appropriate HSV thresholds to apply for each coloured pillar in the arena.
     1. Once you have the right thresholds, then you can add these to your `colour_search.py` node so that it has the ability to detect *every* pillar in the same way that it currently detects the blue one.
 
-#### :material-pen: Exercise 4: Line following {#ex4}
+### PID Control and Line Following {#pid}
 
-OK, time for something a bit more interesting now: *line following*!
+One useful task for a robot to be able to achieve is to follow a line on the floor. We can achieve this on our TurtleBot3 using its camera system, and the image processing techniques that have been covered so far in this session.
 
-1. Make sure that your `colour_search.py` node is no longer running, and also close down the Gazebo simulation that is currently active by entering ++ctrl+c++ in **TERMINAL 1**.
+COM2009 Lecture 6 introduces a well established algorithm for closed-loop control known as **PID Control**, and this can be used to achieve such line following behaviour.
+
+At the heart of this is the principle of *Negative-Feedback* control, which considers a **Reference Input**, a **Feedback Signal** and the **Error** between these.
+
+<a name="neg_fdbck_ctrl"></a>
+
+<figure markdown>
+  ![](part6/negative_feedback_control.png){width=500}
+  <figcaption>
+    Negative-Feedback Control<br />
+    Adapted from <a href="https://commons.wikimedia.org/wiki/File:PID_en.svg">Arturo Urquizo (via Wikimedia Commons)</a>
+  </figcaption>
+</figure>
+
+The **Reference Input** represents a desired state that we would like our system to maintain. If we want our TurtleBot3 to successfully follow a coloured line on the floor, we will need it to keep the colour blob that represents that coloured line in the centre of its view point at all times. The *desired state* would therefore be to maintain the `cy` centroid of the colour blob in the centre of its vision.
+
+A **Feedback Signal** informs us of what the current state of the system actually is. In our case, this feedback signal would be the real-time location of the coloured line in the live camera images, i.e. its `cy` centroid (obtained using processing methods covered in Exercise 3 above). 
+
+The difference between these two things is the **Error**, and the PID control algorithm provides us with a means to control this error and minimise it, so that our robot's *actual* state matches the *desired* state. i.e.: the coloured line is always in the centre of its viewpoint.
+
+<a name="pid_terms"></a>
+
+<figure markdown>
+  ![](part6/pid_terms.png)
+</figure>
+
+<a name="pid_eqn"></a>
+
+The PID algorithm is as follows:
+
+$$
+u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{de}{dt}
+$$
+
+Where $u(t)$ is the **Controlled Output**, $e(t)$ is the **Error** (as illustrated in the figure above) and $K_{P}$, $K_{I}$ and $K_{D}$ are Proportional, Integral and Differential **Gains** respectively. These three gains are constants that must be established for any given system through a process called *tuning*. This tuning process is also covered in COM2009 Lecture 6, but you will also explore this in the practical exercise that follows.
+
+#### :material-pen: Exercise 4: Line Following {#ex4}
+
+##### Part A: Setup {#ex4a}
+
+1. Make sure that all ROS processes from the previous exercise are shut down now, including the `colour_search.py` node, and the Gazebo simulation in **TERMINAL 1**.
+1. In **TERMINAL 1** launch a new simulation from the `tuos_simulations` package:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    roslaunch tuos_simulations line_following_setup.launch
+    ```
+    ***
+    
+    Your robot should be launched onto a long thin track with a straight pink line painted down the middle of the floor:
+
+    <figure markdown>
+      ![](part6/line_following_setup.png){width=800px}
+    </figure>
+
 1. In **TERMINAL 2** you should still be located in your `part6_vision/src` directory, but if not then go there now:
 
     ***
@@ -449,10 +509,129 @@ OK, time for something a bit more interesting now: *line following*!
     ```
     ***
 
-1. Then, perform the necessary steps to create a new empty Python file called `line_follower.py` and prepare it for execution.
+1. Perform the necessary steps to create a new empty Python file called `line_follower.py` and prepare it for execution.
 1. Once that's done open up the empty file in VS Code.
-1. Then, have a look at [the template Python code for this exercise](line_follower), and be sure to read the annotations too. <a name="ex4_ret"></a>
-1. Copy and paste this into your empty `line_follower.py` file and save it.
+
+    <a name="ex4a_ret"></a>
+
+1. Start with [the code template provided here](line_follower_setup). This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in [Exercise 2](#ex2), so go back here if you need a reminder on how any of this works. 
+
+##### Part B: Implementing and Tuning a Proportional Controller {#ex4b}
+
+Referring back to [the equation for the PID algorithm as discussed above](#pid_eqn), the Proportional, Integral and Differential components all have different effects on a system in terms of its ability to maintain the desired state (the reference input). The gain terms associated with each of these components ($K_{P}$, $K_{I}$ and $K_{D}$) must be *tuned* appropriately for any given system in order to achieve stability of control.
+
+A PID Controller can actually take three different forms:
+
+1. **"P" Control**: Only a *Proportional* gain ($K_{P}$) is used, all other gains are set to zero.
+1. **"PI" Control**: *Proportional* and *Integral* gains ($K_{P}$ and $K_{I}$) are applied, the Differential gain is set to zero. 
+1. **"PID" Control**: The controller makes use of all three gain terms ($K_{P}$, $K_{I}$ and $K_{D}$)
+
+In order to allow our TurtleBot3 to follow a line, we actually only really need a **"P" Controller**, so our control equation becomes quite simple, reducing to:
+
+$$
+u(t)=K_{P} e(t)
+$$
+
+The next task then is to adapt our `line_follower.py` node to implement this control algorithm and find a proportional gain that is appropriate for our system.
+
+1. Return to your `line_follower.py` file. Underneath the line that reads:
+
+    ```python
+    cv2.waitKey(1)
+    ```
+
+    Paste the following additional code:
+
+    ```python
+    kp = 0.01
+    reference_input = {BLANK}
+    feedback_signal = cy
+    error = feedback_signal - reference_input 
+
+    ang_vel = kp * error
+    print(f"Error = {error:.1f} pixels | Control Signal = {ang_vel:.2f} rad/s")
+    ```
+
+    !!! warning "Fill in the Blank!"
+        What is the **Reference Input** to the control system (`reference_input`)? Refer to [this figure from earlier](#pid_terms). 
+
+    Here we have implemented our "P" Controller. The **Control Signal** that is being calculated here is the angular velocity that will be applied to our robot (the code won't make the root move just yet, but we'll get to that bit shortly!) The **Controlled Output** will therefore be the angular position (i.e. the **yaw**) of the robot.  
+
+1. Run the code as it is, and consider the following:
+
+    1. What proportional gain ($K_{P}$) are we applying?
+    1. What is [the maximum angular velocity that can be applied to our robot](../../../about/robots/#max_vels)? Is the angular velocity that has been calculated actually appropriate?
+    1. Is the angular velocity that has been calculated positive or negative? Will this make the robot turn in the right direction and move towards the line?  
+
+1. Let's address the third question (**c**) first...
+
+    A **positive** angular velocity should make the robot turn **anti-clockwise** (i.e. to the left), and a **negative** angular velocity should make the robot turn **clockwise** (to the right). The line should currently be to the left of the robot, which means a positive angular velocity would be required in order to make the robot turn towards it. If the value of the **Control Signal** that is being calculated by our proportional controller (as printed to the terminal) is negative, then this isn't correct, so we need to change the sign of our proportional gain ($K_{P}$) in order to correct this:
+
+    ```python
+    kp = -0.01
+    ```
+
+1. Next, let's address the second of the above questions (**b**)...
+
+    The maximum angular velocity that can be applied to our robot is &plusmn;1.82 rad/s. If our proportional controller is calculating a value for the **Control Signal** that is greater than 1.82, or less than -1.82 then this needs to be limited. In between the following two lines of code:
+
+    ``` { .python .no-copy }
+    ang_vel = kp * error
+    print(f"Error = {error:.1f} pixels | Control Signal = {ang_vel:.2f} rad/s")
+    ```
+
+    Insert the following:
+    ```python
+    if ang_vel < -1.82:
+        ang_vel = -1.82
+    elif ang_vel > 1.82:
+        ang_vel = 1.82
+    ```
+
+1. Finally, we need to think about the actual proportional gain that is being applied. This is where we need to actually *tune* our system by finding a proportional gain value that controls our system appropriately.
+
+    Return to your `line_follower.py` file. Underneath the line that reads:
+
+    ``` { .python .no-copy }
+    print(f"Error = {error:.1f} pixels | Control Signal = {ang_vel:.2f} rad/s")
+    ```
+
+    Paste the following:
+
+    ```python
+    self.robot_controller.set_move_cmd(linear = 0.1, angular = ang_vel)
+    self.robot_controller.{BLANK}
+    ```
+
+    !!! warning "Fill in the Blank!"
+        There is a method within the `Tb3Move()` class which allows us to publish a velocity command to the `/cmd_vel` topic. What is it? (Have a look at [the `tb3.py` source code](https://github.com/tom-howard/tuos_ros/blob/main/tuos_examples/src/tb3.py), or the `colour_search.py` file from Exercise 3 if you need a reminder).
+    
+    Having filled in the `{BLANK}`, the code will now make the robot move with a constant linear velocity of 0.1 m/s at all times, while its angular velocity will be determined by our proportional controller, based on the controller error and the proportional gain parameter `kp`.
+
+    The figure below illustrates the effects different values of proportional gain can have on a system.
+
+    <figure markdown>
+      ![](part6/kp.png){width=600}
+      <figcaption>
+        Courtesy of <a href="https://www.sheffield.ac.uk/dcs/people/academic/roger-k-moore">Prof. Roger Moore</a><br />
+        COM2009 Lecture 6: PID Control
+      </figcaption>
+    </figure>
+
+    Run the code and see what happens. You should find that the robot behaves quite erratically, indicating that `kp` (at an absolute value of 0.01) is probably too large.
+
+1. Try modifying `kp` by a factor of 0.01: `#!python kp = -0.0001`. Before you run the code again, you can reset the Gazebo simulation by pressing ++ctrl+shift+r++ so that the robot returns to the starting position.
+
+    You should find that the robot now gradually approaches the line, but it can take a while for it to do so.
+
+1. Next modify `kp` again by a factor of 10: `#!python kp = -0.001`. Once again, reset the robot back to its starting position in Gazebo by using ++ctrl+shift+r++ to reset the simulation.
+
+    The robot should now reach the line much quicker, and follow the line well once it reaches it.
+
+1. Could `kp` be modified any more to improve the control further? Play around a bit more and see what happens. We'll but this to the test on a more challenging track in the next part of this exercise.
+
+##### Part C: Advanced Line Following {#ex4c}
+
 1. Now, in **TERMINAL 1** run a new simulation:
 
     ***
@@ -461,27 +640,26 @@ OK, time for something a bit more interesting now: *line following*!
     roslaunch tuos_simulations line_following.launch
     ```
     
-    Your robot should be launched into an environment with a coloured track painted on the floor:
+    Your robot should be launched into an environment with a more interesting line to follow:
 
     <figure markdown>
       ![](part6/line_following.png){width=800px}
     </figure>
 
-1. In **TERMINAL 2**, run the `line_follower.py` node as it is (using `rosrun`) and see what happens... Not very impressive eh?!  That's where *you* come in!  There are a few issues with this that you will need to address:
-    * **Image Cropping:** You might want to have a look at the cropping that is currently being performed to hone in on a particular region of the robot's viewpoint... does this look optimal?  Could it be improved?
-    * **HSV Thresholds:** Do these look appropriate for detecting the colour of the line? Determine some appropriate HSV thresholds to apply using methods that you have used earlier in this session.
-    * **Velocity Limiting:** The Node uses a proportional controller. Essentially, we specify a proportional gain (`kp`), and multiply this gain by a position error to obtain an angular velocity.  What happens if this calculation outputs an angular velocity that is excessive, or is larger than [the maximum angular velocity that our robot can achieve](../../../about/robots/#tb3)?  Consider, therefore, doing some error checking on the `ang_vel` calculation output to ensure that any angular velocity commands are kept within some sensible limits before being published to the `/cmd_vel` topic.
-    * **Tuning the Gain:** PID gains need to be *tuned* in order to be appropriate for a particular system.  Make adjustments to the proportional gain parameter (`kp`) until a sensible response is achieved, and the robot follows the line effectively.
-    * **Conditions where the Line Can't be Seen:** The angular velocity is determined by considering the `y` coordinate of a colour blob centroid.  What happens in situations where the blob of colour can't be seen in the robot's field of vision though?  What influence would this have on the velocity commands that are published to the `/cmd_vel` topic? Consider a situation where the robot can't see the line to begin with... Try launching the robot in the arena in a different location instead, and think about how you might approach this situation:
+1. In **TERMINAL 2**, run your `line_follower.py` node and see how it performs. Does your proportional gain need to be adjusted further to optimise the performance?
 
-        ***
-        **TERMINAL 1:**
-        ```bash
-        roslaunch tuos_simulations line_following.launch x_pos:=3 y_pos:=-3 yaw:=0
-        ```
-        ***
+1. Next, think about conditions where the line can't initially be seen...
 
-    * **Stopping:** Finally, what happens when the robot reaches the finish line?  How could you add additional functionality to ensure that the robot stops when it reaches this point?  What features of the arena could you use to trigger this?
+    As you know, the angular velocity is determined by considering the `cy` component of a colour blob representing the line. What happens in situations where the blob of colour isn't there though?  What influence would this have on the Control Signals that are calculated by the proportional controller? To consider this further, try launching the robot in the same arena but in a different location instead, and think about how you might approach this situation:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    roslaunch tuos_simulations line_following.launch x_pos:=3 y_pos:=-3 yaw:=0
+    ```
+    ***
+
+1. Finally, what happens when the robot reaches the finish line? How could you add additional functionality to ensure that the robot stops when it reaches this point? What features of the arena could you use to trigger this?
 
 ## Wrapping Up
 
