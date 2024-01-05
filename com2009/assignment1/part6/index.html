@@ -1229,11 +1229,26 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Detection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Object Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ex2" class="md-nav__link">
     <span class="md-ellipsis">
        Exercise 2: Object Detection
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1256,12 +1271,60 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID Control and Line Following
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PID Control and Line Following">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#ex4" class="md-nav__link">
     <span class="md-ellipsis">
-       Exercise 4: Line following
+       Exercise 4: Line Following
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Exercise 4: Line Following">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex4a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part A: Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex4b" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part B: Implementing and Tuning a Proportional Controller
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex4c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part C: Advanced Line Following
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2452,11 +2515,26 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#object-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Detection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Object Detection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ex2" class="md-nav__link">
     <span class="md-ellipsis">
        Exercise 2: Object Detection
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2479,12 +2557,60 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid" class="md-nav__link">
+    <span class="md-ellipsis">
+      PID Control and Line Following
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PID Control and Line Following">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#ex4" class="md-nav__link">
     <span class="md-ellipsis">
-       Exercise 4: Line following
+       Exercise 4: Line Following
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Exercise 4: Line Following">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex4a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part A: Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex4b" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part B: Implementing and Tuning a Proportional Controller
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ex4c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Part C: Advanced Line Following
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2693,8 +2819,10 @@ In this session we'll start by working with the same <em>mystery world</em> envi
 </ol>
 <h2 id="opencv">OpenCV and ROS<a class="headerlink" href="#opencv" title="Permanent link">&para;</a></h2>
 <p><a href="https://opencv.org/">OpenCV</a> is a mature and powerful computer vision library designed for performing real-time image analysis, and it is therefore extremely useful for robotic applications.  The library is cross-platform and there is a Python API (<code>cv2</code>), which we'll be using to do some computer vision tasks of our own during this lab session. While we can work with OpenCV using Python straight away (via the API), the library can't directly interpret the native image format used by the ROS, so there is an <em>interface</em> that we need to use.  The interface is called <a href="http://wiki.ros.org/cv_bridge">CvBridge</a>, which is a <em>ROS package</em> that handles the conversion between ROS and OpenCV image formats.  We'll therefore need to use these two libraries (OpenCV and CvBridge) hand-in-hand when developing ROS nodes to perform computer vision related tasks.</p>
+<h3 id="object-detection">Object Detection<a class="headerlink" href="#object-detection" title="Permanent link">&para;</a></h3>
+<p>One common job that we often want a robot to perform is <em>object detection</em>, and we will illustrate how this can be achieved using OpenCV tools for <em>colour filtering</em>, to detect the coloured pillar that your robot should now be looking at.  </p>
 <h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 2: Object Detection<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
-<p>One common job that we often want a robot to perform is <em>object detection</em>, and we will illustrate how this can be achieved by <em>colour filtering</em> to detect the coloured pillar that your robot should now be looking at.  In this exercise you will learn how to use OpenCV to capture images, filter them and perform other analysis to confirm the presence and location of features that we might be interested in.</p>
+<p>In this exercise you will learn how to use OpenCV to capture images, filter them and perform other analysis to confirm the presence and location of features that we might be interested in.</p>
 <p><strong>Step 1</strong></p>
 <ol>
 <li>First create a new package in your <code>catkin_ws/src</code> directory called <code>part6_vision</code> with <code>rospy</code>, <code>cv_bridge</code>, <code>sensor_msgs</code> and <code>geometry_msgs</code> as dependencies.</li>
@@ -2842,8 +2970,8 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 </li>
 </ol>
 <h3 id="image-moments">Image Moments<a class="headerlink" href="#image-moments" title="Permanent link">&para;</a></h3>
-<p>You have now successfully isolated an object of interest within your robot's field of vision, but perhaps we want to make our robot move towards it, or - conversely - make our robot navigate around it and avoid crashing into it!  We therefore <em>also</em> need to know the <em>position</em> of the object in relation to the robot's viewpoint, and we can do this using <em>image moments</em>.</p>
-<p>The work we have just done above led to us obtaining what is referred to as a <em>colour blob</em>.  OpenCV also has built-in tools to allow us to calculate the <em>centroid</em> of a colour blob like this, allowing us to determine where exactly within an image the object of interest is located (in terms of pixels).  This is done using the principle of <em>image moments</em>: essentially statistical parameters related to an image, telling us how a collection of pixels (i.e. the blob of colour that we have just isolated) are distributed within it.  <a href="https://theailearner.com/tag/image-moments-opencv-python/">You can read more about Image Moments here</a> and - from this - we can learn that the central coordinates of a colour blob can be obtained by considering some key moments of the <em>image mask</em> that we obtained from thresholding earlier:</p>
+<p>You have now successfully isolated an object of interest within your robot's field of vision, but perhaps we want to make our robot move towards it, or - conversely - make our robot navigate around it and avoid crashing into it!  We therefore also need to know the <em>position</em> of the object in relation to the robot's viewpoint, and we can do this using <strong>image moments</strong>.</p>
+<p>The work we have just done above led to us obtaining what is referred to as a <em>colour blob</em>.  OpenCV also has built-in tools to allow us to calculate the <em>centroid</em> of a colour blob like this, allowing us to determine where exactly within an image the object of interest is located (in terms of pixels).  This is done using the principle of <em>image moments</em>: essentially statistical parameters related to an image, telling us how a collection of pixels (i.e. the blob of colour that we have just isolated) are distributed within it.  <a href="https://theailearner.com/tag/image-moments-opencv-python/">You can read more about Image Moments here</a>, which tells us that the central coordinates of a colour blob can be obtained by considering some key moments of the <em>image mask</em> that we obtained from thresholding earlier:</p>
 <ul>
 <li><code>M<sub>00</sub></code>: the sum of all non-zero pixels in the image mask (i.e. the size of the colour blob, in pixels)</li>
 <li><code>M<sub>10</sub></code>: the sum of all the non-zero pixels in the horizontal (y) axis, weighted by <em>row</em> number</li>
@@ -2860,12 +2988,15 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">cy</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;m10&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;m00&#39;</span><span class="p">]</span><span class="o">+</span><span class="mf">1e-5</span><span class="p">)</span>
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">cz</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;m01&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;m00&#39;</span><span class="p">]</span><span class="o">+</span><span class="mf">1e-5</span><span class="p">)</span> 
 </code></pre></div>
-<p>Notice, that we are adding a very small number to the <code>M<sub>00</sub></code> moment here to make sure that the divisor in the above equations is never zero and thus ensuring that we never get caught out by any "divide-by-zero" errors. <em>When might this be the case?</em></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>We're adding a very small number to the <code>M<sub>00</sub></code> moment here to make sure that the divisor in the above equations is never zero and thus ensuring that we never get caught out by any "divide-by-zero" errors. Why might this be necessary?</p>
+</div>
 <figure>
 <p><img alt="" src="od6_centroid.png" /></p>
 </figure>
 <p>Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: <code>cv2.circle()</code>.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in <a href="object_detection_complete">a complete worked example of the <code>object_detection.py</code> node</a> from the previous exercise. <a name="ex2b_ret"></a></p>
-<p>In our case, we can't actually change the position of our robot in the z axis, so the <code>cz</code> centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate <code>cy</code> to understand where a feature is located <em>horizontally</em> in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We'll look at this in a bit more detail now.</p>
+<p>In our case, we can't actually change the position of our robot in the z axis, so the <code>cz</code> centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate <code>cy</code> to understand where a feature is located <em>horizontally</em> in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We can then use this as the basis for some real <strong>closed-loop</strong> control.</p>
 <h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 3: Locating image features using <em>Image Moments</em><a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
 <p>Inside the <code>tuos_examples</code> package there is a node that has been developed to illustrate how all the OpenCV tools that you have explored so far could be used to search an environment and stop a robot when it is looking directly at an object of interest. All the tools that are used in this node should be familiar to you by now, and in this exercise you're going to make a copy of this node and modify it to enhance its functionality.</p>
 <ol>
@@ -2918,61 +3049,197 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 </ol>
 </li>
 </ol>
-<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 4: Line following<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
-<p>OK, time for something a bit more interesting now: <em>line following</em>!</p>
+<h3 id="pid">PID Control and Line Following<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h3>
+<p>One useful task for a robot to be able to achieve is to follow a line on the floor. We can achieve this on our TurtleBot3 using its camera system, and the image processing techniques that have been covered so far in this session.</p>
+<p>COM2009 Lecture 6 introduces a well established algorithm for closed-loop control known as <strong>PID Control</strong>, and this can be used to achieve such line following behaviour.</p>
+<p>At the heart of this is the principle of <em>Negative-Feedback</em> control, which considers a <strong>Reference Input</strong>, a <strong>Feedback Signal</strong> and the <strong>Error</strong> between these.</p>
+<p><a name="neg_fdbck_ctrl"></a></p>
+<figure>
+<p><img alt="" src="negative_feedback_control.png" width="500" />
+  </p>
+<figcaption>
+    Negative-Feedback Control<br />
+    Adapted from <a href="https://commons.wikimedia.org/wiki/File:PID_en.svg">Arturo Urquizo (via Wikimedia Commons)</a>
+  </figcaption>
+</figure>
+<p>The <strong>Reference Input</strong> represents a desired state that we would like our system to maintain. If we want our TurtleBot3 to successfully follow a coloured line on the floor, we will need it to keep the colour blob that represents that coloured line in the centre of its view point at all times. The <em>desired state</em> would therefore be to maintain the <code>cy</code> centroid of the colour blob in the centre of its vision.</p>
+<p>A <strong>Feedback Signal</strong> informs us of what the current state of the system actually is. In our case, this feedback signal would be the real-time location of the coloured line in the live camera images, i.e. its <code>cy</code> centroid (obtained using processing methods covered in Exercise 3 above). </p>
+<p>The difference between these two things is the <strong>Error</strong>, and the PID control algorithm provides us with a means to control this error and minimise it, so that our robot's <em>actual</em> state matches the <em>desired</em> state. i.e.: the coloured line is always in the centre of its viewpoint.</p>
+<p><a name="pid_terms"></a></p>
+<figure>
+<p><img alt="" src="pid_terms.png" /></p>
+</figure>
+<p><a name="pid_eqn"></a></p>
+<p>The PID algorithm is as follows:</p>
+<div class="arithmatex">\[
+u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{de}{dt}
+\]</div>
+<p>Where <span class="arithmatex">\(u(t)\)</span> is the <strong>Controlled Output</strong>, <span class="arithmatex">\(e(t)\)</span> is the <strong>Error</strong> (as illustrated in the figure above) and <span class="arithmatex">\(K_{P}\)</span>, <span class="arithmatex">\(K_{I}\)</span> and <span class="arithmatex">\(K_{D}\)</span> are Proportional, Integral and Differential <strong>Gains</strong> respectively. These three gains are constants that must be established for any given system through a process called <em>tuning</em>. This tuning process is also covered in COM2009 Lecture 6, but you will also explore this in the practical exercise that follows.</p>
+<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 4: Line Following<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
+<h5 id="ex4a">Part A: Setup<a class="headerlink" href="#ex4a" title="Permanent link">&para;</a></h5>
 <ol>
-<li>Make sure that your <code>colour_search.py</code> node is no longer running, and also close down the Gazebo simulation that is currently active by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 1</strong>.</li>
+<li>Make sure that all ROS processes from the previous exercise are shut down now, including the <code>colour_search.py</code> node, and the Gazebo simulation in <strong>TERMINAL 1</strong>.</li>
+<li>
+<p>In <strong>TERMINAL 1</strong> launch a new simulation from the <code>tuos_simulations</code> package:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following_setup.launch
+</code></pre></div></p>
+<hr />
+<p>Your robot should be launched onto a long thin track with a straight pink line painted down the middle of the floor:</p>
+<p><figure markdown>
+  <img alt="" src="line_following_setup.png" width="800px" />
+</figure></p>
+</li>
 <li>
 <p>In <strong>TERMINAL 2</strong> you should still be located in your <code>part6_vision/src</code> directory, but if not then go there now:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>roscd<span class="w"> </span>part6_vision/src
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>roscd<span class="w"> </span>part6_vision/src
 </code></pre></div></p>
 <hr />
 </li>
 <li>
-<p>Then, perform the necessary steps to create a new empty Python file called <code>line_follower.py</code> and prepare it for execution.</p>
+<p>Perform the necessary steps to create a new empty Python file called <code>line_follower.py</code> and prepare it for execution.</p>
 </li>
-<li>Once that's done open up the empty file in VS Code.</li>
-<li>Then, have a look at <a href="line_follower">the template Python code for this exercise</a>, and be sure to read the annotations too. <a name="ex4_ret"></a></li>
-<li>Copy and paste this into your empty <code>line_follower.py</code> file and save it.</li>
+<li>
+<p>Once that's done open up the empty file in VS Code.</p>
+<p><a name="ex4a_ret"></a></p>
+</li>
+<li>
+<p>Start with <a href="line_follower_setup">the code template provided here</a>. This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in <a href="#ex2">Exercise 2</a>, so go back here if you need a reminder on how any of this works. </p>
+</li>
+</ol>
+<h5 id="ex4b">Part B: Implementing and Tuning a Proportional Controller<a class="headerlink" href="#ex4b" title="Permanent link">&para;</a></h5>
+<p>Referring back to <a href="#pid_eqn">the equation for the PID algorithm as discussed above</a>, the Proportional, Integral and Differential components all have different effects on a system in terms of its ability to maintain the desired state (the reference input). The gain terms associated with each of these components (<span class="arithmatex">\(K_{P}\)</span>, <span class="arithmatex">\(K_{I}\)</span> and <span class="arithmatex">\(K_{D}\)</span>) must be <em>tuned</em> appropriately for any given system in order to achieve stability of control.</p>
+<p>A PID Controller can actually take three different forms:</p>
+<ol>
+<li><strong>"P" Control</strong>: Only a <em>Proportional</em> gain (<span class="arithmatex">\(K_{P}\)</span>) is used, all other gains are set to zero.</li>
+<li><strong>"PI" Control</strong>: <em>Proportional</em> and <em>Integral</em> gains (<span class="arithmatex">\(K_{P}\)</span> and <span class="arithmatex">\(K_{I}\)</span>) are applied, the Differential gain is set to zero. </li>
+<li><strong>"PID" Control</strong>: The controller makes use of all three gain terms (<span class="arithmatex">\(K_{P}\)</span>, <span class="arithmatex">\(K_{I}\)</span> and <span class="arithmatex">\(K_{D}\)</span>)</li>
+</ol>
+<p>In order to allow our TurtleBot3 to follow a line, we actually only really need a <strong>"P" Controller</strong>, so our control equation becomes quite simple, reducing to:</p>
+<div class="arithmatex">\[
+u(t)=K_{P} e(t)
+\]</div>
+<p>The next task then is to adapt our <code>line_follower.py</code> node to implement this control algorithm and find a proportional gain that is appropriate for our system.</p>
+<ol>
+<li>
+<p>Return to your <code>line_follower.py</code> file. Underneath the line that reads:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>Paste the following additional code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="n">kp</span> <span class="o">=</span> <span class="mf">0.01</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">reference_input</span> <span class="o">=</span> <span class="p">{</span><span class="n">BLANK</span><span class="p">}</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">feedback_signal</span> <span class="o">=</span> <span class="n">cy</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="n">error</span> <span class="o">=</span> <span class="n">feedback_signal</span> <span class="o">-</span> <span class="n">reference_input</span> 
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">ang_vel</span> <span class="o">=</span> <span class="n">kp</span> <span class="o">*</span> <span class="n">error</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Fill in the Blank!</p>
+<p>What is the <strong>Reference Input</strong> to the control system (<code>reference_input</code>)? Refer to <a href="#pid_terms">this figure from earlier</a>. </p>
+</div>
+<p>Here we have implemented our "P" Controller. The <strong>Control Signal</strong> that is being calculated here is the angular velocity that will be applied to our robot (the code won't make the root move just yet, but we'll get to that bit shortly!) The <strong>Controlled Output</strong> will therefore be the angular position (i.e. the <strong>yaw</strong>) of the robot.  </p>
+</li>
+<li>
+<p>Run the code as it is, and consider the following:</p>
+<ol>
+<li>What proportional gain (<span class="arithmatex">\(K_{P}\)</span>) are we applying?</li>
+<li>What is <a href="../../../about/robots/#max_vels">the maximum angular velocity that can be applied to our robot</a>? Is the angular velocity that has been calculated actually appropriate?</li>
+<li>Is the angular velocity that has been calculated positive or negative? Will this make the robot turn in the right direction and move towards the line?  </li>
+</ol>
+</li>
+<li>
+<p>Let's address the third question (<strong>c</strong>) first...</p>
+<p>A <strong>positive</strong> angular velocity should make the robot turn <strong>anti-clockwise</strong> (i.e. to the left), and a <strong>negative</strong> angular velocity should make the robot turn <strong>clockwise</strong> (to the right). The line should currently be to the left of the robot, which means a positive angular velocity would be required in order to make the robot turn towards it. If the value of the <strong>Control Signal</strong> that is being calculated by our proportional controller (as printed to the terminal) is negative, then this isn't correct, so we need to change the sign of our proportional gain (<span class="arithmatex">\(K_{P}\)</span>) in order to correct this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">kp</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.01</span>
+</code></pre></div>
+</li>
+<li>
+<p>Next, let's address the second of the above questions (<strong>b</strong>)...</p>
+<p>The maximum angular velocity that can be applied to our robot is &plusmn;1.82 rad/s. If our proportional controller is calculating a value for the <strong>Control Signal</strong> that is greater than 1.82, or less than -1.82 then this needs to be limited. In between the following two lines of code:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">ang_vel</span> <span class="o">=</span> <span class="n">kp</span> <span class="o">*</span> <span class="n">error</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Insert the following:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">if</span> <span class="n">ang_vel</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1.82</span><span class="p">:</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>    <span class="n">ang_vel</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.82</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="k">elif</span> <span class="n">ang_vel</span> <span class="o">&gt;</span> <span class="mf">1.82</span><span class="p">:</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>    <span class="n">ang_vel</span> <span class="o">=</span> <span class="mf">1.82</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Finally, we need to think about the actual proportional gain that is being applied. This is where we need to actually <em>tune</em> our system by finding a proportional gain value that controls our system appropriately.</p>
+<p>Return to your <code>line_follower.py</code> file. Underneath the line that reads:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Paste the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span><span class="o">.</span><span class="n">set_move_cmd</span><span class="p">(</span><span class="n">linear</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">angular</span> <span class="o">=</span> <span class="n">ang_vel</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span><span class="o">.</span><span class="p">{</span><span class="n">BLANK</span><span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Fill in the Blank!</p>
+<p>There is a method within the <code>Tb3Move()</code> class which allows us to publish a velocity command to the <code>/cmd_vel</code> topic. What is it? (Have a look at <a href="https://github.com/tom-howard/tuos_ros/blob/main/tuos_examples/src/tb3.py">the <code>tb3.py</code> source code</a>, or the <code>colour_search.py</code> file from Exercise 3 if you need a reminder).</p>
+</div>
+<p>Having filled in the <code>{BLANK}</code>, the code will now make the robot move with a constant linear velocity of 0.1 m/s at all times, while its angular velocity will be determined by our proportional controller, based on the controller error and the proportional gain parameter <code>kp</code>.</p>
+<p>The figure below illustrates the effects different values of proportional gain can have on a system.</p>
+<p><figure markdown>
+  <img alt="" src="kp.png" width="600" />
+  <figcaption>
+    Courtesy of <a href="https://www.sheffield.ac.uk/dcs/people/academic/roger-k-moore">Prof. Roger Moore</a><br />
+    COM2009 Lecture 6: PID Control
+  </figcaption>
+</figure></p>
+<p>Run the code and see what happens. You should find that the robot behaves quite erratically, indicating that <code>kp</code> (at an absolute value of 0.01) is probably too large.</p>
+</li>
+<li>
+<p>Try modifying <code>kp</code> by a factor of 0.01: <code class="highlight"><span class="n">kp</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0001</span></code>. Before you run the code again, you can reset the Gazebo simulation by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-r">R</kbd></span> so that the robot returns to the starting position.</p>
+<p>You should find that the robot now gradually approaches the line, but it can take a while for it to do so.</p>
+</li>
+<li>
+<p>Next modify <code>kp</code> again by a factor of 10: <code class="highlight"><span class="n">kp</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.001</span></code>. Once again, reset the robot back to its starting position in Gazebo by using <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-r">R</kbd></span> to reset the simulation.</p>
+<p>The robot should now reach the line much quicker, and follow the line well once it reaches it.</p>
+</li>
+<li>
+<p>Could <code>kp</code> be modified any more to improve the control further? Play around a bit more and see what happens. We'll but this to the test on a more challenging track in the next part of this exercise.</p>
+</li>
+</ol>
+<h5 id="ex4c">Part C: Advanced Line Following<a class="headerlink" href="#ex4c" title="Permanent link">&para;</a></h5>
+<ol>
 <li>
 <p>Now, in <strong>TERMINAL 1</strong> run a new simulation:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following.launch
 </code></pre></div></p>
-<p>Your robot should be launched into an environment with a coloured track painted on the floor:</p>
+<p>Your robot should be launched into an environment with a more interesting line to follow:</p>
 <p><figure markdown>
   <img alt="" src="line_following.png" width="800px" />
 </figure></p>
 </li>
 <li>
-<p>In <strong>TERMINAL 2</strong>, run the <code>line_follower.py</code> node as it is (using <code>rosrun</code>) and see what happens... Not very impressive eh?!  That's where <em>you</em> come in!  There are a few issues with this that you will need to address:</p>
-<ul>
-<li><strong>Image Cropping:</strong> You might want to have a look at the cropping that is currently being performed to hone in on a particular region of the robot's viewpoint... does this look optimal?  Could it be improved?</li>
-<li><strong>HSV Thresholds:</strong> Do these look appropriate for detecting the colour of the line? Determine some appropriate HSV thresholds to apply using methods that you have used earlier in this session.</li>
-<li><strong>Velocity Limiting:</strong> The Node uses a proportional controller. Essentially, we specify a proportional gain (<code>kp</code>), and multiply this gain by a position error to obtain an angular velocity.  What happens if this calculation outputs an angular velocity that is excessive, or is larger than <a href="../../../about/robots/#tb3">the maximum angular velocity that our robot can achieve</a>?  Consider, therefore, doing some error checking on the <code>ang_vel</code> calculation output to ensure that any angular velocity commands are kept within some sensible limits before being published to the <code>/cmd_vel</code> topic.</li>
-<li><strong>Tuning the Gain:</strong> PID gains need to be <em>tuned</em> in order to be appropriate for a particular system.  Make adjustments to the proportional gain parameter (<code>kp</code>) until a sensible response is achieved, and the robot follows the line effectively.</li>
+<p>In <strong>TERMINAL 2</strong>, run your <code>line_follower.py</code> node and see how it performs. Does your proportional gain need to be adjusted further to optimise the performance?</p>
+</li>
 <li>
-<p><strong>Conditions where the Line Can't be Seen:</strong> The angular velocity is determined by considering the <code>y</code> coordinate of a colour blob centroid.  What happens in situations where the blob of colour can't be seen in the robot's field of vision though?  What influence would this have on the velocity commands that are published to the <code>/cmd_vel</code> topic? Consider a situation where the robot can't see the line to begin with... Try launching the robot in the arena in a different location instead, and think about how you might approach this situation:</p>
+<p>Next, think about conditions where the line can't initially be seen...</p>
+<p>As you know, the angular velocity is determined by considering the <code>cy</code> component of a colour blob representing the line. What happens in situations where the blob of colour isn't there though?  What influence would this have on the Control Signals that are calculated by the proportional controller? To consider this further, try launching the robot in the same arena but in a different location instead, and think about how you might approach this situation:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following.launch<span class="w"> </span>x_pos:<span class="o">=</span><span class="m">3</span><span class="w"> </span>y_pos:<span class="o">=</span>-3<span class="w"> </span>yaw:<span class="o">=</span><span class="m">0</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following.launch<span class="w"> </span>x_pos:<span class="o">=</span><span class="m">3</span><span class="w"> </span>y_pos:<span class="o">=</span>-3<span class="w"> </span>yaw:<span class="o">=</span><span class="m">0</span>
 </code></pre></div></p>
 <hr />
 </li>
 <li>
-<p><strong>Stopping:</strong> Finally, what happens when the robot reaches the finish line?  How could you add additional functionality to ensure that the robot stops when it reaches this point?  What features of the arena could you use to trigger this?</p>
-</li>
-</ul>
+<p>Finally, what happens when the robot reaches the finish line? How could you add additional functionality to ensure that the robot stops when it reaches this point? What features of the arena could you use to trigger this?</p>
 </li>
 </ol>
 <h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
 <p>In this session you have learnt how to use data from a robot's camera to extract further information about its environment.  The camera allows our robot to "see" and the information that we obtain from this device can allow us to develop more advanced robotic behaviours such as searching for objects, follow things or - conversely - moving away or avoiding them.  You have learnt how to do some basic tasks with OpenCV, but this is a huge and very capable library of computer vision tools, and we encourage you to explore this further yourselves to enhance some of the basic principles that we have shown you today.</p>
 <h3 id="backup">Saving your work<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>Remember, the work you have done in the WSL-ROS environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 <p>This will export your home directory to your University U: Drive, allowing you to restore it again later.</p>
 <div class="footnote">
@@ -3008,7 +3275,7 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-30T18:04:38+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-05T16:30:42+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-05</span>
   </span>
 
     
