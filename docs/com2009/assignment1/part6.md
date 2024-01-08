@@ -555,7 +555,7 @@ The next task then is to adapt our `line_follower.py` node to implement this con
     !!! warning "Fill in the Blank!"
         What is the **Reference Input** to the control system (`reference_input`)? Refer to [this figure from earlier](#pid_terms). 
 
-    Here we have implemented our "P" Controller. The **Control Signal** that is being calculated here is the angular velocity that will be applied to our robot (the code won't make the root move just yet, but we'll get to that bit shortly!) The **Controlled Output** will therefore be the angular position (i.e. the **yaw**) of the robot.  
+    Here we have implemented our "P" Controller. The **Control Signal** that is being calculated here is the angular velocity that will be applied to our robot (the code won't make the robot move just yet, but we'll get to that bit shortly!) The **Controlled Output** will therefore be the angular position (i.e. the **yaw**) of the robot.  
 
 1. Run the code as it is, and consider the following:
 
