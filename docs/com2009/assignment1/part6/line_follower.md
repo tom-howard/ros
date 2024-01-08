@@ -22,7 +22,11 @@ Use this code as a starting point for Part A of the Line Following exercise.
     cv2.imshow("cropped_image", cropped_img)
     ``` 
 
-1. **Colour Detection**
+    <figure markdown>
+      ![](line_follower_partA_todo1.png)
+    </figure>
+
+2. **Colour Detection**
 
     Filter the cropped image by selecting appropriate HSV values so that the pink line can be isolated from the rest of the image.
     
@@ -50,7 +54,11 @@ Use this code as a starting point for Part A of the Line Following exercise.
     )
     ``` 
 
-1. **Locating the line**
+    <figure markdown>
+      ![](line_follower_partA_todo2.jpg)
+    </figure>
+
+3. **Locating the line**
 
     Finally, find the horizontal position of the line in the robot's viewpoint.
     
@@ -62,13 +70,21 @@ Use this code as a starting point for Part A of the Line Following exercise.
 
     Ultimately, this will provide us with the feedback signal that we can use for a **proportional controller** that we will implement in the next part of the exercise.
 
-    Once you've obtained the image moments (and `cy`), use `cv2.circle()` to mark the centroid of the line on the filtered image (`line_isolated`) with a circle.
+    Once you've obtained the image moments (and `cy`), use `cv2.circle()` to mark the centroid of the line on the filtered image (`line_isolated`) with a circle. For this, you'll also need to calculate the $c_{z}$ component of the centroid:
+
+    $$
+    c_{z}=\dfrac{M_{01}}{M_{00}}
+    $$
 
     Remember that once you've done all this you can display the filtered image of the isolated line (with the circle to denote the centroid location) using `cv2.imshow()` again:
     
     ```python
     cv2.imshow("filtered line", line_isolated)
     ```
+
+    <figure markdown>
+      ![](line_follower_partA_todo3.jpg)
+    </figure>
 
 <p align="center">
   <a href="../../part6#ex4a_ret">&#8592; Back to Part 6 - Exercise 4 (Part A)</a>

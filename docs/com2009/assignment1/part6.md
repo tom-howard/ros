@@ -442,7 +442,7 @@ Inside the `tuos_examples` package there is a node that has been developed to il
 
 ### PID Control and Line Following {#pid}
 
-One useful task for a robot to be able to achieve is to follow a line on the floor. We can achieve this on our TurtleBot3 using its camera system, and the image processing techniques that have been covered so far in this session.
+Line following is a handy skill for a robot to have! We can achieve this on our TurtleBot3 using its camera system and the image processing techniques that have been covered so far in this session.
 
 COM2009 Lecture 6 introduces a well established algorithm for closed-loop control known as **PID Control**, and this can be used to achieve such line following behaviour.
 
@@ -460,7 +460,7 @@ At the heart of this is the principle of *Negative-Feedback* control, which cons
 
 The **Reference Input** represents a desired state that we would like our system to maintain. If we want our TurtleBot3 to successfully follow a coloured line on the floor, we will need it to keep the colour blob that represents that coloured line in the centre of its view point at all times. The *desired state* would therefore be to maintain the `cy` centroid of the colour blob in the centre of its vision.
 
-A **Feedback Signal** informs us of what the current state of the system actually is. In our case, this feedback signal would be the real-time location of the coloured line in the live camera images, i.e. its `cy` centroid (obtained using processing methods covered in Exercise 3 above). 
+A **Feedback Signal** informs us of what the current state of the system actually is. In our case, this feedback signal would be the real-time location of the coloured line in the live camera images, i.e. its `cy` centroid (obtained using processing methods such as those covered in Exercise 3 above). 
 
 The difference between these two things is the **Error**, and the PID control algorithm provides us with a means to control this error and minimise it, so that our robot's *actual* state matches the *desired* state. i.e.: the coloured line is always in the centre of its viewpoint.
 
@@ -478,7 +478,7 @@ $$
 u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{de}{dt}
 $$
 
-Where $u(t)$ is the **Controlled Output**, $e(t)$ is the **Error** (as illustrated in the figure above) and $K_{P}$, $K_{I}$ and $K_{D}$ are Proportional, Integral and Differential **Gains** respectively. These three gains are constants that must be established for any given system through a process called *tuning*. This tuning process is also covered in COM2009 Lecture 6, but you will also explore this in the practical exercise that follows.
+Where $u(t)$ is the **Controlled Output**, $e(t)$ is the **Error** (as illustrated in the figure above) and $K_{P}$, $K_{I}$ and $K_{D}$ are Proportional, Integral and Differential **Gains** respectively. These three gains are constants that must be established for any given system through a process called *tuning*. This tuning process is discussed in COM2009 Lecture 6, but you will also explore this in the practical exercise that follows.
 
 #### :material-pen: Exercise 4: Line Following {#ex4}
 
@@ -514,7 +514,13 @@ Where $u(t)$ is the **Controlled Output**, $e(t)$ is the **Error** (as illustrat
 
     <a name="ex4a_ret"></a>
 
-1. Start with [the code template provided here](line_follower_setup). This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in [Exercise 2](#ex2), so go back here if you need a reminder on how any of this works. 
+1. Start with [the code template provided here](line_follower). This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in [Exercise 2](#ex2), so go back here if you need a reminder on how any of this works. 
+
+    Your aim here is to get the code to generate a cropped image, with the coloured line isolated and located within it, like this:
+
+    <figure markdown>
+      ![](part6/line_follower_setup_complete.jpg)
+    </figure> 
 
 ##### Part B: Implementing and Tuning a Proportional Controller {#ex4b}
 
@@ -614,17 +620,17 @@ The next task then is to adapt our `line_follower.py` node to implement this con
       ![](part6/kp.png){width=600}
       <figcaption>
         Courtesy of <a href="https://www.sheffield.ac.uk/dcs/people/academic/roger-k-moore">Prof. Roger Moore</a><br />
-        COM2009 Lecture 6: PID Control
+        Taken from COM2009 Lecture 6: PID Control
       </figcaption>
     </figure>
 
     Run the code and see what happens. You should find that the robot behaves quite erratically, indicating that `kp` (at an absolute value of 0.01) is probably too large.
 
-1. Try modifying `kp` by a factor of 0.01: `#!python kp = -0.0001`. Before you run the code again, you can reset the Gazebo simulation by pressing ++ctrl+shift+r++ so that the robot returns to the starting position.
+1. Try reducing `kp` by a factor of 100: `#!python kp = -0.0001`. Before you run the code again, you can reset the Gazebo simulation by pressing ++ctrl+shift+r++ so that the robot returns to the starting position.
 
     You should find that the robot now gradually approaches the line, but it can take a while for it to do so.
 
-1. Next modify `kp` again by a factor of 10: `#!python kp = -0.001`. Once again, reset the robot back to its starting position in Gazebo by using ++ctrl+shift+r++ to reset the simulation.
+1. Next, increase `kp` by a factor of 10: `#!python kp = -0.001`. Once again, reset the robot back to its starting position in Gazebo by using ++ctrl+shift+r++ to reset the simulation.
 
     The robot should now reach the line much quicker, and follow the line well once it reaches it.
 
