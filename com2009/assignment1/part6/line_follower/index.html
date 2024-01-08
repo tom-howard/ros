@@ -2200,6 +2200,9 @@
 <p>Call your new cropped image something like <code>cropped_img</code>. You could then use the <code>cv2.imshow()</code> method to display this in an additional pop-up window when the node is run: </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;cropped_image&quot;</span><span class="p">,</span> <span class="n">cropped_img</span><span class="p">)</span>
 </code></pre></div>
+<p><figure markdown>
+  <img alt="" src="../line_follower_partA_todo1.png" />
+</figure></p>
 </li>
 <li>
 <p><strong>Colour Detection</strong></p>
@@ -2218,6 +2221,9 @@
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">cropped_img</span><span class="p">,</span> <span class="n">cropped_img</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">line_mask</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span>
 </code></pre></div>
+<p><figure markdown>
+  <img alt="" src="../line_follower_partA_todo2.jpg" />
+</figure></p>
 </li>
 <li>
 <p><strong>Locating the line</strong></p>
@@ -2227,10 +2233,16 @@
 c_{y}=\dfrac{M_{10}}{M_{00}}
 \]</div>
 <p>Ultimately, this will provide us with the feedback signal that we can use for a <strong>proportional controller</strong> that we will implement in the next part of the exercise.</p>
-<p>Once you've obtained the image moments (and <code>cy</code>), use <code>cv2.circle()</code> to mark the centroid of the line on the filtered image (<code>line_isolated</code>) with a circle.</p>
+<p>Once you've obtained the image moments (and <code>cy</code>), use <code>cv2.circle()</code> to mark the centroid of the line on the filtered image (<code>line_isolated</code>) with a circle. For this, you'll also need to calculate the <span class="arithmatex">\(c_{z}\)</span> component of the centroid:</p>
+<div class="arithmatex">\[
+c_{z}=\dfrac{M_{01}}{M_{00}}
+\]</div>
 <p>Remember that once you've done all this you can display the filtered image of the isolated line (with the circle to denote the centroid location) using <code>cv2.imshow()</code> again:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;filtered line&quot;</span><span class="p">,</span> <span class="n">line_isolated</span><span class="p">)</span>
 </code></pre></div>
+<p><figure markdown>
+  <img alt="" src="../line_follower_partA_todo3.jpg" />
+</figure></p>
 </li>
 </ol>
 <p align="center">
@@ -2258,7 +2270,7 @@ c_{y}=\dfrac{M_{10}}{M_{00}}
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-05T16:30:42+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-08T13:00:25+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-08</span>
   </span>
 
     
