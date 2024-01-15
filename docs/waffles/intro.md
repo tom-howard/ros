@@ -24,7 +24,7 @@ The robots will be provided to you with a battery already installed and ready to
 
 ## The Robotics Laptops {#laptops}
 
-You'll be provided with one of our pre-configured *Robotics Laptops* in the lab when working with the real Waffles. Much like [the WSL-ROS environment](../../wsl-ros), these Laptops (and the Robots) run **Ubuntu 20.04** with **ROS Noetic**. 
+You'll be provided with one of our pre-configured *Robotics Laptops* in the lab when working with the real Waffles. These Laptops (and the Robots) run **Ubuntu 20.04** with **ROS Noetic**. 
 
 On the laptops there is a "student" user account that you'll use when working in the lab. The laptop should log you into this user account automatically on startup, but we'll provide you with the account password as well, during the lab sessions, should you need it.
 
@@ -33,14 +33,14 @@ On the laptops there is a "student" user account that you'll use when working in
 The Robots and Laptops connect to a dedicated wireless network running in the Diamond called *'DIA-LAB'*. There are a few things that you need to know about this:
 
 * Laptops must be connected to the DIA-LAB network in order to establish a ROS network between them and the robots.
-* Laptops *do not have internet access* when connected to DIA-LAB.
-* You'll need to connect the laptop to *eduroam* (or use another computer) to access any external resources (such as the instructions on this Course Site).
+* Laptops **do not have internet access** when connected to DIA-LAB.
+* You'll need to connect the laptop to *eduroam* (or use another computer) to access any external resources (such as the instructions on this site).
 
 Credentials for DIA-LAB and eduroam have already been set on the laptops, allowing you to connect to either network straight away, but speak to a member of the teaching team if you are having any issues.
 
 ### IDE: VS Code
 
-*Visual Studio Code* is installed on the laptops for you to use working on your real-robot ROS applications. Launch VS Code from any terminal by simply typing `code`, or you could also launch it by clicking the icon in the favourites bar on the left-hand side of the screen:
+*Visual Studio Code* is installed on the laptops for you to use when working on your ROS applications for the assignment tasks. Launch VS Code from any terminal by simply typing `code`. You can also launch it by clicking the icon in the favourites bar on the left-hand side of the screen:
 
 <figure markdown>
   ![](../images/vscode/icon.png)

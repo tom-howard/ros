@@ -3,6 +3,6 @@ nav:
   - "Introduction": intro.md
   - "Launching ROS": launching-ros.md
   - "ROS & Waffle Basics": exercises.md
-  - "Safe Shutdown": shutdown.md
+  - "Shutdown Procedures": shutdown.md
   - "Tips & Tricks": tips.md
   - "Fact-Finding Missions!": fact-finding.md
