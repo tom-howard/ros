@@ -64,7 +64,7 @@ By the end of this session you will be able to:
       ![](../../images/wsl/wt_new_tab.svg)
     </figure>
 
-    (or, alternatively, press the `Ctrl+Shift+T` keyboard shortcut).
+    (or, alternatively, press the ++ctrl+shift+t++ keyboard shortcut).
     
 1. In the new terminal instance enter the following command:<a name="teleop"></a>
 
