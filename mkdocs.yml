@@ -55,9 +55,9 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
-      enabled: true
+      enabled: !ENV [CI, false]
   - privacy:
-      enabled: true
+      enabled: !ENV [CI, false]
 
 markdown_extensions:
   - admonition
