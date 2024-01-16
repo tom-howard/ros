@@ -6,7 +6,7 @@ title: "ROS & Waffle Basics"
 
 Having completed the steps on [the previous page](../launching-ros), your robot and laptop should now be paired, and ROS should be up and running. The next thing to do is bring the robot to life! 
 
-On this page you'll work through a series of exercises with the TurtleBot3 (aka, the Waffle) **in your teams**, exploring how the robot works whilst also getting an initial insight into how ROS works too. A number of the exercises here are similar to those that you'll do (or perhaps have *already* done) individually in simulation in [Assignment #1](../../com2009/assignment1/). As you'll soon see, whether you're working with a real robot or a simulation, a lot of the principles are the same for both. 
+On this page you'll work through a series of exercises with the TurtleBot3 (aka, the Waffle) **in your teams**, exploring how the robot works whilst also getting an initial insight into how ROS works too. A number of the exercises here are similar to those that you'll do (or perhaps have *already* done) individually in simulation for [Assignment #1](../../com2009/assignment1/). As you'll soon see, whether you're working with a real robot or a simulation, a lot of the principles are the same for both. 
 
 ### Quick Links
 
@@ -84,8 +84,9 @@ Here, **Part [1]** is the same as the `roslaunch` command, but **Part [2]** is s
 
 The key difference between `roslaunch` and `rosrun` then is that with `roslaunch` we can execute **1 or more** nodes at the same time via *launch files*. Another handy feature of `roslaunch` is that it will automatically launch the **ROS Master** if it isn't already running. As illustrated by the "Context" column in the table above, we ran our `roslaunch` command on the robot, which means that all the specified nodes (defined in the `ros.launch` file[^tuos_ros_launch]) *and* the ROS Master were executed **on the robot**.
 
-[^tuos_ros_launch]: Source code available here (if you're interested): https://github.com/tom-howard/tuos_ros/blob/main/tuos_tb3_tools/launch/ros.launch
+[^tuos_ros_launch]: [Source code available here](https://github.com/tom-howard/tuos_ros/blob/main/tuos_tb3_tools/launch/ros.launch) (if you're interested) 
 
+<a name="ros_master"></a>
 
 !!! info "The ROS Master"
     The ROS Master is a wireless communication network that is established between the robot and laptop (and indeed any other device that we might want to add). The benefit of this then is that it allowed us to run our `rosrun` command on the laptop, and this was able to invoke changes to the robot (i.e. making it move around) via this wireless ROS communication network.
@@ -155,7 +156,7 @@ You'll use SSH keys to download your team's ROS package onto the laptop now. You
         1. To copy text from inside a terminal window use ++ctrl+shift+c++
         2. You could also open the file in VS Code and copy it from there:
 
-            ```bas { .bash .no-copy}h
+            ``` { .bash .no-copy}
             code ~/.ssh/com2009_team999.pub
             ```
 
@@ -637,48 +638,33 @@ Having completed the above exercises your team's ROS package should now contain 
 
 1. Head back to **TERMINAL 3** and make sure that you are located in the root of your team's package:
 
-    ***
-    **TERMINAL 3:**
     ``` { .bash .no-copy }
     roscd com2009_team999/
     ```
-    ***
 
 1. Check the status of your Git repo to identify the changes that have been made:
 
-    ***
-    **TERMINAL 3:**
     ```bash
     git status
     ```
-    ***
 
-1. Stage all the changes that have been made:
+2. Stage all the changes that have been made:
 
-    ***
-    **TERMINAL 3:**
     ```bash
     git add .
     ```
-    ***
 
-1. Then commit them:
+3. Then commit them:
 
-    ***
-    **TERMINAL 3:**
     ```bash
     git commit -m "Getting started in the lab with the Waffles"
     ```
-    ***
 
-1. Finally, push these to GitHub:
+4. Finally, push these to GitHub:
 
-    ***
-    **TERMINAL 3:**
     ```bash
     git push origin main
     ```
-    ***
 
 <center>
   <strong> 

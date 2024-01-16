@@ -4,7 +4,7 @@ title: Tips & Tricks
 
 ## Bash Aliases
 
-*Bash aliases* are abbreviations for long terminal commands. As you'll know, some common ROS commands that we use when working with the robots are pretty long, so we've created a few aliases to make it quicker to launch certain things. Most of these are for commands that you'll run on the laptop, but there are a couple that apply to the robot too. See the table below for the full list of bash aliases that are available to you when working with the robots and the laptops:
+*Bash aliases* are abbreviations for long terminal commands. Some common ROS commands that we use when working with the robots are pretty long, so we've created a few aliases to make it quicker to launch certain things. Most of these are for commands that you'll run on the laptop, but there are a couple that apply to the robot too. See the table below for the full list of bash aliases that are available to you when working with the robots and the laptops:
 
 <center>
 
@@ -23,7 +23,7 @@ title: Tips & Tricks
 
 ## "Simulation Mode" on the Laptops
 
-By default, the laptops are set up to work with the real robots, but it is possible to switch them into *"Simulation Mode"* in order to work with ROS and the Waffle in simulation instead. All the simulations that you've been working with in WSL-ROS are available to launch on the laptops, once you're in simulation mode. 
+By default, the laptops are set up to work with the real robots, but it is possible to switch them into *"Simulation Mode"* in order to work with ROS and the Waffle in simulation instead. All the simulations that you work with in Assignment #1 are available to launch on the laptops, once you're in simulation mode. 
 
 To switch into Simulation Mode, enter the following command:
 

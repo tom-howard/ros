@@ -7,7 +7,9 @@ title: Launching ROS
 The first step is to launch ROS on the Waffle.
 
 !!! info "Important"
-    Launching ROS on the Waffle enables the *ROS Master*. The ROS Master **always** runs on the Waffle. It's therefore important to complete the steps on this page **in full** before you do anything else, otherwise the ROS Master will not be running, the robot's core functionality won't be active, and you won't be able to do anything with it! 
+    Launching ROS on the Waffle enables the *ROS Master*[^rosmaster]. The ROS Master **always** runs on the Waffle. It's therefore important to complete the steps on this page **in full** before you do anything else, otherwise the ROS Master will not be running, the robot's core functionality won't be active, and you won't be able to do anything with it! 
+
+[^rosmaster]: What *is* the ROS Master!? We'll talk about that on the next page ([here](../exercises/#ros_master))
 
 ## Step 1: Identify your Waffle
 
@@ -78,7 +80,7 @@ Launch ROS (and the ROS Master) on the robot by entering the following command:
 roslaunch tuos_tb3_tools ros.launch
 ```
 
-??? tip "Pro Tip"
+??? tip
     To save you typing this command out in full all the time, we've created a handy *bash alias* for it! You can therefore use `tb3_bringup` instead.
 
 After a short while, you should see a message like this:
