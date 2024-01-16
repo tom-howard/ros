@@ -6,9 +6,9 @@ theme:
   custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
-  font: false
-    # text: Source Sans Pro
-    # code: Source Code Pro
+  font: 
+    text: Source Sans Pro
+    code: Source Code Pro
   palette:
     # Palette toggle for light mode
     - scheme: default
@@ -55,6 +55,8 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
+      enabled: true
+  - privacy
       enabled: true
 
 markdown_extensions:
