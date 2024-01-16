@@ -56,7 +56,7 @@ plugins:
       enable_creation_date: true
       type: timeago
       enabled: true
-  - privacy
+  - privacy:
       enabled: true
 
 markdown_extensions:
