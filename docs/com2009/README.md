@@ -1,10 +1,15 @@
-<center>
-
 # COM2009: Robotics
 
-The COM2009 (& COM3009) Robotics lab course is split into two lab assignments. Follow the links below to find out more:
+For the COM2009 Robotics course you must complete two lab assignments:
 
-</center>
+* [**Assignment #1**: "An Introduction to ROS (the Robot Operating System)"](./assignment1).
 
-* [**Lab Assignment #1**: "An Introduction to the Robot Operating System (ROS)"](./assignment1).
-* [**Lab Assignment #2**: "A Team Robotics Challenge"](./la2).
+    *Here you will learn what ROS is and how to use it. You will complete this assignment individually, and in your own time.*
+
+    **Weighting**: 25% of the overall COM2009 module mark.
+
+* [**Assignment #2**: "Team Robotics Project"](./assignment2).
+
+    *Here you will work in teams of 3-4 to complete a series of real-world robotics tasks using our Tutlebot3 Waffle Robots in the Lab (Diamond Computer Room 5).*
+
+    **Weighting**: 30% of the overall COM2009 module mark
