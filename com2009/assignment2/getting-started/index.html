@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://tom-howard.github.io/ros/com2009/la1/week3/move_square/">
+        <link rel="canonical" href="https://tom-howard.github.io/ros/com2009/assignment2/getting-started/">
       
       
-        <link rel="prev" href="../../week1/subscriber/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../week4/move_client/">
+        <link rel="next" href="../../../waffles/">
       
       
-      <link rel="icon" href="../../../../assets/favicon.png">
+      <link rel="icon" href="../../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
     
     
       
-        <title>Week 3 'move_square' Python Template - Robotics in the Diamond: ROS</title>
+        <title>Getting Started in Week 1 - Robotics in the Diamond: ROS</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -45,16 +45,16 @@
         
         
         
-        <link rel="stylesheet" href="../../../../assets/external/fonts.googleapis.com/css.c3479dc1.css">
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.c3479dc1.css">
         <style>:root{--md-text-font:"Source Sans Pro";--md-code-font:"Source Code Pro"}</style>
       
     
     
-      <link rel="stylesheet" href="../../../../css/timeago.css">
+      <link rel="stylesheet" href="../../../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#suggested-approach" class="md-skip">
+        <a href="#set-up-your-teams-ros-package" class="md-skip">
           Skip to content
         </a>
       
@@ -104,9 +104,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+    <a href="../../.." title="Robotics in the Diamond: ROS" class="md-header__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
       
-  <img src="../../../../assets/tuos.png" alt="logo">
+  <img src="../../../assets/tuos.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Week 3 'move_square' Python Template
+              Getting Started in Week 1
             
           </span>
         </div>
@@ -232,7 +232,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../about/" class="md-tabs__link">
+        <a href="../../../about/" class="md-tabs__link">
           
   
     
@@ -252,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../wsl-ros/" class="md-tabs__link">
+        <a href="../../../wsl-ros/" class="md-tabs__link">
           
   
     
@@ -274,7 +274,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -294,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../waffles/" class="md-tabs__link">
+        <a href="../../../waffles/" class="md-tabs__link">
           
   
     
@@ -320,7 +320,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../extras/launch-files/" class="md-tabs__link">
+        <a href="../../../extras/launch-files/" class="md-tabs__link">
           
   
     
@@ -349,7 +349,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../others/amr31001/" class="md-tabs__link">
+        <a href="../../../others/amr31001/" class="md-tabs__link">
           
   
     
@@ -387,9 +387,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
+    <a href="../../.." title="Robotics in the Diamond: ROS" class="md-nav__button md-logo" aria-label="Robotics in the Diamond: ROS" data-md-component="logo">
       
-  <img src="../../../../assets/tuos.png" alt="logo">
+  <img src="../../../assets/tuos.png" alt="logo">
 
     </a>
     Robotics in the Diamond: ROS
@@ -447,7 +447,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../about/" class="md-nav__link ">
+            <a href="../../../about/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -480,7 +480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/robots/" class="md-nav__link">
+      <a href="../../../about/robots/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -501,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/acknowledgements/" class="md-nav__link">
+      <a href="../../../about/acknowledgements/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/license/" class="md-nav__link">
+      <a href="../../../about/license/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -543,7 +543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/changelog/" class="md-nav__link">
+      <a href="../../../about/changelog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -612,7 +612,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../wsl-ros/" class="md-nav__link ">
+            <a href="../../../wsl-ros/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -645,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/first-run/" class="md-nav__link">
+      <a href="../../../wsl-ros/first-run/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -666,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/configure-vscode/" class="md-nav__link">
+      <a href="../../../wsl-ros/configure-vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -687,7 +687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/linux-term/" class="md-nav__link">
+      <a href="../../../wsl-ros/linux-term/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -708,7 +708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/wsl-ros-return/" class="md-nav__link">
+      <a href="../../../wsl-ros/wsl-ros-return/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -729,7 +729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/backup-restore/" class="md-nav__link">
+      <a href="../../../wsl-ros/backup-restore/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -750,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/rdp/" class="md-nav__link">
+      <a href="../../../wsl-ros/rdp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -771,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/wt-settings/" class="md-nav__link">
+      <a href="../../../wsl-ros/wt-settings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -792,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/vscode/" class="md-nav__link">
+      <a href="../../../wsl-ros/vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -813,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../wsl-ros/installing/" class="md-nav__link">
+      <a href="../../../wsl-ros/installing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -872,7 +872,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -937,7 +937,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../assignment1/" class="md-nav__link ">
+            <a href="../../assignment1/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -970,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment1/part1/" class="md-nav__link">
+      <a href="../../assignment1/part1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -991,7 +991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment1/part2/" class="md-nav__link">
+      <a href="../../assignment1/part2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1012,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment1/part3/" class="md-nav__link">
+      <a href="../../assignment1/part3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1033,7 +1033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment1/part4/" class="md-nav__link">
+      <a href="../../assignment1/part4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1054,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment1/part5/" class="md-nav__link">
+      <a href="../../assignment1/part5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1075,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment1/part6/" class="md-nav__link">
+      <a href="../../assignment1/part6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1140,7 +1140,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../la2/" class="md-nav__link ">
+            <a href="../../la2/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1173,7 +1173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/overview/" class="md-nav__link">
+      <a href="../../la2/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1194,7 +1194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/getting-started/" class="md-nav__link">
+      <a href="../../la2/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1215,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task1/" class="md-nav__link">
+      <a href="../../la2/task1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1236,7 +1236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task2/" class="md-nav__link">
+      <a href="../../la2/task2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1257,7 +1257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task3/" class="md-nav__link">
+      <a href="../../la2/task3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1278,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task4/" class="md-nav__link">
+      <a href="../../la2/task4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1299,7 +1299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/task5/" class="md-nav__link">
+      <a href="../../la2/task5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1344,7 +1344,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../la2/extras/" class="md-nav__link ">
+            <a href="../../la2/extras/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1377,7 +1377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/extras/laptops/" class="md-nav__link">
+      <a href="../../la2/extras/laptops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1398,7 +1398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../la2/extras/submission/" class="md-nav__link">
+      <a href="../../la2/extras/submission/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1432,6 +1432,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1447,17 +1449,17 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../assignment2/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1474,7 +1476,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             Assignment #2: Team Robotics Project
@@ -1487,10 +1489,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../assignment2/getting-started/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Getting Started in Week 1
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1499,6 +1519,75 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#set-up-your-teams-ros-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Up Your Team's ROS Package
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set Up Your Team's ROS Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Git
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-pkg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Your Team's Assignment #2 ROS package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Push Your Package to GitHub
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-to-know-the-real-robots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting to Know the Real Robots
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1561,7 +1650,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../waffles/" class="md-nav__link ">
+            <a href="../../../waffles/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1594,7 +1683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/intro/" class="md-nav__link">
+      <a href="../../../waffles/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1615,7 +1704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/launching-ros/" class="md-nav__link">
+      <a href="../../../waffles/launching-ros/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1636,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/exercises/" class="md-nav__link">
+      <a href="../../../waffles/exercises/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1657,7 +1746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/shutdown/" class="md-nav__link">
+      <a href="../../../waffles/shutdown/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1678,7 +1767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/tips/" class="md-nav__link">
+      <a href="../../../waffles/tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1699,7 +1788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/fact-finding/" class="md-nav__link">
+      <a href="../../../waffles/fact-finding/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1805,7 +1894,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../extras/launch-files/" class="md-nav__link ">
+            <a href="../../../extras/launch-files/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1838,7 +1927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/launching-launch-files/" class="md-nav__link">
+      <a href="../../../extras/launch-files/launching-launch-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1859,7 +1948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/roslaunch-clas/" class="md-nav__link">
+      <a href="../../../extras/launch-files/roslaunch-clas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1880,7 +1969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/python-clis/" class="md-nav__link">
+      <a href="../../../extras/launch-files/python-clis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1901,7 +1990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/cla-to-node/" class="md-nav__link">
+      <a href="../../../extras/launch-files/cla-to-node/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1922,7 +2011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/launch-files/roslaunch-api/" class="md-nav__link">
+      <a href="../../../extras/launch-files/roslaunch-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1951,7 +2040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../extras/ros-msgs/" class="md-nav__link">
+      <a href="../../../extras/ros-msgs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2070,7 +2159,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../others/amr31001/" class="md-nav__link ">
+            <a href="../../../others/amr31001/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2103,7 +2192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../others/amr31001/lab1/" class="md-nav__link">
+      <a href="../../../others/amr31001/lab1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2124,7 +2213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../others/amr31001/lab2/" class="md-nav__link">
+      <a href="../../../others/amr31001/lab2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2199,18 +2288,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#suggested-approach" class="md-nav__link">
+  <a href="#set-up-your-teams-ros-package" class="md-nav__link">
     <span class="md-ellipsis">
-      Suggested Approach
+      Set Up Your Team's ROS Package
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Set Up Your Team's ROS Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Git
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#create-pkg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Your Team's Assignment #2 ROS package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Push Your Package to GitHub
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#alternative-approach-waypoint-tracking" class="md-nav__link">
+  <a href="#getting-to-know-the-real-robots" class="md-nav__link">
     <span class="md-ellipsis">
-      Alternative Approach: Waypoint Tracking
+      Getting to Know the Real Robots
     </span>
   </a>
   
@@ -2231,7 +2353,7 @@
                   
 
   
-    <a href="https://github.com/tom-howard/ros/edit/main/docs/com2009/la1/week3/move_square.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/ros/edit/main/docs/com2009/assignment2/getting-started.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -2240,143 +2362,198 @@
     
       
     
-    <a href="https://github.com/tom-howard/ros/raw/main/docs/com2009/la1/week3/move_square.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/ros/raw/main/docs/com2009/assignment2/getting-started.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>Week 3 'move_square' Python Template</h1>
+  <h1>Getting Started in Week 1</h1>
 
-<p><strong>A combined publisher-subscriber node to achieve odometry-based control...</strong></p>
-<p>Below you will find a template Python script to show you how you can both publish to <code>/cmd_vel</code> and subscribe to <code>/odom</code> in the same node.  This will help you build a <em>closed-loop</em> controller to make your robot follow a <strong>square motion path</strong> of size: <strong>1m x 1m</strong>. </p>
-<p>You can publish velocity commands to <code>/cmd_vel</code> to make the robot move, monitor the robot's <em>position</em> and <em>orientation</em> in real-time, determine when the desired movement has been completed, and then update the velocity commands accordingly.  </p>
-<h2 id="suggested-approach">Suggested Approach<a class="headerlink" href="#suggested-approach" title="Permanent link">&para;</a></h2>
-<p>Moving in a square can be achieved by switching between two different movement states sequentially: <em>Moving forwards</em> and <em>turning</em> on the spot. At the start of each movement step we can read the robot's current odometry, and then use this as a reference to compare to, and to tell us when the robot's position/orientation has changed by the required amount, e.g.:</p>
+<p>Before you get started on Assignment #2 (as detailed in the pages that follow), you should work through the following tasks in your teams during the first lab in Week 1. </p>
+<h2 id="set-up-your-teams-ros-package">Set Up Your Team's ROS Package<a class="headerlink" href="#set-up-your-teams-ros-package" title="Permanent link">&para;</a></h2>
+<p>As discussed on <a href="../#assessment">the Assignment #2 Overview</a>, everything that your team submit for this lab assignment must be contained within a single ROS package. Inside this you will develop all the necessary nodes to make a TurtleBot3 Waffle (real or simulated) complete each of the assignment tasks. Each task will be assessed by the Teaching Team via <em>launch files</em> that you must also provide within your package. You'll therefore need to create one launch file per task (we'll talk more about this later).</p>
+<p>The first step however is to create your team's ROS Package.</p>
+<p>Only one member of your team needs to actually do this bit, and it's best to do this from within your own ROS installation (or WSL-ROS), rather than on the robotics laptop that you will use to work with the real robots in the lab. Select a team member who has access to their own ROS installation in the lab now (i.e. via a personal laptop), or access WSL-ROS using one of the "WSL-ROS laptops" that are also available in the lab.</p>
+<p>Follow the steps below to create your team's ROS package, initialise it as a Git repo, and push it to GitHub to allow for sharing and collaboration amongst your team<sup id="fnref:github-pro"><a class="footnote-ref" href="#fn:github-pro">1</a></sup>. You should then be able to transfer your package to one of the robotics laptops easily in the lab when required (we'll provide further details on how to do this later).</p>
+<h3 id="git">Configure Git<a class="headerlink" href="#git" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only do this bit on your own personal ROS installations (or in WSL-ROS), <strong>NOT</strong> on one of the robotics laptops!</p>
+</div>
+<p>If you haven't done so already, you'll need to make sure Git is configured properly in your local ROS installation before you do anything else.</p>
 <ol>
-<li>With the robot stationary, <strong>read the odometry</strong> to determine its current X and Y position in the environment.</li>
-<li><strong>Move forwards</strong> until the robot's X and Y position indicate that it has moved linearly by 0.5m.</li>
-<li><strong>Stop</strong> moving forwards.</li>
-<li><strong>Read the robot's odometry</strong> to determine its current orientation ("yaw"/<code>&theta;<sub>z</sub></code>).</li>
-<li><strong>Turn on the spot</strong> until the robot's orientation changes by 90&deg;.</li>
-<li><strong>Stop</strong> turning.</li>
-<li>Repeat.  </li>
-</ol>
-<div class="highlight"><span class="filename">move_square.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">rospy</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># import the Twist message for publishing velocity commands:</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># import the Odometry message for subscribing to the odom topic:</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># import the function to convert orientation from quaternions to angles:</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="kn">from</span> <span class="nn">tf.transformations</span> <span class="kn">import</span> <span class="n">euler_from_quaternion</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># import some useful mathematical operations (and pi), which you may find useful:</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">pi</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">class</span> <span class="nc">Square</span><span class="p">():</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="k">def</span> <span class="nf">callback_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_data</span><span class="p">:</span> <span class="n">Odometry</span><span class="p">):</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="c1"># obtain relevant topic data: pose (position and orientation):</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="n">pose</span> <span class="o">=</span> <span class="n">topic_data</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="n">position</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="n">orientation</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">orientation</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="c1"># obtain the robot&#39;s position co-ords:</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="n">pos_x</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">x</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="n">pos_y</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">y</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="c1"># convert orientation co-ords to roll, pitch &amp; yaw </span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="c1"># (theta_x, theta_y, theta_z):</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="p">(</span><span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="p">)</span> <span class="o">=</span> <span class="n">euler_from_quaternion</span><span class="p">(</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>            <span class="p">[</span><span class="n">orientation</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">orientation</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">orientation</span><span class="o">.</span><span class="n">z</span><span class="p">,</span> <span class="n">orientation</span><span class="o">.</span><span class="n">w</span><span class="p">],</span> <span class="s2">&quot;sxyz&quot;</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="p">)</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        <span class="c1"># We&#39;re only interested in x, y and theta_z</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        <span class="c1"># so assign these to class variables (so that we can</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        <span class="c1"># access them elsewhere within our Square() class):</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pos_x</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pos_y</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">theta_z</span> <span class="o">=</span> <span class="n">yaw</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="c1"># If this is the first time that the callback_function has run</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="c1"># (e.g. the first time a message has been received), then</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="c1"># obtain a &quot;reference position&quot; (used to determine how far</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="c1"># the robot has moved during its current operation)</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">startup</span><span class="p">:</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>            <span class="c1"># don&#39;t initialise again:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">startup</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>            <span class="c1"># set the reference position:</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">y0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">theta_z0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta_z</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>        <span class="n">node_name</span> <span class="o">=</span> <span class="s2">&quot;move_square&quot;</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>        <span class="c1"># a flag if this node has just been launched</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">startup</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>        <span class="c1"># This might be useful in the main_loop() (to switch between </span>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>        <span class="c1"># turning and moving forwards)</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">turn</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>        <span class="c1"># setup a &#39;/cmd_vel&#39; publisher and an &#39;/odom&#39; subscriber:</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;cmd_vel&quot;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;odom&quot;</span><span class="p">,</span> <span class="n">Odometry</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback_function</span><span class="p">)</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>        <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="n">node_name</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># hz</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>        <span class="c1"># define the robot pose variables and initialise them to zero:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>        <span class="c1"># variables for the robot&#39;s &quot;current position&quot;:</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">theta_z</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>        <span class="c1"># variables for a &quot;reference position&quot;:</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">y0</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">theta_z0</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>        <span class="c1"># define a Twist message instance, to set robot velocities</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">vel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ctrl_c</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>        <span class="n">rospy</span><span class="o">.</span><span class="n">on_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shutdownhook</span><span class="p">)</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>        <span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the </span><span class="si">{</span><span class="n">node_name</span><span class="si">}</span><span class="s2"> node has been initialised...&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>
-<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>    <span class="k">def</span> <span class="nf">shutdownhook</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>        <span class="c1"># publish an empty twist message to stop the robot</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>        <span class="c1"># (by default all velocities will be zero):</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Twist</span><span class="p">())</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ctrl_c</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>
-<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">ctrl_c</span><span class="p">:</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>            <span class="c1"># here is where your code would go to control the motion of your</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>            <span class="c1"># robot. Add code here to make your robot move in a square of</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>            <span class="c1"># dimensions 1 x 1m...</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>
-<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>            <span class="c1"># publish whatever velocity command has been set in your code above:</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="p">)</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>            <span class="c1"># maintain the loop rate @ 10 hz</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
-<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>
-<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>    <span class="n">node</span> <span class="o">=</span> <span class="n">Square</span><span class="p">()</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>        <span class="n">node</span><span class="o">.</span><span class="n">main_loop</span><span class="p">()</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>        <span class="k">pass</span>
+<li>
+<p>From a terminal instance located in your home directory (<code>cd ~</code>) run the following commands to update your personal details in the global Git config file on your machine:</p>
+<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;{your name}&quot;</span>
 </code></pre></div>
-<h2 id="alternative-approach-waypoint-tracking">Alternative Approach: Waypoint Tracking<a class="headerlink" href="#alternative-approach-waypoint-tracking" title="Permanent link">&para;</a></h2>
-<p>A square motion path can be fully defined by the co-ordinates of its four corners, and we can make the robot move to each of these corners one-by-one, using its odometry system to monitor its real-time position, and adapting linear and angular velocities accordingly.</p>
-<p>This is slightly more complicated, and you might want to wait until you have a bit more experience with ROS before tackling it this way (we'll also cover this in the COM2009 lecture course).</p>
-<p align="center">
-  <a href="../../week3#ex1_ret">&#8592; Back to Week 3 - Exercise 1</a>
-</p>
+...replacing <code>{your name}</code> with your actual name! E.g.: <code class="highlight">git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;John Smith&quot;</span></code></p>
+<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;{your email address}&quot;</span>
+</code></pre></div>
+...replacing <code>{your email address}</code> with your actual email address!</p>
+</li>
+<li>
+<p>If you're working in WSL-ROS on a University machine, don't forget to run <code>wsl_ros backup</code> to save these changes to your external WSL-ROS backup file, so that they will always be restored whenever you run <code>wsl_ros restore</code> in a fresh WSL-ROS instance on another machine. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>All team members will actually need to do this bit before interacting with Git!</strong></p>
+<p>Regardless of which team member is setting up your team's ROS package to begin with, you'll <strong>all</strong> need to interact with Git for this assignment, and you should therefore <em>each</em> set up your own individual Git configurations (via the steps above) before working individually on your team's ROS package.</p>
+</div>
+</li>
+</ol>
+<h3 id="create-pkg">Create Your Team's Assignment #2 ROS package<a class="headerlink" href="#create-pkg" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Remember</p>
+<p>Only one team member needs to do this next bit! But you'll then need to share it with the rest of your team members via an online code repository (e.g. GitHub), by making the rest of your team members collaborators.</p>
+</div>
+<ol>
+<li>
+<p>In your local ROS installation, navigate to the <code>catkin_ws/src</code> directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src/
+</code></pre></div>
+</li>
+<li>
+<p>Use the <code>catkin_create_pkg</code> tool to create a new ROS package (as covered in Assignment #1):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>catkin_create_pkg<span class="w"> </span>com2009_team<span class="o">{}</span><span class="w"> </span>rospy
+</code></pre></div>
+<p>...replacing the <code>{}</code> with <em>your</em> team number!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It's really important that you follow the naming conventions that we specify when defining your package (and creating your launch files). If you don't then you could receive <strong>no marks</strong>!</p>
+</div>
+</li>
+<li>
+<p>Run <code>catkin build</code> and then re-source your environment:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>com2009_team<span class="o">{}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div></p>
+<details class="tip">
+<summary>WSL-ROS Tip</summary>
+<p>Use the <code>src</code> alias for this command!</p>
+</details>
+</li>
+<li>
+<p>Then navigate into the package directory that should have just been created:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>com2009_team<span class="o">{}</span>/
+</code></pre></div>
+</li>
+<li>
+<p>This should already contain a <code>src</code> folder for you to populate with all your Python ROS nodes. Create a <code>launch</code> folder in here too, which you will use to store all your launch files:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mkdir<span class="w"> </span>launch
+</code></pre></div>
+</li>
+<li>
+<p>Create a placeholder file in the <code>src</code> and <code>launch</code> directories, just to make sure that these folders both get pushed to GitHub when we get to that part in the following section:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>touch<span class="w"> </span>src/placeholder<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>touch<span class="w"> </span>launch/placeholder
+</code></pre></div>
+<p>(you can delete these later on, once you start creating your own Nodes and launch files.)</p>
+</li>
+<li>
+<p>Then follow the steps in the next section to import this project to GitHub (other online code repositories should work similarly)...</p>
+</li>
+</ol>
+<h3 id="github">Push Your Package to GitHub<a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Remember</p>
+<p>Only one member of your team needs to do this bit too!</p>
+</div>
+<p>These instructions are taken from <a href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git">this GitHub Docs page</a>. Instructions may vary if you are using other online code repositories (such as GitLab for instance), so check with your target provider.</p>
+<ol>
+<li>
+<p><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository">Create a new (<strong>private</strong>) repository on GitHub.com</a>, but <strong>DON'T</strong> initialise the new repository with a README, license, or gitignore (you can do this later, it'll cause issues if you do it at this stage).</p>
+<p><figure markdown>
+  <img alt="" src="../../../assets/external/docs.github.com/assets/cb-11427/images/help/repository/repo-create.png">
+  <figcaption>From <a href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git">docs.github.com</a></figcaption>
+</figure></p>
+<p>Call this repository <code>com2009_team{}</code> to match the ROS package that you've just created.</p>
+</li>
+<li>
+<p>Head back to your local ROS installation, where you created your ROS package in the previous section. Make sure your terminal is located in the root of your new package directory: </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>roscd<span class="w"> </span>com2009_team<span class="o">{}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Initialise the package as a Git repo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>init<span class="w"> </span>-b<span class="w"> </span>main
+</code></pre></div>
+</li>
+<li>
+<p>Stage all the initial files in your package (including the placeholders) for an initial commit:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Don't forget the <code>.</code> at the end there!</p>
+</div>
+</li>
+<li>
+<p>Then commit them:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;First commit&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Head back to GitHub on the web. At the top of your repository on GitHub.com's Quick Setup page, click the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-7 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M7 7h10V5h2v14H5V5h2v2Z"/></svg></span> button to copy the remote repository URL (HTTPS).</p>
+<p><figure markdown>
+  <img alt="" src="../../../assets/external/docs.github.com/assets/cb-25662/images/help/repository/copy-remote-repository-url-quick-setup.png">
+  <figcaption>From <a href="https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git">docs.github.com</a></figcaption>
+</figure></p>
+</li>
+<li>
+<p>Then, go back to your local terminal and add the URL to the remote repository:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span><span class="o">{</span>REMOTE_URL<span class="o">}</span>
+</code></pre></div>
+<p>Change <code>{REMOTE_URL}</code> to the URL that you copied in the previous step, and <strong>get rid of the curly brackets</strong> (<code>{}</code>)!</p>
+<p>Then verify the new remote URL: 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>remote<span class="w"> </span>-v
+</code></pre></div></p>
+</li>
+<li>
+<p>Finally, push the changes from your package (your "local" repo), to your "remote" repository on GitHub:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
+<p>You'll then be asked to enter your GitHub username, followed by a password. <strong>This password is not your GitHub account password</strong>!  </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Your GitHub account password won't work here!</strong> You'll need to <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic">generate a personal access token (classic)</a> and use this instead!</p>
+</div>
+</li>
+<li>
+<p>Back on GitHub, add your team members to the repo as collaborators. All team members should then be able to pull the remote repo into their own Catkin Workspaces (<code>cd ~/catkin_ws/src/</code> &amp; <code>git clone {REMOTE_URL}</code>), make contributions and push these back to the remote repo as required (using their own GitHub account credentials and personal access tokens).</p>
+</li>
+</ol>
+<p>You'll need to copy your ROS package onto the Robot Laptops when working on the Real-Robot based tasks, which we'll cover in more detail later. </p>
+<h2 id="getting-to-know-the-real-robots">Getting to Know the Real Robots<a class="headerlink" href="#getting-to-know-the-real-robots" title="Permanent link">&para;</a></h2>
+<p>All the Assignment #2 Tasks will be assessed using real robots, and you'll therefore have access to the robots for every lab session so that you can work on these tasks as you wish. All the details on how the robots work, how to get them up and running and start programming them can be found in the "Waffles" section of this course site. You should proceed now as follows (<strong>in your teams</strong>):</p>
+<ol>
+<li>Everyone <strong>must</strong> complete a health and safety quiz (on Blackboard) before you (or your team) work with the real robots for the first time. Head to Blackboard and do this now, if you haven't already.</li>
+<li>Each team has been assigned a specific robot (there's a list on Blackboard). When you're ready, speak to a member of the teaching team who will provide you with the robot that has been assigned to you.</li>
+<li>
+<p>Work through each page of <a href="../../../waffles">the "Waffles" section of this site</a> (<strong>in order</strong>):</p>
+<ol>
+<li>Read about the hardware.</li>
+<li>Learn how to launch ROS and get the robots up and running.</li>
+<li>Have a go at the initial exercises on <a href="../../../waffles/exercises">the Basics of ROS &amp; the Waffles</a>, which will help to get you started and understand how ROS and the robots work.</li>
+<li>Review the <a href="../../../waffles/shutdown">Shutdown Procedures</a> and follow the steps here to shut down the robot and power off the robotics laptop at the end of each lab session.</li>
+<li>
+<p>Finally, there are some <a href="../../../waffles/fact-finding">Fact-Finding Missions</a> which are also really important, but you'll need to have completed certain parts of Assignment #1 before you can complete them all. Either way, have a read through them at this stage and work through the bits that you can (if any).</p>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p>Make sure (as a team) you have completed <strong>ALL</strong> the Fact-Finding Missions <strong>before the end of Week 6</strong>.   </p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:github-pro">
+<p>As a University of Sheffield student, you can apply for the <a href="https://education.github.com/pack">GitHub Student Developer Pack</a>, which gives you access to a range of developer tools including <em>GitHub Pro</em>. GitHub Pro allows you to have unlimited collaborators on your repositories, which might help you to collaborate on your ROS package with your team.&#160;<a class="footnote-backref" href="#fnref:github-pro" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -2399,7 +2576,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-13T10:00:49+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-16T11:51:16+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-16</span>
   </span>
 
     
@@ -2409,7 +2586,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2022-10-21T14:11:53+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2022-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-16T11:51:16+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-16</span>
   </span>
 
     
@@ -2446,7 +2623,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../week1/subscriber/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Week 1 Subscriber Node">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Assignment #2: Team Robotics Project">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -2456,20 +2633,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Week 1 Subscriber Node
+                Assignment #2: Team Robotics Project
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../week4/move_client/" class="md-footer__link md-footer__link--next" aria-label="Next: Week 4 Move Service-Client Python Example">
+          <a href="../../../waffles/" class="md-footer__link md-footer__link--next" aria-label="Next: The Waffles">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Week 4 Move Service-Client Python Example
+                The Waffles
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2582,20 +2759,20 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
       
-        <script src="../../../../js/timeago.min.js"></script>
+        <script src="../../../js/timeago.min.js"></script>
       
-        <script src="../../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
       
-        <script src="../../../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
-        <script src="../../../../assets/external/polyfill.io/v3/polyfill.min.7596a0b8.js"></script>
+        <script src="../../../assets/external/polyfill.io/v3/polyfill.min.7596a0b8.js"></script>
       
-        <script src="../../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

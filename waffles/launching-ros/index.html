@@ -851,6 +851,8 @@
       
         
       
+        
+      
     
     
     
@@ -1140,7 +1142,7 @@
               
   
   <span class="md-ellipsis">
-    Lab Assignment #2
+    Lab Assignment #2 (2022-23)
   </span>
   
 
@@ -1156,7 +1158,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
-            Lab Assignment #2
+            Lab Assignment #2 (2022-23)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1411,6 +1413,90 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../com2009/assignment2/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Assignment #2: Team Robotics Project
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment #2: Team Robotics Project
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/assignment2/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started in Week 1
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2261,7 +2347,7 @@
 <p>The first step is to launch ROS on the Waffle.</p>
 <div class="admonition info">
 <p class="admonition-title">Important</p>
-<p>Launching ROS on the Waffle enables the <em>ROS Master</em>. The ROS Master <strong>always</strong> runs on the Waffle. It's therefore important to complete the steps on this page <strong>in full</strong> before you do anything else, otherwise the ROS Master will not be running, the robot's core functionality won't be active, and you won't be able to do anything with it! </p>
+<p>Launching ROS on the Waffle enables the <em>ROS Master</em><sup id="fnref:rosmaster"><a class="footnote-ref" href="#fn:rosmaster">1</a></sup>. The ROS Master <strong>always</strong> runs on the Waffle. It's therefore important to complete the steps on this page <strong>in full</strong> before you do anything else, otherwise the ROS Master will not be running, the robot's core functionality won't be active, and you won't be able to do anything with it! </p>
 </div>
 <h2 id="step-1-identify-your-waffle">Step 1: Identify your Waffle<a class="headerlink" href="#step-1-identify-your-waffle" title="Permanent link">&para;</a></h2>
 <p>Robots are named as follows:</p>
@@ -2321,7 +2407,7 @@ Replacing <code>X</code> with the number of the robot that you are working with.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>ros.launch
 </code></pre></div>
 <details class="tip">
-<summary>Pro Tip</summary>
+<summary>Tip</summary>
 <p>To save you typing this command out in full all the time, we've created a handy <em>bash alias</em> for it! You can therefore use <code>tb3_bringup</code> instead.</p>
 </details>
 <p>After a short while, you should see a message like this:</p>
@@ -2342,6 +2428,14 @@ Replacing <code>X</code> with the number of the robot that you are working with.
 </div>
 <h2 id="at-the-end-of-each-lab-session">At the End of Each Lab Session<a class="headerlink" href="#at-the-end-of-each-lab-session" title="Permanent link">&para;</a></h2>
 <p>When you've finished working with a robot it's really important to <strong>shut it down properly</strong> before turning off the power switch. Please refer to the <a href="../shutdown">safe shutdown procedures</a> for more info.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:rosmaster">
+<p>What <em>is</em> the ROS Master!? We'll talk about that on the next page (<a href="../exercises/#ros_master">here</a>)&#160;<a class="footnote-backref" href="#fnref:rosmaster" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -2364,7 +2458,7 @@ Replacing <code>X</code> with the number of the robot that you are working with.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-15T16:21:47+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-16T11:32:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-16</span>
   </span>
 
     

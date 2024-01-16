@@ -851,6 +851,8 @@
       
         
       
+        
+      
     
     
     
@@ -1140,7 +1142,7 @@
               
   
   <span class="md-ellipsis">
-    Lab Assignment #2
+    Lab Assignment #2 (2022-23)
   </span>
   
 
@@ -1156,7 +1158,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
-            Lab Assignment #2
+            Lab Assignment #2 (2022-23)
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1411,6 +1413,90 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../com2009/assignment2/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Assignment #2: Team Robotics Project
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment #2: Team Robotics Project
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../com2009/assignment2/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started in Week 1
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2673,7 +2759,7 @@
 
 <h1 id="ros-waffle-basics">ROS &amp; Waffle Basics<a class="headerlink" href="#ros-waffle-basics" title="Permanent link">&para;</a></h1>
 <p>Having completed the steps on <a href="../launching-ros">the previous page</a>, your robot and laptop should now be paired, and ROS should be up and running. The next thing to do is bring the robot to life! </p>
-<p>On this page you'll work through a series of exercises with the TurtleBot3 (aka, the Waffle) <strong>in your teams</strong>, exploring how the robot works whilst also getting an initial insight into how ROS works too. A number of the exercises here are similar to those that you'll do (or perhaps have <em>already</em> done) individually in simulation in <a href="../../com2009/assignment1/">Assignment #1</a>. As you'll soon see, whether you're working with a real robot or a simulation, a lot of the principles are the same for both. </p>
+<p>On this page you'll work through a series of exercises with the TurtleBot3 (aka, the Waffle) <strong>in your teams</strong>, exploring how the robot works whilst also getting an initial insight into how ROS works too. A number of the exercises here are similar to those that you'll do (or perhaps have <em>already</em> done) individually in simulation for <a href="../../com2009/assignment1/">Assignment #1</a>. As you'll soon see, whether you're working with a real robot or a simulation, a lot of the principles are the same for both. </p>
 <h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="#exMove">Exercise 1: Making the Robot Move</a></li>
@@ -2751,6 +2837,7 @@
 </code></pre></div>
 <p>Here, <strong>Part [1]</strong> is the same as the <code>roslaunch</code> command, but <strong>Part [2]</strong> is slightly different: <code>{[2] Node name}</code>. Here we are directly specifying a single script that we want to execute. We therefore use <code>rosrun</code> if we only want to launch a <strong>single node</strong> on the ROS network (<code>turtlebot3_teleop_key</code> in this case, which is a Python script).</p>
 <p>The key difference between <code>roslaunch</code> and <code>rosrun</code> then is that with <code>roslaunch</code> we can execute <strong>1 or more</strong> nodes at the same time via <em>launch files</em>. Another handy feature of <code>roslaunch</code> is that it will automatically launch the <strong>ROS Master</strong> if it isn't already running. As illustrated by the "Context" column in the table above, we ran our <code>roslaunch</code> command on the robot, which means that all the specified nodes (defined in the <code>ros.launch</code> file<sup id="fnref:tuos_ros_launch"><a class="footnote-ref" href="#fn:tuos_ros_launch">1</a></sup>) <em>and</em> the ROS Master were executed <strong>on the robot</strong>.</p>
+<p><a name="ros_master"></a></p>
 <div class="admonition info">
 <p class="admonition-title">The ROS Master</p>
 <p>The ROS Master is a wireless communication network that is established between the robot and laptop (and indeed any other device that we might want to add). The benefit of this then is that it allowed us to run our <code>rosrun</code> command on the laptop, and this was able to invoke changes to the robot (i.e. making it move around) via this wireless ROS communication network.</p>
@@ -2812,8 +2899,8 @@
 <li>To copy text from inside a terminal window use <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-c">C</kbd></span></li>
 <li>
 <p>You could also open the file in VS Code and copy it from there:</p>
-<p><code>bas { .bash .no-copy}h
-code ~/.ssh/com2009_team999.pub</code></p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>code<span class="w"> </span>~/.ssh/com2009_team999.pub
+</code></pre></div>
 </li>
 </ol>
 </div>
@@ -2846,7 +2933,7 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <ol>
 <li>
 <p>From a terminal on the laptop, navigate to the Catkin Workspace <code>src</code> directory:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src
 </code></pre></div>
 </li>
 <li>
@@ -2854,7 +2941,7 @@ code ~/.ssh/com2009_team999.pub</code></p>
 </li>
 <li>
 <p>Head back to the terminal instance on the laptop to then clone your package into the <code>catkin_ws/src/</code> directory using <code>git</code>:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>clone<span class="w"> </span><span class="o">{</span>REMOTE_SSH_ADDRESS<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>clone<span class="w"> </span><span class="o">{</span>REMOTE_SSH_ADDRESS<span class="o">}</span>
 </code></pre></div>
 <p>Where <code>{REMOTE_SSH_ADDRESS}</code> is the SSH address that you have just copied from GitHub.</p>
 <div class="admonition tip">
@@ -2864,13 +2951,13 @@ code ~/.ssh/com2009_team999.pub</code></p>
 </li>
 <li>
 <p>Run Catkin Build to make sure that any resources within your package that need to be compiled (custom ROS messages, etc.) are compiled onto the laptop so that they can be used locally:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>com2009_team999
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>com2009_team999
 </code></pre></div>
 <p>...again, replacing <code>com2009_team999</code> with <em>your</em> team's package name.</p>
 </li>
 <li>
 <p>Then, re-source your environment:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2892,7 +2979,7 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p>There shouldn't be anything running in <strong>TERMINAL 1</strong> now, after you closed down the Teleop node (using <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span>) at the end of the previous exercise. Return to this terminal and launch the <code>rqt_image_view</code> node:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>rosrun<span class="w"> </span>rqt_image_view<span class="w"> </span>rqt_image_view
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rosrun<span class="w"> </span>rqt_image_view<span class="w"> </span>rqt_image_view
 </code></pre></div></p>
 <hr />
 <div class="admonition question">
@@ -2915,7 +3002,7 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p>In <strong>TERMINAL 1</strong> enter the following command:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>rviz.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>roslaunch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>rviz.launch
 </code></pre></div></p>
 <hr />
 <p>This will launch an application called <em>RViz</em>, which is a handy tool that allows us to <em>visualise</em> the data from all the sensors on-board our robots. When RViz opens, you should see something similar to the following:</p>
@@ -2952,7 +3039,7 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p>There shouldn't be anything running in Terminals <strong>1</strong> or <strong>2</strong> now, so return to <strong>TERMINAL 1</strong> and use the <code>rosnode</code> command to <em>list</em> the nodes that are currently running on the robot:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>rosnode<span class="w"> </span>list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rosnode<span class="w"> </span>list
 </code></pre></div></p>
 <hr />
 <p>You should see a list of at least 7 items.</p>
@@ -2961,7 +3048,7 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p>We can visualise the connections between the active nodes by using a ROS node called <code>rqt_graph</code>. Launch this as follows:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rosrun<span class="w"> </span>rqt_graph<span class="w"> </span>rqt_graph
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>rosrun<span class="w"> </span>rqt_graph<span class="w"> </span>rqt_graph
 </code></pre></div></p>
 <hr />
 </li>
@@ -2982,7 +3069,7 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p>Close down the <code>rqt_graph</code> window if you haven't done so already. This will release <strong>TERMINAL 1</strong> so that we can enter commands in it again. Return to this terminal window and enter the following:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>rostopic<span class="w"> </span>list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>rostopic<span class="w"> </span>list
 </code></pre></div></p>
 <hr />
 <p>A much larger list of items should be printed to the terminal now. See if you can spot the <code>/cmd_vel</code> item in the list.</p>
@@ -2992,16 +3079,16 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p>Let's find out more about this using the <code>rostopic info</code> command.</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/cmd_vel
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/cmd_vel
 </code></pre></div></p>
 <hr />
 <p>This should provide an output similar to the following: </p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Type: geometry_msgs/Twist
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>Publishers: None
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>Subscribers:
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a> * /turtlebot3_core (http://dia-waffleX:#####/)
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Type: geometry_msgs/Twist
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Publishers: None
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Subscribers:
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a> * /turtlebot3_core (http://dia-waffleX:#####/)
 </code></pre></div>
 <p>This tells us a few things: <a name="rostopic_info_explained"></a></p>
 <ol>
@@ -3018,18 +3105,18 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p>We can use the <code>rosmsg</code> command to find out more about the <code>Twist</code> message:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>geometry_msgs/Twist
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>geometry_msgs/Twist
 </code></pre></div></p>
 <hr />
 <p>From this, we should obtain the following:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>geometry_msgs/Vector3 linear
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>  float64 x
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  float64 y
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>  float64 z
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>geometry_msgs/Vector3 angular
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>  float64 x
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>  float64 y
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>  float64 z
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>geometry_msgs/Vector3 linear
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>  float64 x
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  float64 y
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>  float64 z
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>geometry_msgs/Vector3 angular
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>  float64 x
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>  float64 y
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>  float64 z
 </code></pre></div>
 <p>Let's find out what it all means...</p>
 </li>
@@ -3041,14 +3128,14 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p><img alt="" src="../../images/waffle/principal_axes.svg" width="600" /></p>
 </figure>
 <p>In theory then, a robot can move <em>linearly</em> or <em>angularly</em> about any of these three axes, as shown by the arrows in the figure. That's six <em>Degrees of Freedom</em> (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. Take a look back at the <code>rosmsg info</code> output in <strong>TERMINAL 1</strong>. Hopefully it's a bit clearer now that these topic messages are formatted to give a ROS Programmer the ability to <em>ask</em> a robot to move in any one of its six DOFs. </p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>geometry_msgs/Vector3 linear
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>  float64 x  &lt;-- Forwards (or Backwards)
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  float64 y  &lt;-- Left (or Right)
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>  float64 z  &lt;-- Up (or Down)
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>geometry_msgs/Vector3 angular
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>  float64 x  &lt;-- &quot;Roll&quot;
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>  float64 y  &lt;-- &quot;Pitch&quot;
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>  float64 z  &lt;-- &quot;Yaw&quot;
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>geometry_msgs/Vector3 linear
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>  float64 x  &lt;-- Forwards (or Backwards)
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>  float64 y  &lt;-- Left (or Right)
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>  float64 z  &lt;-- Up (or Down)
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>geometry_msgs/Vector3 angular
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>  float64 x  &lt;-- &quot;Roll&quot;
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>  float64 y  &lt;-- &quot;Pitch&quot;
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>  float64 z  &lt;-- &quot;Yaw&quot;
 </code></pre></div>
 <p>Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! The two motors can be controlled independently, which gives it what is called a <em>"differential drive"</em> configuration, but this still only allows it to move with <strong>two degrees of freedom</strong> in total, as illustrated below.</p>
 <figure>
@@ -3064,7 +3151,7 @@ code ~/.ssh/com2009_team999.pub</code></p>
 <p>You will create your first ROS node inside your team's <code>com2009_team999</code> ROS package, which you should have cloned to the laptop earlier on. This package should now correctly reside within the Catkin Workspace on the laptop's filesystem. Navigate to this from <strong>TERMINAL 1</strong> using the <code>roscd</code> command:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>roscd<span class="w"> </span>com2009_team999/<span class="w"> </span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>roscd<span class="w"> </span>com2009_team999/<span class="w"> </span>
 </code></pre></div>
 Replacing <code>com2009_team999</code> accordingly.</p>
 <hr />
@@ -3073,7 +3160,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>Then, use the <code>cd</code> command to move into the <code>src</code> directory that should already exist within your package:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>src/<span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">cd</span><span class="w"> </span>src/<span class="w"> </span>
 </code></pre></div></p>
 <hr />
 </li>
@@ -3081,7 +3168,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>In here, create a Python file called <code>simple_move_square.py</code> using the <code>touch</code> command:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>touch<span class="w"> </span>simple_move_square.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>touch<span class="w"> </span>simple_move_square.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -3089,7 +3176,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>You'll need to change the <em>execution permissions</em> for this file in order to be able to run it later on. You'll learn more about this in Assignment #1 but, for now, simply run the following command:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>simple_move_square.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>simple_move_square.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -3097,7 +3184,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>Now we want to edit this file, and we'll do that using <em>Visual Studio Code</em> (VS Code):</p>
 <hr />
 <p><strong>TERMINAL 1:</strong> 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>code<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>code<span class="w"> </span>.
 </code></pre></div></p>
 <hr />
 <div class="admonition note">
@@ -3107,48 +3194,48 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 </li>
 <li>
 <p>Once VS Code launches, open up the <code>simple_move_square.py</code> file, which should be visible in the file explorer on the left-hand side of the VS Code window. Paste the following content into it:</p>
-<div class="highlight"><span class="filename">simple_move_square.py</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="ch">#!/usr/bin/env python3</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="kn">import</span> <span class="nn">rospy</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span> <span class="c1"># (2)!</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">pi</span> <span class="c1"># (15)!</span>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state1&quot;</span> <span class="c1"># &quot;state2, state3 etc...&quot;</span>
-<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>
-<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;move_waffle&quot;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># (3)!</span>
-<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># (4)!</span>
-<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
-<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># (5)!</span>
-<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="n">vel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span> <span class="c1"># (6)!</span>
-<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>
-<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The node has been initialised...&quot;</span><span class="p">)</span>
-<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a><span class="n">timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span> <span class="c1"># (7)!</span>
-<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a>
-<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span> <span class="c1"># (8)!</span>
-<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>    <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timestamp</span> <span class="c1"># (9)!</span>
-<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a>    <span class="k">if</span> <span class="n">transition</span><span class="p">:</span> <span class="c1"># (10)!</span>
-<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
-<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>        <span class="n">transition</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>        <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>        <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moving to state: </span><span class="si">{</span><span class="n">movement</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a>    <span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;state1&quot;</span><span class="p">:</span> <span class="c1"># (11)!</span>
-<a id="__codelineno-27-28" name="__codelineno-27-28" href="#__codelineno-27-28"></a>        <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-<a id="__codelineno-27-29" name="__codelineno-27-29" href="#__codelineno-27-29"></a>            <span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state2&quot;</span>
-<a id="__codelineno-27-30" name="__codelineno-27-30" href="#__codelineno-27-30"></a>            <span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-27-31" name="__codelineno-27-31" href="#__codelineno-27-31"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-27-32" name="__codelineno-27-32" href="#__codelineno-27-32"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.05</span>
-<a id="__codelineno-27-33" name="__codelineno-27-33" href="#__codelineno-27-33"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-27-34" name="__codelineno-27-34" href="#__codelineno-27-34"></a>    <span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;state2&quot;</span><span class="p">:</span> <span class="c1"># (12)!</span>
-<a id="__codelineno-27-35" name="__codelineno-27-35" href="#__codelineno-27-35"></a>        <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
-<a id="__codelineno-27-36" name="__codelineno-27-36" href="#__codelineno-27-36"></a>            <span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state1&quot;</span>
-<a id="__codelineno-27-37" name="__codelineno-27-37" href="#__codelineno-27-37"></a>            <span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-27-38" name="__codelineno-27-38" href="#__codelineno-27-38"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-27-39" name="__codelineno-27-39" href="#__codelineno-27-39"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.2</span>
-<a id="__codelineno-27-40" name="__codelineno-27-40" href="#__codelineno-27-40"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-27-41" name="__codelineno-27-41" href="#__codelineno-27-41"></a>    <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel</span><span class="p">)</span> <span class="c1"># (13)!</span>
-<a id="__codelineno-27-42" name="__codelineno-27-42" href="#__codelineno-27-42"></a>    <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span> <span class="c1"># (14)!</span>
+<div class="highlight"><span class="filename">simple_move_square.py</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="ch">#!/usr/bin/env python3</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="kn">import</span> <span class="nn">rospy</span> <span class="c1"># (1)!</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">pi</span> <span class="c1"># (15)!</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state1&quot;</span> <span class="c1"># &quot;state2, state3 etc...&quot;</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;move_waffle&quot;</span><span class="p">,</span> <span class="n">anonymous</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># (3)!</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># (4)!</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="n">pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># (5)!</span>
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="n">vel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span> <span class="c1"># (6)!</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a>
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The node has been initialised...&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="n">timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span> <span class="c1"># (7)!</span>
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a>
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a><span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span> <span class="c1"># (8)!</span>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>    <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span> <span class="o">-</span> <span class="n">timestamp</span> <span class="c1"># (9)!</span>
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>    <span class="k">if</span> <span class="n">transition</span><span class="p">:</span> <span class="c1"># (10)!</span>
+<a id="__codelineno-28-22" name="__codelineno-28-22" href="#__codelineno-28-22"></a>        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">get_time</span><span class="p">()</span>
+<a id="__codelineno-28-23" name="__codelineno-28-23" href="#__codelineno-28-23"></a>        <span class="n">transition</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-28-24" name="__codelineno-28-24" href="#__codelineno-28-24"></a>        <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-28-25" name="__codelineno-28-25" href="#__codelineno-28-25"></a>        <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-28-26" name="__codelineno-28-26" href="#__codelineno-28-26"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Moving to state: </span><span class="si">{</span><span class="n">movement</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-27" name="__codelineno-28-27" href="#__codelineno-28-27"></a>    <span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;state1&quot;</span><span class="p">:</span> <span class="c1"># (11)!</span>
+<a id="__codelineno-28-28" name="__codelineno-28-28" href="#__codelineno-28-28"></a>        <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-28-29" name="__codelineno-28-29" href="#__codelineno-28-29"></a>            <span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state2&quot;</span>
+<a id="__codelineno-28-30" name="__codelineno-28-30" href="#__codelineno-28-30"></a>            <span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-28-31" name="__codelineno-28-31" href="#__codelineno-28-31"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-28-32" name="__codelineno-28-32" href="#__codelineno-28-32"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.05</span>
+<a id="__codelineno-28-33" name="__codelineno-28-33" href="#__codelineno-28-33"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-28-34" name="__codelineno-28-34" href="#__codelineno-28-34"></a>    <span class="k">elif</span> <span class="n">movement</span> <span class="o">==</span> <span class="s2">&quot;state2&quot;</span><span class="p">:</span> <span class="c1"># (12)!</span>
+<a id="__codelineno-28-35" name="__codelineno-28-35" href="#__codelineno-28-35"></a>        <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+<a id="__codelineno-28-36" name="__codelineno-28-36" href="#__codelineno-28-36"></a>            <span class="n">movement</span> <span class="o">=</span> <span class="s2">&quot;state1&quot;</span>
+<a id="__codelineno-28-37" name="__codelineno-28-37" href="#__codelineno-28-37"></a>            <span class="n">transition</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-28-38" name="__codelineno-28-38" href="#__codelineno-28-38"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-28-39" name="__codelineno-28-39" href="#__codelineno-28-39"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.2</span>
+<a id="__codelineno-28-40" name="__codelineno-28-40" href="#__codelineno-28-40"></a>            <span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-28-41" name="__codelineno-28-41" href="#__codelineno-28-41"></a>    <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">vel</span><span class="p">)</span> <span class="c1"># (13)!</span>
+<a id="__codelineno-28-42" name="__codelineno-28-42" href="#__codelineno-28-42"></a>    <span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span> <span class="c1"># (14)!</span>
 </code></pre></div>
 <ol>
 <li><code>rospy</code> is the ROS client library for Python. We need this so that our Python node can interact with ROS.</li>
@@ -3201,7 +3288,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 </div>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>rosrun<span class="w"> </span>com2009_team999<span class="w"> </span>simple_move_square.py
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>rosrun<span class="w"> </span>com2009_team999<span class="w"> </span>simple_move_square.py
 </code></pre></div></p>
 <hr />
 <p>Observe what the robot does. When you've seen enough, enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 1</strong> to stop the node from running, which should also stop the robot from moving.</p>
@@ -3226,7 +3313,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>In <strong>TERMINAL 1</strong> enter the following command to launch all the necessary SLAM nodes on the laptop:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>roslaunch<span class="w"> </span>turtlebot3_slam<span class="w"> </span>turtlebot3_slam.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>roslaunch<span class="w"> </span>turtlebot3_slam<span class="w"> </span>turtlebot3_slam.launch
 </code></pre></div></p>
 <details class="tip">
 <summary>Robotics Laptop Tip</summary>
@@ -3257,7 +3344,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>First, create a new directory within your team's ROS package on the laptop. We'll use this to save maps in. Open up a new terminal instance (<strong>TERMINAL 3</strong>) and navigate to the root of your team's ROS package with <code>roscd</code> again:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>roscd<span class="w"> </span>com2009_team999
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>roscd<span class="w"> </span>com2009_team999
 </code></pre></div></p>
 <hr />
 </li>
@@ -3265,7 +3352,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>Create a directory in here called <code>maps</code>: </p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>mkdir<span class="w"> </span>maps/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>mkdir<span class="w"> </span>maps/
 </code></pre></div></p>
 <hr />
 </li>
@@ -3273,7 +3360,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>Navigate into this directory:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">cd</span><span class="w"> </span>maps/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nb">cd</span><span class="w"> </span>maps/
 </code></pre></div></p>
 <hr />
 </li>
@@ -3281,7 +3368,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>Then, use <code>rosrun</code> to run the <code>map_saver</code> node from the <code>map_server</code> package to save a copy of your map:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>rosrun<span class="w"> </span>map_server<span class="w"> </span>map_saver<span class="w"> </span>-f<span class="w"> </span><span class="o">{</span>map_name<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>rosrun<span class="w"> </span>map_server<span class="w"> </span>map_saver<span class="w"> </span>-f<span class="w"> </span><span class="o">{</span>map_name<span class="o">}</span>
 </code></pre></div></p>
 <p>Replacing <code>{map_name}</code> with an appropriate name for your map. This will create two files: </p>
 <ol>
@@ -3295,7 +3382,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p>The <code>.pgm</code> file can be opened using an application called <code>eog</code> on the laptop: </p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>eog<span class="w"> </span><span class="o">{</span>map_name<span class="o">}</span>.pgm
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>eog<span class="w"> </span><span class="o">{</span>map_name<span class="o">}</span>.pgm
 </code></pre></div></p>
 <hr />
 </li>
@@ -3318,43 +3405,28 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <ol>
 <li>
 <p>Head back to <strong>TERMINAL 3</strong> and make sure that you are located in the root of your team's package:</p>
-<hr />
-<p><strong>TERMINAL 3:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>roscd<span class="w"> </span>com2009_team999/
-</code></pre></div></p>
-<hr />
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>roscd<span class="w"> </span>com2009_team999/
+</code></pre></div>
 </li>
 <li>
 <p>Check the status of your Git repo to identify the changes that have been made:</p>
-<hr />
-<p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>git<span class="w"> </span>status
-</code></pre></div></p>
-<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>git<span class="w"> </span>status
+</code></pre></div>
 </li>
 <li>
 <p>Stage all the changes that have been made:</p>
-<hr />
-<p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-</code></pre></div></p>
-<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+</code></pre></div>
 </li>
 <li>
 <p>Then commit them:</p>
-<hr />
-<p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Getting started in the lab with the Waffles&quot;</span>
-</code></pre></div></p>
-<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Getting started in the lab with the Waffles&quot;</span>
+</code></pre></div>
 </li>
 <li>
 <p>Finally, push these to GitHub:</p>
-<hr />
-<p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div></p>
-<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div>
 </li>
 </ol>
 <p><center>
@@ -3369,7 +3441,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <hr />
 <ol>
 <li id="fn:tuos_ros_launch">
-<p>Source code available here (if you're interested): https://github.com/tom-howard/tuos_ros/blob/main/tuos_tb3_tools/launch/ros.launch&#160;<a class="footnote-backref" href="#fnref:tuos_ros_launch" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p><a href="https://github.com/tom-howard/tuos_ros/blob/main/tuos_tb3_tools/launch/ros.launch">Source code available here</a> (if you're interested)&#160;<a class="footnote-backref" href="#fnref:tuos_ros_launch" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:odom">
 <p>You'll learn much more about "Robot Odometry" in <a href="../../com2009/assignment1/part2">Assignment #1 Part 2</a>, and in the COM2009 Lectures.&#160;<a class="footnote-backref" href="#fnref:odom" title="Jump back to footnote 2 in the text">&#8617;</a></p>
@@ -3398,7 +3470,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-15T16:21:47+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-16T11:32:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-16</span>
   </span>
 
     
