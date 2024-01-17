@@ -24,7 +24,7 @@ rm -rf ~/catkin_ws/src/com2009_team999
 
 ## Shutdown Procedures
 
-As you should know, the Waffles are powered by [a Single Board Computer (SBC)](../../about/robots/#tb3), which runs a full-blown operating system (Ubuntu 20.04). As with any operating system, it's important to **shut it down properly**, rather than simply disconnecting the power, to avoid any data loss or other issues. 
+As you should know, the Waffles are powered by [a Single Board Computer (SBC)](../about/robots.md#tb3), which runs a full-blown operating system (Ubuntu 20.04). As with any operating system, it's important to **shut it down properly**, rather than simply disconnecting the power, to avoid any data loss or other issues. 
 
 Therefore, once you've finished working with a robot during a lab session, follow the steps below to shut it down.
 

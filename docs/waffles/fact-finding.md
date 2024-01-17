@@ -10,7 +10,7 @@ Each mission is linked to a particular part of the Assignment #1 course and, ide
 
 ### Mission 1: Publishing Velocity Commands
 
-:material-link-variant: **Connection to Assignment #1**: [Part 2 Exercise 3](../../com2009/assignment1/part2/#ex3) 
+:material-link-variant: **Connection to Assignment #1**: [Part 2 Exercise 3](../com2009/assignment1/part2.md#ex3) 
 
 In the above Assignment #1 exercise you learnt how to publish velocity commands from the command-line to make the robot move in simulation. Repeat this in simulation if you need a reminder on how it all worked.
 
@@ -27,7 +27,7 @@ angular:
   z: 0.0"
 ```
 
-(replacing some `0.0`s above with [applicable values](../../about/robots/#max_vels))
+(replacing some `0.0`s above with [applicable values](../about/robots.md#max_vels))
 
 Next, look at the usage information for the `rostopic pub` command by entering:
 
@@ -44,7 +44,7 @@ When you stop the `rostopic pub` command what happens to the robot, and how does
 
 ### Mission 2: The Camera Image Topic {#mission2}
 
-:material-link-variant: **Connection to Assignment #1**: The whole of [Part 6](../../com2009/assignment1/part6/)
+:material-link-variant: **Connection to Assignment #1**: The whole of [Part 6](../com2009/assignment1/part6.md)
 
 In Part 6 you worked extensively with the robot's camera and its images, which were published to the `/camera/rgb/image_raw` topic.
 
@@ -55,7 +55,7 @@ On the laptop, use ROS command-line tools such as `rostopic list` and `rostopic 
 
 ### Mission 3: Camera Image Resolution
 
-:material-link-variant: **Connection to Assignment #1**: The questions before [Part 6 Exercise 1](../../com2009/assignment1/part6/#cam_img_questions)
+:material-link-variant: **Connection to Assignment #1**: The questions before [Part 6 Exercise 1](../com2009/assignment1/part6.md#cam_img_questions)
 
 At the start of Part 6 we explore the messages published to the robot's camera image topic. Here you need to work out which part of these messages indicate the *resolution* of the camera images (i.e.: the `height` and `width` of the images, in pixels). You may recall what this was, but if not, go back and interrogate this again to find out what resolution the *simulated* robot's camera images are transmitted at (you'll need to use `rostopic echo`). 
 
@@ -69,7 +69,7 @@ On the Robotics Laptop use `rostopic echo` again, to interrogate the real robot 
 
 ### Mission 4: Out of Range LiDAR Data
 
-:material-link-variant: **Connection to Assignment #1**: ["Interpreting `/LaserScan` Data" (Part 3)](../../com2009/assignment1/part3/#interpreting-laserscan-data)
+:material-link-variant: **Connection to Assignment #1**: ["Interpreting `/LaserScan` Data" (Part 3)](../com2009/assignment1/part3.md#interpreting-laserscan-data)
 
 The robot's LiDAR sensor can only obtain measurements from objects within a certain distance range. In Part 3 we look at how to work out what this range is, using the `rostopic echo` command. Apply the same techniques to the real robot now to discover the **maximum** and **minimum** distances that the real robot's LiDAR sensor can measure.
 
@@ -82,7 +82,7 @@ Use the `rostopic echo` command to interrogate the ROS network running between y
 
 ### Mission 5: Object Detection
 
-:material-link-variant: **Connection to Assignment #1**: [Part 6 Exercise 3](../../com2009/assignment1/part6/#ex3)
+:material-link-variant: **Connection to Assignment #1**: [Part 6 Exercise 3](../com2009/assignment1/part6.md#ex3)
 
 In general, image detection gets a little more challenging in the real-world, where the same object might appear (to a robot's camera) to have slightly different colour tones under different light conditions, from different angles, in different levels of shade, etc. In simulation, you may build an extremely effective `colour_search.py` node to detect each of the four coloured pillars in the `tuos_simulations/coloured_pillars` world. See how well this now works in the real world now by running the same code on your real Waffle.
 

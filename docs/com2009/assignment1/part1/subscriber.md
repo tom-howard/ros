@@ -29,7 +29,7 @@ Copy **all** the code below into your `subscriber.py` file and (again) *make sur
 6. Finally, the code is executed by again performing a `__name__` check, creating an instance of the `Subscriber()` class and calling the `main()` method from that class.
 
 !!! warning "Fill in the Blank!"
-    Replace the `{BLANK}` in the code above with the name of the topic that our [`publisher.py` node](../publisher) was set up to publish to!
+    Replace the `{BLANK}` in the code above with the name of the topic that our [`publisher.py` node](./publisher.md) was set up to publish to!
 
 ## Don't Forget the Shebang! {#dfts}
 

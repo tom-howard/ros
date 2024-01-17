@@ -214,7 +214,7 @@ In the previous lab we used some ROS commands to identify and interrogate active
     ```
 
     !!! info "Post-lab Quiz"
-        What does all this mean? We discussed this [last time (in relation to the `/cmd_vel` topic)](../lab1/#rostopic_info_explained), and you may want to have a look back at this to refresh your memory! 
+        What does all this mean? We discussed this [last time (in relation to the `/cmd_vel` topic)](./lab1.md#rostopic_info_explained), and you may want to have a look back at this to refresh your memory! 
     
     One of the key things that this does tell us is that the `/odom` topic transmits data using a `nav_msgs/Odometry` message. All topics use standard message types to pass information around the ROS network. This is so that any node on the ROS network knows how to deal with the data, if it needs to. `nav_msgs/Odometry` is one of these standard message types. 
     
@@ -295,7 +295,7 @@ You should have noticed that (as the robot moved around) the `x` and `y` terms c
 
 #### :material-pen: Exercise 2: Odometry-based Navigation {#ex2}
 
-Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that [last time](../lab1/#ex6) you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (tuning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path. 
+Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that [last time](./lab1.md#ex6) you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (tuning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path. 
 
 In theory though, we can do all this with odometry instead, so let's have a go at that now...
 

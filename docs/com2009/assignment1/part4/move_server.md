@@ -83,7 +83,7 @@ Copy **all** the code below into your `move_server.py` file and review the annot
 17. The `rospy.spin()` function keeps our node running indefinitely (so that the callback function can continue to execute, whenever the service is called). 
 
 !!! warning "Fill in the Blank!"
-    Which message package does [the `Twist` message](../../part2/#twist-py) belong to?
+    Which message package does [the `Twist` message](../part2/twist-tips.md) belong to?
 
 <p align="center">
   <a href="../../part4#ex1_ret">&#8592; Back to Part 4 - Exercise 1</a>

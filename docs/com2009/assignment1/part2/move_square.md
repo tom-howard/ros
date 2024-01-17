@@ -26,7 +26,7 @@ Moving in a square can be achieved by switching between two different movement s
 
 1. Import the `Twist` message for publishing velocity commands to `/cmd_vel`.
 2. Import the `Odometry` message, for use when subscribing to the `/odom` topic.
-3. Import the `euler_from_quaternion` function to convert orientation from quaternions (as provided in the `Odometry` message) to Euler angles (about [the principal axes](../../part2/#principal-axes)).
+3. Import the `euler_from_quaternion` function to convert orientation from quaternions (as provided in the `Odometry` message) to Euler angles (about [the principal axes](../part2.md#principal-axes)).
 4. Finally, import some useful mathematical operations (and `pi`), which you may find useful:
 
     | Mathematical Operation | Python Implementation |
@@ -53,7 +53,7 @@ Moving in a square can be achieved by switching between two different movement s
 
 6. Here we obtain the robot's **current** position coordinates.
 
-7. And here we obtain the robot's current orientation (in quaternions) and convert it to Euler angles (in radians) about [the principal axes](../../part2/#principal-axes), where:
+7. And here we obtain the robot's current orientation (in quaternions) and convert it to Euler angles (in radians) about [the principal axes](../part2.md#principal-axes), where:
     * "roll" = <code>&theta;<sub>x</sub></code>
     * "pitch" = <code>&theta;<sub>y</sub></code>
     * "yaw" = <code>&theta;<sub>z</sub></code>

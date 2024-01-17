@@ -9,7 +9,7 @@ The first step is to launch ROS on the Waffle.
 !!! info "Important"
     Launching ROS on the Waffle enables the *ROS Master*[^rosmaster]. The ROS Master **always** runs on the Waffle. It's therefore important to complete the steps on this page **in full** before you do anything else, otherwise the ROS Master will not be running, the robot's core functionality won't be active, and you won't be able to do anything with it! 
 
-[^rosmaster]: What *is* the ROS Master!? We'll talk about that on the next page ([here](../exercises/#ros_master))
+[^rosmaster]: What *is* the ROS Master!? We'll talk about that on the next page ([here](./exercises.md#ros_master))
 
 ## Step 1: Identify your Waffle
 
@@ -21,7 +21,7 @@ Robots are named as follows:
 
 ## Step 2: Pairing your Waffle to a Laptop
 
-[As discussed earlier](../intro/#laptops), you'll be provided with one of our Robotics Laptops to work with in the lab, and the robot needs to be paired with this in order for the two to work together.  
+[As discussed earlier](./intro.md#laptops), you'll be provided with one of our Robotics Laptops to work with in the lab, and the robot needs to be paired with this in order for the two to work together.  
 
 1. Open up a terminal instance on the laptop, either by using the ++ctrl+alt+t++ keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
@@ -111,4 +111,4 @@ Voltage: 12.40V [100%]
 
 ## At the End of Each Lab Session
 
-When you've finished working with a robot it's really important to **shut it down properly** before turning off the power switch. Please refer to the [safe shutdown procedures](../shutdown) for more info.
+When you've finished working with a robot it's really important to **shut it down properly** before turning off the power switch. Please refer to the [safe shutdown procedures](./shutdown.md) for more info.

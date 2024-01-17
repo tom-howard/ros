@@ -13,7 +13,7 @@ ROS is an open-source, industry-standard robot programming framework, used in a 
 
 ROS allows us to programme robots using a range of different programming languages (including C++, Java, MATLAB etc.), but we'll be using Python for these labs. In addition to this, ROS runs on top of a Linux operating system called *'Ubuntu'*, and so we'll also learn a bit about how to use this too.
 
-We'll be working with robots called *'TurtleBot3 Waffles'*, which you can [find out a bit more about here](../../../about/robots). 
+We'll be working with robots called *'TurtleBot3 Waffles'*, which you can [find out a bit more about here](../../about/robots.md). 
 
 !!! warning "Pre-Lab Work"
     You **must** have completed the Pre-Lab Test before you can make a start on this lab. This is available on the AMR31001 Blackboard Course Page.

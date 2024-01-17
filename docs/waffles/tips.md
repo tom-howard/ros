@@ -38,4 +38,4 @@ Switching into 'Simulation Mode' (run 'robot_mode robot' to work with a real rob
 ```
 
 !!! note
-    When you're ready to switch back to a real robot, the `waffle` CLI tool will switch you back into *"Real Robot Mode"* automatically! Just follow [the steps here](../launching-ros).
+    When you're ready to switch back to a real robot, the `waffle` CLI tool will switch you back into *"Real Robot Mode"* automatically! Just follow [the steps here](./launching-ros.md).

@@ -45,7 +45,7 @@ Copy **all** the code below into your `preemptive_action_client.py` file and the
 11. **Fill in the Blank!**
 
 !!! warning "Fill in the Blank!"
-    We have contained all our code inside a nice Python Class now, but how do we actually instantiate it and invoke the Action Call? (We've been doing this from [the very beginning](../../part1/publisher), and the process is very much the same here!)
+    We have contained all our code inside a nice Python Class now, but how do we actually instantiate it and invoke the Action Call? (We've been doing this from [the very beginning](../part1/publisher.md), and the process is very much the same here!)
 
 <p align="center">
   <a href="../../part5#ex3_ret">&#8592; Back to Part 5 - Exercise 3</a>

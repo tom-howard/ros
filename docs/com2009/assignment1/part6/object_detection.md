@@ -6,7 +6,7 @@ title: "Part 6 Object Detection Node"
 
 Copy **all** the code below into your `object_detection.py` file, and **make sure you read the annotations**!
 
-.. oh, and I'm sure I don't need to say it by now, but... [DFTS](../../part1/subscriber/#dfts)!
+.. oh, and I'm sure I don't need to say it by now, but... [DFTS](../part1/subscriber.md#dfts)!
 
 ```py title="object_detection.py"
 --8<-- "snippets/object_detection.py"
@@ -14,7 +14,7 @@ Copy **all** the code below into your `object_detection.py` file, and **make sur
 
 1. Of course, we always need to import `rospy` so that Python can work with ROS. What we're also importing here is the Python `Path` class from [the `pathlib` module](https://docs.python.org/3/library/pathlib.html), which will be used to do a few file operations.
     
-2. Then, we're importing the OpenCV library for Python (remember the Python API [that we talked about earlier](../part6/#opencv)), which is called `cv2`, and *also* that ROS-to-OpenCV bridge interface that we talked about earlier too: `cv_bridge`.
+2. Then, we're importing the OpenCV library for Python (remember the Python API [that we talked about earlier](../part6.md#opencv)), which is called `cv2`, and *also* that ROS-to-OpenCV bridge interface that we talked about earlier too: `cv_bridge`.
 
     From `cv_bridge` we're importing the `CvBridge` and `CvBridgeError` classes from the `cv_bridge` library specifically.
     

@@ -4,7 +4,7 @@ title: Working with Twist Messages in Python
 
 # Working with Twist Messages in Python
 
-From [the Part 1 publisher exercise](../../part1/#ex5), we know how to publish a `String` type message to a topic in Python, but how do we apply the same principles to a `Twist` message (on the `/cmd_vel` topic)? Let's have a look at this... 
+From [the Part 1 publisher exercise](../part1.md#ex5), we know how to publish a `String` type message to a topic in Python, but how do we apply the same principles to a `Twist` message (on the `/cmd_vel` topic)? Let's have a look at this... 
 
 First, you need to import the `rospy` library, as well as the `Twist` message type from the `geometry_msgs` library:
 

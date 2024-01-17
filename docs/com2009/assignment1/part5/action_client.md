@@ -6,7 +6,7 @@ title: Part 5 Camera Sweep Action Client
 
 Copy **all** the code below into your `move_client.py` file.  Then, review the code annotations to understand how it all works.
 
-(Oh, and [DFTS](../../part1/subscriber/#dfts)!)
+(Oh, and [DFTS](../part1/subscriber.md#dfts)!)
 
 ```py title="action_client.py"
 --8<-- "snippets/action_client.py"
@@ -55,7 +55,7 @@ Copy **all** the code below into your `move_client.py` file.  Then, review the c
 !!! warning "Fill in the Blank!"
     Which attribute of the `feedback_data` object tells us how many images have been captured over the course of the *Camera Sweep* Action? There are a number of ways we can work this out:
         
-    1. You could use the same approach as we used [earlier](../#camera_sweep_msg_params). 
+    1. You could use [the same approach as we used earlier](../part5.md#camera_sweep_msg_params). 
     1. You could run `rosmsg info tuos_msgs/CameraSweepFeedback` in a terminal.
     1. You could use the autocomplete/variable suggestions provided in VS Code!
 

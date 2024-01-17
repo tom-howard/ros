@@ -4,9 +4,9 @@ title: "ROS & Waffle Basics"
 
 # ROS & Waffle Basics
 
-Having completed the steps on [the previous page](../launching-ros), your robot and laptop should now be paired, and ROS should be up and running. The next thing to do is bring the robot to life! 
+Having completed the steps on [the previous page](./launching-ros.md), your robot and laptop should now be paired, and ROS should be up and running. The next thing to do is bring the robot to life! 
 
-On this page you'll work through a series of exercises with the TurtleBot3 (aka, the Waffle) **in your teams**, exploring how the robot works whilst also getting an initial insight into how ROS works too. A number of the exercises here are similar to those that you'll do (or perhaps have *already* done) individually in simulation for [Assignment #1](../../com2009/assignment1/). As you'll soon see, whether you're working with a real robot or a simulation, a lot of the principles are the same for both. 
+On this page you'll work through a series of exercises with the TurtleBot3 (aka, the Waffle) **in your teams**, exploring how the robot works whilst also getting an initial insight into how ROS works too. A number of the exercises here are similar to those that you'll do (or perhaps have *already* done) individually in simulation for [Assignment #1](../com2009/assignment1/README.md). As you'll soon see, whether you're working with a real robot or a simulation, a lot of the principles are the same for both. 
 
 ### Quick Links
 
@@ -25,7 +25,7 @@ On this page you'll work through a series of exercises with the TurtleBot3 (aka,
 
 Throughout Lab Assignment #1 you will use a ready-made ROS application called `turtlebot3_teleop_keyboard` to drive a Waffle around a range of simulated environments. This works in exactly the same way with a real robot in a real world too:
 
-1. Open up a new terminal instance on the laptop either by using the ++ctrl+alt+t++ keyboard shortcut, or by clicking the Terminal App icon, we'll refer to this as **TERMINAL 1**. In this terminal enter the following `rosrun` command to launch `turtlebot3_teleop_keyboard` (note that it's exactly [the same command as you use in simulation](../../com2009/assignment1/part1/#teleop) too):
+1. Open up a new terminal instance on the laptop either by using the ++ctrl+alt+t++ keyboard shortcut, or by clicking the Terminal App icon, we'll refer to this as **TERMINAL 1**. In this terminal enter the following `rosrun` command to launch `turtlebot3_teleop_keyboard` (note that it's exactly [the same command as you use in simulation](../com2009/assignment1/part1.md#teleop) too):
 
     ***
     **TERMINAL 1:**
@@ -55,7 +55,7 @@ ROS applications are organised into *packages*. Packages are basically folders c
 
 *Scripts* tell the robot what to do and how to act. In ROS, these scripts are called *nodes*. *ROS Nodes* are executable programs that perform specific robot tasks and operations. These are typically written in C++ or Python, but it's possible to write ROS Nodes using other programming languages too.
 
-In the initial setup of the robot on the previous page ([Step 3](../launching-ros/#step-3-launching-ros)) you simultaneously established a ROS Network ("the ROS Master") *and* launched a range of different nodes on the robot with a `roslaunch` command. Then, in [Exercise 1 above](#exMove) you launched the `turtlebot3_teleop_key` node on the laptop:
+In the initial setup of the robot on the previous page ([Step 3](./launching-ros.md#step-3-launching-ros)) you simultaneously established a ROS Network ("the ROS Master") *and* launched a range of different nodes on the robot with a `roslaunch` command. Then, in [Exercise 1 above](#exMove) you launched the `turtlebot3_teleop_key` node on the laptop:
 
 <center>
 
@@ -93,7 +93,7 @@ The key difference between `roslaunch` and `rosrun` then is that with `roslaunch
 
 #### :material-pen: Exercise 2: Cloning Your Team's ROS Package to the Robot Laptop {#exClone}
 
-In the Assignment #2 "Getting Started" tasks that you should have completed earlier you should have [created your team's Assignment #2 ROS package](../../com2009/assignment2/getting-started/#create-pkg) and [pushed it to GitHub](../../com2009/assignment2/getting-started/#github). In this exercise you will now clone it on to the Robotics Laptop and create your first Python ROS node within it.
+In the Assignment #2 "Getting Started" tasks that you should have completed earlier you should have [created your team's Assignment #2 ROS package](../com2009/assignment2/getting-started.md#create-pkg) and [pushed it to GitHub](../com2009/assignment2/getting-started.md#github). In this exercise you will now clone it on to the Robotics Laptop and create your first Python ROS node within it.
 
 !!! warning "WiFi"
     Remember, the Robotics Laptop needs to be connected to the "DIA-LAB" WiFi network in order for the robot and laptop to communicate with one another, but DIA-LAB is an internal network, and you won't be able to access the internet!
@@ -396,7 +396,6 @@ Much like the `rosnode list` command, we can use `rostopic list` to list all the
 The motion of any mobile robot can be defined in terms of its three *principal axes*: `X`, `Y` and `Z`. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are defined as follows:
 
 <figure markdown>
-  <!-- ![](../../images/waffle/principal_axes.svg){width=600} -->
   ![](../images/waffle/principal_axes.svg){width=600}
 </figure>
 
@@ -416,7 +415,6 @@ geometry_msgs/Vector3 angular
 Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! The two motors can be controlled independently, which gives it what is called a *"differential drive"* configuration, but this still only allows it to move with **two degrees of freedom** in total, as illustrated below.
 
 <figure markdown>
-  <!-- ![](../../images/waffle/velocities.svg?width=20cm) -->
   ![](../images/waffle/velocities.svg){width=600}
 </figure>
 
@@ -426,7 +424,7 @@ It can therefore only move **linearly** in the **x-axis** (*Forwards/Backwards*)
 
 Making a robot move with ROS is simply a case of publishing the right ROS Message (`Twist`) to the right ROS Topic (`/cmd_vel`). In some of the previous exercises above you used the Keyboard Teleop node to drive the robot around, a bit like a remote control car. In the background here all that was really happening was that the Teleop node was converting our keyboard button presses into velocity commands and publishing these to the `/cmd_vel` topic.
 
-In reality, robots need to be able to navigate complex environments autonomously, which is quite a difficult task, and requires us to build bespoke applications. We can build these applications using Python, and we'll look at the core concepts behind this now by building a simple node that will allow us to make our robot a bit more "autonomous". What we will do here forms the basis of the more complex applications that you will learn about in [Assignment #1](../../com2009/assignment1/) and implement in [Assignment #2](../../com2009/assignment2/) to bring a real robot to life!
+In reality, robots need to be able to navigate complex environments autonomously, which is quite a difficult task, and requires us to build bespoke applications. We can build these applications using Python, and we'll look at the core concepts behind this now by building a simple node that will allow us to make our robot a bit more "autonomous". What we will do here forms the basis of the more complex applications that you will learn about in [Assignment #1](../com2009/assignment1/README.md) and implement in [Assignment #2](../com2009/assignment2/README.md) to bring a real robot to life!
 
 1. You will create your first ROS node inside your team's `com2009_team999` ROS package, which you should have cloned to the laptop earlier on. This package should now correctly reside within the Catkin Workspace on the laptop's filesystem. Navigate to this from **TERMINAL 1** using the `roscd` command:
 
@@ -535,7 +533,7 @@ In reality, robots need to be able to navigate complex environments autonomously
 
 Simultaneous Localisation and Mapping (SLAM) is a sophisticated tool that is built into ROS. Using data from the robot's LiDAR sensor, plus knowledge of how far the robot has moved[^odom] the robot is able to create a map of its environment *and* keep track of its location within that environment at the same time. IN the exercise that follows you'll see easy it is to implement SLAM on the real robot.  
 
-[^odom]: You'll learn much more about "Robot Odometry" in [Assignment #1 Part 2](../../com2009/assignment1/part2), and in the COM2009 Lectures.
+[^odom]: You'll learn much more about "Robot Odometry" in [Assignment #1 Part 2](../com2009/assignment1/part2.md), and in the COM2009 Lectures.
 
 #### :material-pen: Exercise 7: Using SLAM to create a map of the environment {#exSlam}
 
