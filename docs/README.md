@@ -11,6 +11,6 @@ Department of Multidisciplinary Engineering Education
 
 *(Image courtesy of [Andy Brown](https://www.andybrownphoto.co.uk/))*
 
-[Find out more...](./about)
+[Find out more...](./about/README.md)
 
 </center>

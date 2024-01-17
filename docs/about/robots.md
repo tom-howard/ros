@@ -62,7 +62,7 @@ Our robots run on the most up-to-date version of ROS1: [ROS Noetic Ninjemys](htt
 
 ### Laptops
 
-In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above (Ubuntu 20.04 and ROS Noetic). We use these when working with the robots in the lab. [See here for more details](../../waffles/laptops). 
+In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above (Ubuntu 20.04 and ROS Noetic). We use these when working with the robots in the lab. [See here for more details](../waffles/intro.md#laptops). 
 
 ### Simulation Environment
 
