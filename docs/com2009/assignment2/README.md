@@ -17,7 +17,7 @@ There are **four tasks** in total that you must complete for this Assignment. Ea
 | Task | Details | Marks |
 | :---: | :---   | :---: |
 | 1 | [Velocity Control](./task1.md) | 20/100 |
-| 2 | [Avoiding Obstacles](./task2,md) | 20/100 |
+| 2 | [Avoiding Obstacles](./task2.md) | 20/100 |
 | 3 | [Navigation](./task3.md) | 25/100 |
 | 4 | [Search & Explore](./task4.md) | 35/100 | 
 
@@ -31,7 +31,7 @@ This assignment is worth 30% of the overall mark for the COM2009 course. As a te
 
 Each submission will be assessed by extracting your ROS package on one of the robotics laptops (that you will use extensively in the labs throughout the assignment). Nodes within your package will then be executed on the laptop to control a real robot in the Diamond Computer Room 5 Robot Arena.
 
-Within 3 weeks of each submission you will receive your marks and a recording of the assessment so that you can see how well your robot performed in each of the tasks, and so that you can see exactly how your marks were awarded!
+Within 3 weeks of submission you will receive your marks and a recording of the assessment so that you can see how well your robot performed in each of the tasks, and so that you can see exactly how your marks were awarded!
 
 ### Submission Deadlines
 
