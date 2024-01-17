@@ -182,13 +182,13 @@ All the Assignment #2 Tasks will be assessed using real robots, and you'll there
 
 1. Everyone **must** complete a health and safety quiz (on Blackboard) before you (or your team) work with the real robots for the first time. Head to Blackboard and do this now, if you haven't already.
 1. Each team has been assigned a specific robot (there's a list on Blackboard). When you're ready, speak to a member of the teaching team who will provide you with the robot that has been assigned to you.
-1. Work through each page of [the "Waffles" section of this site](../../../waffles) (**in order**):
+1. Work through each page of [the "Waffles" section of this site](../../waffles/README.md) (**in order**):
    
     1. Read about the hardware.
     1. Learn how to launch ROS and get the robots up and running.
-    1. Have a go at the initial exercises on [the Basics of ROS & the Waffles](../../../waffles/exercises), which will help to get you started and understand how ROS and the robots work.
-    1. Review the [Shutdown Procedures](../../../waffles/shutdown) and follow the steps here to shut down the robot and power off the robotics laptop at the end of each lab session.
-    1. Finally, there are some [Fact-Finding Missions](../../../waffles/fact-finding) which are also really important, but you'll need to have completed certain parts of Assignment #1 before you can complete them all. Either way, have a read through them at this stage and work through the bits that you can (if any).
+    1. Have a go at the initial exercises on [the Basics of ROS & the Waffles](../../waffles/exercises.md), which will help to get you started and understand how ROS and the robots work.
+    1. Review the [Shutdown Procedures](../../waffles/shutdown.md) and follow the steps here to shut down the robot and power off the robotics laptop at the end of each lab session.
+    1. Finally, there are some [Fact-Finding Missions](../../waffles/fact-finding.md) which are also really important, but you'll need to have completed certain parts of Assignment #1 before you can complete them all. Either way, have a read through them at this stage and work through the bits that you can (if any).
     
         !!! warning "Important"
             Make sure (as a team) you have completed **ALL** the Fact-Finding Missions **before the end of Week 6**.   

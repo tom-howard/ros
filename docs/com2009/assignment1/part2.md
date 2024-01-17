@@ -33,8 +33,8 @@ By the end of this session you will be able to:
 
 ### Additional Resources
 
-* [Working with Twist Messages in Python](twist-tips)
-* [The `move_square` Template (for Exercise 5)](move_square)
+* [Working with Twist Messages in Python](./part2/twist-tips.md)
+* [The `move_square` Template (for Exercise 5)](./part2/move_square.md)
 
 ## Getting Started
 
@@ -42,7 +42,7 @@ By the end of this session you will be able to:
 If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu. As you will now know, this may take a couple of minutes, but once it's ready this will open up the Windows Terminal and an *Ubuntu terminal instance* (which we'll refer to as **TERMINAL 1**).
 
 ### Step 2: Restore your work  
-Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers.  At [the end of Part 1](../part1/#backup) you should have run the `wsl_ros` tool to back up your home directory to your University U: Drive. Once WSL-ROS is up and running, you should be prompted to restore this:
+Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers.  At [the end of Part 1](./part1.md#backup) you should have run the `wsl_ros` tool to back up your home directory to your University U: Drive. Once WSL-ROS is up and running, you should be prompted to restore this:
 
 <figure markdown>
   ![](../../images/wsl/restore_prompt.png){width=600}
@@ -55,7 +55,7 @@ wsl_ros restore
 ```
 
 ### Step 3: Launch VS Code  
-It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](../../../wsl-ros/vscode/).
+It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](../../wsl-ros/vscode.md).
 
 ### Step 4: Download The Course Repo {#course-repo}
 
@@ -139,7 +139,7 @@ The motion (i.e. the velocity) of any mobile robot can be defined in terms of **
 
 In theory then, a robot can move linearly or angularly about *any* of these three axes, as shown by the arrows in the figure. That's six *Degrees of Freedom* (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. 
 
-You should hopefully recall from the ["Introducing the Robots" page](../../../about/robots/#tb3) that our TurtleBot3 Waffles only have two motors though, so they don't actually have six DOFs! These two motors can be controlled independently, which is known as a *"differential drive"* configuration, and ultimately provides it with a total of **two degrees of freedom** in total, as illustrated below.
+You should hopefully recall from the ["Introducing the Robots" page](../../about/robots.md#tb3) that our TurtleBot3 Waffles only have two motors though, so they don't actually have six DOFs! These two motors can be controlled independently, which is known as a *"differential drive"* configuration, and ultimately provides it with a total of **two degrees of freedom** in total, as illustrated below.
 
 <figure markdown>
   ![](../../images/waffle/velocities.svg?width=20cm)
@@ -147,20 +147,20 @@ You should hopefully recall from the ["Introducing the Robots" page](../../../ab
 
 It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*) and **angularly** in the **z**-axis (*Yaw*).
 
-It's also worth noting (while we're on the subject of motion) that our TurtleBot3 Waffles have **maximum velocity limits**, which were also defined on the ["Robots"](../../../about/robots/#tb3) page.
+It's also worth noting (while we're on the subject of motion) that our TurtleBot3 Waffles have **maximum velocity limits**, which were also defined on the ["Robots"](../../about/robots.md#tb3) page.
 
 !!! question
     What are the maximum velocity limits of our robots?
 
 ### ROS Velocity Commands
 
-In Part 1 you learnt how to [list all the topics that are currently active on a ROS system](../part1/#rostopic). Open up a new terminal instance now (**TERMINAL 2**) and use what you learnt previously to *list* all the topics that are active on the ROS network now, as a result of launching the Gazebo simulation earlier.
+In Part 1 you learnt how to [list all the topics that are currently active on a ROS system](./part1.md#rostopic). Open up a new terminal instance now (**TERMINAL 2**) and use what you learnt previously to *list* all the topics that are active on the ROS network now, as a result of launching the Gazebo simulation earlier.
 
 !!! question "Questions"
     1. Which topic in the list do you think could be used to control the velocity of the robot?
     2. Use the `rostopic info` command on the topic to find out more about it.
 
-The topic you identified[^cmd_vel] should use a message of the `geometry_msgs/Twist` type. You'll have to send messages of this type to this topic in order to make the robot move. Use the `rosmsg` command ([as you did in Part 1](../part1/#ex3)) to find out more about the format of this message[^rosmsg_info].
+The topic you identified[^cmd_vel] should use a message of the `geometry_msgs/Twist` type. You'll have to send messages of this type to this topic in order to make the robot move. Use the `rosmsg` command ([as you did in Part 1](./part1.md#ex3)) to find out more about the format of this message[^rosmsg_info].
 
 [^cmd_vel]: The topic is `/cmd_vel` (i.e. *command velocity*).
 [^rosmsg_info]: Answer: `rosmsg info geometry_msgs/Twist`.
@@ -220,7 +220,7 @@ Another topic that should have appeared when you ran `rostopic list` earlier is 
     
 1. Now, you need to launch a new Windows Terminal instance so that you can view it side-by-side with **TERMINAL 2**. To do this, press the "New Tab" button whilst pressing the ++shift++ key. We'll call this one **TERMINAL 3**. Arrange both windows side-by-side, so you can see what's happening in both, simultaneously.
 
-1. In **TERMINAL 3** launch the `turtlebot3_teleop_keyboard` node [as you did last time](../part1/#ex1): <a name="teleop"></a>
+1. In **TERMINAL 3** launch the `turtlebot3_teleop_keyboard` node [as you did last time](./part1.md#ex1): <a name="teleop"></a>
 
     ***
     **TERMINAL 3:**
@@ -322,7 +322,7 @@ Once again, all of this data is defined in terms of the principal axes, as illus
 
 In Part 1 you learnt how to create a package and build simple nodes in Python to publish and subscribe to messages on a topic. In this exercise you will build a new subscriber node, much like you did in the previous session, but this one will subscribe to the `/odom` topic that we've been talking about above. You'll also create a new package called `part2_navigation` for this node to live in!
 
-1. Create a package [in the same way as you did in Part 1](../part1/#ex4), this time called `part2_navigation`, which depends on the `rospy`, `nav_msgs` and `geometry_msgs` libraries. Use the `catkin_create_pkg` tool as you did in Part 1. Remember to ensure that you are located in the `~/catkin_ws/src/` directory before you do this though:
+1. Create a package [in the same way as you did in Part 1](./part1.md#ex4), this time called `part2_navigation`, which depends on the `rospy`, `nav_msgs` and `geometry_msgs` libraries. Use the `catkin_create_pkg` tool as you did in Part 1. Remember to ensure that you are located in the `~/catkin_ws/src/` directory before you do this though:
      
     ***
     **TERMINAL 2:**
@@ -336,7 +336,7 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
     ***
 
     !!! warning "Fill in the Blank!"
-        Recall how we used the `catkin_create_pkg` tool [in Part 1](../part1/#ex4), but adapt this now for the `part2_navigation` package, as detailed above.
+        Recall how we used the `catkin_create_pkg` tool [in Part 1](./part1.md#ex4), but adapt this now for the `part2_navigation` package, as detailed above.
     
 1. Run `catkin build` on this:
 
@@ -351,7 +351,7 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
     ```
     ***
 
-1. The subscriber that we will build here will be structured in much the same way as [the subscriber that we built in Part 1](../part1/subscriber). The difference now though is that this one will subscribe to the `/odom` topic (instead of `/chatter`), and its callback function will therefore receive `Odometry` type messages (instead of `String`), so we'll have to deal with those a bit differently. We've created a template for this to help you to get started. Download this into the `src` directory of your new `part2_navigation` package now:
+1. The subscriber that we will build here will be structured in much the same way as [the subscriber that we built in Part 1](./part1/subscriber.md). The difference now though is that this one will subscribe to the `/odom` topic (instead of `/chatter`), and its callback function will therefore receive `Odometry` type messages (instead of `String`), so we'll have to deal with those a bit differently. We've created a template for this to help you to get started. Download this into the `src` directory of your new `part2_navigation` package now:
     
     ***
     **TERMINAL 2:**
@@ -401,7 +401,7 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
 
 1. OK, the file should run now, so launch it (using `rosrun` again) and see what it does.
 
-1. Have a think about what's different between this and [the subscriber from last time](../part1/subscriber)...
+1. Have a think about what's different between this and [the subscriber from last time](./part1/subscriber.md)...
     
     In the Subscriber from Part 1 we were working with a `String` type message from the `std_msgs` package, whereas this time we're using an `Odometry` message from the `nav_msgs` package instead - notice how the imports and the callback function have changed as a result of this.
 
@@ -476,7 +476,7 @@ You will now create another node to control the motion of your TurtleBot3 by pub
 
 1. Open up this file in VS Code. This node should make the TurtleBot3 move in a **circle** with a path **radius** of approximately **0.5 meters**: <a name="ex4_ret"></a>
 
-    * Your Python node needs to publish `Twist` messages to the `/cmd_vel` topic in order to make the TurtleBot3 move. [See here for some tips on this](twist-tips).
+    * Your Python node needs to publish `Twist` messages to the `/cmd_vel` topic in order to make the TurtleBot3 move. [See here for some tips on this](./part2/twist-tips.md).
     * Remember that our robots have a maximum linear velocity (`linear.x`) of 0.26 m/s, and a maximum angular velocity (`angular.z`) of 1.82 rad/s. 
     * Make sure that you code your `shutdownhook()` correctly so that the robot stops moving when the node is shutdown (via ++ctrl+c++ in the terminal that launched it).
 
@@ -495,11 +495,11 @@ You will now create another node to control the motion of your TurtleBot3 by pub
     7. You're going to need to create a message here containing appropriate velocities for the robot to move at. Then you'll need to actually publish that message to `/cmd_vel` (via your `self.pub` object). Finally, how would you use the `self.rate` object that you created above to control the execution rate of the while loop?
     8. What will you need to do here to instantiate your `Circle()` class and execute its main functionality?
 
-    Refer back to [the publisher node from Part 1](../part1/publisher) to help you as you're working on this. 
+    Refer back to [the publisher node from Part 1](./part1/publisher.md) to help you as you're working on this. 
 
 **Advanced feature:**
 
-1. Create a launch file to launch this *and* your `odom_subscriber.py` node simultaneously with a single `roslaunch` command. Refer to the launch file that you created [in Part 1](../part1/#ex8) for a reminder on how to do this.
+1. Create a launch file to launch this *and* your `odom_subscriber.py` node simultaneously with a single `roslaunch` command. Refer to the launch file that you created [in Part 1](./part1.md#ex8) for a reminder on how to do this.
 
 ## Odometry-based Navigation
 
@@ -537,11 +537,11 @@ Earlier on you also learnt about [Robot Odometry](#odometry), which is used by t
     ***
 
 1. Use the VS Code File Explorer to navigate to this `move_square.py` file and open it up, ready for editing.
-1. [There's a template here to help you with this exercise](move_square). Copy and paste the template code into your new `move_square.py` file to get you started. <a name="ex5_ret"></a>
+1. [There's a template here to help you with this exercise](./part2/move_square.md). Copy and paste the template code into your new `move_square.py` file to get you started. <a name="ex5_ret"></a>
 1. Run the code as it is to see what happens...
 
     !!! warning "Fill in the Blank!"
-        Something not quite working as expected? We may have missed out [something very crucial](../part1/subscriber/#dfts) on **the very first line** of the code template, can you work out what it is?!
+        Something not quite working as expected? We may have missed out [something very crucial](./part1/subscriber.md#dfts) on **the very first line** of the code template, can you work out what it is?!
 
 1. Fill in the blank as required and then adapt the code to make your robot follow a **square** motion path of **1 x 1 meter** dimensions:
     * The robot's odometry will tell you how much the robot has moved and/or rotated, and so you should use this information to achieve the desired motion path. 
@@ -565,7 +565,7 @@ You have also learnt about *Odometry*, which is published by our robot to the `/
     1. Do you see any potential limitations of this?
     1. Can a control method that uses odometry as a feedback signal be considered *closed-loop control?* 
 
-Consider reading Chapter 11.1.3 ("Pose of Robot") in the ROS Robot Programming eBook that we mentioned [here](../../../about/robots/#ebook).
+Consider reading Chapter 11.1.3 ("Pose of Robot") in [the ROS Robot Programming eBook that we mentioned here](../../about/robots.md#ebook).
 
 In the final exercise you also learnt how to develop an odometry-based controller to make your robot follow a square motion path. You will likely have observed some degree of error in this which, as you already know, could be due to the fact that Odometry data is determined by dead-reckoning and is therefore subject to drift and error.  Consider how other factors may impact the accuracy of control too:
 

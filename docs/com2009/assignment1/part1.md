@@ -35,14 +35,14 @@ By the end of this session you will be able to:
 
 ### Additional Resources
 
-* [The Publisher Code (for Exercise 5)](publisher)
-* [The Subscriber Code (for Exercise 6)](subscriber)
+* [The Publisher Code (for Exercise 5)](./part1/publisher.md)
+* [The Subscriber Code (for Exercise 6)](./part1/subscriber.md)
 
 ## First Steps
 
 #### :material-pen: Exercise 1: Launching a simulation and making a ROS robot move {#ex1}
 
-1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu ([see here for detailed instructions](../../../wsl-ros/first-run)). This should open up a *terminal application* and an *Ubuntu terminal instance*.  We'll refer to this terminal instance as **TERMINAL 1**.
+1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu ([see here for detailed instructions](../../wsl-ros/first-run.md)). This should open up a *terminal application* and an *Ubuntu terminal instance*.  We'll refer to this terminal instance as **TERMINAL 1**.
 1. In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
         
     ***
@@ -52,7 +52,7 @@ By the end of this session you will be able to:
     ```    
     ***
 
-1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (very similar to [our real robots](../../../about/robots)):
+1. A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (very similar to [our real robots](../../about/robots.md)):
 
     <figure markdown>
       ![](../../images/gazebo/tb3_empty_world.png){width=800}
@@ -363,14 +363,14 @@ Or:
 
     This confirms that the file exists, and the `0` in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.
 
-1. We therefore now need to open the file and add content to it. As discussed in [the WSL-ROS Section](../../../wsl-ros/), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, so follow [the instructions here](../../../wsl-ros/vscode) to get this up and running now.
+1. We therefore now need to open the file and add content to it. As discussed in [the WSL-ROS Section](../../wsl-ros/README.md), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, so follow [the instructions here](../../wsl-ros/vscode.md) to get this up and running now.
 
     !!! warning
-        [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment](../../../wsl-ros/vscode/#verify)!!
+        [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment](../../wsl-ros/vscode.md#verify)!!
 
 1. Using the VS Code File Explorer, navigate to your `part1_pubsub` package directory (`~/catkin_ws/src/part1_pubsub/`), locate the `publisher.py` file that you have just created in the `/part1_pubsub/src/` folder and click on the file to open it. 
 
-1. Once opened, copy [the code provided here](publisher) into the empty file and save it. <a name="ex5_ret"></a>
+1. Once opened, copy [the code provided here](./part1/publisher.md) into the empty file and save it. <a name="ex5_ret"></a>
     
     !!! note
         It's important that you understand how this code works, so make sure that you **read the annotations**!
@@ -504,7 +504,7 @@ You will now create another node to *subscribe* to the topic that our publisher 
 
 1. In **TERMINAL 3** use the filesystem commands that were introduced earlier (`cd`, `ls` and `roscd`) to navigate to the `src` folder of your `part1_pubsub` package.
 1. Use the same procedure as before to create a new empty Python file called `subscriber.py` and remember to make it executable! <a name="ex6_ret"></a>
-1. Then, open the newly created `subscriber.py` file in VS Code, paste in [the code here](subscriber) and save it. Once again, it's important that you understand how this code works, so **make sure you read the code annotations**! 
+1. Then, open the newly created `subscriber.py` file in VS Code, paste in [the code here](./part1/subscriber.md) and save it. Once again, it's important that you understand how this code works, so **make sure you read the code annotations**! 
 
 1. Use `rosrun` to execute your newly created `subscriber.py` node (remember: `rosrun {package name} {script name}`). If your publisher and subscriber nodes are working correctly you should see an output like this:
     
