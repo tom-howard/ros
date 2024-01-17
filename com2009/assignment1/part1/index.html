@@ -2926,13 +2926,13 @@
 </ul>
 <h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="publisher">The Publisher Code (for Exercise 5)</a></li>
-<li><a href="subscriber">The Subscriber Code (for Exercise 6)</a></li>
+<li><a href="publisher/">The Publisher Code (for Exercise 5)</a></li>
+<li><a href="subscriber/">The Subscriber Code (for Exercise 6)</a></li>
 </ul>
 <h2 id="first-steps">First Steps<a class="headerlink" href="#first-steps" title="Permanent link">&para;</a></h2>
 <h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 1: Launching a simulation and making a ROS robot move<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
 <ol>
-<li>If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (<a href="../../../wsl-ros/first-run">see here for detailed instructions</a>). This should open up a <em>terminal application</em> and an <em>Ubuntu terminal instance</em>.  We'll refer to this terminal instance as <strong>TERMINAL 1</strong>.</li>
+<li>If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (<a href="../../../wsl-ros/first-run/">see here for detailed instructions</a>). This should open up a <em>terminal application</em> and an <em>Ubuntu terminal instance</em>.  We'll refer to this terminal instance as <strong>TERMINAL 1</strong>.</li>
 <li>
 <p>In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  </p>
 <hr />
@@ -2942,7 +2942,7 @@
 <hr />
 </li>
 <li>
-<p>A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (very similar to <a href="../../../about/robots">our real robots</a>):</p>
+<p>A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle (very similar to <a href="../../../about/robots/">our real robots</a>):</p>
 <p><figure markdown>
   <img alt="" src="../../../images/gazebo/tb3_empty_world.png" width="800" />
 </figure></p>
@@ -3197,7 +3197,7 @@ Or:
 <p>This confirms that the file exists, and the <code>0</code> in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.</p>
 </li>
 <li>
-<p>We therefore now need to open the file and add content to it. As discussed in <a href="../../../wsl-ros/">the WSL-ROS Section</a>, we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, so follow <a href="../../../wsl-ros/vscode">the instructions here</a> to get this up and running now.</p>
+<p>We therefore now need to open the file and add content to it. As discussed in <a href="../../../wsl-ros/">the WSL-ROS Section</a>, we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, so follow <a href="../../../wsl-ros/vscode/">the instructions here</a> to get this up and running now.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><a href="../../../wsl-ros/vscode/#verify">Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment</a>!!</p>
@@ -3207,7 +3207,7 @@ Or:
 <p>Using the VS Code File Explorer, navigate to your <code>part1_pubsub</code> package directory (<code>~/catkin_ws/src/part1_pubsub/</code>), locate the <code>publisher.py</code> file that you have just created in the <code>/part1_pubsub/src/</code> folder and click on the file to open it. </p>
 </li>
 <li>
-<p>Once opened, copy <a href="publisher">the code provided here</a> into the empty file and save it. <a name="ex5_ret"></a></p>
+<p>Once opened, copy <a href="publisher/">the code provided here</a> into the empty file and save it. <a name="ex5_ret"></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It's important that you understand how this code works, so make sure that you <strong>read the annotations</strong>!</p>
@@ -3318,7 +3318,7 @@ Or:
 <li>In <strong>TERMINAL 3</strong> use the filesystem commands that were introduced earlier (<code>cd</code>, <code>ls</code> and <code>roscd</code>) to navigate to the <code>src</code> folder of your <code>part1_pubsub</code> package.</li>
 <li>Use the same procedure as before to create a new empty Python file called <code>subscriber.py</code> and remember to make it executable! <a name="ex6_ret"></a></li>
 <li>
-<p>Then, open the newly created <code>subscriber.py</code> file in VS Code, paste in <a href="subscriber">the code here</a> and save it. Once again, it's important that you understand how this code works, so <strong>make sure you read the code annotations</strong>! </p>
+<p>Then, open the newly created <code>subscriber.py</code> file in VS Code, paste in <a href="subscriber/">the code here</a> and save it. Once again, it's important that you understand how this code works, so <strong>make sure you read the code annotations</strong>! </p>
 </li>
 <li>
 <p>Use <code>rosrun</code> to execute your newly created <code>subscriber.py</code> node (remember: <code>rosrun {package name} {script name}</code>). If your publisher and subscriber nodes are working correctly you should see an output like this:</p>
@@ -3518,7 +3518,7 @@ Or:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-15T11:23:35+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T12:50:22+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
   </span>
 
     

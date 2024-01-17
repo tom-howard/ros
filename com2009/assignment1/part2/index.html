@@ -2876,8 +2876,8 @@
 </ul>
 <h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="twist-tips">Working with Twist Messages in Python</a></li>
-<li><a href="move_square">The <code>move_square</code> Template (for Exercise 5)</a></li>
+<li><a href="twist-tips/">Working with Twist Messages in Python</a></li>
+<li><a href="move_square/">The <code>move_square</code> Template (for Exercise 5)</a></li>
 </ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-launch-wsl-ros">Step 1: Launch WSL-ROS<a class="headerlink" href="#step-1-launch-wsl-ros" title="Permanent link">&para;</a></h3>
@@ -3146,7 +3146,7 @@ and then re-source your environment:
 <hr />
 </li>
 <li>
-<p>The subscriber that we will build here will be structured in much the same way as <a href="../part1/subscriber">the subscriber that we built in Part 1</a>. The difference now though is that this one will subscribe to the <code>/odom</code> topic (instead of <code>/chatter</code>), and its callback function will therefore receive <code>Odometry</code> type messages (instead of <code>String</code>), so we'll have to deal with those a bit differently. We've created a template for this to help you to get started. Download this into the <code>src</code> directory of your new <code>part2_navigation</code> package now:</p>
+<p>The subscriber that we will build here will be structured in much the same way as <a href="../part1/subscriber/">the subscriber that we built in Part 1</a>. The difference now though is that this one will subscribe to the <code>/odom</code> topic (instead of <code>/chatter</code>), and its callback function will therefore receive <code>Odometry</code> type messages (instead of <code>String</code>), so we'll have to deal with those a bit differently. We've created a template for this to help you to get started. Download this into the <code>src</code> directory of your new <code>part2_navigation</code> package now:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong></p>
 <ol>
@@ -3187,7 +3187,7 @@ and then re-source your environment:
 <p>OK, the file should run now, so launch it (using <code>rosrun</code> again) and see what it does.</p>
 </li>
 <li>
-<p>Have a think about what's different between this and <a href="../part1/subscriber">the subscriber from last time</a>...</p>
+<p>Have a think about what's different between this and <a href="../part1/subscriber/">the subscriber from last time</a>...</p>
 <p>In the Subscriber from Part 1 we were working with a <code>String</code> type message from the <code>std_msgs</code> package, whereas this time we're using an <code>Odometry</code> message from the <code>nav_msgs</code> package instead - notice how the imports and the callback function have changed as a result of this.</p>
 </li>
 <li>
@@ -3257,7 +3257,7 @@ angular:
 <li>
 <p>Open up this file in VS Code. This node should make the TurtleBot3 move in a <strong>circle</strong> with a path <strong>radius</strong> of approximately <strong>0.5 meters</strong>: <a name="ex4_ret"></a></p>
 <ul>
-<li>Your Python node needs to publish <code>Twist</code> messages to the <code>/cmd_vel</code> topic in order to make the TurtleBot3 move. <a href="twist-tips">See here for some tips on this</a>.</li>
+<li>Your Python node needs to publish <code>Twist</code> messages to the <code>/cmd_vel</code> topic in order to make the TurtleBot3 move. <a href="twist-tips/">See here for some tips on this</a>.</li>
 <li>Remember that our robots have a maximum linear velocity (<code>linear.x</code>) of 0.26 m/s, and a maximum angular velocity (<code>angular.z</code>) of 1.82 rad/s. </li>
 <li>Make sure that you code your <code>shutdownhook()</code> correctly so that the robot stops moving when the node is shutdown (via <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in the terminal that launched it).</li>
 </ul>
@@ -3304,7 +3304,7 @@ angular:
 <li>You're going to need to create a message here containing appropriate velocities for the robot to move at. Then you'll need to actually publish that message to <code>/cmd_vel</code> (via your <code>self.pub</code> object). Finally, how would you use the <code>self.rate</code> object that you created above to control the execution rate of the while loop?</li>
 <li>What will you need to do here to instantiate your <code>Circle()</code> class and execute its main functionality?</li>
 </ol>
-<p>Refer back to <a href="../part1/publisher">the publisher node from Part 1</a> to help you as you're working on this. </p>
+<p>Refer back to <a href="../part1/publisher/">the publisher node from Part 1</a> to help you as you're working on this. </p>
 </li>
 </ol>
 <p><strong>Advanced feature:</strong></p>
@@ -3346,7 +3346,7 @@ angular:
 <li>
 <p>Use the VS Code File Explorer to navigate to this <code>move_square.py</code> file and open it up, ready for editing.</p>
 </li>
-<li><a href="move_square">There's a template here to help you with this exercise</a>. Copy and paste the template code into your new <code>move_square.py</code> file to get you started. <a name="ex5_ret"></a></li>
+<li><a href="move_square/">There's a template here to help you with this exercise</a>. Copy and paste the template code into your new <code>move_square.py</code> file to get you started. <a name="ex5_ret"></a></li>
 <li>
 <p>Run the code as it is to see what happens...</p>
 <div class="admonition warning">
@@ -3379,7 +3379,7 @@ angular:
 <li>Can a control method that uses odometry as a feedback signal be considered <em>closed-loop control?</em> </li>
 </ol>
 </div>
-<p>Consider reading Chapter 11.1.3 ("Pose of Robot") in the ROS Robot Programming eBook that we mentioned <a href="../../../about/robots/#ebook">here</a>.</p>
+<p>Consider reading Chapter 11.1.3 ("Pose of Robot") in <a href="../../../about/robots/#ebook">the ROS Robot Programming eBook that we mentioned here</a>.</p>
 <p>In the final exercise you also learnt how to develop an odometry-based controller to make your robot follow a square motion path. You will likely have observed some degree of error in this which, as you already know, could be due to the fact that Odometry data is determined by dead-reckoning and is therefore subject to drift and error.  Consider how other factors may impact the accuracy of control too:</p>
 <div class="admonition question">
 <p class="admonition-title">Questions</p>
@@ -3434,7 +3434,7 @@ angular:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-21T09:44:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T12:50:22+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
   </span>
 
     
