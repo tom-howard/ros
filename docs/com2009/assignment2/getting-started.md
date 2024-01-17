@@ -6,7 +6,7 @@ Before you get started on Assignment #2 (as detailed in the pages that follow), 
 
 ## Set Up Your Team's ROS Package
 
-As discussed on [the Assignment #2 Overview](../#assessment), everything that your team submit for this lab assignment must be contained within a single ROS package. Inside this you will develop all the necessary nodes to make a TurtleBot3 Waffle (real or simulated) complete each of the assignment tasks. Each task will be assessed by the Teaching Team via *launch files* that you must also provide within your package. You'll therefore need to create one launch file per task (we'll talk more about this later).
+As discussed on [the Assignment #2 Overview](./README.md#assessment), everything that your team submit for this lab assignment must be contained within a single ROS package. Inside this you will develop all the necessary nodes to make a TurtleBot3 Waffle (real or simulated) complete each of the assignment tasks. Each task will be assessed by the Teaching Team via *launch files* that you must also provide within your package. You'll therefore need to create one launch file per task (we'll talk more about this later).
 
 The first step however is to create your team's ROS Package.
 
