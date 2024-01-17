@@ -2659,9 +2659,9 @@
 </ul>
 <h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="move_server">The Service Server Code (for Exercise 1)</a></li>
-<li><a href="move_client">The Service Client Code (for Exercise 2)</a></li>
-<li><a href="scan_callback">Creating a <code>/scan</code> Callback Function</a></li>
+<li><a href="move_server/">The Service Server Code (for Exercise 1)</a></li>
+<li><a href="move_client/">The Service Client Code (for Exercise 2)</a></li>
+<li><a href="scan_callback/">Creating a <code>/scan</code> Callback Function</a></li>
 </ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p><strong>Step 1: Launch WSL-ROS</strong><br />
@@ -2669,7 +2669,7 @@ Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows S
 <p><strong>Step 2: Restore your work</strong><br />
 When prompted (in <strong>TERMINAL 1</strong>), enter <code>Y</code> to restore your work from last time<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p><strong>Step 3: Launch VS Code</strong><br />
-Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code correctly within the WSL-ROS environment.</p>
+Follow <a href="../../../wsl-ros/vscode/">these steps</a> to launch VS Code correctly within the WSL-ROS environment.</p>
 <p><strong>Step 4: Launch the Robot Simulation</strong><br />
 From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"</em> simulation:</p>
 <hr />
@@ -2775,7 +2775,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <p>Create a file called <code>move_server.py</code> (using <code>touch</code>) and set this to be executable (using <code>chmod</code>).        </p>
 </li>
 <li>
-<p>Then, open the file in VS Code, copy and paste <a href="move_server">this code</a> and then save it. <a name="ex1_ret"></a></p>
+<p>Then, open the file in VS Code, copy and paste <a href="move_server/">this code</a> and then save it. <a name="ex1_ret"></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It's really important that you understand how the code above works, so that you know how to build your own service <em>Servers</em> in Python. Make sure you read the code annotations thoroughly.</p>
@@ -2893,7 +2893,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>bool response_signal    &lt;-- Response (Parameter 1 of 2)
 <a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>string response_message &lt;-- Response (Parameter 2 of 2)
 </code></pre></div>
-<p>In order to <em>Call</em> a service, we need to provide data to it in the format specified in the <strong>Request</strong> section of the message. A service <em>Server</em> (like the <a href="move_server#code">Python node we created above</a>) will then send data back to the caller in the format specified in the <strong>Response</strong> section of the message.</p>
+<p>In order to <em>Call</em> a service, we need to provide data to it in the format specified in the <strong>Request</strong> section of the message. A service <em>Server</em> (like the <a href="move_server/#code">Python node we created above</a>) will then send data back to the caller in the format specified in the <strong>Response</strong> section of the message.</p>
 <p>The <code>tuos_msgs/SetBool</code> service message that we're working with here has a <strong>one</strong> request parameter:</p>
 <ol>
 <li>A <em>boolean</em> input called <code>request_signal</code><br />
@@ -2920,7 +2920,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <p>Create a new file called <code>move_client.py</code> and make sure that this is executable.</p>
 </li>
 <li>
-<p>Launch the file in VS Code, copy and paste <a href="move_client">this code</a> and then save the file. <a name="ex2_ret"></a></p>
+<p>Launch the file in VS Code, copy and paste <a href="move_client/">this code</a> and then save the file. <a name="ex2_ret"></a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Once again, be sure to read the code annotations, and make sure that you understand how this Python Service Client Node works too!</p>
@@ -3036,10 +3036,10 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 </li>
 <li>A service message called <code>tuos_msgs/Approach</code> is available for you to use for this exercise. Use this to build your service server. Remember, you can find out more about this message using <code>rossrv info</code>.</li>
 <li>
-<p>We haven't really done much work with the LiDAR data published to the <code>/scan</code> topic yet, so you might want to consider <a href="scan_callback">this suggested approach</a> for building a <code>/scan</code> callback function. <a name="ex4_ret"></a></p>
+<p>We haven't really done much work with the LiDAR data published to the <code>/scan</code> topic yet, so you might want to consider <a href="scan_callback/">this suggested approach</a> for building a <code>/scan</code> callback function. <a name="ex4_ret"></a></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You should use a class structure in your Python code here. Start off with the <a href="move_server">Server code from Exercise 1</a> and add to this to build the functionality required for this exercise.</p>
+<p>You should use a class structure in your Python code here. Start off with the <a href="move_server/">Server code from Exercise 1</a> and add to this to build the functionality required for this exercise.</p>
 </div>
 </li>
 </ol>
@@ -3099,7 +3099,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-21T09:44:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T13:07:08+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
   </span>
 
     

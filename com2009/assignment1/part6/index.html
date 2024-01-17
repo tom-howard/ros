@@ -2796,9 +2796,9 @@
 </ul>
 <h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="object_detection">The Initial Object Detection Code (for Exercise 2)</a></li>
-<li><a href="object_detection_complete">A Complete Worked Example of the <code>object_detection.py</code> Node</a></li>
-<li><a href="line_follower">A <code>line_follower</code> Template (for Exercise 4)</a></li>
+<li><a href="object_detection/">The Initial Object Detection Code (for Exercise 2)</a></li>
+<li><a href="object_detection_complete/">A Complete Worked Example of the <code>object_detection.py</code> Node</a></li>
+<li><a href="line_follower/">A <code>line_follower</code> Template (for Exercise 4)</a></li>
 </ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p><strong>Step 1: Launch WSL-ROS</strong><br />
@@ -2806,7 +2806,7 @@ Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows S
 <p><strong>Step 2: Restore your work</strong><br />
 When prompted (in <strong>TERMINAL 1</strong>), enter <code>Y</code> to restore your work from last time<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p><strong>Step 3: Launch VS Code</strong><br />
-Follow <a href="../../../wsl-ros/vscode">these steps</a> to launch VS Code correctly within the WSL-ROS environment.</p>
+Follow <a href="../../../wsl-ros/vscode/">these steps</a> to launch VS Code correctly within the WSL-ROS environment.</p>
 <p><strong>Step 4: Launch the Robot Simulation</strong><br />
 In this session we'll start by working with the same <em>mystery world</em> environment from Part 5. In <strong>TERMINAL 1</strong>, use the following <code>roslaunch</code> command to load it:</p>
 <hr />
@@ -2920,7 +2920,7 @@ In this session we'll start by working with the same <em>mystery world</em> envi
 <li>First create a new package in your <code>catkin_ws/src</code> directory called <code>part6_vision</code> with <code>rospy</code>, <code>cv_bridge</code>, <code>sensor_msgs</code> and <code>geometry_msgs</code> as dependencies.</li>
 <li>Then, run <code>catkin build</code> on the package and then re-source your environment (as you've done so many times by now!)</li>
 <li>In the <code>src</code> folder of the package you have just created, create a new Python file called <code>object_detection.py</code>. <em>What else do we need to do to this file before we can run it?</em> <strong>Do it now!</strong></li>
-<li>Copy <a href="object_detection">the code here</a>, save the file, then read the annotations so that you understand how this node works and what should happen when you run it. <a name="ex2_ret"></a></li>
+<li>Copy <a href="object_detection/">the code here</a>, save the file, then read the annotations so that you understand how this node works and what should happen when you run it. <a name="ex2_ret"></a></li>
 <li>
 <p>Run the node using <code>rosrun</code>.</p>
 <div class="admonition warning">
@@ -3087,7 +3087,7 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <figure>
 <p><img alt="" src="od6_centroid.png" /></p>
 </figure>
-<p>Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: <code>cv2.circle()</code>.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in <a href="object_detection_complete">a complete worked example of the <code>object_detection.py</code> node</a> from the previous exercise. <a name="ex2b_ret"></a></p>
+<p>Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: <code>cv2.circle()</code>.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in <a href="object_detection_complete/">a complete worked example of the <code>object_detection.py</code> node</a> from the previous exercise. <a name="ex2b_ret"></a></p>
 <p>In our case, we can't actually change the position of our robot in the z axis, so the <code>cz</code> centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate <code>cy</code> to understand where a feature is located <em>horizontally</em> in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We can then use this as the basis for some real <strong>closed-loop</strong> control.</p>
 <h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 3: Locating image features using <em>Image Moments</em><a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
 <p>Inside the <code>tuos_examples</code> package there is a node that has been developed to illustrate how all the OpenCV tools that you have explored so far could be used to search an environment and stop a robot when it is looking directly at an object of interest. All the tools that are used in this node should be familiar to you by now, and in this exercise you're going to make a copy of this node and modify it to enhance its functionality.</p>
@@ -3199,7 +3199,7 @@ u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{de}{dt}
 <p><a name="ex4a_ret"></a></p>
 </li>
 <li>
-<p>Start with <a href="line_follower">the code template provided here</a>. This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in <a href="#ex2">Exercise 2</a>, so go back here if you need a reminder on how any of this works. </p>
+<p>Start with <a href="line_follower/">the code template provided here</a>. This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in <a href="#ex2">Exercise 2</a>, so go back here if you need a reminder on how any of this works. </p>
 <p>Your aim here is to get the code to generate a cropped image, with the coloured line isolated and located within it, like this:</p>
 <p><figure markdown>
   <img alt="" src="line_follower_setup_complete.jpg" />
@@ -3371,7 +3371,7 @@ u(t)=K_{P} e(t)
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-08T13:00:25+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T13:07:08+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
   </span>
 
     
