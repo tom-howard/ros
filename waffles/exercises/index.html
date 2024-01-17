@@ -2758,7 +2758,7 @@
 
 
 <h1 id="ros-waffle-basics">ROS &amp; Waffle Basics<a class="headerlink" href="#ros-waffle-basics" title="Permanent link">&para;</a></h1>
-<p>Having completed the steps on <a href="../launching-ros">the previous page</a>, your robot and laptop should now be paired, and ROS should be up and running. The next thing to do is bring the robot to life! </p>
+<p>Having completed the steps on <a href="../launching-ros/">the previous page</a>, your robot and laptop should now be paired, and ROS should be up and running. The next thing to do is bring the robot to life! </p>
 <p>On this page you'll work through a series of exercises with the TurtleBot3 (aka, the Waffle) <strong>in your teams</strong>, exploring how the robot works whilst also getting an initial insight into how ROS works too. A number of the exercises here are similar to those that you'll do (or perhaps have <em>already</em> done) individually in simulation for <a href="../../com2009/assignment1/">Assignment #1</a>. As you'll soon see, whether you're working with a real robot or a simulation, a lot of the principles are the same for both. </p>
 <h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3124,7 +3124,6 @@
 <h2 id="velocity-control">Velocity Control<a class="headerlink" href="#velocity-control" title="Permanent link">&para;</a></h2>
 <p>The motion of any mobile robot can be defined in terms of its three <em>principal axes</em>: <code>X</code>, <code>Y</code> and <code>Z</code>. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are defined as follows:</p>
 <figure>
-<!-- ![](../../images/waffle/principal_axes.svg){width=600} -->
 <p><img alt="" src="../../images/waffle/principal_axes.svg" width="600" /></p>
 </figure>
 <p>In theory then, a robot can move <em>linearly</em> or <em>angularly</em> about any of these three axes, as shown by the arrows in the figure. That's six <em>Degrees of Freedom</em> (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. Take a look back at the <code>rosmsg info</code> output in <strong>TERMINAL 1</strong>. Hopefully it's a bit clearer now that these topic messages are formatted to give a ROS Programmer the ability to <em>ask</em> a robot to move in any one of its six DOFs. </p>
@@ -3139,7 +3138,6 @@
 </code></pre></div>
 <p>Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! The two motors can be controlled independently, which gives it what is called a <em>"differential drive"</em> configuration, but this still only allows it to move with <strong>two degrees of freedom</strong> in total, as illustrated below.</p>
 <figure>
-<!-- ![](../../images/waffle/velocities.svg?width=20cm) -->
 <p><img alt="" src="../../images/waffle/velocities.svg" width="600" /></p>
 </figure>
 <p>It can therefore only move <strong>linearly</strong> in the <strong>x-axis</strong> (<em>Forwards/Backwards</em>) and <strong>angularly</strong> in the <strong>z-axis</strong> (<em>Yaw</em>). </p>
@@ -3444,7 +3442,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
 <p><a href="https://github.com/tom-howard/tuos_ros/blob/main/tuos_tb3_tools/launch/ros.launch">Source code available here</a> (if you're interested)&#160;<a class="footnote-backref" href="#fnref:tuos_ros_launch" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:odom">
-<p>You'll learn much more about "Robot Odometry" in <a href="../../com2009/assignment1/part2">Assignment #1 Part 2</a>, and in the COM2009 Lectures.&#160;<a class="footnote-backref" href="#fnref:odom" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>You'll learn much more about "Robot Odometry" in <a href="../../com2009/assignment1/part2/">Assignment #1 Part 2</a>, and in the COM2009 Lectures.&#160;<a class="footnote-backref" href="#fnref:odom" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -3470,7 +3468,7 @@ Replacing <code>com2009_team999</code> accordingly.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-16T11:32:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T16:14:22+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
   </span>
 
     
