@@ -31,9 +31,9 @@ By the end of this session you will be able to:
 
 ### Additional Resources
 
-* [The Initial Object Detection Code (for Exercise 2)](object_detection)
-* [A Complete Worked Example of the `object_detection.py` Node](object_detection_complete)
-* [A `line_follower` Template (for Exercise 4)](line_follower)
+* [The Initial Object Detection Code (for Exercise 2)](./part6/object_detection.md)
+* [A Complete Worked Example of the `object_detection.py` Node](./part6/object_detection_complete.md)
+* [A `line_follower` Template (for Exercise 4)](./part6/line_follower.md)
 
 ## Getting Started
 
@@ -46,7 +46,7 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from last time
 [^1]: You can also use the `wsl_ros restore` command.
 
 **Step 3: Launch VS Code**  
-Follow [these steps](../../../wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
+Follow [these steps](../../wsl-ros/vscode.md) to launch VS Code correctly within the WSL-ROS environment.
 
 **Step 4: Launch the Robot Simulation**  
 In this session we'll start by working with the same *mystery world* environment from Part 5. In **TERMINAL 1**, use the following `roslaunch` command to load it:
@@ -103,7 +103,7 @@ Our *real* TurtleBot3 Waffles in the Diamond have a slightly different camera mo
 
 [^2]: Camera topic names are slightly different on the real robots though, so look out for that!
 
-The first items in the list of camera topics above tell us that *depth* information is available here. Much like the real robots, the simulated versions that we are working with here also have a camera module capable of determining depth information as well as simply capturing images.  [Remember from Part 3 though](../part3/#lidar), that we also have a very capable LiDAR sensor to give us this type of information too, and so we won't really be using the depth capabilities of our camera in this session.
+The first items in the list of camera topics above tell us that *depth* information is available here. Much like the real robots, the simulated versions that we are working with here also have a camera module capable of determining depth information as well as simply capturing images.  [Remember from Part 3 though](./part3.md#lidar), that we also have a very capable LiDAR sensor to give us this type of information too, and so we won't really be using the depth capabilities of our camera in this session.
 
 The main thing we are actually interested in here is the *RGB images* that are captured by the camera, and the key topic that we'll therefore be using here is:
 
@@ -179,7 +179,7 @@ Another tool we can use to view camera data-streams is the `rqt_image_view` node
 
 1. Keep this window open now, and launch a new terminal instance (**TERMINAL 3**).
 
-1. Launch the `turtlebot3_teleop` node, either using [the full command](../part1/#teleop) or a handy alias: `tb3_teleop`! Rotate your robot on the spot, keeping an eye on the `rqt_image_view` window as you do this.  Stop the robot once one of the coloured pillars in the arena is roughly in the centre of the robot's field of vision, then close the `turtlebot3_teleop` node and the `rqt_image_view` node by entering ++ctrl+c++ in **TERMINAL 3** and **TERMINAL 2** respectively.
+1. Launch the `turtlebot3_teleop` node, either using [the full command](./part1.md#teleop) or a handy alias: `tb3_teleop`! Rotate your robot on the spot, keeping an eye on the `rqt_image_view` window as you do this.  Stop the robot once one of the coloured pillars in the arena is roughly in the centre of the robot's field of vision, then close the `turtlebot3_teleop` node and the `rqt_image_view` node by entering ++ctrl+c++ in **TERMINAL 3** and **TERMINAL 2** respectively.
 
 ## OpenCV and ROS {#opencv}
 
@@ -198,7 +198,7 @@ In this exercise you will learn how to use OpenCV to capture images, filter them
 1. First create a new package in your `catkin_ws/src` directory called `part6_vision` with `rospy`, `cv_bridge`, `sensor_msgs` and `geometry_msgs` as dependencies.
 1. Then, run `catkin build` on the package and then re-source your environment (as you've done so many times by now!)
 1. In the `src` folder of the package you have just created, create a new Python file called `object_detection.py`. *What else do we need to do to this file before we can run it?* **Do it now!**
-1. Copy [the code here](object_detection), save the file, then read the annotations so that you understand how this node works and what should happen when you run it. <a name="ex2_ret"></a>
+1. Copy [the code here](./part6/object_detection.md), save the file, then read the annotations so that you understand how this node works and what should happen when you run it. <a name="ex2_ret"></a>
 1. Run the node using `rosrun`.
 
     !!! warning
@@ -366,7 +366,7 @@ The work we have just done above led to us obtaining what is referred to as a *c
 * <code>M<sub>01</sub></code>: the sum of all the non-zero pixels in the vertical (z) axis, weighted by *column* number
 
 !!! info "Remember"
-    We refer to the *horizontal* as the *y-axis* and the *vertical* as the *z-axis* here, to match the terminology that we have used previously to define [our robot's principal axes](../part2/#principal-axes).
+    We refer to the *horizontal* as the *y-axis* and the *vertical* as the *z-axis* here, to match the terminology that we have used previously to define [our robot's principal axes](./part2.md#principal-axes).
 
 We don't really need to worry about the derivation of these moments too much though.  OpenCV has a built-in `moments()` function that we can use to obtain this information from an image mask (such as the one that we generated earlier):
 
@@ -388,7 +388,7 @@ cz = m['m01']/(m['m00']+1e-5)
   ![](part6/od6_centroid.png)
 </figure>
 
-Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: `cv2.circle()`.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in [a complete worked example of the `object_detection.py` node](object_detection_complete) from the previous exercise. <a name="ex2b_ret"></a>
+Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: `cv2.circle()`.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in [a complete worked example of the `object_detection.py` node](./part6/object_detection_complete.md) from the previous exercise. <a name="ex2b_ret"></a>
 
 In our case, we can't actually change the position of our robot in the z axis, so the `cz` centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate `cy` to understand where a feature is located *horizontally* in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We can then use this as the basis for some real **closed-loop** control.
 
@@ -514,7 +514,7 @@ Where $u(t)$ is the **Controlled Output**, $e(t)$ is the **Error** (as illustrat
 
     <a name="ex4a_ret"></a>
 
-1. Start with [the code template provided here](line_follower). This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in [Exercise 2](#ex2), so go back here if you need a reminder on how any of this works. 
+1. Start with [the code template provided here](./part6/line_follower.md). This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in [Exercise 2](#ex2), so go back here if you need a reminder on how any of this works. 
 
     Your aim here is to get the code to generate a cropped image, with the coloured line isolated and located within it, like this:
 
@@ -566,7 +566,7 @@ The next task then is to adapt our `line_follower.py` node to implement this con
 1. Run the code as it is, and consider the following:
 
     1. What proportional gain ($K_{P}$) are we applying?
-    1. What is [the maximum angular velocity that can be applied to our robot](../../../about/robots/#max_vels)? Is the angular velocity that has been calculated actually appropriate?
+    1. What is [the maximum angular velocity that can be applied to our robot](../../about/robots.md#max_vels)? Is the angular velocity that has been calculated actually appropriate?
     1. Is the angular velocity that has been calculated positive or negative? Will this make the robot turn in the right direction and move towards the line?  
 
 1. Let's address the third question (**c**) first...

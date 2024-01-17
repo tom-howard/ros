@@ -45,11 +45,11 @@ Enter `Y` to restore your work now.
     You can also use the `wsl_ros restore` command to restore your work at any other time.
 
 **Step 3: Launch VS Code**  
-Also launch VS Code now by [following the steps here to launch it correctly within the WSL-ROS environment](../../../wsl-ros/vscode).
+Also launch VS Code now by [following the steps here to launch it correctly within the WSL-ROS environment](../../wsl-ros/vscode.md).
 
 ## Laser Displacement Data and The LiDAR Sensor {#lidar}
 
-As you'll know from Part 2, odometry is really important for robot navigation, but it can be subject to drift and accumulated error over time. You may have observed this in simulation during [Part 2 Exercise 5](../part2/#ex5), and you would most certainly notice it if you were to do the same on a real robot. Fortunately, our robots have another sensor on-board which provides even richer information about the environment, and we can use this to supplement the odometry information and enhance the robot's navigation capabilities.
+As you'll know from Part 2, odometry is really important for robot navigation, but it can be subject to drift and accumulated error over time. You may have observed this in simulation during [Part 2 Exercise 5](./part2.md#ex5), and you would most certainly notice it if you were to do the same on a real robot. Fortunately, our robots have another sensor on-board which provides even richer information about the environment, and we can use this to supplement the odometry information and enhance the robot's navigation capabilities.
 
 #### :material-pen: Exercise 1: Using RViz to Visualise Robot Data {#ex1}
 
@@ -213,7 +213,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
 
     This will launch RViz again, and you should be able to see a model of your TurtleBot3 from a top-down view, this time with green dots representing the real-time LiDAR data. The SLAM tools will already have begun processing this data to start building a map of the boundaries that are currently visible to your robot based on its position in the environment.
 
-1. In **TERMINAL 3** launch the `turtlebot3_teleop_key` node ([you should know how to do this by now](../part2/#teleop)).  Re-arrange and re-size your windows so that you can see Gazebo, RViz *and* the `turtlebot3_teleop_key` terminal instances all at the same time:
+1. In **TERMINAL 3** launch the `turtlebot3_teleop_key` node ([you should know how to do this by now](./part2.md#teleop)).  Re-arrange and re-size your windows so that you can see Gazebo, RViz *and* the `turtlebot3_teleop_key` terminal instances all at the same time:
     
     <figure markdown>
       ![](../../images/wsl/window_arrangement.png)
@@ -225,7 +225,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
       ![](../../images/rviz/slam.png)
     </figure>
 
-1. As you're doing this you need to *also* determine the centre coordinates of the four circles (A, B, C & D) that are printed on the arena floor. Drive your robot into each of these circular zones and stop the robot inside them. As you should remember from Part 2, we can determine the position (and orientation) of a robot in its environment from its *odometery*, as published to the `/odom` topic. In [Part 2 Exercise 2](../part2/#ex2) you built an odometry subscriber node, so you could launch this now (in a new terminal: **TERMINAL 4**), and use this to inform you of your robot's `x` and `y` position in the environment when located within each of the zone markers:
+1. As you're doing this you need to *also* determine the centre coordinates of the four circles (A, B, C & D) that are printed on the arena floor. Drive your robot into each of these circular zones and stop the robot inside them. As you should remember from Part 2, we can determine the position (and orientation) of a robot in its environment from its *odometery*, as published to the `/odom` topic. In [Part 2 Exercise 2](./part2.md#ex2) you built an odometry subscriber node, so you could launch this now (in a new terminal: **TERMINAL 4**), and use this to inform you of your robot's `x` and `y` position in the environment when located within each of the zone markers:
 
     ***
     **TERMINAL 4:**
@@ -419,7 +419,7 @@ As mentioned above, the map that you created in the previous exercise can now be
     
 1. Run another command now to find out what the structure of this message is (you did this earlier for the `LaserScan` messages published to the `/scan` topic).
 
-1. Knowing all this information now, we can use the `rostopic pub` command to issue a navigation goal to our robot, via the `/move_base_simple/goal` topic. This command works exactly the same way as it did when we [published messages to the `/cmd_vel` topic in Part 2](../part2/#rostopic_pub) (when we made the robot move at a velocity of our choosing).
+1. Knowing all this information now, we can use the `rostopic pub` command to issue a navigation goal to our robot, via the `/move_base_simple/goal` topic. This command works exactly the same way as it did when we [published messages to the `/cmd_vel` topic in Part 2](./part2.md#rostopic_pub) (when we made the robot move at a velocity of our choosing).
 
     Remember that the `rostopic pub` command takes the following format:
 
@@ -481,7 +481,7 @@ As you have observed in this exercise, in order to use ROS navigation tools to m
 
 ## Further Reading
 
-The [ROS Robot Programming eBook that we have mentioned previously](../../../about/robots/#ebook) goes into more detail on how SLAM and the autonomous navigation tools that you have just implemented actually work.  There is information in here on how these tools have been configured to work with the TurtleBot3 robots specifically.  We therefore *highly recommend* that you download this book and have a read of it.  You should read through Chapters 11.3 ("SLAM Application") and 11.4 ("SLAM Theory") in particular, and pay particular attention to the following:  
+The [ROS Robot Programming eBook that we have mentioned previously](../../about/robots.md#ebook) goes into more detail on how SLAM and the autonomous navigation tools that you have just implemented actually work.  There is information in here on how these tools have been configured to work with the TurtleBot3 robots specifically.  We therefore *highly recommend* that you download this book and have a read of it.  You should read through Chapters 11.3 ("SLAM Application") and 11.4 ("SLAM Theory") in particular, and pay particular attention to the following:  
 
 * What information is required for SLAM? One of these bits of information may be new to you: how does this relate to *Odometry*, which you *do* know about? (See Section 11.3.4)
 * Which nodes are active in the SLAM process and what do they do?  What topics are published and what type of messages do they use?  How does the information flow between the node network?

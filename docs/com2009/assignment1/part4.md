@@ -32,9 +32,9 @@ By the end of this session you will be able to:
 
 ### Additional Resources
 
-* [The Service Server Code (for Exercise 1)](move_server)
-* [The Service Client Code (for Exercise 2)](move_client)
-* [Creating a `/scan` Callback Function](scan_callback)
+* [The Service Server Code (for Exercise 1)](./part4/move_server.md)
+* [The Service Client Code (for Exercise 2)](./part4/move_client.md)
+* [Creating a `/scan` Callback Function](./part4/scan_callback.md)
 
 ## Getting Started
 
@@ -47,7 +47,7 @@ When prompted (in **TERMINAL 1**), enter `Y` to restore your work from last time
 [^1]: Remember: you can also use the `wsl_ros restore` command at any time.
 
 **Step 3: Launch VS Code**  
-Follow [these steps](../../../wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
+Follow [these steps](../../wsl-ros/vscode.md) to launch VS Code correctly within the WSL-ROS environment.
 
 **Step 4: Launch the Robot Simulation**  
 From **TERMINAL 1**, launch the TurtleBot3 Waffle *"Empty World"* simulation:
@@ -156,7 +156,7 @@ To start with, let's set up a service and learn how to make a call to it from th
     ***
 
 1. Create a file called `move_server.py` (using `touch`) and set this to be executable (using `chmod`).        
-1. Then, open the file in VS Code, copy and paste [this code](move_server) and then save it. <a name="ex1_ret"></a>
+1. Then, open the file in VS Code, copy and paste [this code](./part4/move_server.md) and then save it. <a name="ex1_ret"></a>
     
     !!! note
         It's really important that you understand how the code above works, so that you know how to build your own service *Servers* in Python. Make sure you read the code annotations thoroughly.
@@ -303,7 +303,7 @@ bool response_signal    <-- Response (Parameter 1 of 2)
 string response_message <-- Response (Parameter 2 of 2)
 ```
 
-In order to *Call* a service, we need to provide data to it in the format specified in the **Request** section of the message. A service *Server* (like the [Python node we created above](move_server#code)) will then send data back to the caller in the format specified in the **Response** section of the message.
+In order to *Call* a service, we need to provide data to it in the format specified in the **Request** section of the message. A service *Server* (like the [Python node we created above](./part4/move_server.md#code)) will then send data back to the caller in the format specified in the **Response** section of the message.
 
 The `tuos_msgs/SetBool` service message that we're working with here has a **one** request parameter:
 
@@ -330,7 +330,7 @@ As well as calling a service from the command-line we can also build Python node
     ***
     
 1. Create a new file called `move_client.py` and make sure that this is executable.
-1. Launch the file in VS Code, copy and paste [this code](move_client) and then save the file. <a name="ex2_ret"></a>
+1. Launch the file in VS Code, copy and paste [this code](./part4/move_client.md) and then save the file. <a name="ex2_ret"></a>
     
     !!! note
         Once again, be sure to read the code annotations, and make sure that you understand how this Python Service Client Node works too!
@@ -444,10 +444,10 @@ For this exercise you need to build another Python *Server* node which must perf
     1. The speed (in m/s) at which to approach the object.
     1. The distance (in meters) at which the robot must stop in front of it.
 1. A service message called `tuos_msgs/Approach` is available for you to use for this exercise. Use this to build your service server. Remember, you can find out more about this message using `rossrv info`.
-1. We haven't really done much work with the LiDAR data published to the `/scan` topic yet, so you might want to consider [this suggested approach](scan_callback) for building a `/scan` callback function. <a name="ex4_ret"></a>
+1. We haven't really done much work with the LiDAR data published to the `/scan` topic yet, so you might want to consider [this suggested approach](./part4/scan_callback.md) for building a `/scan` callback function. <a name="ex4_ret"></a>
 
     !!! tip
-        You should use a class structure in your Python code here. Start off with the [Server code from Exercise 1](move_server) and add to this to build the functionality required for this exercise.
+        You should use a class structure in your Python code here. Start off with the [Server code from Exercise 1](./part4/move_server.md) and add to this to build the functionality required for this exercise.
 
 ## Wrapping Up
 

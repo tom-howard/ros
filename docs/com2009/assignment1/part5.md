@@ -33,8 +33,8 @@ By the end of this session you will be able to:
 
 ### Additional Resources
 
-* [The Action Client Code (for Exercise 2)](action_client)
-* [The Preemptive Action Client Code (for Exercise 3)](preemptive_action_client)
+* [The Action Client Code (for Exercise 2)](./part5/action_client.md)
+* [The Preemptive Action Client Code (for Exercise 3)](./part5/preemptive_action_client.md)
 
 ## Getting Started
 
@@ -56,7 +56,7 @@ cd ~/catkin_ws/src/tuos_ros/
 ```
 ***
 
-If this returns an error saying `No such file or directory`, then [head back here](../part2/#course-repo) and follow the steps to install it.
+If this returns an error saying `No such file or directory`, then [head back here](./part2.md#course-repo) and follow the steps to install it.
 
 If it does exist, then make sure it's up-to-date by running `git pull`:
 
@@ -68,11 +68,11 @@ cd ~/catkin_ws/src/tuos_ros/ && git pull
 ***
 
 **Step 4: Launch VS Code**  
-Follow [these steps](../../../wsl-ros/vscode) to launch VS Code correctly within the WSL-ROS environment.
+Follow [these steps](../../wsl-ros/vscode.md) to launch VS Code correctly within the WSL-ROS environment.
 
 ## Calling an Action Server
 
-Before we talk about what actions actually are, we're going to dive straight in and see one in *action* (excuse the pun). As you may remember from Part 3, you actually used a ROS Action to make your robot navigate autonomously in [Exercise 3](../part3/#ex3), by calling an action server from the command-line. We will do a similar thing now, in a different context, and this time we'll also look at what's going on in a bit more detail.
+Before we talk about what actions actually are, we're going to dive straight in and see one in *action* (excuse the pun). As you may remember from Part 3, you actually used a ROS Action to make your robot navigate autonomously in [Exercise 3](./part3.md#ex3), by calling an action server from the command-line. We will do a similar thing now, in a different context, and this time we'll also look at what's going on in a bit more detail.
 
 #### :material-pen: Exercise 1: Launching an Action Server and calling it from the command-line {#ex1}
 
@@ -118,7 +118,7 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
     /camera_sweep_action_server/status
     ```
 
-    A ROS action therefore has *five* messages associated with it. We'll talk about these in a bit more detail later on, but for now, all we need to know is that in order to *call* an action, we need to send the action server a **Goal** (which you may remember doing in [Part 3](../part3/#ex3)).
+    A ROS action therefore has *five* messages associated with it. We'll talk about these in a bit more detail later on, but for now, all we need to know is that in order to *call* an action, we need to send the action server a **Goal** (which you may remember doing in [Part 3](./part3.md#ex3)).
 
     ??? info "Comparing with ROS Services"
         This is a bit like sending a **Request** to a ROS Service Server, like we did in the previous session.
@@ -389,7 +389,7 @@ An Action Server provides **feedback** messages at regular intervals whilst perf
 
 1. You should only have one Windows Terminal application instance open now, with three WSL-ROS terminal tabs in it. **TERMINAL 3** should already be idle (i.e. not running any commands), and (if you haven't done so already) enter ++ctrl+c++ in **TERMINAL 1** and **TERMINAL 2** to stop the headless Gazebo simulation processes and the Camera Sweep Action Server respectively. 
 
-1. In **TERMINAL 1** create a new package called `part5_actions` using the `catkin_create_pkg` tool [as you have done previously](../part4/#ex1). This time, define `rospy`, `actionlib` and `tuos_msgs` as dependencies.
+1. In **TERMINAL 1** create a new package called `part5_actions` using the `catkin_create_pkg` tool [as you have done previously](./part4.md#ex1). This time, define `rospy`, `actionlib` and `tuos_msgs` as dependencies.
     
     !!! tip "Remember"
         Make sure you're in your `~/catkin_ws/src/` folder when you run the `catkin_create_pkg` command!
@@ -410,7 +410,7 @@ An Action Server provides **feedback** messages at regular intervals whilst perf
 
 1. Navigate to the `src` folder of this package, create a file called `action_client.py` (using `touch`) and set this to be executable (using `chmod`).        
 
-1. Review [the code provided here](action_client), and the annotations, then copy and paste the code into your newly created `action_client.py` file. <a name="ex2_ret"></a>
+1. Review [the code provided here](./part5/action_client.md), and the annotations, then copy and paste the code into your newly created `action_client.py` file. <a name="ex2_ret"></a>
 
 1. Then, in **TERMINAL 2**, execute the same launch file as before but this time with a couple of additional arguments:
 
@@ -481,9 +481,9 @@ Actions are extremely useful for controlling robotic tasks or processes that mig
 #### :material-pen: Exercise 3: Building a Preemptive Python Action Client Node {#ex3}
 
 1. In **TERMINAL 1** you should still be located within the `src` folder of your `part5_actions` package. If not, then go back there now! Create a new file called `preemptive_action_client.py` and make this executable.
-1. Have a look at the code [here](preemptive_action_client), then copy and paste it into the `preemptive_action_client.py` node that you have just created.<a name="ex3_ret"></a>
+1. Have a look at the code [here](./part5/preemptive_action_client.md), then copy and paste it into the `preemptive_action_client.py` node that you have just created.<a name="ex3_ret"></a>
 
-    Here, we've built an action client that will cancel the call to the action server if we enter ++ctrl+c++ into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at [the code annotations](preemptive_action_client) and make sure that you understand how it all works.
+    Here, we've built an action client that will cancel the call to the action server if we enter ++ctrl+c++ into the terminal.  This is useful, because otherwise the action server would continue to run, even when we terminate the client.  A lot of the code is similar to the Action Client from the previous exercise, but we've built a class structure around this now for more flexibility.  Have a look at [the code annotations](./part5/preemptive_action_client.md) and make sure that you understand how it all works.
 
 1. Run this using `rosrun`, let the server take a couple of images and then enter ++ctrl+c++ to observe the goal cancelling in action.
 
@@ -624,13 +624,13 @@ roslaunch turtlebot3_gazebo turtlebot3_stage_4.launch
     * The action server should make the robot move forwards until it detects an obstacle up ahead.
     * Similarly to the *Service* Server that you created last part, your *Action* Server here should be configured to accept two **goal** parameters:
         1. The speed (in m/s) at which the robot should move forwards when the action server is called. Consider doing some error checking on this to make sure a velocity request is less than the maximum speed that the robot can actually achieve (0.26 m/s)!
-        1. The distance (in meters) at which the robot should stop ahead of any objects or boundary walls that are in front of it. To do this you'll need to subscribe to the `/scan` topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of `LaserScan` data points (within the `ranges` array) to make the collision avoidance effective (recall the [LaserScan callback example](../part4/scan_callback) and also have a look at the `Tb3LaserScan` class within the `tuos_examples/tb3.py` module that might help you with this).
+        1. The distance (in meters) at which the robot should stop ahead of any objects or boundary walls that are in front of it. To do this you'll need to subscribe to the `/scan` topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of `LaserScan` data points (within the `ranges` array) to make the collision avoidance effective (recall the [LaserScan callback example](./part4/scan_callback.md) and also have a look at the `Tb3LaserScan` class within the `tuos_examples/tb3.py` module that might help you with this).
     * Whilst your server performs its task it should provide the following **feedback** to the Action Caller:
         1. The distance travelled (in meters) since the current action was initiated.
 
             To do this you'll need to subscribe to the `/odom` topic. Remember that there's a `Tb3Odometry` class within [the `tuos_examples/tb3.py` module](#tb3_module) that might help you with obtaining this data.
             
-            Remember also that your robot's orientation shouldn't change over the course of a single action call, only its `linear.x` and `linear.y` positions should vary.  Bear in mind however that the robot won't necessarily be moving along the `X` or `Y` axis, so you will need to consider the total distance travelled in the `X-Y` plane.  You should have done this in the [Part 2 `move_square` exercise](../part2/#ex5), so refer to this if you need a reminder.
+            Remember also that your robot's orientation shouldn't change over the course of a single action call, only its `linear.x` and `linear.y` positions should vary.  Bear in mind however that the robot won't necessarily be moving along the `X` or `Y` axis, so you will need to consider the total distance travelled in the `X-Y` plane.  You should have done this in the [Part 2 `move_square` exercise](./part2.md#ex5), so refer to this if you need a reminder.
 
     * Finally, on completion of the action, your server should provide the following *three* **result** parameters:
         1. The *total* distance travelled (in meters) over the course of the action.
@@ -639,7 +639,7 @@ roslaunch turtlebot3_gazebo turtlebot3_stage_4.launch
 
 1. An action message has been created for you to use for this exercise: `tuos_msgs/Search.action`.  Navigate to the `action` folder of the `tuos_msgs` package directory (or use `rosmsg info ...` in the terminal) to find out everything you need to know about this action message in order to develop your Action Server (and Client) nodes appropriately.
 
-1. We've put together [some template code](search_server) to help you with this. For further guidance though, you should also refer to the code for `/camera_sweep_action_server` node, which [we talked about earlier](#cam_swp_act_srv): a lot of the techniques used by `/camera_sweep_action_server` node will be similar to what you'll need to do in this exercise. <a name="ex4_ret"></a>
+1. We've put together [some template code](./part5/search_server.md) to help you with this. For further guidance though, you should also refer to the code for `/camera_sweep_action_server` node, which [we talked about earlier](#cam_swp_act_srv): a lot of the techniques used by `/camera_sweep_action_server` node will be similar to what you'll need to do in this exercise. <a name="ex4_ret"></a>
 
 1. Whenever you're ready you can launch your action server from **TERMINAL 2**, using `rosrun`, as below:
 
@@ -659,7 +659,7 @@ roslaunch turtlebot3_gazebo turtlebot3_stage_4.launch
     * The client needs to issue a correctly formatted **goal** to the server.
     * The client should be programmed to monitor the **feedback** data from the Server.  If it detects (from the feedback) that the robot has travelled a distance *greater than 2 meters* without detecting an obstacle, then it should cancel the current action call using the `cancel_goal()` `actionlib` method.
 
-1. Use the techniques that we used in the Client node from [Exercise 3](#ex3) as a guide to help you with this. There's also [a code template here](search_client) to help you get started. <a name="ex4c_ret"></a>
+1. Use the techniques that we used in the Client node from [Exercise 3](#ex3) as a guide to help you with this. There's also [a code template here](./part5/search_client.md) to help you get started. <a name="ex4c_ret"></a>
 
 1. Once you have everything in place launch the action client with `rosrun` as below:
 
@@ -695,11 +695,11 @@ What you developed in [the previous exercise](#ex4) could be used as the basis f
 
 #### :material-pen: Advanced Exercise 2: Autonomous Navigation using waypoint markers {#adv_ex2}
 
-In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](../part3/#ex2)) and then issued navigation requests to the `move_base` action server, via the command-line, ([Exercise 3](../part3/#ex3)) to make your robot move to a zone marker, based on coordinates that you had established beforehand. Now that you know how to build Action Client Nodes in Python you could return to your `part2_navigation` package and build a new node that makes the robot move sequentially between each zone marker programmatically.
+In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./part3.md#ex2)) and then issued navigation requests to the `move_base` action server, via the command-line, ([Exercise 3](./part3.md#ex3)) to make your robot move to a zone marker, based on coordinates that you had established beforehand. Now that you know how to build Action Client Nodes in Python you could return to your `part2_navigation` package and build a new node that makes the robot move sequentially between each zone marker programmatically.
 
-* Your node could cycle through the coordinates of all four of the zone markers (or "waypoints") that you established whilst using SLAM to build a map of the environment ([as per Exercise 2](../part3/#ex2)).
+* Your node could cycle through the coordinates of all four of the zone markers (or "waypoints") that you established whilst using SLAM to build a map of the environment ([as per Exercise 2](./part3.md#ex2)).
 * Your node could monitor the status of the `move_base_simple` action call to know when the robot has reached a zone marker, so that it knows when to issue a further action call to move on to the next one.
-* You could refer to [the launch file that you created in Part 3](../part3/#launch_file) to launch all the navigation processes that need to be running in order to enable and configure the ROS Navigation Stack appropriately for the TurtleBot3 robot.
+* You could refer to [the launch file that you created in Part 3](./part3.md#launch_file) to launch all the navigation processes that need to be running in order to enable and configure the ROS Navigation Stack appropriately for the TurtleBot3 robot.
 
 ## Wrapping Up
 
