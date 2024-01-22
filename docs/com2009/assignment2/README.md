@@ -18,10 +18,16 @@ There are **four tasks** in total that you must complete for this Assignment. Ea
 | :---: | :---   | :---: |
 | 1 | [Velocity Control](./task1.md) | 20/100 |
 | 2 | [Avoiding Obstacles](./task2.md) | 20/100 |
-| 3 | [Navigation](./task3.md) | 25/100 |
-| 4 | [Search & Explore](./task4.md) | 35/100 | 
+| 3 & 4 | Further info coming soon... | 60/100 |
+
+<!-- 
+| 3 | [Navigation]() | 25/100 |
+| 4 | [Search & Explore]() | 35/100 |  -->
+
 
 </center>
+
+
 
 There are **100 marks** available in total for Assignment #2.
 
