@@ -151,6 +151,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tom-howard.github.io/ros/com2009/assignment2/parta/task1/</loc>
+         <lastmod>2024-01-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tom-howard.github.io/ros/com2009/assignment2/parta/task2/</loc>
+         <lastmod>2024-01-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tom-howard.github.io/ros/com2009/la1/</loc>
          <lastmod>2024-01-23</lastmod>
          <changefreq>daily</changefreq>
@@ -307,6 +317,11 @@
     </url>
     <url>
          <loc>https://tom-howard.github.io/ros/extras/ros-msgs/</loc>
+         <lastmod>2024-01-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tom-howard.github.io/ros/extras/tuos-ros/</loc>
          <lastmod>2024-01-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
