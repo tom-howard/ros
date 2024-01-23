@@ -90,7 +90,7 @@ roslaunch com2009_simulations task1.launch
 
 <figure markdown>
   ![](../figures/task1.jpg)
-  <figcaption>The development arena for Task 1.</figcaption>
+  <figcaption>The Task 1 development arena.</figcaption>
 </figure>
 
 !!! note
