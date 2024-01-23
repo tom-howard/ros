@@ -1,9 +1,8 @@
-site_name: "Robotics in the Diamond: ROS"
+site_name: "Robotics Labs in The Diamond"
 site_url: https://tom-howard.github.io/ros/
-site_description: Practical ROS Courses in The Diamond at The University of Sheffield. 
+site_description: Practical Robotics & ROS Courses at The University of Sheffield. 
 theme:
   name: material
-  custom_dir: overrides
   icon:
     repo: fontawesome/brands/github
   font: 
@@ -42,8 +41,7 @@ theme:
     - content.action.view
   
 copyright: >
-  Copyright &copy; 2023 The University of Sheffield <br />
-  Content by <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Dr Tom Howard</a> (License: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>)<br />
+  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2024 (License: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>)<br />
   <a href="#__consent">Change cookie settings</a>
 repo_url: https://github.com/tom-howard/ros
 repo_name: tom-howard/ros
