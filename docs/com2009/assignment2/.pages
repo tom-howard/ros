@@ -1,9 +1,4 @@
 nav:
   - README.md
   - "Getting Started in Week 1": getting-started.md
-  # - "Task 1: Creating a Deployable ROS Package": task1.md
-  # - "Task 2: Obstacle Avoidance": task2.md
-  # - "Task 3: Maze Navigation": task3.md
-  # - "Task 4: Detection, Search & Beaconing": task4.md
-  # - "Task 5: Real-World Exploration": task5.md
-  # - "Additional Resources": extras
+  - "Part A": parta

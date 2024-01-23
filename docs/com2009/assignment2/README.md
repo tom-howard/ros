@@ -66,7 +66,12 @@ Before you get started on any of the programming tasks you should (as a team) cr
 In order to launch the necessary functionality within your package for a given task you will need to include correctly named *launch files*: `task1.launch`, `task2.launch`, etc. This will allow you to ensure that all the required functionality is executed when your submission is assessed, and also ensures that we know exactly how to launch this functionality in order to assess it. Full details of the requirements for each launch file are provided on the associated task page.
 
 !!! warning 
-    It's up to **you** to ensure that your code launches as intended for a given task. If it doesn't, then you'll be awarded zero marks, so **make sure you test it all out prior to submission**! 
+    It's up to **you** to ensure that your code launches as intended for a given task. If it doesn't, then you'll be awarded zero marks, so **make sure you test it all out prior to submission**!
+
+For more information on how to create `.launch` files, refer to the following resources:
+
+1. [Assignment #1, Part 1, Exercise 8: Creating a Launch File](../assignment1/part1.md#ex8)
+2. The [ROS Extras: **Launch Files**](../../extras/launch-files/README.md) section of this course site 
 
 ### Key Requirements
 
