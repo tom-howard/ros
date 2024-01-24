@@ -89,11 +89,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#launching-other-launch-files" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -1744,8 +1739,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2105,8 +2098,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -2137,15 +2128,20 @@
   
 
 
-<h1 id="launching-other-launch-files">Launching Other Launch Files<a class="headerlink" href="#launching-other-launch-files" title="Permanent link">&para;</a></h1>
-<p>Think back to <a href="../../la1/week2/#ex4">the <code>move_circle.py</code> node that you created in Week 2</a>. We need a simulation of our robot active in order to run this, which we can enable with the following command (which you should be very familiar with by now):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_empty_world.launch
+  <h1>Launching Other Launch Files</h1>
+
+<div class="admonition success">
+<p class="admonition-title">COM2009 Assignment #1 Checkpoint</p>
+<p>It helps if you've already completed <a href="../../../com2009/assignment1/part2/"><strong>Part 2</strong> up to and including <strong>Exercise 4</strong></a> before working on this as, in this example, we'll build on <a href="../../../com2009/assignment1/part2/#ex4">the <code>move_circle.py</code> node</a>.</p>
+</div>
+<p>We need a simulation of our Waffle active in order to run this, which we can enable with the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_empty_world.launch
 </code></pre></div>
 <p>Suppose you wanted to save yourself some work and launch both the simulation <em>and</em> the <code>move_circle.py</code> node at the same time...</p>
 <ol>
 <li>
-<p>Firstly, return to your <code>week2_navigation</code> package and create a <code>launch</code> directory (if you haven't done so previously):</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roscd<span class="w"> </span>week2_navigation
+<p>Firstly, navigate to your <code>part2_navigation</code> package and create a <code>launch</code> directory (if you haven't done so):</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roscd<span class="w"> </span>part2_navigation
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir<span class="w"> </span>launch
 </code></pre></div>
@@ -2161,17 +2157,17 @@
 <p>Inside this file add the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">&lt;launch&gt;</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;week2_navigation&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;move_circle.py&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;circle_node&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;part2_navigation&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;move_circle.py&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;circle_node&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nt">&lt;/launch&gt;</span>
 </code></pre></div>
-<p>The <code>&lt;node&gt;</code> tag should already be familiar to you, but the <code>&lt;include&gt;</code> tag before it might not be...</p>
+<p>Having completed <a href="../../../com2009/assignment1/part1/">Assignment #1 Part 1</a>, the <code>&lt;node&gt;</code> tag should already be familiar to you. The <code>&lt;include&gt;</code> tag before it however, might not be...</p>
 <p>This is what we use to launch other launch files. Here, we are locating the <code>turtlebot3_gazebo</code> package (using <code>find</code>), and asking for the <code>turtlebot3_empty_world.launch</code> file to be executed.</p>
 </li>
 <li>
 <p>From the command-line, execute your newly created launch file as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>roslaunch<span class="w"> </span>week2_navigation<span class="w"> </span>circle.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>roslaunch<span class="w"> </span>part2_navigation<span class="w"> </span>circle.launch
 </code></pre></div>
-<p>The TurtleBot3 Waffle will be launched in the <em>"empty world"</em> simulation, and the robot will start moving in a circle straight away!</p>
+<p>The Waffle will be launched in the <em>"empty world"</em> Gazebo environment, and the robot should start moving in a circle straight away!</p>
 </li>
 </ol>
 
@@ -2196,7 +2192,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-20T16:55:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-24T13:14:17+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-24</span>
   </span>
 
     

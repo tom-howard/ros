@@ -89,11 +89,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#using-the-roslaunch-python-api" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -1828,8 +1823,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2105,8 +2098,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -2137,9 +2128,14 @@
   
 
 
-<h1 id="using-the-roslaunch-python-api">Using the ROSlaunch Python API<a class="headerlink" href="#using-the-roslaunch-python-api" title="Permanent link">&para;</a></h1>
-<p>The <em>ROSlaunch API</em> allows you to launch nodes (and other launch files) from inside your own nodes! <a href="http://wiki.ros.org/roslaunch/API%20Usage">The official documentation for the roslaunch API</a> is the best place to go to find out how to use this, but here's a quick example, if you're short on time. </p>
-<p>Recall <a href="../../la1/week3/#ex3">the SLAM Exercise from Week 3</a>. Here we had SLAM running in the background, while we drove our robot around a simulated environment (using the <code>turtlebot3_teleop</code> node). Once we'd generated a full map we used a <code>rosrun</code> command (in the terminal) to save a copy of this map: </p>
+  <h1>Using the ROSlaunch Python API</h1>
+
+<div class="admonition success">
+<p class="admonition-title">COM2009 Assignment #1 Checkpoint</p>
+<p>It helps if you've already completed Assignment #1 <a href="../../../com2009/assignment1/part3/">up to and including all of <strong>Part 3</strong></a> before working on this.</p>
+</div>
+<p>The <em>ROSlaunch API</em> allows us to launch nodes (and other launch files) from inside our own nodes! <a href="http://wiki.ros.org/roslaunch/API%20Usage">The official documentation for the roslaunch API</a> is the best place to go to find out how to use this, but here's a quick example, if you're short on time. </p>
+<p>In <a href="../../../com2009/assignment1/part3/#ex2">the SLAM Exercise in Assignment #1 Part 3</a> we run SLAM in the background while driving our Waffle around a simulated environment manually, using the <code>turtlebot3_teleop</code> node. Once SLAM has generated a full map we use a <code>rosrun</code> command (in the terminal) to call a ready-made node bundled into ROS, which saves a copy of this map for us: </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>rosrun<span class="w"> </span>map_server<span class="w"> </span>map_saver<span class="w"> </span>-f<span class="w"> </span><span class="o">{</span>map<span class="w"> </span>name<span class="o">}</span>
 </code></pre></div>
 <p>Suppose we wanted to do this programmatically instead...  </p>
@@ -2189,7 +2185,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-05-19T11:24:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-05-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-24T13:14:17+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-24</span>
   </span>
 
     

@@ -2145,13 +2145,20 @@
   <h1>Launch Files</h1>
 
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>As you'll know by now, we execute <em>Nodes</em> on a ROS network using the <code>rosrun</code> command:</p>
-<div class="highlight"><pre><span></span><code>rosrun {package name} {script name}
+<p>As you should know from <a href="../../com2009/">the COM2009 ROS Course</a>, <em>Nodes</em> can be executed on a ROS network in two ways:</p>
+<ol>
+<li>
+<p>Using the <code>rosrun</code> command:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>rosrun<span class="w"> </span><span class="o">{</span>package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{</span>script<span class="w"> </span>name<span class="o">}</span>
 </code></pre></div>
-<p>Alternatively though, we also have the option of using <code>roslaunch</code>:</p>
-<div class="highlight"><pre><span></span><code>roslaunch {package name} {launch file}
+</li>
+<li>
+<p>Or by using <code>roslaunch</code>:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roslaunch<span class="w"> </span><span class="o">{</span>package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{</span>launch<span class="w"> </span>file<span class="o">}</span>
 </code></pre></div>
-<p>We learnt <a href="../la1/week1/#launch-files">way back in Week 1</a> that a <em>launch file</em> is an <code>xml</code> file with a <code>.launch</code> file extension. Inside this we can ask ROS to do a number of different things from one single <code>roslaunch</code> command-line call.</p>
+</li>
+</ol>
+<p>In <a href="../../com2009/assignment1/part1/#launch-files">Assignment #1 Part 1</a> you learn that a <em>launch file</em> is an <code>xml</code> file with a <code>.launch</code> file extension. Inside this we can ask ROS to do a number of different things from one single <code>roslaunch</code> command-line call.</p>
 <p><code>roslaunch</code> offers a number of advantages over <code>rosrun</code>:</p>
 <ul>
 <li><strong>Multiple nodes</strong> can be executed <strong>simultaneously</strong>.</li>
@@ -2183,7 +2190,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-02-20T16:55:13+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-02-20</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-24T13:14:17+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-24</span>
   </span>
 
     
