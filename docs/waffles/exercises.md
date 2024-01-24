@@ -100,7 +100,7 @@ In the Assignment #2 "Getting Started" tasks that you should have completed earl
     
     Make sure the laptop is now connected to "eduroam" before starting this exercise.
 
-You'll use SSH keys to download your team's ROS package onto the laptop now. You'll need to follow a similar procedure if you end up working on a different laptop during a different lab, or if you happen to delete your package from the laptop that you're working on now. There are some [more detailed instruction on how all this works here (TODO)](), which you should refer to in future lab sessions.
+You'll use SSH keys to download your team's ROS package onto the laptop now. You'll need to follow a similar procedure if you end up working on a different laptop during a different lab, or if you happen to delete your package from the laptop that you're working on now. There are some [more detailed instruction on how all this works here](./tips/laptops.md), which you should refer to in future lab sessions.
 
 ##### Step 1: Generating an SSH key (on the Laptop) {#ssh-keygen}
 
