@@ -2,11 +2,13 @@
 title: ROSlaunch Command-line Arguments  
 --- 
 
-# ROSlaunch Command-line Arguments
+!!! success "COM2009 Assignment #1 Checkpoint"
+    It helps if you've already completed [Assignment #1 **Part 1**](../../com2009/assignment1/part1.md) before working on this.
 
-A lot of the launch files that we have used throughout the lab course actually have *Command-Line Arguments* (CLAs) that can be (optionally) supplied when making the `roslaunch` call. Consider the `turtlebot3_empty_world.launch` file for instance...
 
-Enter the full command and then press the `SPACE` and `TAB` keys on your keyboard like so:
+A lot of the launch files that we have use throughout COM2009 Assignment #1 actually have *Command-Line Arguments* (CLAs) that can be (optionally) supplied when making the `roslaunch` call. Consider the `turtlebot3_empty_world.launch` file for instance...
+
+Enter the full command and then press the ++space++ and ++tab++ keys on your keyboard like so:
 
     roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch[SPACE][TAB][TAB]
 

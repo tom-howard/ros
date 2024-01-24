@@ -4,15 +4,21 @@ title: Launch Files
 
 ## Overview
 
-As you'll know by now, we execute *Nodes* on a ROS network using the `rosrun` command:
+As you should know from [the COM2009 ROS Course](../../com2009/README.md), *Nodes* can be executed on a ROS network in two ways:
 
+1. Using the `rosrun` command:
+
+    ``` { .bash .no-copy }
     rosrun {package name} {script name}
+    ```
+    
+ 2. Or by using `roslaunch`:
 
-Alternatively though, we also have the option of using `roslaunch`:
-
+    ``` { .bash .no-copy }
     roslaunch {package name} {launch file}
+    ```
 
-We learnt [way back in Week 1](../la1/week1/#launch-files) that a *launch file* is an `xml` file with a `.launch` file extension. Inside this we can ask ROS to do a number of different things from one single `roslaunch` command-line call.
+In [Assignment #1 Part 1](../../com2009/assignment1/part1.md#launch-files) you learn that a *launch file* is an `xml` file with a `.launch` file extension. Inside this we can ask ROS to do a number of different things from one single `roslaunch` command-line call.
 
 `roslaunch` offers a number of advantages over `rosrun`:
 
