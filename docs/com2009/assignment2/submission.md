@@ -20,7 +20,7 @@ When it comes to submission time, it's important that you follow the steps below
 
 3. Use the `tar` command to create an archive of your team's package:
 
-    ```bash
+    ``` { .bash .no-copy }
     tar -cvf ~/myrosdata/com2009_team{}.tar com2009_team{}
     ```
     
