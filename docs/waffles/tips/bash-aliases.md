@@ -2,8 +2,6 @@
 title: Bash Aliases  
 ---
 
-## Bash Aliases
-
 *Bash aliases* are abbreviations for long terminal commands. Some common ROS commands that we use when working with the robots are pretty long, so we've created a few aliases to make it quicker to launch certain things. Most of these are for commands that you'll run on the laptop, but there are a couple that apply to the robot too. See the table below for the full list of bash aliases that are available to you when working with the robots and the laptops:
 
 <center>
