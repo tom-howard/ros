@@ -16,8 +16,8 @@ There are **four tasks** in total that you must complete for this Assignment. Ea
 
 | Task | Details | Marks |
 | :---: | :---   | :---: |
-| 1 | [Velocity Control](./task1.md) | 20/100 |
-| 2 | [Avoiding Obstacles](./task2.md) | 20/100 |
+| 1 | [Velocity Control](./parta/task1.md) | 20/100 |
+| 2 | [Avoiding Obstacles](./parta/task2.md) | 20/100 |
 | 3 & 4 | Further info coming soon... | 60/100 |
 
 <!-- 
@@ -54,7 +54,7 @@ The assignment is essentially split into two separate parts (A & B), with two su
 
 For each submission, you'll need to upload a ROS package (as a `.tar` file) to a submission portal on Blackboard. 
 
-Before you get started on any of the programming tasks you should (as a team) create a single ROS package (further details on the next page). You can then add all the necessary functionality for each task as you go along. For each submission, you'll then need to create a copy of your package in its current state by creating a `.tar` archive of it, and submit this to Blackboard by the specified deadline ([the export process is explained here](../extras/submission)). 
+Before you get started on any of the programming tasks you should (as a team) create a single ROS package (further details on the next page). You can then add all the necessary functionality for each task as you go along. For each submission, you'll then need to create a copy of your package in its current state by creating a `.tar` archive of it, and submit this to Blackboard by the specified deadline ([the export process is explained here](submission.md)). 
 
 !!! note
     You should work on each task **as a team**, and you only need to make one submission per team for each task.
@@ -81,7 +81,7 @@ In order to be awarded any marks for any task outlined in the table above, you *
 
         com2009_team{}.tar
   
-    Where the `{}` is replaced with your own team number. [See here for how to create a `.tar` archive of your package](../extras/submission).
+    Where the `{}` is replaced with your own team number. [See here for how to create a `.tar` archive of your package](submission.md).
   
 1. Your ROS package directory, when extracted, must be named:
 
