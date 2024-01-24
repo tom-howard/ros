@@ -44,7 +44,7 @@ First, **don't forget the shebang**, it's very important!
 The above code uses a Python *Class structure*.  This approach will be very useful when we start to do more complex things later in the course, but for this exercise you could also achieve the same using the following simplified approach:
 
 ```python
---8<-- "code/subscriber_alt.py"
+--8<-- "snippets/subscriber_alt.py"
 ```
 
 <p align="center">
