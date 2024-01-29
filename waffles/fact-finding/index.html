@@ -2409,9 +2409,13 @@
 
 <p>For the most part, everything that you do with ROS in simulation is directly applicable to the real Waffles too. There are a few subtle differences though, and you should make sure that you are aware of these whilst working on Assignment #2.</p>
 <p>Complete the following <em>fact-finding missions</em>, which will help you to explore and identify the key differences between the way our TurtleBot3 Waffles work in the real world, compared to how they work in simulation.</p>
-<p>Each mission is linked to a particular part of the Assignment #1 course and, ideally, you should have completed the Assignment #1 tasks before completing the corresponding fact finding mission below. It's possible to do it the other way around too though, but just be mindful of the differences that we are trying to highlight here and the implications that they will have on the applications that you develop for Assignment #2. </p>
+<p>Each mission is linked to a particular part of the Assignment #1 course and, ideally, you should have completed the Assignment #1 tasks before completing the corresponding fact finding mission below. </p>
+<p>Be mindful of the differences that we are trying to highlight here and the implications that they will have on the applications that you develop for Assignment #2. </p>
 <h3 id="mission-1-publishing-velocity-commands">Mission 1: Publishing Velocity Commands<a class="headerlink" href="#mission-1-publishing-velocity-commands" title="Permanent link">&para;</a></h3>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42Z"/></svg></span> <strong>Connection to Assignment #1</strong>: <a href="../../com2009/assignment1/part2/#ex3">Part 2 Exercise 3</a> </p>
+<div class="admonition success">
+<p class="admonition-title">Assignment #1 Checkpoint</p>
+<p>You'll need to have completed <a href="../../com2009/assignment1/part2/#ex3">Part 2 Exercise 3</a> before starting on this mission.</p>
+</div>
 <p>In the above Assignment #1 exercise you learnt how to publish velocity commands from the command-line to make the robot move in simulation. Repeat this in simulation if you need a reminder on how it all worked.</p>
 <p>Then, follow exactly the same steps but with the real Waffle this time... What do you notice about how the real robot moves when you issue a correctly formulated <code>rostopic pub</code> command, e.g.:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>rostopic pub /cmd_vel geometry_msgs/Twist &quot;linear:
@@ -2434,7 +2438,10 @@
 <p>Having answered the questions above, what implications might this have for any ROS nodes that you create to control the velocity of a <em>real</em> robot? </p>
 </div>
 <h3 id="mission2">Mission 2: The Camera Image Topic<a class="headerlink" href="#mission2" title="Permanent link">&para;</a></h3>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42Z"/></svg></span> <strong>Connection to Assignment #1</strong>: The whole of <a href="../../com2009/assignment1/part6/">Part 6</a></p>
+<div class="admonition success">
+<p class="admonition-title">Assignment #1 Checkpoint</p>
+<p>You'll need to have completed the whole of <a href="../../com2009/assignment1/part6/">Part 6</a> before starting on this mission.</p>
+</div>
 <p>In Part 6 you worked extensively with the robot's camera and its images, which were published to the <code>/camera/rgb/image_raw</code> topic.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2442,7 +2449,10 @@
 </div>
 <p>On the laptop, use ROS command-line tools such as <code>rostopic list</code> and <code>rostopic info</code> to interrogate the real robot ROS Network and identify the name of the alternative camera image topic that is used here.</p>
 <h3 id="mission-3-camera-image-resolution">Mission 3: Camera Image Resolution<a class="headerlink" href="#mission-3-camera-image-resolution" title="Permanent link">&para;</a></h3>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42Z"/></svg></span> <strong>Connection to Assignment #1</strong>: The questions before <a href="../../com2009/assignment1/part6/#cam_img_questions">Part 6 Exercise 1</a></p>
+<div class="admonition success">
+<p class="admonition-title">Assignment #1 Checkpoint</p>
+<p>You'll need to have completed the questions before <a href="../../com2009/assignment1/part6/#cam_img_questions">Part 6 Exercise 1</a> before starting on this mission.</p>
+</div>
 <p>At the start of Part 6 we explore the messages published to the robot's camera image topic. Here you need to work out which part of these messages indicate the <em>resolution</em> of the camera images (i.e.: the <code>height</code> and <code>width</code> of the images, in pixels). You may recall what this was, but if not, go back and interrogate this again to find out what resolution the <em>simulated</em> robot's camera images are transmitted at (you'll need to use <code>rostopic echo</code>). </p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2454,7 +2464,10 @@
 <p>This will have implications when you come to apply image cropping techniques... the same cropping procedures may not work the same way for nodes run in simulation, compared to those running on a real robot!</p>
 </div>
 <h3 id="mission-4-out-of-range-lidar-data">Mission 4: Out of Range LiDAR Data<a class="headerlink" href="#mission-4-out-of-range-lidar-data" title="Permanent link">&para;</a></h3>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42Z"/></svg></span> <strong>Connection to Assignment #1</strong>: <a href="../../com2009/assignment1/part3/#interpreting-laserscan-data">"Interpreting <code>/LaserScan</code> Data" (Part 3)</a></p>
+<div class="admonition success">
+<p class="admonition-title">Assignment #1 Checkpoint</p>
+<p>You'll need to have completed the section on <a href="../../com2009/assignment1/part3/#interpreting-laserscan-data">"Interpreting <code>/LaserScan</code> Data" (Part 3)</a> before starting on this mission.</p>
+</div>
 <p>The robot's LiDAR sensor can only obtain measurements from objects within a certain distance range. In Part 3 we look at how to work out what this range is, using the <code>rostopic echo</code> command. Apply the same techniques to the real robot now to discover the <strong>maximum</strong> and <strong>minimum</strong> distances that the real robot's LiDAR sensor can measure.</p>
 <p>If the LiDAR sensor detects an object that falls within this range then it will report the exact distance to this object (in meters). Conversely, if it <em>doesn't</em> detect anything within this range then it will report a default <em>out-of-range</em> value instead. In simulation, the out-of-range value is <code>inf</code>.</p>
 <div class="admonition warning">
@@ -2463,7 +2476,10 @@
 </div>
 <p>Use the <code>rostopic echo</code> command to interrogate the ROS network running between your real Waffle and the robotics laptop, and find out what out-of-range value is used here.</p>
 <h3 id="mission-5-object-detection">Mission 5: Object Detection<a class="headerlink" href="#mission-5-object-detection" title="Permanent link">&para;</a></h3>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.59 13.41c.41.39.41 1.03 0 1.42-.39.39-1.03.39-1.42 0a5.003 5.003 0 0 1 0-7.07l3.54-3.54a5.003 5.003 0 0 1 7.07 0 5.003 5.003 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a2.982 2.982 0 0 0 0-4.24 2.982 2.982 0 0 0-4.24 0l-3.53 3.53a2.982 2.982 0 0 0 0 4.24m2.82-4.24c.39-.39 1.03-.39 1.42 0a5.003 5.003 0 0 1 0 7.07l-3.54 3.54a5.003 5.003 0 0 1-7.07 0 5.003 5.003 0 0 1 0-7.07l1.49-1.49c-.01.82.12 1.64.4 2.43l-.47.47a2.982 2.982 0 0 0 0 4.24 2.982 2.982 0 0 0 4.24 0l3.53-3.53a2.982 2.982 0 0 0 0-4.24.973.973 0 0 1 0-1.42Z"/></svg></span> <strong>Connection to Assignment #1</strong>: <a href="../../com2009/assignment1/part6/#ex3">Part 6 Exercise 3</a></p>
+<div class="admonition success">
+<p class="admonition-title">Assignment #1 Checkpoint</p>
+<p>You'll need to have completed <a href="../../com2009/assignment1/part6/#ex3">Part 6 Exercise 3</a> before starting on this mission.</p>
+</div>
 <p>In general, image detection gets a little more challenging in the real-world, where the same object might appear (to a robot's camera) to have slightly different colour tones under different light conditions, from different angles, in different levels of shade, etc. In simulation, you may build an extremely effective <code>colour_search.py</code> node to detect each of the four coloured pillars in the <code>tuos_simulations/coloured_pillars</code> world. See how well this now works in the real world now by running the same code on your real Waffle.</p>
 <div class="admonition question">
 <p class="admonition-title">Questions</p>
@@ -2497,7 +2513,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T16:14:22+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-29T22:40:39+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-29</span>
   </span>
 
     
