@@ -1,6 +1,6 @@
 nav:
   - "About": about
-  - "WSL-ROS": wsl-ros
+  - "Accessing ROS": software
   - "COM2009": com2009
   - "The Waffles": waffles
   - "ROS Extras": extras

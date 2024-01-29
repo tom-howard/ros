@@ -1,0 +1,5 @@
+nav:
+  - README.md
+  - "WSL-ROS": wsl-ros
+  - "Manual Installation": manual
+  - "Using WSL-ROS on University Managed Desktops": on-campus

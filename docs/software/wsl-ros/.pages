@@ -1,0 +1,3 @@
+nav:
+  - "Installing on Your Own Machine": install.md
+  - "Accessing from a Campus Computer": on-campus.md

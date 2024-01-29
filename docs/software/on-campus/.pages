@@ -1,0 +1,5 @@
+nav:
+  - "Getting Started": getting-started.md
+  - "The Linux Terminal": linux-term.md
+  - "VS Code": vscode.md
+  - "Remote Access": rdp.md

@@ -1,16 +1,16 @@
----  
-title: "Installing ROS on your own PC"  
+---
+title: Installing ROS on Linux (Ubuntu 20.04)
 ---
 
-We've set up the WSL-ROS environment specifically for these ROS Courses, to ensure that you have all the right packages and tools available to you. Of course, this requires you to work on a University Managed Computer and - naturally - you may want to be able to work through this course material (and explore further) on your own device instead.
+# Installing ROS on Linux (Ubuntu 20.04)
 
-## Installing ROS and Course Dependencies on Ubuntu 20.04 {#install-ros}
+**Applicable to**: Those who have access to a computer running Ubuntu 20.04 (either natively or via WSL).
 
-If you already have Ubuntu 20.04 running on a machine then follow the steps below to install ROS and all the additional packages required for these ROS Courses:
+If you have Ubuntu 20.04 running on a machine then follow the steps below to install ROS and all the additional packages required for this ROS Course:
 
 1. Install ROS Noetic (the instructions that follow are largely taken from [the ROS.org website](http://wiki.ros.org/noetic/Installation/Ubuntu)):
 
-    1. Set up your computer to accept software from packages.ros.org:
+    1. Set up your system to accept software from packages.ros.org:
 
         ```bash
         sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -36,7 +36,7 @@ If you already have Ubuntu 20.04 running on a machine then follow the steps belo
 
 1. Set up your environment.
 
-    1. A script must be sourced in every bash terminal you use ROS in, so it's best to add a line to the end of your `~/.bashrc`:
+    1. A ROS script must be sourced in every bash terminal you use ROS in, so it's best to add a line to the end of your `~/.bashrc` so that this occurs automatically whenever you open a terminal:
 
         ```bash
         source /opt/ros/noetic/setup.bash
@@ -53,7 +53,10 @@ If you already have Ubuntu 20.04 running on a machine then follow the steps belo
     > "Up to now you have installed what you need to run the core ROS packages. To create and manage your own ROS workspaces, there are various tools and requirements that are distributed separately. For example, rosinstall is a frequently used command-line tool that enables you to easily download many source trees for ROS packages with one command."
 
     ```bash
-    sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+    sudo apt install python3-rosdep \
+    python3-rosinstall \ 
+    python3-rosinstall-generator \ 
+    python3-wstool build-essential
     ```
 
 1. Initialize `rosdep`:
@@ -147,19 +150,11 @@ If you already have Ubuntu 20.04 running on a machine then follow the steps belo
 
 1. Next, install some other useful Python tools:
 
-    1. Install Pip:
+    ```bash
+    sudo apt install python3-pip python3-scipy python3-pandas
+    ```
 
-        ```bash
-        sudo apt install python3-pip
-        ```
-
-    1. And use Pip to install [Pandas](https://pandas.pydata.org/docs/index.html):
-
-        ```bash
-        pip3 install pandas
-        ```
-
-1. Finally, install [the Course Repo](https://github.com/tom-howard/COM2009):
+2. Finally, install [the Course Repo](https://github.com/tom-howard/tuos_ros.git):
 
     1. Navigate to your Catkin Workspace:
 
@@ -167,13 +162,13 @@ If you already have Ubuntu 20.04 running on a machine then follow the steps belo
         cd ~/catkin_ws/src/
         ```
 
-    1. Download the repo from GitHub:
+    2. Download the repo from GitHub:
 
         ```bash
-        git clone https://github.com/tom-howard/COM2009.git
+        git clone https://github.com/tom-howard/tuos_ros.git
         ```
         
-    1. Then, **if you installed Catkin Tools**:
+    3. Then, **if you installed Catkin Tools**:
 
         ```bash
         catkin build
@@ -185,49 +180,21 @@ If you already have Ubuntu 20.04 running on a machine then follow the steps belo
         cd ~/catkin_ws/ && catkin_make
         ```
     
-    1. And finally, re-source again:
+    4. And finally, re-source again:
 
         ```bash
         source ~/.bashrc
         ```
    
-1. For convenience, we use some *Bash Aliases* to make it easier to call some common ROS commands. You might want to create a `~/.bash_aliases` file with the following content (or add to an existing one):
+3. For convenience, we use some *Bash Aliases* to make it easier to call some common ROS commands. You might want to create a `~/.bash_aliases` file with the following content (or add to an existing one):
 
     ```bash
-    alias tb3_teleop="roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch"
+    alias tb3_teleop="rosrun turtlebot3_teleop turtlebot3_teleop_key"
     alias tb3_world="roslaunch turtlebot3_gazebo turtlebot3_world.launch"
     alias tb3_empty_world="roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch"
     alias tb3_slam="roslaunch turtlebot3_slam turtlebot3_slam.launch"
-    alias tb3_rviz="roslaunch tuos_ros_simulations rviz.launch"
+    alias tb3_rviz="roslaunch tuos_simulations rviz.launch"
 
     # This one's quite useful too:
     alias src="echo 'Sourcing bashrc...' && source ~/.bashrc"
     ```
-
-## Installing on Windows using WSL {#wsl}
-
-Refer to [the Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/install) for instructions on how to install and use WSL on Windows 10 or 11.
-
-Ubuntu 20.04 should be installed by default when you install WSL but if not, or if you want to create an additional WSL distribution then [see here](https://docs.microsoft.com/en-us/windows/wsl/install#change-the-default-linux-distribution-installed).
-
-We'd also recommend installing [the Windows Terminal App](https://docs.microsoft.com/en-us/windows/terminal/install).
-
-Launch your Ubuntu 20.04 distro and then follow [the steps for Installing ROS (and dependencies)](#install-ros) above.
-
-Graphical Applications are only supported natively in WSL when running on Windows 11 so if you're running Windows 10, then you will need to follow the additional steps below to get GUI apps (such as Gazebo and RViz) working...
-
-### Running Graphical Applications in WSL on Windows 10
-
-First, you'll need to install the [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/). You'll need to make sure you have this running before trying to launch any GUI applications from WSL (Gazebo simulations etc.) To make this easier, we've created [a configuration file](https://drive.google.com/file/d/19_ScBc8rVHwXTR2CRogwHArYqCc0ZAbD/view?usp=sharing). Download this file, save it on your desktop and double click it to launch an X Server on your machine with the appropriate configurations. Once launched, an icon should be visible in your notification tray in the bottom right-hand corner of the Windows Desktop:
-
-<figure markdown>
-  ![](../images/wsl/xlaunch_icon.png)
-</figure>
-
-In Ubuntu, you'll need to then add the following lines to your `~/.bashrc`:
-
-```bash
-export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-export LIBGL_ALWAYS_INDIRECT=
-export GAZEBO_IP=127.0.0.1
-```
