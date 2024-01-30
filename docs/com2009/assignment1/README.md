@@ -4,7 +4,7 @@ title: "Assignment #1: An Introduction to ROS"
 
 ## Overview
 
-This assignment is essentially a 6-part course, which you should complete **in full** and **in order**. The course is designed to be completed in simulation, so you will therefore need access to a ROS installation which can either be installed on your own machine, or accessed on a range of managed computers across the University of Sheffield campus. [See here for more information on how to install or access ROS](../../wsl-ros/README.md).
+This assignment is essentially a 6-part course, which you should complete **in full** and **in order**. The course is designed to be completed in simulation, so you will therefore need access to a ROS installation which can either be installed on your own machine, or accessed on a range of managed computers across the University of Sheffield campus. [See here for more information on how to install or access ROS](../../software/README.md).
 
 Each part of the course comprises a series of step-by-step instructions and exercises to teach you how ROS works and introduce you to the core principles of the framework. The exercises give you the opportunity to see how to apply these principles to practical robotic applications. Completing this course is **essential** for obtaining all the necessary skills for [Assignment #2: the *Team Robotics Project*](../assignment2/README.md), where you will work in teams to program [our real TurtleBot3 Waffle robots](../../waffles/README.md).  
 

@@ -37,18 +37,26 @@ By the end of this session you will be able to:
 
 ## Getting Started
 
-**Step 1: Launch WSL-ROS**  
-Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the *Windows Terminal* app should launch with an *Ubuntu terminal instance* ready to go (**TERMINAL 1**).
+**Step 1: Launch your ROS Environment**
 
-**Step 2: Restore your work**  
-When prompted (in **TERMINAL 1**), enter `Y` to restore your work from last time[^1].
+Launch your ROS environment now so that you have access to a Linux terminal instance (aka **TERMINAL 1**).
 
-[^1]: You can also use the `wsl_ros restore` command.
+**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
 
-**Step 3: Launch VS Code**  
-Follow [these steps](../../wsl-ros/vscode.md) to launch VS Code correctly within the WSL-ROS environment.
+Remember that [any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers](../../software/on-campus/getting-started.md#backing-up-and-restoring-your-data), and so you should be backing up your work to your `U:\` drive regularly. When prompted (on first launch of WSL-ROS in **TERMINAL 1**) enter `Y` to restore this[^1].
 
-**Step 4: Launch the Robot Simulation**  
+[^1]: Remember: you can also use the `wsl_ros restore` command at any time.
+
+**Step 3: Launch VS Code** 
+
+*WSL users* [remember to check for this](../../software/on-campus/vscode.md#verify).
+
+**Step 4: Make Sure The Course Repo is Up-To-Date**
+
+Check that the Course Repo is up-to-date before you start on these exercises. [See here for how to install and/or update](../../extras/tuos-ros.md).
+
+**Step 5: Launch the Robot Simulation**
+
 In this session we'll start by working with the same *mystery world* environment from Part 5. In **TERMINAL 1**, use the following `roslaunch` command to load it:
 
 ***
@@ -475,7 +483,7 @@ The difference between these two things is the **Error**, and the PID control al
 The PID algorithm is as follows:
 
 $$
-u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{de}{dt}
+u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{d}{dt}e(t)
 $$
 
 Where $u(t)$ is the **Controlled Output**, $e(t)$ is the **Error** (as illustrated in the figure above) and $K_{P}$, $K_{I}$ and $K_{D}$ are Proportional, Integral and Differential **Gains** respectively. These three gains are constants that must be established for any given system through a process called *tuning*. This tuning process is discussed in COM2009 Lecture 6, but you will also explore this in the practical exercise that follows.
@@ -671,12 +679,12 @@ The next task then is to adapt our `line_follower.py` node to implement this con
 
 In this session you have learnt how to use data from a robot's camera to extract further information about its environment.  The camera allows our robot to "see" and the information that we obtain from this device can allow us to develop more advanced robotic behaviours such as searching for objects, follow things or - conversely - moving away or avoiding them.  You have learnt how to do some basic tasks with OpenCV, but this is a huge and very capable library of computer vision tools, and we encourage you to explore this further yourselves to enhance some of the basic principles that we have shown you today.
 
-### Saving your work {#backup}
+### WSL-ROS Managed Desktop Users: Save your work! {#backup}
 
-Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
+Remember, to save the work you have done in WSL-ROS during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS Terminal Instance now:
 
 ```bash
 wsl_ros backup
 ```
 
-This will export your home directory to your University U: Drive, allowing you to restore it again later.
+You'll then be able to restore it to a fresh WSL-ROS environment whenever you need it again (`wsl_ros restore`).  

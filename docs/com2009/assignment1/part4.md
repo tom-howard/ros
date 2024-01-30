@@ -38,18 +38,26 @@ By the end of this session you will be able to:
 
 ## Getting Started
 
-**Step 1: Launch WSL-ROS**  
-Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the *Windows Terminal* app should launch with an *Ubuntu terminal instance* ready to go (**TERMINAL 1**).
+**Step 1: Launch your ROS Environment**
 
-**Step 2: Restore your work**  
-When prompted (in **TERMINAL 1**), enter `Y` to restore your work from last time[^1].
+If you haven't done so already, launch your ROS environment now. Having done this, you should now have access to a Linux terminal instance (aka **TERMINAL 1**).
+
+**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
+
+Remember that [any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers](../../software/on-campus/getting-started.md#backing-up-and-restoring-your-data), and so you should be backing up your work to your `U:\` drive regularly. When prompted (on first launch of WSL-ROS in **TERMINAL 1**) enter `Y` to restore this[^1].
 
 [^1]: Remember: you can also use the `wsl_ros restore` command at any time.
 
 **Step 3: Launch VS Code**  
-Follow [these steps](../../wsl-ros/vscode.md) to launch VS Code correctly within the WSL-ROS environment.
 
-**Step 4: Launch the Robot Simulation**  
+It's also worth launching VS Code now. *WSL users* [remember to check for this](../../software/on-campus/vscode.md#verify).
+
+**Step 4: Make Sure The Course Repo is Up-To-Date**
+
+Once again, it's worth quickly checking that the Course Repo is up-to-date before you start on the Part 4 exercises. Go back to [Part 1](./part1.md#course-repo) if you haven't installed it yet (really?!). For the rest of us, [see here for how to update](../../extras/tuos-ros.md#updating).
+
+**Step 5: Launch the Robot Simulation**
+
 From **TERMINAL 1**, launch the TurtleBot3 Waffle *"Empty World"* simulation:
 
 ***
@@ -63,7 +71,7 @@ roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
   ![](../../images/gazebo/tb3_empty_world.png){width=800px}
 </figure>
 
-??? tip "Remember"
+??? tip
     You can also use the `tb3_empty_world` command-line alias to launch the simulation, rather than using that long `roslaunch` command!
 
 ## An Introduction to Services
@@ -469,12 +477,12 @@ Having completed all the exercises above, you should now be able to:
     * Using the Python Class architecture.
     * Harnessing ROS and Linux command-line tools.
     
-### Saving your work {#backup}
+### WSL-ROS Managed Desktop Users: Save your work! {#backup}
 
-Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
+Remember, to save the work you have done in WSL-ROS during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS Terminal Instance now:
 
 ```bash
 wsl_ros backup
 ```
 
-This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.
+You'll then be able to restore it to a fresh WSL-ROS environment next time you fire one up (`wsl_ros restore`).  

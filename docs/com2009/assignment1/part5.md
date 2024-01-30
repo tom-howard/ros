@@ -38,37 +38,23 @@ By the end of this session you will be able to:
 
 ## Getting Started
 
-**Step 1: Launch WSL-ROS**  
-Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the *Windows Terminal* app should launch with an *Ubuntu terminal instance* ready to go (**TERMINAL 1**).
+**Step 1: Launch your ROS Environment**
 
-**Step 2: Restore your work**  
-When prompted (in **TERMINAL 1**), enter `Y` to restore your work from the previous sessions[^1].
+Launch your ROS environment now so that you have access to a Linux terminal instance (aka **TERMINAL 1**).
 
-[^1]: Remember: you can also use the `wsl_ros restore` command, to restore your work at any time.
+**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
 
-**Step 3: Make sure [the Course Repo](https://github.com/tom-howard/tuos_ros) is installed and up to date!**  
-You should have installed this back in Part 2. Check that's the case by navigating to it now:
+Remember that [any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers](../../software/on-campus/getting-started.md#backing-up-and-restoring-your-data), and so you should be backing up your work to your `U:\` drive regularly. When prompted (on first launch of WSL-ROS in **TERMINAL 1**) enter `Y` to restore this[^1].
 
-***
-**TERMINAL 1:**
-```bash
-cd ~/catkin_ws/src/tuos_ros/
-```
-***
+[^1]: Remember: you can also use the `wsl_ros restore` command at any time.
 
-If this returns an error saying `No such file or directory`, then [head back here](./part2.md#course-repo) and follow the steps to install it.
+**Step 3: Launch VS Code**  
 
-If it does exist, then make sure it's up-to-date by running `git pull`:
+*WSL users* [remember to check for this](../../software/on-campus/vscode.md#verify).
 
-***
-**TERMINAL 1:**
-```bash
-cd ~/catkin_ws/src/tuos_ros/ && git pull
-```
-***
+**Step 4: Make Sure The Course Repo is Up-To-Date**
 
-**Step 4: Launch VS Code**  
-Follow [these steps](../../wsl-ros/vscode.md) to launch VS Code correctly within the WSL-ROS environment.
+Check that the Course Repo is up-to-date before you start on these exercises. [See here for how to install and/or update](../../extras/tuos-ros.md).
 
 ## Calling an Action Server
 
@@ -89,11 +75,11 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
 
     Messages in the terminal should indicate that *something* has happened, but that's about all you will see!
 
-1. Next, *open up a new instance of the Windows Terminal Application* by pressing the "New Tab" (:material-plus-thick:) button whilst pressing the ++shift++ key (we'll call this **WT(B)**).
+1. Next, open up a *new terminal window* (i.e. not a new tab in the same window). Windows Terminal users can do this by pressing the "New Tab" (:material-plus-thick:) button whilst pressing the ++shift++ key (we'll call this **WT(B)**).
     
 1. In **WT(B)** have a look at all the topics that are currently active on the ROS network (you should know exactly how to do this by now!)<a name="action_launch"></a>
 
-1. Return to the original Windows Terminal instance (the one with the Gazebo processes running, and which we'll now refer to as **WT(A)**), open up a new tab (**WT(A) TERMINAL 2**) and launch an action server that we have already prepared for you for this exercise:
+1. Return to the original Terminal instance (the one with the Gazebo processes running, and which we'll now refer to as **WT(A)**), open up a new tab (**WT(A) TERMINAL 2**) and launch an action server that we have already prepared for you for this exercise:
 
     ***
     **WT(A) TERMINAL 2:**
@@ -124,9 +110,9 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
         This is a bit like sending a **Request** to a ROS Service Server, like we did in the previous session.
     
 1. ROS Actions use *topic messages* (unlike ROS Services, which use dedicated *service messages*). We can therefore tap into the ROS network and observe the messages being published to these in exactly the same way as we have done in previous parts of this course using `rostopic echo`. In order to monitor some of these messages now, we'll launch a couple more instances of the Windows Terminal, so that we can view a few things simultaneously:
-    1. Once again, launch an additional Windows Terminal instance by pressing the "New Tab" button whilst pressing the ++shift++ key (this one will be called **WT(C)**):
-    1. Do this *again* to launch *another Windows Terminal instance*, which we'll call **WT(D)**
-    1. You should now have *four* Windows Terminal applications open! Arrange these so that they are all visible: 
+    1. Once again, launch an additional Terminal *instance*. Again, Windows Terminal users can press the "New Tab" button whilst pressing the ++shift++ key (this one will be called **WT(C)**)
+    1. Do this *again* to launch *another Terminal instance*, which we'll call **WT(D)**
+    1. You should now have *four* Terminal instances open! Arrange these so that they are all visible, e.g.: 
 
     <figure markdown>
       ![](part5/four_terms.png){width=800px}
@@ -180,9 +166,9 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
     ```
 
 1. Edit the `goal` portion of the message by using the left arrow button on your keyboard to scroll back through the message. Modify the `sweep_angle` and `image_count` parameters:
-    * **sweep_angle** is the angle (in degrees) that the robot will rotate on the spot
-    * **image_count** is the number of images it will capture from its front-facing camera while it is rotating
-1. Once you have decided on some values, hit `Enter` to actually publish the message and *call* the action server.
+    * `sweep_angle` is the angle (in degrees) that the robot will rotate on the spot
+    * `image_count` is the number of images it will capture from its front-facing camera while it is rotating
+1. Once you have decided on some values, hit ++enter++ to actually publish the message and *call* the action server.
     **Keep an eye on all four terminal instances. What do you notice happening in each of them?**
 1. Now, in **WT(B)**:
     1. Cancel the `rostopic pub` command by entering ++ctrl+c++
@@ -217,12 +203,12 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
     ***
 
 1. The actual simulated environment should now be revealed!! To finish off, close down *some* active ROS processes and Windows Terminal instances that we've just been working with:
-    1. Close down the `eog` window and the **WT(B)** Windows Terminal instance.
-    1. Stop the `rostopic echo` commands that are running in **WT(C)** and **WT(D)** by entering ++ctrl+c++ in each of them and then close each of these Windows Terminal instances too.
+    1. Close down the `eog` window and **WT(B)**.
+    1. Stop the `rostopic echo` commands that are running in **WT(C)** and **WT(D)** by entering ++ctrl+c++ in each of them and then close each of these Terminal instances too.
     1. Enter ++ctrl+c++ in **WT(A) TERMINAL 3** to stop the Gazebo GUI, but keep the terminal tab open. 
     1. Leave the processes running in **WT(A) TERMINAL 2** and **1** for now (the Action Server and the headless Gazebo processes).
 
-**Summary:**
+##### Summary
 
 Phew, that was a long one! Essentially, what we did here is launched an action server and then called it from the command-line using `rostopic pub`. Hopefully, while the action server was performing the task that we had requested, you also noticed that it was providing us with some *real-time feedback* on how it was getting on (in **WT(C)**). In the same way as a ROS Service, it should also have provided us with a **result** (in **WT(D)**), once the action had been completed.  **Feedback** is one of the key features that differentiates a ROS Action from a ROS Service, but there are other interesting features too, and we'll explore these in more detail now.
 
@@ -387,7 +373,7 @@ An Action Server provides **feedback** messages at regular intervals whilst perf
 
 #### :material-pen: Exercise 2: Building a Python Action Client Node with Concurrency {#ex2}
 
-1. You should only have one Windows Terminal application instance open now, with three WSL-ROS terminal tabs in it. **TERMINAL 3** should already be idle (i.e. not running any commands), and (if you haven't done so already) enter ++ctrl+c++ in **TERMINAL 1** and **TERMINAL 2** to stop the headless Gazebo simulation processes and the Camera Sweep Action Server respectively. 
+1. You should only have one Terminal application instance open now, with three terminal tabs in it. **TERMINAL 3** should already be idle (i.e. not running any commands), and (if you haven't done so already) enter ++ctrl+c++ in **TERMINAL 1** and **TERMINAL 2** to stop the headless Gazebo simulation processes and the Camera Sweep Action Server respectively. 
 
 1. In **TERMINAL 1** create a new package called `part5_actions` using the `catkin_create_pkg` tool [as you have done previously](./part4.md#ex1). This time, define `rospy`, `actionlib` and `tuos_msgs` as dependencies.
     
@@ -693,6 +679,9 @@ What you developed in [the previous exercise](#ex4) could be used as the basis f
     !!! tip "Enhancing this further..."
         Imagine SLAM was running at the same time too... your robot could be building up a map of its environment in the background as it slowly explored every part of it!
 
+!!! success "Assignment #2 Checkpoint"
+    Having completed Assignment #1 up to this point, you should have everything you need to tackle [Assignment #2 Task 2](../assignment2/parta/task2.md).
+
 #### :material-pen: Advanced Exercise 2: Autonomous Navigation using waypoint markers {#adv_ex2}
 
 In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./part3.md#ex2)) and then issued navigation requests to the `move_base` action server, via the command-line, ([Exercise 3](./part3.md#ex3)) to make your robot move to a zone marker, based on coordinates that you had established beforehand. Now that you know how to build Action Client Nodes in Python you could return to your `part2_navigation` package and build a new node that makes the robot move sequentially between each zone marker programmatically.
@@ -726,12 +715,12 @@ Through this course you've gained some practical experience using all three of t
 * **Services**: Are most appropriate for very short procedures like *quick* calculations (inverse kinematics etc.) and performing short discrete actions that are unlikely to go wrong or will not need intervention (e.g. turning on a warning LED when a battery is low).
 * **Actions**: Are most appropriate for longer running tasks (like moving a robot), for longer processing calculations (processing the data from a camera stream) or for operations where we *might* need to change our mind and do something different or cancel an invoked behaviour part way through.
     
-### Saving your work {#backup}
+### WSL-ROS Managed Desktop Users: Save your work! {#backup}
 
-Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
+Remember, to save the work you have done in WSL-ROS during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS Terminal Instance now:
 
 ```bash
 wsl_ros backup
 ```
 
-This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.
+You'll then be able to restore it to a fresh WSL-ROS environment next time you fire one up (`wsl_ros restore`).  

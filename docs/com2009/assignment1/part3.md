@@ -29,23 +29,63 @@ By the end of this session you will be able to:
 
 ## Getting Started
 
-**Step 1: Launch WSL-ROS**  
-Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the *Windows Terminal* app should launch with an *Ubuntu terminal instance* ready to go (**TERMINAL 1**).
+**Step 1: Launch your ROS Environment**
 
-**Step 2: Restore your work**  
-Remember that any work that you do in WSL-ROS will not be preserved between sessions or across different University computers. You should have used the `wsl_ros` tool at the end of the previous session to back up your home directory to your University U: Drive. If so, then you should now be prompted to restore it:
+If you haven't done so already, launch your ROS environment now:
+
+1. **Using WSL-ROS on a university managed desktop machine**: follow [the instructions here to launch it](../../software/on-campus/getting-started.md).
+1. **[Running WSL-ROS on your own machine](../../software/wsl-ros/install.md)**: launch the Windows Terminal to access a WSL-ROS terminal instance.
+1. **Other Users**: Launch a terminal instance with access to your local ROS installation.
+
+You should now have access to a Linux terminal instance, and we'll refer to this terminal instance as **TERMINAL 1**.
+
+**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
+
+Remember that [any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers](../../software/on-campus/getting-started.md#backing-up-and-restoring-your-data). At [the end of Part 2](./part2.md#backup) you should have run the `wsl_ros` tool to back up your home directory to your University `U:\` Drive. Once WSL-ROS is up and running, you should be prompted to restore this:
 
 <figure markdown>
-  ![](../../images/wsl/restore_prompt.png){width="600"}
+  ![](../../images/wsl/restore-prompt-cropped.png)
 </figure>
 
-Enter `Y` to restore your work now.
+Enter `Y` to restore your work from last time. You can also restore your work at any time using the following command:
 
-??? tip
-    You can also use the `wsl_ros restore` command to restore your work at any other time.
+```bash
+wsl_ros restore
+```
 
 **Step 3: Launch VS Code**  
-Also launch VS Code now by [following the steps here to launch it correctly within the WSL-ROS environment](../../wsl-ros/vscode.md).
+
+It's also worth launching VS Code now, so that it's ready to go for when you need it later on. 
+
+!!! warning "WSL Users..."
+        
+    It's important to launch VS Code within your ROS environment using the "WSL" extension. [Always remember to check for this](../../software/on-campus/vscode.md#verify).
+
+**Step 4: Make Sure The Course Repo is Up-To-Date**
+
+In Part 1 you should have [downloaded and installed The Course Repo](./part1.md#course-repo) into your ROS environment. Hopefully you've done this by now, but if you haven't then go back and do it now (you'll need it for some exercises here). If you *have* already done it, then (once again) it's worth just making sure it's all up-to-date, so run the following command now to do so:
+
+***
+**TERMINAL 1:**
+```bash
+roscd && cd ../src/tuos_ros/ && git pull
+```
+
+Then run `catkin build` 
+
+```bash
+roscd && cd .. && catkin build
+```
+
+And finally, re-source your environment:
+
+```bash
+source ~/.bashrc
+```
+***
+
+!!! warning "Remember"
+    If you have any other terminal instances open, then you'll need run `source ~/.bashrc` in these too, in order for the changes made by `catkin build` to propagate through to these as well!
 
 ## Laser Displacement Data and The LiDAR Sensor {#lidar}
 
@@ -305,9 +345,9 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     
 1. Close the image using the :material-close-circle: button on the right-hand-side of the *eog* window.
 
-**Summary of SLAM:**
+#### Summary of SLAM
 
-See how easy it was to map an environment in the previous exercise? This works just as well on a real robot in a real environment too (see [this video demonstration that we put together a while back](https://digitalmedia.sheffield.ac.uk/media/An%20Introduction%20to%20ROS%20and%20the%20TurtleBot3%20Waffle/1_32z1rqhk)). 
+See how easy it was to map an environment in the previous exercise? This works just as well on a real robot in a real environment too (as you will observe in [one of the Real Waffle "Getting Started Exercises" for Assignment #2](../../waffles/exercises.md#exSlam)). 
 
 This illustrates the power of ROS: having access to tools such as SLAM, which are built into the ROS framework, makes it really quick and easy for a robotics engineer to start developing robotic applications on top of this. Our job was made even easier here since we used some packages that had been pre-made by the manufacturers of our TurtleBot3 Robots to help us launch SLAM with the right configurations for our exact robot.  If you were developing a robot yourself, or working with a different type of robot, then you might need to do a bit more work in setting up and tuning the SLAM tools to make them work for your own application.
 
@@ -466,7 +506,7 @@ As mentioned above, the map that you created in the previous exercise can now be
 
 1. Have a go at requesting more goals by issuing further commands in the terminal (using `rostopic pub`) to make the robot move between each of the four zone markers.
 
-**Summary:**
+#### Summary
 
 We have just made a robot move by issuing navigation goals to an *Action Server* on our ROS Network. You will learn more about ROS Actions later on in this course, where you will start to understand how this communication method actually works. You will also learn how to create *Action Client Nodes* in Python, so that - in theory - everything that you have been doing on the command-line in this exercise could be done programmatically instead.
 
@@ -502,7 +542,7 @@ Ultimately then, a robot needs additional information to pinpoint its precise lo
 
 This additional information can come from a LiDAR sensor, which you learnt about in this session. We explored where this data is published, how we access it, and what it tells us about a robot's immediate environment.  We then looked at some ways odometry and laser displacement data can be combined to perform advanced robotic functions such as the mapping of an environment and the subsequent navigation around it. This is all complicated stuff but, using ROS, we can leverage these tools with relative ease, which illustrates just how powerful ROS can be for developing robotic applications quickly and effectively without having to re-invent the wheel!
     
-### Saving your work {#backup}
+### WSL-ROS Managed Desktop Users: Save your work! {#backup}
 
 Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
 
@@ -510,4 +550,4 @@ Remember, the work you have done in the WSL-ROS environment during this session 
 wsl_ros backup
 ```
 
-This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.
+This will export your home directory to your University `U:\` Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS.  

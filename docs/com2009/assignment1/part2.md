@@ -38,14 +38,22 @@ By the end of this session you will be able to:
 
 ## Getting Started
 
-### Step 1: Launch WSL-ROS  
-If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu. As you will now know, this may take a couple of minutes, but once it's ready this will open up the Windows Terminal and an *Ubuntu terminal instance* (which we'll refer to as **TERMINAL 1**).
+**Step 1: Launch your ROS Environment**
 
-### Step 2: Restore your work  
-Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers.  At [the end of Part 1](./part1.md#backup) you should have run the `wsl_ros` tool to back up your home directory to your University U: Drive. Once WSL-ROS is up and running, you should be prompted to restore this:
+If you haven't done so already, launch your ROS environment now:
+
+1. **Using WSL-ROS on a university managed desktop machine**: follow [the instructions here to launch it](../../software/on-campus/getting-started.md).
+1. **[Running WSL-ROS on your own machine](../../software/wsl-ros/install.md)**: launch the Windows Terminal to access a WSL-ROS terminal instance.
+1. **Other Users**: Launch a terminal instance with access to your local ROS installation.
+
+You should now have access to a Linux terminal instance, and we'll refer to this terminal instance as **TERMINAL 1**.
+
+**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
+
+Remember that [any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers](../../software/on-campus/getting-started.md#backing-up-and-restoring-your-data). At [the end of Part 1](./part1.md#backup) you should have run the `wsl_ros` tool to back up your home directory to your University `U:\` Drive. Once WSL-ROS is up and running, you should be prompted to restore this:
 
 <figure markdown>
-  ![](../../images/wsl/restore_prompt.png){width=600}
+  ![](../../images/wsl/restore-prompt-cropped.png)
 </figure>
 
 Enter `Y` to restore your work from last time. You can also restore your work at any time using the following command:
@@ -54,56 +62,43 @@ Enter `Y` to restore your work from last time. You can also restore your work at
 wsl_ros restore
 ```
 
-### Step 3: Launch VS Code  
-It's also worth launching VS Code now, so that it's ready to go for when you need it later on. [Follow the steps here to launch it correctly](../../wsl-ros/vscode.md).
+**Step 3: Launch VS Code** 
 
-### Step 4: Download The Course Repo {#course-repo}
+It's also worth launching VS Code now, so that it's ready to go for when you need it later on. 
 
-We've put together a few ROS packages of our own that you'll use throughout this course. These all live within [this GitHub repo](https://github.com/tom-howard/tuos_ros), and you'll need to download this into the WSL-ROS environment now, before going any further.
+!!! warning "WSL Users..."
+        
+    It's important to launch VS Code within your ROS environment using the "WSL" extension. [Always remember to check for this](../../software/on-campus/vscode.md#verify).
 
-1. In **TERMINAL 1**, navigate to the Catkin Workspace `src` directory using the `cd` command:
+**Step 4: Make Sure The Course Repo is Up-To-Date**
 
-    ***
-    **TERMINAL 1:**
-    ```bash
-    cd ~/catkin_ws/src/
-    ```
-    ***
+<a name="course-repo"></a>
 
-1. Then, clone the Course Repo from GitHub:
+In Part 1 you should have [downloaded and installed The Course Repo](./part1.md#course-repo) into your ROS environment. If you haven't done this yet then go back and do it now. If you *have* already done it, then it's worth just making sure it's all up-to-date, so run the following command now to do so:
 
+***
+**TERMINAL 1:**
+```bash
+roscd && cd ../src/tuos_ros/ && git pull
+```
 
-    ***
-    **TERMINAL 1:**
-    ```bash
-    git clone https://github.com/tom-howard/tuos_ros.git
-    ```
-    ***
+Then run `catkin build` 
 
-1. Once this is done, we need to run `catkin build` to compile everything:
+```bash
+roscd && cd .. && catkin build
+```
 
-    ***
-    **TERMINAL 1:**
-    ```bash
-    catkin build
-    ```
-    ***
+And finally, re-source your environment:
 
-1. And finally, we need to re-source our `.bashrc` file:
+```bash
+source ~/.bashrc
+```
+***
 
-    ***
-    **TERMINAL 1:**
-    ```bash
-    source ~/.bashrc
-    ```
-    ***
+!!! warning "Remember"
+    If you have any other terminal instances open, then you'll need run `source ~/.bashrc` in these too, in order for the changes made by `catkin build` to propagate through to these as well!
 
-    !!! warning "Remember"
-        If you have any other terminal instances open, then you'll need run `source ~/.bashrc` in these too, in order for the changes made by `catkin build` to propagate through to these as well!
-    
-That's it for now, we'll start using some of the packages that we've just installed a bit later on...
-
-### Step 5: Launch the Robot Simulation
+**Step 5: Launch the Robot Simulation**
 
 In **TERMINAL 1** enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
         
@@ -362,7 +357,8 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
         ```
     1. Then download the template code from GitHub:
         ```bash
-        wget -O odom_subscriber.py https://raw.githubusercontent.com/tom-howard/tuos_ros/main/tuos_examples/src/odom_subscriber_template.py
+        wget -O odom_subscriber.py \
+        https://raw.githubusercontent.com/tom-howard/tuos_ros/main/tuos_examples/src/odom_subscriber_template.py
         ```
     1. Finally, make this executable using `chmod`:
         ```bash
@@ -413,12 +409,20 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
 1. Launch your node using `rosrun` and observe how the output (the formatted odometry data) changes whilst you move the robot around again using the `turtlebot3_teleop_key` node in a new terminal instance (**TERMINAL 3**).
 1. Stop your `odom_subscriber.py` node in **TERMINAL 2** and the `turtlebot3_teleop` node in **TERMINAL 3** by entering ++ctrl+c++ in each of the terminals.
 
+!!! danger "Using WSL-ROS on the University Managed Desktops?"
+
+    **Remember**: [any work that you do in the WSL-ROS environment on campus machines will not be preserved automatically](../../software/on-campus/getting-started.md#backing-up-and-restoring-your-data). You should therefore backup your work to your University `U:\` drive regularly to avoid losing anything. To do this, run the following command in any WSL-ROS terminal instance (**now!**):
+
+    ``` bash
+    wsl_ros backup
+    ```
+
 ## Basic Navigation: Open-loop Velocity Control
 
 #### :material-pen: Exercise 3: Moving a Robot with `rostopic` in the Terminal {#ex3}
 
 !!! warning
-    Make sure that you've stopped the `turtlebot3_teleop_key` node running in **TERMINAL 3** (by entering ++ctrl+c++) before starting this exercise.
+    Make sure that you've stopped the `turtlebot3_teleop_key` node running in **TERMINAL 3** (by entering ++ctrl+c++ ) before starting this exercise.
 
 <a name="rostopic_pub"></a>We can use the `rostopic pub` command to *publish* data to a topic from a terminal by using the command in the following way:
 
@@ -501,6 +505,9 @@ You will now create another node to control the motion of your TurtleBot3 by pub
 
 1. Create a launch file to launch this *and* your `odom_subscriber.py` node simultaneously with a single `roslaunch` command. Refer to the launch file that you created [in Part 1](./part1.md#ex8) for a reminder on how to do this.
 
+!!! success "Assignment #2 Checkpoint"
+    Having completed Assignment #1 up to this point, you'll now be ready to tackle [Assignment #2 Task 1](../assignment2/parta/task1.md).
+
 ## Odometry-based Navigation
 
 In the previous exercise you created a Python node to make your robot move using *open-loop control*. To achieve this you published velocity commands to the `/cmd_vel` topic to make the robot follow a circular motion path.
@@ -577,7 +584,7 @@ Be aware that we did all this in simulation here too. In fact, in a real world e
 
 Ultimately then, we have seen a requirement here for additional information to provide more confidence of a robot's location in its environment, in order to enhance its ability to navigate effectively and avoid crashing into things! We'll explore this further in the next part of this course.
 
-### Saving your work {#backup}
+### WSL-ROS Managed Desktop Users: Save your work! {#backup}
 
 Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
 
@@ -585,4 +592,4 @@ Remember, the work you have done in the WSL-ROS environment during this session 
 wsl_ros backup
 ```
 
-This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.  
+This will export your home directory to your University `U:\` Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS.  

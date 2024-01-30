@@ -70,3 +70,9 @@ If you see the following message:
 ```
 
 ... then [go back and make sure you've installed the repo first](#installing)!
+
+Then, run `catkin build` and re-source your environment:
+
+```bash
+roscd && cd .. && catkin build && source ~/.bashrc
+```

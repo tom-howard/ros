@@ -40,9 +40,57 @@ By the end of this session you will be able to:
 
 ## First Steps
 
+**Step 1: Accessing A ROS Environment for this Course**
+
+If you haven't done so already, see here for all the details on [how to install or access a ROS environment for this course](../../software/README.md).
+
+**Step 2: Launch ROS**
+
+Launch your ROS environment.
+
+1. If you're using WSL-ROS on a university managed desktop machine then follow [the instructions here to launch it](../../software/on-campus/getting-started.md).
+1. If you're [running WSL-ROS on your own machine](../../software/wsl-ros/install.md), then you'll need to launch the Windows Terminal to access a WSL-ROS terminal instance.
+1. If you opted for [a manual install option](../../software/manual/README.md), then we trust that you know what you're doing already :material-emoticon-wink-outline:.
+
+Either way, you should now have access to a Linux terminal instance, and we'll refer to this terminal instance as **TERMINAL 1**.
+
+**Step 3: Download The Course Repo**
+
+<a name="course-repo"></a>
+
+We've put together a few ROS packages of our own that you'll use throughout this course. These all live within [this GitHub repo](https://github.com/tom-howard/tuos_ros), and you'll need to download and install this into your ROS environment now, before going any further.
+
+1. In **TERMINAL 1**, navigate to a folder called the *"Catkin Workspace."* We'll talk more about this later on but, for now, just run the following command:
+
+    ```bash
+    roscd && cd ../src/
+    ```
+
+1. Then, run the following command to clone the Course Repo from GitHub:
+
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    git clone https://github.com/tom-howard/tuos_ros.git
+    ```
+    ***
+
+1. Once this is done, you'll need to compile everything:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    catkin build && source ~/.bashrc
+    ```
+    ***
+
+    Don't worry too much about what you just did, for now. We'll cover this in more detail throughout the course. That's it for now though, we'll start using some of the packages that we've just installed a bit later on...
+
 #### :material-pen: Exercise 1: Launching a simulation and making a ROS robot move {#ex1}
 
-1. If you haven't done so already, launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu ([see here for detailed instructions](../../wsl-ros/first-run.md)). This should open up a *terminal application* and an *Ubuntu terminal instance*.  We'll refer to this terminal instance as **TERMINAL 1**.
+Now that you're all up and running, let's launch ROS and fire up a simulation of our robot... 
+
 1. In the terminal enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
         
     ***
@@ -58,13 +106,13 @@ By the end of this session you will be able to:
       ![](../../images/gazebo/tb3_empty_world.png){width=800}
     </figure>
 
-1. With your Gazebo Simulation up and running, return to the terminal application and open up a new Ubuntu terminal instance (**TERMINAL 2**) by pressing the *New Tab* button: 
+1. With your Gazebo Simulation up and running, return to your terminal and open up a *second* terminal instance (**TERMINAL 2**). In the Windows Terminal (for instance) you can press the *New Tab* button: 
     
     <figure markdown>
       ![](../../images/wsl/wt_new_tab.svg)
     </figure>
 
-    (or, alternatively, press the ++ctrl+shift+t++ keyboard shortcut).
+    (or press the ++ctrl+shift+t++ keyboard shortcut).
     
 1. In the new terminal instance enter the following command:<a name="teleop"></a>
 
@@ -363,10 +411,18 @@ Or:
 
     This confirms that the file exists, and the `0` in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.
 
-1. We therefore now need to open the file and add content to it. As discussed in [the WSL-ROS Section](../../wsl-ros/README.md), we'll be using Visual Studio Code as our IDE for this work. It's important to launch this in a very specific way in order for it to work properly with the WSL-ROS environment, so follow [the instructions here](../../wsl-ros/vscode.md) to get this up and running now.
+1. We therefore now need to open the file and add content to it. We'll be using Visual Studio Code (VS Code) as our IDE for this course. Launch VS Code now using the following command in **TERMINAL 1**:
 
-    !!! warning
-        [Make sure that the "Remote - WSL" VS Code extension is enabled within the WSL-ROS environment](../../wsl-ros/vscode.md#verify)!!
+    ***
+    **TERMINAL 1:**
+    ```bash
+    code ~
+    ```
+    ***
+
+    !!! warning "WSL Users..."
+        
+        It's important to launch VS Code within your ROS environment using the "WSL" extension. [Always remember to check for this](../../software/on-campus/vscode.md#verify).
 
 1. Using the VS Code File Explorer, navigate to your `part1_pubsub` package directory (`~/catkin_ws/src/part1_pubsub/`), locate the `publisher.py` file that you have just created in the `/part1_pubsub/src/` folder and click on the file to open it. 
 
@@ -449,7 +505,15 @@ Or:
     1. `rosnode list`: This will provide a list of all the nodes that are currently active on the system. Verify that the name of our publisher node is visible in this list.
     1. `rostopic list`: This will provide a list of the topics that are currently being used by nodes on the system. Verify that the name of the topic that our publisher is publishing messages to is present within this list.
 
-### Using the `rostopic` command {#rostopic}
+!!! danger "Using WSL-ROS on the University Managed Desktops?"
+
+    **Remember**: [any work that you do in the WSL-ROS environment on campus machines will not be preserved automatically](../../software/on-campus/getting-started.md#backing-up-and-restoring-your-data). You should therefore backup your work to your University `U:\` drive regularly to avoid losing anything. To do this, run the following command in any WSL-ROS terminal instance:
+
+    ``` bash
+    wsl_ros backup
+    ```
+
+#### Using the `rostopic` command {#rostopic}
 
 So far we have used the `rostopic` ROS command with two additional arguments:
 
@@ -583,8 +647,8 @@ We launched the `turtlebot3_teleop_key` node earlier using `rosrun`, but there's
     ```
     ***
 
-!!! question
-    Knowing what you do now, how would you launch the `turtlebot_teleop_key` node using `roslaunch` (instead of `rosrun`)?
+    !!! question
+        Knowing what you do now, how would you launch the `turtlebot_teleop_key` node using `roslaunch` (instead of `rosrun`)?
 
 ##### Summary {#launch_attributes}
 
@@ -675,7 +739,7 @@ We have also learnt how to work in the Linux Terminal and navigate a Linux files
 
 Finally, we have learnt how to create basic ROS nodes in Python to both *publish* and *subscribe* to ROS topics using standard ROS messages.
 
-### Saving your work {#backup}
+### WSL-ROS Managed Desktop Users: Save your work! {#backup}
 
 Remember, the work you have done in the WSL-ROS environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:
 
@@ -683,4 +747,4 @@ Remember, the work you have done in the WSL-ROS environment during this session 
 wsl_ros backup
 ```
 
-This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.  
+This will export your home directory to your University `U:\` Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS.  
