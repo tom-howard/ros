@@ -1,5 +1,5 @@
 ---
-title: Accessing WSL-ROS on a Campus Computer
+title: Accessing WSL-ROS from A University Managed Desktop Computer on Campus
 ---
 
 **Applicable for**: Students who do not have a Windows 10 or 11 personal computer.

@@ -1,5 +1,5 @@
 ---
-title: Installing WSL-ROS 
+title: Installing WSL-ROS on your Own Machine 
 ---
 
 **Applicable for**: Windows 10 or 11 personal (unmanaged) computers

@@ -4,6 +4,10 @@ title: Getting Started with WSL-ROS on the University Managed Desktops
 
 # Getting Started with WSL-ROS on the University Managed Desktops
 
+## Prerequisites
+
+* [Accessing WSL-ROS on a University Managed Desktop Computer](../wsl-ros/on-campus.md)
+
 ## Launching WSL-ROS
 
 1. Click the Windows Start Menu button: ![](../../images/wsl/win_start_button.png)
