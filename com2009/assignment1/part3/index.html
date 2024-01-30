@@ -640,6 +640,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -657,16 +661,24 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../software/wsl-ros/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     WSL-ROS
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
@@ -674,6 +686,8 @@
             WSL-ROS
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -686,7 +700,7 @@
         
   
   <span class="md-ellipsis">
-    Installing on Your Own Machine
+    Installing WSL-ROS on your Own Machine
   </span>
   
 
@@ -707,7 +721,7 @@
         
   
   <span class="md-ellipsis">
-    Accessing from a Campus Computer
+    Accessing WSL-ROS from A University Managed Desktop Computer on Campus
   </span>
   
 
@@ -735,6 +749,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -752,23 +770,33 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../software/manual/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    Manual Installation
+    Manual ROS Installation
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
-            Manual Installation
+            Manual ROS Installation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -1290,6 +1318,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#summary-of-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of SLAM
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1309,6 +1346,15 @@
   <a href="#ex3" class="md-nav__link">
     <span class="md-ellipsis">
        Exercise 3: Navigating an Environment Autonomously
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
     </span>
   </a>
   
@@ -1341,7 +1387,7 @@
           <li class="md-nav__item">
   <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      Saving your work
+      WSL-ROS Managed Desktop Users: Save your work!
     </span>
   </a>
   
@@ -2534,6 +2580,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#summary-of-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of SLAM
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2553,6 +2608,15 @@
   <a href="#ex3" class="md-nav__link">
     <span class="md-ellipsis">
        Exercise 3: Navigating an Environment Autonomously
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
     </span>
   </a>
   
@@ -2585,7 +2649,7 @@
           <li class="md-nav__item">
   <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      Saving your work
+      WSL-ROS Managed Desktop Users: Save your work!
     </span>
   </a>
   
@@ -2649,20 +2713,45 @@
 <li><a href="#ex3">Exercise 3: Navigating an Environment Autonomously</a></li>
 </ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p><strong>Step 1: Launch WSL-ROS</strong><br />
-Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the <em>Windows Terminal</em> app should launch with an <em>Ubuntu terminal instance</em> ready to go (<strong>TERMINAL 1</strong>).</p>
-<p><strong>Step 2: Restore your work</strong><br />
-Remember that any work that you do in WSL-ROS will not be preserved between sessions or across different University computers. You should have used the <code>wsl_ros</code> tool at the end of the previous session to back up your home directory to your University U: Drive. If so, then you should now be prompted to restore it:</p>
+<p><strong>Step 1: Launch your ROS Environment</strong></p>
+<p>If you haven't done so already, launch your ROS environment now:</p>
+<ol>
+<li><strong>Using WSL-ROS on a university managed desktop machine</strong>: follow <a href="../../../software/on-campus/getting-started/">the instructions here to launch it</a>.</li>
+<li><strong><a href="../../../software/wsl-ros/install/">Running WSL-ROS on your own machine</a></strong>: launch the Windows Terminal to access a WSL-ROS terminal instance.</li>
+<li><strong>Other Users</strong>: Launch a terminal instance with access to your local ROS installation.</li>
+</ol>
+<p>You should now have access to a Linux terminal instance, and we'll refer to this terminal instance as <strong>TERMINAL 1</strong>.</p>
+<p><strong>Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)</strong></p>
+<p>Remember that <a href="../../../software/on-campus/getting-started/#backing-up-and-restoring-your-data">any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers</a>. At <a href="../part2/#backup">the end of Part 2</a> you should have run the <code>wsl_ros</code> tool to back up your home directory to your University <code>U:\</code> Drive. Once WSL-ROS is up and running, you should be prompted to restore this:</p>
 <figure>
-<p><img alt="" src="../../images/wsl/restore_prompt.png" width="600" /></p>
+<p><img alt="" src="../../../images/wsl/restore-prompt-cropped.png" /></p>
 </figure>
-<p>Enter <code>Y</code> to restore your work now.</p>
-<details class="tip">
-<summary>Tip</summary>
-<p>You can also use the <code>wsl_ros restore</code> command to restore your work at any other time.</p>
-</details>
-<p><strong>Step 3: Launch VS Code</strong><br />
-Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps here to launch it correctly within the WSL-ROS environment</a>.</p>
+<p>Enter <code>Y</code> to restore your work from last time. You can also restore your work at any time using the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wsl_ros<span class="w"> </span>restore
+</code></pre></div>
+<p><strong>Step 3: Launch VS Code</strong>  </p>
+<p>It's also worth launching VS Code now, so that it's ready to go for when you need it later on. </p>
+<div class="admonition warning">
+<p class="admonition-title">WSL Users...</p>
+<p>It's important to launch VS Code within your ROS environment using the "WSL" extension. <a href="../../../software/on-campus/vscode/#verify">Always remember to check for this</a>.</p>
+</div>
+<p><strong>Step 4: Make Sure The Course Repo is Up-To-Date</strong></p>
+<p>In Part 1 you should have <a href="../part1/#course-repo">downloaded and installed The Course Repo</a> into your ROS environment. Hopefully you've done this by now, but if you haven't then go back and do it now (you'll need it for some exercises here). If you <em>have</em> already done it, then (once again) it's worth just making sure it's all up-to-date, so run the following command now to do so:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roscd<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>../src/tuos_ros/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+</code></pre></div></p>
+<p>Then run <code>catkin build</code> </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roscd<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>catkin<span class="w"> </span>build
+</code></pre></div>
+<p>And finally, re-source your environment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+<hr />
+<div class="admonition warning">
+<p class="admonition-title">Remember</p>
+<p>If you have any other terminal instances open, then you'll need run <code>source ~/.bashrc</code> in these too, in order for the changes made by <code>catkin build</code> to propagate through to these as well!</p>
+</div>
 <h2 id="lidar">Laser Displacement Data and The LiDAR Sensor<a class="headerlink" href="#lidar" title="Permanent link">&para;</a></h2>
 <p>As you'll know from Part 2, odometry is really important for robot navigation, but it can be subject to drift and accumulated error over time. You may have observed this in simulation during <a href="../part2/#ex5">Part 2 Exercise 5</a>, and you would most certainly notice it if you were to do the same on a real robot. Fortunately, our robots have another sensor on-board which provides even richer information about the environment, and we can use this to supplement the odometry information and enhance the robot's navigation capabilities.</p>
 <h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 1: Using RViz to Visualise Robot Data<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
@@ -2672,7 +2761,7 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>In <strong>TERMINAL 1</strong> enter the following command to launch this:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch
 </code></pre></div></p>
 <hr />
 <p>A Gazebo simulation should now be launched with a TurtleBot3 Waffle in a new environment:</p>
@@ -2684,7 +2773,7 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>Open a new terminal instance (<strong>TERMINAL 2</strong>) and enter the following:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>rviz.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>rviz.launch
 </code></pre></div></p>
 <hr />
 <p>On running the command a new window should open:</p>
@@ -2697,15 +2786,15 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>Next, open up a new terminal instance (<strong>TERMINAL 3</strong>). Laser displacement data from the LiDAR sensor is published by the robot to the <code>/scan</code> topic. We can use the <code>rostopic info</code> command to find out more about the nodes that are publishing and subscribing to this topic, as well as the message <em>type</em>:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/scan
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>/scan
 </code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Type: sensor_msgs/LaserScan
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Publishers:
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    * /gazebo (http://localhost:#####/)
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Subscribers:
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    * /rviz_#### (http://localhost:#####/) 
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Type: sensor_msgs/LaserScan
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Publishers:
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    * /gazebo (http://localhost:#####/)
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>Subscribers:
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    * /rviz_#### (http://localhost:#####/) 
 </code></pre></div></p>
 <hr />
 </li>
@@ -2713,21 +2802,21 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>As we can see from above, <code>/scan</code> messages are of the <code>sensor_msgs/LaserScan</code> type, and we can find out more about this message type using the <code>rosmsg info</code> command:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>sensor_msgs/LaserScan
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>rosmsg<span class="w"> </span>info<span class="w"> </span>sensor_msgs/LaserScan
 </code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>std_msgs/Header header
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  uint32 seq
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  time stamp
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  string frame_id
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>float32 angle_min
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>float32 angle_max
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>float32 angle_increment
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>float32 time_increment
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>float32 scan_time
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>float32 range_min
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>float32 range_max
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>float32[] ranges
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>float32[] intensities 
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>std_msgs/Header header
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  uint32 seq
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  time stamp
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  string frame_id
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>float32 angle_min
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>float32 angle_max
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>float32 angle_increment
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>float32 time_increment
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>float32 scan_time
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>float32 range_min
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>float32 range_max
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>float32[] ranges
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>float32[] intensities 
 </code></pre></div></p>
 <hr />
 </li>
@@ -2740,14 +2829,14 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p><img alt="" src="../../../images/rviz/lidar_illustrated.png?width=800px" /></p>
 </figure>
 <p><a name="echo_scan_variables"></a>As illustrated in the figure, we can associate each data-point within the <code>ranges</code> array to an <em>angular position</em> by using the <code>angle_min</code>, <code>angle_max</code> and <code>angle_increment</code> values that are also provided within the <code>LaserScan</code> message.  We can use the <code>rostopic echo</code> command to drill down into these elements of the message specifically and find out what their values are:</p>
-<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$ rostopic echo /scan/angle_min -n1
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>0.0
+<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$ rostopic echo /scan/angle_min -n1
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>0.0
 </code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$ rostopic echo /scan/angle_max -n1
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>6.28318977356
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ rostopic echo /scan/angle_max -n1
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>6.28318977356
 </code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ rostopic echo /scan/angle_increment -n1
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>0.0175019223243
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>$ rostopic echo /scan/angle_increment -n1
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>0.0175019223243
 </code></pre></div></p>
 <p>Notice how we were able to access <em>specific variables</em> within the <code>/scan</code> message using <code>rostopic echo</code> here, rather than simply printing the whole thing?</p>
 <div class="admonition question">
@@ -2782,7 +2871,7 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>We're going to launch our robot into <em>another</em> new simulated environment now, which we'll be creating a map of using SLAM! To launch the simulation enter the following command in <strong>TERMINAL 1</strong>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>nav_world.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>roslaunch<span class="w"> </span>tuos_simulations<span class="w"> </span>nav_world.launch
 </code></pre></div></p>
 <hr />
 <p>The environment that launches should look like this:</p>
@@ -2794,7 +2883,7 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>Now we will launch SLAM to start building a map of this environment. In <strong>TERMINAL 2</strong>, launch SLAM as follows:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>roslaunch<span class="w"> </span>turtlebot3_slam<span class="w"> </span>turtlebot3_slam.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>roslaunch<span class="w"> </span>turtlebot3_slam<span class="w"> </span>turtlebot3_slam.launch
 </code></pre></div></p>
 <hr />
 <p>This will launch RViz again, and you should be able to see a model of your TurtleBot3 from a top-down view, this time with green dots representing the real-time LiDAR data. The SLAM tools will already have begun processing this data to start building a map of the boundaries that are currently visible to your robot based on its position in the environment.</p>
@@ -2815,7 +2904,7 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>As you're doing this you need to <em>also</em> determine the centre coordinates of the four circles (A, B, C &amp; D) that are printed on the arena floor. Drive your robot into each of these circular zones and stop the robot inside them. As you should remember from Part 2, we can determine the position (and orientation) of a robot in its environment from its <em>odometery</em>, as published to the <code>/odom</code> topic. In <a href="../part2/#ex2">Part 2 Exercise 2</a> you built an odometry subscriber node, so you could launch this now (in a new terminal: <strong>TERMINAL 4</strong>), and use this to inform you of your robot's <code>x</code> and <code>y</code> position in the environment when located within each of the zone markers:</p>
 <hr />
 <p><strong>TERMINAL 4:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>rosrun<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rosrun<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
 </code></pre></div></p>
 <hr />
 <p><a name="goal_coords"></a>Record the zone marker coordinates in a table such as the one below (you'll need this information for the next exercise).</p>
@@ -2865,9 +2954,9 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>Then, remaining in <strong>TERMINAL 3</strong>, navigate to the root of your <code>part2_navigation</code> package directory and create a new folder in it called <code>maps</code>:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>roscd<span class="w"> </span>part2_navigation
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>roscd<span class="w"> </span>part2_navigation
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>mkdir<span class="w"> </span>maps
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>mkdir<span class="w"> </span>maps
 </code></pre></div></p>
 <hr />
 </li>
@@ -2875,7 +2964,7 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>Navigate into this new directory:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>maps/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>maps/
 </code></pre></div></p>
 <hr />
 </li>
@@ -2883,14 +2972,14 @@ Also launch VS Code now by <a href="../../wsl-ros/vscode.md">following the steps
 <p>Then, run the <code>map_saver</code> node from the <code>map_server</code> package to save a copy of your map:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rosrun<span class="w"> </span>map_server<span class="w"> </span>map_saver<span class="w"> </span>-f<span class="w"> </span><span class="o">{</span>map<span class="w"> </span>name<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>rosrun<span class="w"> </span>map_server<span class="w"> </span>map_saver<span class="w"> </span>-f<span class="w"> </span><span class="o">{</span>map<span class="w"> </span>name<span class="o">}</span>
 </code></pre></div>
 Replacing <code>{map name}</code> with a name of your choosing. </p>
 <hr />
 <p>This will create two files: a <code>{map name}.pgm</code> and a <code>{map name}.yaml</code> file, both of which contain data related to the map that you have just created.  The <code>.pgm</code> file contains an <em>Occupancy Grid Map (OGM)</em>, which is used for <em>autonomous navigation</em> in ROS.  Have a look at the map by launching it in an Image Viewer Application called <code>eog</code>:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>eog<span class="w"> </span><span class="o">{</span>map<span class="w"> </span>name<span class="o">}</span>.pgm
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>eog<span class="w"> </span><span class="o">{</span>map<span class="w"> </span>name<span class="o">}</span>.pgm
 </code></pre></div></p>
 <hr />
 <p>A new window should launch containing the map you have just created with SLAM and the <code>map_saver</code> node: </p>
@@ -2913,8 +3002,8 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <p>Close the image using the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12 6.47 2 12 2m3.59 5L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41 15.59 7Z"/></svg></span> button on the right-hand-side of the <em>eog</em> window.</p>
 </li>
 </ol>
-<p><strong>Summary of SLAM:</strong></p>
-<p>See how easy it was to map an environment in the previous exercise? This works just as well on a real robot in a real environment too (see <a href="https://digitalmedia.sheffield.ac.uk/media/An%20Introduction%20to%20ROS%20and%20the%20TurtleBot3%20Waffle/1_32z1rqhk">this video demonstration that we put together a while back</a>). </p>
+<h4 id="summary-of-slam">Summary of SLAM<a class="headerlink" href="#summary-of-slam" title="Permanent link">&para;</a></h4>
+<p>See how easy it was to map an environment in the previous exercise? This works just as well on a real robot in a real environment too (as you will observe in <a href="../../../waffles/exercises/#exSlam">one of the Real Waffle "Getting Started Exercises" for Assignment #2</a>). </p>
 <p>This illustrates the power of ROS: having access to tools such as SLAM, which are built into the ROS framework, makes it really quick and easy for a robotics engineer to start developing robotic applications on top of this. Our job was made even easier here since we used some packages that had been pre-made by the manufacturers of our TurtleBot3 Robots to help us launch SLAM with the right configurations for our exact robot.  If you were developing a robot yourself, or working with a different type of robot, then you might need to do a bit more work in setting up and tuning the SLAM tools to make them work for your own application.</p>
 <h2 id="advanced-navigation-methods">Advanced Navigation Methods<a class="headerlink" href="#advanced-navigation-methods" title="Permanent link">&para;</a></h2>
 <p>As mentioned above, the map that you created in the previous exercise can now be used by ROS to autonomously navigate the mapped area.  We'll explore this now.</p>
@@ -2926,9 +3015,9 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <p>You may have already created a launch directory in your <code>part2_navigation</code> package, but if you haven't then do this now:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>roscd<span class="w"> </span>part2_navigation
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>roscd<span class="w"> </span>part2_navigation
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>mkdir<span class="w"> </span>launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>mkdir<span class="w"> </span>launch
 </code></pre></div></p>
 <hr />
 </li>
@@ -2936,56 +3025,56 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <p>Next, navigate into this directory and create a new file called <code>navigation.launch</code>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>launch/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>launch/
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>touch<span class="w"> </span>navigation.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>touch<span class="w"> </span>navigation.launch
 </code></pre></div></p>
 <hr />
 </li>
 <li>
 <p>Open up this file in VS Code and copy and paste the following content: <a name="launch_file"></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="cm">&lt;!-- Adapted from the Robotis &quot;turtlebot3_navigation&quot; package: </span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="cm">https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_navigation/launch/turtlebot3_navigation.launch</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="cm">--&gt;</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="nt">&lt;launch&gt;</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find tuos_simulations)/launch/nav_world.launch&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">  </span><span class="cm">&lt;!-- To be modified --&gt;</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;map_file&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot; $(find part2_navigation)/maps/{map name}.yaml&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_x&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_y&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">  </span><span class="cm">&lt;!-- Other arguments --&gt;</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_a&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;$(env TURTLEBOT3_MODEL)&quot;</span><span class="w"> </span><span class="na">doc=</span><span class="s">&quot;model type [burger, waffle, waffle_pi]&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;move_forward_only&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>
-<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="w">  </span><span class="cm">&lt;!-- Turtlebot3 Bringup --&gt;</span>
-<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg model)&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="w">  </span><span class="nt">&lt;/include&gt;</span>
-<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>
-<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="w">  </span><span class="cm">&lt;!-- Map server --&gt;</span>
-<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;map_server&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;map_server&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;map_server&quot;</span><span class="w"> </span><span class="na">args=</span><span class="s">&quot;$(arg map_file)&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>
-<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="w">  </span><span class="cm">&lt;!-- AMCL --&gt;</span>
-<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find turtlebot3_navigation)/launch/amcl.launch&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_x&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg initial_pose_x)&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_y&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg initial_pose_y)&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_a&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg initial_pose_a)&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a><span class="w">  </span><span class="nt">&lt;/include&gt;</span>
-<a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>
-<a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a><span class="w">  </span><span class="cm">&lt;!-- move_base --&gt;</span>
-<a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find turtlebot3_navigation)/launch/move_base.launch&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg model)&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-35" name="__codelineno-21-35" href="#__codelineno-21-35"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;move_forward_only&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg move_forward_only)&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-36" name="__codelineno-21-36" href="#__codelineno-21-36"></a><span class="w">  </span><span class="nt">&lt;/include&gt;</span>
-<a id="__codelineno-21-37" name="__codelineno-21-37" href="#__codelineno-21-37"></a>
-<a id="__codelineno-21-38" name="__codelineno-21-38" href="#__codelineno-21-38"></a><span class="w">  </span><span class="cm">&lt;!-- rviz --&gt;</span>
-<a id="__codelineno-21-39" name="__codelineno-21-39" href="#__codelineno-21-39"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;rviz&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;rviz&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rviz&quot;</span><span class="w"> </span><span class="na">required=</span><span class="s">&quot;true&quot;</span>
-<a id="__codelineno-21-40" name="__codelineno-21-40" href="#__codelineno-21-40"></a><span class="w">    </span><span class="na">args=</span><span class="s">&quot;-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz&quot;</span><span class="nt">/&gt;</span>
-<a id="__codelineno-21-41" name="__codelineno-21-41" href="#__codelineno-21-41"></a>
-<a id="__codelineno-21-42" name="__codelineno-21-42" href="#__codelineno-21-42"></a><span class="nt">&lt;/launch&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="cm">&lt;!-- Adapted from the Robotis &quot;turtlebot3_navigation&quot; package: </span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="cm">https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_navigation/launch/turtlebot3_navigation.launch</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="cm">--&gt;</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="nt">&lt;launch&gt;</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find tuos_simulations)/launch/nav_world.launch&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="w">  </span><span class="cm">&lt;!-- To be modified --&gt;</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;map_file&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot; $(find part2_navigation)/maps/{map name}.yaml&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_x&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_y&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="w">  </span><span class="cm">&lt;!-- Other arguments --&gt;</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_a&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;0.0&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;$(env TURTLEBOT3_MODEL)&quot;</span><span class="w"> </span><span class="na">doc=</span><span class="s">&quot;model type [burger, waffle, waffle_pi]&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="w">  </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;move_forward_only&quot;</span><span class="w"> </span><span class="na">default=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="w">  </span><span class="cm">&lt;!-- Turtlebot3 Bringup --&gt;</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find turtlebot3_bringup)/launch/turtlebot3_remote.launch&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg model)&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="w">  </span><span class="nt">&lt;/include&gt;</span>
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a>
+<a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a><span class="w">  </span><span class="cm">&lt;!-- Map server --&gt;</span>
+<a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;map_server&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;map_server&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;map_server&quot;</span><span class="w"> </span><span class="na">args=</span><span class="s">&quot;$(arg map_file)&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-24" name="__codelineno-25-24" href="#__codelineno-25-24"></a>
+<a id="__codelineno-25-25" name="__codelineno-25-25" href="#__codelineno-25-25"></a><span class="w">  </span><span class="cm">&lt;!-- AMCL --&gt;</span>
+<a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find turtlebot3_navigation)/launch/amcl.launch&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_x&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg initial_pose_x)&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_y&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg initial_pose_y)&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-29" name="__codelineno-25-29" href="#__codelineno-25-29"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;initial_pose_a&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg initial_pose_a)&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-30" name="__codelineno-25-30" href="#__codelineno-25-30"></a><span class="w">  </span><span class="nt">&lt;/include&gt;</span>
+<a id="__codelineno-25-31" name="__codelineno-25-31" href="#__codelineno-25-31"></a>
+<a id="__codelineno-25-32" name="__codelineno-25-32" href="#__codelineno-25-32"></a><span class="w">  </span><span class="cm">&lt;!-- move_base --&gt;</span>
+<a id="__codelineno-25-33" name="__codelineno-25-33" href="#__codelineno-25-33"></a><span class="w">  </span><span class="nt">&lt;include</span><span class="w"> </span><span class="na">file=</span><span class="s">&quot;$(find turtlebot3_navigation)/launch/move_base.launch&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-25-34" name="__codelineno-25-34" href="#__codelineno-25-34"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;model&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg model)&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-35" name="__codelineno-25-35" href="#__codelineno-25-35"></a><span class="w">    </span><span class="nt">&lt;arg</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;move_forward_only&quot;</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;$(arg move_forward_only)&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-36" name="__codelineno-25-36" href="#__codelineno-25-36"></a><span class="w">  </span><span class="nt">&lt;/include&gt;</span>
+<a id="__codelineno-25-37" name="__codelineno-25-37" href="#__codelineno-25-37"></a>
+<a id="__codelineno-25-38" name="__codelineno-25-38" href="#__codelineno-25-38"></a><span class="w">  </span><span class="cm">&lt;!-- rviz --&gt;</span>
+<a id="__codelineno-25-39" name="__codelineno-25-39" href="#__codelineno-25-39"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;rviz&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;rviz&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rviz&quot;</span><span class="w"> </span><span class="na">required=</span><span class="s">&quot;true&quot;</span>
+<a id="__codelineno-25-40" name="__codelineno-25-40" href="#__codelineno-25-40"></a><span class="w">    </span><span class="na">args=</span><span class="s">&quot;-d $(find turtlebot3_navigation)/rviz/turtlebot3_navigation.rviz&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-25-41" name="__codelineno-25-41" href="#__codelineno-25-41"></a>
+<a id="__codelineno-25-42" name="__codelineno-25-42" href="#__codelineno-25-42"></a><span class="nt">&lt;/launch&gt;</span>
 </code></pre></div>
 </li>
 <li>
@@ -2999,7 +3088,7 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <p>Once you've made these changes, save the file and then launch it:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">{</span>BLANK<span class="o">}</span><span class="w"> </span>part2_navigation<span class="w"> </span>navigation.launch
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="o">{</span>BLANK<span class="o">}</span><span class="w"> </span>part2_navigation<span class="w"> </span>navigation.launch
 </code></pre></div></p>
 <hr />
 <div class="admonition warning">
@@ -3032,7 +3121,7 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <p>To send a navigation goal to our robot we need to issue a request to the <em>move_base action server</em>. We will cover <em>ROS Actions</em> later in this course, but for now, all you really need to know is that we can send a navigation <em>goal</em> by publishing a message to a topic on the ROS network. In <strong>TERMINAL 2</strong> run <code>rostopic list</code> and filter this to show only topics related to <code>/move_base</code>:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>rostopic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>/move_base
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>rostopic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>/move_base
 </code></pre></div></p>
 <hr />
 <p>This will provide quite a long list, but right at the bottom you should see the item <code>/move_base_simple/goal</code>. We'll use this to publish navigation goals to our robot to make it move autonomously using the ROS Navigation Stack.</p>
@@ -3041,16 +3130,16 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <p>Running <code>rostopic info</code> on this topic will allow us to find out more about it:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>move_base_simple/goal
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>rostopic<span class="w"> </span>info<span class="w"> </span>move_base_simple/goal
 </code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>Type: geometry_msgs/PoseStamped
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>Publishers:
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>  * /rviz (http://localhost:#####/)
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>Subscribers:
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>  * /move_base (http://localhost:#####/)
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>  * /rviz (http://localhost:#####/)
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>Type: geometry_msgs/PoseStamped
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>Publishers:
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>  * /rviz (http://localhost:#####/)
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>Subscribers:
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>  * /move_base (http://localhost:#####/)
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>  * /rviz (http://localhost:#####/)
 </code></pre></div></p>
 <hr />
 <div class="admonition question">
@@ -3064,10 +3153,10 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <li>
 <p>Knowing all this information now, we can use the <code>rostopic pub</code> command to issue a navigation goal to our robot, via the <code>/move_base_simple/goal</code> topic. This command works exactly the same way as it did when we <a href="../part2/#rostopic_pub">published messages to the <code>/cmd_vel</code> topic in Part 2</a> (when we made the robot move at a velocity of our choosing).</p>
 <p>Remember that the <code>rostopic pub</code> command takes the following format:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>rostopic pub {topic_name} {message_type} {data}
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>rostopic pub {topic_name} {message_type} {data}
 </code></pre></div>
 <p>...but to make life easier, we can use the autocomplete functionality in our terminal to help us format the message correctly:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>rostopic pub {topic_name} {message_type}[SPACE][TAB]
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>rostopic pub {topic_name} {message_type}[SPACE][TAB]
 </code></pre></div>
 <p>Do this now, (replacing <code>{topic_name}</code> and <code>{message_type}</code> accordingly) to generate the full message structure that we will use to send the navigation goal to the robot, from the terminal. <strong>Don't</strong> press <span class="keys"><kbd class="key-enter">Enter</kbd></span> yet though, as we will need to edit the message data in order to provide a valid navigation goal.</p>
 </li>
@@ -3077,17 +3166,17 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <li><code>frame_id: ''</code> should be changed to <code>frame_id: 'map'</code></li>
 <li>
 <p>The <code>pose.orientation.w</code> value needs to be changed to <code>1.0</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>pose:
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>  orientation:
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>    w: 1.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>pose:
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>  orientation:
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>    w: 1.0
 </code></pre></div>
 </li>
 <li>
 <p>The <code>pose.position.x</code> and <code>pose.position.y</code> parameters define the location, in the environment, that we want the robot to move to, <a href="#goal_coords">as determined in the previous exercise</a>:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>pose:
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>  position:
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>    x: {desired location in x}
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>    y: {desired location in y}
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>pose:
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>  position:
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>    x: {desired location in x}
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>    y: {desired location in y}
 </code></pre></div>
 <p>Scroll back through the message using the left arrow key on your keyboard (&larr;), and modify the four parameters of the message accordingly, setting your <code>x</code> and <code>y</code> coordinates to make the robot move to any of the four marker zones in the environment.</p>
 </li>
@@ -3104,7 +3193,7 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <p>Have a go at requesting more goals by issuing further commands in the terminal (using <code>rostopic pub</code>) to make the robot move between each of the four zone markers.</p>
 </li>
 </ol>
-<p><strong>Summary:</strong></p>
+<h4 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h4>
 <p>We have just made a robot move by issuing navigation goals to an <em>Action Server</em> on our ROS Network. You will learn more about ROS Actions later on in this course, where you will start to understand how this communication method actually works. You will also learn how to create <em>Action Client Nodes</em> in Python, so that - in theory - everything that you have been doing on the command-line in this exercise could be done programmatically instead.</p>
 <p>As you have observed in this exercise, in order to use ROS navigation tools to make a robot move autonomously around an environment there are a few important things that we need to provide to the Navigation Stack:</p>
 <ol>
@@ -3133,11 +3222,11 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
 <p>Odometry data is determined by dead-reckoning and control algorithms based on this alone will be subject to drift and accumulated error. </p>
 <p>Ultimately then, a robot needs additional information to pinpoint its precise location within an environment, and thus enhance its ability to navigate effectively and avoid crashing into things!</p>
 <p>This additional information can come from a LiDAR sensor, which you learnt about in this session. We explored where this data is published, how we access it, and what it tells us about a robot's immediate environment.  We then looked at some ways odometry and laser displacement data can be combined to perform advanced robotic functions such as the mapping of an environment and the subsequent navigation around it. This is all complicated stuff but, using ROS, we can leverage these tools with relative ease, which illustrates just how powerful ROS can be for developing robotic applications quickly and effectively without having to re-invent the wheel!</p>
-<h3 id="backup">Saving your work<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<h3 id="backup">WSL-ROS Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>Remember, the work you have done in the WSL-ROS environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
-<p>This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.</p>
+<p>This will export your home directory to your University <code>U:\</code> Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS.  </p>
 
 
 
@@ -3160,7 +3249,7 @@ Replacing <code>{map name}</code> with a name of your choosing. </p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T13:07:08+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-30T11:58:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-30</span>
   </span>
 
     

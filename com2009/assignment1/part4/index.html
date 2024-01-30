@@ -640,6 +640,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -657,16 +661,24 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../software/wsl-ros/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     WSL-ROS
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
@@ -674,6 +686,8 @@
             WSL-ROS
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -686,7 +700,7 @@
         
   
   <span class="md-ellipsis">
-    Installing on Your Own Machine
+    Installing WSL-ROS on your Own Machine
   </span>
   
 
@@ -707,7 +721,7 @@
         
   
   <span class="md-ellipsis">
-    Accessing from a Campus Computer
+    Accessing WSL-ROS from A University Managed Desktop Computer on Campus
   </span>
   
 
@@ -735,6 +749,10 @@
     
       
         
+          
+        
+      
+        
       
         
       
@@ -752,23 +770,33 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../software/manual/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    Manual Installation
+    Manual ROS Installation
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
-            Manual Installation
+            Manual ROS Installation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -1380,7 +1408,7 @@
           <li class="md-nav__item">
   <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      Saving your work
+      WSL-ROS Managed Desktop Users: Save your work!
     </span>
   </a>
   
@@ -2621,7 +2649,7 @@
           <li class="md-nav__item">
   <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      Saving your work
+      WSL-ROS Managed Desktop Users: Save your work!
     </span>
   </a>
   
@@ -2694,14 +2722,16 @@
 <li><a href="scan_callback/">Creating a <code>/scan</code> Callback Function</a></li>
 </ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p><strong>Step 1: Launch WSL-ROS</strong><br />
-Launch your WSL-ROS environment by running the WSL-ROS shortcut in the Windows Start Menu (if you haven't already done so). Once installed, the <em>Windows Terminal</em> app should launch with an <em>Ubuntu terminal instance</em> ready to go (<strong>TERMINAL 1</strong>).</p>
-<p><strong>Step 2: Restore your work</strong><br />
-When prompted (in <strong>TERMINAL 1</strong>), enter <code>Y</code> to restore your work from last time<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<p><strong>Step 3: Launch VS Code</strong><br />
-Follow <a href="../../wsl-ros/vscode.md">these steps</a> to launch VS Code correctly within the WSL-ROS environment.</p>
-<p><strong>Step 4: Launch the Robot Simulation</strong><br />
-From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"</em> simulation:</p>
+<p><strong>Step 1: Launch your ROS Environment</strong></p>
+<p>If you haven't done so already, launch your ROS environment now. Having done this, you should now have access to a Linux terminal instance (aka <strong>TERMINAL 1</strong>).</p>
+<p><strong>Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)</strong></p>
+<p>Remember that <a href="../../../software/on-campus/getting-started/#backing-up-and-restoring-your-data">any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers</a>, and so you should be backing up your work to your <code>U:\</code> drive regularly. When prompted (on first launch of WSL-ROS in <strong>TERMINAL 1</strong>) enter <code>Y</code> to restore this<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p><strong>Step 3: Launch VS Code</strong>  </p>
+<p>It's also worth launching VS Code now. <em>WSL users</em> <a href="../../../software/on-campus/vscode/#verify">remember to check for this</a>.</p>
+<p><strong>Step 4: Make Sure The Course Repo is Up-To-Date</strong></p>
+<p>Once again, it's worth quickly checking that the Course Repo is up-to-date before you start on the Part 4 exercises. Go back to <a href="../part1/#course-repo">Part 1</a> if you haven't installed it yet (really?!). For the rest of us, <a href="../../../extras/tuos-ros/#updating">see here for how to update</a>.</p>
+<p><strong>Step 5: Launch the Robot Simulation</strong></p>
+<p>From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"</em> simulation:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>roslaunch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_empty_world.launch
@@ -2711,7 +2741,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 <p><img alt="" src="../../../images/gazebo/tb3_empty_world.png" width="800px" /></p>
 </figure>
 <details class="tip">
-<summary>Remember</summary>
+<summary>Tip</summary>
 <p>You can also use the <code>tb3_empty_world</code> command-line alias to launch the simulation, rather than using that long <code>roslaunch</code> command!</p>
 </details>
 <h2 id="an-introduction-to-services">An Introduction to Services<a class="headerlink" href="#an-introduction-to-services" title="Permanent link">&para;</a></h2>
@@ -3094,11 +3124,11 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
 </ul>
 </li>
 </ul>
-<h3 id="backup">Saving your work<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
-<p>Remember, the work you have done in the WSL-ROS environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:</p>
+<h3 id="backup">WSL-ROS Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<p>Remember, to save the work you have done in WSL-ROS during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS Terminal Instance now:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
-<p>This will export your home directory to your University U: Drive, allowing you to restore it at the start of the next session.</p>
+<p>You'll then be able to restore it to a fresh WSL-ROS environment next time you fire one up (<code>wsl_ros restore</code>).  </p>
 <div class="footnote">
 <hr />
 <ol>
@@ -3129,7 +3159,7 @@ From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T13:07:08+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-30T11:58:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-30</span>
   </span>
 
     
