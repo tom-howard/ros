@@ -18,8 +18,8 @@ There are **four tasks** in total that you must complete for this Assignment. Ea
 | :---: | :---   | :---: |
 | 1 | [Velocity Control](./parta/task1.md) | 10/100 |
 | 2 | [Avoiding Obstacles](./parta/task2.md) | 20/100 |
-|   | (An *'out-of-the-box' submission* for Part A) | 10/100 |
-| 3 & 4 | Further info coming soon... | 60/100 |
+|   | ([An *'out-of-the-box' submission* for Part A](./parta/submission.md)) | 10/100 |
+| 3 & 4 | [Further info coming soon](./partb/README.md)... | 60/100 |
 
 <!-- 
 | 3 | [Navigation]() | 25/100 |
