@@ -16,20 +16,18 @@ There are **four tasks** in total that you must complete for this Assignment. Ea
 
 | Task | Details | Marks |
 | :---: | :---   | :---: |
-| 1 | [Velocity Control](./parta/task1.md) | 20/100 |
+| 1 | [Velocity Control](./parta/task1.md) | 10/100 |
 | 2 | [Avoiding Obstacles](./parta/task2.md) | 20/100 |
+|   | (An *'out-of-the-box' submission* for Part A) | 10/100 |
 | 3 & 4 | Further info coming soon... | 60/100 |
 
 <!-- 
 | 3 | [Navigation]() | 25/100 |
 | 4 | [Search & Explore]() | 35/100 |  -->
 
-
 </center>
 
-
-
-There are **100 marks** available in total for Assignment #2.
+As shown above, there are **100 marks** available in total for Assignment #2.
 
 ## Assessment
 

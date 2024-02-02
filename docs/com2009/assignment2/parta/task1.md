@@ -100,21 +100,20 @@ roslaunch com2009_simulations task1.launch
 
 This task will be assessed by the teaching team as part of the Part A submission in Week 6 (i.e. along with [Task 2](./task2.md)). If things don't work for this first submission then we'll let you know what happened, so that you can try to resolve things for the Part B submission later in the semester.
 
-There are **20 marks** available for this task in total, summarised as follows:
+There are **10 marks** available for this task in total, summarised as follows:
 
 <center>
 
 | Criteria | Marks | Details |
 | :--- | :---: | :--- |
-| **A**: The Motion Path | 5/20 | How closely the real robot follows *a true figure-of-eight* path in the robot arena, based on [the criteria table below](#criterion-a-the-motion-path). |
-| **B**: Terminal Messages | 5/20 | The correct formatting of your odometry messages, and the validity of the data that is presented in the terminal as the robot performs the task, based on [the criteria table below](#criterion-b-terminal-messages). |
-| **C**: The Code | 10/20 | You will be assessed on the quality of the code that you submit for this task, [as detailed below](#criterion-c-the-code). | 
+| **A**: The Motion Path | 5/10 | How closely the real robot follows *a true figure-of-eight* path in the robot arena, based on [the criteria table below](#criterion-a-the-motion-path). |
+| **B**: Terminal Messages | 5/10 | The correct formatting of your odometry messages, and the validity of the data that is presented in the terminal as the robot performs the task, based on [the criteria table below](#criterion-b-terminal-messages). |
 
 </center>
 
 ### Criterion A: The Motion Path
 
-**Marks:** 5/20
+**Marks:** 5/10
 
 <center>
 
@@ -130,7 +129,7 @@ There are **20 marks** available for this task in total, summarised as follows:
 
 ### Criterion B: Terminal Messages
 
-**Marks:** 5/20
+**Marks:** 5/10
 
 <center>
 
@@ -141,9 +140,3 @@ There are **20 marks** available for this task in total, summarised as follows:
 | **B.3**: Data | Each message value (`x`, `y` and `yaw`) should be plausible, that is: they represent the actual pose of the robot, based on all readings being set to zero at the start/finish point ([as illustrated above](#fig-eight)). In addition, each value must be quoted in the correct units (meters or degrees, as appropriate). | 3 |
 
 </center>
-
-### Criterion C: The Code
- 
-**Marks:** 10/20 
-
-TODO
