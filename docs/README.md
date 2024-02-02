@@ -1,10 +1,16 @@
+---
+hide:
+  - toc 
+  - navigation
+---
+
 <center>
 
-# ROS: The Robot Operating System
+# COM2009 ROS Labs
 
-*Robotics in the Diamond @ The University of Sheffield*
+*ROS Labs for the COM2009-3009 Robotics Course at The University of Sheffield (and other courses)* 
 
-![A picture of a TurtleBot3 Waffle in the Diamond Computer Room 3 Robot Arena](./images/waffle/arena_shot.jpg)  
+![A picture of a TurtleBot3 Waffle in the Diamond Computer Room 3 Robot Arena](./images/waffle/arena_shot.jpg){width=1000} 
 
 By Tom Howard  
 Department of Multidisciplinary Engineering Education  

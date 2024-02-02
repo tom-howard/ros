@@ -10,19 +10,19 @@ To teach ROS here we use the [TurtleBot3 Waffle](https://emanual.robotis.com/doc
 
 ### The (Free) TurtleBot3 eBook {#ebook}
 
-The TurtleBot3 Waffle developers (Robotis) have written a book on programming robots with ROS. This is available as a *free eBook*, which you can download [here](https://community.robotsource.org/t/download-the-ros-robot-programming-book-for-free/51), and we recommend that you do so! This is a great resource which provides a detailed introduction to what ROS is and how it works, as well as a comprehensive "Beginners Guide" to ROS programming. The other great thing about this is that it is tailored to the TurtleBot3 Robot specifically, providing examples of how to use a range of TurtleBot3 packages along with a detailed description of how they work.
+The TurtleBot3 Waffle developers (Robotis) have written a book on programming robots with ROS. This is available as a *free eBook*, which you can [download here](https://emanual.robotis.com/docs/en/platform/turtlebot3/learn/#books), and we recommend that you do so! This is a great resource which provides a detailed introduction to what ROS is and how it works, as well as a comprehensive "Beginners Guide" to ROS programming. The other great thing about this is that it is tailored to the TurtleBot3 Robot specifically, providing examples of how to use a range of TurtleBot3 packages along with a detailed description of how they work.
 
-We recommend that you have a look at this book to learn more about the concepts that you are exploring in these courses.
+We recommend that you have a look at this book to learn more about the concepts that you are exploring in this course.
 
 ### Our Waffles {#tb3}
 
-Here in the Diamond we have a number of *customised* TurtleBot3 Waffles specifically for teaching this course:
+Here in the Diamond we have a total of 50 *customised* TurtleBot3 Waffles specifically for teaching this course:
 
 <figure markdown>
   ![](../images/waffle/cabinet.jpg){width=500px} 
 </figure>
 
-Whether we're working in simulation or with the real thing, the ROS applications that we develop as part of the courses here are directly transferable between the two (mostly!) 
+Whether we're working in simulation or with the real thing, the ROS applications that we develop as part of the course are directly transferable between the two (mostly!) 
 
 The robots that we have are slightly different to the standard *TurtleBot3 WafflePi* that you can buy from Robotis. We've made a few adjustments, and the full specifications are as follows:
 
@@ -66,4 +66,4 @@ In the Diamond, we have dedicated Robot Laptops running the same OS & ROS versio
 
 ### Simulation Environment
 
-To deliver the simulation-based parts of this course, we've created a custom simulation environment using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). This has been developed primarily to run on University of Sheffield Managed Desktop Computers, which run Windows 10, but it's also possible to run this on other machines too. We call this simulation environment *"WSL-ROS"*.
+To deliver the simulation-based parts of this course, we've created a custom simulation environment using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). This has been developed primarily to run on University of Sheffield Managed Desktop Computers, which run Windows 10, but it's also possible to run this on other machines too. We call this simulation environment *"WSL-ROS"*. [See here for more details](../software/wsl-ros/README.md).
