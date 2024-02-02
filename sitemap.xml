@@ -156,6 +156,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://tom-howard.github.io/ros/com2009/assignment2/parta/</loc>
+         <lastmod>2024-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://tom-howard.github.io/ros/com2009/assignment2/parta/submission/</loc>
+         <lastmod>2024-02-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://tom-howard.github.io/ros/com2009/assignment2/parta/task1/</loc>
          <lastmod>2024-02-02</lastmod>
          <changefreq>daily</changefreq>
