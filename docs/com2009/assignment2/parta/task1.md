@@ -4,8 +4,12 @@ title: "Task 1: Velocity Control"
 
 Submit a working ROS package that can be successfully deployed to control *a real TurtleBot3 Waffle*, making it follow a prescribed motion profile whilst printing key information to the terminal.
 
-!!! success "Assignment #1 Checkpoint"
-    You'll need to have completed [**Part 2** up to and including **Exercise 4**](../../assignment1/part2.md#ex4) before starting on this task.
+!!! success "Course Checkpoints"
+    
+    You should aim to have completed the following *additional* parts of the COM2009 ROS Course to support your work on this task: 
+
+    * **Assignment #1**: Part 2, up to (and including) [Exercise 4](../../assignment1/part2.md#ex4).
+    * **Fact-Finding Missions**: [Mission 1 (Publishing Velocity Commands)](../../../waffles/fact-finding.md#mission-1-publishing-velocity-commands).
 
 ## Summary
 

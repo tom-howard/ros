@@ -4,8 +4,12 @@ title: "Task 2: Avoiding Obstacles"
 
 Develop the ROS node(s) that allow a TurtleBot3 Waffle to autonomously explore an environment containing various obstacles. The robot must explore as much of the environment as possible in 90 seconds without crashing into anything!
 
-!!! success "Assignment #1 Checkpoint"
-    We'd recommend completing Assignment #1 [up to and including **Part 5**](../../assignment1/part5.md) before starting on this task.
+!!! success "Course Checkpoints"
+    
+    You should aim to have completed the following *additional* parts of the COM2009 ROS Course to support your work on this task: 
+
+    * **Assignment #1**: [Part 5](../../assignment1/part5.md) (in full).
+    * **Fact-Finding Missions**: [Mission 4 (Out of Range LiDAR Data)](../../../waffles/fact-finding.md#mission-4-out-of-range-lidar-data).
 
 ## Summary
 
