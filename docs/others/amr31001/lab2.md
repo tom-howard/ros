@@ -38,7 +38,7 @@ In this lab we'll look at how this can be improved, making use of some of our ro
 
 ### Aims
 
-In this lab, we'll build some ROS Nodes (in Python) that incorporate data from some of our robot's sensors. This sensor data is published to specific topics on the ROS Network, and we can build ROS Nodes to *subscribe* to these. We'll see how the data from these sensors can be used as *feedback* to inform decision-making, thus allowing us to implement some different forms of *closed-loop control*, making our robot more autonomous.
+In this lab, we'll build some ROS Nodes (in Python) that incorporate data from some of our robot's sensors. This sensor data is published to specific topics on the ROS Network, and we can build ROS Nodes to *subscribe* to these. We'll see how the data from these sensors can be used as *feedback* to inform decision-making, thus allowing us to implement some different forms of *closed-loop control*, thus making our robot more autonomous. 
 
 ### Intended Learning Outcomes
 
@@ -65,7 +65,7 @@ By the end of this session you will be able to:
 
 To start with, you'll need to download [a ROS package](https://github.com/tom-howard/amr31001) to the Robot Laptop that you are working on today. This package contains all the resources that you'll need for the lab exercises.
 
-1. Open up a terminal instance on the laptop, either by using the `Ctrl+Alt+T` keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
+1. Open up a terminal instance on the laptop, either by using the ++ctrl+alt+t++ keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
     <figure markdown>
       ![](../../images/laptops/bash_terminal_icon.svg){width=60px}
@@ -74,7 +74,7 @@ To start with, you'll need to download [a ROS package](https://github.com/tom-ho
 1. In the terminal, run the following commands in order:
 
     !!! tip
-        To **paste** the following commands into the terminal use `Ctrl+Shift+V`
+        To **paste** the following commands into the terminal use ++ctrl+shift+v++
     
     ***
     ```bash
@@ -112,7 +112,7 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
       ![](../../images/laptops/ssh_auth.svg){width=600px}
     </figure>
 
-    If so, just type `yes` and then hit `Enter` to confirm that you want to continue.
+    If so, just type `yes` and then hit ++enter++ to confirm that you want to continue.
 
 1. Enter the password for the robot when requested (if you can't remember what this is from last time then ask a member of the teaching team!)
 
@@ -149,11 +149,13 @@ Much the same as last time, you'll now need to get ROS up and running on your ro
 
     After a short while, you should see a message like this:
 
-    ```txt
-    [INFO] [#####] Calibration End  
+    ``` { .txt .no-copy }
+    [INFO] [#####] --------------------------
+    [INFO] [#####] dia-waffleNUM is up and running!
+    [INFO] [#####] -------------------------- 
     ```
 
-    ROS is now up and running, and you're ready to go!
+    The robot is now up and running, and you're ready to go!
 
 1. Close down this terminal instance. If you see the following message, just click "Close Terminal."
 
@@ -180,7 +182,7 @@ This data is published to a ROS Topic called `/odom`.
 
 In the previous lab we used some ROS commands to identify and interrogate active topics on the ROS network, let's give that another go now, but on the `/odom` topic this time.
 
-1. Open up a new terminal instance on the laptop (by pressing `Ctrl+Alt+T`, or clicking the Terminal App desktop icon, as you did before). We’ll call this one **TERMINAL 1**.
+1. Open up a new terminal instance on the laptop (by pressing ++ctrl+alt+t++, or clicking the Terminal App desktop icon, as you did before). We’ll call this one **TERMINAL 1**.
 
 1. As you may recall from last time, we can use the `rostopic` command to *list* all the topics that are currently active on the network. Enter the following in **TERMINAL 1**:
 
@@ -253,14 +255,14 @@ In the previous lab we used some ROS commands to identify and interrogate active
     ```
     ***
 
-1. Now, let's drive the robot around a bit and see how this data changes as we do so. Open up a new terminal instance by pressing `Ctrl+Alt+T`, or clicking the Terminal App desktop icon, as you did before. We'll call this one **TERMINAL 2**.
+1. Now, let's drive the robot around a bit and see how this data changes as we do so. Open up a new terminal instance by pressing ++ctrl+alt+t++, or clicking the Terminal App desktop icon, as you did before. We'll call this one **TERMINAL 2**.
 
 1. Remember that node that we used last time that allowed us to control the motion of the robot using different buttons on the keyboard? Let's launch that again now:
 
     ***
     **TERMINAL 2:**
     ```bash
-    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    rosrun turtlebot3_teleop turtlebot3_teleop_key
     ```
     ***
 
@@ -277,7 +279,7 @@ In the previous lab we used some ROS commands to identify and interrogate active
 
         **Make a note of the answers to these questions, as they may feature in the post-lab quiz!**
 
-1. When you've seen enough enter `Ctrl+C` in **TERMINAL 2** to stop the `turtlebot3_teleop_keyboard` node. Then, enter `Ctrl+C` in **TERMINAL 1** as well, which will stop the live stream of Odometery messages from being displayed.
+1. When you've seen enough enter ++ctrl+c++ in **TERMINAL 2** to stop the `turtlebot3_teleop_keyboard` node. Then, enter ++ctrl+c++ in **TERMINAL 1** as well, which will stop the live stream of Odometery messages from being displayed.
 
 ##### Summary
 
@@ -287,7 +289,9 @@ In the previous lab we used some ROS commands to identify and interrogate active
 
 You should have noticed that (as the robot moved around) the `x` and `y` terms changed, but the `z` term should have remained at zero. This is because the `X-Y` plane is the floor, and any change in `z` position would mean that the robot was floating or flying above the floor! 
 
-**Orientation** tells us where the robot is pointing in its environment, expressed in units of *Quaternions*; a four-term orientation system. Don't worry too much about this though, we'll convert this to Euler angles (in degrees/radians) for you, to make them a bit easier to work with for the following exercise.
+**Orientation** tells us where the robot is pointing in its environment, expressed in units of *Quaternions*; a four-term orientation system. You should have noticed some of these values changing too, but it may not have been immediately obvious what the values really meant! For the further exercises in this lab we'll convert this to Euler angles (in degrees/radians) for you, to make the data a bit easier to understand.
+
+Ultimately though, our robots *position* can change in both the `X` and `Y` axes (i.e. the plane of the floor), while its *orientation* can only change about the `Z` axis (i.e. it can only "yaw"): 
 
 <figure markdown>
   ![](../../images/waffle/pose.png?width=15cm)
@@ -295,9 +299,9 @@ You should have noticed that (as the robot moved around) the `x` and `y` terms c
 
 #### :material-pen: Exercise 2: Odometry-based Navigation {#ex2}
 
-Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that [last time](./lab1.md#ex6) you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (tuning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path. 
+Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that last time you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (turning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path (approximately). 
 
-In theory though, we can do all this with odometry instead, so let's have a go at that now...
+In theory though, we can do all this much more effectively with odometry data instead, so let's have a go at that now...
 
 1. Open up the `amr31001` ROS package that you downloaded earlier into VS Code using the following command in **TERMINAL 1**:
 
@@ -324,7 +328,7 @@ In theory though, we can do all this with odometry instead, so let's have a go a
         motion = waffle.Motion()
         ```
 
-        In the main part of the code, this can then be used to control the velocity of the robot, using the following methods:
+        In the main part of the code, this can be used to control the velocity of the robot, using the following methods:
 
         1. `motion.move_at_velocity(linear = x, angular = y)` to make the robot move at a linear velocity of `x` (m/s) and/or an angular velocity of `y` (rad/s).
         1. `motion.stop()` to make the robot stop moving.
@@ -352,7 +356,7 @@ In theory though, we can do all this with odometry instead, so let's have a go a
 
     The robot should start turning on the spot, and you should see some interesting information being printed to the terminal. After it has turned by 45&deg;, the robot should stop momentarily and then carry on turning again.
 
-1. Stop the Node by entering `Ctrl+C` in **TERMINAL 1**.
+1. Stop the Node by entering ++ctrl+c++ in **TERMINAL 1**.
 
 1. **What you need to do**:
 
@@ -382,7 +386,7 @@ In theory though, we can do all this with odometry instead, so let's have a go a
 
     1. **Make sure that you've saved any changes to the code (in VS Code) before trying to test it out on the robot!**
     
-        Do this by using the `Ctrl+S` keyboard shortcut, or going to `File > Save` from the menu at the top of the screen.
+        Do this by using the ++ctrl+s++ keyboard shortcut, or going to `File > Save` from the menu at the top of the screen.
     
     1. Once you've saved it, you can re-run the code at any time by using the same `rosrun` command as before:
 
@@ -393,20 +397,20 @@ In theory though, we can do all this with odometry instead, so let's have a go a
         ```
         ***
 
-        ... and you can stop it at any time by entering `Ctrl+C` in the terminal.
+        ... and you can stop it at any time by entering ++ctrl+c++ in the terminal.
 
     !!! tip "Python Tips"
 
         You'll need to do a bit of maths here (see [the "Hint" above](#the_hint)). Here's how to implement a couple of mathematical functions in Python:
 
-        1. **To the power of...**: Use `**` to raise a number to the power of another number (i.e. <code>2<sup>3</sup></code>):
+        1. **To the power of...**: Use `**` to raise a number to the power of another number (i.e. $2^{3}$):
 
             ```py
             >>> 2**3
             8
             ``` 
 
-        1. **Square Root**: To calculate the square root of a number use the `sqrt()` function:
+        1. **Square Root**: To calculate the square root of a number (i.e. $\sqrt{4}$):
 
             ```py
             >>> sqrt(4)
@@ -439,7 +443,7 @@ The red dots illustrate the LiDAR data. Hold your hand out to the robot and see 
 
 This data is really useful and (as we observed during the previous lab session) it allows us to build up 2-dimensional maps of an environment with considerable accuracy. This is, of course, a very valuable skill for a robot to have if we want it to be able to navigate autonomously, and we'll explore this further later on. For now though, we'll look at how we can use the LiDAR data ourselves to build Nodes that make the robot detect and follow walls!
 
-Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**. 
+Once you're done, close down RViz by hitting ++ctrl+c++ in **TERMINAL 1**. 
 
 #### :material-pen: Exercise 3: Wall following {#ex3}
 
@@ -478,6 +482,7 @@ Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**.
             ```python
             wall_rate = lidar.distance.l3 - lidar.distance.l4
             ```
+        
         1. If this value is close to zero, then the robot and the wall are well aligned. If not, then the robot is at an angle to the wall, and it needs to adjust its angular velocity in order to correct for this:
 
             <figure markdown>
@@ -505,9 +510,9 @@ Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**.
     1. Manually vary the alignment of the robot and the wall and observe how the information that is being printed to the terminal changes as you do so.
         
         !!! note "Question"
-            The node will tell you if it thinks the robot needs to turn right or left in order to improve its current alignment with the wall. Is it making the correct decision?
+            The node will tell you if it thinks the robot needs to turn right or left in order to improve its current alignment with the wall. **Is it making the correct decision?**
 
-    1. Currently, all velocity parameters inside the `while` loop are set to zero.
+    1. Currently, all velocity parameters inside the `#!python while()` loop are set to zero.
         * You'll need to set a constant *linear* velocity, so that the robot is always moving forwards. Set an appropriate value for this now, by editing the line that currently reads:
 
             ```python
@@ -559,7 +564,7 @@ Once you're done, close down RViz by hitting `Ctrl+C` in **TERMINAL 1**.
 
 We've played around with the data from both the LiDAR sensor and the robot's Odometry System now, so hopefully you now understand what these two systems can tell us about our robot and its environment, and how this information is very valuable for robotic applications.
 
-To illustrate this further, we'll now have a look at two extremely useful tools that are build into ROS, and that use the data from these two sensors alone to achieve powerful results!
+To illustrate this further, we'll now have a look at two extremely useful tools that are built into ROS, and that use the data from these two sensors alone to achieve powerful results!
 
 **Simultaneous Localisation and Mapping (SLAM)**
 
@@ -601,7 +606,7 @@ In the next exercise, we'll have a go at this: first we need to build a map, the
     ***
     **TERMINAL 2:**
     ```bash
-    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    rosrun turtlebot3_teleop turtlebot3_teleop_key
     ```
     ***
 
@@ -611,7 +616,7 @@ In the next exercise, we'll have a go at this: first we need to build a map, the
       ![](./lab2/slam23.png)
     </figure>
 
-1. Once you're happy with this, stop the `turtlebot3_teleop_keyboard` node by hitting `Ctrl+C` in **TERMINAL 2**. You can also stop SLAM now too, so head back to **TERMINAL 1** and enter `Ctrl+C` to stop this too.
+1. Once you're happy with this, stop the `turtlebot3_teleop_keyboard` node by hitting ++ctrl+c++ in **TERMINAL 2**. You can also stop SLAM now too, so head back to **TERMINAL 1** and enter ++ctrl+c++ to stop this too.
 
 1. While you were doing the above, a map file was being constantly updated and saved to the laptop's filesystem. Have a quick look at this now to make sure that the map that you have built is indeed a good representation of the environment:
 
@@ -662,7 +667,7 @@ Using the map that you've just created you should now be able to make your robot
     ***
     **TERMINAL 2:**
     ```bash
-    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    rosrun turtlebot3_teleop turtlebot3_teleop_key
     ```
     ***
 
@@ -700,7 +705,7 @@ waffle NUM off
 ... again, replacing `NUM` with the number of the robot that you have been working with today.
 ***
 
-You'll need to enter `y` and then hit `Enter` to confirm this.
+You'll need to enter `y` and then hit ++enter++ to confirm this.
 
 Please then shut down the laptop, which you can do by clicking the battery icon in the top right of the desktop and selecting the "Power Off / Log Out" option in the drop-down menu.
 
