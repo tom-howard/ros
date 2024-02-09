@@ -2731,7 +2731,7 @@
 <p>We used a time-based method to control the motion of our robot in order to get it to generate a square motion path. This type of control is <em>open-loop</em>: we hoped that the robot had moved (or turned) by the amount that was required, but had no <em>feedback</em> to tell us whether this had actually been achieved.</p>
 <p>In this lab we'll look at how this can be improved, making use of some of our robot's on-board sensors to tell us where the robot is or what it can see in its environment, in order to complete a task more reliably and be able to better adapt to changes and uncertainty in the environment.</p>
 <h3 id="aims">Aims<a class="headerlink" href="#aims" title="Permanent link">&para;</a></h3>
-<p>In this lab, we'll build some ROS Nodes (in Python) that incorporate data from some of our robot's sensors. This sensor data is published to specific topics on the ROS Network, and we can build ROS Nodes to <em>subscribe</em> to these. We'll see how the data from these sensors can be used as <em>feedback</em> to inform decision-making, thus allowing us to implement some different forms of <em>closed-loop control</em>, making our robot more autonomous.</p>
+<p>In this lab, we'll build some ROS Nodes (in Python) that incorporate data from some of our robot's sensors. This sensor data is published to specific topics on the ROS Network, and we can build ROS Nodes to <em>subscribe</em> to these. We'll see how the data from these sensors can be used as <em>feedback</em> to inform decision-making, thus allowing us to implement some different forms of <em>closed-loop control</em>, thus making our robot more autonomous. </p>
 <h3 id="intended-learning-outcomes">Intended Learning Outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permanent link">&para;</a></h3>
 <p>By the end of this session you will be able to:</p>
 <ol>
@@ -2754,7 +2754,7 @@
 <p>To start with, you'll need to download <a href="https://github.com/tom-howard/amr31001">a ROS package</a> to the Robot Laptop that you are working on today. This package contains all the resources that you'll need for the lab exercises.</p>
 <ol>
 <li>
-<p>Open up a terminal instance on the laptop, either by using the <code>Ctrl+Alt+T</code> keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:</p>
+<p>Open up a terminal instance on the laptop, either by using the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span> keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:</p>
 <p><figure markdown>
   <img alt="" src="../../../images/laptops/bash_terminal_icon.svg" width="60px" />
 </figure></p>
@@ -2763,7 +2763,7 @@
 <p>In the terminal, run the following commands in order:</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>To <strong>paste</strong> the following commands into the terminal use <code>Ctrl+Shift+V</code></p>
+<p>To <strong>paste</strong> the following commands into the terminal use <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-v">V</kbd></span></p>
 </div>
 <hr />
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>-O<span class="w"> </span>build.sh<span class="w"> </span>https://raw.githubusercontent.com/tom-howard/amr31001/main/scripts/build.sh
@@ -2795,7 +2795,7 @@ Replacing <code>NUM</code> with the number of the robot that you have been provi
 <p><figure markdown>
   <img alt="" src="../../../images/laptops/ssh_auth.svg" width="600px" />
 </figure></p>
-<p>If so, just type <code>yes</code> and then hit <code>Enter</code> to confirm that you want to continue.</p>
+<p>If so, just type <code>yes</code> and then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm that you want to continue.</p>
 </li>
 <li>
 <p>Enter the password for the robot when requested (if you can't remember what this is from last time then ask a member of the teaching team!)</p>
@@ -2827,9 +2827,11 @@ Replacing <code>NUM</code> with the number of the robot that you have been provi
 </code></pre></div>
 <hr />
 <p>After a short while, you should see a message like this:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[INFO] [#####] Calibration End  
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[INFO] [#####] --------------------------
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>[INFO] [#####] dia-waffleNUM is up and running!
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>[INFO] [#####] -------------------------- 
 </code></pre></div>
-<p>ROS is now up and running, and you're ready to go!</p>
+<p>The robot is now up and running, and you're ready to go!</p>
 </li>
 <li>
 <p>Close down this terminal instance. If you see the following message, just click "Close Terminal."</p>
@@ -2853,7 +2855,7 @@ Replacing <code>NUM</code> with the number of the robot that you have been provi
 <p>In the previous lab we used some ROS commands to identify and interrogate active topics on the ROS network, let's give that another go now, but on the <code>/odom</code> topic this time.</p>
 <ol>
 <li>
-<p>Open up a new terminal instance on the laptop (by pressing <code>Ctrl+Alt+T</code>, or clicking the Terminal App desktop icon, as you did before). We’ll call this one <strong>TERMINAL 1</strong>.</p>
+<p>Open up a new terminal instance on the laptop (by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span>, or clicking the Terminal App desktop icon, as you did before). We’ll call this one <strong>TERMINAL 1</strong>.</p>
 </li>
 <li>
 <p>As you may recall from last time, we can use the <code>rostopic</code> command to <em>list</em> all the topics that are currently active on the network. Enter the following in <strong>TERMINAL 1</strong>:</p>
@@ -2915,13 +2917,13 @@ Replacing <code>NUM</code> with the number of the robot that you have been provi
 <hr />
 </li>
 <li>
-<p>Now, let's drive the robot around a bit and see how this data changes as we do so. Open up a new terminal instance by pressing <code>Ctrl+Alt+T</code>, or clicking the Terminal App desktop icon, as you did before. We'll call this one <strong>TERMINAL 2</strong>.</p>
+<p>Now, let's drive the robot around a bit and see how this data changes as we do so. Open up a new terminal instance by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span>, or clicking the Terminal App desktop icon, as you did before. We'll call this one <strong>TERMINAL 2</strong>.</p>
 </li>
 <li>
 <p>Remember that node that we used last time that allowed us to control the motion of the robot using different buttons on the keyboard? Let's launch that again now:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>roslaunch<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>rosrun<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key
 </code></pre></div></p>
 <hr />
 </li>
@@ -2940,20 +2942,21 @@ Replacing <code>NUM</code> with the number of the robot that you have been provi
 </div>
 </li>
 <li>
-<p>When you've seen enough enter <code>Ctrl+C</code> in <strong>TERMINAL 2</strong> to stop the <code>turtlebot3_teleop_keyboard</code> node. Then, enter <code>Ctrl+C</code> in <strong>TERMINAL 1</strong> as well, which will stop the live stream of Odometery messages from being displayed.</p>
+<p>When you've seen enough enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 2</strong> to stop the <code>turtlebot3_teleop_keyboard</code> node. Then, enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 1</strong> as well, which will stop the live stream of Odometery messages from being displayed.</p>
 </li>
 </ol>
 <h5 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h5>
 <p><strong>Pose</strong> is a combination of a robot's <em>position</em> and <em>orientation</em> in its environment.</p>
 <p><strong>Position</strong> tells us the location (in meters) of the robot in its environment. Wherever the robot was when it was turned on is the reference point, and so the distance values that we observed in the exercise above were all quoted relative to this initial position.</p>
 <p>You should have noticed that (as the robot moved around) the <code>x</code> and <code>y</code> terms changed, but the <code>z</code> term should have remained at zero. This is because the <code>X-Y</code> plane is the floor, and any change in <code>z</code> position would mean that the robot was floating or flying above the floor! </p>
-<p><strong>Orientation</strong> tells us where the robot is pointing in its environment, expressed in units of <em>Quaternions</em>; a four-term orientation system. Don't worry too much about this though, we'll convert this to Euler angles (in degrees/radians) for you, to make them a bit easier to work with for the following exercise.</p>
+<p><strong>Orientation</strong> tells us where the robot is pointing in its environment, expressed in units of <em>Quaternions</em>; a four-term orientation system. You should have noticed some of these values changing too, but it may not have been immediately obvious what the values really meant! For the further exercises in this lab we'll convert this to Euler angles (in degrees/radians) for you, to make the data a bit easier to understand.</p>
+<p>Ultimately though, our robots <em>position</em> can change in both the <code>X</code> and <code>Y</code> axes (i.e. the plane of the floor), while its <em>orientation</em> can only change about the <code>Z</code> axis (i.e. it can only "yaw"): </p>
 <figure>
 <p><img alt="" src="../../../images/waffle/pose.png?width=15cm" /></p>
 </figure>
 <h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 2: Odometry-based Navigation<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
-<p>Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that <a href="../lab1/#ex6">last time</a> you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (tuning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path. </p>
-<p>In theory though, we can do all this with odometry instead, so let's have a go at that now...</p>
+<p>Now that we know about the odometry system and what it tells us, let's see how this could be used as a feedback signal to inform robot navigation. You may recall that last time you created a ROS Node to make your robot to follow a square motion path on the floor. This was time-based though: given the speed of motion (turning or moving forwards) it was possible to determine the time it would take for the robot to move by a required distance. Having determined this, we then added timers to our node, to control the switch between moving forwards and turning on the spot, in order to generate the square motion path (approximately). </p>
+<p>In theory though, we can do all this much more effectively with odometry data instead, so let's have a go at that now...</p>
 <ol>
 <li>
 <p>Open up the <code>amr31001</code> ROS package that you downloaded earlier into VS Code using the following command in <strong>TERMINAL 1</strong>:</p>
@@ -2976,7 +2979,7 @@ Replacing <code>NUM</code> with the number of the robot that you have been provi
 <p>and instantiated on line 16:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">motion</span> <span class="o">=</span> <span class="n">waffle</span><span class="o">.</span><span class="n">Motion</span><span class="p">()</span>
 </code></pre></div>
-<p>In the main part of the code, this can then be used to control the velocity of the robot, using the following methods:</p>
+<p>In the main part of the code, this can be used to control the velocity of the robot, using the following methods:</p>
 <ol>
 <li><code>motion.move_at_velocity(linear = x, angular = y)</code> to make the robot move at a linear velocity of <code>x</code> (m/s) and/or an angular velocity of <code>y</code> (rad/s).</li>
 <li><code>motion.stop()</code> to make the robot stop moving.</li>
@@ -3005,7 +3008,7 @@ Replacing <code>NUM</code> with the number of the robot that you have been provi
 <p>The robot should start turning on the spot, and you should see some interesting information being printed to the terminal. After it has turned by 45&deg;, the robot should stop momentarily and then carry on turning again.</p>
 </li>
 <li>
-<p>Stop the Node by entering <code>Ctrl+C</code> in <strong>TERMINAL 1</strong>.</p>
+<p>Stop the Node by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 1</strong>.</p>
 </li>
 <li>
 <p><strong>What you need to do</strong>:</p>
@@ -3032,7 +3035,7 @@ See if you can adapt the code within this block to make the robot move forwards 
 </li>
 <li>
 <p><strong>Make sure that you've saved any changes to the code (in VS Code) before trying to test it out on the robot!</strong></p>
-<p>Do this by using the <code>Ctrl+S</code> keyboard shortcut, or going to <code>File &gt; Save</code> from the menu at the top of the screen.</p>
+<p>Do this by using the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-s">S</kbd></span> keyboard shortcut, or going to <code>File &gt; Save</code> from the menu at the top of the screen.</p>
 </li>
 <li>
 <p>Once you've saved it, you can re-run the code at any time by using the same <code>rosrun</code> command as before:</p>
@@ -3041,7 +3044,7 @@ See if you can adapt the code within this block to make the robot move forwards 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>rosrun<span class="w"> </span>amr31001<span class="w"> </span>ex2.py
 </code></pre></div></p>
 <hr />
-<p>... and you can stop it at any time by entering <code>Ctrl+C</code> in the terminal.</p>
+<p>... and you can stop it at any time by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in the terminal.</p>
 </li>
 </ol>
 <div class="admonition tip">
@@ -3049,13 +3052,13 @@ See if you can adapt the code within this block to make the robot move forwards 
 <p>You'll need to do a bit of maths here (see <a href="#the_hint">the "Hint" above</a>). Here's how to implement a couple of mathematical functions in Python:</p>
 <ol>
 <li>
-<p><strong>To the power of...</strong>: Use <code>**</code> to raise a number to the power of another number (i.e. <code>2<sup>3</sup></code>):</p>
+<p><strong>To the power of...</strong>: Use <code>**</code> to raise a number to the power of another number (i.e. <span class="arithmatex">\(2^{3}\)</span>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
 <a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="mi">8</span>
 </code></pre></div>
 </li>
 <li>
-<p><strong>Square Root</strong>: To calculate the square root of a number use the <code>sqrt()</code> function:</p>
+<p><strong>Square Root</strong>: To calculate the square root of a number (i.e. <span class="arithmatex">\(\sqrt{4}\)</span>):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="mf">2.0</span> 
 </code></pre></div>
@@ -3082,7 +3085,7 @@ See if you can adapt the code within this block to make the robot move forwards 
 </figure>
 <p>The red dots illustrate the LiDAR data. Hold your hand out to the robot and see if you can see it being detected by the sensor... a cluster of red dots should form on the screen to indicate where your hand is located in relation to the robot. Move your hand around and watch the cluster of dots move accordingly. Move your hand closer and farther away from the robot and observe how the red dots also move towards or away from the robot on the screen. </p>
 <p>This data is really useful and (as we observed during the previous lab session) it allows us to build up 2-dimensional maps of an environment with considerable accuracy. This is, of course, a very valuable skill for a robot to have if we want it to be able to navigate autonomously, and we'll explore this further later on. For now though, we'll look at how we can use the LiDAR data ourselves to build Nodes that make the robot detect and follow walls!</p>
-<p>Once you're done, close down RViz by hitting <code>Ctrl+C</code> in <strong>TERMINAL 1</strong>. </p>
+<p>Once you're done, close down RViz by hitting <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 1</strong>. </p>
 <h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44-.02.49-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3v-3.75Z"/></svg></span> Exercise 3: Wall following<a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
@@ -3120,9 +3123,11 @@ See if you can adapt the code within this block to make the robot move forwards 
 <li>We use distance measurements from LiDAR zones L3 and L4 to determine the alignment of the robot to a left-hand wall.</li>
 <li>
 <p>This is determined by calculating the difference between the distance measurements reported from these two zones:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">wall_rate</span> <span class="o">=</span> <span class="n">lidar</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">l3</span> <span class="o">-</span> <span class="n">lidar</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">l4</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">wall_rate</span> <span class="o">=</span> <span class="n">lidar</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">l3</span> <span class="o">-</span> <span class="n">lidar</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">l4</span>
 </code></pre></div>
-        1. If this value is close to zero, then the robot and the wall are well aligned. If not, then the robot is at an angle to the wall, and it needs to adjust its angular velocity in order to correct for this:</p>
+</li>
+<li>
+<p>If this value is close to zero, then the robot and the wall are well aligned. If not, then the robot is at an angle to the wall, and it needs to adjust its angular velocity in order to correct for this:</p>
 <p><figure markdown>
   <img alt="" src="wall_rate.png?width=20cm" />
 </figure>  </p>
@@ -3153,11 +3158,11 @@ See if you can adapt the code within this block to make the robot move forwards 
 <p>Manually vary the alignment of the robot and the wall and observe how the information that is being printed to the terminal changes as you do so.</p>
 <div class="admonition note">
 <p class="admonition-title">Question</p>
-<p>The node will tell you if it thinks the robot needs to turn right or left in order to improve its current alignment with the wall. Is it making the correct decision?</p>
+<p>The node will tell you if it thinks the robot needs to turn right or left in order to improve its current alignment with the wall. <strong>Is it making the correct decision?</strong></p>
 </div>
 </li>
 <li>
-<p>Currently, all velocity parameters inside the <code>while</code> loop are set to zero.</p>
+<p>Currently, all velocity parameters inside the <code class="highlight"><span class="k">while</span><span class="p">()</span></code> loop are set to zero.</p>
 <ul>
 <li>
 <p>You'll need to set a constant <em>linear</em> velocity, so that the robot is always moving forwards. Set an appropriate value for this now, by editing the line that currently reads:</p>
@@ -3210,7 +3215,7 @@ See if you can adapt the code within this block to make the robot move forwards 
 </ol>
 <h3 id="slam-and-autonomous-navigation">SLAM and Autonomous Navigation<a class="headerlink" href="#slam-and-autonomous-navigation" title="Permanent link">&para;</a></h3>
 <p>We've played around with the data from both the LiDAR sensor and the robot's Odometry System now, so hopefully you now understand what these two systems can tell us about our robot and its environment, and how this information is very valuable for robotic applications.</p>
-<p>To illustrate this further, we'll now have a look at two extremely useful tools that are build into ROS, and that use the data from these two sensors alone to achieve powerful results!</p>
+<p>To illustrate this further, we'll now have a look at two extremely useful tools that are built into ROS, and that use the data from these two sensors alone to achieve powerful results!</p>
 <p><strong>Simultaneous Localisation and Mapping (SLAM)</strong></p>
 <p>As you now know, the LiDAR sensor gives us a full 360&deg; view of our robot's environment. As the robot moves around it starts to observe different features in the environment, or perhaps the same features that it has already seen, but at a different perspective. Using the LiDAR data in combination with our robots <em>Pose</em> and <em>Velocity</em> (as provided by the Odometry System), we can actually build up a comprehensive 2-dimensional map of an environment and keep track of where our robot is actually located within that map, at the same time. This is a process called <strong>SLAM</strong>, and you may remember that we had a go at this in the previous lab session.</p>
 <p><strong>Navigation</strong></p>
@@ -3242,7 +3247,7 @@ See if you can adapt the code within this block to make the robot move forwards 
 <p>In <strong>TERMINAL 2</strong> launch the <code>turtlebot3_teleop_keyboard</code> node again, to drive the robot around:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>roslaunch<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>rosrun<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key
 </code></pre></div></p>
 <hr />
 </li>
@@ -3253,7 +3258,7 @@ See if you can adapt the code within this block to make the robot move forwards 
 </figure></p>
 </li>
 <li>
-<p>Once you're happy with this, stop the <code>turtlebot3_teleop_keyboard</code> node by hitting <code>Ctrl+C</code> in <strong>TERMINAL 2</strong>. You can also stop SLAM now too, so head back to <strong>TERMINAL 1</strong> and enter <code>Ctrl+C</code> to stop this too.</p>
+<p>Once you're happy with this, stop the <code>turtlebot3_teleop_keyboard</code> node by hitting <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 2</strong>. You can also stop SLAM now too, so head back to <strong>TERMINAL 1</strong> and enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to stop this too.</p>
 </li>
 <li>
 <p>While you were doing the above, a map file was being constantly updated and saved to the laptop's filesystem. Have a quick look at this now to make sure that the map that you have built is indeed a good representation of the environment:</p>
@@ -3299,7 +3304,7 @@ See if you can adapt the code within this block to make the robot move forwards 
 <p>Once again, launch the <code>turtlebot_teleop_keyboard</code> node in <strong>TERMINAL 2</strong>, and drive the robot around a bit:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>roslaunch<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>rosrun<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>turtlebot3_teleop_key
 </code></pre></div></p>
 <hr />
 <p>As you're doing this, watch how the scatter in the localisation particle cloud reduces, and the small green arrows begin to converge underneath the robot.</p>
@@ -3335,7 +3340,7 @@ See if you can adapt the code within this block to make the robot move forwards 
 </code></pre></div>
 ... again, replacing <code>NUM</code> with the number of the robot that you have been working with today.</p>
 <hr />
-<p>You'll need to enter <code>y</code> and then hit <code>Enter</code> to confirm this.</p>
+<p>You'll need to enter <code>y</code> and then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm this.</p>
 <p>Please then shut down the laptop, which you can do by clicking the battery icon in the top right of the desktop and selecting the "Power Off / Log Out" option in the drop-down menu.</p>
 <figure>
 <p><img alt="" src="../../../images/laptops/ubuntu_poweroff.svg?width=10cm" /></p>
@@ -3373,7 +3378,7 @@ See if you can adapt the code within this block to make the robot move forwards 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T16:14:22+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-09T14:39:04+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-09</span>
   </span>
 
     
