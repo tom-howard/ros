@@ -20,7 +20,7 @@ The `tuos_ros` course repo is already installed and ready to go in WSL-ROS, for 
 1. Navigate to your Catkin Workspace `src` directory:
 
     ```bash
-    roscd && cd ../src
+    cd ~/catkin_ws/src/
     ```
 
 1. Clone the repo from GitHub:

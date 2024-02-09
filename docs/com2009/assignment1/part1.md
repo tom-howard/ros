@@ -63,7 +63,7 @@ We've put together a few ROS packages of our own that you'll use throughout this
 1. In **TERMINAL 1**, navigate to a folder called the *"Catkin Workspace."* We'll talk more about this later on but, for now, just run the following command:
 
     ```bash
-    roscd && cd ../src/
+    cd ~/catkin_ws/src/
     ```
 
 1. Then, run the following command to clone the Course Repo from GitHub:
