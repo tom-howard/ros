@@ -6,7 +6,7 @@ description: In the first part of this lab course you will learn the basics of R
 ## Introduction
 
 :material-pen: **Exercises**: 8  
-:material-timer: **Completion Time (approximate)**: 2 hours
+:material-timer: **Estimated Completion Time**: 2 hours
 
 ### Aims
 
