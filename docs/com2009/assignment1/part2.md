@@ -6,7 +6,7 @@ description: In this session you'll learn about Odometry data, which informs us 
 ## Introduction
 
 :material-pen: **Exercises**: 5  
-:material-timer: **Completion Time (approximate)**: 3 hours
+:material-timer: **Estimated Completion Time**: 3 hours
 
 ### Aims
 
