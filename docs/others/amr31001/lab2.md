@@ -399,23 +399,26 @@ In theory though, we can do all this much more effectively with odometry data in
 
         ... and you can stop it at any time by entering ++ctrl+c++ in the terminal.
 
-    !!! tip "Python Tips"
+        ??? tip "Python Tips"
 
-        You'll need to do a bit of maths here (see [the "Hint" above](#the_hint)). Here's how to implement a couple of mathematical functions in Python:
+            You'll need to do a bit of maths here (see [the "Hint" above](#the_hint)). Here's how to implement a couple of mathematical functions in Python:
 
-        1. **To the power of...**: Use `**` to raise a number to the power of another number (i.e. $2^{3}$):
+            1. **To the power of...**: Use `**` to raise a number to the power of another number (i.e. $2^{3}$):
 
-            ```py
-            >>> 2**3
-            8
-            ``` 
+                ```py
+                >>> 2**3
+                8
+                ``` 
 
-        1. **Square Root**: To calculate the square root of a number (i.e. $\sqrt{4}$):
+            1. **Square Root**: To calculate the square root of a number (i.e. $\sqrt{4}$):
 
-            ```py
-            >>> sqrt(4)
-            2.0 
-            ```
+                ```py
+                >>> sqrt(4)
+                2.0 
+                ```
+    
+    !!! info "Post-lab Quiz"
+        Keep a record of what you do here to complete this programming task, you may be asked about it in the post-lab quiz.
 
 ### The LiDAR Sensor
 
@@ -558,7 +561,10 @@ Once you're done, close down RViz by hitting ++ctrl+c++ in **TERMINAL 1**.
                 ```
 
         
-    1. Finally, think about how you could adapt this algorithm to make the robot follow a wall on its right-hand side instead.  
+    1. Finally, think about how you could adapt this algorithm to make the robot follow a wall on its right-hand side instead.
+
+    !!! info "Post-lab Quiz"
+        Keep a record of what you do here to complete this programming task, you may be asked about it in the post-lab quiz.  
 
 ### SLAM and Autonomous Navigation
 
@@ -685,13 +691,8 @@ Using the map that you've just created you should now be able to make your robot
     
         The robot will then try its best to navigate to the destination autonomously!
 
-<!-- 
-### The Camera
-
-#### Exercise 5: Object Tracking with PID {#ex5}
-
-(maybe a simulation-based exercise, if required?) -->
-
+    !!! info "Post-lab Quiz"
+        What does a ROS robot need in order to be able to navigate an environment autonomously?
 
 ## Wrapping Up
 
