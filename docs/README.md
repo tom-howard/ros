@@ -8,7 +8,7 @@ hide:
 
 # COM2009 ROS Labs
 
-*ROS Labs for the COM2009-3009 Robotics Course at The University of Sheffield (and other courses)* 
+*ROS Labs for the COM2009-3009 Robotics Course at The University of Sheffield (and [more](./others/amr31001/README.md))* 
 
 ![A picture of a TurtleBot3 Waffle in the Diamond Computer Room 3 Robot Arena](./images/waffle/arena_shot.jpg){width=1000} 
 
