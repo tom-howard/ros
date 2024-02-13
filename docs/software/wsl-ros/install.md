@@ -37,6 +37,9 @@ You can install WSL-ROS (our purpose-built ROS image for this course) via the Un
     C:\WSL-ROS\wsl-ros-2309b-SDS.tar --version 2
     ```
 
+    !!! note
+        Note that it's important to install this as a [**WSL 2** distro](https://learn.microsoft.com/en-us/windows/wsl/compare-versions#comparing-wsl-1-and-wsl-2), **not** WSL 1 (hence the `--version 2` bit)!
+
 7. This may take a couple of minutes. Once it's done, you can verify that it was successful with the following command:
 
     ```powershell
