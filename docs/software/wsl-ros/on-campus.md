@@ -15,6 +15,9 @@ WSL-ROS is **pre-installed** on all machines in the following Campus Computer Ro
     * Short Term Loan Laptops in Computer Room 5
     * 40 dedicated *WSL-ROS laptops* (made available in Computer Room 5 during the COM2009 lab sessions)
 * **North Campus PC Room**
+* **The Information Commons**:
+    * Classrooms 3 and 4
+    * Computers on Floors 1, 2, 3, 4 (including Northlights and Pavillion), and Floor 6
 * **Remote Desktops**:
     * Virtual Classroom 1 - [See here for more information](../on-campus/rdp.md)
 
@@ -22,9 +25,6 @@ WSL-ROS is **pre-installed** on all machines in the following Campus Computer Ro
 
 In addition to this, WSL-ROS can also be installed on all machines in the following additional Campus Computer Rooms (via Software Center):
 
-* **The Information Commons**:
-    * Classrooms 3 and 4
-    * Computers on Floors 1, 2, 3, 4 (including Northlights and Pavillion), and Floor 6
 * **Sir Frederick Mappin Building**:
     * Room F110
     * Heartspace Room E095
