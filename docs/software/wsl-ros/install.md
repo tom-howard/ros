@@ -55,7 +55,11 @@ You can install WSL-ROS (our purpose-built ROS image for this course) via the Un
     $env:localappdata\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState
     ```
 
-9. You should now be able to launch the WSL-ROS environment by launching the Windows Terminal Application
+9. You should now be able to launch the WSL-ROS environment by launching the Windows Terminal App:
+
+<figure markdown>
+  ![](../../images/wsl/launch-wsl-ros-unmanaged.png){width=800px}
+</figure>
 
 ## See Also
 
