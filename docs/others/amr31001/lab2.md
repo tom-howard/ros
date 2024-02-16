@@ -354,9 +354,9 @@ In theory though, we can do all this much more effectively with odometry data in
     ```
     ***
 
-    The robot should start turning on the spot, and you should see some interesting information being printed to the terminal. After it has turned by 45&deg;, the robot should stop momentarily and then carry on turning again.
+    The robot should start turning on the spot, and you should see some interesting information being printed to the terminal. After it has turned by 45&deg; the robot should stop. 
 
-1. Stop the Node by entering ++ctrl+c++ in **TERMINAL 1**.
+1. Stop the Node by entering ++ctrl+c++ in **TERMINAL 1** and then run it again (`rosrun amr31001 ex2.py`) if you missed what happened the first time!
 
 1. **What you need to do**:
 
