@@ -8,8 +8,8 @@ Develop the ROS node(s) that allow a TurtleBot3 Waffle to autonomously explore t
     
     You should aim to have completed the following *additional* parts of the COM2009 ROS Course to support your work on this task: 
 
-    * **Assignment #1**: [All of it](../../assignment1/README.md), **in full**!
-    * **Fact-Finding Missions**: [Missions 1-5](../../../waffles/fact-finding.md) (i.e. **all of them**!)
+    * **Assignment #1**: [All of it](../../assignment1/README.md), *in full!*
+    * **Fact-Finding Missions**: [Missions 1-5](../../../waffles/fact-finding.md) (i.e. *all of them!*)
 
 ## Summary
 
