@@ -8,8 +8,10 @@ Develop the ROS node(s) that allow a TurtleBot3 Waffle to autonomously explore a
     
     You should aim to have completed the following *additional* parts of the COM2009 ROS Course to support your work on this task: 
 
-    * **Assignment #1**: [Part 5](../../assignment1/part5.md) (in full).
-    * **Fact-Finding Missions**: [Mission 4 (Out of Range LiDAR Data)](../../../waffles/fact-finding.md#mission-4-out-of-range-lidar-data).
+    * **Assignment #1**: Up to and including [Part 5](../../assignment1/part5.md) (in full).
+    * **Fact-Finding Missions**:
+        * [Mission 1 (Publishing Velocity Commands)](../../../waffles/fact-finding.md#mission-1-publishing-velocity-commands),
+        * [Mission 4 (Out of Range LiDAR Data)](../../../waffles/fact-finding.md#mission-4-out-of-range-lidar-data).
 
 ## Summary
 
@@ -24,7 +26,7 @@ Waffle?
 
 ## Details
 
-The environment that your robot will need to explore for this will, or course, be the Diamond Computer Room 5 Robot Arena, which is a square arena of 4x4m. For the task, the arena will contain a number of *"obstacles,"* i.e.: short wooden walls and coloured cylinders. Your robot will need to be able to detect these obstacles and navigate around them in order to fully explore the space.
+The environment that your robot will need to explore for this will, of course, be the Diamond Computer Room 5 Robot Arena, which is a square arena of 4x4m. For the task, the arena will contain a number of *"obstacles,"* i.e.: short wooden walls and coloured cylinders. Your robot will need to be able to detect these obstacles and navigate around them in order to fully explore the space.
 
 1. The robot will start in the centre of the arena.
 1. It must explore the environment for 90 seconds without touching **any** of the arena walls or the obstacles within it.
