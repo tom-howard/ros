@@ -10,4 +10,5 @@ title: "Assignment #2 Part B"
 
 **Tasks**:
 
-The task pages are still being updated and will be released soon...
+* [Task 3: Maze Navigation](./task3.md)
+* [Task 4: Exploration & Search](./task4.md)
