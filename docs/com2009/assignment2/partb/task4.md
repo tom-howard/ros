@@ -20,7 +20,7 @@ For this task the robot arena will contain a series of "rooms" each with a colou
 Once again, there's a simulation to help you develop your code for this task outside the lab sessions. This also helps to illustrate the nature of the task. You can launch the simulation from the `com2009_simulations` package with the following `roslaunch` command:
 
 ```bash
-roslaunch com2009_simulations exploration.launch
+roslaunch com2009_simulations task4.launch
 ```
 
 <center>
