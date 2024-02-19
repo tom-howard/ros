@@ -45,13 +45,17 @@ The maze that the robot will need to navigate for this task will span the full 4
 ## Simulation Resources
 
 !!! info 
-    Make sure you [check for updates to the course repo](../../../extras/tuos-ros.md#updating) to ensure that you have the most up-to-date version of these simulations.
+    Make sure you [check for updates to the Course Repo](../../../extras/tuos-ros.md#updating) to ensure that you have the most up-to-date version of these simulations.
 
 Within the `com2009_simulations` package there is an example maze, which can be launched using the following `roslaunch` command:
 
 ```bash
-roslaunch com2009_simulations maze_nav.launch
+roslaunch com2009_simulations task3.launch
 ```
+
+!!! warning "Still to be updated for 2023/24" 
+    **19/02/2024**:  
+    Currently, the Task 3 simulation isn't quite representative of the real Computer Room 5 Robot Arena. We're working on it though, so check back for updates soon...
 
 <center>
 <figure markdown>
@@ -60,7 +64,7 @@ roslaunch com2009_simulations maze_nav.launch
 </figure>
 </center>
 
- You can use this as a starting point for the development of your Task 3 ROS node(s), and for any development work that you do outside the lab sessions. **Make sure that you test things out thoroughly on a real Waffle in the labs though**. 
+You can use this as a starting point for the development of your Task 3 ROS node(s), and for any development work that you do outside the lab sessions. **Make sure that you test things out thoroughly on a real Waffle in the labs though**. 
 
 !!! note
     The real maze that will be used for the final assessment of Task 3 **will be different to this!**
