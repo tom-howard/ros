@@ -1826,6 +1826,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#returning-in-a-subsequent-lab-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning in a Subsequent Lab Session
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2421,6 +2430,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#returning-in-a-subsequent-lab-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning in a Subsequent Lab Session
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2592,6 +2610,15 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
 </li>
+<li>
+<p>Navigate into your package and run the following commands to set your identity, to allow you to make commits to your package repo:</p>
+<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>com2009_team999/
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;your name&quot;</span>
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;your email address&quot;</span>
+</code></pre></div></p>
+</li>
 </ol>
 <p>You should then be able to commit and push any updates that you make to your ROS package while working on the laptop, back to your remote repository using the secret passphrase that you defined earlier!</p>
 <h2 id="deleting-your-ros-package-after-a-lab-session">Deleting your ROS package after a lab session<a class="headerlink" href="#deleting-your-ros-package-after-a-lab-session" title="Permanent link">&para;</a></h2>
@@ -2601,9 +2628,38 @@
 <p>Make sure you've pushed any changes to GitHub before deleting your package!</p>
 </div>
 <p>Delete your package by simply running the following command from any terminal on the laptop:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/catkin_ws/src/com2009_team<span class="o">{}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/catkin_ws/src/com2009_team<span class="o">{}</span>
 </code></pre></div>
 <p>... replacing <code>{}</code> with your own team's number!</p>
+<h2 id="returning-in-a-subsequent-lab-session">Returning in a Subsequent Lab Session<a class="headerlink" href="#returning-in-a-subsequent-lab-session" title="Permanent link">&para;</a></h2>
+<p>Your team will be provided with the same Robotics Laptop for each lab session. Having completed all the steps above in a previous lab session, you should be able to return to the laptop, re-clone your package and continue working with relative ease...</p>
+<ol>
+<li>
+<p>The private SSH key that you created in a previous lab session (and secured with a passphrase) should still be saved on the laptop. Check that this is the case by first running the following command:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ls<span class="w"> </span>-al<span class="w"> </span>~/.ssh
+</code></pre></div>
+If you can see your team's ssh key in the list then you're good to go. If not you'll need to <a href="#ssh-keygen">go back here and follow the steps to create it again</a>.</p>
+</li>
+<li>
+<p>Next, start the laptop's ssh-agent and re-add your team's private key:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ssh-add<span class="w"> </span>~/.ssh/com2009_team<span class="o">{}</span>
+</code></pre></div>
+<p>Replacing <code>{}</code> with your team number.</p>
+</li>
+<li>
+<p>Then, navigate to the Catkin Workspace <code>src</code> directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src
+</code></pre></div>
+</li>
+<li>
+<p>Clone your package into here, using the SSH address of your package on GitHub:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>clone<span class="w"> </span><span class="o">{</span>REMOTE_SSH_ADDRESS<span class="o">}</span>
+</code></pre></div>
+<p>You'll be asked for your secret passphrase, hopefully you remember it!</p>
+</li>
+</ol>
 
 
 
@@ -2626,7 +2682,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-24T10:26:39+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-24</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-19T16:47:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-19</span>
   </span>
 
     
