@@ -25,7 +25,7 @@ theme:
         name: Switch to light mode
 
   logo: assets/tuos.png
-  favicon: assets/favicon.png
+  favicon: assets/tuos_logo.svg
 
   features:
     - navigation.tracking
