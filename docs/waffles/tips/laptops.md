@@ -144,6 +144,18 @@ There's a Catkin Workspace on each of the robot laptops and (much the same as in
     source ~/.bashrc
     ```
 
+1. Navigate into your package and run the following commands to set your identity, to allow you to make commits to your package repo:
+
+    ``` { .bash .no-copy }
+    cd com2009_team999/
+    ```
+    ``` { .bash .no-copy }
+    git config user.name "your name"
+    ```
+    ``` { .bash .no-copy }
+    git config user.email "your email address"
+    ```
+
 You should then be able to commit and push any updates that you make to your ROS package while working on the laptop, back to your remote repository using the secret passphrase that you defined earlier!
 
 ## Deleting your ROS package after a lab session
@@ -160,3 +172,40 @@ rm -rf ~/catkin_ws/src/com2009_team{}
 ```
 
 ... replacing `{}` with your own team's number!
+
+## Returning in a Subsequent Lab Session
+
+Your team will be provided with the same Robotics Laptop for each lab session. Having completed all the steps above in a previous lab session, you should be able to return to the laptop, re-clone your package and continue working with relative ease...
+
+1. The private SSH key that you created in a previous lab session (and secured with a passphrase) should still be saved on the laptop. Check that this is the case by first running the following command:
+
+    ```bash
+    ls -al ~/.ssh
+    ```
+    If you can see your team's ssh key in the list then you're good to go. If not you'll need to [go back here and follow the steps to create it again](#ssh-keygen).
+
+1. Next, start the laptop's ssh-agent and re-add your team's private key:
+
+    ```bash
+    eval "$(ssh-agent -s)"
+    ```
+    
+    ``` { .bash .no-copy }
+    ssh-add ~/.ssh/com2009_team{}
+    ```
+
+    Replacing `{}` with your team number.
+
+1. Then, navigate to the Catkin Workspace `src` directory:
+
+    ```bash
+    cd ~/catkin_ws/src
+    ```
+
+1. Clone your package into here, using the SSH address of your package on GitHub:
+
+    ``` { .bash .no-copy }
+    git clone {REMOTE_SSH_ADDRESS}
+    ```
+
+    You'll be asked for your secret passphrase, hopefully you remember it!
