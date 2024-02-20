@@ -15,7 +15,8 @@ print(f"Saving file at time: {rospy.get_time()}...")
 node = roslaunch.core.Node(
     package="tuos_examples",
     node_type="pointless_file_generator",
-    args=f"-f {file_path}"
+    args=f"-f {file_path}",
+    output="screen",
 )
 process = launch.launch(node)
 rate.sleep()
