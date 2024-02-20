@@ -20,7 +20,15 @@ This node takes a file path as a command-line argument, and writes a text file o
 rosrun tuos_examples pointless_file_generator -f FILENAME
 ```
 
-A text file called `FILENAME.txt` will be saved to your current working directory (use the `#!sh pwd` to determine your current working directory, and the `#!sh ls` command to show the files/directories present at this file system location).
+A text file called `FILENAME.txt` will be saved to your current working directory.
+
+* Use the `#!sh pwd` to determine your current working directory,
+* Use the `#!sh ls` command to show the files/directories present at this file system location, 
+* Then, use the `#!sh cat` command to display the content of the `FILENAME.txt` file, e.g.:
+    
+    ```bash
+    cat FILENAME.txt
+    ```
 
 Suppose you wanted to call this node programmatically instead (i.e. from within another Python Node). Below is an example of a very simple ROS node that does just that. Once the code below is executed it will launch the `pointless_file_generator` node from the `tuos_examples` package, but this time using the ROS Launch API. The key difference here is that instead of `FILENAME`, we need to define a **full path** to the text file that we want to generate.
 
@@ -28,7 +36,7 @@ Suppose you wanted to call this node programmatically instead (i.e. from within 
 --8<-- "snippets/roslaunch_api_example.py"
 ```
 
-Create a node in one of your own ROS packages and then copy and paste the above code into it. You'll need to update the `#!py file_path = "/full/path/to/text/file"` line to represent the path to a **real** location on your file system. As long as the location already exists (i.e. the folder structure) then the file will be created automatically by the node in the specified location. You must specify a **full file system path** in order for this to work correctly though (use the `pwd` command).
+Create a node in one of your own ROS packages and then copy and paste the above code into it. You'll need to update the `#!py file_path = "/full/path/to/text/file"` line to represent the path to a **real** location on your file system. The file will be then created automatically by the node in the specified location. You must specify a **full file system path** in order for this to work correctly using the ROS Launch Python API though, and you will only be able to write to a location that's within your Home directory (e.g.: `#!py /home/student/path/to/file`), otherwise you'll get an error!
 
 ## Assignment #2 Hint: Saving a SLAM Map Programmatically 
 
