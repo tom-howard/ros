@@ -42,8 +42,8 @@ The assignment is essentially split into two separate parts (A & B), with two su
 
 | Part | Task(s) | Deadline |  
 | :---: | :---: | :---: |
-| A | Tasks 1 & 2 | Week 6 |
-| B | Tasks 3 & 4 | Week 12 | 
+| A | 1 & 2 | Week 6 |
+| B | 3 & 4 | Week 12 | 
 
 </center>
 

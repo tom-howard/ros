@@ -123,11 +123,11 @@ There are **10 marks** available for this task in total, summarised as follows:
 
 | Criteria | Details | Marks|
 | :--- | :--- | :--- |
-| **A.1**: Direction of travel | The robot must move anticlockwise for the first loop ("Loop 1") and then clockwise for the second ("Loop 2"). | 1 |
-| **A.2**: Loop 1 | The loop must be ~1 m in diameter, centered about the red beacon. | 1 |
-| **A.3**: Loop 2 | The loop must be ~1 m in diameter, centered about the blue beacon. | 1 |
-| **A.4**: Stopping | Once the robot completes its figure of eight, it must stop with both wheels **within 10 cm** of the start line. | 1 |
-| **A.5**: Timing | The robot must complete the full figure of eight and stop in 55-65 seconds. | 1 |
+| **A1**: Direction of travel | The robot must move anticlockwise for the first loop ("Loop 1") and then clockwise for the second ("Loop 2"). | 1 |
+| **A2**: Loop 1 | The loop must be ~1 m in diameter, centered about the red beacon. | 1 |
+| **A3**: Loop 2 | The loop must be ~1 m in diameter, centered about the blue beacon. | 1 |
+| **A4**: Stopping | Once the robot completes its figure of eight, it must stop with both wheels **within 10 cm** of the start line. | 1 |
+| **A5**: Timing | The robot must complete the full figure of eight and stop in 55-65 seconds. | 1 |
 
 </center>
 
@@ -139,8 +139,8 @@ There are **10 marks** available for this task in total, summarised as follows:
 
 | Criteria | Details | Marks|
 | :--- | :--- | :--- |
-| **B.1**: Rate | Messages should be printed to the terminal at **a rate of 1 Hz**. | 1 |
-| **B.2**: Format | The messages printed to the terminal should be formatted **exactly** [as detailed above](#msg-format). | 1 |
-| **B.3**: Data | Each message value (`x`, `y` and `yaw`) should be plausible, that is: they represent the actual pose of the robot, based on all readings being set to zero at the start/finish point ([as illustrated above](#fig-eight)). In addition, each value must be quoted in the correct units (meters or degrees, as appropriate). | 3 |
+| **B1**: Rate | Messages should be printed to the terminal at **a rate of 1 Hz**. | 1 |
+| **B2**: Format | The messages printed to the terminal should be formatted **exactly** [as detailed above](#msg-format). | 1 |
+| **B3**: Data | Each message value (`x`, `y` and `yaw`) should be plausible, that is: they represent the actual pose of the robot, based on all readings being set to zero at the start/finish point ([as illustrated above](#fig-eight)). In addition, each value must be quoted in the correct units (meters or degrees, as appropriate). | 3 |
 
 </center>
