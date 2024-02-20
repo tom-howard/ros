@@ -330,6 +330,8 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
     ```
     ***
 
+    <a name="blank-1"></a>
+
     !!! warning "Fill in the Blank!"
         Recall how we used the `catkin_create_pkg` tool [in Part 1](./part1.md#ex4), but adapt this now for the `part2_navigation` package, as detailed above.
     
@@ -545,7 +547,7 @@ Earlier on you also learnt about [Robot Odometry](#odometry), which is used by t
 
 1. Use the VS Code File Explorer to navigate to this `move_square.py` file and open it up, ready for editing.
 1. [There's a template here to help you with this exercise](./part2/move_square.md). Copy and paste the template code into your new `move_square.py` file to get you started. <a name="ex5_ret"></a>
-1. Run the code as it is to see what happens...
+1. Run the code as it is to see what happens... <a name="blank-2"></a>
 
     !!! warning "Fill in the Blank!"
         Something not quite working as expected? We may have missed out [something very crucial](./part1/subscriber.md#dfts) on **the very first line** of the code template, can you work out what it is?!
