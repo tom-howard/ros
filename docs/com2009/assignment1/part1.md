@@ -531,10 +531,8 @@ rostopic[SPACE][TAB][TAB]
 
 You should then be presented with a list of the available arguments for the `rostopic` command:
 
-<!-- TODO: a gif instead of static image! -->
-
 <figure markdown>
-  ![](../../images/ros-cli/rostopic_autocomplete.png)
+  ![](../../images/ros-cli/rostopic_autocomplete.gif)
 </figure>
 
 * `rostopic hz {topic name}` provides information on the frequency (in Hz) at which messages are being published to a topic:
