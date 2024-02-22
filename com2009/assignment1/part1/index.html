@@ -3263,11 +3263,12 @@ Or:
 <li>
 <p><code>ls</code> is a <strong>Linux command</strong> which <em>lists</em> the contents of the current directory. Use <code>ls</code> to list the content of the <code>part1_pubsub</code> directory, as created by the <code>catkin_create_pkg</code> tool.</p>
 <p>Catkin packages are typically organised in the following way, and have a few essential features that <strong>must</strong> be present in order for the package to be valid:</p>
-<div class="highlight"><pre><span></span><code>package_folder/    -- All packages must be self-contained within their own root folder [essential]
-|-launch/          -- A folder for launch files (optional)
-|-src/             -- A folder for source files (python scripts etc)
-|-CMakeLists.txt   -- Rules for compiling the package [essential]
-`-package.xml      -- Information about the package [essential]
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>package_folder/    -- All packages must be self-contained within their 
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>  |                   own root folder [essential]
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>  |-launch/        -- A folder for launch files (optional)
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>  |-src/           -- A folder for source files (python scripts etc)
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>  |-CMakeLists.txt -- Rules for compiling the package [essential]
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>  `-package.xml    -- Information about the package [essential]
 </code></pre></div>
 <p>You will have noticed that the <code>catkin_create_pkg</code> tool made sure that the essential features of a Catkin Package were created when we asked it to build the <code>part1_pubsub</code> package above.</p>
 </li>
@@ -3275,14 +3276,14 @@ Or:
 <p>Before we do anything else, it's good practice to now run <code>CMake</code> on the package (using <code>catkin build</code>) to register it on our ROS system and make sure there are no errors with its definition so far:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>part1_pubsub
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>catkin<span class="w"> </span>build<span class="w"> </span>part1_pubsub
 </code></pre></div></p>
 <hr />
 </li>
 <li>
 <p>Finally, "re-source" your environment<sup id="fnref:source-bashrc"><a class="footnote-ref" href="#fn:source-bashrc">2</a></sup> using the following command:</p>
 <hr />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
 <hr />
 <p>... and you're good to go.</p>
@@ -3299,7 +3300,7 @@ Or:
 <p><code>touch</code> is a <strong>Linux command</strong> that we can use to create an empty file. Use this to create an empty file called <code>publisher.py</code>, which we will add content to shortly:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>touch<span class="w"> </span>publisher.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>touch<span class="w"> </span>publisher.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -3307,12 +3308,12 @@ Or:
 <p>Use <code>ls</code> to verify that the file has been created, but use the <code>-l</code> option with this, so that the command provides its output in <em>"a long listing format"</em>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ls<span class="w"> </span>-l
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ls<span class="w"> </span>-l
 </code></pre></div></p>
 <hr />
 <p>This should output something similar to the following:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>total 0
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>-rw-r--r-- 1 student student 0 MMM DD HH:MM publisher.py
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>total 0
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>-rw-r--r-- 1 student student 0 MMM DD HH:MM publisher.py
 </code></pre></div>
 <p>This confirms that the file exists, and the <code>0</code> in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.</p>
 </li>
@@ -3320,7 +3321,7 @@ Or:
 <p>We therefore now need to open the file and add content to it. We'll be using Visual Studio Code (VS Code) as our IDE for this course. Launch VS Code now using the following command in <strong>TERMINAL 1</strong>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>code<span class="w"> </span>~
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>code<span class="w"> </span>~
 </code></pre></div></p>
 <hr />
 <div class="admonition warning">
@@ -3346,7 +3347,7 @@ Or:
 <p>We can now run this node using the <code>rosrun</code> <strong>ROS command</strong>. However, because we closed everything down earlier on, the <em>ROS Master</em> is no longer active. First then, we need to re-launch it manually using <code>roscore</code>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>roscore
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>roscore
 </code></pre></div></p>
 <hr />
 </li>
@@ -3354,14 +3355,14 @@ Or:
 <p>Then, in <strong>TERMINAL 2</strong>, use <code>rosrun</code> to execute the <code>publisher.py</code> script that you have just created by providing the relevant information to the <code>rosrun</code> command. Remember: <code>rosrun {package name} {script name}</code>, so:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>rosrun<span class="w"> </span>part1_pubsub<span class="w"> </span>publisher.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>rosrun<span class="w"> </span>part1_pubsub<span class="w"> </span>publisher.py
 </code></pre></div></p>
 <hr />
 <p>... Hmmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>[rosrun] Couldn&#39;t find executable named publisher.py below /home/student/catkin_ws/src/part1_pubsub
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>[rosrun] Found the following, but they&#39;re either not files,
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>[rosrun] or not executable:
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>[rosrun]   /home/student/catkin_ws/src/part1_pubsub/src/publisher.py
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>[rosrun] Couldn&#39;t find executable named publisher.py below /home/student/catkin_ws/src/part1_pubsub
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>[rosrun] Found the following, but they&#39;re either not files,
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>[rosrun] or not executable:
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>[rosrun]   /home/student/catkin_ws/src/part1_pubsub/src/publisher.py
 </code></pre></div>
 <p>The clue there is the word <em>"executable"</em>. When we create a file, using <code>touch</code> it is given certain <em>permissions</em>. Run <code>ls -l</code> again (making sure that your terminal is in the right location: <code>~/catkin_ws/src/part1_pubsub/src/</code>).</p>
 <p>The first bit tells us about the permissions that are currently set: <code>-rw-r--r--</code>. This tells us <em>who</em> has permission to do <em>what</em> with this file and (currently) the first bit: <code>-rw-</code>, tells us that we (as the user <code>student</code>) have permission to <strong>R</strong>ead or <strong>W</strong>rite to it. There is a <em>third</em> option we can set too though, which is the <em>execute</em> permission, and we can set this using the <code>chmod</code> <strong>Linux command</strong>...</p>
@@ -3370,7 +3371,7 @@ Or:
 <p>Run the <code>chmod</code> command as follows:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>publisher.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>publisher.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -3378,17 +3379,17 @@ Or:
 <p>Now, run <code>ls -l</code> again to see what has changed:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ls<span class="w"> </span>-l
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>ls<span class="w"> </span>-l
 </code></pre></div></p>
 <hr />
 <p>We have now granted permission for the file to be e<strong>X</strong>ecuted too:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>-rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>-rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
 </code></pre></div>
 </li>
 <li>
 <p>OK, now use <code>rosrun</code> again to (<em>hopefully!</em>) run the <code>publisher.py</code> node (remember: <code>rosrun {package name} {script name}</code>).</p>
 <p>If you see a message in the terminal similar to the following then the node has been launched successfully:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>[INFO] [#####]: The &#39;simple_publisher&#39; node is active...
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>[INFO] [#####]: The &#39;simple_publisher&#39; node is active...
 </code></pre></div>
 <p>Phew!</p>
 </li>
@@ -3403,7 +3404,7 @@ Or:
 <div class="admonition danger">
 <p class="admonition-title">Using WSL-ROS on the University Managed Desktops?</p>
 <p><strong>Remember</strong>: <a href="../../../software/on-campus/getting-started/#backing-up-and-restoring-your-data">any work that you do in the WSL-ROS environment on campus machines will not be preserved automatically</a>. You should therefore backup your work to your University <code>U:\</code> drive regularly to avoid losing anything. To do this, run the following command in any WSL-ROS terminal instance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 </div>
 <h4 id="rostopic">Using the <code>rostopic</code> command<a class="headerlink" href="#rostopic" title="Permanent link">&para;</a></h4>
@@ -3413,7 +3414,7 @@ Or:
 <li><code>info</code>: to provide us with <em>information</em> on a particular topic of interest.</li>
 </ul>
 <p>We can use the <em>autocomplete functionality</em> of the Linux terminal to provide us with a list of <em>all</em> the available options that we can use with the <code>rostopic</code> command.  To do this you can type <code>rostopic</code> followed by a <span class="keys"><kbd class="key-space">Space</kbd></span> and then press the <span class="keys"><kbd class="key-tab">Tab</kbd></span> key twice:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>rostopic<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>rostopic<span class="o">[</span>SPACE<span class="o">][</span>TAB<span class="o">][</span>TAB<span class="o">]</span>
 </code></pre></div>
 <p>You should then be presented with a list of the available arguments for the <code>rostopic</code> command:</p>
 <!-- TODO: a gif instead of static image! -->
@@ -3424,22 +3425,22 @@ Or:
 <ul>
 <li>
 <p><code>rostopic hz {topic name}</code> provides information on the frequency (in Hz) at which messages are being published to a topic:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>rostopic<span class="w"> </span>hz<span class="w"> </span>/chatter
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>rostopic<span class="w"> </span>hz<span class="w"> </span>/chatter
 </code></pre></div>
 <p>This should tell us that our publisher node is publishing messages to the <code>/chatter</code> topic at (or close to) 10 Hz, which is exactly what we ask for in the <code>publisher.py</code> file (in the <code>__init__</code> part of our <code>Publisher</code> class). Enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to stop this command.</p>
 </li>
 <li>
 <p><code>rostopic echo {topic name}</code> shows the messages being published to a topic:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/chatter
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/chatter
 </code></pre></div>
 <p>This will provide a live stream of the messages that our <code>publisher.py</code> node is publishing to the <code>/chatter</code> topic. Enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to stop this.</p>
 </li>
 <li>
 <p>We can see some additional options for this command by viewing the help documentation:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-h
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>-h
 </code></pre></div>
 <p>From here, for instance, we can learn that if we just wanted the echo command to display a set number of messages from the <code>/chatter</code> topic we could use the <code>-n</code> option. To display the most recent two messages only, for example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/chatter<span class="w"> </span>-n2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/chatter<span class="w"> </span>-n2
 </code></pre></div>
 </li>
 </ul>
@@ -3481,7 +3482,7 @@ Or:
 <p>In <strong>TERMINAL 3</strong> use the <code>roscd</code> command to navigate to the <code>turtlebot3_teleop</code> package directory on the Linux filesystem:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>roscd<span class="w"> </span>turtlebot3_teleop
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>roscd<span class="w"> </span>turtlebot3_teleop
 </code></pre></div></p>
 <hr />
 <p>The terminal prompt should have changed to illustrate where on the filesystem the <code>roscd</code> command has just taken you:</p>
@@ -3500,7 +3501,7 @@ Or:
 <p>Then, use the <code>-F</code> option to find out a little more:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>ls<span class="w"> </span>-F
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>ls<span class="w"> </span>-F
 </code></pre></div></p>
 <hr />
 <p>You will notice that the output has now changed slightly: items followed by a <code>/</code> are folders (aka <em>"directories"</em>) and items without the <code>/</code> are files (files will often have a file extension too).</p>
@@ -3521,7 +3522,7 @@ Or:
 <p><code>cat</code> is a <strong>Linux command</strong> that we can use to display the contents of a file in the terminal. Use this to display the contents of the <code>turtlebot3_teleop_key.launch</code> file.</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>cat<span class="w"> </span>turtlebot3_teleop_key.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>cat<span class="w"> </span>turtlebot3_teleop_key.launch
 </code></pre></div></p>
 <hr />
 <div class="admonition question">
@@ -3532,13 +3533,13 @@ Or:
 </ol>
 <h5 id="launch_attributes">Summary<a class="headerlink" href="#launch_attributes" title="Permanent link">&para;</a></h5>
 <p>From the output of <code>cat</code> in the step above you should have noticed that the contents of a launch file are contained within a <code>&lt;launch&gt;</code> tag:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="nt">&lt;launch&gt;</span>
-<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="w">  </span>...<span class="w"> </span>
-<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="nt">&lt;/launch&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nt">&lt;launch&gt;</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">  </span>...<span class="w"> </span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="nt">&lt;/launch&gt;</span>
 </code></pre></div>
 <p>Within that, we also have (amongst other things) a <code>&lt;node&gt;</code> tag which tells ROS exactly what scripts (<em>"executables"</em>) to launch <em>and</em> how to launch them:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlebot3_teleop&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;turtlebot3_teleop_key&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;turtlebot3_teleop_keyboard&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="nt">&lt;/node&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">&quot;turtlebot3_teleop&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;turtlebot3_teleop_key&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;turtlebot3_teleop_keyboard&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="nt">&lt;/node&gt;</span>
 </code></pre></div>
 <p>The attributes here have the following meaning:</p>
 <ul>
@@ -3554,7 +3555,7 @@ Or:
 <p>Use the Linux <code>mkdir</code> command to <strong>m</strong>a<strong>k</strong>e a new <strong>dir</strong>ectory in the package root folder called <code>launch</code>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>mkdir<span class="w"> </span>launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>mkdir<span class="w"> </span>launch
 </code></pre></div></p>
 <hr />
 </li>
@@ -3563,10 +3564,10 @@ Or:
 </li>
 <li>
 <p>Open this launch file in VS Code and enter the following text:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nt">&lt;launch&gt;</span>
-<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">{BLANK}</span><span class="w"> </span><span class="na">type=</span><span class="s">{BLANK}</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pub_node&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="w">  </span><span class="nt">&lt;/node&gt;</span>
-<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="nt">&lt;/launch&gt;</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nt">&lt;launch&gt;</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">  </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">{BLANK}</span><span class="w"> </span><span class="na">type=</span><span class="s">{BLANK}</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pub_node&quot;</span><span class="w"> </span><span class="na">output=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="w">  </span><span class="nt">&lt;/node&gt;</span>
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="nt">&lt;/launch&gt;</span>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Fill in the Blanks!</p>
@@ -3613,7 +3614,7 @@ Or:
 <p>Finally, we have learnt how to create basic ROS nodes in Python to both <em>publish</em> and <em>subscribe</em> to ROS topics using standard ROS messages.</p>
 <h3 id="backup">WSL-ROS Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>Remember, the work you have done in the WSL-ROS environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 <p>This will export your home directory to your University <code>U:\</code> Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS.  </p>
 <div class="footnote">
@@ -3649,7 +3650,7 @@ Or:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-10T11:48:26+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-22T15:31:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-22</span>
   </span>
 
     
