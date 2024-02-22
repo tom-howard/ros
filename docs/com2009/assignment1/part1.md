@@ -349,11 +349,14 @@ Or:
 
     Catkin packages are typically organised in the following way, and have a few essential features that **must** be present in order for the package to be valid:
 
-        package_folder/    -- All packages must be self-contained within their own root folder [essential]
-        |-launch/          -- A folder for launch files (optional)
-        |-src/             -- A folder for source files (python scripts etc)
-        |-CMakeLists.txt   -- Rules for compiling the package [essential]
-        `-package.xml      -- Information about the package [essential]
+    ``` { .txt .no-copy }
+    package_folder/    -- All packages must be self-contained within their 
+      |                   own root folder [essential]
+      |-launch/        -- A folder for launch files (optional)
+      |-src/           -- A folder for source files (python scripts etc)
+      |-CMakeLists.txt -- Rules for compiling the package [essential]
+      `-package.xml    -- Information about the package [essential]
+    ```
 
     You will have noticed that the `catkin_create_pkg` tool made sure that the essential features of a Catkin Package were created when we asked it to build the `part1_pubsub` package above.
 
@@ -689,7 +692,7 @@ The attributes here have the following meaning:
 1. Use the `cd` command to enter the `launch` folder that you just created, then use the `touch` command (as before) to create a new empty file called `pubsub.launch`.
 1. Open this launch file in VS Code and enter the following text:
 
-    ```xml
+    ``` { .xml .no-copy }
     <launch>
       <node pkg={BLANK} type={BLANK} name="pub_node" output="screen">
       </node>

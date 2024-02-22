@@ -162,14 +162,16 @@ The topic you identified[^cmd_vel] should use a message of the `geometry_msgs/Tw
 
 You should now be looking at a message format that looks like this: 
 
-    geometry_msgs/Vector3 linear
-      float64 x
-      float64 y
-      float64 z
-    geometry_msgs/Vector3 angular
-      float64 x
-      float64 y
-      float64 z
+``` { .txt .no-copy }
+geometry_msgs/Vector3 linear
+  float64 x
+  float64 y
+  float64 z
+geometry_msgs/Vector3 angular
+  float64 x
+  float64 y
+  float64 z
+```
 
 There are **six** parameters that we can assign values to here: 
 
@@ -182,14 +184,16 @@ There are **six** parameters that we can assign values to here:
 
 These relate to a robot's **six degrees of freedom** (about its three principal axes), as we discussed above. These topic messages are therefore formatted to give a ROS Programmer the ability to *ask* a robot to move in any one of its six DOFs. 
 
-    geometry_msgs/Vector3 linear
-      float64 x  <-- Forwards (or Backwards)
-      float64 y  <-- Left (or Right)
-      float64 z  <-- Up (or Down)
-    geometry_msgs/Vector3 angular
-      float64 x  <-- Roll
-      float64 y  <-- Pitch
-      float64 z  <-- Yaw
+``` { .txt .no-copy }
+geometry_msgs/Vector3 linear
+  float64 x  <-- Forwards (or Backwards)
+  float64 y  <-- Left (or Right)
+  float64 z  <-- Up (or Down)
+geometry_msgs/Vector3 angular
+  float64 x  <-- Roll
+  float64 y  <-- Pitch
+  float64 z  <-- Yaw
+```
 
 As we also learnt above though, our TurtleBots can only actually move with **linear** velocity in the **x**-axis and **angular** velocity in the **z**-axis. As a result then, only velocity commands issued to the `linear.x` (Forwards/Backwards) or `angular.z` (Yaw) parts of this message will have any effect.
 
@@ -264,7 +268,9 @@ rostopic info /odom
 
 This provides information about the *type* of message used by this topic:
 
-    Type: nav_msgs/Odometry  
+``` { .txt .no-copy }
+Type: nav_msgs/Odometry  
+```
 
 We can find out more about this using the `rosmsg info` command:
 
