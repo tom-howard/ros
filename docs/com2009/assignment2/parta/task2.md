@@ -54,7 +54,12 @@ The environment that your robot will need to explore for this will, of course, b
 
 ## Simulation Resources
 
-Within the `com2009_simulations` package there is an example arena which can be used to develop and test out your team's obstacle avoidance node(s) for this task. The simulation can be launched using the following `roslaunch` command:
+Within the `com2009_simulations` package there is an example arena which can be used to develop and test out your team's obstacle avoidance node(s) for this task.
+
+!!! info 
+    Make sure you [check for updates to the Course Repo](../../../extras/tuos-ros.md#updating) to ensure that you have the most up-to-date version of these simulations.
+
+The simulation can be launched using the following `roslaunch` command:
 
 ```bash
 roslaunch com2009_simulations task2.launch
