@@ -3330,6 +3330,7 @@ u(t)=K_{P} e(t)
 <a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">ang_vel</span> <span class="o">=</span> <span class="n">kp</span> <span class="o">*</span> <span class="n">error</span>
 <a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s&quot;</span><span class="p">)</span>
 </code></pre></div>
+<p><a name="blank-1"></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Fill in the Blank!</p>
 <p>What is the <strong>Reference Input</strong> to the control system (<code>reference_input</code>)? Refer to <a href="#pid_terms">this figure from earlier</a>. </p>
@@ -3372,6 +3373,7 @@ u(t)=K_{P} e(t)
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span><span class="o">.</span><span class="n">set_move_cmd</span><span class="p">(</span><span class="n">linear</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">angular</span> <span class="o">=</span> <span class="n">ang_vel</span><span class="p">)</span>
 <a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">robot_controller</span><span class="o">.</span><span class="p">{</span><span class="n">BLANK</span><span class="p">}</span>
 </code></pre></div>
+<p><a name="blank-2"></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Fill in the Blank!</p>
 <p>There is a method within the <code>Tb3Move()</code> class which allows us to publish a velocity command to the <code>/cmd_vel</code> topic. What is it? (Have a look at <a href="https://github.com/tom-howard/tuos_ros/blob/main/tuos_examples/src/tb3.py">the <code>tb3.py</code> source code</a>, or the <code>colour_search.py</code> file from Exercise 3 if you need a reminder).</p>
@@ -3468,7 +3470,7 @@ u(t)=K_{P} e(t)
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-30T11:58:55+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-08T16:16:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-08</span>
   </span>
 
     
