@@ -52,6 +52,8 @@ Copy **all** the code below into your `move_client.py` file.  Then, review the c
 
 10. Once it *has* completed, the server provides us with a **result**, so we simply print that (as well as the current **state** of the action) to the terminal. 
 
+<a name="blank-1"></a>
+
 !!! warning "Fill in the Blank!"
     Which attribute of the `feedback_data` object tells us how many images have been captured over the course of the *Camera Sweep* Action? There are a number of ways we can work this out:
         

@@ -405,6 +405,8 @@ As mentioned above, the map that you created in the previous exercise can now be
 
 1. Once you've made these changes, save the file and then launch it:
 
+    <a name="blank-1"></a>
+
     ***
     **TERMINAL 1:**
     ```{ .bash .no-copy }

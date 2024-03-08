@@ -82,6 +82,8 @@ Copy **all** the code below into your `move_server.py` file and review the annot
 
 17. The `rospy.spin()` function keeps our node running indefinitely (so that the callback function can continue to execute, whenever the service is called). 
 
+<a name="blank-1"></a>
+
 !!! warning "Fill in the Blank!"
     Which message package does [the `Twist` message](../part2/twist-tips.md) belong to?
 

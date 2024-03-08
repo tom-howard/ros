@@ -697,6 +697,8 @@ The attributes here have the following meaning:
     </launch>
     ```
 
+    <a name="blank-2"></a>
+
     !!! warning "Fill in the Blanks!"
         Referring to what we learned about [the format of launch files](#launch_attributes) above, replace each `{BLANK}` above with the correct text to launch the publisher node that you created in [Exercise 5](#ex5).
     

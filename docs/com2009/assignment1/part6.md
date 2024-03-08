@@ -566,6 +566,8 @@ The next task then is to adapt our `line_follower.py` node to implement this con
     print(f"Error = {error:.1f} pixels | Control Signal = {ang_vel:.2f} rad/s")
     ```
 
+    <a name="blank-1"></a>
+
     !!! warning "Fill in the Blank!"
         What is the **Reference Input** to the control system (`reference_input`)? Refer to [this figure from earlier](#pid_terms). 
 
@@ -616,6 +618,8 @@ The next task then is to adapt our `line_follower.py` node to implement this con
     self.robot_controller.set_move_cmd(linear = 0.1, angular = ang_vel)
     self.robot_controller.{BLANK}
     ```
+
+    <a name="blank-2"></a>
 
     !!! warning "Fill in the Blank!"
         There is a method within the `Tb3Move()` class which allows us to publish a velocity command to the `/cmd_vel` topic. What is it? (Have a look at [the `tb3.py` source code](https://github.com/tom-howard/tuos_ros/blob/main/tuos_examples/src/tb3.py), or the `colour_search.py` file from Exercise 3 if you need a reminder).
