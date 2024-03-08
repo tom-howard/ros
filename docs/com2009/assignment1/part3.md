@@ -209,9 +209,15 @@ The `ranges` array contains 360 values in total, i.e. a distance measurement at 
 !!! question
     What *is* the maximum and minimum range of the LiDAR sensor? Use [the same technique as we used above](#echo_scan_variables) to find out.
 
-Finally, use the `rostopic echo` command again to display the `ranges` portion of the `LaserScan` topic message.  Don't use the `-n1` option now, so that you can see the data changing, in the terminal, in real-time, but use the `-c` option to clear the screen after every message to make things a bit clearer.  You might also need to maximise the terminal window so that you can see the full content of the array (all 360 values!) The array is quite big, but is bound by square brackets `[]` to denote the start and end, and there should be a `---` at the end of each message too, to help you confirm that you are viewing the entire thing.
+Finally, use the `rostopic echo` command again to display the `ranges` portion of the `LaserScan` topic message. There's a lot of data here (360 data points in fact, as you know from above!) so let's just focus on the data within a 0-65&deg; angular range (again, as illustrated in [the figure](#fig_lidar)). You can therefore use the `rostopic echo` command as follows:
 
-The main thing you'll notice here is that there's way too much information, updating far too quickly for it to be of any real use! As you have already seen though, it is the numbers that are flying by here that are represented by red dots in RViz.  Head back to the RViz screen to have another look at this now. As you'll no doubt agree, this is a much more useful way to visualise the `ranges` data, and illustrates how useful RViz can be for interpreting what your robot can *see* in real-time.
+```txt
+rostopic echo /scan/ranges[0:65] -c
+```
+
+We're dropping the `-n1` option now, so that we can see the data points updating in real-time, but we're introducing the `-c` option to clear the screen after every message to make things a bit clearer.  You might need to expand the terminal window so that you can see all the data points; data will be bound by square brackets `[]`, and there should be a `---` at the end of each message too, to help you confirm that you are viewing the whole thing.
+
+The main thing you'll notice here is that there's lots of information, and it changes rapidly! As you have already seen though, it is the numbers that are flying by here that are represented by red dots in RViz.  Head back to the RViz screen to have another look at this now. As you'll no doubt agree, this is a much more useful way to visualise the `ranges` data, and illustrates how useful RViz can be for interpreting what your robot can *see* in real-time.
 
 What you may also notice is several `inf` values scattered around the array.  These represent sensor readings that are outside the sensor's measurement range (i.e. *greater than* `range_max` or *less than* `range_min`), so the sensor can't report a distance measurement in such cases.
 
