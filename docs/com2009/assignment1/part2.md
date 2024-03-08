@@ -565,7 +565,7 @@ Earlier on you also learnt about [Robot Odometry](#odometry), which is used by t
 **Advanced features:**
 
 1. Adapt the node further to make the robot automatically stop once it has performed two complete loops.
-1. Create a launch file to launch this *and* the `odom_subscriber.py` node from last time simultaneously!
+1. Create a launch file to launch *this* and the `odom_subscriber.py` node from Exercise 2 simultaneously!
 
 After following a square motion path a few times, your robot *should* return to the same location that it started from.
 
