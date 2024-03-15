@@ -28,10 +28,10 @@ When it comes to submission time, it's important that you follow the steps below
 
     This will create a `.tar` archive of your package in the `~/myrosdata` folder. 
 
-4. If you're using WSL-ROS (or any other WSL-based ROS installation) then you can then access this using the Windows File Explorer. In the terminal enter the following command:
+4. If you're using WSL-ROS (or any other WSL-based ROS installation) then you can then access this from the Windows File Explorer. In the terminal enter the following command:
 
     ```bash
-    explorer.exe ~/myrosdata
+    cd ~/myrosdata/ && explorer.exe .
     ```
 
 5. An Explorer window should open, and in there you should see the `com2009_team{}.tar` file that you just created. Copy and paste this to somewhere convenient on your machine.
