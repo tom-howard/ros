@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/tuos_logo.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.10ba22f1.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2466,6 +2466,10 @@
 
   <h1>Task 3: Maze Navigation</h1>
 
+<div class="admonition warning">
+<p class="admonition-title">Update (20th March 2024)</p>
+<p>This task will now be assessed <strong>in simulation</strong>, NOT on a real robot!</p>
+</div>
 <p>Develop the ROS node(s) to enable a TurtleBot3 Waffle to navigate a maze in 150 seconds or less without crashing into anything.</p>
 <div class="admonition success">
 <p class="admonition-title">Course Checkpoints</p>
@@ -2484,7 +2488,7 @@
 <p>As with Task 2, the LiDAR sensor will be essential here, this time allowing the robot to detect the maze walls and maintain a safe distance from them. Your robot will need to progress through a maze all the way to the end in order to be awarded maximum marks. The robot's <em>Odometry System</em> may prove useful too; allowing it to keep track of where it is and where it has <em>already been</em>, so that it continues to progress through the maze and doesn't waste time going back on itself. The maze may contain <strong>dead-ends</strong>, so you'll need to make sure your robot is able to navigate its way out of these and (ideally) not go down the same ones repeatedly!</p>
 <p>One common method for solving mazes is to use a <a href="https://en.wikipedia.org/wiki/Maze-solving_algorithm#Wall_follower">wall following algorithm</a>. The maze that the Waffle will need to navigate for this task <strong>won't</strong> contain any islands, i.e. it will be <em>"simply connected,"</em> so this is one method you might choose to adopt here. The drawback however, is that you'll need to decide in advance whether to implement a <em>left-</em> or <em>right</em>-hand wall follower, without knowing what the final maze is going to look like. Depending on the maze configuration, one could prove much less efficient than the other!</p>
 <h2 id="details">Details<a class="headerlink" href="#details" title="Permanent link">&para;</a></h2>
-<p>The maze that the robot will need to navigate for this task will span the full 4x4m area of the Computer Room 5 Robot Arena. There'll only be wooden walls in the arena for this task though, no other objects. The maze will be constructed to ensure there is always enough space for a TurtleBot3 Waffle to comfortably pass through any apertures or corridors.</p>
+<p>The maze that the robot will need to navigate for this task will <del>span the full 4x4m area of the Computer Room 5 Robot Arena</del> <ins>occupy a 5x5m square arena <strong>in a simulated environment</strong></ins>. There'll only be wooden walls in the arena for this task though, no other objects. The maze will be constructed to ensure there is always enough space for a TurtleBot3 Waffle to comfortably pass through any apertures or corridors.</p>
 <ol>
 <li>The robot will start at one end of a maze and must autonomously navigate all the way to the other end (or get as far as possible).</li>
 <li>The robot must do this <em>without</em> touching any of the arena walls, and <strong>penalties will be applied</strong> for those that do (See <a href="#marks">the table below</a>).</li>
@@ -2498,7 +2502,7 @@
 <p>Your team's ROS package must contain a launch file called <code>task3.launch</code>, such that the functionality that you develop for this maze navigation task can be launched from your package via the command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>roslaunch<span class="w"> </span>com2009_team<span class="o">{}</span><span class="w"> </span>task3.launch
 </code></pre></div>
-<p>(ROS will already be running on the robot before we attempt to execute your launch file on the laptop that the robot has been paired with.)</p>
+<p>(<del>ROS will already be running on the robot before we attempt to execute your launch file on the laptop that the robot has been paired with</del> <ins>The robot will have already been launched into the simulated environment before we attempt to execute your launch file</ins>.)</p>
 </li>
 </ol>
 <h2 id="simulation-resources">Simulation Resources<a class="headerlink" href="#simulation-resources" title="Permanent link">&para;</a></h2>
@@ -2506,27 +2510,32 @@
 <p class="admonition-title">Info</p>
 <p>Make sure you <a href="../../../../extras/tuos-ros/#updating">check for updates to the Course Repo</a> to ensure that you have the most up-to-date version of these simulations.</p>
 </div>
-<p>Within the <code>com2009_simulations</code> package there is an example maze, which can be launched using the following <code>roslaunch</code> command:</p>
+<p>Within the <code>com2009_simulations</code> package there are <strong>two example mazes</strong>, which can be launch using <code>roslaunch</code> as follows:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Maze Variant A</label><label for="__tabbed_1_2">Maze Variant B</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>roslaunch<span class="w"> </span>com2009_simulations<span class="w"> </span>task3.launch
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Still to be updated for 2023/24</p>
-<p><strong>19/02/2024</strong>:<br />
-Currently, the Task 3 simulation isn't quite representative of the real Computer Room 5 Robot Arena. We're working on it though, so check back for updates soon...</p>
+<p><center>
+  <figure markdown>
+    <img alt="" src="../../figures/maze_nav.jpg" />
+    <figcaption>Maze Navigation Arena (Example A)</figcaption>
+  </figure>
+</center></p>
 </div>
-<p><center></p>
-<figure>
-<p><img alt="" src="../../figures/maze_nav.jpg" />
-  </p>
-<figcaption>A development arena for Task 3, depicting an example maze.</figcaption>
-</figure>
-<p></center></p>
-<p>You can use this as a starting point for the development of your Task 3 ROS node(s), and for any development work that you do outside the lab sessions. <strong>Make sure that you test things out thoroughly on a real Waffle in the labs though</strong>. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The real maze that will be used for the final assessment of Task 3 <strong>will be different to this!</strong>
-<!-- 1. Corners in the final maze won't necessarily all be at right angles like they are in the simulation: some may be acute or obtuse! --></p>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>roslaunch<span class="w"> </span>com2009_simulations<span class="w"> </span>task3b.launch
+</code></pre></div>
+<p><center>
+  <figure markdown>
+    <img alt="" src="../../figures/maze_navb.jpg" />
+    <figcaption>Maze Navigation Arena (Example B)</figcaption>
+  </figure>
+</center></p>
 </div>
+</div>
+</div>
+<p>You can use the above to develop your ROS node(s) for Task 3, but note that <strong>the maze that will be used for the final assessment will be different to the examples!</strong></p>
 <h2 id="marks">Marking<a class="headerlink" href="#marks" title="Permanent link">&para;</a></h2>
 <p>There are <strong>20 marks</strong> available for this task in total, awarded based on the following criteria:</p>
 <p><center></p>
@@ -2629,7 +2638,7 @@ Currently, the Task 3 simulation isn't quite representative of the real Computer
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-19T15:55:18+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-21T17:01:18+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-21</span>
   </span>
 
     
@@ -2815,7 +2824,7 @@ Currently, the Task 3 simulation isn't quite representative of the real Computer
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.bd41221c.min.js"></script>
       
         <script src="../../../../js/timeago.min.js"></script>
       
