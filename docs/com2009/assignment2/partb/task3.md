@@ -2,6 +2,10 @@
 title: "Task 3: Maze Navigation"  
 ---  
 
+!!! warning "Update (20th March 2024)" 
+
+    This task will now be assessed **in simulation**, NOT on a real robot!
+
 Develop the ROS node(s) to enable a TurtleBot3 Waffle to navigate a maze in 150 seconds or less without crashing into anything.
 
 !!! success "Course Checkpoints"
@@ -23,7 +27,7 @@ One common method for solving mazes is to use a [wall following algorithm](https
 
 ## Details
 
-The maze that the robot will need to navigate for this task will span the full 4x4m area of the Computer Room 5 Robot Arena. There'll only be wooden walls in the arena for this task though, no other objects. The maze will be constructed to ensure there is always enough space for a TurtleBot3 Waffle to comfortably pass through any apertures or corridors.
+The maze that the robot will need to navigate for this task will ~~span the full 4x4m area of the Computer Room 5 Robot Arena~~ ^^occupy a 5x5m square arena **in a simulated environment**^^. There'll only be wooden walls in the arena for this task though, no other objects. The maze will be constructed to ensure there is always enough space for a TurtleBot3 Waffle to comfortably pass through any apertures or corridors.
 
 1. The robot will start at one end of a maze and must autonomously navigate all the way to the other end (or get as far as possible).
 1. The robot must do this *without* touching any of the arena walls, and **penalties will be applied** for those that do (See [the table below](#marks)).
@@ -40,7 +44,7 @@ The maze that the robot will need to navigate for this task will span the full 4
     roslaunch com2009_team{} task3.launch
     ```
   
-    (ROS will already be running on the robot before we attempt to execute your launch file on the laptop that the robot has been paired with.)
+    (~~ROS will already be running on the robot before we attempt to execute your launch file on the laptop that the robot has been paired with~~ ^^The robot will have already been launched into the simulated environment before we attempt to execute your launch file^^.)
 
 ## Simulation Resources
 
@@ -53,10 +57,6 @@ Within the `com2009_simulations` package there is an example maze, which can be 
 roslaunch com2009_simulations task3.launch
 ```
 
-!!! warning "Still to be updated for 2023/24" 
-    **19/02/2024**:  
-    Currently, the Task 3 simulation isn't quite representative of the real Computer Room 5 Robot Arena. We're working on it though, so check back for updates soon...
-
 <center>
 <figure markdown>
   ![](../figures/maze_nav.jpg)
@@ -64,10 +64,11 @@ roslaunch com2009_simulations task3.launch
 </figure>
 </center>
 
-You can use this as a starting point for the development of your Task 3 ROS node(s), and for any development work that you do outside the lab sessions. **Make sure that you test things out thoroughly on a real Waffle in the labs though**. 
+You can use this as a starting point for the development of your Task 3 ROS node(s), and for any development work that you do ~~outside the lab sessions. **Make sure that your robot test things out thoroughly on a real Waffle in the labs though**~~. 
 
 !!! note
-    The real maze that will be used for the final assessment of Task 3 **will be different to this!**
+    1. The maze that will be used for the final assessment of Task 3 **will be a different configuration to the example simulations!**
+    1. The start and finish points will be different, and won't necessarily be at opposite ends of the arena!
     <!-- 1. Corners in the final maze won't necessarily all be at right angles like they are in the simulation: some may be acute or obtuse! -->
 
 ## Marking {#marks}
