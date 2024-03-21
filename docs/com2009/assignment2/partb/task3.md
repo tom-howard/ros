@@ -51,25 +51,35 @@ The maze that the robot will need to navigate for this task will ~~span the full
 !!! info 
     Make sure you [check for updates to the Course Repo](../../../extras/tuos-ros.md#updating) to ensure that you have the most up-to-date version of these simulations.
 
-Within the `com2009_simulations` package there is an example maze, which can be launched using the following `roslaunch` command:
+Within the `com2009_simulations` package there are **two example mazes**, which can be launch using `roslaunch` as follows:
 
-```bash
-roslaunch com2009_simulations task3.launch
-```
+=== "Maze Variant A"
 
-<center>
-<figure markdown>
-  ![](../figures/maze_nav.jpg)
-  <figcaption>A development arena for Task 3, depicting an example maze.</figcaption>
-</figure>
-</center>
+    ```bash
+    roslaunch com2009_simulations task3.launch
+    ```
 
-You can use this as a starting point for the development of your Task 3 ROS node(s), and for any development work that you do ~~outside the lab sessions. **Make sure that your robot test things out thoroughly on a real Waffle in the labs though**~~. 
+    <center>
+      <figure markdown>
+        ![](../figures/maze_nav.jpg)
+        <figcaption>Maze Navigation Arena (Example A)</figcaption>
+      </figure>
+    </center>
 
-!!! note
-    1. The maze that will be used for the final assessment of Task 3 **will be a different configuration to the example simulations!**
-    1. The start and finish points will be different, and won't necessarily be at opposite ends of the arena!
-    <!-- 1. Corners in the final maze won't necessarily all be at right angles like they are in the simulation: some may be acute or obtuse! -->
+=== "Maze Variant B"
+    
+    ```bash
+    roslaunch com2009_simulations task3b.launch
+    ```
+
+    <center>
+      <figure markdown>
+        ![](../figures/maze_navb.jpg)
+        <figcaption>Maze Navigation Arena (Example B)</figcaption>
+      </figure>
+    </center>
+
+You can use the above to develop your ROS node(s) for Task 3, but note that **the maze that will be used for the final assessment will be different to the examples!**
 
 ## Marking {#marks}
 
