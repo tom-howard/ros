@@ -112,6 +112,8 @@ markdown_extensions:
       generic: true
   - pymdownx.tilde
   - pymdownx.caret
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra_css:
   - stylesheets/extra.css
