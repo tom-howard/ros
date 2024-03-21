@@ -110,6 +110,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.tilde
+  - pymdownx.caret
 
 extra_css:
   - stylesheets/extra.css
