@@ -10,5 +10,5 @@ title: "Assignment #2 Part B"
 
 **Tasks**:
 
-* [Task 3: Maze Navigation](./task3.md)
+* [Task 3: Maze Navigation](./task3.md) (assessed *in simulation*)
 * [Task 4: Exploration & Search](./task4.md)

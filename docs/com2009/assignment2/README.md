@@ -4,23 +4,23 @@ title: "Assignment #2: Team Robotics Project"
 
 ## Overview
 
-In Assignment #2 you will put into practice everything that you are learning about ROS through Assignment #1 (in simulation) and explore the capabilities of the framework further.
+In Assignment #2 you will put into practice everything that you learn about ROS in Assignment #1, and explore the capabilities of the framework further.
 
-You will attend a 2-hour lab session per week in Diamond Computer Room 5 for the full 12-week semester. You will work **in teams** to develop ROS Nodes for our real TurtleBot3 Waffles, allowing them to successfully complete a series of robotics tasks in a real-world environment. There are **four tasks** to complete in total, all of which will be assessed as part of Assignment #2.
+You will attend a 2-hour lab session per week in Diamond Computer Room 5 for the full 12-week semester. You will work **in teams** to develop ROS Nodes for our TurtleBot3 Waffles that allow them to successfully complete a series of robotics tasks, most of which in a *real-world environment*. There are **four tasks** to complete in total, all of which will be assessed as part of Assignment #2.
 
 ## The Tasks
 
-There are **four tasks** in total that you must complete for this Assignment. Each task is marked and goes towards your final mark for Assignment #2. Tasks will all be assessed on a real TurtleBot3 Waffle in the robot arena in Computer Room 5, and marked based on how well the robot completes each of the tasks. An overview of the tasks, and the overall marking breakdown for this assignment is shown in the table below. 
+There are **four tasks** in total that you must complete for this Assignment. Each task is marked and goes towards your final mark for Assignment #2. Tasks ^^1, 2 & 4^^ will ~~all~~ be assessed on a real TurtleBot3 Waffle in the robot arena in Computer Room 5, ^^Task 3 will be assessed in simulation^^. All will be marked based on how well the robot completes each of the tasks. An overview of the tasks and the marking breakdown is shown in the table below. 
 
 <center>
 
-| Task | Details | Marks |
-| :---: | :---   | :---: |
-| 1 | [Velocity Control](./parta/task1.md) | 10/100 |
-| 2 | [Avoiding Obstacles](./parta/task2.md) | 20/100 |
-|   | [An *'out-of-the-box' submission* for Part A](./parta/submission.md) | 10/100 |
-| 3 | [Maze Navigation](./partb/task3.md) | 20/100 |
-| 4 | [Exploration & Search](./partb/task4.md) | 40/100 |
+| Task | Details | Assessment Format | Marks |
+| :---: | :---   | :---: | :---: |
+| 1 | [Velocity Control](./parta/task1.md) | Real World | 10/100 |
+| 2 | [Avoiding Obstacles](./parta/task2.md) | Real World | 20/100 |
+|   | [An *'out-of-the-box' submission* for Part A](./parta/submission.md) | - | 10/100 |
+| 3 | [Maze Navigation](./partb/task3.md) | Simulation | 20/100 |
+| 4 | [Exploration & Search](./partb/task4.md) | Real World | 40/100 |
 
 </center>
 
@@ -30,8 +30,13 @@ As shown above, there are **100 marks** available in total for Assignment #2.
 
 This assignment is worth 30% of the overall mark for the COM2009 course. As a team you will be assessed on a ROS package that you develop to satisfy the above tasks.
 
-Each submission will be assessed by extracting your ROS package on one of the robotics laptops (that you will use extensively in the labs throughout the assignment). Nodes within your package will then be executed on the laptop to control a real robot in the Diamond Computer Room 5 Robot Arena.
+**For Tasks 1, 2 & 4**:  
+Each submission will be assessed by extracting your ROS package on one of the robotics laptops that you will use extensively in the labs throughout the assignment. Nodes within your package will then be executed on the laptop to control a real robot in the Diamond Computer Room 5 Robot Arena.
 
+**For Task 3**:  
+Each submission will be extracted into [the WSL-ROS environment](../../software/wsl-ros/README.md) running on one of the WSL-ROS laptops (also available during the lab sessions). Nodes within your package will then be executed to control a TurtleBot3 Waffle in a *simulated* environment.
+
+**Feedback**:  
 Within 3 weeks of submission you will receive your marks and a recording of the assessment so that you can see how well your robot performed in each of the tasks, and so that you can see exactly how your marks were awarded!
 
 ### Submission Deadlines
