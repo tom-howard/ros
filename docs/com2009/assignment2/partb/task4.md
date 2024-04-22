@@ -49,9 +49,9 @@ The real robot arena might look something like this for the real assessment, whe
 
 The robot will have 3 minutes (180 seconds) in total to complete this task.
 
-1. The arena floor will be marked out with 16 equal-sized zones, and (much like in [Task 2](../parta/task2.md)) you will pick up marks if your robot manages to enter any of the outer 12 of them within the time available.
-1. In addition to this, the robot will need to try to explore the four rooms that will also be present in the arena. There will be marks available not only for the *number* of rooms that the robot manages to explore, but also the *speed* at which it manages to explore them all (see [the marking section below](#marking) for more details).
-1. Your robot will need to do this whilst minimising the number of contacts made with anything in the environment (*"incidents"*). Once an incident has taken place, we'll move the robot away slightly so that it is free to move again, but after **five** incidents have occurred the assessment will be stopped.
+1. The arena floor will be marked out into **9 equal-sized zones**. You will be awarded marks for each of the zones that the robot enters within the time available (excluding the one it starts in).
+1. In addition to this, the robot will need to try to explore the **four rooms** that will also be present in the arena. There will be marks available not only for the *number* of rooms that the robot manages to explore, but also the *speed* at which it manages to explore them all (see [the marking section below](#marking) for more details).
+1. Your robot will need to do this whilst avoiding contact with *anything* in the environment (*"incidents"*). Once an incident has taken place, we'll move the robot away slightly so that it is free to move again, but after **five** incidents have occurred the assessment will be stopped.
 1. Your team's ROS package must contain a launch file named `task4.launch`, such that (for the assessment) we are able to launch all the nodes that you have developed for this task via the following command:
   
     ```bash
@@ -79,7 +79,7 @@ You will therefore need to define your launch file to accommodate the `target_co
 
 <a name="autocomplete"></a>
 
-We will test whether your launch file has been correctly built to accept the `target_colour` command-line argument using *autocomplete* in the terminal. After typing the first four characters of the argument name, i.e.: `targ`, the rest of the name should be completed for us when we press the ++tab++ key, as illustrated below: 
+We will test whether your launch file has been correctly built to accept the `target_colour` command-line argument using *autocomplete* in the terminal. After typing the first four characters of the argument name, i.e.: "targ", the rest of the name should be completed for us when we press the ++tab++ key, as illustrated below: 
 
 <center>
 <figure markdown>
@@ -124,8 +124,8 @@ There are **40 marks** available for this task in total, awarded based on the cr
 | **A**: *Arena* exploration | 8/40 | For this task, the arena will be divided into **nine** equal-sized zones. You will be awarded 1 mark for each zone that your robot manages to enter, excluding the one it starts within. The robot only needs to enter each zone once, but its full body must be inside the zone marking to be awarded the associated mark. |
 | **B**: *Room* exploration | 12/40 | Marks will be awarded based on the maximum number of rooms that your robot manages to explore within the 180-second time limit **and** the speed by which it does this. [The marking details are outlined here](#room-explore). |
 | **C**: An *'incident-free run'* | 5/40 | Similarly to Task 3, if your robot completes the task (or the 180 seconds elapses) without it making contact with anything in the arena then you will be awarded a full 5 marks for this, with deductions then applied for each unique "incident" (to a minimum of 0/5). Your robot must *at least* leave the zone that it starts in to be eligible for these marks. Once five incidents have been recorded then the assessment will be stopped. |
-| **D1**: A Photo of a Beacon | 10/40 | [Further details here](#crit-d1). |
-| **D2**: Mapping with SLAM | 5/40 | [Further details here](#crit-d2). | 
+| **D1**: A Photo of a Beacon | 10/40 | [Further details below](#crit-d1). |
+| **D2**: Mapping with SLAM | 5/40 | [Further details below](#crit-d2). | 
 
 </center>
 
