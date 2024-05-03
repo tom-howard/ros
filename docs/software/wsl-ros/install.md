@@ -65,3 +65,6 @@ You can install WSL-ROS (our purpose-built ROS image for this course) via the Un
 
 * [Setting up VS Code for WSL](../on-campus/vscode.md)
 * [A Quick Introduction to the Linux Terminal](../on-campus/linux-term.md)
+* [A Config File for VcXsrv](https://drive.google.com/file/d/1CMJZ6xVXJ2cKZ0NmdYaxUw9RfPsIGLX9/view?usp=sharing)[^vcxsrv]
+
+[^vcxsrv]: https://sourceforge.net/projects/vcxsrv/
