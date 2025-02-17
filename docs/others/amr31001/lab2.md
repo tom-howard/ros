@@ -63,7 +63,7 @@ By the end of this session you will be able to:
 
 #### Downloading the AMR31001 ROS Package
 
-To start with, you'll need to download [a ROS package](https://github.com/tom-howard/amr31001) to the Robot Laptop that you are working on today. This package contains all the resources that you'll need for the lab exercises.
+To start with, you'll need to download a ROS package to the Robot Laptop that you are working on today. This package contains all the resources that you'll need for the lab exercises.
 
 1. Open up a terminal instance on the laptop, either by using the ++ctrl+alt+t++ keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:
     
