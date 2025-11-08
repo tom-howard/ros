@@ -21,4 +21,5 @@ jobs:
                 mkdocs-awesome-pages-plugin \
                 mkdocs-git-revision-date-localized-plugin \
                 mkdocs-redirects \
+                markdown==3.7
       - run: mkdocs gh-deploy --force
